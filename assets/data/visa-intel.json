@@ -1,0 +1,4510 @@
+{
+  "brand": "SK Immigration Services",
+  "updated": "2026-07-23",
+  "disclaimer": "Requirements change by embassy, nationality and intake. Always verify official sources. SK Immigration Services does not guarantee visa outcomes.",
+  "countries": [
+    {
+      "code": "de",
+      "name": "Germany",
+      "flag": "🇩🇪",
+      "slug": "germany-student-visa",
+      "guide_url": "blog/germany-student-visa/",
+      "tags": [
+        "Study",
+        "Work",
+        "Ausbildung"
+      ],
+      "highlight": "Ausbildung + Study",
+      "blurb": "Tuition-free public universities, Ausbildung apprenticeships, and strong post-study work options.",
+      "visa_types": [
+        "study",
+        "ausbildung",
+        "work",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "0–350 (public semester fee) or private higher",
+        "living_month": "850–1,100",
+        "total_year_usd_low": 11000,
+        "total_year_usd_high": 18000,
+        "ielts": "Often not if German program / MOI / university test; English programs may ask IELTS/TOEFL",
+        "low_marks": "Medium — Ausbildung & some pathways more flexible than elite unis",
+        "timeline_months": "4–7",
+        "part_time_work": "120 full days or 240 half days/year (typical student rule — verify)",
+        "post_study": "18-month job seeker (study) / skilled work after Ausbildung",
+        "language": "German A2–B1 often for Ausbildung; English for many degrees"
+      },
+      "costs": [
+        {
+          "item": "Semester contribution (public)",
+          "amount": "€150–€350 / semester"
+        },
+        {
+          "item": "Living (rent, food, transport)",
+          "amount": "€850–€1,100 / month"
+        },
+        {
+          "item": "Blocked account (study, typical planning)",
+          "amount": "Often ~€11,000+ for first year — confirm current amount"
+        },
+        {
+          "item": "Visa fee",
+          "amount": "Embassy fee (varies by nationality)"
+        },
+        {
+          "item": "Health insurance",
+          "amount": "Student tariff monthly"
+        },
+        {
+          "item": "Ausbildung training salary",
+          "amount": "Often ~€900–€1,350 / month during training (field-dependent)"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Profile & shortlist",
+          "time": "1–3 weeks"
+        },
+        {
+          "step": "University / employer applications",
+          "time": "4–10 weeks"
+        },
+        {
+          "step": "Admission or Ausbildung contract",
+          "time": "2–8 weeks"
+        },
+        {
+          "step": "Blocked account / docs / insurance",
+          "time": "2–4 weeks"
+        },
+        {
+          "step": "Embassy appointment & decision",
+          "time": "4–12 weeks"
+        }
+      ],
+      "suits": [
+        "Students seeking low/no tuition public universities",
+        "Applicants aiming for paid Ausbildung (nursing, IT, trades, hospitality)",
+        "Professionals targeting skilled worker visas with recognition",
+        "Profiles ready to plan blocked account (Sperrkonto) funds"
+      ],
+      "refusals": [
+        "Insufficient or unexplained funds / blocked account gaps",
+        "Weak study motivation or unclear program fit",
+        "Language level not meeting Ausbildung employer needs",
+        "Incomplete attestation of academic documents"
+      ],
+      "faq": [
+        {
+          "q": "Is Germany tuition free for international students?",
+          "a": "Many public universities charge little or no tuition — usually a semester contribution (~€150–€350). Private universities cost more. Living costs and blocked-account proof still apply. Embassies decide visas; SK Immigration does not guarantee outcomes."
+        },
+        {
+          "q": "Can I do Ausbildung without perfect German?",
+          "a": "Employers typically expect A2–B1 German (sometimes higher for nursing). You can start language training while preparing the file. SK Immigration helps with CV, matching and document checklists."
+        },
+        {
+          "q": "What is a Sperrkonto?",
+          "a": "A blocked account proving you can cover living costs for a study visa. Amounts and banks change — always verify current embassy guidance."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "German Missions / Visa",
+          "url": "https://www.auswaertiges-amt.de/en/visa-service"
+        },
+        {
+          "name": "Make it in Germany",
+          "url": "https://www.make-it-in-germany.com/en/"
+        },
+        {
+          "name": "DAAD Study in Germany",
+          "url": "https://www.daad.de/en/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Blocked account confirmation",
+              "level": "required",
+              "tip": "Sperrkonto or accepted funding alternative",
+              "issuer": "German bank / provider"
+            },
+            {
+              "title": "APS certificate",
+              "level": "varies",
+              "tip": "Required for some nationalities before visa",
+              "issuer": "APS center"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "ausbildung": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "Biometric photos",
+              "issuer": "Studio"
+            },
+            {
+              "title": "CV",
+              "level": "required",
+              "tip": "German-style / Europass CV",
+              "issuer": "You + SK"
+            },
+            {
+              "title": "Ausbildung contract (Ausbildungsvertrag)",
+              "level": "required",
+              "tip": "Signed training contract with German company",
+              "issuer": "Employer"
+            },
+            {
+              "title": "German language certificate",
+              "level": "required",
+              "tip": "Usually A2–B1+ depending on field",
+              "issuer": "Goethe / telc / ÖSD etc."
+            },
+            {
+              "title": "Recognition / diploma evaluation",
+              "level": "varies",
+              "tip": "If prior qualification must be recognized",
+              "issuer": "Authority / employer"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Coverage for Germany",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "National visa application",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "work": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid travel document",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Job offer / contract",
+              "level": "required",
+              "tip": "Signed employer contract with salary & role",
+              "issuer": "Employer"
+            },
+            {
+              "title": "CV + certificates",
+              "level": "required",
+              "tip": "Education & experience proof",
+              "issuer": "You"
+            },
+            {
+              "title": "Work permit / visa form",
+              "level": "required",
+              "tip": "Country-specific work authorization",
+              "issuer": "Embassy / labor office"
+            },
+            {
+              "title": "Police clearance",
+              "level": "often",
+              "tip": "Criminal record check",
+              "issuer": "Police"
+            },
+            {
+              "title": "Medical exam",
+              "level": "often",
+              "tip": "Panel physician if required",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "Language certificate",
+              "level": "varies",
+              "tip": "German/English as role requires",
+              "issuer": "Test center"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "gb",
+      "name": "United Kingdom",
+      "flag": "🇬🇧",
+      "slug": "uk-student-visa",
+      "guide_url": "blog/uk-student-visa/",
+      "tags": [
+        "Study",
+        "Visit"
+      ],
+      "highlight": "Graduate Route",
+      "blurb": "World-ranked universities with Graduate Route opportunities after eligible degrees.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "£12,000–£30,000+ tuition typical",
+        "living_month": "£1,000–£1,500+ (London higher)",
+        "total_year_usd_low": 22000,
+        "total_year_usd_high": 45000,
+        "ielts": "Usually UKVI IELTS or approved Secure English Language Test (unless exemption)",
+        "low_marks": "Low — competitive; foundation routes help some profiles",
+        "timeline_months": "3–6",
+        "part_time_work": "Often 20 hrs/week in term for Student visa (confirm CAS conditions)",
+        "post_study": "Graduate Route (typically 2 years for eligible bachelor/master)",
+        "language": "English — SELT usually required"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Often £12k–£30k+/year"
+        },
+        {
+          "item": "Living (outside London)",
+          "amount": "Plan ~£1,023+/month gov figures — verify current"
+        },
+        {
+          "item": "Living (London)",
+          "amount": "Higher — verify current GOV.UK maintenance"
+        },
+        {
+          "item": "IHS immigration health surcharge",
+          "amount": "Per year of visa"
+        },
+        {
+          "item": "Visa fee",
+          "amount": "Student / Visitor fee on GOV.UK"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "University applications & offer",
+          "time": "4–12 weeks"
+        },
+        {
+          "step": "CAS issuance",
+          "time": "1–4 weeks after deposit/conditions"
+        },
+        {
+          "step": "Funds seasoning & docs",
+          "time": "2–4 weeks"
+        },
+        {
+          "step": "Visa decision",
+          "time": "Often a few weeks — varies by center"
+        }
+      ],
+      "suits": [
+        "English-medium degree seekers",
+        "Graduate Route planners",
+        "Visit visa applicants with strong home ties"
+      ],
+      "refusals": [
+        "Funds not held correctly / wrong format",
+        "Credibility interview concerns",
+        "Weak ties on visit visas",
+        "CAS or course mismatch"
+      ],
+      "faq": [
+        {
+          "q": "Do I need IELTS for UK student visa?",
+          "a": "Usually a Secure English Language Test accepted by the university/UKVI, unless you qualify for an exemption. SK Immigration maps realistic test plans."
+        },
+        {
+          "q": "What is CAS?",
+          "a": "Confirmation of Acceptance for Studies from a licensed sponsor — required before Student visa application."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "UK Visas and Immigration",
+          "url": "https://www.gov.uk/browse/visas-immigration"
+        },
+        {
+          "name": "Student visa GOV.UK",
+          "url": "https://www.gov.uk/student-visa"
+        },
+        {
+          "name": "Visit visa GOV.UK",
+          "url": "https://www.gov.uk/standard-visitor"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "CAS",
+              "level": "required",
+              "tip": "From licensed Student sponsor",
+              "issuer": "University"
+            },
+            {
+              "title": "TB test certificate",
+              "level": "varies",
+              "tip": "If required for your country of residence",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "IHS payment confirmation",
+              "level": "required",
+              "tip": "Immigration Health Surcharge",
+              "issuer": "GOV.UK"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "ca",
+      "name": "Canada",
+      "flag": "🇨🇦",
+      "slug": "canada-student-visa",
+      "guide_url": "blog/canada-student-visa/",
+      "tags": [
+        "Study",
+        "Work"
+      ],
+      "highlight": "PR Pathways",
+      "blurb": "Study permits with co-op pathways and long-term permanent residence planning.",
+      "visa_types": [
+        "study",
+        "work"
+      ],
+      "metrics": {
+        "tuition": "CAD 15,000–35,000+ tuition typical",
+        "living_month": "CAD 1,200–2,000+",
+        "total_year_usd_low": 18000,
+        "total_year_usd_high": 40000,
+        "ielts": "Often IELTS/CELPIP/TOEFL as school requires; SDS may need specific scores",
+        "low_marks": "Medium — depends on school & program",
+        "timeline_months": "4–8",
+        "part_time_work": "On/off campus rules change — verify IRCC current hours",
+        "post_study": "PGWP for eligible programs (length depends on program)",
+        "language": "English or French"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Varies widely by province/school"
+        },
+        {
+          "item": "Proof of funds",
+          "amount": "Tuition + living — verify current IRCC amounts"
+        },
+        {
+          "item": "Biometrics & medical",
+          "amount": "As required"
+        },
+        {
+          "item": "Study permit fee",
+          "amount": "IRCC fee schedule"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Letter of acceptance",
+          "time": "4–12 weeks"
+        },
+        {
+          "step": "PAL / provincial attestation if required",
+          "time": "Check current rules"
+        },
+        {
+          "step": "Biometrics & medical",
+          "time": "2–6 weeks"
+        },
+        {
+          "step": "Study permit processing",
+          "time": "Varies by visa office"
+        }
+      ],
+      "suits": [
+        "Long-term study + work planners",
+        "Co-op program seekers",
+        "French/English bilingual interest"
+      ],
+      "refusals": [
+        "Dual intent not explained well",
+        "Insufficient funds",
+        "Program not aligned with history",
+        "Missing PAL where required"
+      ],
+      "faq": [
+        {
+          "q": "Is Canada easy for PR after study?",
+          "a": "Some graduates use PGWP then Express Entry/PNP — not automatic. Honest planning beats guarantees."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "IRCC Study Permit",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html"
+        },
+        {
+          "name": "IRCC Account",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application.html"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Letter of Acceptance (LOA)",
+              "level": "required",
+              "tip": "From DLI",
+              "issuer": "College/University"
+            },
+            {
+              "title": "Provincial attestation letter (PAL)",
+              "level": "varies",
+              "tip": "If required for your program/intake",
+              "issuer": "Province / school"
+            },
+            {
+              "title": "GIC / proof of funds",
+              "level": "required",
+              "tip": "As per current IRCC instructions",
+              "issuer": "Bank"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "work": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid travel document",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Job offer / contract",
+              "level": "required",
+              "tip": "Signed employer contract with salary & role",
+              "issuer": "Employer"
+            },
+            {
+              "title": "CV + certificates",
+              "level": "required",
+              "tip": "Education & experience proof",
+              "issuer": "You"
+            },
+            {
+              "title": "Work permit / visa form",
+              "level": "required",
+              "tip": "Country-specific work authorization",
+              "issuer": "Embassy / labor office"
+            },
+            {
+              "title": "Police clearance",
+              "level": "often",
+              "tip": "Criminal record check",
+              "issuer": "Police"
+            },
+            {
+              "title": "Medical exam",
+              "level": "often",
+              "tip": "Panel physician if required",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "Language certificate",
+              "level": "varies",
+              "tip": "German/English as role requires",
+              "issuer": "Test center"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "hu",
+      "name": "Hungary",
+      "flag": "🇭🇺",
+      "slug": "hungary-student-visa",
+      "guide_url": "blog/hungary-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "Affordable Europe",
+      "blurb": "Affordable European degrees with flexible admission profiles for many applicants.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€2,000–€6,000 typical many programs",
+        "living_month": "€400–€650",
+        "total_year_usd_low": 7000,
+        "total_year_usd_high": 14000,
+        "ielts": "Often optional — MOI / interview / internal test common",
+        "low_marks": "High — popular for ~50–65% profiles when docs strong",
+        "timeline_months": "3–6",
+        "part_time_work": "Often limited hours in term — verify residence permit rules",
+        "post_study": "Job search / residence options vary — check current Hungarian rules",
+        "language": "English-taught programs widely available"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Often €2k–€6k/year"
+        },
+        {
+          "item": "Living",
+          "amount": "€400–€650/month common planning range"
+        },
+        {
+          "item": "Residence permit / visa fees",
+          "amount": "Embassy rates"
+        },
+        {
+          "item": "Health insurance",
+          "amount": "Required for residence"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Offer letter",
+          "time": "2–8 weeks"
+        },
+        {
+          "step": "Document attestation",
+          "time": "2–4 weeks"
+        },
+        {
+          "step": "Visa / residence steps",
+          "time": "4–10 weeks"
+        }
+      ],
+      "suits": [
+        "Budget-conscious Europe seekers",
+        "Low-mark / no-IELTS explorers",
+        "Medical & business program interest"
+      ],
+      "refusals": [
+        "Weak financial trail",
+        "Unclear accommodation plan",
+        "Incomplete translations"
+      ],
+      "faq": [
+        {
+          "q": "Is Hungary good without IELTS?",
+          "a": "Many English programs accept MOI letters or tests. English ability still matters for success."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Hungary Consular Services",
+          "url": "https://konzinfo.mfa.gov.hu/en"
+        },
+        {
+          "name": "Study in Hungary",
+          "url": "https://studyinhungary.hu/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Accommodation proof",
+              "level": "required",
+              "tip": "Dorm or rental confirmation",
+              "issuer": "University / landlord"
+            },
+            {
+              "title": "Medical certificate",
+              "level": "varies",
+              "tip": "If embassy requires",
+              "issuer": "Clinic"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "fr",
+      "name": "France",
+      "flag": "🇫🇷",
+      "slug": "france-student-visa",
+      "guide_url": "blog/france-student-visa/",
+      "tags": [
+        "Study",
+        "Work"
+      ],
+      "highlight": "Campus France",
+      "blurb": "Strong public university system and growing English-taught master's options.",
+      "visa_types": [
+        "study",
+        "work",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "Public fees lower; private/Grande École higher",
+        "living_month": "€700–€1,200 (Paris higher)",
+        "total_year_usd_low": 10000,
+        "total_year_usd_high": 22000,
+        "ielts": "Varies — TCF/TEF/DELF or English tests by program",
+        "low_marks": "Medium",
+        "timeline_months": "4–7",
+        "part_time_work": "Typically up to 964 hrs/year for student status — verify",
+        "post_study": "APS job-search residence for eligible graduates",
+        "language": "French helpful; English master's growing"
+      },
+      "costs": [
+        {
+          "item": "Public tuition (indicative)",
+          "amount": "Often lower than UK/US — verify current"
+        },
+        {
+          "item": "Living Paris vs other cities",
+          "amount": "Paris significantly higher"
+        },
+        {
+          "item": "OFII / residence steps",
+          "amount": "After arrival as applicable"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Campus France / applications",
+          "time": "2–4 months"
+        },
+        {
+          "step": "Visa appointment",
+          "time": "Varies by VFS load"
+        },
+        {
+          "step": "Arrival & residence validation",
+          "time": "First weeks in France"
+        }
+      ],
+      "suits": [
+        "Campus France process countries",
+        "Public uni budget seekers",
+        "English MSc explorers"
+      ],
+      "refusals": [
+        "Incomplete Campus France steps",
+        "Weak resources proof",
+        "Language mismatch"
+      ],
+      "faq": [
+        {
+          "q": "Do I need Campus France?",
+          "a": "In many countries yes for student visas — confirm for your nationality."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Campus France",
+          "url": "https://www.campusfrance.org/en"
+        },
+        {
+          "name": "France-Visas",
+          "url": "https://france-visas.gouv.fr/en/web/france-visas/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Campus France approval",
+              "level": "varies",
+              "tip": "Where Études en France applies",
+              "issuer": "Campus France"
+            },
+            {
+              "title": "Proof of resources",
+              "level": "required",
+              "tip": "Bank + sponsor as per France-Visas",
+              "issuer": "Bank"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "work": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid travel document",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Job offer / contract",
+              "level": "required",
+              "tip": "Signed employer contract with salary & role",
+              "issuer": "Employer"
+            },
+            {
+              "title": "CV + certificates",
+              "level": "required",
+              "tip": "Education & experience proof",
+              "issuer": "You"
+            },
+            {
+              "title": "Work permit / visa form",
+              "level": "required",
+              "tip": "Country-specific work authorization",
+              "issuer": "Embassy / labor office"
+            },
+            {
+              "title": "Police clearance",
+              "level": "often",
+              "tip": "Criminal record check",
+              "issuer": "Police"
+            },
+            {
+              "title": "Medical exam",
+              "level": "often",
+              "tip": "Panel physician if required",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "Language certificate",
+              "level": "varies",
+              "tip": "German/English as role requires",
+              "issuer": "Test center"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "it",
+      "name": "Italy",
+      "flag": "🇮🇹",
+      "slug": "italy-student-visa",
+      "guide_url": "blog/italy-student-visa/",
+      "tags": [
+        "Study",
+        "Work"
+      ],
+      "highlight": "D-type Visa",
+      "blurb": "Competitive tuition, rich culture, and expanding work-study combinations.",
+      "visa_types": [
+        "study",
+        "work",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€0–€4,000 public common; private higher",
+        "living_month": "€700–€1,000",
+        "total_year_usd_low": 9000,
+        "total_year_usd_high": 18000,
+        "ielts": "Often yes for English programs; Italian for Italian-taught",
+        "low_marks": "Medium–High depending on uni",
+        "timeline_months": "4–7",
+        "part_time_work": "Limited hours under student permit — verify",
+        "post_study": "Conversion options exist for some graduates — check current rules",
+        "language": "English or Italian"
+      },
+      "costs": [
+        {
+          "item": "University fees",
+          "amount": "Income-based reductions at some unis"
+        },
+        {
+          "item": "Living",
+          "amount": "€700–€1,000/month planning"
+        },
+        {
+          "item": "Visa & permesso di soggiorno",
+          "amount": "Fees after arrival"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Pre-enrollment / Universitaly",
+          "time": "As per intake calendar"
+        },
+        {
+          "step": "Embassy D-visa",
+          "time": "4–12 weeks"
+        },
+        {
+          "step": "Permesso di soggiorno",
+          "time": "After arrival"
+        }
+      ],
+      "suits": [
+        "Affordable public uni seekers",
+        "Design, fashion, engineering interest",
+        "Schengen student D-visa planners"
+      ],
+      "refusals": [
+        "Missing declaration of value / translations",
+        "Funds insufficient",
+        "Housing not proven"
+      ],
+      "faq": [
+        {
+          "q": "What is Dichiarazione di Valore?",
+          "a": "Document evaluating foreign qualifications — often needed. SK Immigration guides attestation chain."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Ministry of Foreign Affairs Italy",
+          "url": "https://www.esteri.it/en/"
+        },
+        {
+          "name": "Universitaly",
+          "url": "https://www.universitaly.it/"
+        },
+        {
+          "name": "Study in Italy",
+          "url": "https://studyinitaly.esteri.it/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Universitaly pre-enrollment",
+              "level": "often",
+              "tip": "For many degree programs",
+              "issuer": "Universitaly"
+            },
+            {
+              "title": "Dichiarazione di Valore / CIMEA",
+              "level": "often",
+              "tip": "Qualification recognition path",
+              "issuer": "Italian consulate / CIMEA"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "work": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid travel document",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Job offer / contract",
+              "level": "required",
+              "tip": "Signed employer contract with salary & role",
+              "issuer": "Employer"
+            },
+            {
+              "title": "CV + certificates",
+              "level": "required",
+              "tip": "Education & experience proof",
+              "issuer": "You"
+            },
+            {
+              "title": "Work permit / visa form",
+              "level": "required",
+              "tip": "Country-specific work authorization",
+              "issuer": "Embassy / labor office"
+            },
+            {
+              "title": "Police clearance",
+              "level": "often",
+              "tip": "Criminal record check",
+              "issuer": "Police"
+            },
+            {
+              "title": "Medical exam",
+              "level": "often",
+              "tip": "Panel physician if required",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "Language certificate",
+              "level": "varies",
+              "tip": "German/English as role requires",
+              "issuer": "Test center"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "pt",
+      "name": "Portugal",
+      "flag": "🇵🇹",
+      "slug": "portugal-student-visa",
+      "guide_url": "blog/portugal-student-visa/",
+      "tags": [
+        "Study",
+        "Work"
+      ],
+      "highlight": "EU Access",
+      "blurb": "Welcoming student cities, milder living costs, and EU mobility after graduation.",
+      "visa_types": [
+        "study",
+        "work",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€1,500–€7,000 typical many programs",
+        "living_month": "€550–€900",
+        "total_year_usd_low": 8500,
+        "total_year_usd_high": 16000,
+        "ielts": "Varies by program; Portuguese helpful long-term",
+        "low_marks": "Medium–High",
+        "timeline_months": "3–6",
+        "part_time_work": "Student work rules apply — verify SEF/AIMA guidance",
+        "post_study": "Job-seeker / residence pathways for some graduates",
+        "language": "English programs + Portuguese daily life"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Often competitive vs UK"
+        },
+        {
+          "item": "Lisbon vs smaller cities",
+          "amount": "Lisbon rent higher"
+        },
+        {
+          "item": "Residence card fees",
+          "amount": "After arrival"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Admission",
+          "time": "4–10 weeks"
+        },
+        {
+          "step": "Visa appointment",
+          "time": "Varies"
+        },
+        {
+          "step": "Residence appointment",
+          "time": "After arrival"
+        }
+      ],
+      "suits": [
+        "Milder climate seekers",
+        "EU student city lifestyle",
+        "Budget vs Western Europe balance"
+      ],
+      "refusals": [
+        "Accommodation gaps",
+        "Financial inconsistency",
+        "Incomplete apostille"
+      ],
+      "faq": [
+        {
+          "q": "Is Portugal cheaper than Germany?",
+          "a": "Often similar or slightly lower living outside Lisbon; always compare your exact city."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Portal das Comunidades",
+          "url": "https://www.portaldascomunidades.mne.pt/"
+        },
+        {
+          "name": "Study & Research in Portugal",
+          "url": "https://www.study-research.pt/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Accommodation proof",
+              "level": "required",
+              "tip": "Lease or university housing",
+              "issuer": "Landlord / uni"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "work": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid travel document",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Job offer / contract",
+              "level": "required",
+              "tip": "Signed employer contract with salary & role",
+              "issuer": "Employer"
+            },
+            {
+              "title": "CV + certificates",
+              "level": "required",
+              "tip": "Education & experience proof",
+              "issuer": "You"
+            },
+            {
+              "title": "Work permit / visa form",
+              "level": "required",
+              "tip": "Country-specific work authorization",
+              "issuer": "Embassy / labor office"
+            },
+            {
+              "title": "Police clearance",
+              "level": "often",
+              "tip": "Criminal record check",
+              "issuer": "Police"
+            },
+            {
+              "title": "Medical exam",
+              "level": "often",
+              "tip": "Panel physician if required",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "Language certificate",
+              "level": "varies",
+              "tip": "German/English as role requires",
+              "issuer": "Test center"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "pl",
+      "name": "Poland",
+      "flag": "🇵🇱",
+      "slug": "poland-student-visa",
+      "guide_url": "blog/poland-student-visa/",
+      "tags": [
+        "Study",
+        "Work"
+      ],
+      "highlight": "Cost-effective",
+      "blurb": "Budget-friendly degrees and growing employer demand across multiple sectors.",
+      "visa_types": [
+        "study",
+        "work",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€2,000–€5,000 many English programs",
+        "living_month": "€400–€700",
+        "total_year_usd_low": 7000,
+        "total_year_usd_high": 13000,
+        "ielts": "Often flexible — MOI / interview common",
+        "low_marks": "High",
+        "timeline_months": "3–6",
+        "part_time_work": "Students may work — verify current hours",
+        "post_study": "Work after graduation possible with correct permits",
+        "language": "English programs; Polish helps jobs"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Often €2k–€5k"
+        },
+        {
+          "item": "Living",
+          "amount": "€400–€700/month"
+        },
+        {
+          "item": "National visa / TRC fees",
+          "amount": "As per consulate"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Offer letter",
+          "time": "2–8 weeks"
+        },
+        {
+          "step": "Visa D / national visa",
+          "time": "4–10 weeks"
+        },
+        {
+          "step": "TRC after arrival",
+          "time": "As scheduled"
+        }
+      ],
+      "suits": [
+        "Low budget Europe",
+        "Low marks / gap profiles with strong docs",
+        "Technical & business degrees"
+      ],
+      "refusals": [
+        "Sponsor funds unclear",
+        "Fake or weak accommodation letters"
+      ],
+      "faq": [
+        {
+          "q": "Can I study in Poland with 55% marks?",
+          "a": "Often possible at suitable universities if documents and funds are solid. No guarantees."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Poland in your country (MFA)",
+          "url": "https://www.gov.pl/web/diplomacy"
+        },
+        {
+          "name": "Study in Poland",
+          "url": "https://study.gov.pl/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Medical insurance",
+              "level": "required",
+              "tip": "Valid in Poland",
+              "issuer": "Insurer"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "work": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid travel document",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Job offer / contract",
+              "level": "required",
+              "tip": "Signed employer contract with salary & role",
+              "issuer": "Employer"
+            },
+            {
+              "title": "CV + certificates",
+              "level": "required",
+              "tip": "Education & experience proof",
+              "issuer": "You"
+            },
+            {
+              "title": "Work permit / visa form",
+              "level": "required",
+              "tip": "Country-specific work authorization",
+              "issuer": "Embassy / labor office"
+            },
+            {
+              "title": "Police clearance",
+              "level": "often",
+              "tip": "Criminal record check",
+              "issuer": "Police"
+            },
+            {
+              "title": "Medical exam",
+              "level": "often",
+              "tip": "Panel physician if required",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "Language certificate",
+              "level": "varies",
+              "tip": "German/English as role requires",
+              "issuer": "Test center"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "cz",
+      "name": "Czech Republic",
+      "flag": "🇨🇿",
+      "slug": "czech-republic-student-visa",
+      "guide_url": "blog/czech-republic-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "Central Europe",
+      "blurb": "Central Europe location with reputable technical and medical programs.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€0 Czech-taught public; English programs tuition apply",
+        "living_month": "€500–€800",
+        "total_year_usd_low": 8000,
+        "total_year_usd_high": 16000,
+        "ielts": "For English programs usually; Czech programs need Czech",
+        "low_marks": "Medium–High",
+        "timeline_months": "4–7",
+        "part_time_work": "Limited under student long-term visa — verify",
+        "post_study": "Job-seeker options exist for some graduates",
+        "language": "English or Czech"
+      },
+      "costs": [
+        {
+          "item": "English program tuition",
+          "amount": "Varies by faculty"
+        },
+        {
+          "item": "Living Prague vs Brno",
+          "amount": "Prague higher"
+        },
+        {
+          "item": "Long-term visa fees",
+          "amount": "Consulate rates"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Admission & nostrification if needed",
+          "time": "1–3 months"
+        },
+        {
+          "step": "Long-term visa",
+          "time": "Often lengthy — apply early"
+        }
+      ],
+      "suits": [
+        "Engineering & medical interest",
+        "Central Europe base",
+        "Gap-friendly profiles with prep"
+      ],
+      "refusals": [
+        "Late applications",
+        "Nostrification delays",
+        "Housing proof weak"
+      ],
+      "faq": [
+        {
+          "q": "What is nostrification?",
+          "a": "Recognition of foreign education — may be required before or during studies."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Ministry of Interior CZ",
+          "url": "https://www.mvcr.cz/mvcren/"
+        },
+        {
+          "name": "Study in Czechia",
+          "url": "https://www.studyin.cz/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Nostrification / recognition",
+              "level": "varies",
+              "tip": "Education recognition decision",
+              "issuer": "Regional authority / uni"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "mt",
+      "name": "Malta",
+      "flag": "🇲🇹",
+      "slug": "malta-student-visa",
+      "guide_url": "blog/malta-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "English Medium",
+      "blurb": "English-speaking EU destination popular for foundation and bachelor pathways.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€4,000–€12,000 typical private/uni mix",
+        "living_month": "€700–€1,000",
+        "total_year_usd_low": 12000,
+        "total_year_usd_high": 22000,
+        "ielts": "Often flexible; English environment",
+        "low_marks": "High for foundation routes",
+        "timeline_months": "3–5",
+        "part_time_work": "Student work permissions apply — verify Identity Malta rules",
+        "post_study": "Limited — plan pathway carefully",
+        "language": "English"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Often mid-range EU private"
+        },
+        {
+          "item": "Rent",
+          "amount": "Shared flats common for students"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Offer + deposit",
+          "time": "2–6 weeks"
+        },
+        {
+          "step": "Residence / visa file",
+          "time": "4–10 weeks"
+        }
+      ],
+      "suits": [
+        "English-medium EU",
+        "Foundation / pathway students",
+        "No-IELTS explorers with English ability"
+      ],
+      "refusals": [
+        "Funds not matching tuition+living",
+        "Incomplete health insurance"
+      ],
+      "faq": [
+        {
+          "q": "Is Malta good without IELTS?",
+          "a": "Many schools accept alternatives; you still need functional English."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Identity Malta Agency",
+          "url": "https://identitymalta.com/"
+        },
+        {
+          "name": "Malta MFA",
+          "url": "https://foreignandeu.gov.mt/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Health insurance covering Malta",
+              "level": "required",
+              "tip": "As per Identity Malta",
+              "issuer": "Insurer"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "cy",
+      "name": "Cyprus",
+      "flag": "🇨🇾",
+      "slug": "cyprus-student-visa",
+      "guide_url": "blog/cyprus-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "Easy Access",
+      "blurb": "Accessible admissions and Mediterranean student lifestyle with EU recognition.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€3,000–€9,000 typical",
+        "living_month": "€500–€800",
+        "total_year_usd_low": 9000,
+        "total_year_usd_high": 17000,
+        "ielts": "Often flexible",
+        "low_marks": "High",
+        "timeline_months": "3–5",
+        "part_time_work": "Rules vary — verify student permit conditions",
+        "post_study": "Plan carefully; not a PR shortcut",
+        "language": "English programs common"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Competitive private university fees"
+        },
+        {
+          "item": "Living",
+          "amount": "€500–€800/month planning"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Admission",
+          "time": "2–6 weeks"
+        },
+        {
+          "step": "Entry permit / visa",
+          "time": "4–8 weeks"
+        }
+      ],
+      "suits": [
+        "Accessible admissions",
+        "Mediterranean lifestyle",
+        "Budget Europe alternatives"
+      ],
+      "refusals": [
+        "Unclear payment of tuition",
+        "Missing medical tests"
+      ],
+      "faq": [
+        {
+          "q": "Cyprus vs Malta for study?",
+          "a": "Both English-friendly; compare tuition, living, and your career goal with SK Immigration."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Cyprus MFA",
+          "url": "https://mfa.gov.cy/"
+        },
+        {
+          "name": "Migration Department",
+          "url": "https://www.mip.gov.cy/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Medical tests",
+              "level": "often",
+              "tip": "As university/migration list",
+              "issuer": "Clinic"
+            },
+            {
+              "title": "Bank guarantee / funds",
+              "level": "required",
+              "tip": "As per current rules",
+              "issuer": "Bank"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "au",
+      "name": "Australia",
+      "flag": "🇦🇺",
+      "slug": "australia-student-visa",
+      "guide_url": "blog/australia-student-visa/",
+      "tags": [
+        "Study",
+        "Work"
+      ],
+      "highlight": "Post-study Work",
+      "blurb": "High-quality education with temporary graduate work options for eligible students.",
+      "visa_types": [
+        "study",
+        "work"
+      ],
+      "metrics": {
+        "tuition": "AUD 20,000–45,000+ tuition",
+        "living_month": "AUD 1,400–2,200+",
+        "total_year_usd_low": 25000,
+        "total_year_usd_high": 50000,
+        "ielts": "Usually IELTS/PTE/TOEFL to school + visa evidence level",
+        "low_marks": "Low–Medium — packaging & GTE critical",
+        "timeline_months": "3–6",
+        "part_time_work": "Hour caps change — verify Home Affairs current rules",
+        "post_study": "Temporary Graduate visa for eligible grads",
+        "language": "English"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Among higher globally"
+        },
+        {
+          "item": "OSHC health cover",
+          "amount": "Mandatory for student visa"
+        },
+        {
+          "item": "Living evidence",
+          "amount": "As per Home Affairs"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "CoE after deposit",
+          "time": "1–4 weeks"
+        },
+        {
+          "step": "GTE / GS statement & docs",
+          "time": "2–4 weeks"
+        },
+        {
+          "step": "Visa decision",
+          "time": "Varies"
+        }
+      ],
+      "suits": [
+        "Strong budget profiles",
+        "Post-study work planners",
+        "High-quality English education"
+      ],
+      "refusals": [
+        "GTE/GS not genuine",
+        "Funds insufficient",
+        "Course hopping history unexplained"
+      ],
+      "faq": [
+        {
+          "q": "What is GTE / GS?",
+          "a": "Genuine Student requirement — you must show real study intent. SK Immigration helps structure honest statements — not scripts to deceive."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Home Affairs Student Visa",
+          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+        },
+        {
+          "name": "Study Australia",
+          "url": "https://www.studyaustralia.gov.au/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Confirmation of Enrolment (CoE)",
+              "level": "required",
+              "tip": "From CRICOS provider",
+              "issuer": "University"
+            },
+            {
+              "title": "OSHC",
+              "level": "required",
+              "tip": "Overseas Student Health Cover",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "GTE / Genuine Student statement",
+              "level": "required",
+              "tip": "Honest intent evidence",
+              "issuer": "You + SK"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "work": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid travel document",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Job offer / contract",
+              "level": "required",
+              "tip": "Signed employer contract with salary & role",
+              "issuer": "Employer"
+            },
+            {
+              "title": "CV + certificates",
+              "level": "required",
+              "tip": "Education & experience proof",
+              "issuer": "You"
+            },
+            {
+              "title": "Work permit / visa form",
+              "level": "required",
+              "tip": "Country-specific work authorization",
+              "issuer": "Embassy / labor office"
+            },
+            {
+              "title": "Police clearance",
+              "level": "often",
+              "tip": "Criminal record check",
+              "issuer": "Police"
+            },
+            {
+              "title": "Medical exam",
+              "level": "often",
+              "tip": "Panel physician if required",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "Language certificate",
+              "level": "varies",
+              "tip": "German/English as role requires",
+              "issuer": "Test center"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "my",
+      "name": "Malaysia",
+      "flag": "🇲🇾",
+      "slug": "malaysia-student-visa",
+      "guide_url": "blog/malaysia-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "Affordable Asia",
+      "blurb": "Affordable Asian hub with twinning programs and international branch campuses.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "USD 3,000–8,000 many programs",
+        "living_month": "USD 300–600",
+        "total_year_usd_low": 5000,
+        "total_year_usd_high": 12000,
+        "ielts": "Often flexible; English medium campuses",
+        "low_marks": "High",
+        "timeline_months": "2–5",
+        "part_time_work": "Limited / regulated — verify EMGS rules",
+        "post_study": "Not a Western PR pathway — good education value",
+        "language": "English"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Among most affordable"
+        },
+        {
+          "item": "iKad / student pass",
+          "amount": "Via EMGS process"
+        },
+        {
+          "item": "Medical screening",
+          "amount": "EMGS panel"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Offer + EMGS",
+          "time": "3–8 weeks"
+        },
+        {
+          "step": "Visa Approval Letter & entry",
+          "time": "As EMGS timeline"
+        }
+      ],
+      "suits": [
+        "Very budget-conscious",
+        "Twinning / UK branch campus interest",
+        "No-IELTS English learners"
+      ],
+      "refusals": [
+        "Incomplete EMGS medical",
+        "Unpaid tuition/admin fees"
+      ],
+      "faq": [
+        {
+          "q": "Is Malaysia good without IELTS?",
+          "a": "Many campuses accept alternatives or internal assessments."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Education Malaysia EMGS",
+          "url": "https://educationmalaysia.gov.my/"
+        },
+        {
+          "name": "Immigration Department of Malaysia",
+          "url": "https://www.imi.gov.my/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "EMGS / VAL documents",
+              "level": "required",
+              "tip": "Student pass process",
+              "issuer": "EMGS / uni"
+            },
+            {
+              "title": "Medical screening",
+              "level": "required",
+              "tip": "EMGS approved clinic",
+              "issuer": "Clinic"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "es",
+      "name": "Spain",
+      "flag": "🇪🇸",
+      "slug": "spain-student-visa",
+      "guide_url": "blog/spain-student-visa/",
+      "tags": [
+        "Study",
+        "Work"
+      ],
+      "highlight": "Lifestyle + Study",
+      "blurb": "Growing English programs and vibrant cities for study and skilled work.",
+      "visa_types": [
+        "study",
+        "work",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€750–€4,000 public; private higher",
+        "living_month": "€600–€1,000",
+        "total_year_usd_low": 9000,
+        "total_year_usd_high": 18000,
+        "ielts": "Varies; Spanish helpful for daily life & many programs",
+        "low_marks": "Medium",
+        "timeline_months": "3–6",
+        "part_time_work": "Student work authorization rules apply — verify",
+        "post_study": "Job-seeker / highly qualified options for some",
+        "language": "Spanish + growing English offers"
+      },
+      "costs": [
+        {
+          "item": "Public vs private tuition",
+          "amount": "Wide range"
+        },
+        {
+          "item": "Madrid/Barcelona rent",
+          "amount": "Higher than smaller cities"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Admission",
+          "time": "1–3 months"
+        },
+        {
+          "step": "National visa",
+          "time": "4–10 weeks"
+        },
+        {
+          "step": "TIE card",
+          "time": "After arrival"
+        }
+      ],
+      "suits": [
+        "Lifestyle + study balance",
+        "Spanish learners",
+        "EU mobility interest"
+      ],
+      "refusals": [
+        "Insurance not Schengen-compliant",
+        "Funds below threshold"
+      ],
+      "faq": [
+        {
+          "q": "Do I need Spanish for student visa?",
+          "a": "Not always for English programs, but Spanish helps life and part-time work."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Spain MFA Consular",
+          "url": "https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/EmbajadasConsulados.aspx"
+        },
+        {
+          "name": "Study in Spain",
+          "url": "https://www.educacionyfp.gob.es/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Criminal record apostille",
+              "level": "often",
+              "tip": "From home country",
+              "issuer": "Police + MOFA"
+            },
+            {
+              "title": "Medical insurance",
+              "level": "required",
+              "tip": "Full coverage without copay as rules require",
+              "issuer": "Insurer"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "work": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid travel document",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Job offer / contract",
+              "level": "required",
+              "tip": "Signed employer contract with salary & role",
+              "issuer": "Employer"
+            },
+            {
+              "title": "CV + certificates",
+              "level": "required",
+              "tip": "Education & experience proof",
+              "issuer": "You"
+            },
+            {
+              "title": "Work permit / visa form",
+              "level": "required",
+              "tip": "Country-specific work authorization",
+              "issuer": "Embassy / labor office"
+            },
+            {
+              "title": "Police clearance",
+              "level": "often",
+              "tip": "Criminal record check",
+              "issuer": "Police"
+            },
+            {
+              "title": "Medical exam",
+              "level": "often",
+              "tip": "Panel physician if required",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "Language certificate",
+              "level": "varies",
+              "tip": "German/English as role requires",
+              "issuer": "Test center"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "ie",
+      "name": "Ireland",
+      "flag": "🇮🇪",
+      "slug": "ireland-student-visa",
+      "guide_url": "blog/ireland-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "English EU",
+      "blurb": "English-speaking Europe with strong tech and pharma employment ecosystems.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€10,000–€25,000+ typical",
+        "living_month": "€900–€1,400 (Dublin high)",
+        "total_year_usd_low": 18000,
+        "total_year_usd_high": 35000,
+        "ielts": "Usually yes for academic programs",
+        "low_marks": "Low–Medium",
+        "timeline_months": "3–6",
+        "part_time_work": "20 hrs/week in term typical for stamp 2 — verify",
+        "post_study": "Third Level Graduate Scheme for eligible grads",
+        "language": "English"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Higher than Central/Eastern Europe"
+        },
+        {
+          "item": "Dublin accommodation",
+          "amount": "Major cost driver"
+        },
+        {
+          "item": "Medical insurance",
+          "amount": "Private cover required"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Offer + deposit",
+          "time": "4–10 weeks"
+        },
+        {
+          "step": "Visa / AVATS",
+          "time": "As ISD timelines"
+        }
+      ],
+      "suits": [
+        "English EU without UK",
+        "Tech/pharma career interest",
+        "Strong academic + budget profiles"
+      ],
+      "refusals": [
+        "Funds not evidenced correctly",
+        "Accommodation not secured"
+      ],
+      "faq": [
+        {
+          "q": "Ireland vs UK for study?",
+          "a": "Ireland is EU/English; UK has Graduate Route. Compare costs, visas, and your long-term goal."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "ISD Ireland",
+          "url": "https://www.irishimmigration.ie/"
+        },
+        {
+          "name": "Education in Ireland",
+          "url": "https://www.educationinireland.com/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Private medical insurance",
+              "level": "required",
+              "tip": "As ISD requires",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Proof of fees payment",
+              "level": "required",
+              "tip": "Receipt from college",
+              "issuer": "College"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "nl",
+      "name": "Netherlands",
+      "flag": "🇳🇱",
+      "slug": "netherlands-student-visa",
+      "guide_url": "blog/netherlands-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "English Degrees",
+      "blurb": "Extensive English-taught degrees and innovation-focused universities.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€6,000–€20,000 non-EU typical",
+        "living_month": "€900–€1,300",
+        "total_year_usd_low": 16000,
+        "total_year_usd_high": 30000,
+        "ielts": "Usually IELTS/TOEFL for English programs",
+        "low_marks": "Low — competitive admissions",
+        "timeline_months": "4–7",
+        "part_time_work": "With TWV limits for non-EU — verify",
+        "post_study": "Orientation year (zoekjaar) for eligible grads",
+        "language": "English widely; Dutch helps jobs"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Higher than Eastern Europe"
+        },
+        {
+          "item": "Housing shortage",
+          "amount": "Budget extra time & money"
+        },
+        {
+          "item": "MVV / residence",
+          "amount": "Via uni sponsorship often"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Admission",
+          "time": "2–4 months"
+        },
+        {
+          "step": "IND residence / MVV",
+          "time": "University-guided"
+        }
+      ],
+      "suits": [
+        "Strong academics",
+        "English bachelor/master seekers",
+        "Innovation & tech interest"
+      ],
+      "refusals": [
+        "Housing not arranged",
+        "Financial requirement shortfall"
+      ],
+      "faq": [
+        {
+          "q": "Does the university apply for my residence?",
+          "a": "Often yes as recognized sponsor — process differs from DIY embassy models."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "IND Netherlands",
+          "url": "https://ind.nl/en"
+        },
+        {
+          "name": "Study in NL",
+          "url": "https://www.studyinnl.org/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "University sponsorship / IND process",
+              "level": "required",
+              "tip": "Residence application via institution",
+              "issuer": "University"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "tr",
+      "name": "Turkey",
+      "flag": "🇹🇷",
+      "slug": "turkey-student-visa",
+      "guide_url": "blog/turkey-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "Value Education",
+      "blurb": "Competitive tuition and bridge location between Europe and Asia.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "USD 2,000–8,000 many programs",
+        "living_month": "USD 350–700",
+        "total_year_usd_low": 5000,
+        "total_year_usd_high": 12000,
+        "ielts": "Often flexible; Turkish programs need Turkish",
+        "low_marks": "High",
+        "timeline_months": "2–5",
+        "part_time_work": "Restricted — verify student residence rules",
+        "post_study": "Work permits separate — plan honestly",
+        "language": "English or Turkish"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Competitive private & public"
+        },
+        {
+          "item": "Residence permit",
+          "amount": "After arrival via e-ikamet"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Acceptance",
+          "time": "2–6 weeks"
+        },
+        {
+          "step": "Visa / residence",
+          "time": "2–8 weeks"
+        }
+      ],
+      "suits": [
+        "Budget international education",
+        "Medical/engineering interest",
+        "Cultural bridge location"
+      ],
+      "refusals": [
+        "Incomplete translations",
+        "Insurance gaps"
+      ],
+      "faq": [
+        {
+          "q": "Do I need a visa before flying to Turkey for study?",
+          "a": "Depends on nationality and admission type — confirm with Turkish consulate."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Republic of Türkiye MFA",
+          "url": "https://www.mfa.gov.tr/"
+        },
+        {
+          "name": "Study in Türkiye",
+          "url": "https://www.studyinturkiye.gov.tr/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "University acceptance",
+              "level": "required",
+              "tip": "Official letter",
+              "issuer": "University"
+            },
+            {
+              "title": "Residence permit application",
+              "level": "required",
+              "tip": "After entry as applicable",
+              "issuer": "Migration authority"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "ae",
+      "name": "UAE / Dubai",
+      "flag": "🇦🇪",
+      "slug": "dubai-visit-visa",
+      "guide_url": "blog/dubai-visit-visa/",
+      "tags": [
+        "Visit",
+        "Work"
+      ],
+      "highlight": "Gulf Careers",
+      "blurb": "Visit visas, skilled employment, and regional business opportunities.",
+      "visa_types": [
+        "visit",
+        "work"
+      ],
+      "metrics": {
+        "tuition": "N/A for visit; study campuses exist separately",
+        "living_month": "AED high — Dubai expensive for long stays",
+        "total_year_usd_low": 3000,
+        "total_year_usd_high": 15000,
+        "ielts": "Not for visit; employers may ask English",
+        "low_marks": "N/A for visit; work depends on skills",
+        "timeline_months": "1–3 (visit) / 1–4 (work)",
+        "part_time_work": "Visit visas are not work visas",
+        "post_study": "N/A — employment via employer sponsorship",
+        "language": "English / Arabic workplace mix"
+      },
+      "costs": [
+        {
+          "item": "Visit visa fees",
+          "amount": "Depends on type & sponsor"
+        },
+        {
+          "item": "Work visa / Emirates ID",
+          "amount": "Employer usually handles"
+        },
+        {
+          "item": "Attestation for job docs",
+          "amount": "Degree attestation chain often needed"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Visit visa processing",
+          "time": "Days to a few weeks"
+        },
+        {
+          "step": "Work offer → entry permit → medical → Emirates ID",
+          "time": "Several weeks"
+        }
+      ],
+      "suits": [
+        "Tourism / family visit",
+        "Skilled job seekers with offers",
+        "Business visit travelers"
+      ],
+      "refusals": [
+        "Weak return ties on visit",
+        "Immigration history issues",
+        "Unattested degrees for jobs"
+      ],
+      "faq": [
+        {
+          "q": "Can I convert visit visa to work in UAE?",
+          "a": "Sometimes via proper employer process — not a DIY loophole. Follow legal channels."
+        },
+        {
+          "q": "Do I need degree attestation for Dubai jobs?",
+          "a": "Often yes (MOFA / embassy / UAE attestation chain). SK Immigration handles Musadaqa & related attestation."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "UAE ICP / GDRFA",
+          "url": "https://icp.gov.ae/en/"
+        },
+        {
+          "name": "UAE Government Portal",
+          "url": "https://u.ae/en/information-and-services/visa-and-emirates-id"
+        }
+      ],
+      "checklists": {
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Sponsor / hotel booking",
+              "level": "required",
+              "tip": "As per visa type",
+              "issuer": "Sponsor / hotel"
+            },
+            {
+              "title": "Return ticket",
+              "level": "often",
+              "tip": "Proof of departure intent",
+              "issuer": "Airline"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "work": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid travel document",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Job offer / contract",
+              "level": "required",
+              "tip": "Signed employer contract with salary & role",
+              "issuer": "Employer"
+            },
+            {
+              "title": "CV + certificates",
+              "level": "required",
+              "tip": "Education & experience proof",
+              "issuer": "You"
+            },
+            {
+              "title": "Work permit / visa form",
+              "level": "required",
+              "tip": "Country-specific work authorization",
+              "issuer": "Embassy / labor office"
+            },
+            {
+              "title": "Police clearance",
+              "level": "often",
+              "tip": "Criminal record check",
+              "issuer": "Police"
+            },
+            {
+              "title": "Medical exam",
+              "level": "often",
+              "tip": "Panel physician if required",
+              "issuer": "Approved clinic"
+            },
+            {
+              "title": "Language certificate",
+              "level": "varies",
+              "tip": "German/English as role requires",
+              "issuer": "Test center"
+            },
+            {
+              "title": "Attested degree",
+              "level": "required",
+              "tip": "Home MOFA + UAE attestation as required",
+              "issuer": "Attestation chain"
+            },
+            {
+              "title": "Employment contract",
+              "level": "required",
+              "tip": "UAE labour contract",
+              "issuer": "Employer"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "ro",
+      "name": "Romania",
+      "flag": "🇷🇴",
+      "slug": "romania-student-visa",
+      "guide_url": "blog/romania-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "Budget Europe",
+      "blurb": "Accessible European study costs with recognized medical and technical programs.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€2,000–€6,000 many programs",
+        "living_month": "€350–€600",
+        "total_year_usd_low": 6000,
+        "total_year_usd_high": 12000,
+        "ielts": "Often flexible",
+        "low_marks": "High",
+        "timeline_months": "3–6",
+        "part_time_work": "Possible with conditions — verify",
+        "post_study": "Work after studies needs correct permit",
+        "language": "English / Romanian programs"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Among EU lower band"
+        },
+        {
+          "item": "Living",
+          "amount": "€350–€600/month common planning"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Letter of acceptance",
+          "time": "Ministry/uni process"
+        },
+        {
+          "step": "Long-stay visa",
+          "time": "Consulate timeline"
+        }
+      ],
+      "suits": [
+        "Lowest Europe budgets",
+        "Medical & technical interest",
+        "50–65% mark profiles"
+      ],
+      "refusals": [
+        "Acceptance letter issues",
+        "Funds not proven"
+      ],
+      "faq": [
+        {
+          "q": "Is Romania good for low marks?",
+          "a": "Often more accessible than Western Europe if the university accepts you and funds are clear."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Romanian MFA",
+          "url": "https://www.mae.ro/en"
+        },
+        {
+          "name": "Study in Romania",
+          "url": "https://www.studyinromania.gov.ro/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Letter of acceptance from ministry/uni",
+              "level": "required",
+              "tip": "As Romanian process requires",
+              "issuer": "University / Ministry"
+            },
+            {
+              "title": "Medical insurance",
+              "level": "required",
+              "tip": "Valid coverage",
+              "issuer": "Insurer"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    },
+    {
+      "code": "sk",
+      "name": "Slovakia",
+      "flag": "🇸🇰",
+      "slug": "slovakia-student-visa",
+      "guide_url": "blog/slovakia-student-visa/",
+      "tags": [
+        "Study"
+      ],
+      "highlight": "Quiet Value",
+      "blurb": "Quiet Central European option with affordable living and EU credentials.",
+      "visa_types": [
+        "study",
+        "visit"
+      ],
+      "metrics": {
+        "tuition": "€0–€5,000 depending on language/program",
+        "living_month": "€400–€700",
+        "total_year_usd_low": 6500,
+        "total_year_usd_high": 13000,
+        "ielts": "For English programs usually; Slovak for Slovak-taught",
+        "low_marks": "Medium–High",
+        "timeline_months": "3–6",
+        "part_time_work": "Student work limits — verify",
+        "post_study": "EU credential; job permit separate",
+        "language": "English or Slovak"
+      },
+      "costs": [
+        {
+          "item": "Tuition",
+          "amount": "Lower for Slovak-taught; English has fees"
+        },
+        {
+          "item": "Living",
+          "amount": "Generally affordable vs Vienna/Prague"
+        }
+      ],
+      "timeline": [
+        {
+          "step": "Admission",
+          "time": "1–3 months"
+        },
+        {
+          "step": "National visa / residence",
+          "time": "4–10 weeks"
+        }
+      ],
+      "suits": [
+        "Quiet Central Europe",
+        "Affordable living",
+        "EU degree value seekers"
+      ],
+      "refusals": [
+        "Incomplete apostilles",
+        "Accommodation missing"
+      ],
+      "faq": [
+        {
+          "q": "Slovakia vs Czech Republic?",
+          "a": "Similar region; compare program language, city costs, and admission fit."
+        }
+      ],
+      "official_sources": [
+        {
+          "name": "Ministry of Foreign Affairs SK",
+          "url": "https://www.mzv.sk/web/en"
+        },
+        {
+          "name": "Study in Slovakia",
+          "url": "https://www.studyinslovakia.sk/"
+        }
+      ],
+      "checklists": {
+        "study": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid 6+ months; clear scan of all pages with stamps",
+              "issuer": "Your passport authority"
+            },
+            {
+              "title": "Passport photos",
+              "level": "required",
+              "tip": "Biometric size as per embassy photo rules",
+              "issuer": "Local studio"
+            },
+            {
+              "title": "University admission / offer letter",
+              "level": "required",
+              "tip": "Unconditional or conditional offer from recognized institution",
+              "issuer": "University"
+            },
+            {
+              "title": "Academic transcripts & certificates",
+              "level": "required",
+              "tip": "SSC/HSSC/Bachelor + mark sheets; attested if embassy asks",
+              "issuer": "School / board / HEC"
+            },
+            {
+              "title": "Proof of funds",
+              "level": "required",
+              "tip": "Bank statements, sponsor affidavit, or blocked account where required",
+              "issuer": "Bank / sponsor"
+            },
+            {
+              "title": "Statement of Purpose / motivation letter",
+              "level": "required",
+              "tip": "Honest study plan, gaps, why this country/program",
+              "issuer": "You + SK Immigration"
+            },
+            {
+              "title": "CV / resume",
+              "level": "recommended",
+              "tip": "Europass-style or clean 1–2 page CV",
+              "issuer": "You + SK CV Builder"
+            },
+            {
+              "title": "Health insurance",
+              "level": "required",
+              "tip": "Travel or student cover meeting embassy minimums",
+              "issuer": "Insurer"
+            },
+            {
+              "title": "Visa application form + fee receipt",
+              "level": "required",
+              "tip": "Online/offline form + payment proof",
+              "issuer": "Embassy / VFS"
+            },
+            {
+              "title": "Police character certificate",
+              "level": "optional",
+              "tip": "Required by some embassies / universities",
+              "issuer": "Police / NADRA process"
+            },
+            {
+              "title": "Apostilled documents",
+              "level": "often",
+              "tip": "Education docs legalized",
+              "issuer": "MOFA / apostille"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        },
+        "visit": {
+          "documents": [
+            {
+              "title": "Passport",
+              "level": "required",
+              "tip": "Valid with blank pages",
+              "issuer": "Passport authority"
+            },
+            {
+              "title": "Photos",
+              "level": "required",
+              "tip": "As per embassy specs",
+              "issuer": "Studio"
+            },
+            {
+              "title": "Travel itinerary",
+              "level": "required",
+              "tip": "Flights + hotel or host invitation",
+              "issuer": "Airline / host"
+            },
+            {
+              "title": "Bank statements",
+              "level": "required",
+              "tip": "Usually 3–6 months showing capacity",
+              "issuer": "Bank"
+            },
+            {
+              "title": "Employment / business proof",
+              "level": "required",
+              "tip": "Job letter, salary slips, or business docs",
+              "issuer": "Employer"
+            },
+            {
+              "title": "Ties to home country",
+              "level": "required",
+              "tip": "Property, family, return plan evidence",
+              "issuer": "You"
+            },
+            {
+              "title": "Visa form + fee",
+              "level": "required",
+              "tip": "Completed accurately",
+              "issuer": "Embassy / VFS"
+            }
+          ],
+          "last_verified": "2026-07-23"
+        }
+      }
+    }
+  ]
+}

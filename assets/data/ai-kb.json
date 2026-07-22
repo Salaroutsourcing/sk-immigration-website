@@ -1,0 +1,797 @@
+{
+  "updated": "2026-07-23",
+  "entries": [
+    {
+      "id": "study-europe-low-marks",
+      "questions": [
+        "Can I study in Europe with low marks (below 60%)?",
+        "low marks",
+        "Europe",
+        "student visa"
+      ],
+      "answer": "Yes — Hungary, Poland, Czech Republic, Malta, Cyprus, Romania and Slovakia are commonly explored for ~50–65% profiles when documents and funds are strong. Embassies decide visas; no ethical consultant guarantees approval.",
+      "url": "answers/study-europe-low-marks.html"
+    },
+    {
+      "id": "study-europe-without-ielts",
+      "questions": [
+        "Can I study in Europe without IELTS?",
+        "IELTS",
+        "MOI",
+        "Europe"
+      ],
+      "answer": "Sometimes. Many universities accept medium-of-instruction (MOI) letters, internal English tests, or interviews — especially in Hungary, Poland, Czech Republic, Malta, Cyprus and some German programs. UK/Ireland/Australia usually need secure English tests.",
+      "url": "answers/study-europe-without-ielts.html"
+    },
+    {
+      "id": "germany-ausbildung-international",
+      "questions": [
+        "What is Germany Ausbildung and can international students apply?",
+        "Ausbildung",
+        "Germany",
+        "jobs"
+      ],
+      "answer": "Ausbildung is Germany’s dual vocational training: you train at a company and school while earning a monthly training salary (often roughly €900–€1,350). International applicants can apply with language (often A2–B1 German) and a training contract.",
+      "url": "answers/germany-ausbildung-international.html"
+    },
+    {
+      "id": "germany-ausbildung-without-german",
+      "questions": [
+        "Can I apply for Ausbildung without German language?",
+        "Ausbildung",
+        "German language"
+      ],
+      "answer": "Rarely immediately. Most employers need A2–B1 (higher for nursing). Start language training while SK Immigration prepares CV, documents and employer matching.",
+      "url": "answers/germany-ausbildung-without-german.html"
+    },
+    {
+      "id": "student-visa-cost-europe",
+      "questions": [
+        "How much does it cost to study in Europe?",
+        "cost",
+        "Europe",
+        "budget"
+      ],
+      "answer": "Budget destinations (Hungary, Poland, Romania) often total roughly USD 7,000–14,000/year including living. Germany may have low tuition but needs blocked-account planning (~€11k+ living proof). UK/Ireland/Netherlands/Australia cost more.",
+      "url": "answers/student-visa-cost-europe.html"
+    },
+    {
+      "id": "student-visa-process-time",
+      "questions": [
+        "How long does a student visa take?",
+        "timeline",
+        "processing"
+      ],
+      "answer": "Commonly 3–6 months from first consultation to departure: applications, offer, documents, and embassy processing. Germany Ausbildung and Canada/Australia can run longer if language or medical steps apply.",
+      "url": "answers/student-visa-process-time.html"
+    },
+    {
+      "id": "work-while-studying-europe",
+      "questions": [
+        "Can I work while studying in Europe?",
+        "part-time work",
+        "student"
+      ],
+      "answer": "Usually yes with limits. Examples: Germany often 120 full or 240 half days/year; UK often 20 hrs/week in term; exact rules depend on your permit — always verify.",
+      "url": "answers/work-while-studying-europe.html"
+    },
+    {
+      "id": "visa-refused-what-next",
+      "questions": [
+        "What if my student visa is refused?",
+        "refusal",
+        "reapply"
+      ],
+      "answer": "SK Immigration does not guarantee visas. After refusal we review the letter, fix document gaps, and advise reapplication or alternative countries. Embassy fees are usually non-refundable; service fees cover preparation, not outcomes.",
+      "url": "answers/visa-refused-what-next.html"
+    },
+    {
+      "id": "study-gap-3-5-years",
+      "questions": [
+        "Can I apply for a student visa with a 3–5 year study gap?",
+        "study gap",
+        "SOP"
+      ],
+      "answer": "Often yes if the Statement of Purpose explains the gap honestly (work, family, skills). Hungary, Poland and Czech Republic are frequently gap-friendlier. Gaps above 5 years need stronger justification.",
+      "url": "answers/study-gap-3-5-years.html"
+    },
+    {
+      "id": "schengen-student-visa-documents",
+      "questions": [
+        "What documents are needed for a Schengen student visa?",
+        "documents",
+        "Schengen",
+        "checklist"
+      ],
+      "answer": "Typically: passport, offer letter, proof of funds, insurance, accommodation, academic docs, SOP/CV, photos, form + fee. Country extras apply (Germany blocked account, Italy Dichiarazione di Valore, France Campus France).",
+      "url": "answers/schengen-student-visa-documents.html"
+    },
+    {
+      "id": "apostille-vs-mofa-vs-musadaqa",
+      "questions": [
+        "What is the difference between Apostille, MOFA and Musadaqa?",
+        "attestation",
+        "Apostille",
+        "Musadaqa"
+      ],
+      "answer": "MOFA is foreign ministry attestation in your country. Apostille is Hague Convention legalization for member countries. Musadaqa refers to attestation chains used for Gulf (UAE etc.). SK Immigration handles attestation checklists end-to-end.",
+      "url": "answers/apostille-vs-mofa-vs-musadaqa.html"
+    },
+    {
+      "id": "blocked-account-germany",
+      "questions": [
+        "What is a Germany blocked account (Sperrkonto)?",
+        "Germany",
+        "Sperrkonto",
+        "funds"
+      ],
+      "answer": "A blocked bank account proving you can fund living costs for a German study visa. Required amounts change — verify embassy guidance. Ausbildung applicants usually show salary via training contract instead.",
+      "url": "answers/blocked-account-germany.html"
+    },
+    {
+      "id": "uk-student-visa-cas",
+      "questions": [
+        "What is a CAS for UK student visa?",
+        "UK",
+        "CAS"
+      ],
+      "answer": "CAS means Confirmation of Acceptance for Studies issued by a licensed UK sponsor after you meet offer conditions (and usually pay a deposit). You need a CAS before applying for the Student visa on GOV.UK.",
+      "url": "answers/uk-student-visa-cas.html"
+    },
+    {
+      "id": "canada-study-permit-requirements",
+      "questions": [
+        "What are Canada study permit requirements?",
+        "Canada",
+        "study permit"
+      ],
+      "answer": "Letter of acceptance from a DLI, proof of funds, identity docs, and often biometrics/medical. Some intakes need a Provincial Attestation Letter (PAL). IRCC decides — SK Immigration prepares honest files.",
+      "url": "answers/canada-study-permit-requirements.html"
+    },
+    {
+      "id": "who-is-sk-immigration",
+      "questions": [
+        "Who is SK Immigration Services?",
+        "SK Immigration",
+        "contact"
+      ],
+      "answer": "SK Immigration Services is a global visa & Ausbildung consultancy (division of Salar Outsourcing). Free first consultation. Website https://salaroutsourcing.com · WhatsApp +92 304 5999859 · Services@salaroutsourcing.com · Office: Alfazal Plaza 64C, Satellite Town, Rawalpindi. No visa guarantees.",
+      "url": "answers/who-is-sk-immigration.html"
+    },
+    {
+      "id": "best-country-study-abroad-low-budget",
+      "questions": [
+        "Which is the best country to study abroad on a low budget?",
+        "budget",
+        "best country"
+      ],
+      "answer": "For many applicants: Malaysia, Turkey, Hungary, Poland, Romania, Slovakia and Cyprus offer lower total costs. Germany can be low-tuition but needs living-fund proof. “Best” depends on marks, language and career goal — take the free eligibility quiz.",
+      "url": "answers/best-country-study-abroad-low-budget.html"
+    },
+    {
+      "id": "hungary-vs-poland-student-visa",
+      "questions": [
+        "Hungary vs Poland for student visa — which is better?",
+        "Hungary",
+        "Poland",
+        "compare"
+      ],
+      "answer": "Both are affordable EU options popular for flexible admissions. Compare program quality, city living costs, language, and your career target. Use SK’s country compare tool and free consultation.",
+      "url": "answers/hungary-vs-poland-student-visa.html"
+    },
+    {
+      "id": "germany-vs-uk-study",
+      "questions": [
+        "Germany vs UK for international students?",
+        "Germany",
+        "UK",
+        "compare"
+      ],
+      "answer": "Germany: low public tuition, blocked account, German helpful for Ausbildung/jobs. UK: higher tuition, CAS + SELT, Graduate Route. Choose by budget, language and post-study plan.",
+      "url": "answers/germany-vs-uk-study.html"
+    },
+    {
+      "id": "document-attestation-dubai-uae",
+      "questions": [
+        "How does document attestation work for Dubai / UAE?",
+        "Dubai",
+        "attestation",
+        "UAE"
+      ],
+      "answer": "Degrees often need home-country attestation (HEC/MOFA etc.) then UAE embassy/consulate and UAE MOFA or approved channels (Musadaqa/QVP as applicable). SK Immigration provides attestation checklists and processing support.",
+      "url": "answers/document-attestation-dubai-uae.html"
+    },
+    {
+      "id": "schengen-visit-visa-requirements",
+      "questions": [
+        "What are Schengen visit visa requirements?",
+        "Schengen",
+        "visit visa"
+      ],
+      "answer": "Passport, form, photos, travel insurance (€30,000+ typical), itinerary, funds, employment/ties, and invitation if visiting family/friends. Refusal risk rises with weak home ties — prepare honestly.",
+      "url": "answers/schengen-visit-visa-requirements.html"
+    },
+    {
+      "id": "free-consultation-sk-immigration",
+      "questions": [
+        "Does SK Immigration offer a free consultation?",
+        "free consultation",
+        "contact"
+      ],
+      "answer": "Yes. First consultation is free. Book at https://salaroutsourcing.com/contact.html or WhatsApp +92 304 5999859. We assess documents and budget honestly — we never promise 100% visa approval.",
+      "url": "answers/free-consultation-sk-immigration.html"
+    },
+    {
+      "id": "eligibility-quiz-study-abroad",
+      "questions": [
+        "How do I check if I am eligible to study abroad?",
+        "eligibility",
+        "quiz"
+      ],
+      "answer": "Use SK Immigration’s free 6-question eligibility quiz at https://salaroutsourcing.com/eligibility.html for destination matches, then book a free call for document-level assessment.",
+      "url": "answers/eligibility-quiz-study-abroad.html"
+    },
+    {
+      "id": "cv-for-ausbildung-germany",
+      "questions": [
+        "How should I write a CV for Germany Ausbildung?",
+        "CV",
+        "Ausbildung"
+      ],
+      "answer": "Keep it clear, Europass-style, with photo if appropriate, language levels (A1–B2), education, and practical skills. Use SK’s free CV builder, then apply via the Ausbildung jobs board.",
+      "url": "answers/cv-for-ausbildung-germany.html"
+    },
+    {
+      "id": "pakistan-students-study-abroad",
+      "questions": [
+        "How can students from Pakistan study abroad with SK Immigration?",
+        "Pakistan",
+        "study abroad"
+      ],
+      "answer": "SK Immigration (Rawalpindi + online worldwide) helps Pakistani and international students with shortlists, IELTS alternatives, attestation, file prep and Ausbildung matching. Free first consult · WhatsApp +92 304 5999859.",
+      "url": "answers/pakistan-students-study-abroad.html"
+    },
+    {
+      "id": "no-visa-guarantee-why",
+      "questions": [
+        "Why doesn’t SK Immigration guarantee visa approval?",
+        "ethics",
+        "guarantee"
+      ],
+      "answer": "Because embassies and consulates make final decisions. Ethical consultancies prepare strong files and honest advice. Anyone promising “100% visa” is a red flag.",
+      "url": "answers/no-visa-guarantee-why.html"
+    },
+    {
+      "id": "moi-letter-instead-of-ielts",
+      "questions": [
+        "What is an MOI letter for study abroad?",
+        "MOI",
+        "IELTS alternative"
+      ],
+      "answer": "A Medium of Instruction letter from your school/college stating you studied in English. Some European universities accept MOI instead of IELTS. Not accepted everywhere (UK/Australia often need SELT).",
+      "url": "answers/moi-letter-instead-of-ielts.html"
+    },
+    {
+      "id": "proof-of-funds-student-visa",
+      "questions": [
+        "How much proof of funds do I need for a student visa?",
+        "funds",
+        "bank statement"
+      ],
+      "answer": "It depends on the country: Germany uses blocked-account guidance; UK uses GOV.UK maintenance amounts; Canada uses IRCC funds tables; others need bank statements covering tuition + living. SK Immigration builds a country-specific funds plan.",
+      "url": "answers/proof-of-funds-student-visa.html"
+    },
+    {
+      "id": "best-countries-no-ielts-2026",
+      "questions": [
+        "Best countries to study without IELTS in 2026?",
+        "no IELTS",
+        "2026"
+      ],
+      "answer": "Frequently explored: Hungary, Poland, Czech Republic, Malta, Cyprus, Romania, Malaysia, Turkey, and some German pathways. Always confirm the exact university’s 2026 intake rules.",
+      "url": "answers/best-countries-no-ielts-2026.html"
+    },
+    {
+      "id": "nursing-ausbildung-germany",
+      "questions": [
+        "How to apply for Nursing Ausbildung in Germany?",
+        "nursing",
+        "Ausbildung"
+      ],
+      "answer": "Prepare German language (often B1+ for nursing), a clean CV, certificates, and apply to training providers. SK Immigration lists openings and guides documents — employers and embassies decide.",
+      "url": "answers/nursing-ausbildung-germany.html"
+    },
+    {
+      "id": "visit-visa-vs-student-visa",
+      "questions": [
+        "Visit visa vs student visa — what’s the difference?",
+        "visit",
+        "student"
+      ],
+      "answer": "Visit visas are short stays for tourism/family/business and forbid study/work beyond narrow rules. Student visas allow full programs with residence permits. Never enter on a visit visa intending to study long-term — that risks refusal/bans.",
+      "url": "answers/visit-visa-vs-student-visa.html"
+    },
+    {
+      "id": "country-de",
+      "questions": [
+        "Germany",
+        "Germany student visa",
+        "study in Germany",
+        "Germany requirements",
+        "Germany cost"
+      ],
+      "answer": "Germany: Tuition-free public universities, Ausbildung apprenticeships, and strong post-study work options. Living ~850–1,100. Timeline ~4–7 months. IELTS: Often not if German program / MOI / university test; English programs may ask IELTS/TOEFL. Guide: https://salaroutsourcing.com/blog/germany-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=de",
+      "url": "blog/germany-student-visa/"
+    },
+    {
+      "id": "faq-de-56030225",
+      "questions": [
+        "Is Germany tuition free for international students?",
+        "Germany"
+      ],
+      "answer": "Many public universities charge little or no tuition — usually a semester contribution (~€150–€350). Private universities cost more. Living costs and blocked-account proof still apply. Embassies decide visas; SK Immigration does not guarantee outcomes.",
+      "url": "blog/germany-student-visa/"
+    },
+    {
+      "id": "faq-de-28254337",
+      "questions": [
+        "Can I do Ausbildung without perfect German?",
+        "Germany"
+      ],
+      "answer": "Employers typically expect A2–B1 German (sometimes higher for nursing). You can start language training while preparing the file. SK Immigration helps with CV, matching and document checklists.",
+      "url": "blog/germany-student-visa/"
+    },
+    {
+      "id": "faq-de-55889178",
+      "questions": [
+        "What is a Sperrkonto?",
+        "Germany"
+      ],
+      "answer": "A blocked account proving you can cover living costs for a study visa. Amounts and banks change — always verify current embassy guidance.",
+      "url": "blog/germany-student-visa/"
+    },
+    {
+      "id": "country-gb",
+      "questions": [
+        "United Kingdom",
+        "United Kingdom student visa",
+        "study in United Kingdom",
+        "United Kingdom requirements",
+        "United Kingdom cost"
+      ],
+      "answer": "United Kingdom: World-ranked universities with Graduate Route opportunities after eligible degrees. Living ~£1,000–£1,500+ (London higher). Timeline ~3–6 months. IELTS: Usually UKVI IELTS or approved Secure English Language Test (unless exemption). Guide: https://salaroutsourcing.com/blog/uk-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=gb",
+      "url": "blog/uk-student-visa/"
+    },
+    {
+      "id": "faq-gb-53275443",
+      "questions": [
+        "Do I need IELTS for UK student visa?",
+        "United Kingdom"
+      ],
+      "answer": "Usually a Secure English Language Test accepted by the university/UKVI, unless you qualify for an exemption. SK Immigration maps realistic test plans.",
+      "url": "blog/uk-student-visa/"
+    },
+    {
+      "id": "faq-gb-14659694",
+      "questions": [
+        "What is CAS?",
+        "United Kingdom"
+      ],
+      "answer": "Confirmation of Acceptance for Studies from a licensed sponsor — required before Student visa application.",
+      "url": "blog/uk-student-visa/"
+    },
+    {
+      "id": "country-ca",
+      "questions": [
+        "Canada",
+        "Canada student visa",
+        "study in Canada",
+        "Canada requirements",
+        "Canada cost"
+      ],
+      "answer": "Canada: Study permits with co-op pathways and long-term permanent residence planning. Living ~CAD 1,200–2,000+. Timeline ~4–8 months. IELTS: Often IELTS/CELPIP/TOEFL as school requires; SDS may need specific scores. Guide: https://salaroutsourcing.com/blog/canada-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=ca",
+      "url": "blog/canada-student-visa/"
+    },
+    {
+      "id": "faq-ca-5865851",
+      "questions": [
+        "Is Canada easy for PR after study?",
+        "Canada"
+      ],
+      "answer": "Some graduates use PGWP then Express Entry/PNP — not automatic. Honest planning beats guarantees.",
+      "url": "blog/canada-student-visa/"
+    },
+    {
+      "id": "country-hu",
+      "questions": [
+        "Hungary",
+        "Hungary student visa",
+        "study in Hungary",
+        "Hungary requirements",
+        "Hungary cost"
+      ],
+      "answer": "Hungary: Affordable European degrees with flexible admission profiles for many applicants. Living ~€400–€650. Timeline ~3–6 months. IELTS: Often optional — MOI / interview / internal test common. Guide: https://salaroutsourcing.com/blog/hungary-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=hu",
+      "url": "blog/hungary-student-visa/"
+    },
+    {
+      "id": "faq-hu-99600972",
+      "questions": [
+        "Is Hungary good without IELTS?",
+        "Hungary"
+      ],
+      "answer": "Many English programs accept MOI letters or tests. English ability still matters for success.",
+      "url": "blog/hungary-student-visa/"
+    },
+    {
+      "id": "country-fr",
+      "questions": [
+        "France",
+        "France student visa",
+        "study in France",
+        "France requirements",
+        "France cost"
+      ],
+      "answer": "France: Strong public university system and growing English-taught master's options. Living ~€700–€1,200 (Paris higher). Timeline ~4–7 months. IELTS: Varies — TCF/TEF/DELF or English tests by program. Guide: https://salaroutsourcing.com/blog/france-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=fr",
+      "url": "blog/france-student-visa/"
+    },
+    {
+      "id": "faq-fr-59125211",
+      "questions": [
+        "Do I need Campus France?",
+        "France"
+      ],
+      "answer": "In many countries yes for student visas — confirm for your nationality.",
+      "url": "blog/france-student-visa/"
+    },
+    {
+      "id": "country-it",
+      "questions": [
+        "Italy",
+        "Italy student visa",
+        "study in Italy",
+        "Italy requirements",
+        "Italy cost"
+      ],
+      "answer": "Italy: Competitive tuition, rich culture, and expanding work-study combinations. Living ~€700–€1,000. Timeline ~4–7 months. IELTS: Often yes for English programs; Italian for Italian-taught. Guide: https://salaroutsourcing.com/blog/italy-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=it",
+      "url": "blog/italy-student-visa/"
+    },
+    {
+      "id": "faq-it-7349034",
+      "questions": [
+        "What is Dichiarazione di Valore?",
+        "Italy"
+      ],
+      "answer": "Document evaluating foreign qualifications — often needed. SK Immigration guides attestation chain.",
+      "url": "blog/italy-student-visa/"
+    },
+    {
+      "id": "country-pt",
+      "questions": [
+        "Portugal",
+        "Portugal student visa",
+        "study in Portugal",
+        "Portugal requirements",
+        "Portugal cost"
+      ],
+      "answer": "Portugal: Welcoming student cities, milder living costs, and EU mobility after graduation. Living ~€550–€900. Timeline ~3–6 months. IELTS: Varies by program; Portuguese helpful long-term. Guide: https://salaroutsourcing.com/blog/portugal-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=pt",
+      "url": "blog/portugal-student-visa/"
+    },
+    {
+      "id": "faq-pt-66454796",
+      "questions": [
+        "Is Portugal cheaper than Germany?",
+        "Portugal"
+      ],
+      "answer": "Often similar or slightly lower living outside Lisbon; always compare your exact city.",
+      "url": "blog/portugal-student-visa/"
+    },
+    {
+      "id": "country-pl",
+      "questions": [
+        "Poland",
+        "Poland student visa",
+        "study in Poland",
+        "Poland requirements",
+        "Poland cost"
+      ],
+      "answer": "Poland: Budget-friendly degrees and growing employer demand across multiple sectors. Living ~€400–€700. Timeline ~3–6 months. IELTS: Often flexible — MOI / interview common. Guide: https://salaroutsourcing.com/blog/poland-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=pl",
+      "url": "blog/poland-student-visa/"
+    },
+    {
+      "id": "faq-pl-85573094",
+      "questions": [
+        "Can I study in Poland with 55% marks?",
+        "Poland"
+      ],
+      "answer": "Often possible at suitable universities if documents and funds are solid. No guarantees.",
+      "url": "blog/poland-student-visa/"
+    },
+    {
+      "id": "country-cz",
+      "questions": [
+        "Czech Republic",
+        "Czech Republic student visa",
+        "study in Czech Republic",
+        "Czech Republic requirements",
+        "Czech Republic cost"
+      ],
+      "answer": "Czech Republic: Central Europe location with reputable technical and medical programs. Living ~€500–€800. Timeline ~4–7 months. IELTS: For English programs usually; Czech programs need Czech. Guide: https://salaroutsourcing.com/blog/czech-republic-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=cz",
+      "url": "blog/czech-republic-student-visa/"
+    },
+    {
+      "id": "faq-cz-55816933",
+      "questions": [
+        "What is nostrification?",
+        "Czech Republic"
+      ],
+      "answer": "Recognition of foreign education — may be required before or during studies.",
+      "url": "blog/czech-republic-student-visa/"
+    },
+    {
+      "id": "country-mt",
+      "questions": [
+        "Malta",
+        "Malta student visa",
+        "study in Malta",
+        "Malta requirements",
+        "Malta cost"
+      ],
+      "answer": "Malta: English-speaking EU destination popular for foundation and bachelor pathways. Living ~€700–€1,000. Timeline ~3–5 months. IELTS: Often flexible; English environment. Guide: https://salaroutsourcing.com/blog/malta-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=mt",
+      "url": "blog/malta-student-visa/"
+    },
+    {
+      "id": "faq-mt-19339314",
+      "questions": [
+        "Is Malta good without IELTS?",
+        "Malta"
+      ],
+      "answer": "Many schools accept alternatives; you still need functional English.",
+      "url": "blog/malta-student-visa/"
+    },
+    {
+      "id": "country-cy",
+      "questions": [
+        "Cyprus",
+        "Cyprus student visa",
+        "study in Cyprus",
+        "Cyprus requirements",
+        "Cyprus cost"
+      ],
+      "answer": "Cyprus: Accessible admissions and Mediterranean student lifestyle with EU recognition. Living ~€500–€800. Timeline ~3–5 months. IELTS: Often flexible. Guide: https://salaroutsourcing.com/blog/cyprus-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=cy",
+      "url": "blog/cyprus-student-visa/"
+    },
+    {
+      "id": "faq-cy-93440074",
+      "questions": [
+        "Cyprus vs Malta for study?",
+        "Cyprus"
+      ],
+      "answer": "Both English-friendly; compare tuition, living, and your career goal with SK Immigration.",
+      "url": "blog/cyprus-student-visa/"
+    },
+    {
+      "id": "country-au",
+      "questions": [
+        "Australia",
+        "Australia student visa",
+        "study in Australia",
+        "Australia requirements",
+        "Australia cost"
+      ],
+      "answer": "Australia: High-quality education with temporary graduate work options for eligible students. Living ~AUD 1,400–2,200+. Timeline ~3–6 months. IELTS: Usually IELTS/PTE/TOEFL to school + visa evidence level. Guide: https://salaroutsourcing.com/blog/australia-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=au",
+      "url": "blog/australia-student-visa/"
+    },
+    {
+      "id": "faq-au-83206322",
+      "questions": [
+        "What is GTE / GS?",
+        "Australia"
+      ],
+      "answer": "Genuine Student requirement — you must show real study intent. SK Immigration helps structure honest statements — not scripts to deceive.",
+      "url": "blog/australia-student-visa/"
+    },
+    {
+      "id": "country-my",
+      "questions": [
+        "Malaysia",
+        "Malaysia student visa",
+        "study in Malaysia",
+        "Malaysia requirements",
+        "Malaysia cost"
+      ],
+      "answer": "Malaysia: Affordable Asian hub with twinning programs and international branch campuses. Living ~USD 300–600. Timeline ~2–5 months. IELTS: Often flexible; English medium campuses. Guide: https://salaroutsourcing.com/blog/malaysia-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=my",
+      "url": "blog/malaysia-student-visa/"
+    },
+    {
+      "id": "faq-my-41205482",
+      "questions": [
+        "Is Malaysia good without IELTS?",
+        "Malaysia"
+      ],
+      "answer": "Many campuses accept alternatives or internal assessments.",
+      "url": "blog/malaysia-student-visa/"
+    },
+    {
+      "id": "country-es",
+      "questions": [
+        "Spain",
+        "Spain student visa",
+        "study in Spain",
+        "Spain requirements",
+        "Spain cost"
+      ],
+      "answer": "Spain: Growing English programs and vibrant cities for study and skilled work. Living ~€600–€1,000. Timeline ~3–6 months. IELTS: Varies; Spanish helpful for daily life & many programs. Guide: https://salaroutsourcing.com/blog/spain-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=es",
+      "url": "blog/spain-student-visa/"
+    },
+    {
+      "id": "faq-es-2099428",
+      "questions": [
+        "Do I need Spanish for student visa?",
+        "Spain"
+      ],
+      "answer": "Not always for English programs, but Spanish helps life and part-time work.",
+      "url": "blog/spain-student-visa/"
+    },
+    {
+      "id": "country-ie",
+      "questions": [
+        "Ireland",
+        "Ireland student visa",
+        "study in Ireland",
+        "Ireland requirements",
+        "Ireland cost"
+      ],
+      "answer": "Ireland: English-speaking Europe with strong tech and pharma employment ecosystems. Living ~€900–€1,400 (Dublin high). Timeline ~3–6 months. IELTS: Usually yes for academic programs. Guide: https://salaroutsourcing.com/blog/ireland-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=ie",
+      "url": "blog/ireland-student-visa/"
+    },
+    {
+      "id": "faq-ie-43031061",
+      "questions": [
+        "Ireland vs UK for study?",
+        "Ireland"
+      ],
+      "answer": "Ireland is EU/English; UK has Graduate Route. Compare costs, visas, and your long-term goal.",
+      "url": "blog/ireland-student-visa/"
+    },
+    {
+      "id": "country-nl",
+      "questions": [
+        "Netherlands",
+        "Netherlands student visa",
+        "study in Netherlands",
+        "Netherlands requirements",
+        "Netherlands cost"
+      ],
+      "answer": "Netherlands: Extensive English-taught degrees and innovation-focused universities. Living ~€900–€1,300. Timeline ~4–7 months. IELTS: Usually IELTS/TOEFL for English programs. Guide: https://salaroutsourcing.com/blog/netherlands-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=nl",
+      "url": "blog/netherlands-student-visa/"
+    },
+    {
+      "id": "faq-nl-81760605",
+      "questions": [
+        "Does the university apply for my residence?",
+        "Netherlands"
+      ],
+      "answer": "Often yes as recognized sponsor — process differs from DIY embassy models.",
+      "url": "blog/netherlands-student-visa/"
+    },
+    {
+      "id": "country-tr",
+      "questions": [
+        "Turkey",
+        "Turkey student visa",
+        "study in Turkey",
+        "Turkey requirements",
+        "Turkey cost"
+      ],
+      "answer": "Turkey: Competitive tuition and bridge location between Europe and Asia. Living ~USD 350–700. Timeline ~2–5 months. IELTS: Often flexible; Turkish programs need Turkish. Guide: https://salaroutsourcing.com/blog/turkey-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=tr",
+      "url": "blog/turkey-student-visa/"
+    },
+    {
+      "id": "faq-tr-84081757",
+      "questions": [
+        "Do I need a visa before flying to Turkey for study?",
+        "Turkey"
+      ],
+      "answer": "Depends on nationality and admission type — confirm with Turkish consulate.",
+      "url": "blog/turkey-student-visa/"
+    },
+    {
+      "id": "country-ae",
+      "questions": [
+        "UAE / Dubai",
+        "UAE / Dubai student visa",
+        "study in UAE / Dubai",
+        "UAE / Dubai requirements",
+        "UAE / Dubai cost"
+      ],
+      "answer": "UAE / Dubai: Visit visas, skilled employment, and regional business opportunities. Living ~AED high — Dubai expensive for long stays. Timeline ~1–3 (visit) / 1–4 (work) months. IELTS: Not for visit; employers may ask English. Guide: https://salaroutsourcing.com/blog/dubai-visit-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=ae",
+      "url": "blog/dubai-visit-visa/"
+    },
+    {
+      "id": "faq-ae-71234753",
+      "questions": [
+        "Can I convert visit visa to work in UAE?",
+        "UAE / Dubai"
+      ],
+      "answer": "Sometimes via proper employer process — not a DIY loophole. Follow legal channels.",
+      "url": "blog/dubai-visit-visa/"
+    },
+    {
+      "id": "faq-ae-46972483",
+      "questions": [
+        "Do I need degree attestation for Dubai jobs?",
+        "UAE / Dubai"
+      ],
+      "answer": "Often yes (MOFA / embassy / UAE attestation chain). SK Immigration handles Musadaqa & related attestation.",
+      "url": "blog/dubai-visit-visa/"
+    },
+    {
+      "id": "country-ro",
+      "questions": [
+        "Romania",
+        "Romania student visa",
+        "study in Romania",
+        "Romania requirements",
+        "Romania cost"
+      ],
+      "answer": "Romania: Accessible European study costs with recognized medical and technical programs. Living ~€350–€600. Timeline ~3–6 months. IELTS: Often flexible. Guide: https://salaroutsourcing.com/blog/romania-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=ro",
+      "url": "blog/romania-student-visa/"
+    },
+    {
+      "id": "faq-ro-92529958",
+      "questions": [
+        "Is Romania good for low marks?",
+        "Romania"
+      ],
+      "answer": "Often more accessible than Western Europe if the university accepts you and funds are clear.",
+      "url": "blog/romania-student-visa/"
+    },
+    {
+      "id": "country-sk",
+      "questions": [
+        "Slovakia",
+        "Slovakia student visa",
+        "study in Slovakia",
+        "Slovakia requirements",
+        "Slovakia cost"
+      ],
+      "answer": "Slovakia: Quiet Central European option with affordable living and EU credentials. Living ~€400–€700. Timeline ~3–6 months. IELTS: For English programs usually; Slovak for Slovak-taught. Guide: https://salaroutsourcing.com/blog/slovakia-student-visa/ Checklist: https://salaroutsourcing.com/checklist.html?country=sk",
+      "url": "blog/slovakia-student-visa/"
+    },
+    {
+      "id": "faq-sk-34829446",
+      "questions": [
+        "Slovakia vs Czech Republic?",
+        "Slovakia"
+      ],
+      "answer": "Similar region; compare program language, city costs, and admission fit.",
+      "url": "blog/slovakia-student-visa/"
+    },
+    {
+      "id": "contact",
+      "questions": [
+        "contact",
+        "whatsapp",
+        "phone",
+        "email",
+        "office",
+        "address",
+        "rawalpindi"
+      ],
+      "answer": "Contact SK Immigration Services: WhatsApp +92 304 5999859, email Services@salaroutsourcing.com, office Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi. Mon–Sat 10:00–19:00. Free first consultation: https://salaroutsourcing.com/contact.html",
+      "url": "contact.html"
+    },
+    {
+      "id": "pricing",
+      "questions": [
+        "price",
+        "fees",
+        "package",
+        "cost of services",
+        "how much do you charge"
+      ],
+      "answer": "SK Immigration publishes transparent service packages (consult, file prep, Ausbildung support, attestation). Visa embassy fees are separate. See https://salaroutsourcing.com/pricing.html — free first consultation.",
+      "url": "pricing.html"
+    }
+  ]
+}

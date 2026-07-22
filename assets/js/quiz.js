@@ -106,11 +106,28 @@
       function render() {
         if (step >= QUESTIONS.length) {
           const matches = matchDestinations(answers);
+          const top = matches[0]?.name || 'your best-fit country';
+          const checkHint =
+            top.includes('Hungary') ? 'hu' :
+            top.includes('Poland') ? 'pl' :
+            top.includes('Germany') ? 'de' :
+            top.includes('United Kingdom') || top.includes('UK') ? 'gb' :
+            top.includes('Canada') ? 'ca' :
+            top.includes('Malaysia') ? 'my' :
+            top.includes('Australia') ? 'au' :
+            top.includes('Romania') ? 'ro' :
+            top.includes('Malta') || top.includes('Cyprus') ? 'mt' : 'de';
           root.innerHTML = `
             <div class="glass card">
-              <p class="eyebrow">Your matches</p>
-              <h3 class="section-title" style="font-size:1.5rem">You may qualify for these pathways</h3>
-              <p class="text-muted mb-2">Based on your answers — not a visa guarantee. A consultant will confirm with documents.</p>
+              <p class="eyebrow">Your 1-screen result</p>
+              <h3 class="section-title" style="font-size:1.5rem">Best next move: ${top}</h3>
+              <p class="lead-answer" style="margin-top:0.75rem">Based on your answers you may fit: <strong>${matches.map((m) => m.name).join(', ') || 'a tailored shortlist'}</strong>. This is guidance — not a visa guarantee. Embassies decide.</p>
+              <div class="roadmap" aria-label="Personal roadmap">
+                <div class="roadmap-step"><span class="n">1</span><div><strong>Confirm fit</strong><p class="text-muted" style="margin:0.25rem 0 0;font-size:0.9rem">Book a free call or WhatsApp your documents.</p></div></div>
+                <div class="roadmap-step"><span class="n">2</span><div><strong>Gather documents</strong><p class="text-muted" style="margin:0.25rem 0 0;font-size:0.9rem">Open the interactive checklist for ${top}.</p></div></div>
+                <div class="roadmap-step"><span class="n">3</span><div><strong>Plan budget</strong><p class="text-muted" style="margin:0.25rem 0 0;font-size:0.9rem">Use the cost calculator, then compare 1 backup country.</p></div></div>
+                <div class="roadmap-step"><span class="n">4</span><div><strong>File with SK</strong><p class="text-muted" style="margin:0.25rem 0 0;font-size:0.9rem">We prepare; the embassy decides. No fake promises.</p></div></div>
+              </div>
               <div class="grid-2" style="margin-bottom:1.25rem">
                 ${matches
                   .map(
@@ -122,8 +139,13 @@
                   )
                   .join('')}
               </div>
+              <div class="hero-ctas" style="margin-bottom:1rem">
+                <a class="btn btn-gold" href="checklist.html?country=${checkHint}">Open my checklist</a>
+                <a class="btn btn-navy" href="calculator.html?country=${checkHint}">See costs</a>
+                <a class="btn btn-whatsapp" href="https://wa.me/923045999859?text=${encodeURIComponent('Hi SK Immigration, my quiz top match is ' + top)}" target="_blank" rel="noopener">WhatsApp results</a>
+              </div>
               <form id="quizLeadForm" class="glass-strong" style="padding:1.25rem;border-radius:1rem;border:1px solid var(--glass-border)">
-                <p class="mb-2"><strong>Save your results</strong> — get a free shortlist on WhatsApp/email.</p>
+                <p class="mb-2"><strong>Save your roadmap</strong> — free shortlist on WhatsApp/email.</p>
                 <div class="form-row">
                   <div class="form-group"><label>Full name *</label><input class="form-control" name="name" required></div>
                   <div class="form-group"><label>WhatsApp / Phone *</label><input class="form-control" name="phone" required></div>
@@ -133,8 +155,8 @@
                 <div class="form-msg" id="quizMsg"></div>
               </form>
               <div class="hero-ctas mt-2">
-                <a class="btn btn-navy" href="contact.html">Book free consultation</a>
-                <a class="btn btn-ghost" href="countries.html">Browse countries</a>
+                <a class="btn btn-ghost" href="contact.html">Book free consultation</a>
+                <a class="btn btn-ghost" href="compare.html">Compare countries</a>
                 <button type="button" class="btn btn-ghost" id="quizRestart">Retake quiz</button>
               </div>
             </div>`;

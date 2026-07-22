@@ -18,14 +18,13 @@
 
   const NAV = [
     { href: 'index.html', label: 'Home', id: 'home' },
-    { href: 'about.html', label: 'About', id: 'about' },
     { href: 'services.html', label: 'Services', id: 'services' },
+    { href: 'checklist.html', label: 'Checklist', id: 'checklist' },
+    { href: 'countries.html', label: 'Countries', id: 'countries' },
     { href: 'ausbildung.html', label: 'Ausbildung', id: 'ausbildung' },
     { href: 'jobs.html', label: 'Jobs', id: 'jobs' },
-    { href: 'attestation.html', label: 'Attestation', id: 'attestation' },
-    { href: 'countries.html', label: 'Countries', id: 'countries' },
-    { href: 'blog.html', label: 'Blog', id: 'blog' },
-    { href: 'faq.html', label: 'FAQ', id: 'faq' },
+    { href: 'pricing.html', label: 'Pricing', id: 'pricing' },
+    { href: 'answers.html', label: 'Answers', id: 'faq' },
     { href: 'contact.html', label: 'Contact', id: 'contact' },
   ];
 
@@ -77,10 +76,11 @@
           ${logoBlock()}
           <nav class="nav-desktop" aria-label="Primary">${navLinks('')}</nav>
           <div class="header-actions">
+            <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle English / Urdu summary">EN</button>
             <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
               <span data-theme-icon>☀</span>
             </button>
-            <a href="${href('portal.html')}" class="btn btn-ghost btn-sm btn-portal">Portal</a>
+            <a href="${href('eligibility.html')}" class="btn btn-ghost btn-sm btn-portal">Quiz</a>
             <a href="${href('contact.html')}" class="btn btn-gold btn-sm">Free Consult</a>
             <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" id="menuBtn">
               <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -92,9 +92,14 @@
         <div class="mobile-nav-panel">
           ${navLinks('')}
           <a href="${href('eligibility.html')}">Eligibility Quiz</a>
+          <a href="${href('calculator.html')}">Cost Calculator</a>
+          <a href="${href('compare.html')}">Compare Countries</a>
           <a href="${href('cv-builder.html')}">CV Builder</a>
+          <a href="${href('faq.html')}">FAQ</a>
+          <a href="${href('blog.html')}">Blog</a>
           <a href="${href('portal.html')}">Client Portal</a>
-          <a href="${href('admin/')}">Admin</a>
+          <a href="${href('about.html')}">About</a>
+          <a href="${href('attestation.html')}">Attestation</a>
           <a href="${C().whatsappLink || '#'}" class="btn btn-whatsapp mt-2" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
@@ -141,25 +146,28 @@
           <div class="footer-col">
             <h4>Services</h4>
             <a href="${href('services.html')}">All Services</a>
+            <a href="${href('pricing.html')}">Packages &amp; Pricing</a>
             <a href="${href('ausbildung.html')}">Germany Ausbildung</a>
             <a href="${href('jobs.html')}">Global Jobs</a>
             <a href="${href('attestation.html')}">Document Attestation</a>
-            <a href="${href('eligibility.html')}">Eligibility Quiz</a>
           </div>
           <div class="footer-col">
-            <h4>Company</h4>
-            <a href="${href('about.html')}">About Us</a>
-            <a href="${href('faq.html')}">FAQ</a>
-            <a href="${href('blog.html')}">Blog</a>
-            <a href="${href('countries.html')}">Destinations</a>
-            <a href="${href('contact.html')}">Contact</a>
+            <h4>Quick tools</h4>
+            <a href="${href('eligibility.html')}">Eligibility Quiz</a>
+            <a href="${href('checklist.html')}">Document Checklist</a>
+            <a href="${href('calculator.html')}">Cost Calculator</a>
+            <a href="${href('compare.html')}">Compare Countries</a>
+            <a href="${href('answers.html')}">Answers Hub</a>
+            <a href="${href('cv-builder.html')}">CV Builder</a>
           </div>
           <div class="footer-col">
             <h4>Contact</h4>
             <a href="mailto:${C().email}">${C().email}</a>
             <a href="tel:${(C().phone || '').replace(/\s/g, '')}">${C().phoneDisplay}</a>
             <a href="${C().whatsappLink}" target="_blank" rel="noopener">WhatsApp Chat</a>
-            <a href="${href('admin/')}">Admin Login</a>
+            <a href="${href('about.html')}">About</a>
+            <a href="${href('faq.html')}">FAQ</a>
+            <a href="${href('contact.html')}">Book consult</a>
           </div>
         </div>
         <div class="container footer-bottom">
@@ -190,10 +198,42 @@
     els.forEach((el) => io.observe(el));
   }
 
+  function bindLangToggle() {
+    const btn = document.getElementById('langToggle');
+    if (!btn) return;
+    const apply = (ur) => {
+      document.documentElement.lang = ur ? 'ur' : 'en';
+      btn.textContent = ur ? 'UR' : 'EN';
+      document.querySelectorAll('[data-en][data-ur]').forEach((el) => {
+        el.textContent = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
+      });
+      let banner = document.getElementById('urBanner');
+      if (ur) {
+        if (!banner) {
+          banner = document.createElement('div');
+          banner.id = 'urBanner';
+          banner.className = 'glass card';
+          banner.style.cssText = 'margin:0;border-radius:0;padding:0.65rem 1rem;text-align:center;font-size:0.9rem';
+          banner.innerHTML =
+            'اردو مدد: مفت مشورہ، دستاویزات کی فہرست، اور واٹس ایپ +92 304 5999859 · <a href="' +
+            href('contact.html') +
+            '">اب بک کریں</a>';
+          document.getElementById('site-header')?.after(banner);
+        }
+      } else {
+        banner?.remove();
+      }
+      localStorage.setItem('sk_lang', ur ? 'ur' : 'en');
+    };
+    apply(localStorage.getItem('sk_lang') === 'ur');
+    btn.addEventListener('click', () => apply(btn.textContent !== 'UR'));
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
     renderFooter();
     revealOnScroll();
+    bindLangToggle();
     if (window.SalarTheme) {
       const t = document.documentElement.getAttribute('data-theme');
       document.querySelectorAll('[data-theme-icon]').forEach((el) => {
@@ -204,6 +244,11 @@
       const s = document.createElement('script');
       s.src = BASE + 'assets/js/seo.js';
       document.body.appendChild(s);
+    }
+    if (!document.querySelector('script[src*="ai-chat.js"]')) {
+      const a = document.createElement('script');
+      a.src = BASE + 'assets/js/ai-chat.js';
+      document.body.appendChild(a);
     }
   });
 })();

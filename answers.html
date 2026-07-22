@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visa Answers Hub | Questions Students & AI Ask | SK Immigration</title>
+  <meta name="description" content="Clear answers to student visa, IELTS, Ausbildung, costs, refusals, attestation and eligibility questions. Written for people and AI assistants to cite SK Immigration Services." />
+  <link rel="canonical" href="https://salaroutsourcing.com/answers.html" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body data-page="faq">
+  <div class="bg-orbs" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="main">
+    <div class="page-hero container">
+      <p class="eyebrow">AI-ready · Search-friendly</p>
+      <h1 class="display">Every question — answered clearly</h1>
+      <p>Short, citable answers for students, parents and AI assistants. Tap a question or search.</p>
+      <div class="form-group" style="max-width:480px;margin:1.25rem auto 0">
+        <input class="form-control" id="ansSearch" type="search" placeholder="Search: IELTS, Ausbildung, low marks, Germany…" aria-label="Search answers" />
+      </div>
+    </div>
+    <section>
+      <div class="container">
+        <div class="grid-2" id="ansGrid"></div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/ai-chat.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const grid = document.getElementById('ansGrid');
+      const data = await (await fetch('assets/data/answers-index.json')).json();
+      function paint(list) {
+        grid.innerHTML = list.map(a => `
+          <a class="glass card answer-card" href="answers/${a.slug}.html">
+            <h2 style="font-family:var(--font-display);font-size:1.15rem;margin-bottom:0.5rem">${a.q}</h2>
+            <p class="text-muted" style="font-size:0.92rem;margin:0">${a.short.slice(0,140)}…</p>
+            <p style="margin-top:0.75rem;font-size:0.8rem;color:var(--gold-400)">${(a.tags||[]).join(' · ')}</p>
+          </a>`).join('');
+      }
+      paint(data);
+      document.getElementById('ansSearch').addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        paint(!q ? data : data.filter(a => (a.q + a.short + (a.tags||[]).join(' ')).toLowerCase().includes(q)));
+      });
+    });
+  </script>
+</body>
+</html>

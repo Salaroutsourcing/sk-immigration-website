@@ -3,160 +3,231 @@
     "code": "de",
     "name": "Germany",
     "flag": "🇩🇪",
-    "tags": ["Study", "Work", "Ausbildung"],
+    "tags": [
+      "Study",
+      "Work",
+      "Ausbildung"
+    ],
     "blurb": "Tuition-free public universities, Ausbildung apprenticeships, and strong post-study work options.",
-    "highlight": "Ausbildung + Study"
+    "highlight": "Ausbildung + Study",
+    "slug": "germany-student-visa"
   },
   {
     "code": "gb",
     "name": "United Kingdom",
     "flag": "🇬🇧",
-    "tags": ["Study", "Visit"],
+    "tags": [
+      "Study",
+      "Visit"
+    ],
     "blurb": "World-ranked universities with Graduate Route opportunities after eligible degrees.",
-    "highlight": "Graduate Route"
+    "highlight": "Graduate Route",
+    "slug": "uk-student-visa"
   },
   {
     "code": "ca",
     "name": "Canada",
     "flag": "🇨🇦",
-    "tags": ["Study", "Work"],
+    "tags": [
+      "Study",
+      "Work"
+    ],
     "blurb": "Study permits with co-op pathways and long-term permanent residence planning.",
-    "highlight": "PR Pathways"
+    "highlight": "PR Pathways",
+    "slug": "canada-student-visa"
   },
   {
     "code": "hu",
     "name": "Hungary",
     "flag": "🇭🇺",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "Affordable European degrees with flexible admission profiles for many applicants.",
-    "highlight": "Affordable Europe"
+    "highlight": "Affordable Europe",
+    "slug": "hungary-student-visa"
   },
   {
     "code": "fr",
     "name": "France",
     "flag": "🇫🇷",
-    "tags": ["Study", "Work"],
+    "tags": [
+      "Study",
+      "Work"
+    ],
     "blurb": "Strong public university system and growing English-taught master's options.",
-    "highlight": "Campus France"
+    "highlight": "Campus France",
+    "slug": "france-student-visa"
   },
   {
     "code": "it",
     "name": "Italy",
     "flag": "🇮🇹",
-    "tags": ["Study", "Work"],
+    "tags": [
+      "Study",
+      "Work"
+    ],
     "blurb": "Competitive tuition, rich culture, and expanding work-study combinations.",
-    "highlight": "D-type Visa"
+    "highlight": "D-type Visa",
+    "slug": "italy-student-visa"
   },
   {
     "code": "pt",
     "name": "Portugal",
     "flag": "🇵🇹",
-    "tags": ["Study", "Work"],
+    "tags": [
+      "Study",
+      "Work"
+    ],
     "blurb": "Welcoming student cities, milder living costs, and EU mobility after graduation.",
-    "highlight": "EU Access"
+    "highlight": "EU Access",
+    "slug": "portugal-student-visa"
   },
   {
     "code": "pl",
     "name": "Poland",
     "flag": "🇵🇱",
-    "tags": ["Study", "Work"],
+    "tags": [
+      "Study",
+      "Work"
+    ],
     "blurb": "Budget-friendly degrees and growing employer demand across multiple sectors.",
-    "highlight": "Cost-effective"
+    "highlight": "Cost-effective",
+    "slug": "poland-student-visa"
   },
   {
     "code": "cz",
     "name": "Czech Republic",
     "flag": "🇨🇿",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "Central Europe location with reputable technical and medical programs.",
-    "highlight": "Central Europe"
+    "highlight": "Central Europe",
+    "slug": "czech-republic-student-visa"
   },
   {
     "code": "mt",
     "name": "Malta",
     "flag": "🇲🇹",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "English-speaking EU destination popular for foundation and bachelor pathways.",
-    "highlight": "English Medium"
+    "highlight": "English Medium",
+    "slug": "malta-student-visa"
   },
   {
     "code": "cy",
     "name": "Cyprus",
     "flag": "🇨🇾",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "Accessible admissions and Mediterranean student lifestyle with EU recognition.",
-    "highlight": "Easy Access"
+    "highlight": "Easy Access",
+    "slug": "cyprus-student-visa"
   },
   {
     "code": "au",
     "name": "Australia",
     "flag": "🇦🇺",
-    "tags": ["Study", "Work"],
+    "tags": [
+      "Study",
+      "Work"
+    ],
     "blurb": "High-quality education with temporary graduate work options for eligible students.",
-    "highlight": "Post-study Work"
+    "highlight": "Post-study Work",
+    "slug": "australia-student-visa"
   },
   {
     "code": "my",
     "name": "Malaysia",
     "flag": "🇲🇾",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "Affordable Asian hub with twinning programs and international branch campuses.",
-    "highlight": "Affordable Asia"
+    "highlight": "Affordable Asia",
+    "slug": "malaysia-student-visa"
   },
   {
     "code": "es",
     "name": "Spain",
     "flag": "🇪🇸",
-    "tags": ["Study", "Work"],
+    "tags": [
+      "Study",
+      "Work"
+    ],
     "blurb": "Growing English programs and vibrant cities for study and skilled work.",
-    "highlight": "Lifestyle + Study"
+    "highlight": "Lifestyle + Study",
+    "slug": "spain-student-visa"
   },
   {
     "code": "ie",
     "name": "Ireland",
     "flag": "🇮🇪",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "English-speaking Europe with strong tech and pharma employment ecosystems.",
-    "highlight": "English EU"
+    "highlight": "English EU",
+    "slug": "ireland-student-visa"
   },
   {
     "code": "nl",
     "name": "Netherlands",
     "flag": "🇳🇱",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "Extensive English-taught degrees and innovation-focused universities.",
-    "highlight": "English Degrees"
+    "highlight": "English Degrees",
+    "slug": "netherlands-student-visa"
   },
   {
     "code": "tr",
     "name": "Turkey",
     "flag": "🇹🇷",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "Competitive tuition and bridge location between Europe and Asia.",
-    "highlight": "Value Education"
+    "highlight": "Value Education",
+    "slug": "turkey-student-visa"
   },
   {
     "code": "ae",
     "name": "UAE / Dubai",
     "flag": "🇦🇪",
-    "tags": ["Visit", "Work"],
+    "tags": [
+      "Visit",
+      "Work"
+    ],
     "blurb": "Visit visas, skilled employment, and regional business opportunities.",
-    "highlight": "Gulf Careers"
+    "highlight": "Gulf Careers",
+    "slug": "dubai-visit-visa"
   },
   {
     "code": "ro",
     "name": "Romania",
     "flag": "🇷🇴",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "Accessible European study costs with recognized medical and technical programs.",
-    "highlight": "Budget Europe"
+    "highlight": "Budget Europe",
+    "slug": "romania-student-visa"
   },
   {
     "code": "sk",
     "name": "Slovakia",
     "flag": "🇸🇰",
-    "tags": ["Study"],
+    "tags": [
+      "Study"
+    ],
     "blurb": "Quiet Central European option with affordable living and EU credentials.",
-    "highlight": "Quiet Value"
+    "highlight": "Quiet Value",
+    "slug": "slovakia-student-visa"
   }
 ]
