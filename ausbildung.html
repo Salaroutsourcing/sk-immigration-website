@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Germany Ausbildung Jobs Portal | SK Immigration</title>
+  <meta name="description" content="Browse and apply for Germany Ausbildung and Schengen vocational training jobs. Paid apprenticeships in nursing, hospitality, mechatronics and more." />
+  <link rel="canonical" href="https://salaroutsourcing.com/ausbildung.html" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Germany Ausbildung Jobs","description":"Ausbildung and vocational training openings for international applicants."}
+  </script>
+</head>
+<body data-page="ausbildung">
+  <div class="bg-orbs" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="main">
+    <div class="container" style="padding-top:2rem">
+      <div class="page-hero-banner">
+        <img src="assets/img/service-europe.jpg" alt="Germany / Europe cityscape for Ausbildung" width="1200" height="240" />
+        <div class="banner-veil">
+          <div>
+            <p class="eyebrow">🇩🇪 Germany · Ausbildung</p>
+            <h1 class="display" style="font-size:clamp(1.8rem,3vw,2.5rem);margin:0">Earn while you train in Germany</h1>
+            <p class="text-muted" style="margin-top:0.5rem;max-width:34rem">Paid vocational apprenticeships for applicants from any country who meet language and employer requirements.</p>
+            <div class="hero-ctas" style="margin-top:1rem;margin-bottom:0">
+              <a class="btn btn-gold btn-sm" href="cv-builder.html">Build CV first</a>
+              <a class="btn btn-ghost btn-sm" href="blog-post.html?slug=germany-ausbildung-complete-guide">Read the guide</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="filters glass" style="padding:1rem">
+          <input class="form-control" id="jobSearch" placeholder="Search roles…" />
+          <select class="form-control" id="jobCountry"><option value="">All countries</option></select>
+          <select class="form-control" id="jobCategory"><option value="">All categories</option></select>
+        </div>
+        <div id="jobList" class="grid-2 mt-2"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-3">
+        <div class="glass card reveal"><h3 class="text-gold">1. Profile</h3><p class="text-muted mt-1" style="font-size:0.95rem">CV + education + language level screening.</p></div>
+        <div class="glass card reveal"><h3 class="text-gold">2. Match</h3><p class="text-muted mt-1" style="font-size:0.95rem">We align you with suitable Ausbildung employers.</p></div>
+        <div class="glass card reveal"><h3 class="text-gold">3. Visa file</h3><p class="text-muted mt-1" style="font-size:0.95rem">Documents, attestation and embassy preparation support.</p></div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/jobs.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      SalarJobs.mount({ listSelector: '#jobList', filterType: 'Ausbildung' });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+[
+  {
+    "code": "de",
+    "name": "Germany",
+    "flag": "🇩🇪",
+    "tags": ["Study", "Work", "Ausbildung"],
+    "blurb": "Tuition-free public universities, Ausbildung apprenticeships, and strong post-study work options.",
+    "highlight": "Ausbildung + Study"
+  },
+  {
+    "code": "gb",
+    "name": "United Kingdom",
+    "flag": "🇬🇧",
+    "tags": ["Study", "Visit"],
+    "blurb": "World-ranked universities with Graduate Route opportunities after eligible degrees.",
+    "highlight": "Graduate Route"
+  },
+  {
+    "code": "ca",
+    "name": "Canada",
+    "flag": "🇨🇦",
+    "tags": ["Study", "Work"],
+    "blurb": "Study permits with co-op pathways and long-term permanent residence planning.",
+    "highlight": "PR Pathways"
+  },
+  {
+    "code": "hu",
+    "name": "Hungary",
+    "flag": "🇭🇺",
+    "tags": ["Study"],
+    "blurb": "Affordable European degrees with flexible admission profiles for many applicants.",
+    "highlight": "Affordable Europe"
+  },
+  {
+    "code": "fr",
+    "name": "France",
+    "flag": "🇫🇷",
+    "tags": ["Study", "Work"],
+    "blurb": "Strong public university system and growing English-taught master's options.",
+    "highlight": "Campus France"
+  },
+  {
+    "code": "it",
+    "name": "Italy",
+    "flag": "🇮🇹",
+    "tags": ["Study", "Work"],
+    "blurb": "Competitive tuition, rich culture, and expanding work-study combinations.",
+    "highlight": "D-type Visa"
+  },
+  {
+    "code": "pt",
+    "name": "Portugal",
+    "flag": "🇵🇹",
+    "tags": ["Study", "Work"],
+    "blurb": "Welcoming student cities, milder living costs, and EU mobility after graduation.",
+    "highlight": "EU Access"
+  },
+  {
+    "code": "pl",
+    "name": "Poland",
+    "flag": "🇵🇱",
+    "tags": ["Study", "Work"],
+    "blurb": "Budget-friendly degrees and growing employer demand across multiple sectors.",
+    "highlight": "Cost-effective"
+  },
+  {
+    "code": "cz",
+    "name": "Czech Republic",
+    "flag": "🇨🇿",
+    "tags": ["Study"],
+    "blurb": "Central Europe location with reputable technical and medical programs.",
+    "highlight": "Central Europe"
+  },
+  {
+    "code": "mt",
+    "name": "Malta",
+    "flag": "🇲🇹",
+    "tags": ["Study"],
+    "blurb": "English-speaking EU destination popular for foundation and bachelor pathways.",
+    "highlight": "English Medium"
+  },
+  {
+    "code": "cy",
+    "name": "Cyprus",
+    "flag": "🇨🇾",
+    "tags": ["Study"],
+    "blurb": "Accessible admissions and Mediterranean student lifestyle with EU recognition.",
+    "highlight": "Easy Access"
+  },
+  {
+    "code": "au",
+    "name": "Australia",
+    "flag": "🇦🇺",
+    "tags": ["Study", "Work"],
+    "blurb": "High-quality education with temporary graduate work options for eligible students.",
+    "highlight": "Post-study Work"
+  },
+  {
+    "code": "my",
+    "name": "Malaysia",
+    "flag": "🇲🇾",
+    "tags": ["Study"],
+    "blurb": "Affordable Asian hub with twinning programs and international branch campuses.",
+    "highlight": "Affordable Asia"
+  },
+  {
+    "code": "es",
+    "name": "Spain",
+    "flag": "🇪🇸",
+    "tags": ["Study", "Work"],
+    "blurb": "Growing English programs and vibrant cities for study and skilled work.",
+    "highlight": "Lifestyle + Study"
+  },
+  {
+    "code": "ie",
+    "name": "Ireland",
+    "flag": "🇮🇪",
+    "tags": ["Study"],
+    "blurb": "English-speaking Europe with strong tech and pharma employment ecosystems.",
+    "highlight": "English EU"
+  },
+  {
+    "code": "nl",
+    "name": "Netherlands",
+    "flag": "🇳🇱",
+    "tags": ["Study"],
+    "blurb": "Extensive English-taught degrees and innovation-focused universities.",
+    "highlight": "English Degrees"
+  },
+  {
+    "code": "tr",
+    "name": "Turkey",
+    "flag": "🇹🇷",
+    "tags": ["Study"],
+    "blurb": "Competitive tuition and bridge location between Europe and Asia.",
+    "highlight": "Value Education"
+  },
+  {
+    "code": "ae",
+    "name": "UAE / Dubai",
+    "flag": "🇦🇪",
+    "tags": ["Visit", "Work"],
+    "blurb": "Visit visas, skilled employment, and regional business opportunities.",
+    "highlight": "Gulf Careers"
+  },
+  {
+    "code": "ro",
+    "name": "Romania",
+    "flag": "🇷🇴",
+    "tags": ["Study"],
+    "blurb": "Accessible European study costs with recognized medical and technical programs.",
+    "highlight": "Budget Europe"
+  },
+  {
+    "code": "sk",
+    "name": "Slovakia",
+    "flag": "🇸🇰",
+    "tags": ["Study"],
+    "blurb": "Quiet Central European option with affordable living and EU credentials.",
+    "highlight": "Quiet Value"
+  }
+]

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Client Portal | SK Immigration</title>
+  <meta name="description" content="Access the SK Immigration client portal for candidates and admins. Fast CRM for leads and CVs also available." />
+  <link rel="canonical" href="https://salaroutsourcing.com/portal.html" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body data-page="home">
+  <div class="bg-orbs" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="main">
+    <div class="page-hero container">
+      <p class="eyebrow">Portal hub</p>
+      <h1 class="display">Choose your workspace</h1>
+      <p>Use the fast static CRM for leads &amp; CVs, or open the full Google Apps Script candidate/admin portal.</p>
+    </div>
+
+    <section>
+      <div class="container grid-2">
+        <article class="glass card reveal">
+          <span class="badge">Recommended · Fast</span>
+          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Admin CRM (new)</h2>
+          <p class="text-muted">Lightning-fast dashboard hosted with this website. Collect bookings, eligibility leads, CVs, and job applications. Export JSON anytime. Syncs to Google Sheets when Apps Script API URL is configured.</p>
+          <ul class="prose mt-2">
+            <li>Leads inbox</li>
+            <li>CV bank</li>
+            <li>Job applications</li>
+            <li>Blog &amp; job posting admin</li>
+          </ul>
+          <a class="btn btn-gold mt-2" href="admin/">Open Admin CRM</a>
+        </article>
+
+        <article class="glass card reveal">
+          <span class="badge badge-muted">Legacy portal</span>
+          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Google Apps Script Portal</h2>
+          <p class="text-muted">Your existing candidate/admin portal. Useful for full case workflows already configured in Sheets — may load slower because Apps Script hosts the entire UI.</p>
+          <div class="hero-ctas mt-2">
+            <a id="legacyPortal" class="btn btn-navy" href="#" target="_blank" rel="noopener">Open legacy portal ↗</a>
+            <button type="button" class="btn btn-ghost" id="embedToggle">Embed below</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="container mt-3 hidden" id="embedWrap">
+        <div class="glass" style="padding:0.5rem;border-radius:1rem;overflow:hidden">
+          <iframe id="portalFrame" title="Apps Script Portal" style="width:100%;min-height:75vh;border:0;border-radius:0.75rem;background:#0a1628"></iframe>
+        </div>
+        <p class="text-muted text-center mt-1" style="font-size:0.85rem">If the embed is blocked by Google, use “Open legacy portal” instead.</p>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const url = SALAR_CONFIG.legacyPortalUrl;
+      document.getElementById('legacyPortal').href = url;
+      document.getElementById('embedToggle')?.addEventListener('click', () => {
+        const wrap = document.getElementById('embedWrap');
+        wrap.classList.toggle('hidden');
+        const frame = document.getElementById('portalFrame');
+        if (!frame.src) frame.src = url;
+      });
+    });
+  </script>
+</body>
+</html>

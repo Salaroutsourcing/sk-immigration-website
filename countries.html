@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Study & Work Destinations | 20+ Countries</title>
+  <meta name="description" content="Explore global study and work destinations supported by SK Immigration — Germany, UK, Canada, Europe, Gulf, Asia and more." />
+  <link rel="canonical" href="https://salaroutsourcing.com/countries.html" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body data-page="countries">
+  <div class="bg-orbs" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="main">
+    <div class="page-hero container">
+      <p class="eyebrow">Destinations</p>
+      <h1 class="display">30+ countries. Which one fits you?</h1>
+      <p>Serving students &amp; professionals from any country. Click a destination or take the eligibility quiz for a tailored shortlist.</p>
+    </div>
+    <section>
+      <div class="container">
+        <div class="filters glass mb-2" style="padding:1rem">
+          <input class="form-control" id="countrySearch" placeholder="Search country…" />
+        </div>
+        <div id="countryGrid" class="grid-4"></div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const grid = document.getElementById('countryGrid');
+      const countries = await (await fetch('assets/data/countries.json')).json();
+      function render(list) {
+        grid.innerHTML = list.map(c => {
+          const slugMap = {
+            'Germany': 'germany-student-visa', 'United Kingdom': 'uk-student-visa', 'Canada': 'canada-student-visa',
+            'Hungary': 'hungary-student-visa', 'France': 'france-student-visa', 'Italy': 'italy-student-visa',
+            'Portugal': 'portugal-student-visa', 'Poland': 'poland-student-visa', 'Czech Republic': 'czech-republic-student-visa',
+            'Malta': 'malta-student-visa', 'Cyprus': 'cyprus-student-visa', 'Australia': 'australia-student-visa',
+            'Malaysia': 'malaysia-student-visa', 'Spain': 'spain-student-visa', 'Ireland': 'ireland-student-visa',
+            'Netherlands': 'netherlands-student-visa', 'Turkey': 'turkey-student-visa', 'UAE / Dubai': 'dubai-visit-visa',
+            'Romania': 'romania-student-visa', 'Slovakia': 'slovakia-student-visa'
+          };
+          const href = slugMap[c.name] ? `blog/${slugMap[c.name]}/` : `contact.html?country=${encodeURIComponent(c.name)}`;
+          return `
+          <a class="glass card reveal visible" href="${href}" style="display:block">
+            <div style="font-size:1.75rem">${c.flag}</div>
+            <h3 style="margin:0.5rem 0 0.25rem;font-size:1.05rem">${c.name}</h3>
+            <p class="text-muted" style="font-size:0.85rem">${c.blurb}</p>
+            <div class="job-meta mt-1">${c.tags.map(t => `<span class="badge badge-muted">${t}</span>`).join('')}</div>
+          </a>`;
+        }).join('');
+      }
+      render(countries);
+      document.getElementById('countrySearch')?.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase();
+        render(countries.filter(c => c.name.toLowerCase().includes(q) || c.tags.join(' ').toLowerCase().includes(q)));
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Eligibility Quiz | Find Your Study Destination</title>
+  <meta name="description" content="Free 6-question eligibility quiz for students and professionals. Get personalized country matches and save results with SK Immigration." />
+  <link rel="canonical" href="https://salaroutsourcing.com/eligibility.html" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body data-page="home">
+  <div class="bg-orbs" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="main">
+    <div class="page-hero container">
+      <p class="eyebrow">Free tool · ~60 seconds</p>
+      <h1 class="display">Find pathways that fit your profile</h1>
+      <p>Answer 6 questions. Get destination matches. Optionally save results so our advisors can follow up.</p>
+    </div>
+    <section>
+      <div class="container" style="max-width:720px">
+        <div id="quizRoot"></div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/quiz.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => SalarQuiz.mount('#quizRoot'));</script>
+</body>
+</html>

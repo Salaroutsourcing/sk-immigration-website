@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jobs Admin | SK Immigration</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true"></div>
+  <div id="loginGate" class="container" style="min-height:100vh;display:grid;place-items:center">
+    <form id="loginForm" class="glass card" style="width:min(400px,100%)">
+      <h1 class="display" style="font-size:1.5rem;margin-bottom:0.75rem">Jobs Admin</h1>
+      <p class="text-muted mb-2" style="font-size:0.9rem">Post and manage openings shown on jobs.html &amp; ausbildung.html</p>
+      <div class="form-group"><label>Password</label><input class="form-control" type="password" id="adminPass" required /></div>
+      <button class="btn btn-gold w-full" type="submit">Sign in</button>
+      <div class="form-msg" id="loginMsg"></div>
+    </form>
+  </div>
+
+  <div id="adminApp" class="admin-shell hidden">
+    <aside class="admin-side">
+      <div class="logo mb-2"><span class="logo-mark">SK</span><span>Jobs</span></div>
+      <nav class="admin-nav">
+        <a href="index.html">Dashboard</a>
+        <a href="blog.html">Blog admin</a>
+        <a href="jobs.html" class="active">Jobs admin</a>
+        <a href="../jobs.html">View jobs page</a>
+        <a href="#" id="logoutBtn">Log out</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="flex justify-between mb-2 flex-wrap gap-2">
+        <h1 class="display" style="font-size:1.6rem">Job listings</h1>
+        <button class="btn btn-gold btn-sm" id="newJob">+ Post job</button>
+      </div>
+      <div class="table-wrap glass card">
+        <table class="data">
+          <thead><tr><th>Title</th><th>Country</th><th>Type</th><th>Featured</th><th></th></tr></thead>
+          <tbody id="jobsBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="jobModal">
+    <div class="modal glass-strong" style="width:min(640px,100%)">
+      <h2 style="font-family:var(--font-display);margin-bottom:1rem">Job details</h2>
+      <form id="jobForm">
+        <input type="hidden" id="jobId" />
+        <div class="form-row">
+          <div class="form-group"><label>Title *</label><input class="form-control" id="jTitle" required /></div>
+          <div class="form-group"><label>Company *</label><input class="form-control" id="jCompany" required /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Country</label><input class="form-control" id="jCountry" /></div>
+          <div class="form-group"><label>City</label><input class="form-control" id="jCity" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Type</label>
+            <select class="form-control" id="jType"><option>Ausbildung</option><option>Work Permit</option></select>
+          </div>
+          <div class="form-group"><label>Category</label><input class="form-control" id="jCategory" placeholder="Healthcare" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Salary</label><input class="form-control" id="jSalary" /></div>
+          <div class="form-group"><label>Language</label><input class="form-control" id="jLang" /></div>
+        </div>
+        <div class="form-group"><label>Description</label><textarea class="form-control" id="jDesc"></textarea></div>
+        <div class="form-group"><label>Requirements (one per line)</label><textarea class="form-control" id="jReq"></textarea></div>
+        <label style="display:flex;gap:0.5rem;align-items:center;margin-bottom:1rem;font-size:0.9rem">
+          <input type="checkbox" id="jFeat" /> Featured
+        </label>
+        <div class="flex gap-2">
+          <button class="btn btn-gold" type="submit">Save job</button>
+          <button class="btn btn-ghost" type="button" onclick="document.getElementById('jobModal').classList.remove('open')">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script>
+    let jobs = [];
+
+    async function load() {
+      const local = SalarAPI.getJobs();
+      if (local && local.length) jobs = local;
+      else {
+        jobs = await (await fetch('../assets/data/jobs.json')).json();
+        SalarAPI.saveJobs(jobs);
+      }
+      render();
+    }
+
+    function render() {
+      document.getElementById('jobsBody').innerHTML = jobs.map(j => `
+        <tr>
+          <td>${j.title}</td><td>${j.country}</td><td>${j.type}</td>
+          <td>${j.featured ? 'Yes' : 'No'}</td>
+          <td class="flex gap-2">
+            <button class="btn btn-ghost btn-sm" data-edit="${j.id}">Edit</button>
+            <button class="btn btn-ghost btn-sm" data-del="${j.id}">Delete</button>
+          </td>
+        </tr>`).join('');
+      document.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => openJob(jobs.find(j => j.id === b.dataset.edit))));
+      document.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', () => {
+        if (!confirm('Delete job?')) return;
+        jobs = jobs.filter(j => j.id !== b.dataset.del);
+        SalarAPI.saveJobs(jobs);
+        render();
+      }));
+    }
+
+    function openJob(j) {
+      document.getElementById('jobId').value = j?.id || '';
+      document.getElementById('jTitle').value = j?.title || '';
+      document.getElementById('jCompany').value = j?.company || '';
+      document.getElementById('jCountry').value = j?.country || 'Germany';
+      document.getElementById('jCity').value = j?.city || '';
+      document.getElementById('jType').value = j?.type || 'Ausbildung';
+      document.getElementById('jCategory').value = j?.category || '';
+      document.getElementById('jSalary').value = j?.salary || '';
+      document.getElementById('jLang').value = j?.language || '';
+      document.getElementById('jDesc').value = j?.description || '';
+      document.getElementById('jReq').value = (j?.requirements || []).join('\n');
+      document.getElementById('jFeat').checked = !!j?.featured;
+      document.getElementById('jobModal').classList.add('open');
+    }
+
+    document.getElementById('jobForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const id = document.getElementById('jobId').value || ('job-' + Date.now().toString(36));
+      const item = {
+        id,
+        title: document.getElementById('jTitle').value,
+        company: document.getElementById('jCompany').value,
+        country: document.getElementById('jCountry').value,
+        city: document.getElementById('jCity').value,
+        type: document.getElementById('jType').value,
+        category: document.getElementById('jCategory').value,
+        salary: document.getElementById('jSalary').value,
+        language: document.getElementById('jLang').value,
+        description: document.getElementById('jDesc').value,
+        requirements: document.getElementById('jReq').value.split('\n').map(s => s.trim()).filter(Boolean),
+        featured: document.getElementById('jFeat').checked,
+      };
+      const i = jobs.findIndex(j => j.id === id);
+      if (i >= 0) jobs[i] = item; else jobs.unshift(item);
+      SalarAPI.saveJobs(jobs);
+      SalarAPI.syncRemote.postToGas('saveJob', { data: item });
+      document.getElementById('jobModal').classList.remove('open');
+      render();
+    });
+
+    document.getElementById('newJob')?.addEventListener('click', () => openJob(null));
+    document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ok = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
+      if (ok) {
+        document.getElementById('loginGate').classList.add('hidden');
+        document.getElementById('adminApp').classList.remove('hidden');
+        load();
+      } else {
+        document.getElementById('loginMsg').className = 'form-msg show err';
+        document.getElementById('loginMsg').textContent = 'Incorrect password.';
+      }
+    });
+    document.getElementById('logoutBtn')?.addEventListener('click', (e) => { e.preventDefault(); SalarAPI.logoutAdmin(); location.reload(); });
+    if (SalarAPI.isAdminLoggedIn()) {
+      document.getElementById('loginGate').classList.add('hidden');
+      document.getElementById('adminApp').classList.remove('hidden');
+      load();
+    }
+  </script>
+</body>
+</html>

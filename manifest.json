@@ -1,0 +1,17 @@
+{
+  "name": "SK Immigration Services",
+  "short_name": "SK Immigration",
+  "description": "Student visas, Ausbildung, jobs and document attestation. A division of Salar Outsourcing.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1628",
+  "theme_color": "#0a1628",
+  "icons": [
+    {
+      "src": "assets/img/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

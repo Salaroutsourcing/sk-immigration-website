@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free CV Builder | Europass-style | SK Immigration</title>
+  <meta name="description" content="Build a professional Europass-style CV for student visas, Ausbildung and job applications. Send it directly to SK Immigration." />
+  <link rel="canonical" href="https://salaroutsourcing.com/cv-builder.html" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body data-page="jobs">
+  <div class="bg-orbs" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="main">
+    <div class="page-hero container">
+      <p class="eyebrow">Free CV builder</p>
+      <h1 class="display">Build. Preview. Send.</h1>
+      <p>Create a clean CV for study or job files. Data stays in your browser unless you choose to send it to our team.</p>
+    </div>
+    <section>
+      <div class="container" style="max-width:800px">
+        <div id="cvRoot"></div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/cv-builder.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => SalarCV.mount('#cvRoot'));</script>
+</body>
+</html>

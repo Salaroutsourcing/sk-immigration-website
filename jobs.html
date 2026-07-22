@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Jobs Portal | Germany, Schengen, Gulf | SK Immigration</title>
+  <meta name="description" content="Browse global job openings in Germany, Schengen countries and the Gulf. Apply online. Employers can post jobs via secure admin access." />
+  <link rel="canonical" href="https://salaroutsourcing.com/jobs.html" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script type="application/ld+json" id="jobSchema"></script>
+</head>
+<body data-page="jobs">
+  <div class="bg-orbs" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="main">
+    <div class="page-hero container">
+      <p class="eyebrow">Jobs portal</p>
+      <h1 class="display">Global opportunities. Local support.</h1>
+      <p>Candidates browse and apply. Employers post roles through our secured admin. Serving applicants worldwide.</p>
+      <div class="hero-ctas" style="justify-content:center;margin-top:1rem">
+        <a class="btn btn-gold" href="cv-builder.html">Submit your CV</a>
+        <a class="btn btn-ghost" href="admin/">Employer / Admin login</a>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="filters glass" style="padding:1rem">
+          <input class="form-control" id="jobSearch" placeholder="Search title, city, keyword…" />
+          <select class="form-control" id="jobCountry"></select>
+          <select class="form-control" id="jobCategory"></select>
+          <select class="form-control" id="jobType">
+            <option value="">All types</option>
+            <option>Ausbildung</option>
+            <option>Work Permit</option>
+          </select>
+        </div>
+        <div id="jobList" class="grid-2 mt-2"></div>
+        <div class="ad-slot mt-3">Featured employer / insurance partner placement</div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/jobs.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      await SalarJobs.mount({ listSelector: '#jobList' });
+      try {
+        const jobs = await (await fetch('assets/data/jobs.json')).json();
+        const schema = {
+          '@context': 'https://schema.org',
+          '@graph': jobs.slice(0, 5).map(j => ({
+            '@type': 'JobPosting',
+            title: j.title,
+            description: j.description,
+            hiringOrganization: { '@type': 'Organization', name: j.company },
+            jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: j.city, addressCountry: j.country } },
+            employmentType: j.type === 'Ausbildung' ? 'INTERN' : 'FULL_TIME',
+            datePosted: '2026-06-01'
+          }))
+        };
+        document.getElementById('jobSchema').textContent = JSON.stringify(schema);
+      } catch (e) {}
+    });
+  </script>
+</body>
+</html>

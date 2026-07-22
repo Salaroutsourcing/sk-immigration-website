@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin CRM | SK Immigration</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true"></div>
+
+  <div id="loginGate" class="container" style="min-height:100vh;display:grid;place-items:center;padding:2rem 0">
+    <form id="loginForm" class="glass card" style="width:min(400px,100%)">
+      <div class="logo mb-2"><span class="logo-mark">SK</span><span>Admin CRM</span></div>
+      <p class="text-muted mb-2" style="font-size:0.9rem">Password-protected workspace for leads, CVs, applications, blog and jobs.</p>
+      <div class="form-group"><label>Admin password</label><input class="form-control" type="password" id="adminPass" required autocomplete="current-password" /></div>
+      <button class="btn btn-gold w-full" type="submit">Sign in</button>
+      <div class="form-msg" id="loginMsg"></div>
+      <a href="../index.html" class="btn btn-ghost btn-sm w-full mt-2">← Back to site</a>
+    </form>
+  </div>
+
+  <div id="adminApp" class="admin-shell hidden">
+    <aside class="admin-side">
+      <div class="logo mb-2"><span class="logo-mark">SK</span><span>CRM</span></div>
+      <nav class="admin-nav">
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="blog.html">Blog admin</a>
+        <a href="jobs.html">Jobs admin</a>
+        <a href="../portal.html">Portal hub</a>
+        <a href="../index.html">Website</a>
+        <a href="#" id="logoutBtn">Log out</a>
+      </nav>
+      <button type="button" class="theme-toggle mt-2" onclick="SalarTheme.toggle()" aria-label="Toggle theme"><span data-theme-icon>☀</span></button>
+    </aside>
+    <main class="admin-main">
+      <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
+        <div>
+          <h1 class="display" style="font-size:1.75rem">Dashboard</h1>
+          <p class="text-muted">Leads &amp; CVs collected from the fast static website</p>
+        </div>
+        <div class="flex gap-2 flex-wrap">
+          <button class="btn btn-ghost btn-sm" id="exportAll">Export all JSON</button>
+          <button class="btn btn-navy btn-sm" id="refreshBtn">Refresh</button>
+        </div>
+      </div>
+
+      <div class="grid-4 mb-2" id="statCards"></div>
+
+      <div class="glass card mb-2">
+        <div class="flex justify-between items-center mb-2">
+          <h2 style="font-family:var(--font-display)">Recent leads</h2>
+          <select class="form-control" id="leadFilter" style="width:auto">
+            <option value="">All types</option>
+            <option value="contact">Contact / Booking</option>
+            <option value="eligibility">Eligibility</option>
+            <option value="cv">CV</option>
+            <option value="job_application">Job application</option>
+            <option value="attestation">Attestation</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>When</th><th>Type</th><th>Name</th><th>Contact</th><th>Meta</th></tr></thead>
+            <tbody id="leadsBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="glass card">
+          <h2 style="font-family:var(--font-display);margin-bottom:0.75rem">CV bank</h2>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Name</th><th>Phone</th><th>Target</th><th></th></tr></thead>
+              <tbody id="cvBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="glass card">
+          <h2 style="font-family:var(--font-display);margin-bottom:0.75rem">Job applications</h2>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Name</th><th>Job</th><th>Phone</th><th></th></tr></thead>
+              <tbody id="appBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="detailModal"><div class="modal glass-strong" id="detailBody"></div></div>
+
+  <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script>
+    function showApp() {
+      document.getElementById('loginGate').classList.add('hidden');
+      document.getElementById('adminApp').classList.remove('hidden');
+      render();
+    }
+
+    function render() {
+      const leads = SalarAPI.getLeads();
+      const cvs = SalarAPI.getCVs();
+      const apps = SalarAPI.getApplications();
+      const books = SalarAPI.getBookings();
+      document.getElementById('statCards').innerHTML = [
+        ['Leads', leads.length],
+        ['CVs', cvs.length],
+        ['Applications', apps.length],
+        ['Bookings', books.length],
+      ].map(([l,n]) => `<div class="glass card"><strong class="text-gold" style="font-size:1.5rem;font-family:var(--font-display)">${n}</strong><div class="text-muted" style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em">${l}</div></div>`).join('');
+
+      const filter = document.getElementById('leadFilter').value;
+      const filtered = filter ? leads.filter(l => (l.type||'').includes(filter) || l.type === filter) : leads;
+      /* also include bookings as leads view */
+      const bookingRows = books.map(b => ({...b, type: 'contact', meta: b.service}));
+      const rows = [...filtered, ...(filter && filter !== 'contact' ? [] : bookingRows.filter(b => !filtered.find(l => l.id === b.id)))];
+
+      document.getElementById('leadsBody').innerHTML = rows.slice(0, 50).map(l => `
+        <tr>
+          <td>${(l.createdAt||'').slice(0,16).replace('T',' ')}</td>
+          <td><span class="badge badge-muted">${l.type||'lead'}</span></td>
+          <td>${l.name||l.fullName||'—'}</td>
+          <td>${l.phone||''}<br><span class="text-muted">${l.email||''}</span></td>
+          <td>${l.meta||l.service||l.destination||''}</td>
+        </tr>`).join('') || '<tr><td colspan="5" class="text-muted">No leads yet. Submit a form on the website.</td></tr>';
+
+      document.getElementById('cvBody').innerHTML = cvs.slice(0, 30).map(c => `
+        <tr>
+          <td>${c.fullName||'—'}</td>
+          <td>${c.phone||''}</td>
+          <td>${c.target||''}</td>
+          <td><button class="btn btn-ghost btn-sm" data-cv='${encodeURIComponent(JSON.stringify(c))}'>View</button></td>
+        </tr>`).join('') || '<tr><td colspan="4" class="text-muted">No CVs yet.</td></tr>';
+
+      document.getElementById('appBody').innerHTML = apps.slice(0, 30).map(a => `
+        <tr>
+          <td>${a.name||'—'}</td>
+          <td>${a.jobTitle||''}</td>
+          <td>${a.phone||''}</td>
+          <td><button class="btn btn-ghost btn-sm" data-app='${encodeURIComponent(JSON.stringify(a))}'>View</button></td>
+        </tr>`).join('') || '<tr><td colspan="4" class="text-muted">No applications yet.</td></tr>';
+
+      document.querySelectorAll('[data-cv]').forEach(btn => btn.addEventListener('click', () => {
+        const c = JSON.parse(decodeURIComponent(btn.dataset.cv));
+        openDetail(`<h2>${c.fullName}</h2><pre style="white-space:pre-wrap;font-size:0.85rem">${JSON.stringify(c,null,2)}</pre>`);
+      }));
+      document.querySelectorAll('[data-app]').forEach(btn => btn.addEventListener('click', () => {
+        const a = JSON.parse(decodeURIComponent(btn.dataset.app));
+        openDetail(`<h2>${a.name} — ${a.jobTitle}</h2><pre style="white-space:pre-wrap;font-size:0.85rem">${JSON.stringify(a,null,2)}</pre>`);
+      }));
+    }
+
+    function openDetail(html) {
+      const m = document.getElementById('detailModal');
+      document.getElementById('detailBody').innerHTML = html + `<button class="btn btn-ghost mt-2" onclick="document.getElementById('detailModal').classList.remove('open')">Close</button>`;
+      m.classList.add('open');
+    }
+
+    document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ok = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
+      const msg = document.getElementById('loginMsg');
+      if (ok) showApp();
+      else { msg.className = 'form-msg show err'; msg.textContent = 'Incorrect password.'; }
+    });
+
+    document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      SalarAPI.logoutAdmin();
+      location.reload();
+    });
+    document.getElementById('leadFilter')?.addEventListener('change', render);
+    document.getElementById('refreshBtn')?.addEventListener('click', render);
+    document.getElementById('exportAll')?.addEventListener('click', () => {
+      SalarAPI.exportJSON('salar-crm-export.json', {
+        leads: SalarAPI.getLeads(),
+        cvs: SalarAPI.getCVs(),
+        applications: SalarAPI.getApplications(),
+        bookings: SalarAPI.getBookings(),
+      });
+    });
+    document.getElementById('detailModal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'detailModal') e.target.classList.remove('open');
+    });
+
+    if (SalarAPI.isAdminLoggedIn()) showApp();
+  </script>
+</body>
+</html>

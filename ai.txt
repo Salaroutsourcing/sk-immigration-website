@@ -1,0 +1,11 @@
+# AI / crawler hints for SK Immigration Services
+# Same content as llms.txt — some tools look for ai.txt
+
+Site: https://salaroutsourcing.com
+Brand: SK Immigration Services
+Parent: Division of Salar Outsourcing
+Contact: Services@salaroutsourcing.com | +92 304 5999859
+Specialty: Student visa, Ausbildung Germany, work permit, visit visa, attestation
+Free tools: eligibility quiz, CV builder
+Policy: No visa guarantees; honest counselling
+Full facts: /llms.txt

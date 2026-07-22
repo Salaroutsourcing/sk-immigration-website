@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Document Attestation | Musadaqa, Apostille, MOFA, QVP</title>
+  <meta name="description" content="Professional document attestation services: Musadaqa, QVP, Apostille, MOFA and embassy legalization with clear checklists and process steps." />
+  <link rel="canonical" href="https://salaroutsourcing.com/attestation.html" />
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What is Apostille?","acceptedAnswer":{"@type":"Answer","text":"Apostille is a simplified international legalization under the Hague Convention for use in member countries."}},
+    {"@type":"Question","name":"Do I need MOFA attestation?","acceptedAnswer":{"@type":"Answer","text":"Many destinations require Ministry of Foreign Affairs attestation after local/notary steps. Requirements vary by country and document type."}}
+  ]}
+  </script>
+</head>
+<body data-page="attestation">
+  <div class="bg-orbs" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="main">
+    <div class="page-hero container">
+      <p class="eyebrow">Document attestation</p>
+      <h1 class="display">Legalize documents the right way</h1>
+      <p>Musadaqa, QVP, Apostille, MOFA and embassy attestation — sequenced correctly so your study, work or Gulf file is not delayed.</p>
+    </div>
+
+    <section>
+      <div class="container grid-3">
+        <article class="glass card reveal"><div class="card-icon">🕌</div><h3>Musadaqa</h3><p class="text-muted mt-1" style="font-size:0.95rem">Saudi-oriented attestation pathways for educational and personal documents.</p></article>
+        <article class="glass card reveal"><div class="card-icon">✅</div><h3>QVP</h3><p class="text-muted mt-1" style="font-size:0.95rem">Qualification verification processes required by selected Gulf employers and authorities.</p></article>
+        <article class="glass card reveal"><div class="card-icon">🌐</div><h3>Apostille</h3><p class="text-muted mt-1" style="font-size:0.95rem">Hague Convention legalization for participating destinations.</p></article>
+        <article class="glass card reveal"><div class="card-icon">🏛️</div><h3>MOFA</h3><p class="text-muted mt-1" style="font-size:0.95rem">Ministry of Foreign Affairs attestation coordination.</p></article>
+        <article class="glass card reveal"><div class="card-icon">🏢</div><h3>Embassy</h3><p class="text-muted mt-1" style="font-size:0.95rem">Country-specific embassy legalization where Apostille does not apply.</p></article>
+        <article class="glass card reveal"><div class="card-icon">📝</div><h3>Translation</h3><p class="text-muted mt-1" style="font-size:0.95rem">Sworn / certified translation coordination for European filings.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2">
+        <div class="glass card reveal">
+          <h2 class="section-title" style="font-size:1.4rem">Process</h2>
+          <ol class="prose">
+            <li>Share document list + destination country</li>
+            <li>We confirm the correct attestation sequence</li>
+            <li>Notary / relevant board steps</li>
+            <li>MOFA / Apostille / Embassy as required</li>
+            <li>Delivery + optional courier guidance</li>
+          </ol>
+        </div>
+        <div class="glass card reveal">
+          <h2 class="section-title" style="font-size:1.4rem">Checklist starter</h2>
+          <ul class="prose">
+            <li>Original degree / transcript</li>
+            <li>CNIC / passport copy</li>
+            <li>Marriage / birth certificates (if needed)</li>
+            <li>Police clearance (destination dependent)</li>
+            <li>Clear scans for pre-check</li>
+          </ul>
+          <p class="text-muted" style="font-size:0.85rem">Fees vary by document type and destination. Request a quote — no surprise sequencing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <form id="attestForm" class="glass card reveal" style="max-width:640px;margin-inline:auto">
+          <h2 style="font-family:var(--font-display);margin-bottom:1rem">Request an attestation quote</h2>
+          <div class="form-row">
+            <div class="form-group"><label>Name *</label><input class="form-control" name="name" required /></div>
+            <div class="form-group"><label>Phone *</label><input class="form-control" name="phone" required /></div>
+          </div>
+          <div class="form-group"><label>Email</label><input class="form-control" name="email" type="email" /></div>
+          <div class="form-group"><label>Destination country *</label><input class="form-control" name="destination" required placeholder="e.g. UAE, Germany, Saudi Arabia" /></div>
+          <div class="form-group"><label>Documents to attest</label><textarea class="form-control" name="documents" placeholder="Degree, transcript, marriage certificate…"></textarea></div>
+          <button class="btn btn-gold w-full" type="submit">Get quote</button>
+          <div class="form-msg" id="attestMsg"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script>
+    document.getElementById('attestForm')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      const msg = document.getElementById('attestMsg');
+      await SalarAPI.saveLead('attestation', data);
+      msg.className = 'form-msg show ok';
+      msg.textContent = 'Request received. We will share a quote and checklist shortly.';
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
