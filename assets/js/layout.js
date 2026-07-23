@@ -62,7 +62,10 @@
     return `
       <a href="${href('index.html')}" class="logo" aria-label="${brand} home">
         <span class="logo-mark">SK</span>
-        <span class="logo-text"><span>${brand}</span></span>
+        <span class="logo-text">
+          <span class="nav-name">${brand}</span>
+          <small class="nav-sub">A Salar Outsourcing brand</small>
+        </span>
       </a>`;
   }
 
@@ -70,6 +73,16 @@
     const el = document.getElementById('site-header');
     if (!el) return;
     el.innerHTML = `
+      <div class="brand-bar">
+        <div class="container">
+          <span>A service by <a href="https://salaroutsourcing.com">Salar Outsourcing</a> — Pakistan’s multi-service company</span>
+          <div class="brand-bar-links">
+            <a href="${href('ausbildung.html')}">Ausbildung Jobs</a>
+            <a href="${href('portal.html')}">Client Portal</a>
+            <a href="tel:+923045999859">${C().phoneDisplay || '+92 304 5999859'}</a>
+          </div>
+        </div>
+      </div>
       <a href="#main" class="skip-link">Skip to main content</a>
       <header class="site-header" id="header">
         <div class="container header-inner">
@@ -78,7 +91,7 @@
           <div class="header-actions">
             <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle English / Urdu summary">EN</button>
             <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
-              <span data-theme-icon>☀</span>
+              <span data-theme-icon>☾</span>
             </button>
             <a href="${href('eligibility.html')}" class="btn btn-ghost btn-sm btn-portal">Quiz</a>
             <a href="${href('contact.html')}" class="btn btn-gold btn-sm">Free Consult</a>

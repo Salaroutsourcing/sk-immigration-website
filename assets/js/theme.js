@@ -1,5 +1,5 @@
 /**
- * Theme toggle with localStorage persistence
+ * Theme toggle — live site defaults to light
  */
 (function () {
   const KEY = 'salar-theme';
@@ -14,7 +14,7 @@
   }
 
   const saved = localStorage.getItem(KEY);
-  apply(saved || 'dark'); // always dark by default
+  apply(saved || 'light');
 
   window.SalarTheme = {
     toggle() {
