@@ -5,12 +5,12 @@
 (function () {
   const C = () => window.SALAR_CONFIG || {};
 
-  /** Fix relative links when page is in /blog/.../ subfolders */
+  /** Fix relative links when page is in a subfolder */
   function basePrefix() {
     if (location.pathname.includes('/blog/') && location.pathname.split('/').filter(Boolean).length >= 2) {
       return '../../';
     }
-    if (location.pathname.includes('/admin')) return '../';
+    if (location.pathname.includes('/answers/') || location.pathname.includes('/admin')) return '../';
     return '';
   }
 
@@ -28,9 +28,19 @@
     { href: 'contact.html', label: 'Contact', id: 'contact' },
   ];
 
+  /** Pages without their own nav entry highlight their closest parent */
+  const NAV_ALIAS = {
+    calculator: 'checklist',
+    compare: 'checklist',
+    attestation: 'services',
+    eligibility: 'home',
+  };
+
   function activeId() {
+    if (location.pathname.includes('/answers/')) return 'faq';
     if (location.pathname.includes('/blog/')) return 'blog';
-    return document.body.dataset.page || 'home';
+    const page = document.body.dataset.page || 'home';
+    return NAV_ALIAS[page] || page;
   }
 
   function href(path) {
@@ -61,7 +71,7 @@
     const brand = C().brandFull || C().brand || 'SK Immigration Services';
     return `
       <a href="${href('index.html')}" class="logo" aria-label="${brand} home">
-        <span class="logo-mark">SK</span>
+        <span class="logo-mark"><span>SK</span></span>
         <span class="logo-text">
           <span class="nav-name">${brand}</span>
           <small class="nav-sub">A Salar Outsourcing brand</small>

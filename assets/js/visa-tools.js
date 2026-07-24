@@ -97,8 +97,8 @@
 
           <div class="hero-ctas mt-2">
             <a class="btn btn-gold" href="${waLink(`Hi SK Immigration, please review my ${c.name} ${type} checklist (${done}/${docs.length} done).`)}">WhatsApp my checklist</a>
-            <a class="btn btn-navy" href="contact.html">Email me a personal list</a>
-            <a class="btn btn-ghost" href="${c.guide_url}">Full ${c.name} guide</a>
+            <a class="btn btn-navy" href="${BASE}contact.html">Email me a personal list</a>
+            <a class="btn btn-ghost" href="${BASE}${c.guide_url}">Full ${c.name} guide</a>
             <button type="button" class="btn btn-ghost" id="ckReset">Reset ticks</button>
           </div>
           <form id="ckLead" class="glass-strong mt-2" style="padding:1rem;border-radius:1rem;border:1px solid var(--glass-border)">
@@ -202,9 +202,9 @@
           <table class="data-table"><thead><tr><th>Item</th><th>Range</th></tr></thead>
           <tbody>${(c.costs || []).map((row) => `<tr><td>${row.item}</td><td>${row.amount}</td></tr>`).join('')}</tbody></table>
           <div class="hero-ctas mt-2">
-            <a class="btn btn-gold" href="checklist.html?country=${c.code}">Documents for ${c.name}</a>
-            <a class="btn btn-navy" href="contact.html">Get personal budget plan</a>
-            <a class="btn btn-ghost" href="compare.html?a=${c.code}">Compare with another country</a>
+            <a class="btn btn-gold" href="${BASE}checklist.html?country=${c.code}">Documents for ${c.name}</a>
+            <a class="btn btn-navy" href="${BASE}contact.html">Get personal budget plan</a>
+            <a class="btn btn-ghost" href="${BASE}compare.html?a=${c.code}">Compare with another country</a>
           </div>
         </div>`;
 
@@ -262,10 +262,10 @@
           </table>
           <p class="text-muted" style="font-size:0.9rem;margin-top:1rem">${intel.disclaimer}</p>
           <div class="hero-ctas mt-2">
-            <a class="btn btn-gold" href="eligibility.html">Find my best fit (quiz)</a>
-            <a class="btn btn-navy" href="contact.html">Free consult on both</a>
-            <a class="btn btn-ghost" href="checklist.html?country=${ca.code}">Checklist ${ca.name}</a>
-            <a class="btn btn-ghost" href="checklist.html?country=${cb.code}">Checklist ${cb.name}</a>
+            <a class="btn btn-gold" href="${BASE}eligibility.html">Find my best fit (quiz)</a>
+            <a class="btn btn-navy" href="${BASE}contact.html">Free consult on both</a>
+            <a class="btn btn-ghost" href="${BASE}checklist.html?country=${ca.code}">Checklist ${ca.name}</a>
+            <a class="btn btn-ghost" href="${BASE}checklist.html?country=${cb.code}">Checklist ${cb.name}</a>
           </div>
         </div>`;
 

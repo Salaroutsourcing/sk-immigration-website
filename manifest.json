@@ -4,8 +4,8 @@
   "description": "Student visas, Ausbildung, jobs and document attestation. A division of Salar Outsourcing.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a1628",
-  "theme_color": "#0a1628",
+  "background_color": "#f5f7fb",
+  "theme_color": "#0f172a",
   "icons": [
     {
       "src": "assets/img/logo.svg",

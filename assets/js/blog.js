@@ -24,6 +24,26 @@
     return posts.find((p) => p.slug === slug);
   }
 
+  function setMeta(attr, key, value) {
+    let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(attr, key);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', value);
+  }
+
+  function setLink(rel, hrefValue) {
+    let el = document.head.querySelector(`link[rel="${rel}"]`);
+    if (!el) {
+      el = document.createElement('link');
+      el.setAttribute('rel', rel);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('href', hrefValue);
+  }
+
   window.SalarBlog = {
     async mountList(selector) {
       const el = document.querySelector(selector);
@@ -62,7 +82,9 @@
         el.innerHTML = `<div class="glass card"><h1>Post not found</h1><p class="text-muted">This article may have been removed.</p><a class="btn btn-gold mt-2" href="blog.html">Back to blog</a></div>`;
         return;
       }
-      document.title = `${post.title} | Salar Outsourcing Blog`;
+      document.title = `${post.title} | SK Immigration Services`;
+      setMeta('name', 'description', (post.excerpt || post.title).slice(0, 158));
+      setLink('canonical', `${location.origin}/blog-post.html?slug=${encodeURIComponent(post.slug)}`);
       el.innerHTML = `
         <article class="glass card" style="padding:2rem">
           <p class="eyebrow">${post.category} · ${post.date}</p>

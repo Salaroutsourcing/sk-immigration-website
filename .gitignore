@@ -4,3 +4,10 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# os / editor cruft
+.DS_Store
+**/.DS_Store
+Thumbs.db
+node_modules/
+*.log

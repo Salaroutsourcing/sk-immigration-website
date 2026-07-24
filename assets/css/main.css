@@ -3,8 +3,6 @@
    Light navy + gold · Poppins / Inter · Soft glass
    ═══════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
-
 :root {
   --bg: #f5f7fb;
   --bg2: #eef2f9;
@@ -509,6 +507,10 @@ textarea {
   border-radius: 50%;
   opacity: 0.25;
 }
+.logo-mark > span {
+  position: relative;
+  z-index: 1;
+}
 .nav-desktop {
   display: none;
   align-items: center;
@@ -689,6 +691,10 @@ textarea {
 }
 .card:hover {
   transform: translateY(-4px);
+  border-color: var(--gold-soft);
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.12), 0 8px 24px rgba(15, 23, 42, 0.07);
+}
+[data-theme='dark'] .card:hover {
   border-color: rgba(212, 175, 55, 0.45);
   box-shadow: 0 28px 56px -16px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.12);
 }
@@ -895,7 +901,7 @@ textarea.form-control {
   }
 }
 .footer-brand p {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.95rem;
   margin-top: 0.75rem;
   max-width: 18rem;
@@ -905,19 +911,19 @@ textarea.form-control {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--gold-500);
+  color: var(--gold);
   margin-bottom: 1rem;
   font-weight: 700;
 }
 .footer-col a {
   display: block;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.92rem;
   padding: 0.3rem 0;
   font-weight: 500;
 }
 .footer-col a:hover {
-  color: var(--gold-400);
+  color: var(--gold);
 }
 .footer-bottom {
   display: flex;
@@ -925,9 +931,9 @@ textarea.form-control {
   justify-content: space-between;
   gap: 1rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--glass-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   font-size: 0.82rem;
-  color: var(--text-dim);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .wa-float {
@@ -1190,13 +1196,10 @@ table.data th {
 
 /* ——— Killer tools / AI / pricing ——— */
 .lead-answer {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(10, 22, 40, 0.35));
-  border: 1px solid var(--glass-border);
   border-radius: 1rem;
   padding: 1rem 1.15rem;
   line-height: 1.7;
   margin: 1rem 0 1.25rem;
-  color: var(--text);
 }
 .viz-strip {
   display: grid;
@@ -1391,9 +1394,7 @@ table.data th {
   text-align: center;
   padding: 1rem 0.5rem;
   border-radius: 1rem;
-  border: 1px solid var(--glass-border);
-  background: var(--glass);
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
 }
 .path-chooser a:hover {
   border-color: var(--gold-500);
@@ -1553,11 +1554,6 @@ table.data th {
   font-weight: 600;
   cursor: pointer;
 }
-.hero-simple .stat-row,
-.hero-simple .hero-glass-float,
-.hero-simple .grid-2.mt-2 {
-  display: none;
-}
 @media (max-width: 900px) {
   .viz-strip,
   .path-chooser {
@@ -1653,8 +1649,12 @@ table.data th {
 .site-footer .logo-text span,
 .site-footer .parent-line { color: #fff; }
 .nav-desktop a { color: var(--t2); font-weight: 500; }
-.nav-desktop a:hover,
-.nav-desktop a.active { color: var(--navy); }
+.nav-desktop a:hover { color: var(--navy); }
+.nav-desktop a.active {
+  color: var(--navy);
+  font-weight: 700;
+  box-shadow: inset 0 -2px 0 var(--gold);
+}
 .nav-name { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--t1); line-height: 1.2; }
 .nav-sub { font-size: 10px; color: var(--t3); font-weight: 500; }
 .path-chooser a {
@@ -1666,14 +1666,14 @@ table.data th {
   background: var(--gold-light);
 }
 .lead-answer {
-  background: linear-gradient(135deg, #fffbeb, #fef3c7) !important;
-  border: 1px solid #fcd34d !important;
-  color: #92400e !important;
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 1px solid #fcd34d;
+  color: #92400e;
 }
 [data-theme='dark'] .lead-answer {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(10, 22, 40, 0.35)) !important;
-  border: 1px solid var(--glass-border) !important;
-  color: var(--text) !important;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(10, 22, 40, 0.35));
+  border: 1px solid var(--glass-border);
+  color: var(--text);
 }
 .media-card .media-overlay {
   background: linear-gradient(180deg, transparent 15%, rgba(15, 23, 42, 0.88) 100%);

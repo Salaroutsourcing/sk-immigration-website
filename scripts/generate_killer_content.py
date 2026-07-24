@@ -1,12 +1,27 @@
 #!/usr/bin/env python3
 """Generate deep country guides, visa intel, AI KB, Q&A pages, sitemap."""
 from __future__ import annotations
+import hashlib
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOMAIN = "https://salaroutsourcing.com"
 TODAY = "2026-07-23"
+
+
+def stable_id(text: str) -> str:
+    """Deterministic across runs — Python's built-in hash() is salted per process."""
+    return hashlib.sha1(text.encode("utf-8")).hexdigest()[:8]
+
+
+def clip(text: str, limit: int = 158) -> str:
+    """Trim a meta description at a word boundary so snippets never cut mid-word."""
+    text = " ".join(text.split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(" ,.;:—-")
+    return cut + "…"
 
 # Shared document templates
 COMMON_STUDY = [
@@ -1147,7 +1162,7 @@ def country_article_html(c):
         f"SK Immigration Services — free consult, no fake guarantees."
     )
     return f"""<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1159,6 +1174,9 @@ def country_article_html(c):
   <meta property="og:url" content="{DOMAIN}/blog/{c['slug']}/" />
   <meta property="og:type" content="article" />
   <link rel="icon" href="../../assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
   <link rel="stylesheet" href="../../assets/css/main.css" />
   <script type="application/ld+json">
   {{
@@ -1292,19 +1310,23 @@ def qa_page_html(item, related_slugs):
         <h2>Cite this</h2>
         <p>SK Immigration Services (division of Salar Outsourcing) · https://salaroutsourcing.com · Services@salaroutsourcing.com · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Mon–Sat 10:00–19:00.</p>
     """
+    desc = clip(item['short'])
     return f"""<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{item['q']} | SK Immigration Services</title>
-  <meta name="description" content="{item['short'][:160]}" />
+  <meta name="description" content="{desc}" />
   <link rel="canonical" href="{DOMAIN}/answers/{item['slug']}.html" />
   <meta property="og:title" content="{item['q']}" />
-  <meta property="og:description" content="{item['short'][:160]}" />
+  <meta property="og:description" content="{desc}" />
   <meta property="og:url" content="{DOMAIN}/answers/{item['slug']}.html" />
   <meta property="og:type" content="article" />
   <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
   <link rel="stylesheet" href="../assets/css/main.css" />
   <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>
 </head>
@@ -1352,7 +1374,7 @@ def build_ai_kb(intel):
         })
         for f in c["faq"]:
             entries.append({
-                "id": f"faq-{c['code']}-{abs(hash(f['q']))%10**8}",
+                "id": f"faq-{c['code']}-{stable_id(f['q'])}",
                 "questions": [f["q"], c["name"]],
                 "answer": f["a"],
                 "url": c["guide_url"],
