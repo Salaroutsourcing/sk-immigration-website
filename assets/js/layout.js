@@ -69,11 +69,15 @@
 
   function logoBlock() {
     const brand = C().brandFull || C().brand || 'SK Immigration Services';
+    const brandShort = C().brand || brand;
     return `
       <a href="${href('index.html')}" class="logo" aria-label="${brand} home">
         <span class="logo-mark"><span>SK</span></span>
         <span class="logo-text">
-          <span class="nav-name">${brand}</span>
+          <span class="nav-name">
+            <span class="nav-name-long">${brand}</span>
+            <span class="nav-name-short" aria-hidden="true">${brandShort}</span>
+          </span>
           <small class="nav-sub">A Salar Outsourcing brand</small>
         </span>
       </a>`;
@@ -85,7 +89,7 @@
     el.innerHTML = `
       <div class="brand-bar">
         <div class="container">
-          <span>A service by <a href="https://salaroutsourcing.com">Salar Outsourcing</a> — Pakistan’s multi-service company</span>
+          <span>A service by <a href="https://www.salaroutsourcing.com">Salar Outsourcing</a> — Pakistan’s multi-service company</span>
           <div class="brand-bar-links">
             <a href="${href('ausbildung.html')}">Ausbildung Jobs</a>
             <a href="${href('portal.html')}">Client Portal</a>
@@ -124,6 +128,12 @@
           <a href="${href('about.html')}">About</a>
           <a href="${href('attestation.html')}">Attestation</a>
           <a href="${C().whatsappLink || '#'}" class="btn btn-whatsapp mt-2" target="_blank" rel="noopener">WhatsApp</a>
+          <div class="mobile-nav-toggles">
+            <button type="button" class="lang-toggle" aria-label="Toggle English / Urdu summary">EN</button>
+            <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
+              <span data-theme-icon>☾</span>
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -222,11 +232,11 @@
   }
 
   function bindLangToggle() {
-    const btn = document.getElementById('langToggle');
-    if (!btn) return;
+    const buttons = [...document.querySelectorAll('.lang-toggle')];
+    if (!buttons.length) return;
     const apply = (ur) => {
       document.documentElement.lang = ur ? 'ur' : 'en';
-      btn.textContent = ur ? 'UR' : 'EN';
+      buttons.forEach((b) => { b.textContent = ur ? 'UR' : 'EN'; });
       document.querySelectorAll('[data-en][data-ur]').forEach((el) => {
         el.textContent = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
       });
@@ -249,7 +259,7 @@
       localStorage.setItem('sk_lang', ur ? 'ur' : 'en');
     };
     apply(localStorage.getItem('sk_lang') === 'ur');
-    btn.addEventListener('click', () => apply(btn.textContent !== 'UR'));
+    buttons.forEach((b) => b.addEventListener('click', () => apply(b.textContent !== 'UR')));
   }
 
   document.addEventListener('DOMContentLoaded', () => {

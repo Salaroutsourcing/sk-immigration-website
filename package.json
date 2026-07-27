@@ -1,0 +1,16 @@
+{
+  "name": "sk-immigration-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SK Immigration Services — static site plus Cloudflare Worker lead API",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create sk-immigration-leads",
+    "db:migrate": "wrangler d1 execute sk-immigration-leads --remote --file=./schema.sql",
+    "db:migrate:local": "wrangler d1 execute sk-immigration-leads --local --file=./schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.42.0"
+  }
+}

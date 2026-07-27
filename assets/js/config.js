@@ -7,7 +7,7 @@ window.SALAR_CONFIG = {
   brandFull: 'SK Immigration Services',
   parentLine: 'A division of Salar Outsourcing',
   tagline: 'Study abroad. Work abroad. Trusted guidance.',
-  domain: 'https://salaroutsourcing.com',
+  domain: 'https://www.salaroutsourcing.com',
   email: 'Services@salaroutsourcing.com',
   phone: '+92 304 5999859',
   phoneDisplay: '+92 304 5999859',
@@ -27,8 +27,6 @@ window.SALAR_CONFIG = {
       map: 'https://maps.google.com/?q=Alfazal+Plaza+Satellite+Town+Rawalpindi',
     },
   ],
-
-  adminPasswordHint: 'Salaar@98',
 
   social: {
     instagram: 'https://www.instagram.com/skimmigrationonservices/',

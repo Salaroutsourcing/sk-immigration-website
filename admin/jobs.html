@@ -173,12 +173,13 @@
         document.getElementById('loginMsg').textContent = 'Incorrect password.';
       }
     });
-    document.getElementById('logoutBtn')?.addEventListener('click', (e) => { e.preventDefault(); SalarAPI.logoutAdmin(); location.reload(); });
-    if (SalarAPI.isAdminLoggedIn()) {
+    document.getElementById('logoutBtn')?.addEventListener('click', async (e) => { e.preventDefault(); await SalarAPI.logoutAdmin(); location.reload(); });
+    SalarAPI.isAdminLoggedIn().then((ok) => {
+      if (!ok) return;
       document.getElementById('loginGate').classList.add('hidden');
       document.getElementById('adminApp').classList.remove('hidden');
       load();
-    }
+    });
   </script>
 </body>
 </html>
