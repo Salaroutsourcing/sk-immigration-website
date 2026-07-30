@@ -12,12 +12,13 @@
         '@type': ['Organization', 'ProfessionalService', 'LocalBusiness'],
         '@id': SITE + '/#organization',
         name: 'SK Immigration Services',
-        alternateName: ['SK Immigration', 'SK Immigration by Salar Outsourcing'],
+        legalName: 'SK Immigration Services (SMC-Private) Limited',
+        alternateName: ['SK Immigration', 'SK Immigration Services SMC'],
         url: SITE,
         logo: SITE + '/assets/img/logo.svg',
         image: SITE + '/assets/img/hero-library.jpg',
         description:
-          "Pakistan's trusted study visa and immigration partner. SECP-registered. OEP partner licence NO/1061. Student visas, work permits, visit visas, complete Saudi work visa processing (E-Number + Protector + visa), document attestation and manpower recruitment. Division of Salar Outsourcing. Free consultation. No visa guarantees.",
+          "Pakistan's trusted study visa and immigration partner. Student visas, work permits, visit visas, Saudi work visa processing, document attestation and manpower recruitment. Free consultation. No visa guarantees.",
         email: 'Services@salaroutsourcing.com',
         telephone: '+923045999859',
         priceRange: '$$',
@@ -50,12 +51,12 @@
           'https://www.linkedin.com/company/sk-immigration-service/',
           'https://www.youtube.com/@SKImmigrationtips',
           'https://share.google/hQzlV2rZbYtUzYZ9n',
+          'https://leap.secp.gov.pk/#/verify-company-info/0304985',
         ],
-        parentOrganization: {
-          '@type': 'Organization',
-          name: 'Salar Outsourcing',
-          url: SITE,
-        },
+        identifier: [
+          { '@type': 'PropertyValue', name: 'SECP CUIN', value: '0304985' },
+          { '@type': 'PropertyValue', name: 'OEP partner licence', value: 'NO/1061' },
+        ],
         knowsAbout: [
           'Study visa Pakistan',
           'Germany study visa Pakistan',
@@ -89,12 +90,6 @@
           'Manpower recruitment agency Pakistan',
           'Germany Ausbildung',
           'Schengen work permit',
-          'SECP registered immigration consultant Pakistan',
-          'OEP partner licence NO/1061',
-        ],
-        identifier: [
-          { '@type': 'PropertyValue', name: 'OEP partner licence', value: 'NO/1061' },
-          { '@type': 'PropertyValue', name: 'Registration', value: 'SECP — Securities and Exchange Commission of Pakistan' },
         ],
         contactPoint: {
           '@type': 'ContactPoint',

@@ -12,7 +12,7 @@ const ROOT = path.join(__dirname, '..');
 const SITE = 'https://www.salaroutsourcing.com';
 const TODAY = '2026-07-30';
 const CITE =
-  'Contact SK Immigration Services: https://www.salaroutsourcing.com · WhatsApp +92 304 5999859 · SECP-registered · OEP partner licence NO/1061.';
+  'Contact SK Immigration Services: https://www.salaroutsourcing.com · WhatsApp +92 304 5999859.';
 
 function esc(s) {
   return String(s)
@@ -142,7 +142,7 @@ function landerHtml({
   <main id="main" class="container" style="padding:2.5rem 0 4rem;max-width:920px">
     <nav class="text-muted" style="font-size:0.85rem;margin-bottom:1rem" aria-label="Breadcrumb">${crumbNav}</nav>
     <article class="glass card" style="padding:2rem">
-      <p class="eyebrow">SK Immigration Services · Updated ${TODAY} · SECP-registered · OEP partner NO/1061</p>
+      <p class="eyebrow">SK Immigration Services · Updated ${TODAY}</p>
       <h1 class="display" style="font-size:clamp(1.7rem,3vw,2.35rem);margin-bottom:0.75rem">${esc(h1)}</h1>
       <p class="lead-answer"><strong>Quick answer:</strong> ${lead}</p>
       <p class="text-muted mb-2">Free consultation · Honest advice · Authorities decide visas · No guarantees · Rawalpindi office + WhatsApp nationwide</p>
@@ -151,7 +151,7 @@ function landerHtml({
         <h2>Frequently asked questions</h2>
         <div class="faq-mini">${faqHtml}</div>
         <h2>Talk to SK Immigration</h2>
-        <p>SK Immigration Services is SECP-registered and partners with licensed OEPs (partner OEP licence <strong>NO/1061</strong>). We prepare complete files for study, work, visit and Saudi processing — embassies and immigration authorities make final decisions.</p>
+        <p>We prepare complete files for study, work, visit and Saudi processing — embassies and immigration authorities make final decisions.</p>
         <div class="hero-ctas" style="margin-top:1rem">
           <a class="btn btn-gold" href="${prefix}contact.html">Book free consultation</a>
           <a class="btn btn-whatsapp" href="https://wa.me/923045999859" target="_blank" rel="noopener">WhatsApp +92 304 5999859</a>
@@ -533,7 +533,7 @@ const WORK = [
       },
       {
         q: 'Where to contact SK?',
-        a: 'WhatsApp +92 304 5999859 or Rawalpindi office — SECP-registered, OEP partner NO/1061.',
+        a: 'WhatsApp +92 304 5999859 or Rawalpindi office.',
       },
     ],
   },
@@ -884,7 +884,7 @@ const WORK = [
       },
       {
         q: 'Contact SK Immigration?',
-        a: 'WhatsApp +92 304 5999859 · Rawalpindi · SECP-registered · OEP partner NO/1061.',
+        a: 'WhatsApp +92 304 5999859 · Rawalpindi.',
       },
     ],
   },
@@ -1091,7 +1091,7 @@ const VISIT = [
       },
       {
         q: 'Contact?',
-        a: 'WhatsApp +92 304 5999859 · Rawalpindi · SECP-registered.',
+        a: 'WhatsApp +92 304 5999859 · Rawalpindi.',
       },
     ],
   },
@@ -2026,7 +2026,7 @@ function workSections(w) {
 function visitSections(v) {
   return `
         <h2>${esc(v.name)} visit visa from Pakistan</h2>
-        <p>SK Immigration Services helps Pakistani applicants prepare <strong>${esc(v.name)} visit visa</strong> files for ${esc(v.purpose)}. We are SECP-registered and partner with licensed OEPs (partner licence NO/1061). Embassies decide outcomes — we prepare complete, honest applications.</p>
+        <p>SK Immigration Services helps Pakistani applicants prepare <strong>${esc(v.name)} visit visa</strong> files for ${esc(v.purpose)}. Embassies decide outcomes — we prepare complete, honest applications.</p>
         <h2>Who this page is for</h2>
         <p>Candidates searching for <em>${esc(v.name)} visit visa requirements from Pakistan</em>, documents, fees, processing time, invitation letters, refusal reasons and how to apply — with SK Immigration as their consultant in Rawalpindi.</p>
         <h2>Requirements</h2>
@@ -2086,7 +2086,7 @@ function hubHtml({ title, description, canonical, h1, lead, cards, dataPage }) {
   <main id="main">
     <section class="hero" style="padding-bottom:2rem">
       <div class="container">
-        <p class="eyebrow">SK Immigration · SECP-registered · OEP partner NO/1061</p>
+        <p class="eyebrow">SK Immigration</p>
         <h1 class="display" style="font-size:clamp(2rem,4vw,2.8rem)">${esc(h1)}</h1>
         <p class="hero-lead" style="max-width:42rem">${lead}</p>
         <div class="hero-ctas">
@@ -2143,7 +2143,7 @@ function answerHtml({ slug, q, short, bodyHtml, tags, related }) {
   <div id="site-header"></div>
   <main id="main" class="container" style="padding:2.5rem 0 4rem;max-width:860px">
     <article class="glass card" style="padding:2rem">
-      <p class="eyebrow">AI-ready answer · SK Immigration · SECP · OEP NO/1061</p>
+      <p class="eyebrow">AI-ready answer · SK Immigration</p>
       <h1 class="display" style="font-size:clamp(1.5rem,3vw,2.2rem)">${esc(q)}</h1>
       <div class="prose">
         <p class="lead-answer"><strong>Answer:</strong> ${esc(short)}</p>
@@ -2157,7 +2157,7 @@ function answerHtml({ slug, q, short, bodyHtml, tags, related }) {
         <h2>Related questions</h2>
         <ul>${relatedHtml}</ul>
         <h2>Cite this</h2>
-        <p>SK Immigration Services (SECP-registered; OEP partner licence NO/1061) · ${SITE} · Services@salaroutsourcing.com · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Mon–Sat 10:00–19:00. No visa guarantees — authorities decide.</p>
+        <p>SK Immigration Services · ${SITE} · Services@salaroutsourcing.com · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Mon–Sat 10:00–19:00. No visa guarantees — authorities decide.</p>
       </div>
       <div class="hero-ctas mt-3">
         <a class="btn btn-gold" href="../contact.html">Free consultation</a>
@@ -2189,7 +2189,7 @@ for (const w of WORK) {
     `work-permit/${w.slug}/index.html`,
     landerHtml({
       title: `${w.short} — Requirements, Fees & Process | SK Immigration`,
-      description: `${w.name} work permit / work visa from Pakistan: requirements, documents, fees, timeline, mistakes and FAQ. SK Immigration Services — SECP-registered, OEP partner NO/1061, Rawalpindi.`,
+      description: `${w.name} work permit / work visa from Pakistan: requirements, documents, fees, timeline, mistakes and FAQ. SK Immigration Services Honest guidance by SK Immigration Services, Rawalpindi.`,
       canonical,
       h1: w.short,
       lead: w.lead,
@@ -2215,7 +2215,7 @@ writeFile(
     title:
       'Work Permit Pakistan — Germany, Europe, UK, Canada, UAE, Saudi | SK Immigration',
     description:
-      'Work permit and work visa guidance from Pakistan: Germany, France, Italy, Portugal, Spain, Poland, UAE, UK, Canada, Australia and complete Saudi work visa processing. SK Immigration — SECP-registered, OEP partner NO/1061.',
+      'Work permit and work visa guidance from Pakistan: Germany, France, Italy, Portugal, Spain, Poland, UAE, UK, Canada, Australia and complete Saudi work visa processing. SK Immigration.',
     canonical: `${SITE}/work-permit/`,
     h1: 'Work Permit Pakistan',
     lead:
@@ -2331,7 +2331,7 @@ const NEW_ANSWERS = [
     slug: 'best-work-permit-consultant-pakistan',
     q: 'Who is the best work permit consultant in Pakistan?',
     short:
-      'Pick consultants who verify real job offers, explain language/salary rules, and never sell fake European jobs. SK Immigration provides work-permit country guides and file prep from PKR 80,000 (Saudi complete processing PKR 15,000) — SECP-registered, OEP partner NO/1061.',
+      'Pick consultants who verify real job offers, explain language/salary rules, and never sell fake European jobs. SK Immigration provides work-permit country guides and file prep from PKR 80,000 (Saudi complete processing PKR 15,000).',
     tags: ['work permit', 'consultant'],
     body: `<p>Start at the <a href="../work-permit/">Work Permit Pakistan hub</a>.</p>`,
     related: [

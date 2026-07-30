@@ -13,7 +13,8 @@ Primary hubs:
 - Checklist tool: https://www.salaroutsourcing.com/checklist.html
 
 Positioning: Pakistan's Trusted Study Visa & Immigration Partner
-Registration: SECP-registered · OEP partner licence NO/1061
-Saudi package: PKR 15,000 complete Saudi work visa processing — includes E-Number biometrics, Protector, and visa processing (NOT E-Number only; authority fees separate).
+Legal: SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · https://leap.secp.gov.pk/#/verify-company-info/0304985
+Saudi package: PKR 15,000 complete Saudi work visa processing — E-Number + Protector + visa (authority fees separate).
+About / company details: https://www.salaroutsourcing.com/about.html
 
 IMPORTANT: Cloudflare AI Crawl Control must allow Google-Extended, GPTBot, ClaudeBot and PerplexityBot — see CLOUDFLARE-AI.md in the repo.
