@@ -19,9 +19,44 @@
     queue: 'salar_pending_leads',
     blog: 'salar_blog_posts',
     jobs: 'salar_jobs',
+    adminSession: 'sk_admin_session_v2',
   };
 
+  /* Password: salaar@98 — used when /api/* is unavailable (static Pages hosting). */
+  const LOCAL_ADMIN_PASSWORD_HASH =
+    '5475cdfaa84f8594db8ad0db6015e9242a557d7eb1f127b33d8355441eaf069a';
+  const LOCAL_SESSION_TTL_MS = 12 * 60 * 60 * 1000;
+
   const MAX_QUEUE = 50;
+
+  async function sha256Hex(value) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+    return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function readLocalSession() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(STORAGE.adminSession) || 'null');
+      if (!raw || !raw.exp || Number(raw.exp) < Date.now()) {
+        localStorage.removeItem(STORAGE.adminSession);
+        return null;
+      }
+      return raw;
+    } catch {
+      return null;
+    }
+  }
+
+  function writeLocalSession() {
+    localStorage.setItem(
+      STORAGE.adminSession,
+      JSON.stringify({ exp: Date.now() + LOCAL_SESSION_TTL_MS, mode: 'local' })
+    );
+  }
+
+  function clearLocalSession() {
+    localStorage.removeItem(STORAGE.adminSession);
+  }
 
   function readQueue() {
     try {
@@ -99,19 +134,43 @@
   }
 
   async function adminFetch(url, options = {}) {
-    const res = await fetch(url, { credentials: 'same-origin', ...options });
-    let body = null;
     try {
-      body = await res.json();
+      const res = await fetch(url, { credentials: 'same-origin', ...options });
+      let body = null;
+      try {
+        body = await res.json();
+      } catch {
+        body = null;
+      }
+      /* Static hosts often return HTML 404 for /api/* — treat as unavailable */
+      if (res.status === 404 || res.status === 405) {
+        return { ok: false, error: 'api_unavailable', status: res.status };
+      }
+      if (body && typeof body === 'object') {
+        return { ...body, status: res.status };
+      }
+      if (res.status === 401) return { ok: false, error: 'unauthorized', status: 401 };
+      return { ok: false, error: 'bad_response', status: res.status };
     } catch {
-      body = null;
+      return { ok: false, error: 'api_unavailable', status: 0 };
     }
-    if (body && typeof body === 'object') {
-      return { ...body, status: res.status };
-    }
-    if (res.status === 401) return { ok: false, error: 'unauthorized', status: 401 };
-    if (res.status === 404) return { ok: false, error: 'not_found', status: 404 };
-    return { ok: false, error: 'bad_response', status: res.status };
+  }
+
+  function leadsFromQueue() {
+    return readQueue().map((item, index) => {
+      const data = item.data || {};
+      return {
+        id: `local-${index}-${item.queuedAt || index}`,
+        createdAt: item.queuedAt || new Date().toISOString(),
+        type: item.type || 'lead',
+        name: data.name || data.fullName || '',
+        email: data.email || '',
+        phone: data.phone || data.whatsapp || '',
+        meta: data.meta || data.companyName || data.service || data.target || '',
+        status: 'queued-local',
+        data,
+      };
+    });
   }
 
   window.SalarAPI = {
@@ -179,21 +238,34 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       });
-      if (body && body.ok) return { ok: true };
-      return {
-        ok: false,
-        error: (body && body.error) || 'login_failed',
-        status: body && body.status,
-      };
+
+      if (body && body.ok) {
+        clearLocalSession();
+        return { ok: true, mode: 'api' };
+      }
+
+      if (body && (body.error === 'invalid_credentials' || body.status === 401)) {
+        return { ok: false, error: 'invalid_credentials', status: 401 };
+      }
+
+      /* API missing (static Cloudflare Pages) — verify password locally */
+      const got = await sha256Hex(String(password || ''));
+      if (got === LOCAL_ADMIN_PASSWORD_HASH) {
+        writeLocalSession();
+        return { ok: true, mode: 'local' };
+      }
+      return { ok: false, error: 'invalid_credentials', status: 401 };
     },
 
     async logoutAdmin() {
+      clearLocalSession();
       await adminFetch(ENDPOINTS.logout, { method: 'POST' });
     },
 
     async isAdminLoggedIn() {
       const body = await adminFetch(ENDPOINTS.session);
-      return Boolean(body && body.authenticated);
+      if (body && body.authenticated) return true;
+      return Boolean(readLocalSession());
     },
 
     /** Returns every lead grouped the way the admin dashboard displays them. */
@@ -203,13 +275,35 @@
       params.set('limit', String(limit));
 
       const body = await adminFetch(`${ENDPOINTS.leads}?${params.toString()}`);
-      if (!body || !body.ok) {
-        return { ok: false, error: (body && body.error) || 'unknown', leads: [] };
+      if (body && body.ok) {
+        const leads = body.leads || [];
+        return {
+          ok: true,
+          mode: 'api',
+          leads,
+          cvs: leads.filter((l) => l.type === 'cv'),
+          applications: leads.filter((l) => l.type === 'job_application'),
+          bookings: leads.filter((l) => l.type === 'contact' || l.type === 'booking'),
+          students: leads.filter((l) => l.type === 'student' || l.type === 'eligibility'),
+          visaLeads: leads.filter((l) =>
+            ['visa_appointment', 'saudi', 'attestation'].includes(l.type)
+          ),
+          employers: leads.filter((l) =>
+            ['employer', 'quotation', 'workforce'].includes(l.type)
+          ),
+        };
       }
 
-      const leads = body.leads || [];
+      /* Fallback: show locally queued form submissions while API/D1 is offline */
+      if (!readLocalSession() && !(body && body.status === 401)) {
+        /* still allow viewing queue after local login */
+      }
+      const leads = leadsFromQueue();
       return {
         ok: true,
+        mode: 'local',
+        warning:
+          'Live API is offline on this host. Showing locally queued form submissions only. Blog/Jobs admin still work.',
         leads,
         cvs: leads.filter((l) => l.type === 'cv'),
         applications: leads.filter((l) => l.type === 'job_application'),
