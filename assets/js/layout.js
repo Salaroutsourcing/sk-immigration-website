@@ -36,12 +36,12 @@
   const BASE = basePrefix();
 
   const NAV = [
-    { href: 'study-visa/', label: 'Study', id: 'study-visa' },
-    { href: 'work-permit/', label: 'Work', title: 'Work permits', id: 'work-permit' },
-    { href: 'visit-visa/', label: 'Visit', title: 'Visit visas', id: 'visit-visa' },
-    { href: 'visa-appointment/', label: 'Appts', title: 'Visa appointments', id: 'visa-appointment' },
-    { href: 'saudi-visa/saudi-visa-processing-pakistan/', label: 'Saudi', id: 'saudi-visa' },
-    { href: 'document-services/', label: 'Docs', title: 'Document attestation', id: 'document-services' },
+    { href: 'study-visa/', label: 'Study Visa', title: 'Study visa Pakistan', id: 'study-visa' },
+    { href: 'work-permit/', label: 'Work Permit', title: 'Work permits', id: 'work-permit' },
+    { href: 'visit-visa/', label: 'Visit Visa', title: 'Visit visas', id: 'visit-visa' },
+    { href: 'visa-appointment/', label: 'Appointments', title: 'Visa appointments', id: 'visa-appointment' },
+    { href: 'saudi-visa/saudi-visa-processing-pakistan/', label: 'Saudi Visa', title: 'Saudi work visa processing', id: 'saudi-visa' },
+    { href: 'document-services/', label: 'Attestation', title: 'Document attestation', id: 'document-services' },
     { href: 'contact.html', label: 'Contact', id: 'contact' },
   ];
 

@@ -1,4 +1,4 @@
-/* topbar-single-row v3 */
+/* topbar-single-row v4 — clear service names */
 /* ═══════════════════════════════════════════════════════════
    SK Immigration Services — Live Theme (salaroutsourcing.com)
    Light navy + gold · Poppins / Inter · Soft glass
@@ -574,10 +574,10 @@ textarea {
 .nav-desktop a,
 .nav-desktop .nav-pill {
   flex: 0 0 auto;
-  padding: 0.4rem 0.62rem;
-  font-size: 0.8rem;
+  padding: 0.38rem 0.5rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   line-height: 1;
   color: var(--text-muted);
   border-radius: 999px;
@@ -757,8 +757,8 @@ textarea {
 @media (min-width: 1280px) {
   .nav-desktop a,
   .nav-desktop .nav-pill {
-    padding: 0.42rem 0.75rem;
-    font-size: 0.84rem;
+    padding: 0.4rem 0.62rem;
+    font-size: 0.8rem;
   }
   .logo {
     max-width: 200px;
@@ -2005,14 +2005,21 @@ table.data th {
   font-size: 0.85rem;
   font-weight: 600;
 }
-@media (max-width: 1180px) {
+@media (max-width: 1280px) {
   .nav-desktop a,
   .nav-desktop .nav-pill {
-    padding: 0.38rem 0.55rem;
-    font-size: 0.76rem;
+    padding: 0.34rem 0.4rem;
+    font-size: 0.7rem;
   }
   .header-actions .btn-portal {
     display: none;
+  }
+}
+@media (max-width: 1180px) {
+  .nav-desktop a,
+  .nav-desktop .nav-pill {
+    padding: 0.32rem 0.34rem;
+    font-size: 0.66rem;
   }
 }
 @media (max-width: 1023px) {
