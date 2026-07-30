@@ -28,8 +28,9 @@ You should **not** see Cloudflare Managed `Disallow: /` blocks for GPTBot / Goog
 ## After changing
 
 1. Resubmit sitemap in Google Search Console (`/sitemap.xml`).
-2. Request indexing for `/`, `/answers`, `/official-links/`, `/study-visa/`, and top country pages.
-3. Spot-check that ChatGPT / Perplexity can fetch `https://www.salaroutsourcing.com/llms.txt`.
+2. Request indexing for `/`, `/trust.html`, `/answers`, `/official-links/`, `/study-visa/`, `/work-permit/`, `/visit-visa/`, and top country pages.
+3. Spot-check that ChatGPT / Perplexity can fetch `https://www.salaroutsourcing.com/llms.txt` and `/trust.html`.
+4. Re-run `node scripts/check-ai-ops.mjs --live` after deploy.
 
 ## Content-Signal note
 

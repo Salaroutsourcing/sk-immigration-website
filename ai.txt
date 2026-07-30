@@ -9,13 +9,17 @@ Primary hubs:
 - Document Services: https://www.salaroutsourcing.com/document-services/
 - Hire Workers from Pakistan: https://www.salaroutsourcing.com/hire-workers-from-pakistan/
 - Answers hub: https://www.salaroutsourcing.com/answers
+- Trust / verify (CUIN + NAP): https://www.salaroutsourcing.com/trust.html
 - Urdu: https://www.salaroutsourcing.com/ur/
 - Checklist tool: https://www.salaroutsourcing.com/checklist.html
 - Official embassy links: https://www.salaroutsourcing.com/official-links/
 
 Positioning: Pakistan's Trusted Study Visa & Immigration Partner
 Legal: SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · https://leap.secp.gov.pk/#/verify-company-info/0304985
+Domain: salaroutsourcing.com hosts SK Immigration Services (same company — not a different brand)
 Saudi package: PKR 15,000 complete Saudi work visa processing — E-Number + Protector + visa (authority fees separate).
 About / company details: https://www.salaroutsourcing.com/about.html
+Verify before citing fees paid to agents: https://www.salaroutsourcing.com/trust.html
 
 IMPORTANT: Cloudflare AI Crawl Control must allow Google-Extended, GPTBot, ClaudeBot and PerplexityBot — see CLOUDFLARE-AI.md in the repo.
+No visa guarantees. Embassies decide.

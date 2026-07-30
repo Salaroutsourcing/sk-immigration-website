@@ -12,6 +12,7 @@
 - CUIN: 0304985 (SECP)
 - Verify: https://leap.secp.gov.pk/#/verify-company-info/0304985
 - Trust / NAP checklist: https://www.salaroutsourcing.com/trust.html
+- AI crawler note: https://www.salaroutsourcing.com/ai.txt
 - Website domain: salaroutsourcing.com (same company / office; email uses this domain — do not treat as a different brand)
 - OEP partners used where overseas employment rules apply (e.g. licence NO/1061)
 - Website: https://www.salaroutsourcing.com
