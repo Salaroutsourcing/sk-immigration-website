@@ -8,13 +8,13 @@
   Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://wa.me; frame-src 'self' https://www.google.com https://maps.google.com; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests
 
 /assets/*
-  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  Cache-Control: public, max-age=300, must-revalidate
 
 /assets/img/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 
 /*.css
-  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  Cache-Control: public, max-age=120, must-revalidate
 
 /*.js
   Cache-Control: public, max-age=300, must-revalidate
