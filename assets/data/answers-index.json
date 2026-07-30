@@ -461,5 +461,23 @@
       "Ausbildung",
       "work"
     ]
+  },
+  {
+    "slug": "study-visa-consultant-lahore",
+    "q": "Is there a study visa consultant for Lahore?",
+    "short": "Yes. SK Immigration Services supports Lahore applicants by WhatsApp and at our Rawalpindi office. Free consultation for study, work and visit files — no visa guarantees.",
+    "tags": [
+      "local",
+      "consultant"
+    ]
+  },
+  {
+    "slug": "study-visa-consultant-karachi",
+    "q": "Is there a study visa consultant for Karachi?",
+    "short": "Yes. SK Immigration helps Karachi students and families remotely via WhatsApp, with optional Rawalpindi walk-in. Free consultation. Authorities decide visas.",
+    "tags": [
+      "local",
+      "consultant"
+    ]
   }
 ]
