@@ -1,20 +1,26 @@
 /**
  * Salar Outsourcing — Thin Apps Script API
  * ========================================
+ * DEPRECATED. Website leads now go to the Cloudflare Worker in src/index.js and
+ * are stored in D1. This file is kept only for the optional Google Sheets
+ * mirror; point LEAD_WEBHOOK_URL at this Web App if you still want that.
+ *
  * Deploy as Web App:
  *   Execute as: Me
  *   Who has access: Anyone
  *
- * Then paste the Web App URL into website/assets/js/config.js → appsScriptUrl
- *
- * This script ONLY stores data in Google Sheets (fast). The website UI is static.
- * Keep your existing full portal (legacyPortalUrl) for candidate case management.
+ * Set the admin password from the Apps Script editor under
+ * Project Settings → Script Properties → ADMIN_PASSWORD.
+ * Never hardcode it here: this file used to be published with the site.
  *
  * Sheets created automatically in the bound Spreadsheet (or create one and set SPREADSHEET_ID).
  */
 
 var SPREADSHEET_ID = ''; // optional: paste Sheet ID, or bind this script to a Sheet
-var ADMIN_PASSWORD = 'Salaar@98'; // change after deploy; used for remote admin actions
+
+function _adminPassword() {
+  return PropertiesService.getScriptProperties().getProperty('ADMIN_PASSWORD') || '';
+}
 
 function _ss() {
   if (SPREADSHEET_ID) return SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -175,7 +181,8 @@ function doPost(e) {
 }
 
 function _auth(password) {
-  return password && String(password) === ADMIN_PASSWORD;
+  var expected = _adminPassword();
+  return Boolean(expected) && Boolean(password) && String(password) === expected;
 }
 
 function _append(sheetName, headers, row) {

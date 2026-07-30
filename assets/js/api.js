@@ -1,177 +1,208 @@
 /**
- * API layer — Apps Script backend + localStorage fallback
- * Fast static site; GAS only used as thin write/read endpoint.
+ * API layer — talks to the Worker API at /api/*.
+ *
+ * Submissions that fail because of a flaky connection are queued in
+ * localStorage and retried on the next page load. A submission the server
+ * actively rejects throws, so the calling form can show a real error instead
+ * of a false "Saved!".
  */
 (function () {
-  const STORAGE = {
-    leads: 'salar_leads',
-    cvs: 'salar_cvs',
-    applications: 'salar_applications',
-    bookings: 'salar_bookings',
-    blog: 'salar_blog_posts',
-    jobs: 'salar_jobs',
-    session: 'salar_admin_session',
+  const ENDPOINTS = {
+    lead: '/api/lead',
+    login: '/api/admin/login',
+    logout: '/api/admin/logout',
+    session: '/api/admin/session',
+    leads: '/api/admin/leads',
   };
 
-  function uid(prefix) {
-    return prefix + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
-  }
+  const STORAGE = {
+    queue: 'salar_pending_leads',
+    blog: 'salar_blog_posts',
+    jobs: 'salar_jobs',
+  };
 
-  function read(key, fallback) {
+  const MAX_QUEUE = 50;
+
+  function readQueue() {
     try {
-      return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
+      const parsed = JSON.parse(localStorage.getItem(STORAGE.queue) || '[]');
+      return Array.isArray(parsed) ? parsed : [];
     } catch {
-      return fallback;
+      return [];
     }
   }
 
-  function write(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
-  }
-
-  async function postToGas(action, payload) {
-    const url = window.SALAR_CONFIG?.appsScriptUrl;
-    if (!url) return null;
+  function writeQueue(items) {
     try {
-      const res = await fetch(url, {
-        method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ action, ...payload, source: 'website', ts: new Date().toISOString() }),
-      });
-      return await res.json();
-    } catch (err) {
-      console.warn('Apps Script unreachable, using local storage.', err);
-      return null;
+      localStorage.setItem(STORAGE.queue, JSON.stringify(items.slice(0, MAX_QUEUE)));
+    } catch {
+      /* storage full or blocked — nothing useful we can do here */
     }
   }
 
-  async function getFromGas(action, params = {}) {
-    const url = window.SALAR_CONFIG?.appsScriptUrl;
-    if (!url) return null;
+  function enqueue(payload) {
+    const queue = readQueue();
+    queue.push({ ...payload, queuedAt: new Date().toISOString() });
+    writeQueue(queue);
+  }
+
+  async function postLead(payload) {
+    const res = await fetch(ENDPOINTS.lead, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    let body = null;
     try {
-      const q = new URLSearchParams({ action, ...params });
-      const res = await fetch(url + '?' + q.toString(), { method: 'GET', mode: 'cors' });
-      return await res.json();
+      body = await res.json();
+    } catch {
+      /* non-JSON response handled below */
+    }
+
+    if (res.ok && body && body.ok) return body;
+
+    const error = new Error((body && body.error) || `http_${res.status}`);
+    error.status = res.status;
+    error.permanent = res.status >= 400 && res.status < 500 && res.status !== 429;
+    throw error;
+  }
+
+  /**
+   * Send a lead. Resolves when the server accepted it, or when it was safely
+   * queued for retry. Rejects only when the server permanently refused it.
+   */
+  async function submit(type, data) {
+    const payload = { type, data };
+    try {
+      return await postLead(payload);
     } catch (err) {
-      console.warn('Apps Script GET failed.', err);
-      return null;
+      if (err.permanent) throw err;
+      enqueue(payload);
+      return { ok: true, queued: true };
     }
   }
 
-  function pushLocal(key, item) {
-    const list = read(key, []);
-    list.unshift(item);
-    write(key, list);
-    return item;
+  async function flushQueue() {
+    const queue = readQueue();
+    if (!queue.length) return;
+
+    const remaining = [];
+    for (const item of queue) {
+      try {
+        await postLead({ type: item.type, data: item.data });
+      } catch (err) {
+        if (!err.permanent) remaining.push(item);
+      }
+    }
+    writeQueue(remaining);
+  }
+
+  async function adminFetch(url, options = {}) {
+    const res = await fetch(url, { credentials: 'same-origin', ...options });
+    if (res.status === 401) return { ok: false, error: 'unauthorized', status: 401 };
+    try {
+      return await res.json();
+    } catch {
+      return { ok: false, error: 'bad_response' };
+    }
   }
 
   window.SalarAPI = {
-    STORAGE,
+    /* —— Public submissions —— */
 
-    async saveLead(type, data) {
-      const item = { id: uid(type), type, ...data, createdAt: new Date().toISOString(), status: 'new' };
-      pushLocal(STORAGE.leads, item);
-      await postToGas('saveLead', { type, data: item });
-      return item;
+    saveLead(type, data) {
+      return submit(type, data);
     },
 
-    async saveBooking(data) {
-      const item = { id: uid('book'), ...data, createdAt: new Date().toISOString(), status: 'pending' };
-      pushLocal(STORAGE.bookings, item);
-      await postToGas('publicBookingRequest', { data: item });
-      return item;
+    saveBooking(data) {
+      return submit('contact', data);
     },
 
-    async saveEligibilityLead(data) {
-      const item = { id: uid('elig'), ...data, createdAt: new Date().toISOString() };
-      pushLocal(STORAGE.leads, { ...item, type: 'eligibility' });
-      await postToGas('saveEligibilityLead', { data: item });
-      return item;
+    saveEligibilityLead(data) {
+      return submit('eligibility', data);
     },
 
-    async saveCVLead(data) {
-      const item = { id: uid('cv'), ...data, createdAt: new Date().toISOString() };
-      pushLocal(STORAGE.cvs, item);
-      pushLocal(STORAGE.leads, { id: item.id, type: 'cv', name: data.fullName, email: data.email, phone: data.phone, createdAt: item.createdAt });
-      await postToGas('saveCVLead', { data: item });
-      return item;
+    saveCVLead(data) {
+      return submit('cv', data);
     },
 
-    async saveJobApplication(data) {
-      const item = { id: uid('app'), ...data, createdAt: new Date().toISOString(), status: 'received' };
-      pushLocal(STORAGE.applications, item);
-      pushLocal(STORAGE.leads, {
-        id: item.id,
-        type: 'job_application',
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        meta: data.jobTitle,
-        createdAt: item.createdAt,
-      });
-      await postToGas('saveJobApplication', { data: item });
-      return item;
+    saveJobApplication(data) {
+      return submit('job_application', data);
     },
 
-    async saveContact(data) {
-      return this.saveLead('contact', data);
+    saveContact(data) {
+      return submit('contact', data);
     },
 
-    /* —— Admin local —— */
-    getLeads() {
-      return read(STORAGE.leads, []);
-    },
-    getCVs() {
-      return read(STORAGE.cvs, []);
-    },
-    getApplications() {
-      return read(STORAGE.applications, []);
-    },
-    getBookings() {
-      return read(STORAGE.bookings, []);
+    flushQueue,
+
+    pendingCount() {
+      return readQueue().length;
     },
 
-    getJobs() {
-      const custom = read(STORAGE.jobs, null);
-      return custom;
-    },
-    saveJobs(jobs) {
-      write(STORAGE.jobs, jobs);
-    },
-
-    getBlogPosts() {
-      return read(STORAGE.blog, null);
-    },
-    saveBlogPosts(posts) {
-      write(STORAGE.blog, posts);
-    },
-
-    /* Simple session gate (client-side). Production: also verify on GAS. */
-    async hash(str) {
-      const enc = new TextEncoder().encode(str);
-      const buf = await crypto.subtle.digest('SHA-256', enc);
-      return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
-    },
+    /* —— Admin —— */
 
     async loginAdmin(password) {
-      const expected = await this.hash('Salaar@98');
-      const got = await this.hash(password);
-      if (got !== expected) return false;
-      const token = uid('sess');
-      write(STORAGE.session, { token, at: Date.now() });
-      return true;
+      const body = await adminFetch(ENDPOINTS.login, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      return Boolean(body && body.ok);
     },
 
-    isAdminLoggedIn() {
-      const s = read(STORAGE.session, null);
-      if (!s?.token) return false;
-      /* 12 hour session */
-      return Date.now() - s.at < 12 * 60 * 60 * 1000;
+    async logoutAdmin() {
+      await adminFetch(ENDPOINTS.logout, { method: 'POST' });
     },
 
-    logoutAdmin() {
-      localStorage.removeItem(STORAGE.session);
+    async isAdminLoggedIn() {
+      const body = await adminFetch(ENDPOINTS.session);
+      return Boolean(body && body.authenticated);
+    },
+
+    /** Returns every lead grouped the way the admin dashboard displays them. */
+    async fetchLeads({ type = '', limit = 500 } = {}) {
+      const params = new URLSearchParams();
+      if (type) params.set('type', type);
+      params.set('limit', String(limit));
+
+      const body = await adminFetch(`${ENDPOINTS.leads}?${params.toString()}`);
+      if (!body || !body.ok) {
+        return { ok: false, error: (body && body.error) || 'unknown', leads: [] };
+      }
+
+      const leads = body.leads || [];
+      return {
+        ok: true,
+        leads,
+        cvs: leads.filter((l) => l.type === 'cv'),
+        applications: leads.filter((l) => l.type === 'job_application'),
+        bookings: leads.filter((l) => l.type === 'contact'),
+      };
+    },
+
+    /* —— Local-only content editing (blog & jobs admin) —— */
+
+    getJobs() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE.jobs) || 'null');
+      } catch {
+        return null;
+      }
+    },
+    saveJobs(jobs) {
+      localStorage.setItem(STORAGE.jobs, JSON.stringify(jobs));
+    },
+    getBlogPosts() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE.blog) || 'null');
+      } catch {
+        return null;
+      }
+    },
+    saveBlogPosts(posts) {
+      localStorage.setItem(STORAGE.blog, JSON.stringify(posts));
     },
 
     exportJSON(filename, data) {
@@ -180,8 +211,25 @@
       a.href = URL.createObjectURL(blob);
       a.download = filename;
       a.click();
+      URL.revokeObjectURL(a.href);
     },
 
-    syncRemote: { postToGas, getFromGas },
+    /**
+     * Deprecated. Blog and job posts are still edited in localStorage only;
+     * kept so those admin screens keep working until they move to the API.
+     */
+    syncRemote: {
+      postToGas: async () => null,
+      getFromGas: async () => null,
+    },
   };
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', () => {
+      flushQueue();
+    });
+    window.addEventListener('online', () => {
+      flushQueue();
+    });
+  }
 })();

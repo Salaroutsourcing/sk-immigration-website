@@ -1,0 +1,359 @@
+/**
+ * SK Immigration Services — Worker API
+ *
+ * Serves the static site through the ASSETS binding and handles /api/* itself.
+ * Leads are written to D1 so they survive the visitor's browser; the admin
+ * endpoints are gated by an HttpOnly, HMAC-signed session cookie.
+ */
+
+const SESSION_COOKIE = 'sk_admin';
+const SESSION_TTL_MS = 12 * 60 * 60 * 1000;
+const MAX_BODY_BYTES = 64 * 1024;
+const MAX_FIELD_LENGTH = 2000;
+const RATE_LIMIT_MAX = 8;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+
+const LEAD_TYPES = new Set([
+  'contact',
+  'booking',
+  'eligibility',
+  'cv',
+  'job_application',
+  'attestation',
+  'checklist',
+  'lead',
+]);
+
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+
+    if (!url.pathname.startsWith('/api/')) {
+      return env.ASSETS.fetch(request);
+    }
+
+    try {
+      return await route(request, env, ctx, url);
+    } catch (err) {
+      console.error('Unhandled API error', err);
+      return json({ ok: false, error: 'internal_error' }, 500);
+    }
+  },
+};
+
+async function route(request, env, ctx, url) {
+  const { pathname } = url;
+  const method = request.method.toUpperCase();
+
+  if (pathname === '/api/health' && method === 'GET') {
+    return json({ ok: true, storage: env.DB ? 'd1' : 'missing' });
+  }
+  if (pathname === '/api/lead' && method === 'POST') {
+    return handleLead(request, env, ctx);
+  }
+  if (pathname === '/api/admin/login' && method === 'POST') {
+    return handleLogin(request, env);
+  }
+  if (pathname === '/api/admin/logout' && method === 'POST') {
+    return handleLogout();
+  }
+  if (pathname === '/api/admin/session' && method === 'GET') {
+    return json({ ok: true, authenticated: await verifySession(request, env) });
+  }
+  if (pathname === '/api/admin/leads' && method === 'GET') {
+    return handleListLeads(request, env, url);
+  }
+
+  return json({ ok: false, error: 'not_found' }, 404);
+}
+
+/* ------------------------------------------------------------------ leads */
+
+async function handleLead(request, env, ctx) {
+  if (!env.DB) {
+    // Fail loudly. A silent success here is what caused every earlier lead to vanish.
+    return json({ ok: false, error: 'storage_unavailable' }, 503);
+  }
+
+  const body = await readJson(request);
+  if (!body) return json({ ok: false, error: 'invalid_json' }, 400);
+
+  // Honeypot: real users never see or fill this field.
+  if (typeof body.company === 'string' && body.company.trim() !== '') {
+    return json({ ok: true, id: null, skipped: true });
+  }
+
+  const type = String(body.type || 'lead').toLowerCase();
+  if (!LEAD_TYPES.has(type)) return json({ ok: false, error: 'invalid_type' }, 400);
+
+  const data = sanitizeObject(body.data && typeof body.data === 'object' ? body.data : {});
+  const name = pickField(data, ['name', 'fullName']);
+  const email = pickField(data, ['email']);
+  const phone = pickField(data, ['phone', 'whatsapp']);
+
+  if (!name) return json({ ok: false, error: 'name_required' }, 400);
+  if (!email && !phone) return json({ ok: false, error: 'contact_required' }, 400);
+  if (email && !isEmail(email)) return json({ ok: false, error: 'invalid_email' }, 400);
+
+  const ipHash = await hashIp(request, env);
+  if (await isRateLimited(env, ipHash)) {
+    return json({ ok: false, error: 'rate_limited' }, 429, { 'retry-after': '600' });
+  }
+
+  const lead = {
+    id: crypto.randomUUID(),
+    createdAt: new Date().toISOString(),
+    type,
+    name,
+    email,
+    phone,
+    meta: pickField(data, ['meta', 'service', 'jobTitle', 'target', 'destination']),
+  };
+
+  await env.DB.prepare(
+    `INSERT INTO leads (id, created_at, type, name, email, phone, meta, payload, ip_hash, user_agent, status)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'new')`
+  )
+    .bind(
+      lead.id,
+      lead.createdAt,
+      lead.type,
+      lead.name,
+      lead.email,
+      lead.phone,
+      lead.meta,
+      JSON.stringify(data),
+      ipHash,
+      truncate(request.headers.get('user-agent') || '', 300)
+    )
+    .run();
+
+  if (env.LEAD_WEBHOOK_URL) {
+    ctx.waitUntil(notify(env.LEAD_WEBHOOK_URL, { ...lead, data }));
+  }
+
+  return json({ ok: true, id: lead.id });
+}
+
+async function notify(webhookUrl, lead) {
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(lead),
+    });
+  } catch (err) {
+    console.error('Lead webhook failed', err);
+  }
+}
+
+async function isRateLimited(env, ipHash) {
+  const since = new Date(Date.now() - RATE_LIMIT_WINDOW_MS).toISOString();
+  const row = await env.DB.prepare(
+    'SELECT COUNT(*) AS n FROM leads WHERE ip_hash = ? AND created_at > ?'
+  )
+    .bind(ipHash, since)
+    .first();
+  return Number(row?.n || 0) >= RATE_LIMIT_MAX;
+}
+
+/* ------------------------------------------------------------------ admin */
+
+async function handleLogin(request, env) {
+  const expected = env.ADMIN_PASSWORD_HASH;
+  if (!expected || !env.SESSION_SECRET) {
+    return json({ ok: false, error: 'admin_not_configured' }, 503);
+  }
+
+  const body = await readJson(request);
+  const password = body && typeof body.password === 'string' ? body.password : '';
+  if (!password) return json({ ok: false, error: 'password_required' }, 400);
+
+  const got = await sha256Hex(password);
+  if (!timingSafeEqual(got, expected.trim().toLowerCase())) {
+    // Blunt the brute-force rate a little without keeping state.
+    await sleep(400);
+    return json({ ok: false, error: 'invalid_credentials' }, 401);
+  }
+
+  const cookie = await createSessionCookie(env);
+  return json({ ok: true }, 200, { 'set-cookie': cookie });
+}
+
+function handleLogout() {
+  const cookie = `${SESSION_COOKIE}=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0`;
+  return json({ ok: true }, 200, { 'set-cookie': cookie });
+}
+
+async function handleListLeads(request, env, url) {
+  if (!(await verifySession(request, env))) {
+    return json({ ok: false, error: 'unauthorized' }, 401);
+  }
+  if (!env.DB) return json({ ok: false, error: 'storage_unavailable' }, 503);
+
+  const type = url.searchParams.get('type');
+  const limit = clamp(Number(url.searchParams.get('limit')) || 200, 1, 1000);
+
+  const query = type
+    ? env.DB.prepare(
+        'SELECT * FROM leads WHERE type = ? ORDER BY created_at DESC LIMIT ?'
+      ).bind(type, limit)
+    : env.DB.prepare('SELECT * FROM leads ORDER BY created_at DESC LIMIT ?').bind(limit);
+
+  const { results } = await query.all();
+  const leads = (results || []).map((row) => ({
+    id: row.id,
+    createdAt: row.created_at,
+    type: row.type,
+    name: row.name,
+    email: row.email,
+    phone: row.phone,
+    meta: row.meta,
+    status: row.status,
+    data: safeParse(row.payload),
+  }));
+
+  return json({ ok: true, count: leads.length, leads });
+}
+
+/* ---------------------------------------------------------------- session */
+
+async function createSessionCookie(env) {
+  const expiresAt = Date.now() + SESSION_TTL_MS;
+  const signature = await hmacHex(env.SESSION_SECRET, String(expiresAt));
+  const value = `${expiresAt}.${signature}`;
+  const maxAge = Math.floor(SESSION_TTL_MS / 1000);
+  return `${SESSION_COOKIE}=${value}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=${maxAge}`;
+}
+
+async function verifySession(request, env) {
+  if (!env.SESSION_SECRET) return false;
+
+  const raw = readCookie(request, SESSION_COOKIE);
+  if (!raw) return false;
+
+  const [expiresAt, signature] = raw.split('.');
+  if (!expiresAt || !signature) return false;
+  if (!Number(expiresAt) || Number(expiresAt) < Date.now()) return false;
+
+  const expected = await hmacHex(env.SESSION_SECRET, expiresAt);
+  return timingSafeEqual(signature, expected);
+}
+
+function readCookie(request, name) {
+  const header = request.headers.get('cookie') || '';
+  for (const part of header.split(';')) {
+    const [key, ...rest] = part.trim().split('=');
+    if (key === name) return rest.join('=');
+  }
+  return null;
+}
+
+/* ---------------------------------------------------------------- helpers */
+
+function json(body, status = 200, headers = {}) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': 'no-store',
+      ...headers,
+    },
+  });
+}
+
+async function readJson(request) {
+  const length = Number(request.headers.get('content-length') || 0);
+  if (length > MAX_BODY_BYTES) return null;
+  try {
+    const text = await request.text();
+    if (text.length > MAX_BODY_BYTES) return null;
+    const parsed = JSON.parse(text);
+    return parsed && typeof parsed === 'object' ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function sanitizeObject(input, depth = 0) {
+  if (depth > 4) return {};
+  const out = {};
+  for (const [key, value] of Object.entries(input)) {
+    if (typeof value === 'string') out[key] = truncate(value.trim(), MAX_FIELD_LENGTH);
+    else if (typeof value === 'number' || typeof value === 'boolean') out[key] = value;
+    else if (Array.isArray(value)) {
+      out[key] = value
+        .slice(0, 50)
+        .map((v) => (typeof v === 'object' && v ? sanitizeObject(v, depth + 1) : v));
+    } else if (value && typeof value === 'object') {
+      out[key] = sanitizeObject(value, depth + 1);
+    }
+  }
+  return out;
+}
+
+function pickField(data, keys) {
+  for (const key of keys) {
+    const value = data[key];
+    if (typeof value === 'string' && value.trim()) return truncate(value.trim(), 300);
+  }
+  return null;
+}
+
+function truncate(value, max) {
+  return value.length > max ? value.slice(0, max) : value;
+}
+
+function isEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function safeParse(text) {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return {};
+  }
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function hashIp(request, env) {
+  const ip = request.headers.get('cf-connecting-ip') || 'unknown';
+  // Salted so the table never holds a reversible address.
+  return sha256Hex(`${ip}:${env.SESSION_SECRET || 'sk'}`);
+}
+
+async function sha256Hex(value) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  return toHex(buf);
+}
+
+async function hmacHex(secret, message) {
+  const key = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(secret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+  const sig = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(message));
+  return toHex(sig);
+}
+
+function toHex(buffer) {
+  return [...new Uint8Array(buffer)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+function timingSafeEqual(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i += 1) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}

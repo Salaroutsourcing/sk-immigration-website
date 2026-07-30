@@ -8,12 +8,12 @@
     '@graph': [
       {
         '@type': ['Organization', 'ProfessionalService', 'LocalBusiness'],
-        '@id': 'https://salaroutsourcing.com/#organization',
+        '@id': 'https://www.salaroutsourcing.com/#organization',
         name: 'SK Immigration Services',
         alternateName: ['SK Immigration', 'SK Immigration by Salar Outsourcing'],
-        url: 'https://salaroutsourcing.com',
-        logo: 'https://salaroutsourcing.com/assets/img/logo.svg',
-        image: 'https://salaroutsourcing.com/assets/img/hero-graduation.jpg',
+        url: 'https://www.salaroutsourcing.com',
+        logo: 'https://www.salaroutsourcing.com/assets/img/logo.svg',
+        image: 'https://www.salaroutsourcing.com/assets/img/hero-graduation.jpg',
         description:
           'SK Immigration Services helps students and professionals worldwide with student visas, Schengen work permits, Germany Ausbildung, visit visas, document attestation and job placements. A division of Salar Outsourcing. Free consultation. No visa guarantees.',
         email: 'Services@salaroutsourcing.com',
@@ -50,7 +50,7 @@
         parentOrganization: {
           '@type': 'Organization',
           name: 'Salar Outsourcing',
-          url: 'https://salaroutsourcing.com',
+          url: 'https://www.salaroutsourcing.com',
         },
         knowsAbout: [
           'Student visa',
@@ -71,13 +71,13 @@
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://salaroutsourcing.com/#website',
-        url: 'https://salaroutsourcing.com',
+        '@id': 'https://www.salaroutsourcing.com/#website',
+        url: 'https://www.salaroutsourcing.com',
         name: 'SK Immigration Services',
-        publisher: { '@id': 'https://salaroutsourcing.com/#organization' },
+        publisher: { '@id': 'https://www.salaroutsourcing.com/#organization' },
         potentialAction: {
           '@type': 'SearchAction',
-          target: 'https://salaroutsourcing.com/blog.html?q={search_term_string}',
+          target: 'https://www.salaroutsourcing.com/blog.html?q={search_term_string}',
           'query-input': 'required name=search_term_string',
         },
       },

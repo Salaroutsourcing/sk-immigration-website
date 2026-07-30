@@ -1,20 +1,35 @@
+# SK Immigration Services — https://www.salaroutsourcing.com
+#
+# IMPORTANT: Cloudflare's managed robots.txt / AI Crawl Control feature can
+# prepend its own block ahead of these rules, which disallows GPTBot,
+# ClaudeBot, CCBot, Google-Extended and others. That block wins over the rules
+# below, so it must be turned off in the Cloudflare dashboard for this site to
+# be readable by AI assistants.
+
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /portal.html
 
-# Allow major AI / search crawlers to read public content
+# Explicitly welcome search and AI crawlers. Per RFC 9309 these merge with any
+# earlier group for the same crawler, and Allow beats Disallow on equal paths.
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: Google-Extended
-Allow: /
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
 Allow: /
 
 User-agent: anthropic-ai
@@ -29,12 +44,6 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Bytespider
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
 User-agent: Applebot-Extended
 Allow: /
 
@@ -44,16 +53,10 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
-# Public knowledge files for AI citation
-Allow: /llms.txt
-Allow: /ai.txt
-Allow: /answers/
-Allow: /checklist.html
-Allow: /calculator.html
-Allow: /compare.html
+User-agent: CCBot
+Allow: /
 
-Disallow: /admin/
-Disallow: /apps-script/
-Disallow: /scripts/
+User-agent: Bytespider
+Allow: /
 
-Sitemap: https://salaroutsourcing.com/sitemap.xml
+Sitemap: https://www.salaroutsourcing.com/sitemap.xml

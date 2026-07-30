@@ -1,14 +1,29 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "sk-immigration-website",
+  "main": "src/index.js",
   "compatibility_date": "2026-07-23",
+  "compatibility_flags": ["nodejs_compat"],
   "observability": {
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS",
+    // Serve 404.html for unknown paths instead of a bare Workers error.
+    "not_found_handling": "404-page"
   },
-  "compatibility_flags": [
-    "nodejs_compat"
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sk-immigration-leads",
+      // Run `npx wrangler d1 create sk-immigration-leads` and paste the id here.
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
+    }
   ]
+
+  // Secrets are NOT stored in this file. Set them once with:
+  //   npx wrangler secret put ADMIN_PASSWORD_HASH   (sha-256 hex of the admin password)
+  //   npx wrangler secret put SESSION_SECRET        (long random string)
+  //   npx wrangler secret put LEAD_WEBHOOK_URL      (optional: notify URL for new leads)
 }

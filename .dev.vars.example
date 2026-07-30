@@ -1,0 +1,14 @@
+# Local development secrets. Copy to .dev.vars (which is gitignored).
+# Production values are set with `npx wrangler secret put <NAME>` instead.
+
+# SHA-256 hex of the admin password.
+#   printf 'your-password' | shasum -a 256
+ADMIN_PASSWORD_HASH=
+
+# Long random string used to sign admin session cookies.
+#   openssl rand -hex 32
+SESSION_SECRET=
+
+# Optional. New leads are POSTed here as JSON so you get notified immediately
+# (Zapier / Make / n8n / Google Apps Script webhook).
+LEAD_WEBHOOK_URL=

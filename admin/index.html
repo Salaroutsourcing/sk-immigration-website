@@ -101,17 +101,31 @@
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/api.js"></script>
   <script>
+    let snapshot = { leads: [], cvs: [], applications: [], bookings: [] };
+
     function showApp() {
       document.getElementById('loginGate').classList.add('hidden');
       document.getElementById('adminApp').classList.remove('hidden');
+      return refresh();
+    }
+
+    async function refresh() {
+      const result = await SalarAPI.fetchLeads();
+      if (!result.ok) {
+        document.getElementById('leadsBody').innerHTML =
+          `<tr><td colspan="5" class="text-muted">Could not load leads (${result.error}).</td></tr>`;
+        if (result.error === 'unauthorized') location.reload();
+        return;
+      }
+      snapshot = result;
       render();
     }
 
     function render() {
-      const leads = SalarAPI.getLeads();
-      const cvs = SalarAPI.getCVs();
-      const apps = SalarAPI.getApplications();
-      const books = SalarAPI.getBookings();
+      const leads = snapshot.leads;
+      const cvs = snapshot.cvs;
+      const apps = snapshot.applications;
+      const books = snapshot.bookings;
       document.getElementById('statCards').innerHTML = [
         ['Leads', leads.length],
         ['CVs', cvs.length],
@@ -120,44 +134,48 @@
       ].map(([l,n]) => `<div class="glass card"><strong class="text-gold" style="font-size:1.5rem;font-family:var(--font-display)">${n}</strong><div class="text-muted" style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em">${l}</div></div>`).join('');
 
       const filter = document.getElementById('leadFilter').value;
-      const filtered = filter ? leads.filter(l => (l.type||'').includes(filter) || l.type === filter) : leads;
-      /* also include bookings as leads view */
-      const bookingRows = books.map(b => ({...b, type: 'contact', meta: b.service}));
-      const rows = [...filtered, ...(filter && filter !== 'contact' ? [] : bookingRows.filter(b => !filtered.find(l => l.id === b.id)))];
+      const rows = filter ? leads.filter(l => l.type === filter) : leads;
 
       document.getElementById('leadsBody').innerHTML = rows.slice(0, 50).map(l => `
         <tr>
-          <td>${(l.createdAt||'').slice(0,16).replace('T',' ')}</td>
-          <td><span class="badge badge-muted">${l.type||'lead'}</span></td>
-          <td>${l.name||l.fullName||'—'}</td>
-          <td>${l.phone||''}<br><span class="text-muted">${l.email||''}</span></td>
-          <td>${l.meta||l.service||l.destination||''}</td>
+          <td>${esc((l.createdAt||'').slice(0,16).replace('T',' '))}</td>
+          <td><span class="badge badge-muted">${esc(l.type||'lead')}</span></td>
+          <td>${esc(l.name||'—')}</td>
+          <td>${esc(l.phone||'')}<br><span class="text-muted">${esc(l.email||'')}</span></td>
+          <td>${esc(l.meta||'')}</td>
         </tr>`).join('') || '<tr><td colspan="5" class="text-muted">No leads yet. Submit a form on the website.</td></tr>';
 
-      document.getElementById('cvBody').innerHTML = cvs.slice(0, 30).map(c => `
+      document.getElementById('cvBody').innerHTML = cvs.slice(0, 30).map((c, i) => `
         <tr>
-          <td>${c.fullName||'—'}</td>
-          <td>${c.phone||''}</td>
-          <td>${c.target||''}</td>
-          <td><button class="btn btn-ghost btn-sm" data-cv='${encodeURIComponent(JSON.stringify(c))}'>View</button></td>
+          <td>${esc(c.name||'—')}</td>
+          <td>${esc(c.phone||'')}</td>
+          <td>${esc(c.meta||'')}</td>
+          <td><button class="btn btn-ghost btn-sm" data-cv="${i}">View</button></td>
         </tr>`).join('') || '<tr><td colspan="4" class="text-muted">No CVs yet.</td></tr>';
 
-      document.getElementById('appBody').innerHTML = apps.slice(0, 30).map(a => `
+      document.getElementById('appBody').innerHTML = apps.slice(0, 30).map((a, i) => `
         <tr>
-          <td>${a.name||'—'}</td>
-          <td>${a.jobTitle||''}</td>
-          <td>${a.phone||''}</td>
-          <td><button class="btn btn-ghost btn-sm" data-app='${encodeURIComponent(JSON.stringify(a))}'>View</button></td>
+          <td>${esc(a.name||'—')}</td>
+          <td>${esc(a.meta||'')}</td>
+          <td>${esc(a.phone||'')}</td>
+          <td><button class="btn btn-ghost btn-sm" data-app="${i}">View</button></td>
         </tr>`).join('') || '<tr><td colspan="4" class="text-muted">No applications yet.</td></tr>';
 
       document.querySelectorAll('[data-cv]').forEach(btn => btn.addEventListener('click', () => {
-        const c = JSON.parse(decodeURIComponent(btn.dataset.cv));
-        openDetail(`<h2>${c.fullName}</h2><pre style="white-space:pre-wrap;font-size:0.85rem">${JSON.stringify(c,null,2)}</pre>`);
+        const c = cvs[Number(btn.dataset.cv)];
+        openDetail(`<h2>${esc(c.name||'CV')}</h2><pre style="white-space:pre-wrap;font-size:0.85rem">${esc(JSON.stringify(c,null,2))}</pre>`);
       }));
       document.querySelectorAll('[data-app]').forEach(btn => btn.addEventListener('click', () => {
-        const a = JSON.parse(decodeURIComponent(btn.dataset.app));
-        openDetail(`<h2>${a.name} — ${a.jobTitle}</h2><pre style="white-space:pre-wrap;font-size:0.85rem">${JSON.stringify(a,null,2)}</pre>`);
+        const a = apps[Number(btn.dataset.app)];
+        openDetail(`<h2>${esc(a.name||'')} — ${esc(a.meta||'')}</h2><pre style="white-space:pre-wrap;font-size:0.85rem">${esc(JSON.stringify(a,null,2))}</pre>`);
       }));
+    }
+
+    /* Lead values come from public forms, so never inject them as raw HTML. */
+    function esc(value) {
+      return String(value ?? '').replace(/[&<>"']/g, (ch) => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]
+      ));
     }
 
     function openDetail(html) {
@@ -174,26 +192,26 @@
       else { msg.className = 'form-msg show err'; msg.textContent = 'Incorrect password.'; }
     });
 
-    document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+    document.getElementById('logoutBtn')?.addEventListener('click', async (e) => {
       e.preventDefault();
-      SalarAPI.logoutAdmin();
+      await SalarAPI.logoutAdmin();
       location.reload();
     });
     document.getElementById('leadFilter')?.addEventListener('change', render);
-    document.getElementById('refreshBtn')?.addEventListener('click', render);
+    document.getElementById('refreshBtn')?.addEventListener('click', refresh);
     document.getElementById('exportAll')?.addEventListener('click', () => {
       SalarAPI.exportJSON('salar-crm-export.json', {
-        leads: SalarAPI.getLeads(),
-        cvs: SalarAPI.getCVs(),
-        applications: SalarAPI.getApplications(),
-        bookings: SalarAPI.getBookings(),
+        leads: snapshot.leads,
+        cvs: snapshot.cvs,
+        applications: snapshot.applications,
+        bookings: snapshot.bookings,
       });
     });
     document.getElementById('detailModal')?.addEventListener('click', (e) => {
       if (e.target.id === 'detailModal') e.target.classList.remove('open');
     });
 
-    if (SalarAPI.isAdminLoggedIn()) showApp();
+    SalarAPI.isAdminLoggedIn().then((ok) => { if (ok) showApp(); });
   </script>
 </body>
 </html>
