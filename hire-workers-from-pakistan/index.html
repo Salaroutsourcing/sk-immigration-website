@@ -169,17 +169,22 @@
         <div class="section-head reveal">
           <p class="eyebrow">Employer registration</p>
           <h2 class="section-title">Register your company</h2>
+          <p class="section-sub">Forms save to our secure CRM. If the network fails, use WhatsApp — we never show a fake “success”.</p>
         </div>
-        <form id="employerForm" class="glass card reveal b2b-form-grid" style="padding:1.5rem">
-          <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" />
-          <div class="form-group"><label for="erName">Contact name</label><input class="form-control" id="erName" name="name" required /></div>
-          <div class="form-group"><label for="erCompany">Company name</label><input class="form-control" id="erCompany" name="companyName" required /></div>
-          <div class="form-group"><label for="erEmail">Work email</label><input class="form-control" id="erEmail" name="email" type="email" required /></div>
-          <div class="form-group"><label for="erPhone">Phone / WhatsApp</label><input class="form-control" id="erPhone" name="phone" required /></div>
-          <div class="form-group"><label for="erCountry">Destination country</label><input class="form-control" id="erCountry" name="country" placeholder="e.g. Saudi Arabia, Germany, UAE" required /></div>
-          <div class="form-group"><label for="erWebsite">Company website</label><input class="form-control" id="erWebsite" name="website" type="url" placeholder="https://" /></div>
-          <div class="form-group full"><label for="erMsg">About your hiring needs</label><textarea class="form-control" id="erMsg" name="message" rows="4" required></textarea></div>
-          <div class="full"><button class="btn btn-gold" type="submit">Submit employer registration</button><div class="form-msg" id="erMsgOut"></div></div>
+        <form id="employerForm" class="glass card reveal b2b-form-grid" style="padding:1.5rem" data-lead-type="employer" novalidate>
+          <input type="text" name="sk_hp" class="hp-field" value="" tabindex="-1" autocomplete="new-password" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" />
+          <div class="form-group"><label for="erName">Contact name *</label><input class="form-control" id="erName" name="name" required autocomplete="name" /></div>
+          <div class="form-group"><label for="erCompany">Company name *</label><input class="form-control" id="erCompany" name="companyName" required autocomplete="organization" /></div>
+          <div class="form-group"><label for="erEmail">Work email *</label><input class="form-control" id="erEmail" name="email" type="email" required autocomplete="email" /></div>
+          <div class="form-group"><label for="erPhone">Phone / WhatsApp *</label><input class="form-control" id="erPhone" name="phone" required autocomplete="tel" /></div>
+          <div class="form-group"><label for="erCountry">Destination country *</label><input class="form-control" id="erCountry" name="country" placeholder="e.g. Saudi Arabia, Germany, UAE" required /></div>
+          <div class="form-group"><label for="erWebsite">Company website</label><input class="form-control" id="erWebsite" name="website" type="text" inputmode="url" placeholder="example.com (optional)" autocomplete="url" /></div>
+          <div class="form-group full"><label for="erNeeds">About your hiring needs *</label><textarea class="form-control" id="erNeeds" name="message" rows="4" required></textarea></div>
+          <div class="full flex gap-2 flex-wrap items-center">
+            <button class="btn btn-gold" type="submit">Submit employer registration</button>
+            <a class="btn btn-whatsapp" id="erWa" href="https://wa.me/923045999859" target="_blank" rel="noopener">WhatsApp instead</a>
+            <div class="form-msg" id="erMsgOut"></div>
+          </div>
         </form>
       </div>
     </section>
@@ -190,18 +195,22 @@
           <p class="eyebrow">Workforce requirement</p>
           <h2 class="section-title">Tell us who you need</h2>
         </div>
-        <form id="workforceForm" class="glass card reveal b2b-form-grid" style="padding:1.5rem">
-          <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" />
-          <div class="form-group"><label for="wfName">Contact name</label><input class="form-control" id="wfName" name="name" required /></div>
-          <div class="form-group"><label for="wfCompany">Company</label><input class="form-control" id="wfCompany" name="companyName" required /></div>
-          <div class="form-group"><label for="wfEmail">Email</label><input class="form-control" id="wfEmail" name="email" type="email" required /></div>
-          <div class="form-group"><label for="wfPhone">Phone</label><input class="form-control" id="wfPhone" name="phone" required /></div>
-          <div class="form-group"><label for="wfTrades">Trades needed</label><input class="form-control" id="wfTrades" name="trades" placeholder="e.g. 20 welders, 10 electricians" required /></div>
-          <div class="form-group"><label for="wfCount">Workers needed</label><input class="form-control" id="wfCount" name="workersNeeded" type="number" min="1" required /></div>
-          <div class="form-group"><label for="wfCountry">Destination</label><input class="form-control" id="wfCountry" name="country" required /></div>
+        <form id="workforceForm" class="glass card reveal b2b-form-grid" style="padding:1.5rem" data-lead-type="workforce" novalidate>
+          <input type="text" name="sk_hp" class="hp-field" value="" tabindex="-1" autocomplete="new-password" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" />
+          <div class="form-group"><label for="wfName">Contact name *</label><input class="form-control" id="wfName" name="name" required autocomplete="name" /></div>
+          <div class="form-group"><label for="wfCompany">Company *</label><input class="form-control" id="wfCompany" name="companyName" required autocomplete="organization" /></div>
+          <div class="form-group"><label for="wfEmail">Email *</label><input class="form-control" id="wfEmail" name="email" type="email" required autocomplete="email" /></div>
+          <div class="form-group"><label for="wfPhone">Phone *</label><input class="form-control" id="wfPhone" name="phone" required autocomplete="tel" /></div>
+          <div class="form-group"><label for="wfTrades">Trades needed *</label><input class="form-control" id="wfTrades" name="trades" placeholder="e.g. 20 welders, 10 electricians" required /></div>
+          <div class="form-group"><label for="wfCount">Workers needed *</label><input class="form-control" id="wfCount" name="workersNeeded" type="number" min="1" required /></div>
+          <div class="form-group"><label for="wfCountry">Destination *</label><input class="form-control" id="wfCountry" name="country" required /></div>
           <div class="form-group"><label for="wfStart">Target start</label><input class="form-control" id="wfStart" name="startDate" type="month" /></div>
-          <div class="form-group full"><label for="wfDetails">Contract / skill details</label><textarea class="form-control" id="wfDetails" name="message" rows="4" required></textarea></div>
-          <div class="full"><button class="btn btn-gold" type="submit">Submit workforce requirement</button><div class="form-msg" id="wfMsgOut"></div></div>
+          <div class="form-group full"><label for="wfDetails">Contract / skill details *</label><textarea class="form-control" id="wfDetails" name="message" rows="4" required></textarea></div>
+          <div class="full flex gap-2 flex-wrap items-center">
+            <button class="btn btn-gold" type="submit">Submit workforce requirement</button>
+            <a class="btn btn-whatsapp" id="wfWa" href="https://wa.me/923045999859" target="_blank" rel="noopener">WhatsApp instead</a>
+            <div class="form-msg" id="wfMsgOut"></div>
+          </div>
         </form>
       </div>
     </section>
@@ -213,16 +222,20 @@
           <h2 class="section-title">Quotation request system</h2>
           <p class="section-sub">Receive a recruitment support quotation based on trade mix, volume and destination.</p>
         </div>
-        <form id="quoteForm" class="glass card reveal b2b-form-grid" style="padding:1.5rem">
-          <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" />
-          <div class="form-group"><label for="qName">Contact name</label><input class="form-control" id="qName" name="name" required /></div>
-          <div class="form-group"><label for="qCompany">Company</label><input class="form-control" id="qCompany" name="companyName" required /></div>
-          <div class="form-group"><label for="qEmail">Email</label><input class="form-control" id="qEmail" name="email" type="email" required /></div>
-          <div class="form-group"><label for="qPhone">Phone</label><input class="form-control" id="qPhone" name="phone" required /></div>
-          <div class="form-group"><label for="qCountry">Destination country</label><input class="form-control" id="qCountry" name="country" required /></div>
-          <div class="form-group"><label for="qVolume">Estimated volume</label><input class="form-control" id="qVolume" name="workersNeeded" placeholder="e.g. 50 workers" required /></div>
-          <div class="form-group full"><label for="qScope">Scope for quotation</label><textarea class="form-control" id="qScope" name="message" rows="4" placeholder="Trades, contract length, who pays medical/visa, timeline…" required></textarea></div>
-          <div class="full"><button class="btn btn-gold" type="submit">Request quotation</button><div class="form-msg" id="qMsgOut"></div></div>
+        <form id="quoteForm" class="glass card reveal b2b-form-grid" style="padding:1.5rem" data-lead-type="quotation" novalidate>
+          <input type="text" name="sk_hp" class="hp-field" value="" tabindex="-1" autocomplete="new-password" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" />
+          <div class="form-group"><label for="qName">Contact name *</label><input class="form-control" id="qName" name="name" required autocomplete="name" /></div>
+          <div class="form-group"><label for="qCompany">Company *</label><input class="form-control" id="qCompany" name="companyName" required autocomplete="organization" /></div>
+          <div class="form-group"><label for="qEmail">Email *</label><input class="form-control" id="qEmail" name="email" type="email" required autocomplete="email" /></div>
+          <div class="form-group"><label for="qPhone">Phone *</label><input class="form-control" id="qPhone" name="phone" required autocomplete="tel" /></div>
+          <div class="form-group"><label for="qCountry">Destination country *</label><input class="form-control" id="qCountry" name="country" required /></div>
+          <div class="form-group"><label for="qVolume">Estimated volume *</label><input class="form-control" id="qVolume" name="workersNeeded" placeholder="e.g. 50 workers" required /></div>
+          <div class="form-group full"><label for="qScope">Scope for quotation *</label><textarea class="form-control" id="qScope" name="message" rows="4" placeholder="Trades, contract length, who pays medical/visa, timeline…" required></textarea></div>
+          <div class="full flex gap-2 flex-wrap items-center">
+            <button class="btn btn-gold" type="submit">Request quotation</button>
+            <a class="btn btn-whatsapp" id="qWa" href="https://wa.me/923045999859" target="_blank" rel="noopener">WhatsApp instead</a>
+            <div class="form-msg" id="qMsgOut"></div>
+          </div>
         </form>
       </div>
     </section>
@@ -254,44 +267,81 @@
       const raw = new FormData(form);
       const data = {};
       raw.forEach((value, key) => {
-        if (key === 'company') return; /* honeypot stays out of payload data */
+        if (key === 'sk_hp' || key === 'company') return;
         data[key] = String(value).trim();
       });
-      data.meta = data.companyName || data.trades || data.country || 'employer';
+      data.meta = data.companyName || data.trades || data.country || form.dataset.leadType || 'employer';
+      data.service = form.dataset.leadType || 'employer';
       return data;
     }
 
-    async function handleB2B(form, type, outId, apiFn) {
+    function waHref(data, type) {
+      const lines = [
+        `Hi SK Immigration — ${type} request`,
+        `Name: ${data.name || ''}`,
+        `Company: ${data.companyName || ''}`,
+        `Phone: ${data.phone || ''}`,
+        `Email: ${data.email || ''}`,
+        `Country: ${data.country || ''}`,
+        data.trades ? `Trades: ${data.trades}` : '',
+        data.workersNeeded ? `Workers: ${data.workersNeeded}` : '',
+        data.message ? `Details: ${data.message}` : '',
+      ].filter(Boolean);
+      return `https://wa.me/923045999859?text=${encodeURIComponent(lines.join('\n'))}`;
+    }
+
+    function bindHireForm(formId, outId, waId, apiFn) {
+      const form = document.getElementById(formId);
+      if (!form) return;
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const out = document.getElementById(outId);
-        const honeypot = form.querySelector('[name="company"]');
-        if (honeypot && honeypot.value) {
+        const type = form.dataset.leadType || 'employer';
+        const honey = form.querySelector('[name="sk_hp"]');
+        /* Real bots fill hidden fields; browsers should not autofill sk_hp */
+        if (honey && honey.value.trim() !== '') {
           out.className = 'form-msg show ok';
-          out.textContent = 'Thank you. We will contact you shortly.';
+          out.textContent = 'Thank you.';
           form.reset();
           return;
         }
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        const data = formDataObject(form);
+        const wa = document.getElementById(waId);
+        if (wa) wa.href = waHref(data, type);
+
         out.className = 'form-msg show';
         out.textContent = 'Sending…';
         try {
-          const data = formDataObject(form);
-          /* Root-level company is the Worker honeypot — never send real company there */
-          await apiFn(data);
+          const result = await apiFn(data);
           out.className = 'form-msg show ok';
-          out.textContent = 'Received. Our employer desk will reply shortly.';
+          out.textContent = result && result.queued
+            ? 'Saved on this device and queued — we will sync when online. Or WhatsApp us now.'
+            : 'Received. Our employer desk will reply shortly.';
           form.reset();
         } catch (err) {
           out.className = 'form-msg show err';
-          out.textContent = 'Could not send right now. Please WhatsApp +92 304 5999859.';
+          out.textContent = 'Could not reach the server. Please use WhatsApp — your details are ready in that button.';
+          if (wa) {
+            wa.focus();
+            wa.classList.add('btn-gold');
+          }
         }
+      });
+
+      form.addEventListener('input', () => {
+        const wa = document.getElementById(waId);
+        if (wa) wa.href = waHref(formDataObject(form), form.dataset.leadType || 'employer');
       });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      handleB2B(document.getElementById('employerForm'), 'employer', 'erMsgOut', (d) => SalarAPI.saveEmployerRequest(d));
-      handleB2B(document.getElementById('workforceForm'), 'workforce', 'wfMsgOut', (d) => SalarAPI.saveWorkforceRequest(d));
-      handleB2B(document.getElementById('quoteForm'), 'quotation', 'qMsgOut', (d) => SalarAPI.saveQuotationRequest(d));
+      bindHireForm('employerForm', 'erMsgOut', 'erWa', (d) => SalarAPI.saveEmployerRequest(d));
+      bindHireForm('workforceForm', 'wfMsgOut', 'wfWa', (d) => SalarAPI.saveWorkforceRequest(d));
+      bindHireForm('quoteForm', 'qMsgOut', 'qWa', (d) => SalarAPI.saveQuotationRequest(d));
     });
   </script>
 </body>
