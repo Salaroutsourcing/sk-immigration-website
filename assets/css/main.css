@@ -2253,6 +2253,18 @@ table.data th {
   color: var(--text-dim);
   font-weight: 600;
 }
+/* Trust page (trust1) */
+.trust-steps {
+  padding-left: 1.25rem;
+  margin: 0.75rem 0 1.25rem;
+}
+.trust-steps li {
+  margin: 0.4rem 0;
+}
+.home-review-ctas {
+  flex-wrap: wrap;
+}
+
 .home-review-note {
   margin-top: 1.5rem;
   font-size: 0.9rem;

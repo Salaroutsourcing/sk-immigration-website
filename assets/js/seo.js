@@ -52,7 +52,11 @@
           'https://www.youtube.com/@SKImmigrationtips',
           'https://share.google/hQzlV2rZbYtUzYZ9n',
           'https://leap.secp.gov.pk/#/verify-company-info/0304985',
+          SITE + '/trust.html',
+          SITE + '/about.html',
         ],
+        hasMap:
+          'https://www.google.com/maps/search/?api=1&query=SK+Immigration+Services+Alfazal+Plaza+Satellite+Town+Rawalpindi',
         identifier: [
           { '@type': 'PropertyValue', name: 'SECP CUIN', value: '0304985' },
           { '@type': 'PropertyValue', name: 'OEP partner licence', value: 'NO/1061' },
