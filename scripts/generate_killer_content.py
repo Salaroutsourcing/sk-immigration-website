@@ -1161,6 +1161,20 @@ def country_article_html(c):
         f"IELTS rules, document checklist, timeline {c['timeline_months']} months. "
         f"SK Immigration Services — free consult, no fake guarantees."
     )
+    slug = c["slug"]
+    if slug.endswith("-student-visa"):
+        country_key = slug[: -len("-student-visa")]
+        primary_href = f"../../study-visa/{country_key}-study-visa-pakistan/"
+        primary_label = f"{c['name']} Study Visa Pakistan"
+        primary_extra = ""
+    elif slug == "dubai-visit-visa":
+        primary_href = "../../visit-visa/dubai-visit-visa-pakistan/"
+        primary_label = "Dubai Visit Visa Pakistan"
+        primary_extra = ' · <a href="../../work-permit/uae-work-visa-pakistan/">UAE Work Visa Pakistan</a>'
+    else:
+        primary_href = "../../study-visa/"
+        primary_label = "Study Visa Pakistan hub"
+        primary_extra = ""
     return f"""<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -1202,6 +1216,12 @@ def country_article_html(c):
       <h1 class="display" style="font-size:clamp(1.75rem,3vw,2.4rem);margin-bottom:0.75rem">{c['title']}</h1>
       <p class="lead-answer"><strong>Quick answer:</strong> {c['blurb']} Typical living costs <strong>{c['living_eur_month']}</strong>; timeline often <strong>{c['timeline_months']} months</strong>. IELTS: {c['ielts_needed']}. Low marks fit: <strong>{c['low_marks_friendly']}</strong>.</p>
       <p class="text-muted mb-2">By <strong>SK Immigration Services</strong> · Applicants from any country · Embassies make final decisions · No visa guarantees</p>
+
+<!-- primary-service-page -->
+      <aside class="primary-service-callout" style="padding:1rem 1.15rem;margin:1rem 0 1.25rem;border-left:3px solid var(--gold-400);background:rgba(212,175,55,0.06)">
+        <p style="margin:0;font-size:0.95rem"><strong>Primary service page:</strong> This article is an educational guide. For Pakistan-focused requirements, fees, FAQ and SK Immigration support, use <a href="{primary_href}">{primary_label}</a>{primary_extra}.</p>
+      </aside>
+<!-- /primary-service-page -->
 
       <div class="viz-strip" aria-label="Key facts">
         <div class="viz-pill"><span>Living / mo</span><strong>{c['living_eur_month']}</strong></div>
@@ -1249,6 +1269,7 @@ def country_article_html(c):
 
         <h2>Next steps (under 10 minutes)</h2>
         <ol>
+          <li>Open the primary page: <a href="{primary_href}">{primary_label}</a></li>
           <li>Take the free <a href="../../eligibility.html">eligibility quiz</a></li>
           <li>Open your <a href="../../checklist.html?country={c['code']}">document checklist</a></li>
           <li>Estimate costs with the <a href="../../calculator.html?country={c['code']}">calculator</a></li>
