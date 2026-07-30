@@ -32,24 +32,24 @@
     { href: 'visa-appointment/', label: 'Appointments', id: 'visa-appointment' },
     { href: 'saudi-visa/saudi-visa-processing-pakistan/', label: 'Saudi Visa', id: 'saudi-visa' },
     { href: 'jobs.html', label: 'Work Visa', id: 'jobs' },
+    { href: 'checklist.html', label: 'Checklist', id: 'checklist' },
     { href: 'document-services/', label: 'Attestation', id: 'document-services' },
     { href: 'hire-workers-from-pakistan/', label: 'Hire Workers', id: 'hire-workers' },
-    { href: 'answers.html', label: 'Guides', id: 'faq' },
     { href: 'contact.html', label: 'Contact', id: 'contact' },
   ];
 
   /** Pages without their own nav entry highlight their closest parent */
   const NAV_ALIAS = {
-    calculator: 'faq',
-    compare: 'faq',
-    checklist: 'faq',
+    calculator: 'checklist',
+    compare: 'checklist',
     attestation: 'document-services',
     eligibility: 'study-visa',
     services: 'study-visa',
     countries: 'study-visa',
     ausbildung: 'jobs',
     pricing: 'home',
-    blog: 'faq',
+    blog: 'study-visa',
+    faq: 'checklist',
   };
 
   function activeId() {
@@ -131,9 +131,11 @@
         <div class="mobile-nav-panel">
           ${navLinks('')}
           <a href="${href('eligibility.html')}">Eligibility Quiz</a>
+          <a href="${href('checklist.html')}">Document Checklist (tick boxes)</a>
           <a href="${href('calculator.html')}">Cost Calculator</a>
           <a href="${href('compare.html')}">Compare Countries</a>
           <a href="${href('cv-builder.html')}">CV Builder</a>
+          <a href="${href('answers.html')}">Answers / Guides</a>
           <a href="${href('faq.html')}">FAQ</a>
           <a href="${href('blog.html')}">Blog</a>
           <a href="${href('services.html')}">All Services</a>

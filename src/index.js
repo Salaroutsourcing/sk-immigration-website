@@ -117,7 +117,11 @@ async function handleLead(request, env, ctx) {
   if (!body) return json({ ok: false, error: 'invalid_json' }, 400);
 
   // Honeypot: real users never see or fill this field.
-  if (typeof body.company === 'string' && body.company.trim() !== '') {
+  if (
+    (typeof body.company === 'string' && body.company.trim() !== '') ||
+    (typeof body.sk_hp === 'string' && body.sk_hp.trim() !== '') ||
+    (body.data && typeof body.data.sk_hp === 'string' && body.data.sk_hp.trim() !== '')
+  ) {
     return json({ ok: true, id: null, skipped: true });
   }
 

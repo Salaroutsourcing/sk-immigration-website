@@ -3,8 +3,19 @@
  */
 (function () {
   const BASE = (() => {
-    if (location.pathname.includes('/blog/') && location.pathname.split('/').filter(Boolean).length >= 2) return '../../';
-    if (location.pathname.includes('/answers/')) return '../';
+    const parts = location.pathname.split('/').filter(Boolean);
+    const nestedRoots = [
+      'blog',
+      'answers',
+      'admin',
+      'study-visa',
+      'visa-appointment',
+      'saudi-visa',
+      'document-services',
+      'hire-workers-from-pakistan',
+    ];
+    if (parts.length >= 2 && nestedRoots.includes(parts[0])) return '../../';
+    if (parts.length >= 1 && nestedRoots.includes(parts[0])) return '../';
     return '';
   })();
 
@@ -34,7 +45,14 @@
   async function mountChecklist(rootSel) {
     const root = document.querySelector(rootSel);
     if (!root) return;
-    const intel = await loadIntel();
+    root.innerHTML = '<div class="glass card" style="padding:1.25rem"><p class="text-muted" style="margin:0">Loading interactive tick checklist…</p></div>';
+    let intel;
+    try {
+      intel = await loadIntel();
+    } catch (err) {
+      root.innerHTML = `<div class="glass card" style="padding:1.25rem"><p class="form-msg show err" style="display:block">Could not load checklist data. Please refresh, or <a href="https://wa.me/923045999859">WhatsApp us</a>.</p></div>`;
+      return;
+    }
     let code = qs('country') || 'de';
     let type = qs('type') || 'study';
     const storageKey = () => `sk_check_${code}_${type}`;
