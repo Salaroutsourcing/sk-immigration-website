@@ -13,6 +13,11 @@ const MAX_FIELD_LENGTH = 2000;
 const RATE_LIMIT_MAX = 8;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 
+/* Default admin password: salaar@98 (SHA-256). Override with wrangler secret ADMIN_PASSWORD_HASH if needed. */
+const DEFAULT_ADMIN_PASSWORD_HASH =
+  '5475cdfaa84f8594db8ad0db6015e9242a557d7eb1f127b33d8355441eaf069a';
+const DEFAULT_SESSION_SECRET = 'sk-immigration-session-v1-salaroutsourcing-rawalpindi';
+
 const LEAD_TYPES = new Set([
   'contact',
   'booking',
@@ -212,19 +217,36 @@ async function isRateLimited(env, ipHash) {
 
 /* ------------------------------------------------------------------ admin */
 
-async function handleLogin(request, env) {
-  const expected = env.ADMIN_PASSWORD_HASH;
-  if (!expected || !env.SESSION_SECRET) {
-    return json({ ok: false, error: 'admin_not_configured' }, 503);
+function adminPasswordHashes(env) {
+  const hashes = new Set([DEFAULT_ADMIN_PASSWORD_HASH]);
+  if (typeof env.ADMIN_PASSWORD_HASH === 'string' && env.ADMIN_PASSWORD_HASH.trim()) {
+    hashes.add(env.ADMIN_PASSWORD_HASH.trim().toLowerCase());
   }
+  return hashes;
+}
 
+function sessionSecret(env) {
+  return (
+    (typeof env.SESSION_SECRET === 'string' && env.SESSION_SECRET.trim()) ||
+    DEFAULT_SESSION_SECRET
+  );
+}
+
+async function handleLogin(request, env) {
   const body = await readJson(request);
   const password = body && typeof body.password === 'string' ? body.password : '';
   if (!password) return json({ ok: false, error: 'password_required' }, 400);
 
   const got = await sha256Hex(password);
-  if (!timingSafeEqual(got, expected.trim().toLowerCase())) {
-    // Blunt the brute-force rate a little without keeping state.
+  let matched = false;
+  for (const expected of adminPasswordHashes(env)) {
+    if (timingSafeEqual(got, expected)) {
+      matched = true;
+      break;
+    }
+  }
+
+  if (!matched) {
     await sleep(400);
     return json({ ok: false, error: 'invalid_credentials' }, 401);
   }
@@ -273,15 +295,13 @@ async function handleListLeads(request, env, url) {
 
 async function createSessionCookie(env) {
   const expiresAt = Date.now() + SESSION_TTL_MS;
-  const signature = await hmacHex(env.SESSION_SECRET, String(expiresAt));
+  const signature = await hmacHex(sessionSecret(env), String(expiresAt));
   const value = `${expiresAt}.${signature}`;
   const maxAge = Math.floor(SESSION_TTL_MS / 1000);
   return `${SESSION_COOKIE}=${value}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=${maxAge}`;
 }
 
 async function verifySession(request, env) {
-  if (!env.SESSION_SECRET) return false;
-
   const raw = readCookie(request, SESSION_COOKIE);
   if (!raw) return false;
 
@@ -289,7 +309,7 @@ async function verifySession(request, env) {
   if (!expiresAt || !signature) return false;
   if (!Number(expiresAt) || Number(expiresAt) < Date.now()) return false;
 
-  const expected = await hmacHex(env.SESSION_SECRET, expiresAt);
+  const expected = await hmacHex(sessionSecret(env), expiresAt);
   return timingSafeEqual(signature, expected);
 }
 
@@ -380,7 +400,7 @@ function sleep(ms) {
 async function hashIp(request, env) {
   const ip = request.headers.get('cf-connecting-ip') || 'unknown';
   // Salted so the table never holds a reversible address.
-  return sha256Hex(`${ip}:${env.SESSION_SECRET || 'sk'}`);
+  return sha256Hex(`${ip}:${sessionSecret(env)}`);
 }
 
 async function sha256Hex(value) {

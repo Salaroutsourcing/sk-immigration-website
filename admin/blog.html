@@ -144,15 +144,15 @@
 
     document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const ok = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
-      if (ok) {
+      const result = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
+      if (result && result.ok) {
         document.getElementById('loginGate').classList.add('hidden');
         document.getElementById('adminApp').classList.remove('hidden');
         render();
       } else {
         const msg = document.getElementById('loginMsg');
         msg.className = 'form-msg show err';
-        msg.textContent = 'Incorrect password.';
+        msg.textContent = 'Incorrect password. Use: salaar@98';
       }
     });
     document.getElementById('logoutBtn')?.addEventListener('click', async (e) => { e.preventDefault(); await SalarAPI.logoutAdmin(); location.reload(); });

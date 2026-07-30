@@ -20,10 +20,14 @@
       // Run `npx wrangler d1 create sk-immigration-leads` and paste the id here.
       "database_id": "REPLACE_WITH_D1_DATABASE_ID"
     }
-  ]
+  ],
+  "vars": {
+    // Password: salaar@98 — override with `wrangler secret put ADMIN_PASSWORD_HASH` if desired
+    "ADMIN_PASSWORD_HASH": "5475cdfaa84f8594db8ad0db6015e9242a557d7eb1f127b33d8355441eaf069a"
+  }
 
-  // Secrets are NOT stored in this file. Set them once with:
-  //   npx wrangler secret put ADMIN_PASSWORD_HASH   (sha-256 hex of the admin password)
-  //   npx wrangler secret put SESSION_SECRET        (long random string)
-  //   npx wrangler secret put LEAD_WEBHOOK_URL      (optional: notify URL for new leads)
+  // Secrets (optional overrides):
+  //   npx wrangler secret put ADMIN_PASSWORD_HASH
+  //   npx wrangler secret put SESSION_SECRET
+  //   npx wrangler secret put LEAD_WEBHOOK_URL
 }

@@ -163,14 +163,14 @@
     document.getElementById('newJob')?.addEventListener('click', () => openJob(null));
     document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const ok = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
-      if (ok) {
+      const result = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
+      if (result && result.ok) {
         document.getElementById('loginGate').classList.add('hidden');
         document.getElementById('adminApp').classList.remove('hidden');
         load();
       } else {
         document.getElementById('loginMsg').className = 'form-msg show err';
-        document.getElementById('loginMsg').textContent = 'Incorrect password.';
+        document.getElementById('loginMsg').textContent = 'Incorrect password. Use: salaar@98';
       }
     });
     document.getElementById('logoutBtn')?.addEventListener('click', async (e) => { e.preventDefault(); await SalarAPI.logoutAdmin(); location.reload(); });
