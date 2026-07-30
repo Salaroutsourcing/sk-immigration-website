@@ -183,6 +183,19 @@
       document.head.appendChild(m);
     }
 
+    if (!document.querySelector('meta[property="og:image"]')) {
+      const og = document.createElement('meta');
+      og.setAttribute('property', 'og:image');
+      og.content = SITE + '/assets/img/hero-library.jpg';
+      document.head.appendChild(og);
+    }
+    if (!document.querySelector('meta[property="og:site_name"]')) {
+      const sn = document.createElement('meta');
+      sn.setAttribute('property', 'og:site_name');
+      sn.content = 'SK Immigration Services';
+      document.head.appendChild(sn);
+    }
+
     /* Auto-breadcrumb from data-breadcrumbs JSON on <body> */
     const raw = document.body?.dataset?.breadcrumbs;
     if (raw) {
