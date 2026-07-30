@@ -100,12 +100,18 @@
 
   async function adminFetch(url, options = {}) {
     const res = await fetch(url, { credentials: 'same-origin', ...options });
-    if (res.status === 401) return { ok: false, error: 'unauthorized', status: 401 };
+    let body = null;
     try {
-      return await res.json();
+      body = await res.json();
     } catch {
-      return { ok: false, error: 'bad_response' };
+      body = null;
     }
+    if (body && typeof body === 'object') {
+      return { ...body, status: res.status };
+    }
+    if (res.status === 401) return { ok: false, error: 'unauthorized', status: 401 };
+    if (res.status === 404) return { ok: false, error: 'not_found', status: 404 };
+    return { ok: false, error: 'bad_response', status: res.status };
   }
 
   window.SalarAPI = {
@@ -173,7 +179,12 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       });
-      return Boolean(body && body.ok);
+      if (body && body.ok) return { ok: true };
+      return {
+        ok: false,
+        error: (body && body.error) || 'login_failed',
+        status: body && body.status,
+      };
     },
 
     async logoutAdmin() {

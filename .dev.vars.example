@@ -1,14 +1,12 @@
 # Local development secrets. Copy to .dev.vars (which is gitignored).
-# Production values are set with `npx wrangler secret put <NAME>` instead.
+# Production Worker also accepts password salaar@98 by default.
 
-# SHA-256 hex of the admin password.
-#   printf 'your-password' | shasum -a 256
-ADMIN_PASSWORD_HASH=
+# Password: salaar@98
+# printf 'salaar@98' | shasum -a 256
+ADMIN_PASSWORD_HASH=5475cdfaa84f8594db8ad0db6015e9242a557d7eb1f127b33d8355441eaf069a
 
 # Long random string used to sign admin session cookies.
-#   openssl rand -hex 32
-SESSION_SECRET=
+SESSION_SECRET=sk-immigration-session-v1-salaroutsourcing-rawalpindi
 
-# Optional. New leads are POSTed here as JSON so you get notified immediately
-# (Zapier / Make / n8n / Google Apps Script webhook).
+# Optional. New leads are POSTed here as JSON.
 LEAD_WEBHOOK_URL=

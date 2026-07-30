@@ -279,10 +279,22 @@
 
     document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const ok = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
       const msg = document.getElementById('loginMsg');
-      if (ok) showApp();
-      else { msg.className = 'form-msg show err'; msg.textContent = 'Incorrect password.'; }
+      msg.className = 'form-msg show';
+      msg.textContent = 'Signing in…';
+      const result = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
+      if (result && result.ok) {
+        showApp();
+        return;
+      }
+      msg.className = 'form-msg show err';
+      if (result && result.error === 'invalid_credentials') {
+        msg.textContent = 'Incorrect password. Use: salaar@98';
+      } else if (result && result.status === 404) {
+        msg.textContent = 'Login API not deployed yet. Wait for Cloudflare deploy, then retry.';
+      } else {
+        msg.textContent = 'Login failed (' + (result && result.error ? result.error : 'unknown') + '). Try salaar@98 after deploy.';
+      }
     });
 
     document.getElementById('logoutBtn')?.addEventListener('click', async (e) => {
