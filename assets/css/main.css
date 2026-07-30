@@ -1,4 +1,4 @@
-/* topbar-single-row v5 — brand polish + link contrast */
+/* topbar-single-row v6 — money pages tables */
 /* ═══════════════════════════════════════════════════════════
    SK Immigration Services — Live Theme (salaroutsourcing.com)
    Light navy + gold · Poppins / Inter · Soft glass
@@ -1390,6 +1390,38 @@ table.data th {
 }
 .prose ul {
   padding-left: 1.25rem;
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.1rem 0 1.35rem;
+  font-size: 0.92rem;
+  overflow-x: auto;
+  display: block;
+}
+.prose thead th {
+  text-align: left;
+  background: var(--bg2);
+  color: var(--navy);
+  font-weight: 700;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--glass-border);
+}
+.prose td {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--glass-border);
+  vertical-align: top;
+  color: var(--text);
+}
+.prose tbody tr:nth-child(even) td {
+  background: rgba(15, 23, 42, 0.02);
+}
+[data-theme='dark'] .prose thead th {
+  background: var(--navy-800);
+  color: var(--gold-300);
+}
+[data-theme='dark'] .prose tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03);
 }
 .prose a {
   color: var(--navy);
