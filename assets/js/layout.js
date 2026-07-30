@@ -27,29 +27,28 @@
   const BASE = basePrefix();
 
   const NAV = [
-    { href: 'index.html', label: 'Home', id: 'home' },
-    { href: 'study-visa/', label: 'Study Visa', id: 'study-visa' },
-    { href: 'visa-appointment/', label: 'Appointments', id: 'visa-appointment' },
-    { href: 'saudi-visa/saudi-visa-processing-pakistan/', label: 'Saudi Visa', id: 'saudi-visa' },
-    { href: 'jobs.html', label: 'Work Visa', id: 'jobs' },
-    { href: 'checklist.html', label: 'Checklist', id: 'checklist' },
-    { href: 'document-services/', label: 'Attestation', id: 'document-services' },
-    { href: 'hire-workers-from-pakistan/', label: 'Hire Workers', id: 'hire-workers' },
+    { href: 'study-visa/', label: 'Study', id: 'study-visa' },
+    { href: 'visa-appointment/', label: 'Appts', title: 'Visa appointments', id: 'visa-appointment' },
+    { href: 'saudi-visa/saudi-visa-processing-pakistan/', label: 'Saudi', id: 'saudi-visa' },
+    { href: 'jobs.html', label: 'Work', id: 'jobs' },
+    { href: 'document-services/', label: 'Docs', title: 'Document attestation', id: 'document-services' },
+    { href: 'hire-workers-from-pakistan/', label: 'Hire', id: 'hire-workers' },
     { href: 'contact.html', label: 'Contact', id: 'contact' },
   ];
 
   /** Pages without their own nav entry highlight their closest parent */
   const NAV_ALIAS = {
-    calculator: 'checklist',
-    compare: 'checklist',
+    calculator: 'document-services',
+    compare: 'document-services',
+    checklist: 'document-services',
     attestation: 'document-services',
     eligibility: 'study-visa',
     services: 'study-visa',
     countries: 'study-visa',
     ausbildung: 'jobs',
-    pricing: 'home',
+    pricing: 'contact',
     blog: 'study-visa',
-    faq: 'checklist',
+    faq: 'contact',
   };
 
   function activeId() {
@@ -59,8 +58,8 @@
     if (path.includes('/saudi-visa')) return 'saudi-visa';
     if (path.includes('/document-services') || path.includes('attestation')) return 'document-services';
     if (path.includes('/hire-workers')) return 'hire-workers';
-    if (path.includes('/answers/')) return 'faq';
-    if (path.includes('/blog/')) return 'faq';
+    if (path.includes('/answers/')) return 'study-visa';
+    if (path.includes('/blog/')) return 'study-visa';
     const page = document.body.dataset.page || 'home';
     return NAV_ALIAS[page] || page;
   }
@@ -71,10 +70,10 @@
 
   function navLinks(cls) {
     const cur = activeId();
-    return NAV.map(
-      (n) =>
-        `<a href="${href(n.href)}" class="${cls} ${cur === n.id ? 'active' : ''}" ${cur === n.id ? 'aria-current="page"' : ''}>${n.label}</a>`
-    ).join('');
+    return NAV.map((n) => {
+      const title = n.title ? ` title="${n.title}"` : '';
+      return `<a href="${href(n.href)}" class="${cls} ${cur === n.id ? 'active' : ''}"${title} ${cur === n.id ? 'aria-current="page"' : ''}>${n.label}</a>`;
+    }).join('');
   }
 
   function socialRow() {
@@ -111,27 +110,31 @@
     el.innerHTML = `
       <a href="#main" class="skip-link">Skip to main content</a>
       <header class="site-header" id="header">
-        <div class="container header-inner">
-          ${logoBlock()}
-          <nav class="nav-desktop" aria-label="Primary">${navLinks('')}</nav>
-          <div class="header-actions">
-            <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle English / Urdu summary">EN</button>
-            <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
-              <span data-theme-icon>☾</span>
-            </button>
-            <a href="${href('eligibility.html')}" class="btn btn-ghost btn-sm btn-portal">Quiz</a>
-            <a href="${href('contact.html')}" class="btn btn-gold btn-sm">Free Consult</a>
-            <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" id="menuBtn">
-              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-            </button>
+        <div class="container header-shell">
+          <div class="header-inner">
+            ${logoBlock()}
+            <nav class="nav-desktop" aria-label="Primary">${navLinks('nav-pill')}</nav>
+            <div class="header-actions">
+              <button type="button" class="lang-toggle glass-chip" id="langToggle" aria-label="Toggle English / Urdu summary">EN</button>
+              <button type="button" class="theme-toggle glass-chip" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
+                <span data-theme-icon>☾</span>
+              </button>
+              <a href="${href('eligibility.html')}" class="btn btn-ghost btn-sm btn-portal">Quiz</a>
+              <a href="${href('contact.html')}" class="btn btn-gold btn-sm btn-consult">Consult</a>
+              <button type="button" class="menu-toggle glass-chip" aria-label="Open menu" aria-expanded="false" id="menuBtn">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </header>
       <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile menu">
         <div class="mobile-nav-panel">
+          <p class="mobile-nav-label">Services</p>
           ${navLinks('')}
+          <p class="mobile-nav-label">Tools</p>
           <a href="${href('eligibility.html')}">Eligibility Quiz</a>
-          <a href="${href('checklist.html')}">Document Checklist (tick boxes)</a>
+          <a href="${href('checklist.html')}">Document Checklist</a>
           <a href="${href('calculator.html')}">Cost Calculator</a>
           <a href="${href('compare.html')}">Compare Countries</a>
           <a href="${href('cv-builder.html')}">CV Builder</a>
@@ -139,15 +142,13 @@
           <a href="${href('faq.html')}">FAQ</a>
           <a href="${href('blog.html')}">Blog</a>
           <a href="${href('services.html')}">All Services</a>
-          <a href="${href('portal.html')}">Staff Portal</a>
-          <a href="${href('hire-workers-from-pakistan/')}">Employer Hire Portal</a>
           <a href="${href('about.html')}">About</a>
-          <a href="${href('privacy.html')}">Privacy Policy</a>
-          <a href="${href('terms.html')}">Terms &amp; Conditions</a>
+          <a href="${href('privacy.html')}">Privacy</a>
+          <a href="${href('terms.html')}">Terms</a>
           <a href="${C().whatsappLink || '#'}" class="btn btn-whatsapp mt-2" target="_blank" rel="noopener">WhatsApp</a>
           <div class="mobile-nav-toggles">
-            <button type="button" class="lang-toggle" aria-label="Toggle English / Urdu summary">EN</button>
-            <button type="button" class="theme-toggle" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
+            <button type="button" class="lang-toggle glass-chip" aria-label="Toggle English / Urdu summary">EN</button>
+            <button type="button" class="theme-toggle glass-chip" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
               <span data-theme-icon>☾</span>
             </button>
           </div>
@@ -159,9 +160,11 @@
     const menuBtn = document.getElementById('menuBtn');
     const mobileNav = document.getElementById('mobileNav');
 
-    window.addEventListener('scroll', () => {
-      header?.classList.toggle('scrolled', window.scrollY > 12);
-    });
+    const onScroll = () => {
+      header?.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     menuBtn?.addEventListener('click', () => {
       const open = mobileNav.classList.toggle('open');
