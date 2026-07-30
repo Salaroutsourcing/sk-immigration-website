@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Client Portal | SK Immigration</title>
-  <meta name="description" content="Access the SK Immigration client portal for candidates and admins. Fast CRM for leads and CVs also available." />
+  <title>Staff &amp; Employer Portal Hub | SK Immigration</title>
+  <meta name="description" content="SK Immigration portal hub — secure admin CRM, blog posts, jobs, and employer hire portal." />
+  <meta name="robots" content="noindex,nofollow" />
   <link rel="canonical" href="https://www.salaroutsourcing.com/portal" />
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,38 +18,95 @@
   <div id="site-header"></div>
   <main id="main">
     <div class="page-hero container">
-      <p class="eyebrow">Portal hub</p>
-      <h1 class="display">Choose your workspace</h1>
-      <p>Use the fast static CRM for leads &amp; CVs, or open the full Google Apps Script candidate/admin portal.</p>
+      <p class="eyebrow">Secure workspaces</p>
+      <h1 class="display">Portal hub</h1>
+      <p>Staff tools are password-protected. Employers use the public Hire portal — no admin password needed.</p>
     </div>
 
     <section>
       <div class="container grid-2">
         <article class="glass card reveal">
-          <span class="badge">Recommended · Fast</span>
-          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Admin CRM (new)</h2>
-          <p class="text-muted">Lightning-fast dashboard hosted with this website. Collect bookings, eligibility leads, CVs, and job applications. Export JSON anytime. Syncs to Google Sheets when Apps Script API URL is configured.</p>
+          <span class="badge">Staff · Secure</span>
+          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Admin CRM</h2>
+          <p class="text-muted">Server-authenticated dashboard for student leads, visa leads, employer requests, CVs and applications. Password is verified by Cloudflare Worker (HttpOnly session cookie) — never stored in the public website files.</p>
           <ul class="prose mt-2">
-            <li>Leads inbox</li>
-            <li>CV bank</li>
-            <li>Job applications</li>
-            <li>Blog &amp; job posting admin</li>
+            <li>Students / eligibility leads</li>
+            <li>Visa appointment &amp; Saudi leads</li>
+            <li>Employer / quotation / workforce requests</li>
+            <li>Candidates (CV bank) &amp; job applications</li>
           </ul>
           <a class="btn btn-gold mt-2" href="admin/">Open Admin CRM</a>
         </article>
 
         <article class="glass card reveal">
-          <span class="badge badge-muted">Legacy portal</span>
-          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Google Apps Script Portal</h2>
-          <p class="text-muted">Your existing candidate/admin portal. Useful for full case workflows already configured in Sheets — may load slower because Apps Script hosts the entire UI.</p>
+          <span class="badge">Staff · Content</span>
+          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Blog posts admin</h2>
+          <p class="text-muted">Create and edit blog posts shown on the public <a href="blog.html">Blog</a> page. Same admin password as the CRM. Use this for success stories, policy updates and SEO articles.</p>
+          <ul class="prose mt-2">
+            <li>New post / edit / delete</li>
+            <li>Categories, excerpts, HTML content</li>
+            <li>Preview on the live blog listing</li>
+          </ul>
+          <div class="hero-ctas mt-2" style="margin-bottom:0">
+            <a class="btn btn-gold" href="admin/blog.html">Manage blog posts</a>
+            <a class="btn btn-ghost" href="blog.html">View public blog</a>
+          </div>
+        </article>
+
+        <article class="glass card reveal">
+          <span class="badge">Staff · Jobs</span>
+          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Jobs / Ausbildung admin</h2>
+          <p class="text-muted">Post and update Ausbildung and work openings that appear on Jobs and Ausbildung pages.</p>
+          <a class="btn btn-gold mt-2" href="admin/jobs.html">Manage jobs</a>
+        </article>
+
+        <article class="glass card reveal">
+          <span class="badge">Employers · Public</span>
+          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Hire Workers portal</h2>
+          <p class="text-muted">Client-facing B2B portal for international companies: employer registration, workforce requirements and quotation requests. Submissions land in Admin CRM under Employer requests.</p>
+          <a class="btn btn-gold mt-2" href="hire-workers-from-pakistan/">Open Hire portal</a>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="glass card reveal" style="padding:1.5rem">
+          <h2 style="font-family:var(--font-display);margin-bottom:0.75rem">How admin login stays secure</h2>
+          <ol class="prose">
+            <li>Password is <strong>not</strong> written in public HTML/JS.</li>
+            <li>Cloudflare stores only a SHA-256 hash as a Worker secret (<code>ADMIN_PASSWORD_HASH</code>).</li>
+            <li>Successful login sets an HttpOnly, Secure, SameSite cookie for 12 hours.</li>
+            <li>Lead APIs rate-limit abusive submissions.</li>
+          </ol>
+          <p class="text-muted" style="margin-top:0.75rem;font-size:0.92rem">To set or reset the password on your machine with Wrangler: <code>printf 'YourNewPassword' | shasum -a 256</code> then <code>npx wrangler secret put ADMIN_PASSWORD_HASH</code> and <code>npx wrangler secret put SESSION_SECRET</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2" style="padding-bottom:3rem">
+        <article class="glass card reveal">
+          <span class="badge badge-muted">Optional legacy</span>
+          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Google Apps Script portal</h2>
+          <p class="text-muted">Older Sheets-based UI for case workflows. Use only if you still need it — the new Admin CRM is recommended.</p>
           <div class="hero-ctas mt-2">
             <a id="legacyPortal" class="btn btn-navy" href="#" target="_blank" rel="noopener">Open legacy portal ↗</a>
             <button type="button" class="btn btn-ghost" id="embedToggle">Embed below</button>
           </div>
         </article>
+        <article class="glass card reveal">
+          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Public tools (no login)</h2>
+          <p class="text-muted">Visitors should use WhatsApp and these tools — not the staff CRM.</p>
+          <div class="hero-ctas mt-2" style="margin-bottom:0">
+            <a class="btn btn-ghost btn-sm" href="eligibility.html">Eligibility quiz</a>
+            <a class="btn btn-ghost btn-sm" href="contact.html">Contact</a>
+            <a class="btn btn-whatsapp btn-sm" href="https://wa.me/923045999859" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </article>
       </div>
 
-      <div class="container mt-3 hidden" id="embedWrap">
+      <div class="container mt-1 hidden" id="embedWrap" style="padding-bottom:3rem">
         <div class="glass" style="padding:0.5rem;border-radius:1rem;overflow:hidden">
           <iframe id="portalFrame" title="Apps Script Portal" style="width:100%;min-height:75vh;border:0;border-radius:0.75rem;background:#0a1628"></iframe>
         </div>

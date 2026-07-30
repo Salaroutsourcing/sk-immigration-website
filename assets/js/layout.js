@@ -100,7 +100,7 @@
             <span class="nav-name-long">${brand}</span>
             <span class="nav-name-short" aria-hidden="true">${brandShort}</span>
           </span>
-          <small class="nav-sub">A Salar Outsourcing brand</small>
+          <small class="nav-sub">Study visa &amp; immigration</small>
         </span>
       </a>`;
   }
@@ -109,17 +109,6 @@
     const el = document.getElementById('site-header');
     if (!el) return;
     el.innerHTML = `
-      <div class="brand-bar">
-        <div class="container">
-          <span>A service by <a href="https://www.salaroutsourcing.com">Salar Outsourcing</a> — Pakistan’s multi-service company</span>
-          <div class="brand-bar-links">
-            <a href="${href('study-visa/')}">Study Visa</a>
-            <a href="${href('hire-workers-from-pakistan/')}">Hire Workers</a>
-            <a href="${href('portal.html')}">Client Portal</a>
-            <a href="tel:+923045999859">${C().phoneDisplay || '+92 304 5999859'}</a>
-          </div>
-        </div>
-      </div>
       <a href="#main" class="skip-link">Skip to main content</a>
       <header class="site-header" id="header">
         <div class="container header-inner">
@@ -141,11 +130,6 @@
       <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile menu">
         <div class="mobile-nav-panel">
           ${navLinks('')}
-          <a href="${href('study-visa/')}">Study Visa</a>
-          <a href="${href('visa-appointment/')}">Visa Appointments</a>
-          <a href="${href('saudi-visa/saudi-visa-processing-pakistan/')}">Saudi Visa</a>
-          <a href="${href('document-services/')}">Document Services</a>
-          <a href="${href('hire-workers-from-pakistan/')}">Hire Workers</a>
           <a href="${href('eligibility.html')}">Eligibility Quiz</a>
           <a href="${href('calculator.html')}">Cost Calculator</a>
           <a href="${href('compare.html')}">Compare Countries</a>
@@ -153,9 +137,11 @@
           <a href="${href('faq.html')}">FAQ</a>
           <a href="${href('blog.html')}">Blog</a>
           <a href="${href('services.html')}">All Services</a>
-          <a href="${href('portal.html')}">Client Portal</a>
+          <a href="${href('portal.html')}">Staff Portal</a>
+          <a href="${href('hire-workers-from-pakistan/')}">Employer Hire Portal</a>
           <a href="${href('about.html')}">About</a>
-          <a href="${href('attestation.html')}">Attestation Hub</a>
+          <a href="${href('privacy.html')}">Privacy Policy</a>
+          <a href="${href('terms.html')}">Terms &amp; Conditions</a>
           <a href="${C().whatsappLink || '#'}" class="btn btn-whatsapp mt-2" target="_blank" rel="noopener">WhatsApp</a>
           <div class="mobile-nav-toggles">
             <button type="button" class="lang-toggle" aria-label="Toggle English / Urdu summary">EN</button>
@@ -224,18 +210,21 @@
             <a href="${href('cv-builder.html')}">CV Builder</a>
           </div>
           <div class="footer-col">
-            <h4>Contact</h4>
+            <h4>Contact &amp; legal</h4>
             <a href="mailto:${C().email}">${C().email}</a>
             <a href="tel:${(C().phone || '').replace(/\s/g, '')}">${C().phoneDisplay}</a>
             <a href="${C().whatsappLink}" target="_blank" rel="noopener">WhatsApp Chat</a>
             <a href="${href('about.html')}">About</a>
             <a href="${href('faq.html')}">FAQ</a>
             <a href="${href('contact.html')}">Book consult</a>
+            <a href="${href('privacy.html')}">Privacy Policy</a>
+            <a href="${href('terms.html')}">Terms &amp; Conditions</a>
+            <a href="${href('portal.html')}">Staff Portal</a>
           </div>
         </div>
         <div class="container footer-bottom">
-          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('privacy.html')}">Privacy &amp; Terms</a></span>
-          <span class="parent-line">${C().parentLine || 'A division of Salar Outsourcing'}</span>
+          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('terms.html')}">Terms</a></span>
+          <span class="parent-line">Operated by <a href="${href('about.html')}">Salar Outsourcing</a> · Rawalpindi, Pakistan</span>
         </div>
       </footer>
       <a class="wa-float" href="${C().whatsappLink}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
@@ -308,10 +297,6 @@
       s.src = BASE + 'assets/js/seo.js';
       document.body.appendChild(s);
     }
-    if (!document.querySelector('script[src*="ai-chat.js"]')) {
-      const a = document.createElement('script');
-      a.src = BASE + 'assets/js/ai-chat.js';
-      document.body.appendChild(a);
-    }
+    /* Ask SK chatbot removed — WhatsApp + guides are the support path */
   });
 })();
