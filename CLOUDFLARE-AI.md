@@ -1,32 +1,34 @@
-# Cloudflare AI Crawl Control — required for AI Overviews
+# Cloudflare AI Crawl Control — required for AI Overviews / ChatGPT citations
 
-Your repo `robots.txt` **allows** GPTBot, ClaudeBot, Google-Extended, PerplexityBot, and other citation crawlers.
+Your repo `robots.txt` **allows** GPTBot, ClaudeBot, Google-Extended, PerplexityBot, and other citation crawlers — plus `/answers/`, `/official-links/`, `/llms.txt`, and `/ai.txt`.
 
 Cloudflare’s managed **AI Crawl Control** feature can still **prepend Disallow rules** that override your file. When that happens, assistants and some Google AI features cannot read the site — even though `llms.txt` invites them.
 
-## Fix (dashboard)
+## Fix (dashboard) — do this after every plan change
 
 1. Open [Cloudflare Dashboard](https://dash.cloudflare.com/) → select **salaroutsourcing.com**.
 2. Go to **Security** → **Settings** / **AI Crawl Control** (wording varies by plan).
-3. **Disable** blanket blocks for:
+3. **Allow / do not block** these bots for citation:
    - Google-Extended
    - GPTBot / OAI-SearchBot / ChatGPT-User
    - ClaudeBot / anthropic-ai
    - PerplexityBot
    - Applebot-Extended (optional but useful)
 4. Keep blocking pure training scrapers if you want (`ai-train=no` content signal is fine).
-5. Save, then verify:
+5. Save, wait 2–5 minutes, then verify from your laptop:
 
 ```bash
-curl -sL https://www.salaroutsourcing.com/robots.txt | head -80
+curl -sL https://www.salaroutsourcing.com/robots.txt | head -100
+curl -sI https://www.salaroutsourcing.com/llms.txt | head -15
+curl -sI -A "GPTBot" https://www.salaroutsourcing.com/answers | head -15
 ```
 
-You should **not** see Cloudflare Managed `Disallow: /` blocks for GPTBot / Google-Extended ahead of your Allow rules.
+You should **not** see Cloudflare Managed `Disallow: /` blocks for GPTBot / Google-Extended ahead of your Allow rules. `llms.txt` and `/answers` should return **200**.
 
 ## After changing
 
-1. Resubmit sitemap in Google Search Console.
-2. Request indexing for `/`, `/study-visa/`, and top country pages.
+1. Resubmit sitemap in Google Search Console (`/sitemap.xml`).
+2. Request indexing for `/`, `/answers`, `/official-links/`, `/study-visa/`, and top country pages.
 3. Spot-check that ChatGPT / Perplexity can fetch `https://www.salaroutsourcing.com/llms.txt`.
 
 ## Content-Signal note

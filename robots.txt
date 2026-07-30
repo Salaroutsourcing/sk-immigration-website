@@ -23,11 +23,13 @@ Allow: /saudi-visa/
 Allow: /document-services/
 Allow: /hire-workers-from-pakistan/
 Allow: /answers/
+Allow: /official-links/
 Allow: /local/
 Allow: /ur/
 Allow: /guides/
 Allow: /llms.txt
 Allow: /ai.txt
+Allow: /sitemap.xml
 
 # Explicitly welcome search and AI crawlers (citation / overviews)
 User-agent: Googlebot
