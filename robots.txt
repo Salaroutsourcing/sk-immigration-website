@@ -1,17 +1,20 @@
-# SK Immigration Services — https://www.salaroutsourcing.com
+# SK Immigration Services — robots.txt
+# Domain: https://www.salaroutsourcing.com
 #
-# IMPORTANT: Cloudflare's managed robots.txt / AI Crawl Control feature can
-# prepend its own block ahead of these rules, which disallows GPTBot,
-# ClaudeBot, CCBot, Google-Extended and others. That block wins over the rules
-# below, so it must be turned off in the Cloudflare dashboard for this site to
-# be readable by AI assistants.
+# Cloudflare AI Crawl Control can PREPEND Disallow rules for GPTBot,
+# ClaudeBot, Google-Extended, etc. Those managed rules win over this file.
+# Turn OFF Cloudflare → Security → AI Crawl Control (or allow citation bots)
+# so this Allow list actually works. See CLOUDFLARE-AI.md.
 
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /portal.html
+Disallow: /portal
 Disallow: /apps-script/
 Disallow: /scripts/
+Disallow: /.wrangler/
+Disallow: /.dev.vars
 
 # Public knowledge clusters for AI citation
 Allow: /study-visa/
@@ -20,15 +23,20 @@ Allow: /saudi-visa/
 Allow: /document-services/
 Allow: /hire-workers-from-pakistan/
 Allow: /answers/
+Allow: /local/
+Allow: /ur/
+Allow: /guides/
 Allow: /llms.txt
 Allow: /ai.txt
 
-# Explicitly welcome search and AI crawlers.
-
+# Explicitly welcome search and AI crawlers (citation / overviews)
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 User-agent: GPTBot
@@ -38,12 +46,6 @@ User-agent: ChatGPT-User
 Allow: /
 
 User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: anthropic-agent
 Allow: /
 
 User-agent: anthropic-ai
@@ -74,5 +76,3 @@ User-agent: Bytespider
 Allow: /
 
 Sitemap: https://www.salaroutsourcing.com/sitemap.xml
-
-# deploy:20260730070307

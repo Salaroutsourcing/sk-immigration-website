@@ -17,7 +17,13 @@
       'saudi-visa',
       'document-services',
       'hire-workers-from-pakistan',
+      'local',
+      'guides',
+      'ur',
     ];
+    if (parts[0] === 'ur' && parts.length >= 3) return '../../../';
+    if (parts[0] === 'ur' && parts.length >= 2) return '../../';
+    if (parts[0] === 'ur') return '../';
     if (parts.length >= 2 && nestedRoots.includes(parts[0])) return '../../';
     if (parts.length >= 1 && nestedRoots.includes(parts[0])) return '../';
     if (location.pathname.includes('/admin')) return '../';
@@ -222,12 +228,13 @@
             <a href="${href('contact.html')}">Book consult</a>
             <a href="${href('privacy.html')}">Privacy Policy</a>
             <a href="${href('terms.html')}">Terms &amp; Conditions</a>
-            <a href="${href('portal.html')}">Staff Portal</a>
+            <a href="${href('local/rawalpindi-study-visa-consultant/')}">Rawalpindi office</a>
+            <a href="${href('ur/')}">اردو</a>
           </div>
         </div>
         <div class="container footer-bottom">
-          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('terms.html')}">Terms</a></span>
-          <span class="parent-line">Operated by <a href="${href('about.html')}">Salar Outsourcing</a> · Rawalpindi, Pakistan</span>
+          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
+          <span class="parent-line">SK Immigration Services by <a href="${href('about.html')}">Salar Outsourcing</a> · Rawalpindi, Pakistan</span>
         </div>
       </footer>
       <a class="wa-float" href="${C().whatsappLink}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
@@ -239,18 +246,40 @@
   function revealOnScroll() {
     const els = document.querySelectorAll('.reveal');
     if (!els.length) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
-          }
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('visible'));
+      return;
+    }
+    requestAnimationFrame(() => {
+      els.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+        if (inView) el.classList.add('visible');
+        else el.classList.add('reveal-ready');
+      });
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              e.target.classList.remove('reveal-ready');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -5% 0px' }
+      );
+      els.forEach((el) => {
+        if (!el.classList.contains('visible')) io.observe(el);
+      });
+      setTimeout(() => {
+        document.querySelectorAll('.reveal:not(.visible)').forEach((el) => {
+          el.classList.add('visible');
+          el.classList.remove('reveal-ready');
         });
-      },
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => io.observe(el));
+      }, 1200);
+    });
   }
 
   function bindLangToggle() {
@@ -258,8 +287,10 @@
     if (!buttons.length) return;
     const apply = (ur) => {
       document.documentElement.lang = ur ? 'ur' : 'en';
+      document.documentElement.dir = ur ? 'rtl' : 'ltr';
       buttons.forEach((b) => { b.textContent = ur ? 'UR' : 'EN'; });
       document.querySelectorAll('[data-en][data-ur]').forEach((el) => {
+        if (el.closest('.logo')) return;
         el.textContent = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
       });
       let banner = document.getElementById('urBanner');
@@ -267,10 +298,13 @@
         if (!banner) {
           banner = document.createElement('div');
           banner.id = 'urBanner';
-          banner.className = 'glass card';
-          banner.style.cssText = 'margin:0;border-radius:0;padding:0.65rem 1rem;text-align:center;font-size:0.9rem';
+          banner.className = 'ur-banner';
+          banner.setAttribute('lang', 'ur');
+          banner.dir = 'rtl';
           banner.innerHTML =
-            'اردو مدد: مفت مشورہ، دستاویزات کی فہرست، اور واٹس ایپ +92 304 5999859 · <a href="' +
+            'اردو خلاصہ: مفت مشورہ · واٹس ایپ <a href="https://wa.me/923045999859">+92 304 5999859</a> · مکمل اردو صفحات: <a href="' +
+            href('ur/') +
+            '">یہاں</a> · <a href="' +
             href('contact.html') +
             '">اب بک کریں</a>';
           document.getElementById('site-header')?.after(banner);

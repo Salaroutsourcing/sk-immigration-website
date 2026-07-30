@@ -1,11 +1,11 @@
 /**
  * SK Immigration Services — Site Configuration
- * Domain: salaroutsourcing.com | Brand: SK Immigration (division of Salar Outsourcing)
+ * Domain: salaroutsourcing.com | Brand: SK Immigration (by Salar Outsourcing)
  */
 window.SALAR_CONFIG = {
   brand: 'SK Immigration',
   brandFull: 'SK Immigration Services',
-  parentLine: 'A division of Salar Outsourcing',
+  parentLine: 'SK Immigration Services by Salar Outsourcing',
   tagline: "Pakistan's Trusted Study Visa & Immigration Partner",
   domain: 'https://www.salaroutsourcing.com',
   email: 'Services@salaroutsourcing.com',
@@ -37,7 +37,12 @@ window.SALAR_CONFIG = {
     youtube: 'https://www.youtube.com/@SKImmigrationtips',
   },
 
-  /* Professional imagery (Unsplash — free to use) */
+  googleBusinessShare: 'https://share.google/hQzlV2rZbYtUzYZ9n',
+  googleKnowledgeGraphId: '/g/11zfnqjfgx',
+  googleMapsSearch:
+    'https://www.google.com/maps/search/?api=1&query=SK+Immigration+Services+Alfazal+Plaza+Satellite+Town+Rawalpindi',
+
+  /* Professional imagery */
   images: {
     hero: 'assets/img/hero-library.jpg',
     study: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80',

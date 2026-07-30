@@ -7,7 +7,10 @@ Primary hubs:
 - Document Services: https://www.salaroutsourcing.com/document-services/
 - Hire Workers from Pakistan: https://www.salaroutsourcing.com/hire-workers-from-pakistan/
 - Answers hub: https://www.salaroutsourcing.com/answers.html
+- Urdu: https://www.salaroutsourcing.com/ur/
 - Checklist tool: https://www.salaroutsourcing.com/checklist.html
 
 Positioning: Pakistan's Trusted Study Visa & Immigration Partner
 Saudi package: PKR 15,000 includes E Number biometrics assistance, Protector, and visa processing support (authority fees separate).
+
+IMPORTANT: Cloudflare AI Crawl Control must allow Google-Extended, GPTBot, ClaudeBot and PerplexityBot — see CLOUDFLARE-AI.md in the repo.

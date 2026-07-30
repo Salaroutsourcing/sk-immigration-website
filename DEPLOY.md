@@ -1,119 +1,123 @@
-# Deploy Salar Outsourcing
+# Deploy Salar Outsourcing (free + fast)
 
-The site runs entirely on Cloudflare Workers: static pages are served from the
-assets bundle, and `src/index.js` handles `/api/*` for form submissions and
-admin access. Leads are stored in Cloudflare D1.
+> **After every production deploy:** follow [CLOUDFLARE-AI.md](CLOUDFLARE-AI.md) so AI crawlers are not blocked, then [GSC-MONITOR.md](GSC-MONITOR.md) for indexing. Brand-domain notes: [DOMAIN-MIGRATION.md](DOMAIN-MIGRATION.md).
 
-## Architecture
+## Why this is faster than Apps Script alone
 
-| Layer | Where it runs |
-|-------|---------------|
-| Website pages | Cloudflare Workers static assets |
-| Form submissions | Worker `POST /api/lead` |
-| Lead storage | Cloudflare D1 (`sk-immigration-leads`) |
-| Admin CRM | `/admin/`, gated by a signed HttpOnly session cookie |
-| Legacy case portal | Existing Apps Script UI, linked from `portal.html` |
+| Layer | Where it runs | Speed |
+|-------|---------------|-------|
+| Website UI | Cloudflare / GitHub Pages CDN | Very fast |
+| Admin CRM | Same static host | Very fast |
+| Lead storage | Google Apps Script → Sheets | Only API calls (small) |
+| Legacy case portal | Existing Apps Script UI | Optional / slower |
 
 ---
 
-## First-time setup
+## Option A — GitHub Pages + Cloudflare (recommended)
 
-### 1. Create the database
-
-```bash
-npm install
-npx wrangler d1 create sk-immigration-leads
-```
-
-Copy the printed `database_id` into `wrangler.jsonc`, replacing
-`REPLACE_WITH_D1_DATABASE_ID`, then create the table:
+### 1. Create repo & push
 
 ```bash
-npm run db:migrate
+cd website
+git init
+git add .
+git commit -m "Initial Salar Outsourcing website"
+# create repo on GitHub, then:
+git branch -M main
+git remote add origin https://github.com/YOUR_USER/salar-outsourcing.git
+git push -u origin main
 ```
 
-### 2. Set the secrets
+### 2. Enable GitHub Pages
 
-```bash
-printf 'your-new-admin-password' | shasum -a 256   # copy the hex digest
-npx wrangler secret put ADMIN_PASSWORD_HASH        # paste the digest
-npx wrangler secret put SESSION_SECRET             # openssl rand -hex 32
+- Repo → **Settings → Pages**
+- Source: **Deploy from a branch**
+- Branch: `main` / root (or `/docs` if you move files)
+- Save — wait for `https://YOUR_USER.github.io/salar-outsourcing/`
+
+If the site is in a subfolder of a larger repo, set Pages root to `/website`.
+
+### 3. Cloudflare custom domain (salaroutsourcing.com)
+
+1. Add site in [Cloudflare](https://dash.cloudflare.com) (free plan).
+2. Point domain nameservers to Cloudflare.
+3. **DNS** → CNAME:
+   - `www` → `YOUR_USER.github.io` (Proxied)
+   - Or A/AAAA records per GitHub Pages docs for apex `@`
+4. GitHub Pages → Custom domain → `salaroutsourcing.com` / `www.salaroutsourcing.com`
+5. Enable Cloudflare SSL (Full) + Always Use HTTPS
+6. Optional: Page Rules / Cache Everything for static assets
+
+### 4. Forms / leads via Apps Script
+
+1. Open Google Drive → New Spreadsheet: `Salar Outsourcing Leads`
+2. **Extensions → Apps Script**
+3. Paste contents of `apps-script/Code.gs`
+4. **Deploy → New deployment → Web app**
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+5. Copy Web App URL
+6. Set in `assets/js/config.js`:
+
+```js
+appsScriptUrl: 'https://script.google.com/macros/s/XXXX/exec',
 ```
 
-Optional, for instant notification of every new lead:
+7. Commit & push. Test a contact form — rows appear in the Sheet.
 
-```bash
-npx wrangler secret put LEAD_WEBHOOK_URL
-```
-
-### 3. Deploy
-
-```bash
-npm run deploy
-```
+Email notifications: uncomment / use `_notify()` in Code.gs if desired.
 
 ---
 
-## DNS
+## Option B — Cloudflare Pages (even simpler)
 
-`www.salaroutsourcing.com` is the canonical hostname. Every canonical tag and
-sitemap entry points at it.
-
-Production is the **Worker** `sk-immigration-website` with Cloudflare
-**Custom Domains** for both `www` and apex. The Worker redirects apex → www.
-
-Do **not** point the zone at the old Pages project (`*.pages.dev`). If a Pages
-custom domain still exists for the apex, remove it in Workers & Pages → project
-→ Custom domains so it cannot override the Worker.
-
-## Cloudflare settings that affect SEO
-
-**Turn off the managed robots.txt / AI Crawl Control block.** Cloudflare
-prepends its own block to `robots.txt` that disallows `GPTBot`, `ClaudeBot`,
-`CCBot`, `Google-Extended`, `Applebot-Extended`, `Bytespider` and
-`meta-externalagent`. That block takes precedence over the rules in this repo,
-which defeats the whole `llms.txt` / answers-hub strategy. Disable it under
-Cloudflare → AI Crawl Control (or Security → Bots, depending on plan).
-
-Also enable SSL **Full (strict)** and **Always Use HTTPS**.
+1. Cloudflare Dashboard → **Workers & Pages → Create → Pages**
+2. Connect GitHub repo, root directory = `website` (or repo root if site is root)
+3. Build command: none (static) · Output: `/`
+4. Custom domain → add `salaroutsourcing.com`
 
 ---
 
-## What is and is not published
+## Option C — Netlify / Vercel
 
-`.assetsignore` keeps the backend and internal files out of the public bundle:
-`src/`, `scripts/`, `apps-script/`, `schema.sql`, `wrangler.jsonc`,
-`package.json`, `node_modules/`, `.dev.vars` and all `*.md`.
+- Drag-and-drop the `website` folder, or connect Git.
+- Publish directory = site root.
+- Add custom domain in project settings.
 
-Verify after any deploy:
+---
 
-```bash
-curl -sI https://www.salaroutsourcing.com/src/index.js | head -1     # expect 404
-curl -sI https://www.salaroutsourcing.com/wrangler.jsonc | head -1   # expect 404
-curl -sI https://www.salaroutsourcing.com/.dev.vars | head -1        # expect 404
-```
+## Legacy portal (keep both)
+
+Your existing portal:
+
+`https://script.google.com/macros/s/AKfycbz_Xy6fTRi1ompDQxHIYk-aRzBhzMS3PylHAlmJ98Dao1MA2GVWUpGoeGb4V8HvD752dQ/exec`
+
+Linked from **portal.html**. Use it for existing candidate workflows.
+
+Use **Admin CRM** (`/admin/`) for fast collection of:
+
+- Bookings / contact forms  
+- Eligibility quiz leads  
+- CV builder submissions  
+- Job / Ausbildung applications  
+- Blog & job posting  
 
 ---
 
 ## Security notes
 
-- The admin password is never in the repo and never sent to the browser. Only
-  its SHA-256 hash is stored, as a Cloudflare secret.
-- Sessions are HMAC-signed, HttpOnly, Secure, SameSite=Strict, 12-hour expiry.
-- `/api/lead` validates input, rejects unknown lead types, applies a honeypot
-  check and rate-limits to 8 submissions per IP per 10 minutes.
-- Visitor IPs are stored only as a salted hash, never in plain text.
-- If storage is unavailable the API returns 503 rather than reporting a false
-  success. Never make this endpoint fail silently.
+- Client-side password (`Salaar@98`) gates the admin UI — fine for a small team, but **not** bank-grade. Change password after launch.
+- For stronger security: verify password in Apps Script (`ADMIN_PASSWORD`) before listing leads, and never commit secrets to public repos.
+- Set `Disallow: /admin/` in robots.txt (already done).
 
 ---
 
 ## Post-launch checklist
 
-- [ ] Add the apex DNS record and the apex → www redirect
-- [ ] Turn off Cloudflare's managed robots.txt block
-- [ ] Rotate the admin password (the old one was public)
-- [ ] Submit `https://www.salaroutsourcing.com/sitemap.xml` in Search Console
-- [ ] Submit a real contact form and confirm the row appears in `/admin/`
-- [ ] Test the WhatsApp link on mobile
-- [ ] Test dark/light toggle persistence
+- [ ] Update `appsScriptUrl` in config.js  
+- [ ] Change admin password  
+- [ ] Submit sitemap in Google Search Console  
+- [ ] Test WhatsApp link on mobile  
+- [ ] Test dark/light toggle persistence  
+- [ ] Submit sample CV + job application and confirm Sheet rows  
+- [ ] Replace ad placeholders with real partners when ready  

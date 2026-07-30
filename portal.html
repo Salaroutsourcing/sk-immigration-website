@@ -3,114 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Staff &amp; Employer Portal Hub | SK Immigration</title>
-  <meta name="description" content="SK Immigration portal hub — secure admin CRM, blog posts, jobs, and employer hire portal." />
-  <meta name="robots" content="noindex,nofollow" />
-  <link rel="canonical" href="https://www.salaroutsourcing.com/portal" />
+  <title>Staff Portal | SK Immigration</title>
+  <meta name="description" content="Private staff portal for SK Immigration Services." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://www.salaroutsourcing.com/portal.html" />
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
-  <link rel="stylesheet" href="assets/css/main.css?v=iosbar3" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body data-page="home">
   <div class="bg-orbs" aria-hidden="true"></div>
   <div id="site-header"></div>
   <main id="main">
     <div class="page-hero container">
-      <p class="eyebrow">Secure workspaces</p>
-      <h1 class="display">Portal hub</h1>
-      <p>Staff tools are password-protected. Employers use the public Hire portal — no admin password needed.</p>
+      <p class="eyebrow">Staff only</p>
+      <h1 class="display">Portal access</h1>
+      <p class="section-sub">This area is for authorised SK Immigration staff. It is not linked from public navigation and is excluded from search indexing.</p>
     </div>
 
     <section>
-      <div class="container grid-2">
-        <article class="glass card reveal">
-          <span class="badge">Staff · Secure</span>
-          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Admin CRM</h2>
-          <p class="text-muted">Server-authenticated dashboard for student leads, visa leads, employer requests, CVs and applications. Password is verified by Cloudflare Worker (HttpOnly session cookie) — never stored in the public website files.</p>
-          <ul class="prose mt-2">
-            <li>Students / eligibility leads</li>
-            <li>Visa appointment &amp; Saudi leads</li>
-            <li>Employer / quotation / workforce requests</li>
-            <li>Candidates (CV bank) &amp; job applications</li>
-          </ul>
-          <a class="btn btn-gold mt-2" href="admin/">Open Admin CRM</a>
+      <div class="container" style="max-width:480px">
+        <article class="glass card" id="gate" style="padding:1.5rem">
+          <label for="portalPass" class="eyebrow">Staff password</label>
+          <input id="portalPass" type="password" class="input" placeholder="Enter password" autocomplete="current-password" style="width:100%;margin:0.75rem 0;padding:0.75rem;border-radius:12px;border:1px solid var(--glass-border);background:var(--bg);color:var(--text)" />
+          <button type="button" class="btn btn-gold" id="portalUnlock" style="width:100%">Unlock</button>
+          <p id="portalErr" class="text-muted" style="display:none;margin-top:0.75rem;color:var(--danger)">Incorrect password.</p>
         </article>
 
-        <article class="glass card reveal">
-          <span class="badge">Staff · Content</span>
-          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Blog posts admin</h2>
-          <p class="text-muted">Create and edit blog posts shown on the public <a href="blog.html">Blog</a> page. Same admin password as the CRM. Use this for success stories, policy updates and SEO articles.</p>
-          <ul class="prose mt-2">
-            <li>New post / edit / delete</li>
-            <li>Categories, excerpts, HTML content</li>
-            <li>Preview on the live blog listing</li>
-          </ul>
-          <div class="hero-ctas mt-2" style="margin-bottom:0">
-            <a class="btn btn-gold" href="admin/blog.html">Manage blog posts</a>
-            <a class="btn btn-ghost" href="blog.html">View public blog</a>
+        <div id="portalContent" class="hidden">
+          <div class="grid-2" style="margin-top:1.5rem">
+            <article class="glass card">
+              <span class="badge">CRM</span>
+              <h2 style="font-family:var(--font-display);margin:0.75rem 0">Admin CRM</h2>
+              <p class="text-muted">Leads, CVs, jobs and blog admin.</p>
+              <a class="btn btn-gold mt-2" href="admin/">Open Admin CRM</a>
+            </article>
+            <article class="glass card">
+              <span class="badge badge-muted">Legacy</span>
+              <h2 style="font-family:var(--font-display);margin:0.75rem 0">Apps Script Portal</h2>
+              <p class="text-muted">Full case workflows in Google Sheets.</p>
+              <a id="legacyPortal" class="btn btn-navy mt-2" href="#" target="_blank" rel="noopener">Open legacy portal ↗</a>
+            </article>
           </div>
-        </article>
-
-        <article class="glass card reveal">
-          <span class="badge">Staff · Jobs</span>
-          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Jobs / Ausbildung admin</h2>
-          <p class="text-muted">Post and update Ausbildung and work openings that appear on Jobs and Ausbildung pages.</p>
-          <a class="btn btn-gold mt-2" href="admin/jobs.html">Manage jobs</a>
-        </article>
-
-        <article class="glass card reveal">
-          <span class="badge">Employers · Public</span>
-          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Hire Workers portal</h2>
-          <p class="text-muted">Client-facing B2B portal for international companies: employer registration, workforce requirements and quotation requests. Submissions land in Admin CRM under Employer requests.</p>
-          <a class="btn btn-gold mt-2" href="hire-workers-from-pakistan/">Open Hire portal</a>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="glass card reveal" style="padding:1.5rem">
-          <h2 style="font-family:var(--font-display);margin-bottom:0.75rem">How admin login stays secure</h2>
-          <ol class="prose">
-            <li>Password is <strong>not</strong> written in public HTML/JS.</li>
-            <li>Cloudflare stores only a SHA-256 hash as a Worker secret (<code>ADMIN_PASSWORD_HASH</code>).</li>
-            <li>Successful login sets an HttpOnly, Secure, SameSite cookie for 12 hours.</li>
-            <li>Lead APIs rate-limit abusive submissions.</li>
-          </ol>
-          <p class="text-muted" style="margin-top:0.75rem;font-size:0.92rem">To set or reset the password on your machine with Wrangler: <code>printf 'YourNewPassword' | shasum -a 256</code> then <code>npx wrangler secret put ADMIN_PASSWORD_HASH</code> and <code>npx wrangler secret put SESSION_SECRET</code>.</p>
         </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container grid-2" style="padding-bottom:3rem">
-        <article class="glass card reveal">
-          <span class="badge badge-muted">Optional legacy</span>
-          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Google Apps Script portal</h2>
-          <p class="text-muted">Older Sheets-based UI for case workflows. Use only if you still need it — the new Admin CRM is recommended.</p>
-          <div class="hero-ctas mt-2">
-            <a id="legacyPortal" class="btn btn-navy" href="#" target="_blank" rel="noopener">Open legacy portal ↗</a>
-            <button type="button" class="btn btn-ghost" id="embedToggle">Embed below</button>
-          </div>
-        </article>
-        <article class="glass card reveal">
-          <h2 style="font-family:var(--font-display);margin:0.75rem 0">Public tools (no login)</h2>
-          <p class="text-muted">Visitors should use WhatsApp and these tools — not the staff CRM.</p>
-          <div class="hero-ctas mt-2" style="margin-bottom:0">
-            <a class="btn btn-ghost btn-sm" href="eligibility.html">Eligibility quiz</a>
-            <a class="btn btn-ghost btn-sm" href="contact.html">Contact</a>
-            <a class="btn btn-whatsapp btn-sm" href="https://wa.me/923045999859" target="_blank" rel="noopener">WhatsApp</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="container mt-1 hidden" id="embedWrap" style="padding-bottom:3rem">
-        <div class="glass" style="padding:0.5rem;border-radius:1rem;overflow:hidden">
-          <iframe id="portalFrame" title="Apps Script Portal" style="width:100%;min-height:75vh;border:0;border-radius:0.75rem;background:#0a1628"></iframe>
-        </div>
-        <p class="text-muted text-center mt-1" style="font-size:0.85rem">If the embed is blocked by Google, use “Open legacy portal” instead.</p>
       </div>
     </section>
   </main>
@@ -118,16 +53,24 @@
   <script src="assets/js/config.js"></script>
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/api.js"></script>
-  <script src="assets/js/layout.js?v=iosbar3"></script>
+  <script src="assets/js/layout.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const url = SALAR_CONFIG.legacyPortalUrl;
-      document.getElementById('legacyPortal').href = url;
-      document.getElementById('embedToggle')?.addEventListener('click', () => {
-        const wrap = document.getElementById('embedWrap');
-        wrap.classList.toggle('hidden');
-        const frame = document.getElementById('portalFrame');
-        if (!frame.src) frame.src = url;
+      const legacy = document.getElementById('legacyPortal');
+      if (legacy) legacy.href = url;
+      const KEY = 'sk_portal_ok';
+      const unlock = () => {
+        document.getElementById('gate').classList.add('hidden');
+        document.getElementById('portalContent').classList.remove('hidden');
+        sessionStorage.setItem(KEY, '1');
+      };
+      if (sessionStorage.getItem(KEY) === '1') unlock();
+      document.getElementById('portalUnlock')?.addEventListener('click', () => {
+        const pass = document.getElementById('portalPass').value;
+        const expected = SALAR_CONFIG.adminPasswordHint || '';
+        if (pass && expected && pass === expected) unlock();
+        else document.getElementById('portalErr').style.display = 'block';
       });
     });
   </script>

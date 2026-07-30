@@ -305,11 +305,23 @@ textarea {
 .media-card .media-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 20%, rgba(6, 13, 24, 0.88) 100%);
+  background: linear-gradient(180deg, transparent 15%, rgba(6, 13, 24, 0.92) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 1.35rem;
+  color: #f8fafc;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+.media-card .media-overlay h3,
+.media-card .media-overlay p,
+.media-card .media-overlay .text-muted {
+  color: #f8fafc !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+.media-card .media-overlay .btn {
+  text-shadow: none;
+  align-self: flex-start;
 }
 .media-card h3 {
   font-family: var(--font-display);
@@ -675,10 +687,18 @@ textarea {
 }
 
 .nav-name-short {
-  display: inline;
+  display: none;
 }
 .nav-name-long {
   display: inline;
+}
+@media (max-width: 720px) {
+  .nav-name-long {
+    display: none;
+  }
+  .nav-name-short {
+    display: inline;
+  }
 }
 .mobile-nav-toggles {
   display: flex;
@@ -1199,14 +1219,27 @@ textarea.form-control {
   backdrop-filter: blur(8px);
 }
 
+/* Progressive enhancement: content visible by default */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+.reveal.reveal-ready:not(.visible) {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .reveal.visible {
   opacity: 1;
   transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.reveal-ready:not(.visible) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 .admin-shell {
@@ -1862,7 +1895,25 @@ table.data th {
   color: var(--text);
 }
 .media-card .media-overlay {
-  background: linear-gradient(180deg, transparent 15%, rgba(15, 23, 42, 0.88) 100%);
+  background: linear-gradient(180deg, transparent 15%, rgba(15, 23, 42, 0.9) 100%);
+  color: #f8fafc;
+}
+.media-card .media-overlay h3,
+.media-card .media-overlay p,
+.media-card .media-overlay .text-muted {
+  color: #f8fafc !important;
+}
+.ur-banner {
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.65rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+}
+.ur-banner a {
+  color: var(--gold);
+  font-weight: 600;
 }
 .page-hero {
   padding-top: 2.5rem;

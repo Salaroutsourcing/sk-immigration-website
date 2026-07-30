@@ -49,6 +49,7 @@
           'https://www.facebook.com/skimmigrationservice',
           'https://www.linkedin.com/company/sk-immigration-service/',
           'https://www.youtube.com/@SKImmigrationtips',
+          'https://share.google/hQzlV2rZbYtUzYZ9n',
         ],
         parentOrganization: {
           '@type': 'Organization',
