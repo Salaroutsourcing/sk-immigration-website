@@ -74,6 +74,28 @@ export default {
       );
     }
 
+    // Phase 5 — Answers that duplicate primary landers
+    const ANSWER_LANDER_REDIRECTS = {
+      '/answers/canada-visit-visa-pakistan': '/visit-visa/canada-visit-visa-pakistan/',
+      '/answers/canada-visit-visa-pakistan.html': '/visit-visa/canada-visit-visa-pakistan/',
+      '/answers/dubai-visit-visa-from-pakistan': '/visit-visa/dubai-visit-visa-pakistan/',
+      '/answers/dubai-visit-visa-from-pakistan.html': '/visit-visa/dubai-visit-visa-pakistan/',
+      '/answers/uk-visit-visa-requirements-pakistan': '/visit-visa/uk-visit-visa-pakistan/',
+      '/answers/uk-visit-visa-requirements-pakistan.html': '/visit-visa/uk-visit-visa-pakistan/',
+      '/answers/usa-b1-b2-visa-pakistan': '/visit-visa/usa-visit-visa-pakistan/',
+      '/answers/usa-b1-b2-visa-pakistan.html': '/visit-visa/usa-visit-visa-pakistan/',
+      '/answers/schengen-visit-visa-requirements': '/visit-visa/schengen-visit-visa-pakistan/',
+      '/answers/schengen-visit-visa-requirements.html': '/visit-visa/schengen-visit-visa-pakistan/',
+      '/answers/schengen-visit-visa-from-pakistan-how': '/visit-visa/schengen-visit-visa-pakistan/',
+      '/answers/schengen-visit-visa-from-pakistan-how.html': '/visit-visa/schengen-visit-visa-pakistan/',
+      '/answers/germany-work-permit-from-pakistan': '/work-permit/germany-work-permit-pakistan/',
+      '/answers/germany-work-permit-from-pakistan.html': '/work-permit/germany-work-permit-pakistan/',
+    };
+    const landerTarget = ANSWER_LANDER_REDIRECTS[url.pathname];
+    if (landerTarget) {
+      return Response.redirect(new URL(landerTarget, url).toString(), 301);
+    }
+
     // Prefer extensionless Answers hub URL
     if (url.pathname === '/answers.html' || url.pathname === '/answers/') {
       return Response.redirect(new URL('/answers', url).toString(), 301);
