@@ -17,7 +17,7 @@
   <div id="loginGate" class="container" style="min-height:100vh;display:grid;place-items:center;padding:2rem 0">
     <form id="loginForm" class="glass card" style="width:min(400px,100%)">
       <div class="logo mb-2"><span class="logo-mark">SK</span><span>Admin CRM</span></div>
-      <p class="text-muted mb-2" style="font-size:0.9rem">Secure workspace for students, visa leads, employer requests, candidates, jobs and blogs.</p>
+      <p class="text-muted mb-2" style="font-size:0.9rem">Secure staff login. Password is verified on the server (Cloudflare Worker). It is never shown in the website source code.</p>
       <div class="form-group"><label>Admin password</label><input class="form-control" type="password" id="adminPass" required autocomplete="current-password" /></div>
       <button class="btn btn-gold w-full" type="submit">Sign in</button>
       <div class="form-msg" id="loginMsg"></div>
@@ -30,10 +30,11 @@
       <div class="logo mb-2"><span class="logo-mark">SK</span><span>CRM</span></div>
       <nav class="admin-nav">
         <a href="index.html" class="active">Dashboard</a>
-        <a href="blog.html">Blogs</a>
+        <a href="blog.html">Blog posts</a>
         <a href="jobs.html">Jobs / Candidates</a>
+        <a href="../hire-workers-from-pakistan/">Hire portal (public)</a>
         <a href="../portal.html">Portal hub</a>
-        <a href="../faq.html">FAQs (site)</a>
+        <a href="../blog.html">View public blog</a>
         <a href="../index.html">Website</a>
         <a href="#" id="logoutBtn">Log out</a>
       </nav>
@@ -52,6 +53,25 @@
       </div>
 
       <div class="grid-4 mb-2" id="statCards"></div>
+
+      <div class="glass card mb-2" style="padding:1.25rem">
+        <h2 style="font-family:var(--font-display);margin-bottom:0.65rem">Growth checklist — rank like a category leader</h2>
+        <div class="grid-2">
+          <ul class="prose" style="margin:0">
+            <li>Reply to every new lead in &lt; 15 minutes on WhatsApp (speed wins trust).</li>
+            <li>Publish 2 blog posts / week from <a href="blog.html">Blog admin</a> targeting real questions.</li>
+            <li>Keep Saudi / study / appointment pages updated when fees or rules change.</li>
+            <li>Ask approved clients for Google Business reviews (Rawalpindi office).</li>
+          </ul>
+          <ul class="prose" style="margin:0">
+            <li>Tag every lead type correctly so Students vs Employers stay separated.</li>
+            <li>Post new Ausbildung / work roles in <a href="jobs.html">Jobs admin</a> weekly.</li>
+            <li>Never promise visa guarantees in chat — protects brand + AdSense compliance.</li>
+            <li>Share one educational guide (not a hard sell) on social daily.</li>
+          </ul>
+        </div>
+        <p class="text-muted" style="margin-top:0.85rem;font-size:0.88rem">Public hire portal for employers: <a href="../hire-workers-from-pakistan/">/hire-workers-from-pakistan/</a> · Legal: <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></p>
+      </div>
 
       <div class="glass card mb-2">
         <div class="flex justify-between items-center mb-2 flex-wrap gap-2">

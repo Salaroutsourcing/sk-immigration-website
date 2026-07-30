@@ -1833,3 +1833,9 @@ table.data th {
     font-size: 0.8rem;
   }
 }
+
+
+/* Top promotional brand bar removed from UX */
+.brand-bar { display: none !important; }
+/* Ask SK chatbot removed */
+.ai-fab, #skAiFab, #skAiPanel, .ai-chat-panel { display: none !important; }
