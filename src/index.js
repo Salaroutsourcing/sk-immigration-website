@@ -60,10 +60,8 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
-    // Hub lives at /answers.html; keep /answers/*.html answer pages as-is
-    if (url.pathname === '/answers' || url.pathname === '/answers/') {
-      return Response.redirect(new URL('/answers.html', url).toString(), 301);
-    }
+    // Do NOT redirect /answers ↔ /answers.html — Cloudflare Assets already
+    // serves answers.html at /answers; redirecting creates a loop.
 
     // Canonical Schengen appointment page (dedupe thin alias)
     if (
@@ -74,6 +72,11 @@ export default {
         new URL('/visa-appointment/schengen-visa-appointment-pakistan/', url).toString(),
         301
       );
+    }
+
+    // Prefer extensionless Answers hub URL
+    if (url.pathname === '/answers.html' || url.pathname === '/answers/') {
+      return Response.redirect(new URL('/answers', url).toString(), 301);
     }
 
     if (!url.pathname.startsWith('/api/')) {

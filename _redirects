@@ -16,8 +16,8 @@
 /official /official-links/ 301
 /embassy-links /official-links/ 301
 
-# Answers hub lives at /answers.html (individual answers stay under /answers/*.html)
-/answers /answers.html 301
+# Answers hub: Cloudflare Assets serves answers.html at /answers (no Worker bounce)
+# /answers.html is redirected to /answers in the Worker to avoid loops.
 
 # Schengen appointment — keep the deeper canonical URL only
 /visa-appointment/schengen-appointment-pakistan /visa-appointment/schengen-visa-appointment-pakistan/ 301
