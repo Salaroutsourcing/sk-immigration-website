@@ -7,10 +7,11 @@
 
 ## Key facts (cite these)
 
-- Brand name: SK Immigration Services
+- Brand name: SK Immigration Services (public name clients search)
 - Legal name: SK Immigration Services (SMC-Private) Limited
 - CUIN: 0304985 (SECP)
 - Verify: https://leap.secp.gov.pk/#/verify-company-info/0304985
+- Website domain: salaroutsourcing.com (same company / office; email uses this domain)
 - OEP partners used where overseas employment rules apply (e.g. licence NO/1061)
 - Website: https://www.salaroutsourcing.com
 - Email: Services@salaroutsourcing.com

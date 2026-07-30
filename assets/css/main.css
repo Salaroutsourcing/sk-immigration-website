@@ -1,4 +1,4 @@
-/* topbar-single-row v4 — clear service names */
+/* topbar-single-row v5 — brand polish + link contrast */
 /* ═══════════════════════════════════════════════════════════
    SK Immigration Services — Live Theme (salaroutsourcing.com)
    Light navy + gold · Poppins / Inter · Soft glass
@@ -1392,8 +1392,23 @@ table.data th {
   padding-left: 1.25rem;
 }
 .prose a {
-  color: var(--gold-400);
+  color: var(--navy);
+  font-weight: 600;
   text-decoration: underline;
+  text-decoration-color: rgba(160, 120, 48, 0.55);
+  text-underline-offset: 0.18em;
+}
+.prose a:hover {
+  color: var(--gold-dark);
+  text-decoration-color: var(--gold-dark);
+}
+[data-theme='dark'] .prose a {
+  color: var(--gold-300);
+  text-decoration-color: rgba(244, 232, 193, 0.45);
+}
+[data-theme='dark'] .prose a:hover {
+  color: #fff;
+  text-decoration-color: var(--gold-300);
 }
 
 .skip-link {
@@ -1522,7 +1537,16 @@ table.data th {
   margin: 0.5rem 0 0;
 }
 .source-list a {
-  color: var(--gold-400);
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(160, 120, 48, 0.55);
+}
+.source-list a:hover {
+  color: var(--gold-dark);
+}
+[data-theme='dark'] .source-list a {
+  color: var(--gold-300);
 }
 .cost-viz {
   margin: 1.25rem 0;

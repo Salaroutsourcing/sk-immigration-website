@@ -1,11 +1,15 @@
 /**
  * SK Immigration Services — Site Configuration
- * Domain: salaroutsourcing.com | Brand: SK Immigration (by Salar Outsourcing)
+ * Public brand: SK Immigration Services
+ * Legal: SK Immigration Services (SMC-Private) Limited (CUIN 0304985)
+ * Domain / ops: salaroutsourcing.com (Salar Outsourcing)
  */
 window.SALAR_CONFIG = {
   brand: 'SK Immigration',
   brandFull: 'SK Immigration Services',
-  parentLine: 'SK Immigration Services by Salar Outsourcing',
+  legalName: 'SK Immigration Services (SMC-Private) Limited',
+  cuin: '0304985',
+  parentLine: 'SK Immigration Services · legal entity CUIN 0304985 · site on salaroutsourcing.com',
   tagline: "Pakistan's Trusted Study Visa & Immigration Partner",
   domain: 'https://www.salaroutsourcing.com',
   email: 'Services@salaroutsourcing.com',
