@@ -17,6 +17,8 @@
       'saudi-visa',
       'document-services',
       'hire-workers-from-pakistan',
+      'work-permit',
+      'visit-visa',
       'local',
       'guides',
       'ur',
@@ -34,11 +36,11 @@
 
   const NAV = [
     { href: 'study-visa/', label: 'Study', id: 'study-visa' },
+    { href: 'work-permit/', label: 'Work', title: 'Work permits', id: 'work-permit' },
+    { href: 'visit-visa/', label: 'Visit', title: 'Visit visas', id: 'visit-visa' },
     { href: 'visa-appointment/', label: 'Appts', title: 'Visa appointments', id: 'visa-appointment' },
     { href: 'saudi-visa/saudi-visa-processing-pakistan/', label: 'Saudi', id: 'saudi-visa' },
-    { href: 'jobs.html', label: 'Work', id: 'jobs' },
     { href: 'document-services/', label: 'Docs', title: 'Document attestation', id: 'document-services' },
-    { href: 'hire-workers-from-pakistan/', label: 'Hire', id: 'hire-workers' },
     { href: 'contact.html', label: 'Contact', id: 'contact' },
   ];
 
@@ -51,7 +53,8 @@
     eligibility: 'study-visa',
     services: 'study-visa',
     countries: 'study-visa',
-    ausbildung: 'jobs',
+    ausbildung: 'work-permit',
+    jobs: 'work-permit',
     pricing: 'contact',
     blog: 'study-visa',
     faq: 'contact',
@@ -60,10 +63,12 @@
   function activeId() {
     const path = location.pathname;
     if (path.includes('/study-visa')) return 'study-visa';
+    if (path.includes('/work-permit')) return 'work-permit';
+    if (path.includes('/visit-visa')) return 'visit-visa';
     if (path.includes('/visa-appointment')) return 'visa-appointment';
     if (path.includes('/saudi-visa')) return 'saudi-visa';
     if (path.includes('/document-services') || path.includes('attestation')) return 'document-services';
-    if (path.includes('/hire-workers')) return 'hire-workers';
+    if (path.includes('/hire-workers')) return 'document-services';
     if (path.includes('/answers/')) return 'study-visa';
     if (path.includes('/blog/')) return 'study-visa';
     const page = document.body.dataset.page || 'home';
@@ -203,11 +208,13 @@
           <div class="footer-col">
             <h4>Services</h4>
             <a href="${href('study-visa/')}">Study Visa Pakistan</a>
+            <a href="${href('work-permit/')}">Work Permit Pakistan</a>
+            <a href="${href('visit-visa/')}">Visit Visa Pakistan</a>
             <a href="${href('visa-appointment/')}">Visa Appointments</a>
-            <a href="${href('saudi-visa/saudi-visa-processing-pakistan/')}">Saudi Visa Processing</a>
-            <a href="${href('jobs.html')}">Work Visa &amp; Jobs</a>
+            <a href="${href('saudi-visa/saudi-visa-processing-pakistan/')}">Saudi Work Visa Processing</a>
             <a href="${href('document-services/')}">Document Attestation</a>
             <a href="${href('hire-workers-from-pakistan/')}">Hire Workers from Pakistan</a>
+            <a href="${href('jobs.html')}">Jobs board</a>
           </div>
           <div class="footer-col">
             <h4>Quick tools</h4>

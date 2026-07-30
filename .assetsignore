@@ -16,6 +16,7 @@
 node_modules
 src
 scripts
+migrations
 apps-script
 schema.sql
 package.json

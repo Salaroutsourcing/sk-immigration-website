@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services | SK Admin</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/admin.css?v=light1" />
+</head>
+<body data-admin-page="services">
+  <script src="../assets/js/config.js?v=light1"></script>
+  <script src="../assets/js/api.js?v=light1"></script>
+  <script src="../assets/js/admin-shell.js?v=light1"></script>
+  <script>
+    AdminShell.mountShell({
+      title: 'Services hub',
+      subtitle: 'Every service on your website — open leads by service or jump to the public page.',
+      async render({ content, actions, esc, SERVICES, countByTypes }) {
+        actions.innerHTML = `
+          <a class="adm-btn adm-btn-gold adm-btn-sm" href="index.html">Open all leads</a>
+          <button type="button" class="adm-btn adm-btn-ghost adm-btn-sm" id="refreshBtn">Refresh counts</button>
+        `;
+
+        content.innerHTML = `
+          <div class="adm-stats" id="stats"></div>
+          <div class="adm-service-grid" id="serviceGrid"></div>
+          <div class="adm-panel">
+            <h2 style="margin:0 0 0.65rem;font-size:1.05rem;font-weight:800">Covered on the public site</h2>
+            <p style="margin:0;color:var(--adm-muted);font-weight:600;line-height:1.6">
+              Study visa · Visa appointments · Saudi processing · Work / jobs · Ausbildung ·
+              Visit &amp; consult · Document attestation · Hire workers from Pakistan ·
+              CV builder · Eligibility quiz · Blog content · Job listings
+            </p>
+          </div>
+        `;
+
+        async function load() {
+          const result = await SalarAPI.fetchLeads({ limit: 500 });
+          if (!result.ok) {
+            document.getElementById('serviceGrid').innerHTML =
+              `<div class="adm-empty">Could not load lead counts (${esc(result.error)}).</div>`;
+            if (result.error === 'unauthorized') location.reload();
+            return;
+          }
+          const leads = result.leads || [];
+          const byStatus = (s) => leads.filter((l) => (l.status || 'new') === s).length;
+
+          document.getElementById('stats').innerHTML = [
+            ['Total leads', leads.length],
+            ['New', byStatus('new')],
+            ['In progress', byStatus('in_progress')],
+            ['Won', byStatus('won')],
+          ]
+            .map(([label, n]) => `<div class="adm-stat"><strong>${n}</strong><span>${label}</span></div>`)
+            .join('');
+
+          document.getElementById('serviceGrid').innerHTML = SERVICES.map((s) => {
+            const n = countByTypes(leads, s.types);
+            return `
+              <article class="adm-service-card">
+                <h3>${esc(s.name)}</h3>
+                <p>${esc(s.blurb)}</p>
+                <div class="adm-service-meta">
+                  <span class="adm-service-count">${n} lead${n === 1 ? '' : 's'}</span>
+                  <div class="adm-actions">
+                    <a class="adm-btn adm-btn-navy adm-btn-sm" href="index.html?service=${encodeURIComponent(s.filter)}">View leads</a>
+                    <a class="adm-btn adm-btn-ghost adm-btn-sm" href="${esc(s.href)}" target="_blank" rel="noopener">Page ↗</a>
+                  </div>
+                </div>
+              </article>`;
+          }).join('');
+        }
+
+        document.getElementById('refreshBtn')?.addEventListener('click', load);
+        await load();
+      },
+    });
+  </script>
+</body>
+</html>

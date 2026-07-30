@@ -62,10 +62,10 @@
     document.addEventListener('DOMContentLoaded', async () => {
       await SalarJobs.mount({ listSelector: '#jobList' });
       try {
-        const jobs = await (await fetch('assets/data/jobs.json')).json();
+        const jobs = (await SalarAPI.listJobsPublic()) || await (await fetch('assets/data/jobs.json')).json();
         const schema = {
           '@context': 'https://schema.org',
-          '@graph': jobs.slice(0, 5).map(j => ({
+          '@graph': (jobs || []).slice(0, 5).map(j => ({
             '@type': 'JobPosting',
             title: j.title,
             description: j.description,

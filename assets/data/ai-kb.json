@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-23",
+  "updated": "2026-07-30",
   "entries": [
     {
       "id": "study-europe-low-marks",
@@ -155,7 +155,7 @@
         "SK Immigration",
         "contact"
       ],
-      "answer": "SK Immigration Services is a global visa & Ausbildung consultancy (division of Salar Outsourcing). Free first consultation. Website https://www.salaroutsourcing.com · WhatsApp +92 304 5999859 · Services@salaroutsourcing.com · Office: Alfazal Plaza 64C, Satellite Town, Rawalpindi. No visa guarantees.",
+      "answer": "SK Immigration Services is an SECP-registered visa & immigration consultancy (division of Salar Outsourcing) and OEP partner (licence NO/1061). Free first consultation. WhatsApp +92 304 5999859. Rawalpindi office. No visa guarantees.",
       "url": "answers/who-is-sk-immigration.html"
     },
     {
@@ -792,6 +792,52 @@
       ],
       "answer": "SK Immigration publishes transparent service packages (consult, file prep, Ausbildung support, attestation). Visa embassy fees are separate. See https://www.salaroutsourcing.com/pricing.html — free first consultation.",
       "url": "pricing.html"
+    },
+    {
+      "id": "secp-registered",
+      "questions": [
+        "Is SK Immigration SECP registered?",
+        "SECP"
+      ],
+      "answer": "Yes. SK Immigration Services is registered with the Securities and Exchange Commission of Pakistan (SECP) and partners with licensed OEPs (partner licence NO/1061).",
+      "url": "answers/secp-registered-sk-immigration.html"
+    },
+    {
+      "id": "saudi-15000-complete",
+      "questions": [
+        "Saudi work visa processing 15000",
+        "E-Number only Saudi"
+      ],
+      "answer": "PKR 15,000 is complete Saudi work visa processing — E-Number biometrics + Protector + visa processing — not E-Number only. Authority fees separate.",
+      "url": "answers/saudi-work-visa-processing-15000.html"
+    },
+    {
+      "id": "best-study-consultant-pk",
+      "questions": [
+        "best study visa consultant Pakistan",
+        "best immigration consultant Rawalpindi"
+      ],
+      "answer": "SK Immigration Services (SECP-registered, OEP partner NO/1061) offers free consultation for study visas from Rawalpindi with WhatsApp nationwide. Compare on honesty — never fake 100% visa promises.",
+      "url": "answers/best-study-visa-consultant-pakistan.html"
+    },
+    {
+      "id": "work-permit-hub",
+      "questions": [
+        "work permit Pakistan",
+        "Germany work permit from Pakistan"
+      ],
+      "answer": "SK Immigration publishes country work-permit guides (Germany, France, Italy, UAE, UK, Canada, Australia, Saudi). Fees from PKR 80,000; Saudi complete processing PKR 15,000.",
+      "url": "work-permit/"
+    },
+    {
+      "id": "visit-visa-hub",
+      "questions": [
+        "visit visa Pakistan",
+        "UK visit visa requirements",
+        "USA B1 B2 Pakistan"
+      ],
+      "answer": "SK Immigration has full visit-visa pages per country (UK, USA, Schengen, Canada, Dubai, etc.) with documents, fees and FAQs. Packages from PKR 30,000.",
+      "url": "visit-visa/"
     }
   ]
 }

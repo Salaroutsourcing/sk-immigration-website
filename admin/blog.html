@@ -1,167 +1,187 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blog Admin | SK Immigration</title>
+  <title>Blog | SK Admin</title>
   <meta name="robots" content="noindex,nofollow" />
   <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
-  <link rel="stylesheet" href="../assets/css/main.css?v=iosbar3" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/admin.css?v=light1" />
 </head>
-<body>
-  <div class="bg-orbs" aria-hidden="true"></div>
-  <div id="loginGate" class="container" style="min-height:100vh;display:grid;place-items:center">
-    <form id="loginForm" class="glass card" style="width:min(400px,100%)">
-      <h1 class="display" style="font-size:1.5rem;margin-bottom:0.75rem">Blog Admin</h1>
-      <div class="form-group"><label>Password</label><input class="form-control" type="password" id="adminPass" required /></div>
-      <button class="btn btn-gold w-full" type="submit">Sign in</button>
-      <div class="form-msg" id="loginMsg"></div>
-    </form>
-  </div>
-
-  <div id="adminApp" class="admin-shell hidden">
-    <aside class="admin-side">
-      <div class="logo mb-2"><span class="logo-mark">SK</span><span>Blog</span></div>
-      <nav class="admin-nav">
-        <a href="index.html">Dashboard</a>
-        <a href="blog.html" class="active">Blog posts</a>
-        <a href="jobs.html">Jobs admin</a>
-        <a href="../blog.html">View public blog</a>
-        <a href="../portal.html">Portal hub</a>
-        <a href="#" id="logoutBtn">Log out</a>
-      </nav>
-    </aside>
-    <main class="admin-main">
-      <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
-        <h1 class="display" style="font-size:1.6rem">Manage posts</h1>
-        <button class="btn btn-gold btn-sm" id="newPost">+ New post</button>
-      </div>
-      <div class="table-wrap glass card">
-        <table class="data">
-          <thead><tr><th>Date</th><th>Title</th><th>Category</th><th>Actions</th></tr></thead>
-          <tbody id="postsBody"></tbody>
-        </table>
-      </div>
-    </main>
-  </div>
-
-  <div class="modal-backdrop" id="editModal">
-    <div class="modal glass-strong" style="width:min(720px,100%)">
-      <h2 id="modalTitle" style="font-family:var(--font-display);margin-bottom:1rem">Edit post</h2>
-      <form id="postForm">
-        <input type="hidden" name="id" id="postId" />
-        <div class="form-row">
-          <div class="form-group"><label>Title *</label><input class="form-control" name="title" id="postTitle" required /></div>
-          <div class="form-group"><label>Slug *</label><input class="form-control" name="slug" id="postSlug" required /></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>Category</label><input class="form-control" name="category" id="postCat" /></div>
-          <div class="form-group"><label>Date</label><input class="form-control" name="date" id="postDate" type="date" /></div>
-        </div>
-        <div class="form-group"><label>Excerpt</label><textarea class="form-control" name="excerpt" id="postExcerpt"></textarea></div>
-        <div class="form-group"><label>Content (HTML allowed)</label><textarea class="form-control" name="content" id="postContent" style="min-height:180px"></textarea></div>
-        <div class="form-group"><label>Author</label><input class="form-control" name="author" id="postAuthor" value="SK Immigration" /></div>
-        <div class="flex gap-2">
-          <button class="btn btn-gold" type="submit">Save post</button>
-          <button class="btn btn-ghost" type="button" id="cancelEdit">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script src="../assets/js/config.js?v=20260730a"></script>
-  <script src="../assets/js/theme.js?v=20260730a"></script>
-  <script src="../assets/js/api.js?v=20260730a"></script>
-  <script src="../assets/js/blog.js?v=20260730a"></script>
+<body data-admin-page="blog">
+  <script src="../assets/js/config.js?v=light1"></script>
+  <script src="../assets/js/api.js?v=light1"></script>
+  <script src="../assets/js/admin-shell.js?v=light1"></script>
   <script>
-    async function render() {
-      const posts = await SalarBlog.getAll();
-      const esc = (v) => String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-      document.getElementById('postsBody').innerHTML = posts.map(p => `
-        <tr>
-          <td>${esc(p.date||'')}</td>
-          <td>${esc(p.title)}</td>
-          <td>${esc(p.category||'')}</td>
-          <td class="flex gap-2">
-            <button class="btn btn-ghost btn-sm" data-edit="${esc(p.id)}">Edit</button>
-            <button class="btn btn-ghost btn-sm" data-del="${esc(p.id)}">Delete</button>
-          </td>
-        </tr>`).join('');
-      document.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => openEdit(posts.find(p => p.id === b.dataset.edit))));
-      document.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {
-        if (!confirm('Delete this post?')) return;
-        await SalarBlog.deletePost(b.dataset.del);
-        render();
-      }));
-    }
+    let posts = [];
 
     function slugify(t) {
-      return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+      return String(t || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
     }
 
-    function openEdit(post) {
-      document.getElementById('modalTitle').textContent = post ? 'Edit post' : 'New post';
-      document.getElementById('postId').value = post?.id || '';
-      document.getElementById('postTitle').value = post?.title || '';
-      document.getElementById('postSlug').value = post?.slug || '';
-      document.getElementById('postCat').value = post?.category || 'Guides';
-      document.getElementById('postDate').value = post?.date || new Date().toISOString().slice(0,10);
-      document.getElementById('postExcerpt').value = post?.excerpt || '';
-      document.getElementById('postContent').value = post?.content || '';
-      document.getElementById('postAuthor').value = post?.author || 'SK Immigration';
-      document.getElementById('editModal').classList.add('open');
-    }
+    AdminShell.mountShell({
+      title: 'Blog',
+      subtitle: 'Posts save to the live database and appear on the public blog.',
+      async render({ content, actions, esc }) {
+        actions.innerHTML = `<button type="button" class="adm-btn adm-btn-gold adm-btn-sm" id="newPost">+ New post</button>`;
 
-    document.getElementById('postTitle')?.addEventListener('input', (e) => {
-      if (!document.getElementById('postId').value) document.getElementById('postSlug').value = slugify(e.target.value);
-    });
+        content.innerHTML = `
+          <div class="adm-panel">
+            <div class="adm-table-wrap">
+              <table class="adm-table">
+                <thead><tr><th>Date</th><th>Title</th><th>Category</th><th>Status</th><th></th></tr></thead>
+                <tbody id="postsBody"></tbody>
+              </table>
+            </div>
+          </div>
 
-    document.getElementById('postForm')?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      const post = {
-        id: fd.get('id') || ('post_' + Date.now().toString(36)),
-        title: fd.get('title'),
-        slug: fd.get('slug'),
-        category: fd.get('category'),
-        date: fd.get('date'),
-        excerpt: fd.get('excerpt'),
-        content: fd.get('content'),
-        author: fd.get('author'),
-        tags: [],
-        featured: false,
-      };
-      await SalarBlog.savePost(post);
-      document.getElementById('editModal').classList.remove('open');
-      render();
-    });
+          <div class="adm-drawer-backdrop" id="drawerBg"></div>
+          <aside class="adm-drawer" id="drawer" style="width:min(560px,100%)">
+            <div class="adm-drawer-head">
+              <div><h2 id="modalTitle">Post</h2></div>
+              <button type="button" class="adm-btn adm-btn-ghost adm-btn-sm" id="closeDrawer">Close</button>
+            </div>
+            <div class="adm-drawer-body">
+              <form id="postForm">
+                <input type="hidden" id="postId" />
+                <div class="adm-row cols-2">
+                  <div class="adm-field"><label class="adm-label">Title *</label><input class="adm-input" id="postTitle" required /></div>
+                  <div class="adm-field"><label class="adm-label">Slug *</label><input class="adm-input" id="postSlug" required /></div>
+                </div>
+                <div class="adm-row cols-2">
+                  <div class="adm-field"><label class="adm-label">Category</label><input class="adm-input" id="postCat" value="Guides" /></div>
+                  <div class="adm-field"><label class="adm-label">Date</label><input class="adm-input" id="postDate" type="date" /></div>
+                </div>
+                <div class="adm-field"><label class="adm-label">Excerpt</label><textarea class="adm-textarea" id="postExcerpt"></textarea></div>
+                <div class="adm-field"><label class="adm-label">Content (HTML)</label><textarea class="adm-textarea" id="postContent" style="min-height:180px"></textarea></div>
+                <div class="adm-row cols-2">
+                  <div class="adm-field"><label class="adm-label">Author</label><input class="adm-input" id="postAuthor" value="SK Immigration" /></div>
+                  <div class="adm-field" style="display:flex;align-items:flex-end;gap:1rem;padding-bottom:0.4rem">
+                    <label><input type="checkbox" id="postPublished" checked /> Published</label>
+                    <label><input type="checkbox" id="postFeatured" /> Featured</label>
+                  </div>
+                </div>
+                <div class="adm-actions">
+                  <button class="adm-btn adm-btn-gold" type="submit">Save post</button>
+                  <button class="adm-btn adm-btn-ghost" type="button" id="cancelEdit">Cancel</button>
+                </div>
+                <div class="adm-msg" id="postMsg"></div>
+              </form>
+            </div>
+          </aside>
+        `;
 
-    document.getElementById('newPost')?.addEventListener('click', () => openEdit(null));
-    document.getElementById('cancelEdit')?.addEventListener('click', () => document.getElementById('editModal').classList.remove('open'));
-    document.getElementById('editModal')?.addEventListener('click', (e) => { if (e.target.id === 'editModal') e.target.classList.remove('open'); });
+        function closeDrawer() {
+          document.getElementById('drawer').classList.remove('open');
+          document.getElementById('drawerBg').classList.remove('open');
+        }
 
-    document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const result = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
-      if (result && result.ok) {
-        document.getElementById('loginGate').classList.add('hidden');
-        document.getElementById('adminApp').classList.remove('hidden');
-        render();
-      } else {
-        const msg = document.getElementById('loginMsg');
-        msg.className = 'form-msg show err';
-        msg.textContent = 'Incorrect password.';
-      }
-    });
-    document.getElementById('logoutBtn')?.addEventListener('click', async (e) => { e.preventDefault(); await SalarAPI.logoutAdmin(); location.reload(); });
-    SalarAPI.isAdminLoggedIn().then((ok) => {
-      if (!ok) return;
-      document.getElementById('loginGate').classList.add('hidden');
-      document.getElementById('adminApp').classList.remove('hidden');
-      render();
+        function openEdit(post) {
+          document.getElementById('modalTitle').textContent = post ? 'Edit post' : 'New post';
+          document.getElementById('postId').value = post?.id || '';
+          document.getElementById('postTitle').value = post?.title || '';
+          document.getElementById('postSlug').value = post?.slug || '';
+          document.getElementById('postCat').value = post?.category || 'Guides';
+          document.getElementById('postDate').value = post?.date || new Date().toISOString().slice(0, 10);
+          document.getElementById('postExcerpt').value = post?.excerpt || '';
+          document.getElementById('postContent').value = post?.content || '';
+          document.getElementById('postAuthor').value = post?.author || 'SK Immigration';
+          document.getElementById('postPublished').checked = post?.published !== false;
+          document.getElementById('postFeatured').checked = !!post?.featured;
+          document.getElementById('postMsg').textContent = '';
+          document.getElementById('drawerBg').classList.add('open');
+          document.getElementById('drawer').classList.add('open');
+        }
+
+        async function load() {
+          const res = await SalarAPI.adminListBlog();
+          if (!res.ok) {
+            document.getElementById('postsBody').innerHTML =
+              `<tr><td colspan="5" class="adm-empty">Could not load posts (${esc(res.error)}).</td></tr>`;
+            if (res.error === 'unauthorized') location.reload();
+            return;
+          }
+          posts = res.posts || [];
+          document.getElementById('postsBody').innerHTML =
+            posts
+              .map(
+                (p) => `
+            <tr>
+              <td>${esc(p.date || '')}</td>
+              <td>${esc(p.title)}</td>
+              <td>${esc(p.category || '')}</td>
+              <td>${p.published ? '<span class="adm-badge adm-badge-won">live</span>' : '<span class="adm-badge">draft</span>'}</td>
+              <td>
+                <button type="button" class="adm-btn adm-btn-ghost adm-btn-sm" data-edit="${esc(p.id)}">Edit</button>
+                <button type="button" class="adm-btn adm-btn-danger adm-btn-sm" data-del="${esc(p.id)}">Delete</button>
+              </td>
+            </tr>`
+              )
+              .join('') || `<tr><td colspan="5" class="adm-empty">No posts yet.</td></tr>`;
+
+          document.querySelectorAll('[data-edit]').forEach((b) => {
+            b.addEventListener('click', (e) => {
+              e.stopPropagation();
+              openEdit(posts.find((p) => p.id === b.dataset.edit));
+            });
+          });
+          document.querySelectorAll('[data-del]').forEach((b) => {
+            b.addEventListener('click', async (e) => {
+              e.stopPropagation();
+              if (!confirm('Delete this post?')) return;
+              await SalarAPI.adminDeleteBlog(b.dataset.del);
+              load();
+            });
+          });
+        }
+
+        document.getElementById('newPost')?.addEventListener('click', () => openEdit(null));
+        document.getElementById('closeDrawer')?.addEventListener('click', closeDrawer);
+        document.getElementById('drawerBg')?.addEventListener('click', closeDrawer);
+        document.getElementById('cancelEdit')?.addEventListener('click', closeDrawer);
+
+        document.getElementById('postTitle')?.addEventListener('input', (e) => {
+          const slug = document.getElementById('postSlug');
+          if (!document.getElementById('postId').value) slug.value = slugify(e.target.value);
+        });
+
+        document.getElementById('postForm')?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const msg = document.getElementById('postMsg');
+          msg.className = 'adm-msg';
+          msg.textContent = 'Saving…';
+          const payload = {
+            id: document.getElementById('postId').value || undefined,
+            title: document.getElementById('postTitle').value.trim(),
+            slug: document.getElementById('postSlug').value.trim(),
+            category: document.getElementById('postCat').value.trim(),
+            date: document.getElementById('postDate').value,
+            excerpt: document.getElementById('postExcerpt').value,
+            content: document.getElementById('postContent').value,
+            author: document.getElementById('postAuthor').value.trim(),
+            published: document.getElementById('postPublished').checked,
+            featured: document.getElementById('postFeatured').checked,
+          };
+          const res = await SalarAPI.adminSaveBlog(payload);
+          if (!res.ok) {
+            msg.className = 'adm-msg err';
+            msg.textContent = res.error || 'Save failed.';
+            return;
+          }
+          msg.className = 'adm-msg ok';
+          msg.textContent = 'Saved to live site.';
+          closeDrawer();
+          load();
+        });
+
+        await load();
+      },
     });
   </script>
 </body>

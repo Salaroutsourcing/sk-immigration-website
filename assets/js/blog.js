@@ -1,5 +1,5 @@
 /**
- * Blog listing + post view + admin CRUD (localStorage overlay on JSON seed)
+ * Blog listing + post view — prefers D1 public API, falls back to JSON seed.
  */
 (function () {
   function dataUrl(file) {
@@ -30,21 +30,26 @@
       .replace(/(href|src)\s*=\s*(["'])\s*(javascript|data|vbscript):/gi, '$1=$2#');
   }
 
-  async function seedPosts() {
-    const stored = SalarAPI.getBlogPosts();
-    if (stored && stored.length) return stored;
+  async function loadPosts() {
+    if (window.SalarAPI?.listBlogPosts) {
+      const fromApi = await SalarAPI.listBlogPosts();
+      if (fromApi && fromApi.length) return fromApi;
+    }
     try {
       const res = await fetch(dataUrl('blog-posts.json'));
-      const posts = await res.json();
-      SalarAPI.saveBlogPosts(posts);
-      return posts;
+      return await res.json();
     } catch {
       return [];
     }
   }
 
-  function bySlug(posts, slug) {
-    return posts.find((p) => p.slug === slug);
+  async function loadPost(slug) {
+    if (window.SalarAPI?.getBlogPost) {
+      const fromApi = await SalarAPI.getBlogPost(slug);
+      if (fromApi) return fromApi;
+    }
+    const posts = await loadPosts();
+    return posts.find((p) => p.slug === slug) || null;
   }
 
   function setMeta(attr, key, value) {
@@ -71,11 +76,15 @@
     async mountList(selector) {
       const el = document.querySelector(selector);
       if (!el) return;
-      const posts = await seedPosts();
+      const posts = await loadPosts();
       const q = new URLSearchParams(location.search).get('q') || '';
       const cat = new URLSearchParams(location.search).get('cat') || '';
       let list = posts.slice().sort((a, b) => (a.date < b.date ? 1 : -1));
-      if (q) list = list.filter((p) => (p.title + p.excerpt + (p.tags || []).join(' ')).toLowerCase().includes(q.toLowerCase()));
+      if (q) {
+        list = list.filter((p) =>
+          (p.title + p.excerpt + (p.tags || []).join(' ')).toLowerCase().includes(q.toLowerCase())
+        );
+      }
       if (cat) list = list.filter((p) => p.category === cat);
 
       el.innerHTML = list
@@ -99,8 +108,7 @@
       const el = document.querySelector(selector);
       if (!el) return;
       const slug = new URLSearchParams(location.search).get('slug');
-      const posts = await seedPosts();
-      const post = bySlug(posts, slug);
+      const post = await loadPost(slug);
       if (!post) {
         el.innerHTML = `<div class="glass card"><h1>Post not found</h1><p class="text-muted">This article may have been removed.</p><a class="btn btn-gold mt-2" href="blog.html">Back to blog</a></div>`;
         return;
@@ -123,25 +131,7 @@
     },
 
     async getAll() {
-      return seedPosts();
-    },
-
-    async savePost(post) {
-      const posts = await seedPosts();
-      const i = posts.findIndex((p) => p.id === post.id);
-      if (i >= 0) posts[i] = post;
-      else posts.unshift(post);
-      SalarAPI.saveBlogPosts(posts);
-      await SalarAPI.syncRemote.postToGas('saveBlogPost', { data: post });
-      return posts;
-    },
-
-    async deletePost(id) {
-      let posts = await seedPosts();
-      posts = posts.filter((p) => p.id !== id);
-      SalarAPI.saveBlogPosts(posts);
-      await SalarAPI.syncRemote.postToGas('deleteBlogPost', { id });
-      return posts;
+      return loadPosts();
     },
   };
 })();

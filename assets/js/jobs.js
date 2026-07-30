@@ -1,5 +1,5 @@
 /**
- * Jobs / Ausbildung listings with filters + apply modal
+ * Jobs / Ausbildung listings — prefers D1 public API, falls back to JSON seed.
  */
 (function () {
   function dataUrl(file) {
@@ -17,8 +17,10 @@
   }
 
   async function loadJobs() {
-    const local = SalarAPI.getJobs();
-    if (local && local.length) return local;
+    if (window.SalarAPI?.listJobsPublic) {
+      const fromApi = await SalarAPI.listJobsPublic();
+      if (fromApi && fromApi.length) return fromApi;
+    }
     try {
       const res = await fetch(dataUrl('jobs.json'));
       return await res.json();
@@ -63,7 +65,6 @@
       btn.addEventListener('click', () => openDetail(jobs.find((x) => x.id === btn.dataset.detail)));
     });
 
-    /* re-observe reveals */
     document.querySelectorAll('.reveal:not(.visible)').forEach((el) => el.classList.add('visible'));
   }
 
@@ -156,18 +157,26 @@
       const type = document.getElementById('jobType');
 
       if (country) {
-        const countries = [...new Set(all.map((j) => j.country))].sort();
-        country.innerHTML = `<option value="">All countries</option>` + countries.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+        const countries = [...new Set(all.map((j) => j.country).filter(Boolean))].sort();
+        country.innerHTML =
+          `<option value="">All countries</option>` +
+          countries.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
       }
       if (category) {
-        const cats = [...new Set(all.map((j) => j.category))].sort();
-        category.innerHTML = `<option value="">All categories</option>` + cats.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+        const cats = [...new Set(all.map((j) => j.category).filter(Boolean))].sort();
+        category.innerHTML =
+          `<option value="">All categories</option>` +
+          cats.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
       }
 
       function applyFilters() {
         let filtered = all.slice();
         const q = (search?.value || '').toLowerCase();
-        if (q) filtered = filtered.filter((j) => (j.title + j.company + j.city + j.description).toLowerCase().includes(q));
+        if (q) {
+          filtered = filtered.filter((j) =>
+            (j.title + j.company + j.city + j.description).toLowerCase().includes(q)
+          );
+        }
         if (country?.value) filtered = filtered.filter((j) => j.country === country.value);
         if (category?.value) filtered = filtered.filter((j) => j.category === category.value);
         if (type?.value) filtered = filtered.filter((j) => j.type === type.value);

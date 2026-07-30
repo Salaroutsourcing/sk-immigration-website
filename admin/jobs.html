@@ -1,185 +1,191 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jobs Admin | SK Immigration</title>
+  <title>Jobs | SK Admin</title>
   <meta name="robots" content="noindex,nofollow" />
   <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
-  <link rel="stylesheet" href="../assets/css/main.css?v=iosbar3" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/admin.css?v=light1" />
 </head>
-<body>
-  <div class="bg-orbs" aria-hidden="true"></div>
-  <div id="loginGate" class="container" style="min-height:100vh;display:grid;place-items:center">
-    <form id="loginForm" class="glass card" style="width:min(400px,100%)">
-      <h1 class="display" style="font-size:1.5rem;margin-bottom:0.75rem">Jobs Admin</h1>
-      <p class="text-muted mb-2" style="font-size:0.9rem">Post and manage openings shown on jobs.html &amp; ausbildung.html</p>
-      <div class="form-group"><label>Password</label><input class="form-control" type="password" id="adminPass" required /></div>
-      <button class="btn btn-gold w-full" type="submit">Sign in</button>
-      <div class="form-msg" id="loginMsg"></div>
-    </form>
-  </div>
-
-  <div id="adminApp" class="admin-shell hidden">
-    <aside class="admin-side">
-      <div class="logo mb-2"><span class="logo-mark">SK</span><span>Jobs</span></div>
-      <nav class="admin-nav">
-        <a href="index.html">Dashboard</a>
-        <a href="blog.html">Blog admin</a>
-        <a href="jobs.html" class="active">Jobs admin</a>
-        <a href="../jobs.html">View jobs page</a>
-        <a href="#" id="logoutBtn">Log out</a>
-      </nav>
-    </aside>
-    <main class="admin-main">
-      <div class="flex justify-between mb-2 flex-wrap gap-2">
-        <h1 class="display" style="font-size:1.6rem">Job listings</h1>
-        <button class="btn btn-gold btn-sm" id="newJob">+ Post job</button>
-      </div>
-      <div class="table-wrap glass card">
-        <table class="data">
-          <thead><tr><th>Title</th><th>Country</th><th>Type</th><th>Featured</th><th></th></tr></thead>
-          <tbody id="jobsBody"></tbody>
-        </table>
-      </div>
-    </main>
-  </div>
-
-  <div class="modal-backdrop" id="jobModal">
-    <div class="modal glass-strong" style="width:min(640px,100%)">
-      <h2 style="font-family:var(--font-display);margin-bottom:1rem">Job details</h2>
-      <form id="jobForm">
-        <input type="hidden" id="jobId" />
-        <div class="form-row">
-          <div class="form-group"><label>Title *</label><input class="form-control" id="jTitle" required /></div>
-          <div class="form-group"><label>Company *</label><input class="form-control" id="jCompany" required /></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>Country</label><input class="form-control" id="jCountry" /></div>
-          <div class="form-group"><label>City</label><input class="form-control" id="jCity" /></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>Type</label>
-            <select class="form-control" id="jType"><option>Ausbildung</option><option>Work Permit</option></select>
-          </div>
-          <div class="form-group"><label>Category</label><input class="form-control" id="jCategory" placeholder="Healthcare" /></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>Salary</label><input class="form-control" id="jSalary" /></div>
-          <div class="form-group"><label>Language</label><input class="form-control" id="jLang" /></div>
-        </div>
-        <div class="form-group"><label>Description</label><textarea class="form-control" id="jDesc"></textarea></div>
-        <div class="form-group"><label>Requirements (one per line)</label><textarea class="form-control" id="jReq"></textarea></div>
-        <label style="display:flex;gap:0.5rem;align-items:center;margin-bottom:1rem;font-size:0.9rem">
-          <input type="checkbox" id="jFeat" /> Featured
-        </label>
-        <div class="flex gap-2">
-          <button class="btn btn-gold" type="submit">Save job</button>
-          <button class="btn btn-ghost" type="button" onclick="document.getElementById('jobModal').classList.remove('open')">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script src="../assets/js/config.js?v=20260730a"></script>
-  <script src="../assets/js/theme.js?v=20260730a"></script>
-  <script src="../assets/js/api.js?v=20260730a"></script>
+<body data-admin-page="jobs">
+  <script src="../assets/js/config.js?v=light1"></script>
+  <script src="../assets/js/api.js?v=light1"></script>
+  <script src="../assets/js/admin-shell.js?v=light1"></script>
   <script>
     let jobs = [];
 
-    async function load() {
-      const local = SalarAPI.getJobs();
-      if (local && local.length) jobs = local;
-      else {
-        jobs = await (await fetch('../assets/data/jobs.json')).json();
-        SalarAPI.saveJobs(jobs);
-      }
-      render();
-    }
+    AdminShell.mountShell({
+      title: 'Jobs',
+      subtitle: 'Openings shown on jobs.html and ausbildung.html — saved to the live database.',
+      async render({ content, actions, esc }) {
+        actions.innerHTML = `<button type="button" class="adm-btn adm-btn-gold adm-btn-sm" id="newJob">+ Post job</button>`;
 
-    function render() {
-      const esc = (v) => String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-      document.getElementById('jobsBody').innerHTML = jobs.map(j => `
-        <tr>
-          <td>${esc(j.title)}</td><td>${esc(j.country)}</td><td>${esc(j.type)}</td>
-          <td>${j.featured ? 'Yes' : 'No'}</td>
-          <td class="flex gap-2">
-            <button class="btn btn-ghost btn-sm" data-edit="${esc(j.id)}">Edit</button>
-            <button class="btn btn-ghost btn-sm" data-del="${esc(j.id)}">Delete</button>
-          </td>
-        </tr>`).join('');
-      document.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => openJob(jobs.find(j => j.id === b.dataset.edit))));
-      document.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', () => {
-        if (!confirm('Delete job?')) return;
-        jobs = jobs.filter(j => j.id !== b.dataset.del);
-        SalarAPI.saveJobs(jobs);
-        render();
-      }));
-    }
+        content.innerHTML = `
+          <div class="adm-panel">
+            <div class="adm-table-wrap">
+              <table class="adm-table">
+                <thead><tr><th>Title</th><th>Country</th><th>Type</th><th>Status</th><th></th></tr></thead>
+                <tbody id="jobsBody"></tbody>
+              </table>
+            </div>
+          </div>
 
-    function openJob(j) {
-      document.getElementById('jobId').value = j?.id || '';
-      document.getElementById('jTitle').value = j?.title || '';
-      document.getElementById('jCompany').value = j?.company || '';
-      document.getElementById('jCountry').value = j?.country || 'Germany';
-      document.getElementById('jCity').value = j?.city || '';
-      document.getElementById('jType').value = j?.type || 'Ausbildung';
-      document.getElementById('jCategory').value = j?.category || '';
-      document.getElementById('jSalary').value = j?.salary || '';
-      document.getElementById('jLang').value = j?.language || '';
-      document.getElementById('jDesc').value = j?.description || '';
-      document.getElementById('jReq').value = (j?.requirements || []).join('\n');
-      document.getElementById('jFeat').checked = !!j?.featured;
-      document.getElementById('jobModal').classList.add('open');
-    }
+          <div class="adm-drawer-backdrop" id="drawerBg"></div>
+          <aside class="adm-drawer" id="drawer" style="width:min(560px,100%)">
+            <div class="adm-drawer-head">
+              <div><h2>Job details</h2></div>
+              <button type="button" class="adm-btn adm-btn-ghost adm-btn-sm" id="closeDrawer">Close</button>
+            </div>
+            <div class="adm-drawer-body">
+              <form id="jobForm">
+                <input type="hidden" id="jobId" />
+                <div class="adm-row cols-2">
+                  <div class="adm-field"><label class="adm-label">Title *</label><input class="adm-input" id="jTitle" required /></div>
+                  <div class="adm-field"><label class="adm-label">Company *</label><input class="adm-input" id="jCompany" required /></div>
+                </div>
+                <div class="adm-row cols-2">
+                  <div class="adm-field"><label class="adm-label">Country</label><input class="adm-input" id="jCountry" /></div>
+                  <div class="adm-field"><label class="adm-label">City</label><input class="adm-input" id="jCity" /></div>
+                </div>
+                <div class="adm-row cols-2">
+                  <div class="adm-field">
+                    <label class="adm-label">Type</label>
+                    <select class="adm-select" id="jType">
+                      <option>Ausbildung</option>
+                      <option>Work Permit</option>
+                    </select>
+                  </div>
+                  <div class="adm-field"><label class="adm-label">Category</label><input class="adm-input" id="jCategory" placeholder="Healthcare" /></div>
+                </div>
+                <div class="adm-row cols-2">
+                  <div class="adm-field"><label class="adm-label">Salary</label><input class="adm-input" id="jSalary" /></div>
+                  <div class="adm-field"><label class="adm-label">Language</label><input class="adm-input" id="jLang" /></div>
+                </div>
+                <div class="adm-field"><label class="adm-label">Description</label><textarea class="adm-textarea" id="jDesc"></textarea></div>
+                <div class="adm-field"><label class="adm-label">Requirements (one per line)</label><textarea class="adm-textarea" id="jReq"></textarea></div>
+                <div class="adm-field" style="display:flex;gap:1rem">
+                  <label><input type="checkbox" id="jPublished" checked /> Published</label>
+                  <label><input type="checkbox" id="jFeat" /> Featured</label>
+                </div>
+                <div class="adm-actions">
+                  <button class="adm-btn adm-btn-gold" type="submit">Save job</button>
+                  <button class="adm-btn adm-btn-ghost" type="button" id="cancelEdit">Cancel</button>
+                </div>
+                <div class="adm-msg" id="jobMsg"></div>
+              </form>
+            </div>
+          </aside>
+        `;
 
-    document.getElementById('jobForm')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const id = document.getElementById('jobId').value || ('job-' + Date.now().toString(36));
-      const item = {
-        id,
-        title: document.getElementById('jTitle').value,
-        company: document.getElementById('jCompany').value,
-        country: document.getElementById('jCountry').value,
-        city: document.getElementById('jCity').value,
-        type: document.getElementById('jType').value,
-        category: document.getElementById('jCategory').value,
-        salary: document.getElementById('jSalary').value,
-        language: document.getElementById('jLang').value,
-        description: document.getElementById('jDesc').value,
-        requirements: document.getElementById('jReq').value.split('\n').map(s => s.trim()).filter(Boolean),
-        featured: document.getElementById('jFeat').checked,
-      };
-      const i = jobs.findIndex(j => j.id === id);
-      if (i >= 0) jobs[i] = item; else jobs.unshift(item);
-      SalarAPI.saveJobs(jobs);
-      SalarAPI.syncRemote.postToGas('saveJob', { data: item });
-      document.getElementById('jobModal').classList.remove('open');
-      render();
-    });
+        function closeDrawer() {
+          document.getElementById('drawer').classList.remove('open');
+          document.getElementById('drawerBg').classList.remove('open');
+        }
 
-    document.getElementById('newJob')?.addEventListener('click', () => openJob(null));
-    document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const result = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
-      if (result && result.ok) {
-        document.getElementById('loginGate').classList.add('hidden');
-        document.getElementById('adminApp').classList.remove('hidden');
-        load();
-      } else {
-        document.getElementById('loginMsg').className = 'form-msg show err';
-        document.getElementById('loginMsg').textContent = 'Incorrect password.';
-      }
-    });
-    document.getElementById('logoutBtn')?.addEventListener('click', async (e) => { e.preventDefault(); await SalarAPI.logoutAdmin(); location.reload(); });
-    SalarAPI.isAdminLoggedIn().then((ok) => {
-      if (!ok) return;
-      document.getElementById('loginGate').classList.add('hidden');
-      document.getElementById('adminApp').classList.remove('hidden');
-      load();
+        function openJob(j) {
+          document.getElementById('jobId').value = j?.id || '';
+          document.getElementById('jTitle').value = j?.title || '';
+          document.getElementById('jCompany').value = j?.company || '';
+          document.getElementById('jCountry').value = j?.country || 'Germany';
+          document.getElementById('jCity').value = j?.city || '';
+          document.getElementById('jType').value = j?.type || 'Ausbildung';
+          document.getElementById('jCategory').value = j?.category || '';
+          document.getElementById('jSalary').value = j?.salary || '';
+          document.getElementById('jLang').value = j?.language || '';
+          document.getElementById('jDesc').value = j?.description || '';
+          document.getElementById('jReq').value = (j?.requirements || []).join('\n');
+          document.getElementById('jPublished').checked = j?.published !== false;
+          document.getElementById('jFeat').checked = !!j?.featured;
+          document.getElementById('jobMsg').textContent = '';
+          document.getElementById('drawerBg').classList.add('open');
+          document.getElementById('drawer').classList.add('open');
+        }
+
+        async function load() {
+          const res = await SalarAPI.adminListJobs();
+          if (!res.ok) {
+            document.getElementById('jobsBody').innerHTML =
+              `<tr><td colspan="5" class="adm-empty">Could not load jobs (${esc(res.error)}).</td></tr>`;
+            if (res.error === 'unauthorized') location.reload();
+            return;
+          }
+          jobs = res.jobs || [];
+          document.getElementById('jobsBody').innerHTML =
+            jobs
+              .map(
+                (j) => `
+            <tr>
+              <td>${esc(j.title)}${j.featured ? ' · <span class="adm-badge adm-badge-in_progress">featured</span>' : ''}</td>
+              <td>${esc(j.country)}</td>
+              <td>${esc(j.type)}</td>
+              <td>${j.published ? '<span class="adm-badge adm-badge-won">live</span>' : '<span class="adm-badge">draft</span>'}</td>
+              <td>
+                <button type="button" class="adm-btn adm-btn-ghost adm-btn-sm" data-edit="${esc(j.id)}">Edit</button>
+                <button type="button" class="adm-btn adm-btn-danger adm-btn-sm" data-del="${esc(j.id)}">Delete</button>
+              </td>
+            </tr>`
+              )
+              .join('') || `<tr><td colspan="5" class="adm-empty">No jobs yet.</td></tr>`;
+
+          document.querySelectorAll('[data-edit]').forEach((b) => {
+            b.addEventListener('click', (e) => {
+              e.stopPropagation();
+              openJob(jobs.find((j) => j.id === b.dataset.edit));
+            });
+          });
+          document.querySelectorAll('[data-del]').forEach((b) => {
+            b.addEventListener('click', async (e) => {
+              e.stopPropagation();
+              if (!confirm('Delete this job?')) return;
+              await SalarAPI.adminDeleteJob(b.dataset.del);
+              load();
+            });
+          });
+        }
+
+        document.getElementById('newJob')?.addEventListener('click', () => openJob(null));
+        document.getElementById('closeDrawer')?.addEventListener('click', closeDrawer);
+        document.getElementById('drawerBg')?.addEventListener('click', closeDrawer);
+        document.getElementById('cancelEdit')?.addEventListener('click', closeDrawer);
+
+        document.getElementById('jobForm')?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const msg = document.getElementById('jobMsg');
+          msg.className = 'adm-msg';
+          msg.textContent = 'Saving…';
+          const payload = {
+            id: document.getElementById('jobId').value || undefined,
+            title: document.getElementById('jTitle').value.trim(),
+            company: document.getElementById('jCompany').value.trim(),
+            country: document.getElementById('jCountry').value.trim(),
+            city: document.getElementById('jCity').value.trim(),
+            type: document.getElementById('jType').value,
+            category: document.getElementById('jCategory').value.trim(),
+            salary: document.getElementById('jSalary').value.trim(),
+            language: document.getElementById('jLang').value.trim(),
+            description: document.getElementById('jDesc').value,
+            requirements: document.getElementById('jReq').value,
+            published: document.getElementById('jPublished').checked,
+            featured: document.getElementById('jFeat').checked,
+          };
+          const res = await SalarAPI.adminSaveJob(payload);
+          if (!res.ok) {
+            msg.className = 'adm-msg err';
+            msg.textContent = res.error || 'Save failed.';
+            return;
+          }
+          msg.className = 'adm-msg ok';
+          msg.textContent = 'Saved to live site.';
+          closeDrawer();
+          load();
+        });
+
+        await load();
+      },
     });
   </script>
 </body>
