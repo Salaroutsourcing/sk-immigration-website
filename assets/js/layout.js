@@ -130,6 +130,7 @@
       <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile menu">
         <div class="mobile-nav-panel">
           ${navLinks('')}
+          <a href="${href('eligibility.html')}">Eligibility Quiz</a>
           <a href="${href('checklist.html')}">Document Checklist (tick boxes)</a>
           <a href="${href('calculator.html')}">Cost Calculator</a>
           <a href="${href('compare.html')}">Compare Countries</a>
