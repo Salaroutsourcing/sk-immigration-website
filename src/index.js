@@ -65,6 +65,17 @@ export default {
       return Response.redirect(new URL('/answers.html', url).toString(), 301);
     }
 
+    // Canonical Schengen appointment page (dedupe thin alias)
+    if (
+      url.pathname === '/visa-appointment/schengen-appointment-pakistan' ||
+      url.pathname === '/visa-appointment/schengen-appointment-pakistan/'
+    ) {
+      return Response.redirect(
+        new URL('/visa-appointment/schengen-visa-appointment-pakistan/', url).toString(),
+        301
+      );
+    }
+
     if (!url.pathname.startsWith('/api/')) {
       const assetResponse = await env.ASSETS.fetch(request);
       return withSecurityHeaders(assetResponse);

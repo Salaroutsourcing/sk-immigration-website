@@ -19,3 +19,7 @@
 # Answers hub lives at /answers.html (individual answers stay under /answers/*.html)
 /answers /answers.html 301
 
+# Schengen appointment — keep the deeper canonical URL only
+/visa-appointment/schengen-appointment-pakistan /visa-appointment/schengen-visa-appointment-pakistan/ 301
+/visa-appointment/schengen-appointment-pakistan/ /visa-appointment/schengen-visa-appointment-pakistan/ 301
+

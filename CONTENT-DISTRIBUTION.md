@@ -17,7 +17,7 @@ Goal: earn brand mentions and AI Overview citations for money queries.
 | Without IELTS | `/guides/study-abroad-without-ielts-pakistan/` |
 | Low marks Europe | `/guides/study-abroad-low-marks-pakistan/` |
 | Ausbildung Pakistan | `/guides/ausbildung-pakistan/` |
-| Schengen appointment | `/visa-appointment/schengen-appointment-pakistan/` |
+| Schengen appointment | `/visa-appointment/schengen-visa-appointment-pakistan/` |
 | Saudi E Number | `/guides/saudi-e-number-pakistan/` |
 | Rawalpindi walk-in | `/local/rawalpindi-study-visa-consultant/` |
 
