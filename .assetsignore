@@ -8,6 +8,7 @@
 .gitignore
 .assetsignore
 .wrangler
+.wrangler-logs
 .dev.vars
 .dev.vars.example
 .env
@@ -22,3 +23,6 @@ package-lock.json
 wrangler.jsonc
 wrangler.toml
 *.md
+*.log
+.cursor
+agent-transcripts

@@ -17,7 +17,7 @@
   <div id="loginGate" class="container" style="min-height:100vh;display:grid;place-items:center;padding:2rem 0">
     <form id="loginForm" class="glass card" style="width:min(400px,100%)">
       <div class="logo mb-2"><span class="logo-mark">SK</span><span>Admin CRM</span></div>
-      <p class="text-muted mb-2" style="font-size:0.9rem">Password: <strong>salaar@98</strong></p>
+      <p class="text-muted mb-2" style="font-size:0.9rem">Staff only. Use your admin password — never share it.</p>
       <div class="form-group"><label>Admin password</label><input class="form-control" type="password" id="adminPass" required autocomplete="current-password" /></div>
       <button class="btn btn-gold w-full" type="submit">Sign in</button>
       <div class="form-msg" id="loginMsg"></div>
@@ -33,7 +33,6 @@
         <a href="blog.html">Blog posts</a>
         <a href="jobs.html">Jobs / Candidates</a>
         <a href="../hire-workers-from-pakistan/">Hire portal (public)</a>
-        <a href="../portal.html">Portal hub</a>
         <a href="../blog.html">View public blog</a>
         <a href="../index.html">Website</a>
         <a href="#" id="logoutBtn">Log out</a>
@@ -302,10 +301,10 @@
           return;
         }
         msg.className = 'form-msg show err';
-        msg.textContent = 'Incorrect password. Use: salaar@98';
+        msg.textContent = 'Incorrect password.';
       } catch (err) {
         msg.className = 'form-msg show err';
-        msg.textContent = 'Login error. Hard-refresh (Ctrl+Shift+R) and try salaar@98 again.';
+        msg.textContent = 'Login error. Hard-refresh (Ctrl+Shift+R) and try again.';
       }
     });
 
@@ -327,3 +326,4 @@
   </script>
 </body>
 </html>
+

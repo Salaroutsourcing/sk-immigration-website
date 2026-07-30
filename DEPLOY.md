@@ -106,18 +106,20 @@ Use **Admin CRM** (`/admin/`) for fast collection of:
 
 ## Security notes
 
-- Client-side password (`Salaar@98`) gates the admin UI — fine for a small team, but **not** bank-grade. Change password after launch.
-- For stronger security: verify password in Apps Script (`ADMIN_PASSWORD`) before listing leads, and never commit secrets to public repos.
-- Set `Disallow: /admin/` in robots.txt (already done).
+- Admin login is **server-side**: `ADMIN_PASSWORD_HASH` + `SESSION_SECRET` via `wrangler secret put`. Never put the plaintext password in HTML, JS, or git.
+- Session cookie: HttpOnly, Secure, SameSite=Strict, 12h TTL.
+- Failed logins are delayed and rate-limited by IP hash.
+- `Disallow: /admin/` and `/portal` in robots.txt (already done).
+- Blog/jobs admin still store drafts in browser localStorage until Phase C (CMS) — CRM leads use D1.
 
 ---
 
 ## Post-launch checklist
 
-- [ ] Update `appsScriptUrl` in config.js  
-- [ ] Change admin password  
+- [ ] Confirm `ADMIN_PASSWORD_HASH` + `SESSION_SECRET` are set on the Worker  
+- [ ] Test `/admin/` login with the new password (hard-refresh first)  
 - [ ] Submit sitemap in Google Search Console  
 - [ ] Test WhatsApp link on mobile  
 - [ ] Test dark/light toggle persistence  
-- [ ] Submit sample CV + job application and confirm Sheet rows  
+- [ ] Submit sample contact + CV and confirm they appear in Admin CRM  
 - [ ] Replace ad placeholders with real partners when ready  

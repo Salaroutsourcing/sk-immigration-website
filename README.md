@@ -34,10 +34,19 @@ python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
-## Admin password
+## Admin access
 
-Default blog/CRM/jobs admin password: `Salaar@98`  
-Change it in `assets/js/api.js` (`loginAdmin` hash source) and `apps-script/Code.gs`.
+Staff CRM lives at `/admin/`. Login is checked on the Cloudflare Worker (password hash + HttpOnly session cookie).
+
+Set production secrets (never commit the password):
+
+```bash
+printf 'YOUR_PASSWORD' | shasum -a 256
+npx wrangler secret put ADMIN_PASSWORD_HASH
+npx wrangler secret put SESSION_SECRET
+```
+
+Local: copy `.dev.vars.example` → `.dev.vars` with the same hash + a long random `SESSION_SECRET`.
 
 ## Connect Google Sheets
 

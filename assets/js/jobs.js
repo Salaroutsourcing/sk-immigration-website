@@ -7,6 +7,15 @@
     return (inAdmin ? '../' : '') + 'assets/data/' + file;
   }
 
+  function esc(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   async function loadJobs() {
     const local = SalarAPI.getJobs();
     if (local && local.length) return local;
@@ -28,20 +37,20 @@
         (j) => `
       <article class="glass job-card reveal">
         <div class="flex justify-between items-center flex-wrap gap-2">
-          <h3 style="font-family:var(--font-display);font-size:1.15rem">${j.title}</h3>
+          <h3 style="font-family:var(--font-display);font-size:1.15rem">${esc(j.title)}</h3>
           ${j.featured ? '<span class="badge">Featured</span>' : ''}
         </div>
-        <p class="text-muted" style="font-size:0.9rem">${j.company} · ${j.city}, ${j.country}</p>
+        <p class="text-muted" style="font-size:0.9rem">${esc(j.company)} · ${esc(j.city)}, ${esc(j.country)}</p>
         <div class="job-meta">
-          <span class="badge badge-muted">${j.type}</span>
-          <span class="badge badge-muted">${j.category}</span>
-          <span class="badge badge-muted">${j.language}</span>
+          <span class="badge badge-muted">${esc(j.type)}</span>
+          <span class="badge badge-muted">${esc(j.category)}</span>
+          <span class="badge badge-muted">${esc(j.language)}</span>
         </div>
-        <p style="font-size:0.925rem">${j.description}</p>
-        <p class="text-gold" style="font-weight:600;font-size:0.9rem">${j.salary}</p>
+        <p style="font-size:0.925rem">${esc(j.description)}</p>
+        <p class="text-gold" style="font-weight:600;font-size:0.9rem">${esc(j.salary)}</p>
         <div class="flex gap-2 flex-wrap">
-          <button type="button" class="btn btn-gold btn-sm" data-apply="${j.id}">Apply now</button>
-          <button type="button" class="btn btn-ghost btn-sm" data-detail="${j.id}">Details</button>
+          <button type="button" class="btn btn-gold btn-sm" data-apply="${esc(j.id)}">Apply now</button>
+          <button type="button" class="btn btn-ghost btn-sm" data-detail="${esc(j.id)}">Details</button>
         </div>
       </article>`
       )
@@ -76,12 +85,12 @@
     if (!job) return;
     const m = ensureModal();
     document.getElementById('jobModalBody').innerHTML = `
-      <h2 class="display" style="font-size:1.5rem;margin-bottom:0.5rem">${job.title}</h2>
-      <p class="text-muted mb-2">${job.company} · ${job.city}, ${job.country}</p>
-      <p class="mb-2">${job.description}</p>
-      <p class="text-gold mb-2"><strong>${job.salary}</strong></p>
+      <h2 class="display" style="font-size:1.5rem;margin-bottom:0.5rem">${esc(job.title)}</h2>
+      <p class="text-muted mb-2">${esc(job.company)} · ${esc(job.city)}, ${esc(job.country)}</p>
+      <p class="mb-2">${esc(job.description)}</p>
+      <p class="text-gold mb-2"><strong>${esc(job.salary)}</strong></p>
       <h3 style="margin-bottom:0.5rem">Requirements</h3>
-      <ul class="prose">${(job.requirements || []).map((r) => `<li>${r}</li>`).join('')}</ul>
+      <ul class="prose">${(job.requirements || []).map((r) => `<li>${esc(r)}</li>`).join('')}</ul>
       <div class="flex gap-2 mt-3">
         <button type="button" class="btn btn-gold" id="detailApply">Apply</button>
         <button type="button" class="btn btn-ghost" onclick="document.getElementById('jobModal').classList.remove('open')">Close</button>
@@ -94,10 +103,10 @@
     if (!job) return;
     const m = ensureModal();
     document.getElementById('jobModalBody').innerHTML = `
-      <h2 class="display" style="font-size:1.35rem;margin-bottom:0.75rem">Apply: ${job.title}</h2>
+      <h2 class="display" style="font-size:1.35rem;margin-bottom:0.75rem">Apply: ${esc(job.title)}</h2>
       <form id="jobApplyForm">
-        <input type="hidden" name="jobId" value="${job.id}">
-        <input type="hidden" name="jobTitle" value="${job.title}">
+        <input type="hidden" name="jobId" value="${esc(job.id)}">
+        <input type="hidden" name="jobTitle" value="${esc(job.title)}">
         <div class="form-row">
           <div class="form-group"><label>Full name *</label><input class="form-control" name="name" required></div>
           <div class="form-group"><label>Email *</label><input class="form-control" name="email" type="email" required></div>
@@ -148,11 +157,11 @@
 
       if (country) {
         const countries = [...new Set(all.map((j) => j.country))].sort();
-        country.innerHTML = `<option value="">All countries</option>` + countries.map((c) => `<option>${c}</option>`).join('');
+        country.innerHTML = `<option value="">All countries</option>` + countries.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
       }
       if (category) {
         const cats = [...new Set(all.map((j) => j.category))].sort();
-        category.innerHTML = `<option value="">All categories</option>` + cats.map((c) => `<option>${c}</option>`).join('');
+        category.innerHTML = `<option value="">All categories</option>` + cats.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
       }
 
       function applyFilters() {

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Staff Portal | SK Immigration</title>
-  <meta name="description" content="Private staff portal for SK Immigration Services." />
+  <meta name="description" content="Private staff entry for SK Immigration Services." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href="https://www.salaroutsourcing.com/portal.html" />
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
@@ -17,35 +17,22 @@
   <main id="main">
     <div class="page-hero container">
       <p class="eyebrow">Staff only</p>
-      <h1 class="display">Portal access</h1>
-      <p class="section-sub">This area is for authorised SK Immigration staff. It is not linked from public navigation and is excluded from search indexing.</p>
+      <h1 class="display">Staff portal</h1>
+      <p class="section-sub">Sign in through the Admin CRM. This page no longer keeps a separate password.</p>
     </div>
 
     <section>
-      <div class="container" style="max-width:480px">
-        <article class="glass card" id="gate" style="padding:1.5rem">
-          <label for="portalPass" class="eyebrow">Staff password</label>
-          <input id="portalPass" type="password" class="input" placeholder="Enter password" autocomplete="current-password" style="width:100%;margin:0.75rem 0;padding:0.75rem;border-radius:12px;border:1px solid var(--glass-border);background:var(--bg);color:var(--text)" />
-          <button type="button" class="btn btn-gold" id="portalUnlock" style="width:100%">Unlock</button>
-          <p id="portalErr" class="text-muted" style="display:none;margin-top:0.75rem;color:var(--danger)">Incorrect password.</p>
-        </article>
-
-        <div id="portalContent" class="hidden">
-          <div class="grid-2" style="margin-top:1.5rem">
-            <article class="glass card">
-              <span class="badge">CRM</span>
-              <h2 style="font-family:var(--font-display);margin:0.75rem 0">Admin CRM</h2>
-              <p class="text-muted">Leads, CVs, jobs and blog admin.</p>
-              <a class="btn btn-gold mt-2" href="admin/">Open Admin CRM</a>
-            </article>
-            <article class="glass card">
-              <span class="badge badge-muted">Legacy</span>
-              <h2 style="font-family:var(--font-display);margin:0.75rem 0">Apps Script Portal</h2>
-              <p class="text-muted">Full case workflows in Google Sheets.</p>
-              <a id="legacyPortal" class="btn btn-navy mt-2" href="#" target="_blank" rel="noopener">Open legacy portal ↗</a>
-            </article>
+      <div class="container" style="max-width:520px">
+        <article class="glass card" style="padding:1.5rem">
+          <p class="text-muted">Use the same server-checked admin login for leads, blog tools, and jobs tools.</p>
+          <div class="hero-ctas mt-2" style="margin-bottom:0">
+            <a class="btn btn-gold" href="admin/">Open Admin CRM</a>
+            <a class="btn btn-ghost" href="admin/blog.html">Blog admin</a>
+            <a class="btn btn-ghost" href="admin/jobs.html">Jobs admin</a>
           </div>
-        </div>
+          <p class="text-muted mt-2" style="font-size:0.85rem">Legacy Google Apps Script case UI (optional):</p>
+          <a id="legacyPortal" class="btn btn-navy btn-sm" href="#" target="_blank" rel="noopener">Open legacy portal ↗</a>
+        </article>
       </div>
     </section>
   </main>
@@ -56,22 +43,10 @@
   <script src="assets/js/layout.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const url = SALAR_CONFIG.legacyPortalUrl;
       const legacy = document.getElementById('legacyPortal');
-      if (legacy) legacy.href = url;
-      const KEY = 'sk_portal_ok';
-      const unlock = () => {
-        document.getElementById('gate').classList.add('hidden');
-        document.getElementById('portalContent').classList.remove('hidden');
-        sessionStorage.setItem(KEY, '1');
-      };
-      if (sessionStorage.getItem(KEY) === '1') unlock();
-      document.getElementById('portalUnlock')?.addEventListener('click', () => {
-        const pass = document.getElementById('portalPass').value;
-        const expected = SALAR_CONFIG.adminPasswordHint || '';
-        if (pass && expected && pass === expected) unlock();
-        else document.getElementById('portalErr').style.display = 'block';
-      });
+      if (legacy && window.SALAR_CONFIG?.legacyPortalUrl) {
+        legacy.href = SALAR_CONFIG.legacyPortalUrl;
+      }
     });
   </script>
 </body>

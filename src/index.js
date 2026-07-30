@@ -12,6 +12,8 @@ const MAX_BODY_BYTES = 64 * 1024;
 const MAX_FIELD_LENGTH = 2000;
 const RATE_LIMIT_MAX = 8;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const LOGIN_MAX_FAILS = 8;
+const LOGIN_LOCK_MS = 15 * 60 * 1000;
 
 /* Admin auth: set ADMIN_PASSWORD_HASH + SESSION_SECRET via `wrangler secret put`. No defaults in production. */
 
@@ -241,6 +243,15 @@ async function handleLogin(request, env) {
     return json({ ok: false, error: 'auth_not_configured' }, 503);
   }
 
+  const ipHash = await clientIpHash(request);
+  if (env.DB && ipHash) {
+    const locked = await isLoginLocked(env, ipHash);
+    if (locked) {
+      await sleep(800);
+      return json({ ok: false, error: 'too_many_attempts' }, 429);
+    }
+  }
+
   const got = await sha256Hex(password);
   let matched = false;
   for (const expected of hashes) {
@@ -251,12 +262,72 @@ async function handleLogin(request, env) {
   }
 
   if (!matched) {
-    await sleep(400);
+    if (env.DB && ipHash) await recordLoginFail(env, ipHash);
+    await sleep(600);
     return json({ ok: false, error: 'invalid_credentials' }, 401);
   }
 
+  if (env.DB && ipHash) await clearLoginFails(env, ipHash);
   const cookie = await createSessionCookie(env);
   return json({ ok: true }, 200, { 'set-cookie': cookie });
+}
+
+async function clientIpHash(request) {
+  const ip =
+    request.headers.get('cf-connecting-ip') ||
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    '';
+  if (!ip) return '';
+  return sha256Hex(ip);
+}
+
+async function isLoginLocked(env, ipHash) {
+  try {
+    const row = await env.DB.prepare(
+      'SELECT fails, locked_until FROM admin_login_attempts WHERE ip_hash = ?'
+    )
+      .bind(ipHash)
+      .first();
+    if (!row) return false;
+    if (row.locked_until && Date.parse(row.locked_until) > Date.now()) return true;
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+async function recordLoginFail(env, ipHash) {
+  try {
+    const row = await env.DB.prepare(
+      'SELECT fails FROM admin_login_attempts WHERE ip_hash = ?'
+    )
+      .bind(ipHash)
+      .first();
+    const fails = Number(row?.fails || 0) + 1;
+    const lockedUntil =
+      fails >= LOGIN_MAX_FAILS
+        ? new Date(Date.now() + LOGIN_LOCK_MS).toISOString()
+        : null;
+    await env.DB.prepare(
+      `INSERT INTO admin_login_attempts (ip_hash, fails, locked_until)
+       VALUES (?, ?, ?)
+       ON CONFLICT(ip_hash) DO UPDATE SET fails = excluded.fails, locked_until = excluded.locked_until`
+    )
+      .bind(ipHash, fails, lockedUntil)
+      .run();
+  } catch (err) {
+    console.error('login fail track error', err);
+  }
+}
+
+async function clearLoginFails(env, ipHash) {
+  try {
+    await env.DB.prepare('DELETE FROM admin_login_attempts WHERE ip_hash = ?')
+      .bind(ipHash)
+      .run();
+  } catch {
+    /* ignore */
+  }
 }
 
 function handleLogout() {

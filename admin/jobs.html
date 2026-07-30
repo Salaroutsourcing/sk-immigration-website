@@ -101,13 +101,14 @@
     }
 
     function render() {
+      const esc = (v) => String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
       document.getElementById('jobsBody').innerHTML = jobs.map(j => `
         <tr>
-          <td>${j.title}</td><td>${j.country}</td><td>${j.type}</td>
+          <td>${esc(j.title)}</td><td>${esc(j.country)}</td><td>${esc(j.type)}</td>
           <td>${j.featured ? 'Yes' : 'No'}</td>
           <td class="flex gap-2">
-            <button class="btn btn-ghost btn-sm" data-edit="${j.id}">Edit</button>
-            <button class="btn btn-ghost btn-sm" data-del="${j.id}">Delete</button>
+            <button class="btn btn-ghost btn-sm" data-edit="${esc(j.id)}">Edit</button>
+            <button class="btn btn-ghost btn-sm" data-del="${esc(j.id)}">Delete</button>
           </td>
         </tr>`).join('');
       document.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => openJob(jobs.find(j => j.id === b.dataset.edit))));
@@ -170,7 +171,7 @@
         load();
       } else {
         document.getElementById('loginMsg').className = 'form-msg show err';
-        document.getElementById('loginMsg').textContent = 'Incorrect password. Use: salaar@98';
+        document.getElementById('loginMsg').textContent = 'Incorrect password.';
       }
     });
     document.getElementById('logoutBtn')?.addEventListener('click', async (e) => { e.preventDefault(); await SalarAPI.logoutAdmin(); location.reload(); });

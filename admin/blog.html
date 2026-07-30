@@ -79,14 +79,15 @@
   <script>
     async function render() {
       const posts = await SalarBlog.getAll();
+      const esc = (v) => String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
       document.getElementById('postsBody').innerHTML = posts.map(p => `
         <tr>
-          <td>${p.date||''}</td>
-          <td>${p.title}</td>
-          <td>${p.category||''}</td>
+          <td>${esc(p.date||'')}</td>
+          <td>${esc(p.title)}</td>
+          <td>${esc(p.category||'')}</td>
           <td class="flex gap-2">
-            <button class="btn btn-ghost btn-sm" data-edit="${p.id}">Edit</button>
-            <button class="btn btn-ghost btn-sm" data-del="${p.id}">Delete</button>
+            <button class="btn btn-ghost btn-sm" data-edit="${esc(p.id)}">Edit</button>
+            <button class="btn btn-ghost btn-sm" data-del="${esc(p.id)}">Delete</button>
           </td>
         </tr>`).join('');
       document.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => openEdit(posts.find(p => p.id === b.dataset.edit))));
@@ -152,7 +153,7 @@
       } else {
         const msg = document.getElementById('loginMsg');
         msg.className = 'form-msg show err';
-        msg.textContent = 'Incorrect password. Use: salaar@98';
+        msg.textContent = 'Incorrect password.';
       }
     });
     document.getElementById('logoutBtn')?.addEventListener('click', async (e) => { e.preventDefault(); await SalarAPI.logoutAdmin(); location.reload(); });

@@ -18,3 +18,10 @@ CREATE TABLE IF NOT EXISTS leads (
 CREATE INDEX IF NOT EXISTS idx_leads_created_at ON leads (created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_leads_type       ON leads (type, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_leads_rate       ON leads (ip_hash, created_at);
+
+-- Failed admin login tracking (Phase A rate limit)
+CREATE TABLE IF NOT EXISTS admin_login_attempts (
+  ip_hash      TEXT PRIMARY KEY,
+  fails        INTEGER NOT NULL DEFAULT 0,
+  locked_until TEXT
+);

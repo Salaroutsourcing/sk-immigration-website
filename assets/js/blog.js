@@ -7,6 +7,29 @@
     return (inAdmin ? '../' : '') + 'assets/data/' + file;
   }
 
+  function esc(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function safeHref(href) {
+    const h = String(href || '').trim();
+    if (!h || /^(javascript|data|vbscript):/i.test(h)) return '#';
+    return esc(h);
+  }
+
+  function sanitizeHtml(html) {
+    return String(html ?? '')
+      .replace(/<script[\s\S]*?<\/script>/gi, '')
+      .replace(/<\/?(iframe|object|embed|link|meta|base|form)[^>]*>/gi, '')
+      .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '')
+      .replace(/(href|src)\s*=\s*(["'])\s*(javascript|data|vbscript):/gi, '$1=$2#');
+  }
+
   async function seedPosts() {
     const stored = SalarAPI.getBlogPosts();
     if (stored && stored.length) return stored;
@@ -57,15 +80,15 @@
 
       el.innerHTML = list
         .map((p) => {
-          const link = p.url || `blog-post.html?slug=${encodeURIComponent(p.slug)}`;
+          const link = safeHref(p.url || `blog-post.html?slug=${encodeURIComponent(p.slug)}`);
           return `
         <article class="glass card blog-card reveal">
           <div class="flex justify-between items-center">
-            <span class="badge">${p.category}</span>
-            <span class="meta">${p.date}</span>
+            <span class="badge">${esc(p.category)}</span>
+            <span class="meta">${esc(p.date)}</span>
           </div>
-          <h3><a href="${link}">${p.title}</a></h3>
-          <p class="text-muted" style="font-size:0.925rem">${p.excerpt}</p>
+          <h3><a href="${link}">${esc(p.title)}</a></h3>
+          <p class="text-muted" style="font-size:0.925rem">${esc(p.excerpt)}</p>
           <a class="text-gold" href="${link}">Read article →</a>
         </article>`;
         })
@@ -87,10 +110,10 @@
       setLink('canonical', `${location.origin}/blog-post.html?slug=${encodeURIComponent(post.slug)}`);
       el.innerHTML = `
         <article class="glass card" style="padding:2rem">
-          <p class="eyebrow">${post.category} · ${post.date}</p>
-          <h1 class="display" style="font-size:clamp(1.75rem,3vw,2.5rem);margin-bottom:0.75rem">${post.title}</h1>
-          <p class="text-muted mb-2">By ${post.author}</p>
-          <div class="prose">${post.content}</div>
+          <p class="eyebrow">${esc(post.category)} · ${esc(post.date)}</p>
+          <h1 class="display" style="font-size:clamp(1.75rem,3vw,2.5rem);margin-bottom:0.75rem">${esc(post.title)}</h1>
+          <p class="text-muted mb-2">By ${esc(post.author)}</p>
+          <div class="prose">${sanitizeHtml(post.content)}</div>
           <div class="ad-slot mt-3">Partner / Ad placement — universities & insurance partners</div>
           <div class="hero-ctas mt-3">
             <a class="btn btn-gold" href="contact.html">Discuss my case</a>
