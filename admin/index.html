@@ -17,7 +17,7 @@
   <div id="loginGate" class="container" style="min-height:100vh;display:grid;place-items:center;padding:2rem 0">
     <form id="loginForm" class="glass card" style="width:min(400px,100%)">
       <div class="logo mb-2"><span class="logo-mark">SK</span><span>Admin CRM</span></div>
-      <p class="text-muted mb-2" style="font-size:0.9rem">Password-protected workspace for leads, CVs, applications, blog and jobs.</p>
+      <p class="text-muted mb-2" style="font-size:0.9rem">Secure workspace for students, visa leads, employer requests, candidates, jobs and blogs.</p>
       <div class="form-group"><label>Admin password</label><input class="form-control" type="password" id="adminPass" required autocomplete="current-password" /></div>
       <button class="btn btn-gold w-full" type="submit">Sign in</button>
       <div class="form-msg" id="loginMsg"></div>
@@ -30,9 +30,10 @@
       <div class="logo mb-2"><span class="logo-mark">SK</span><span>CRM</span></div>
       <nav class="admin-nav">
         <a href="index.html" class="active">Dashboard</a>
-        <a href="blog.html">Blog admin</a>
-        <a href="jobs.html">Jobs admin</a>
+        <a href="blog.html">Blogs</a>
+        <a href="jobs.html">Jobs / Candidates</a>
         <a href="../portal.html">Portal hub</a>
+        <a href="../faq.html">FAQs (site)</a>
         <a href="../index.html">Website</a>
         <a href="#" id="logoutBtn">Log out</a>
       </nav>
@@ -42,7 +43,7 @@
       <div class="flex justify-between items-center flex-wrap gap-2 mb-2">
         <div>
           <h1 class="display" style="font-size:1.75rem">Dashboard</h1>
-          <p class="text-muted">Leads &amp; CVs collected from the fast static website</p>
+          <p class="text-muted">Students · Visa leads · Employer requests · Candidates</p>
         </div>
         <div class="flex gap-2 flex-wrap">
           <button class="btn btn-ghost btn-sm" id="exportAll">Export all JSON</button>
@@ -53,15 +54,24 @@
       <div class="grid-4 mb-2" id="statCards"></div>
 
       <div class="glass card mb-2">
-        <div class="flex justify-between items-center mb-2">
-          <h2 style="font-family:var(--font-display)">Recent leads</h2>
+        <div class="flex justify-between items-center mb-2 flex-wrap gap-2">
+          <h2 style="font-family:var(--font-display)">Leads inbox</h2>
           <select class="form-control" id="leadFilter" style="width:auto">
             <option value="">All types</option>
-            <option value="contact">Contact / Booking</option>
+            <option value="group:students">Students</option>
+            <option value="group:visa">Visa leads</option>
+            <option value="group:employers">Employer requests</option>
+            <option value="student">Student</option>
             <option value="eligibility">Eligibility</option>
-            <option value="cv">CV</option>
-            <option value="job_application">Job application</option>
+            <option value="visa_appointment">Visa appointment</option>
+            <option value="saudi">Saudi</option>
             <option value="attestation">Attestation</option>
+            <option value="employer">Employer registration</option>
+            <option value="workforce">Workforce requirement</option>
+            <option value="quotation">Quotation</option>
+            <option value="contact">Contact / Booking</option>
+            <option value="cv">CV / Candidate</option>
+            <option value="job_application">Job application</option>
           </select>
         </div>
         <div class="table-wrap">
@@ -72,9 +82,30 @@
         </div>
       </div>
 
+      <div class="grid-2 mb-2">
+        <div class="glass card">
+          <h2 style="font-family:var(--font-display);margin-bottom:0.75rem">Student leads</h2>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Name</th><th>Type</th><th>Contact</th><th></th></tr></thead>
+              <tbody id="studentBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="glass card">
+          <h2 style="font-family:var(--font-display);margin-bottom:0.75rem">Employer requests</h2>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Name</th><th>Type</th><th>Company / Meta</th><th></th></tr></thead>
+              <tbody id="employerBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       <div class="grid-2">
         <div class="glass card">
-          <h2 style="font-family:var(--font-display);margin-bottom:0.75rem">CV bank</h2>
+          <h2 style="font-family:var(--font-display);margin-bottom:0.75rem">Candidates (CV bank)</h2>
           <div class="table-wrap">
             <table class="data">
               <thead><tr><th>Name</th><th>Phone</th><th>Target</th><th></th></tr></thead>
@@ -101,7 +132,15 @@
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/api.js"></script>
   <script>
-    let snapshot = { leads: [], cvs: [], applications: [], bookings: [] };
+    let snapshot = {
+      leads: [],
+      cvs: [],
+      applications: [],
+      bookings: [],
+      students: [],
+      visaLeads: [],
+      employers: [],
+    };
 
     function showApp() {
       document.getElementById('loginGate').classList.add('hidden');
@@ -113,7 +152,7 @@
       const result = await SalarAPI.fetchLeads();
       if (!result.ok) {
         document.getElementById('leadsBody').innerHTML =
-          `<tr><td colspan="5" class="text-muted">Could not load leads (${result.error}).</td></tr>`;
+          `<tr><td colspan="5" class="text-muted">Could not load leads (${esc(result.error)}).</td></tr>`;
         if (result.error === 'unauthorized') location.reload();
         return;
       }
@@ -121,22 +160,33 @@
       render();
     }
 
+    function filteredLeads() {
+      const filter = document.getElementById('leadFilter').value;
+      const leads = snapshot.leads || [];
+      if (!filter) return leads;
+      if (filter === 'group:students') return snapshot.students || [];
+      if (filter === 'group:visa') return snapshot.visaLeads || [];
+      if (filter === 'group:employers') return snapshot.employers || [];
+      return leads.filter((l) => l.type === filter);
+    }
+
     function render() {
-      const leads = snapshot.leads;
-      const cvs = snapshot.cvs;
-      const apps = snapshot.applications;
-      const books = snapshot.bookings;
+      const leads = snapshot.leads || [];
+      const cvs = snapshot.cvs || [];
+      const apps = snapshot.applications || [];
+      const students = snapshot.students || [];
+      const employers = snapshot.employers || [];
+      const visa = snapshot.visaLeads || [];
+
       document.getElementById('statCards').innerHTML = [
-        ['Leads', leads.length],
-        ['CVs', cvs.length],
-        ['Applications', apps.length],
-        ['Bookings', books.length],
+        ['Students', students.length],
+        ['Visa leads', visa.length],
+        ['Employers', employers.length],
+        ['Candidates', cvs.length],
       ].map(([l,n]) => `<div class="glass card"><strong class="text-gold" style="font-size:1.5rem;font-family:var(--font-display)">${n}</strong><div class="text-muted" style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em">${l}</div></div>`).join('');
 
-      const filter = document.getElementById('leadFilter').value;
-      const rows = filter ? leads.filter(l => l.type === filter) : leads;
-
-      document.getElementById('leadsBody').innerHTML = rows.slice(0, 50).map(l => `
+      const rows = filteredLeads();
+      document.getElementById('leadsBody').innerHTML = rows.slice(0, 80).map(l => `
         <tr>
           <td>${esc((l.createdAt||'').slice(0,16).replace('T',' '))}</td>
           <td><span class="badge badge-muted">${esc(l.type||'lead')}</span></td>
@@ -144,6 +194,22 @@
           <td>${esc(l.phone||'')}<br><span class="text-muted">${esc(l.email||'')}</span></td>
           <td>${esc(l.meta||'')}</td>
         </tr>`).join('') || '<tr><td colspan="5" class="text-muted">No leads yet. Submit a form on the website.</td></tr>';
+
+      document.getElementById('studentBody').innerHTML = students.slice(0, 30).map((s, i) => `
+        <tr>
+          <td>${esc(s.name||'—')}</td>
+          <td>${esc(s.type||'')}</td>
+          <td>${esc(s.phone||s.email||'')}</td>
+          <td><button class="btn btn-ghost btn-sm" data-student="${i}">View</button></td>
+        </tr>`).join('') || '<tr><td colspan="4" class="text-muted">No student leads yet.</td></tr>';
+
+      document.getElementById('employerBody').innerHTML = employers.slice(0, 30).map((e, i) => `
+        <tr>
+          <td>${esc(e.name||'—')}</td>
+          <td>${esc(e.type||'')}</td>
+          <td>${esc(e.meta||'')}</td>
+          <td><button class="btn btn-ghost btn-sm" data-employer="${i}">View</button></td>
+        </tr>`).join('') || '<tr><td colspan="4" class="text-muted">No employer requests yet.</td></tr>';
 
       document.getElementById('cvBody').innerHTML = cvs.slice(0, 30).map((c, i) => `
         <tr>
@@ -161,26 +227,33 @@
           <td><button class="btn btn-ghost btn-sm" data-app="${i}">View</button></td>
         </tr>`).join('') || '<tr><td colspan="4" class="text-muted">No applications yet.</td></tr>';
 
+      document.querySelectorAll('[data-student]').forEach(btn => btn.addEventListener('click', () => {
+        openDetail(students[Number(btn.dataset.student)]);
+      }));
+      document.querySelectorAll('[data-employer]').forEach(btn => btn.addEventListener('click', () => {
+        openDetail(employers[Number(btn.dataset.employer)]);
+      }));
       document.querySelectorAll('[data-cv]').forEach(btn => btn.addEventListener('click', () => {
-        const c = cvs[Number(btn.dataset.cv)];
-        openDetail(`<h2>${esc(c.name||'CV')}</h2><pre style="white-space:pre-wrap;font-size:0.85rem">${esc(JSON.stringify(c,null,2))}</pre>`);
+        openDetail(cvs[Number(btn.dataset.cv)]);
       }));
       document.querySelectorAll('[data-app]').forEach(btn => btn.addEventListener('click', () => {
-        const a = apps[Number(btn.dataset.app)];
-        openDetail(`<h2>${esc(a.name||'')} — ${esc(a.meta||'')}</h2><pre style="white-space:pre-wrap;font-size:0.85rem">${esc(JSON.stringify(a,null,2))}</pre>`);
+        openDetail(apps[Number(btn.dataset.app)]);
       }));
     }
 
-    /* Lead values come from public forms, so never inject them as raw HTML. */
     function esc(value) {
       return String(value ?? '').replace(/[&<>"']/g, (ch) => (
         { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]
       ));
     }
 
-    function openDetail(html) {
+    function openDetail(record) {
+      const title = esc((record && record.name) || 'Lead');
+      const body = esc(JSON.stringify(record, null, 2));
       const m = document.getElementById('detailModal');
-      document.getElementById('detailBody').innerHTML = html + `<button class="btn btn-ghost mt-2" onclick="document.getElementById('detailModal').classList.remove('open')">Close</button>`;
+      document.getElementById('detailBody').innerHTML =
+        `<h2>${title}</h2><pre style="white-space:pre-wrap;font-size:0.85rem">${body}</pre>` +
+        `<button class="btn btn-ghost mt-2" onclick="document.getElementById('detailModal').classList.remove('open')">Close</button>`;
       m.classList.add('open');
     }
 
@@ -200,12 +273,7 @@
     document.getElementById('leadFilter')?.addEventListener('change', render);
     document.getElementById('refreshBtn')?.addEventListener('click', refresh);
     document.getElementById('exportAll')?.addEventListener('click', () => {
-      SalarAPI.exportJSON('salar-crm-export.json', {
-        leads: snapshot.leads,
-        cvs: snapshot.cvs,
-        applications: snapshot.applications,
-        bookings: snapshot.bookings,
-      });
+      SalarAPI.exportJSON('sk-immigration-crm-export.json', snapshot);
     });
     document.getElementById('detailModal')?.addEventListener('click', (e) => {
       if (e.target.id === 'detailModal') e.target.classList.remove('open');

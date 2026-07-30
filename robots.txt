@@ -10,9 +10,20 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /portal.html
+Disallow: /apps-script/
+Disallow: /scripts/
 
-# Explicitly welcome search and AI crawlers. Per RFC 9309 these merge with any
-# earlier group for the same crawler, and Allow beats Disallow on equal paths.
+# Public knowledge clusters for AI citation
+Allow: /study-visa/
+Allow: /visa-appointment/
+Allow: /saudi-visa/
+Allow: /document-services/
+Allow: /hire-workers-from-pakistan/
+Allow: /answers/
+Allow: /llms.txt
+Allow: /ai.txt
+
+# Explicitly welcome search and AI crawlers.
 
 User-agent: Googlebot
 Allow: /
@@ -30,6 +41,9 @@ User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-agent
 Allow: /
 
 User-agent: anthropic-ai
