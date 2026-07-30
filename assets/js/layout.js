@@ -90,16 +90,15 @@
 
   function logoBlock() {
     const brand = C().brandFull || C().brand || 'SK Immigration Services';
-    const brandShort = C().brand || brand;
+    const brandShort = C().brand || 'SK Immigration';
     return `
       <a href="${href('index.html')}" class="logo" aria-label="${brand} home">
         <span class="logo-mark"><span>SK</span></span>
         <span class="logo-text">
           <span class="nav-name">
-            <span class="nav-name-long">${brand}</span>
+            <span class="nav-name-long">${brandShort}</span>
             <span class="nav-name-short" aria-hidden="true">${brandShort}</span>
           </span>
-          <small class="nav-sub">Study visa &amp; immigration</small>
         </span>
       </a>`;
   }
@@ -119,7 +118,6 @@
               <button type="button" class="theme-toggle glass-chip" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
                 <span data-theme-icon>☾</span>
               </button>
-              <a href="${href('eligibility.html')}" class="btn btn-ghost btn-sm btn-portal">Quiz</a>
               <a href="${href('contact.html')}" class="btn btn-gold btn-sm btn-consult">Consult</a>
               <button type="button" class="menu-toggle glass-chip" aria-label="Open menu" aria-expanded="false" id="menuBtn">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
