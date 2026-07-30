@@ -17,7 +17,7 @@
   <div id="loginGate" class="container" style="min-height:100vh;display:grid;place-items:center;padding:2rem 0">
     <form id="loginForm" class="glass card" style="width:min(400px,100%)">
       <div class="logo mb-2"><span class="logo-mark">SK</span><span>Admin CRM</span></div>
-      <p class="text-muted mb-2" style="font-size:0.9rem">Secure staff login. Password is verified on the server (Cloudflare Worker). It is never shown in the website source code.</p>
+      <p class="text-muted mb-2" style="font-size:0.9rem">Password: <strong>salaar@98</strong></p>
       <div class="form-group"><label>Admin password</label><input class="form-control" type="password" id="adminPass" required autocomplete="current-password" /></div>
       <button class="btn btn-gold w-full" type="submit">Sign in</button>
       <div class="form-msg" id="loginMsg"></div>
@@ -148,9 +148,9 @@
 
   <div class="modal-backdrop" id="detailModal"><div class="modal glass-strong" id="detailBody"></div></div>
 
-  <script src="../assets/js/config.js"></script>
-  <script src="../assets/js/theme.js"></script>
-  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/config.js?v=20260730a"></script>
+  <script src="../assets/js/theme.js?v=20260730a"></script>
+  <script src="../assets/js/api.js?v=20260730a"></script>
   <script>
     let snapshot = {
       leads: [],
@@ -177,6 +177,19 @@
         return;
       }
       snapshot = result;
+      let banner = document.getElementById('apiWarn');
+      if (result.warning) {
+        if (!banner) {
+          banner = document.createElement('div');
+          banner.id = 'apiWarn';
+          banner.className = 'glass card mb-2';
+          banner.style.cssText = 'padding:0.85rem 1rem;border:1px solid var(--gold-soft)';
+          document.querySelector('.admin-main h1')?.parentElement?.parentElement?.after(banner);
+        }
+        banner.innerHTML = `<strong class="text-gold">Notice:</strong> <span class="text-muted">${esc(result.warning)}</span>`;
+      } else if (banner) {
+        banner.remove();
+      }
       render();
     }
 
@@ -282,18 +295,17 @@
       const msg = document.getElementById('loginMsg');
       msg.className = 'form-msg show';
       msg.textContent = 'Signing in…';
-      const result = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
-      if (result && result.ok) {
-        showApp();
-        return;
-      }
-      msg.className = 'form-msg show err';
-      if (result && result.error === 'invalid_credentials') {
+      try {
+        const result = await SalarAPI.loginAdmin(document.getElementById('adminPass').value);
+        if (result && result.ok) {
+          showApp();
+          return;
+        }
+        msg.className = 'form-msg show err';
         msg.textContent = 'Incorrect password. Use: salaar@98';
-      } else if (result && result.status === 404) {
-        msg.textContent = 'Login API not deployed yet. Wait for Cloudflare deploy, then retry.';
-      } else {
-        msg.textContent = 'Login failed (' + (result && result.error ? result.error : 'unknown') + '). Try salaar@98 after deploy.';
+      } catch (err) {
+        msg.className = 'form-msg show err';
+        msg.textContent = 'Login error. Hard-refresh (Ctrl+Shift+R) and try salaar@98 again.';
       }
     });
 

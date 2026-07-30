@@ -10,23 +10,20 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    // Serve 404.html for unknown paths instead of a bare Workers error.
     "not_found_handling": "404-page"
   },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "sk-immigration-leads",
-      // Run `npx wrangler d1 create sk-immigration-leads` and paste the id here.
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
-    }
-  ],
   "vars": {
-    // Password: salaar@98 — override with `wrangler secret put ADMIN_PASSWORD_HASH` if desired
     "ADMIN_PASSWORD_HASH": "5475cdfaa84f8594db8ad0db6015e9242a557d7eb1f127b33d8355441eaf069a"
   }
 
-  // Secrets (optional overrides):
+  // D1 is optional. Create with `npm run db:create`, paste database_id, then uncomment:
+  // "d1_databases": [{
+  //   "binding": "DB",
+  //   "database_name": "sk-immigration-leads",
+  //   "database_id": "YOUR_D1_ID"
+  // }]
+  //
+  // Secrets (optional):
   //   npx wrangler secret put ADMIN_PASSWORD_HASH
   //   npx wrangler secret put SESSION_SECRET
   //   npx wrangler secret put LEAD_WEBHOOK_URL
