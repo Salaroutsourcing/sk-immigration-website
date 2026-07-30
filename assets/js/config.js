@@ -6,7 +6,7 @@ window.SALAR_CONFIG = {
   brand: 'SK Immigration',
   brandFull: 'SK Immigration Services',
   parentLine: 'A division of Salar Outsourcing',
-  tagline: 'Study abroad. Work abroad. Trusted guidance.',
+  tagline: "Pakistan's Trusted Study Visa & Immigration Partner",
   domain: 'https://www.salaroutsourcing.com',
   email: 'Services@salaroutsourcing.com',
   phone: '+92 304 5999859',
@@ -17,6 +17,7 @@ window.SALAR_CONFIG = {
   legacyPortalUrl:
     'https://script.google.com/macros/s/AKfycbz_Xy6fTRi1ompDQxHIYk-aRzBhzMS3PylHAlmJ98Dao1MA2GVWUpGoeGb4V8HvD752dQ/exec',
 
+  /* Optional Sheets mirror — set LEAD_WEBHOOK_URL on the Worker instead for production */
   appsScriptUrl: '',
 
   offices: [

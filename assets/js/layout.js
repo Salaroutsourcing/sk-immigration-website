@@ -7,10 +7,20 @@
 
   /** Fix relative links when page is in a subfolder */
   function basePrefix() {
-    if (location.pathname.includes('/blog/') && location.pathname.split('/').filter(Boolean).length >= 2) {
-      return '../../';
-    }
-    if (location.pathname.includes('/answers/') || location.pathname.includes('/admin')) return '../';
+    const parts = location.pathname.split('/').filter(Boolean);
+    const nestedRoots = [
+      'blog',
+      'answers',
+      'admin',
+      'study-visa',
+      'visa-appointment',
+      'saudi-visa',
+      'document-services',
+      'hire-workers-from-pakistan',
+    ];
+    if (parts.length >= 2 && nestedRoots.includes(parts[0])) return '../../';
+    if (parts.length >= 1 && nestedRoots.includes(parts[0])) return '../';
+    if (location.pathname.includes('/admin')) return '../';
     return '';
   }
 
@@ -18,27 +28,39 @@
 
   const NAV = [
     { href: 'index.html', label: 'Home', id: 'home' },
-    { href: 'services.html', label: 'Services', id: 'services' },
-    { href: 'checklist.html', label: 'Checklist', id: 'checklist' },
-    { href: 'countries.html', label: 'Countries', id: 'countries' },
-    { href: 'ausbildung.html', label: 'Ausbildung', id: 'ausbildung' },
-    { href: 'jobs.html', label: 'Jobs', id: 'jobs' },
-    { href: 'pricing.html', label: 'Pricing', id: 'pricing' },
-    { href: 'answers.html', label: 'Answers', id: 'faq' },
+    { href: 'study-visa/', label: 'Study Visa', id: 'study-visa' },
+    { href: 'visa-appointment/', label: 'Appointments', id: 'visa-appointment' },
+    { href: 'saudi-visa/saudi-visa-processing-pakistan/', label: 'Saudi Visa', id: 'saudi-visa' },
+    { href: 'jobs.html', label: 'Work Visa', id: 'jobs' },
+    { href: 'document-services/', label: 'Attestation', id: 'document-services' },
+    { href: 'hire-workers-from-pakistan/', label: 'Hire Workers', id: 'hire-workers' },
+    { href: 'answers.html', label: 'Guides', id: 'faq' },
     { href: 'contact.html', label: 'Contact', id: 'contact' },
   ];
 
   /** Pages without their own nav entry highlight their closest parent */
   const NAV_ALIAS = {
-    calculator: 'checklist',
-    compare: 'checklist',
-    attestation: 'services',
-    eligibility: 'home',
+    calculator: 'faq',
+    compare: 'faq',
+    checklist: 'faq',
+    attestation: 'document-services',
+    eligibility: 'study-visa',
+    services: 'study-visa',
+    countries: 'study-visa',
+    ausbildung: 'jobs',
+    pricing: 'home',
+    blog: 'faq',
   };
 
   function activeId() {
-    if (location.pathname.includes('/answers/')) return 'faq';
-    if (location.pathname.includes('/blog/')) return 'blog';
+    const path = location.pathname;
+    if (path.includes('/study-visa')) return 'study-visa';
+    if (path.includes('/visa-appointment')) return 'visa-appointment';
+    if (path.includes('/saudi-visa')) return 'saudi-visa';
+    if (path.includes('/document-services') || path.includes('attestation')) return 'document-services';
+    if (path.includes('/hire-workers')) return 'hire-workers';
+    if (path.includes('/answers/')) return 'faq';
+    if (path.includes('/blog/')) return 'faq';
     const page = document.body.dataset.page || 'home';
     return NAV_ALIAS[page] || page;
   }
@@ -91,7 +113,8 @@
         <div class="container">
           <span>A service by <a href="https://www.salaroutsourcing.com">Salar Outsourcing</a> — Pakistan’s multi-service company</span>
           <div class="brand-bar-links">
-            <a href="${href('ausbildung.html')}">Ausbildung Jobs</a>
+            <a href="${href('study-visa/')}">Study Visa</a>
+            <a href="${href('hire-workers-from-pakistan/')}">Hire Workers</a>
             <a href="${href('portal.html')}">Client Portal</a>
             <a href="tel:+923045999859">${C().phoneDisplay || '+92 304 5999859'}</a>
           </div>
@@ -118,15 +141,21 @@
       <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile menu">
         <div class="mobile-nav-panel">
           ${navLinks('')}
+          <a href="${href('study-visa/')}">Study Visa</a>
+          <a href="${href('visa-appointment/')}">Visa Appointments</a>
+          <a href="${href('saudi-visa/saudi-visa-processing-pakistan/')}">Saudi Visa</a>
+          <a href="${href('document-services/')}">Document Services</a>
+          <a href="${href('hire-workers-from-pakistan/')}">Hire Workers</a>
           <a href="${href('eligibility.html')}">Eligibility Quiz</a>
           <a href="${href('calculator.html')}">Cost Calculator</a>
           <a href="${href('compare.html')}">Compare Countries</a>
           <a href="${href('cv-builder.html')}">CV Builder</a>
           <a href="${href('faq.html')}">FAQ</a>
           <a href="${href('blog.html')}">Blog</a>
+          <a href="${href('services.html')}">All Services</a>
           <a href="${href('portal.html')}">Client Portal</a>
           <a href="${href('about.html')}">About</a>
-          <a href="${href('attestation.html')}">Attestation</a>
+          <a href="${href('attestation.html')}">Attestation Hub</a>
           <a href="${C().whatsappLink || '#'}" class="btn btn-whatsapp mt-2" target="_blank" rel="noopener">WhatsApp</a>
           <div class="mobile-nav-toggles">
             <button type="button" class="lang-toggle" aria-label="Toggle English / Urdu summary">EN</button>
@@ -178,11 +207,12 @@
           </div>
           <div class="footer-col">
             <h4>Services</h4>
-            <a href="${href('services.html')}">All Services</a>
-            <a href="${href('pricing.html')}">Packages &amp; Pricing</a>
-            <a href="${href('ausbildung.html')}">Germany Ausbildung</a>
-            <a href="${href('jobs.html')}">Global Jobs</a>
-            <a href="${href('attestation.html')}">Document Attestation</a>
+            <a href="${href('study-visa/')}">Study Visa Pakistan</a>
+            <a href="${href('visa-appointment/')}">Visa Appointments</a>
+            <a href="${href('saudi-visa/saudi-visa-processing-pakistan/')}">Saudi Visa Processing</a>
+            <a href="${href('jobs.html')}">Work Visa &amp; Jobs</a>
+            <a href="${href('document-services/')}">Document Attestation</a>
+            <a href="${href('hire-workers-from-pakistan/')}">Hire Workers from Pakistan</a>
           </div>
           <div class="footer-col">
             <h4>Quick tools</h4>

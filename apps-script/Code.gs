@@ -87,6 +87,25 @@ function doPost(e) {
         ]);
         break;
 
+      /* Optional Worker webhook mirror — LEAD_WEBHOOK_URL posts {type, name, ...} */
+      case 'student':
+      case 'visa_appointment':
+      case 'saudi':
+      case 'employer':
+      case 'quotation':
+      case 'workforce':
+      case 'attestation':
+        _append('Leads', ['Timestamp', 'ID', 'Type', 'Name', 'Email', 'Phone', 'Payload'], [
+          new Date(),
+          data.id || body.id || '',
+          action,
+          data.name || body.name || '',
+          data.email || body.email || '',
+          data.phone || body.phone || '',
+          JSON.stringify(body),
+        ]);
+        break;
+
       case 'publicBookingRequest':
         _append('Bookings', ['Timestamp', 'ID', 'Name', 'Email', 'Phone', 'Service', 'Date', 'Time', 'Message', 'Payload'], [
           new Date(),

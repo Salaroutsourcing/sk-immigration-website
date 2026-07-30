@@ -135,6 +135,30 @@
       return submit('contact', data);
     },
 
+    saveStudentLead(data) {
+      return submit('student', data);
+    },
+
+    saveVisaAppointment(data) {
+      return submit('visa_appointment', data);
+    },
+
+    saveSaudiLead(data) {
+      return submit('saudi', data);
+    },
+
+    saveEmployerRequest(data) {
+      return submit('employer', data);
+    },
+
+    saveQuotationRequest(data) {
+      return submit('quotation', data);
+    },
+
+    saveWorkforceRequest(data) {
+      return submit('workforce', data);
+    },
+
     flushQueue,
 
     pendingCount() {
@@ -178,7 +202,14 @@
         leads,
         cvs: leads.filter((l) => l.type === 'cv'),
         applications: leads.filter((l) => l.type === 'job_application'),
-        bookings: leads.filter((l) => l.type === 'contact'),
+        bookings: leads.filter((l) => l.type === 'contact' || l.type === 'booking'),
+        students: leads.filter((l) => l.type === 'student' || l.type === 'eligibility'),
+        visaLeads: leads.filter((l) =>
+          ['visa_appointment', 'saudi', 'attestation'].includes(l.type)
+        ),
+        employers: leads.filter((l) =>
+          ['employer', 'quotation', 'workforce'].includes(l.type)
+        ),
       };
     },
 

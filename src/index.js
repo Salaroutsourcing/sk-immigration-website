@@ -22,24 +22,62 @@ const LEAD_TYPES = new Set([
   'attestation',
   'checklist',
   'lead',
+  'student',
+  'visa_appointment',
+  'saudi',
+  'employer',
+  'quotation',
+  'workforce',
 ]);
+
+const SECURITY_HEADERS = {
+  'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+  'x-content-type-options': 'nosniff',
+  'x-frame-options': 'SAMEORIGIN',
+  'referrer-policy': 'strict-origin-when-cross-origin',
+  'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+  'cross-origin-opener-policy': 'same-origin-allow-popups',
+  'content-security-policy':
+    "default-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://wa.me; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests",
+};
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    // Apex → www HTTPS redirect (canonical host)
+    if (url.hostname === 'salaroutsourcing.com') {
+      url.hostname = 'www.salaroutsourcing.com';
+      url.protocol = 'https:';
+      return Response.redirect(url.toString(), 301);
+    }
+
     if (!url.pathname.startsWith('/api/')) {
-      return env.ASSETS.fetch(request);
+      const assetResponse = await env.ASSETS.fetch(request);
+      return withSecurityHeaders(assetResponse);
     }
 
     try {
-      return await route(request, env, ctx, url);
+      const apiResponse = await route(request, env, ctx, url);
+      return withSecurityHeaders(apiResponse);
     } catch (err) {
       console.error('Unhandled API error', err);
-      return json({ ok: false, error: 'internal_error' }, 500);
+      return withSecurityHeaders(json({ ok: false, error: 'internal_error' }, 500));
     }
   },
 };
+
+function withSecurityHeaders(response) {
+  const headers = new Headers(response.headers);
+  for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
+    if (!headers.has(key)) headers.set(key, value);
+  }
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
 
 async function route(request, env, ctx, url) {
   const { pathname } = url;
@@ -107,7 +145,18 @@ async function handleLead(request, env, ctx) {
     name,
     email,
     phone,
-    meta: pickField(data, ['meta', 'service', 'jobTitle', 'target', 'destination']),
+    meta: pickField(data, [
+      'meta',
+      'service',
+      'jobTitle',
+      'target',
+      'destination',
+      'companyName',
+      'company',
+      'country',
+      'trades',
+      'workersNeeded',
+    ]),
   };
 
   await env.DB.prepare(
