@@ -74,3 +74,5 @@ User-agent: Bytespider
 Allow: /
 
 Sitemap: https://www.salaroutsourcing.com/sitemap.xml
+
+# deploy:20260730070307

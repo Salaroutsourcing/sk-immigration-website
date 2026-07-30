@@ -19,44 +19,9 @@
     queue: 'salar_pending_leads',
     blog: 'salar_blog_posts',
     jobs: 'salar_jobs',
-    adminSession: 'sk_admin_session_v2',
   };
 
-  /* Password: salaar@98 — used when /api/* is unavailable (static Pages hosting). */
-  const LOCAL_ADMIN_PASSWORD_HASH =
-    '5475cdfaa84f8594db8ad0db6015e9242a557d7eb1f127b33d8355441eaf069a';
-  const LOCAL_SESSION_TTL_MS = 12 * 60 * 60 * 1000;
-
   const MAX_QUEUE = 50;
-
-  async function sha256Hex(value) {
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
-    return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
-  }
-
-  function readLocalSession() {
-    try {
-      const raw = JSON.parse(localStorage.getItem(STORAGE.adminSession) || 'null');
-      if (!raw || !raw.exp || Number(raw.exp) < Date.now()) {
-        localStorage.removeItem(STORAGE.adminSession);
-        return null;
-      }
-      return raw;
-    } catch {
-      return null;
-    }
-  }
-
-  function writeLocalSession() {
-    localStorage.setItem(
-      STORAGE.adminSession,
-      JSON.stringify({ exp: Date.now() + LOCAL_SESSION_TTL_MS, mode: 'local' })
-    );
-  }
-
-  function clearLocalSession() {
-    localStorage.removeItem(STORAGE.adminSession);
-  }
 
   function readQueue() {
     try {
@@ -93,6 +58,7 @@
       const error = new Error('network_error');
       error.status = 0;
       error.permanent = false;
+      error.retryable = true;
       throw error;
     }
 
@@ -107,25 +73,24 @@
 
     const error = new Error((body && body.error) || `http_${res.status}`);
     error.status = res.status;
-    /* 404/405 = static host with no Worker API — queue locally, don't fail the form */
-    const apiMissing = res.status === 404 || res.status === 405 || res.status === 0 || res.status >= 500;
-    error.permanent =
-      !apiMissing && res.status >= 400 && res.status < 500 && res.status !== 429;
+    /* Only brief network blips are queued. Missing API / 4xx / 5xx must surface to the user. */
+    error.retryable = res.status === 0 || res.status === 429;
+    error.permanent = !error.retryable;
     throw error;
   }
 
   /**
-   * Send a lead. Resolves when the server accepted it, or when it was safely
-   * queued for retry. Rejects only when the server permanently refused it.
+   * Send a lead. Resolves only when the server accepted it.
+   * Network/rate-limit failures are queued for retry and still reject so the UI
+   * does not show a false "Saved!".
    */
   async function submit(type, data) {
     const payload = { type, data };
     try {
       return await postLead(payload);
     } catch (err) {
-      if (err.permanent) throw err;
-      enqueue(payload);
-      return { ok: true, queued: true, reason: err.status || err.message || 'offline' };
+      if (err.retryable) enqueue(payload);
+      throw err;
     }
   }
 
@@ -138,7 +103,7 @@
       try {
         await postLead({ type: item.type, data: item.data });
       } catch (err) {
-        if (!err.permanent) remaining.push(item);
+        if (err.retryable) remaining.push(item);
       }
     }
     writeQueue(remaining);
@@ -251,7 +216,6 @@
       });
 
       if (body && body.ok) {
-        clearLocalSession();
         return { ok: true, mode: 'api' };
       }
 
@@ -259,24 +223,20 @@
         return { ok: false, error: 'invalid_credentials', status: 401 };
       }
 
-      /* API missing (static Cloudflare Pages) — verify password locally */
-      const got = await sha256Hex(String(password || ''));
-      if (got === LOCAL_ADMIN_PASSWORD_HASH) {
-        writeLocalSession();
-        return { ok: true, mode: 'local' };
-      }
-      return { ok: false, error: 'invalid_credentials', status: 401 };
+      return {
+        ok: false,
+        error: (body && body.error) || 'api_unavailable',
+        status: (body && body.status) || 0,
+      };
     },
 
     async logoutAdmin() {
-      clearLocalSession();
       await adminFetch(ENDPOINTS.logout, { method: 'POST' });
     },
 
     async isAdminLoggedIn() {
       const body = await adminFetch(ENDPOINTS.session);
-      if (body && body.authenticated) return true;
-      return Boolean(readLocalSession());
+      return Boolean(body && body.authenticated);
     },
 
     /** Returns every lead grouped the way the admin dashboard displays them. */
@@ -305,27 +265,16 @@
         };
       }
 
-      /* Fallback: show locally queued form submissions while API/D1 is offline */
-      if (!readLocalSession() && !(body && body.status === 401)) {
-        /* still allow viewing queue after local login */
+      if (body && body.status === 401) {
+        return { ok: false, error: 'unauthorized', status: 401 };
       }
-      const leads = leadsFromQueue();
+
       return {
-        ok: true,
-        mode: 'local',
+        ok: false,
+        error: (body && body.error) || 'api_unavailable',
+        status: (body && body.status) || 0,
         warning:
-          'Live API is offline on this host. Showing locally queued form submissions only. Blog/Jobs admin still work.',
-        leads,
-        cvs: leads.filter((l) => l.type === 'cv'),
-        applications: leads.filter((l) => l.type === 'job_application'),
-        bookings: leads.filter((l) => l.type === 'contact' || l.type === 'booking'),
-        students: leads.filter((l) => l.type === 'student' || l.type === 'eligibility'),
-        visaLeads: leads.filter((l) =>
-          ['visa_appointment', 'saudi', 'attestation'].includes(l.type)
-        ),
-        employers: leads.filter((l) =>
-          ['employer', 'quotation', 'workforce'].includes(l.type)
-        ),
+          'Live lead API is offline. Fix Worker/D1 deployment, then reload. Locally queued submissions are not shown in admin anymore.',
       };
     },
 
