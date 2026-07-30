@@ -15,7 +15,7 @@
         alternateName: ['SK Immigration', 'SK Immigration by Salar Outsourcing'],
         url: SITE,
         logo: SITE + '/assets/img/logo.svg',
-        image: SITE + '/assets/img/hero-graduation.jpg',
+        image: SITE + '/assets/img/hero-library.jpg',
         description:
           "Pakistan's trusted study visa and immigration partner. Student visas, visa appointment assistance, work visas, Saudi visa processing, document attestation and international manpower recruitment. A division of Salar Outsourcing. Free consultation. No visa guarantees.",
         email: 'Services@salaroutsourcing.com',

@@ -1767,8 +1767,8 @@ table.data th {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.78) 55%, rgba(15, 23, 42, 0.92) 100%),
-    radial-gradient(ellipse at 20% 20%, rgba(201, 168, 76, 0.22), transparent 45%);
+    linear-gradient(180deg, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.72) 48%, rgba(15, 23, 42, 0.94) 100%),
+    radial-gradient(ellipse at 50% 30%, rgba(201, 168, 76, 0.14), transparent 50%);
 }
 .hero-home .hero-content {
   position: relative;

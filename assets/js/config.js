@@ -39,7 +39,7 @@ window.SALAR_CONFIG = {
 
   /* Professional imagery (Unsplash — free to use) */
   images: {
-    hero: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80',
+    hero: 'assets/img/hero-library.jpg',
     study: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80',
     europe: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80',
     airport: 'https://images.unsplash.com/photo-1436491865332-7a61a109cab0?auto=format&fit=crop&w=1200&q=80',
