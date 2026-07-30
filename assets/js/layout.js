@@ -1,6 +1,6 @@
 /**
  * Shared layout — SK Immigration Services
- * Parent mention only as subtle "division of Salar Outsourcing"
+ * Domain: salaroutsourcing.com (ops/email host for the same legal entity)
  */
 (function () {
   const C = () => window.SALAR_CONFIG || {};

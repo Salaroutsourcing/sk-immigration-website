@@ -1,31 +1,29 @@
-# Brand domain migration decision
+# Brand vs domain (decision locked)
 
-## Current state
+## Current state (keep this)
 
 | Layer | Value |
 |-------|--------|
 | Public brand | **SK Immigration Services** |
-| Parent company | **Salar Outsourcing** |
-| Domain | `salaroutsourcing.com` |
+| Legal entity | **SK Immigration Services (SMC-Private) Limited** · CUIN **0304985** |
+| Website / email domain | **`salaroutsourcing.com`** (ops host — not a second consultancy) |
 
-Searchers type “SK Immigration”, “study visa Rawalpindi”, “Germany study visa Pakistan” — not “outsourcing”. The domain mismatches the brand and dilutes entity clarity for Google Knowledge / AI.
+Searchers type “SK Immigration”, “study visa Rawalpindi”, etc. Entity clarity comes from **on-site NAP + CUIN + schema + trust.html**, not from buying a new domain first.
 
-## Decision (recommended)
+## Decision (2026-07-31)
 
-**Keep `salaroutsourcing.com` live** for now (email, GBP, WhatsApp already use it), while:
+**Keep `salaroutsourcing.com` as the primary public website** for SK Immigration Services.
 
-1. Claiming GBP strictly as **SK Immigration Services** with this NAP.
-2. Using consistent on-site phrasing: “SK Immigration Services by Salar Outsourcing”.
-3. Optionally registering `skimmigration.pk` or `skimmigrationservices.com` as a future primary.
+On-site phrasing (use everywhere):
 
-## If you migrate later
+> SK Immigration Services is the public brand of SK Immigration Services (SMC-Private) Limited (CUIN 0304985). The website and email use salaroutsourcing.com — same company, same Rawalpindi office.
 
-1. Buy brand domain; point DNS to same Cloudflare Pages project (or 301 at edge).
-2. 301 **every** indexed URL (not just homepage).
-3. Update canonicals, sitemap, `llms.txt`, schema `url` / `@id`, GBP website, social bios.
-4. Keep parent company mention in footer + schema `parentOrganization`.
-5. Monitor GSC coverage for 90 days.
+Do **not** describe the site as “a division of Salar Outsourcing” in client-facing copy. Ops/internal tools may still use the Salar Outsourcing label; public SEO/AI citation must lead with SK Immigration + CUIN.
 
-## Do not do yet
+## Future optional brand domain
 
-Do not change domains until GBP is claimed and top `/study-visa/` pages are indexed — migrating first multiplies crawl debt.
+Only after GBP is strong and top landers are indexed: optionally add `skimmigration.pk` (or similar) with full 301s. Not required for AI Overview readiness now.
+
+## Do not do
+
+Do not change domains in this phase. Do not point Instagram to similarly named foreign consultants.
