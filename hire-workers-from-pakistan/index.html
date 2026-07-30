@@ -257,11 +257,11 @@
 
   <div id="site-footer"></div>
 
-  <script src="../assets/js/config.js"></script>
-  <script src="../assets/js/theme.js"></script>
-  <script src="../assets/js/api.js"></script>
-  <script src="../assets/js/layout.js"></script>
-  <script src="../assets/js/seo.js"></script>
+  <script src="../assets/js/config.js?v=20260730b"></script>
+  <script src="../assets/js/theme.js?v=20260730b"></script>
+  <script src="../assets/js/api.js?v=20260730b"></script>
+  <script src="../assets/js/layout.js?v=20260730b"></script>
+  <script src="../assets/js/seo.js?v=20260730b"></script>
   <script>
     function formDataObject(form) {
       const raw = new FormData(form);
@@ -317,18 +317,35 @@
         out.textContent = 'Sending…';
         try {
           const result = await apiFn(data);
+          const waLink = waHref(data, type);
+          if (wa) wa.href = waLink;
           out.className = 'form-msg show ok';
-          out.textContent = result && result.queued
-            ? 'Saved on this device and queued — we will sync when online. Or WhatsApp us now.'
-            : 'Received. Our employer desk will reply shortly.';
-          form.reset();
-        } catch (err) {
-          out.className = 'form-msg show err';
-          out.textContent = 'Could not reach the server. Please use WhatsApp — your details are ready in that button.';
-          if (wa) {
-            wa.focus();
-            wa.classList.add('btn-gold');
+          if (result && result.queued) {
+            out.innerHTML =
+              'Request saved. For fastest response, tap <strong>WhatsApp instead</strong> — your details are already filled.';
+            /* Keep form data in WhatsApp link; don't wipe before user can click */
+            if (wa) {
+              wa.classList.add('btn-gold');
+              wa.textContent = 'Send on WhatsApp now';
+            }
+          } else {
+            out.textContent = 'Received. Our employer desk will reply shortly.';
+            form.reset();
           }
+        } catch (err) {
+          const waLink = waHref(data, type);
+          if (wa) {
+            wa.href = waLink;
+            wa.classList.add('btn-gold');
+            wa.textContent = 'Send on WhatsApp now';
+          }
+          /* Last resort: still queue locally so admin can see it */
+          try {
+            await SalarAPI.saveLead(type, data);
+          } catch (_) { /* ignore */ }
+          out.className = 'form-msg show ok';
+          out.innerHTML =
+            'Request noted. Please tap <strong>Send on WhatsApp now</strong> so our team gets it immediately.';
         }
       });
 

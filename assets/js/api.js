@@ -82,11 +82,19 @@
   }
 
   async function postLead(payload) {
-    const res = await fetch(ENDPOINTS.lead, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+    let res;
+    try {
+      res = await fetch(ENDPOINTS.lead, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+    } catch {
+      const error = new Error('network_error');
+      error.status = 0;
+      error.permanent = false;
+      throw error;
+    }
 
     let body = null;
     try {
@@ -99,7 +107,10 @@
 
     const error = new Error((body && body.error) || `http_${res.status}`);
     error.status = res.status;
-    error.permanent = res.status >= 400 && res.status < 500 && res.status !== 429;
+    /* 404/405 = static host with no Worker API — queue locally, don't fail the form */
+    const apiMissing = res.status === 404 || res.status === 405 || res.status === 0 || res.status >= 500;
+    error.permanent =
+      !apiMissing && res.status >= 400 && res.status < 500 && res.status !== 429;
     throw error;
   }
 
@@ -114,7 +125,7 @@
     } catch (err) {
       if (err.permanent) throw err;
       enqueue(payload);
-      return { ok: true, queued: true };
+      return { ok: true, queued: true, reason: err.status || err.message || 'offline' };
     }
   }
 
