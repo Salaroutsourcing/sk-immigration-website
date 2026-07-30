@@ -69,7 +69,7 @@
   {
     "slug": "visa-refused-what-next",
     "q": "What if my student visa is refused?",
-    "short": "SK Immigration does not guarantee visas. After refusal we review the letter, fix document gaps, and advise reapplication or alternative countries. Embassy fees are usually non-refundable; service fees cover preparation, not outcomes.",
+    "short": "A refusal is not the end — but reapplying with the same weak file usually fails again. Read the refusal reasons carefully, fix the exact gaps (funds, ties, program fit, documents, interview answers), then decide wheth…",
     "tags": [
       "refusal",
       "reapply"
@@ -107,7 +107,7 @@
   {
     "slug": "blocked-account-germany",
     "q": "What is a Germany blocked account (Sperrkonto)?",
-    "short": "A blocked bank account proving you can fund living costs for a German study visa. Required amounts change — verify embassy guidance. Ausbildung applicants usually show salary via training contract instead.",
+    "short": "A blocked account (Sperrkonto) is a German bank account that proves you can cover living costs for a study visa. You deposit a required annual amount; monthly withdrawals are limited. The exact figure changes — always…",
     "tags": [
       "Germany",
       "Sperrkonto",
@@ -117,7 +117,7 @@
   {
     "slug": "uk-student-visa-cas",
     "q": "What is a CAS for UK student visa?",
-    "short": "CAS means Confirmation of Acceptance for Studies issued by a licensed UK sponsor after you meet offer conditions (and usually pay a deposit). You need a CAS before applying for the Student visa on GOV.UK.",
+    "short": "A CAS (Confirmation of Acceptance for Studies) is an electronic reference from a UK Student sponsor (usually your university or college). You need a CAS before you can apply for the UK Student visa on GOV.UK. No valid…",
     "tags": [
       "UK",
       "CAS"
@@ -126,7 +126,7 @@
   {
     "slug": "canada-study-permit-requirements",
     "q": "What are Canada study permit requirements?",
-    "short": "Letter of acceptance from a DLI, proof of funds, identity docs, and often biometrics/medical. Some intakes need a Provincial Attestation Letter (PAL). IRCC decides — SK Immigration prepares honest files.",
+    "short": "To study in Canada you generally need a letter of acceptance from a designated learning institution, proof you can pay tuition and living costs, identity documents, and a study permit application that satisfies IRCC (…",
     "tags": [
       "Canada",
       "study permit"
@@ -183,7 +183,7 @@
   {
     "slug": "schengen-visit-visa-requirements",
     "q": "What are Schengen visit visa requirements?",
-    "short": "Passport, form, photos, travel insurance (€30,000+ typical), itinerary, funds, employment/ties, and invitation if visiting family/friends. Refusal risk rises with weak home ties — prepare honestly.",
+    "short": "A Schengen visit visa (usually Type C) lets you visit the Schengen Area for short stays (tourism, family, business) — typically up to 90 days in 180 days. From Pakistan you normally apply via VFS/the mission of the co…",
     "tags": [
       "Schengen",
       "visit visa"
@@ -246,7 +246,7 @@
   {
     "slug": "proof-of-funds-student-visa",
     "q": "How much proof of funds do I need for a student visa?",
-    "short": "It depends on the country: Germany uses blocked-account guidance; UK uses GOV.UK maintenance amounts; Canada uses IRCC funds tables; others need bank statements covering tuition + living. SK Immigration builds a country-specific funds plan.",
+    "short": "There is no single global amount. Each country sets its own living-cost and tuition proof rules. Germany often uses a blocked account; the UK uses CAS-linked maintenance; Canada often expects GIC plus tuition; Schenge…",
     "tags": [
       "funds",
       "bank statement"
@@ -347,7 +347,7 @@
   {
     "slug": "saudi-work-visa-processing-15000",
     "q": "What is included in SK Immigration Saudi work visa processing PKR 15,000?",
-    "short": "Complete Saudi work visa processing support — not E-Number only. The PKR 15,000 package includes E-Number biometrics assistance, Protector included, and visa processing support. Medical/government fees are separate.",
+    "short": "The PKR 15,000 package is complete Saudi work visa processing support — not E-Number only. It includes assistance with E-Number biometrics, Protector, and visa processing steps for eligible employment cases. Medical c…",
     "tags": [
       "Saudi",
       "work visa"
@@ -428,7 +428,7 @@
   {
     "slug": "how-to-apply-germany-student-visa-pakistan",
     "q": "How to apply for Germany student visa from Pakistan step by step?",
-    "short": "Shortlist programs, secure admission, arrange funding (often blocked account), prepare documents, book appointment, attend biometrics. SK Immigration guides each step — embassy decides.",
+    "short": "From Pakistan, the Germany student path is usually: profile → university or Ausbildung contract → funds proof (often Sperrkonto) → complete document file → national visa appointment → decision. Timelines often run sev…",
     "tags": [
       "Germany",
       "study",
@@ -438,7 +438,7 @@
   {
     "slug": "how-to-apply-uk-student-visa-pakistan",
     "q": "How to apply for UK student visa from Pakistan step by step?",
-    "short": "Get an offer, receive CAS, prove funds and English, apply on GOV.UK, give biometrics. SK Immigration prepares the Student route file. UKVI decides.",
+    "short": "The UK route is CAS-first: get an offer from a licensed Student sponsor, receive a CAS, meet funds and English/TB rules, apply on GOV.UK, then complete biometrics (usually via VFS in Pakistan). UKVI decides the visa.",
     "tags": [
       "UK",
       "study"
@@ -447,7 +447,7 @@
   {
     "slug": "how-to-apply-canada-study-permit-pakistan",
     "q": "How to apply for Canada study permit from Pakistan step by step?",
-    "short": "Get a DLI offer (and PAL if required), prove funds, complete IRCC forms, biometrics/medicals. SK Immigration prepares honest study-permit files.",
+    "short": "From Pakistan: get a DLI acceptance → arrange funds (often including GIC) → complete IRCC study permit forms → biometrics/medicals as required → wait for a decision. Confirm whether your intake needs a provincial atte…",
     "tags": [
       "Canada",
       "study"
