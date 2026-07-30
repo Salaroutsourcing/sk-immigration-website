@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
+    "build:answers-hub": "node scripts/build-answers-hub.mjs",
     "db:create": "wrangler d1 create sk-immigration-leads",
     "db:migrate": "wrangler d1 execute sk-immigration-leads --remote --file=./schema.sql",
     "db:migrate:local": "wrangler d1 execute sk-immigration-leads --local --file=./schema.sql"
