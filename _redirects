@@ -1,11 +1,6 @@
-# Force HTTPS is handled at the Cloudflare edge (Always Use HTTPS).
-# Prefer www as the public canonical host used across the site.
+# HTTPS and apex→www redirects are handled by the Worker (src/index.js)
+# and Cloudflare "Always Use HTTPS". Keep only relative aliases here.
 
-http://salaroutsourcing.com/* https://www.salaroutsourcing.com/:splat 301
-http://www.salaroutsourcing.com/* https://www.salaroutsourcing.com/:splat 301
-https://salaroutsourcing.com/* https://www.salaroutsourcing.com/:splat 301
-
-# Legacy / convenience aliases
 /hire-workers /hire-workers-from-pakistan/ 301
 /hire-workers/ /hire-workers-from-pakistan/ 301
 /saudi-visa /saudi-visa/saudi-visa-processing-pakistan/ 301

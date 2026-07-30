@@ -10,21 +10,24 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    "run_worker_first": true
   },
-  "vars": {
-    "ADMIN_PASSWORD_HASH": "5475cdfaa84f8594db8ad0db6015e9242a557d7eb1f127b33d8355441eaf069a"
-  }
-
-  // D1 is optional. Create with `npm run db:create`, paste database_id, then uncomment:
-  // "d1_databases": [{
-  //   "binding": "DB",
-  //   "database_name": "sk-immigration-leads",
-  //   "database_id": "YOUR_D1_ID"
-  // }]
-  //
-  // Secrets (optional):
-  //   npx wrangler secret put ADMIN_PASSWORD_HASH
-  //   npx wrangler secret put SESSION_SECRET
-  //   npx wrangler secret put LEAD_WEBHOOK_URL
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sk-immigration-leads",
+      "database_id": "325db95e-0aa9-4e8d-aae2-ad57275bc003"
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "www.salaroutsourcing.com/*",
+      "zone_name": "salaroutsourcing.com"
+    },
+    {
+      "pattern": "salaroutsourcing.com/*",
+      "zone_name": "salaroutsourcing.com"
+    }
+  ]
 }

@@ -13,10 +13,7 @@ const MAX_FIELD_LENGTH = 2000;
 const RATE_LIMIT_MAX = 8;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 
-/* Default admin password: salaar@98 (SHA-256). Override with wrangler secret ADMIN_PASSWORD_HASH if needed. */
-const DEFAULT_ADMIN_PASSWORD_HASH =
-  '5475cdfaa84f8594db8ad0db6015e9242a557d7eb1f127b33d8355441eaf069a';
-const DEFAULT_SESSION_SECRET = 'sk-immigration-session-v1-salaroutsourcing-rawalpindi';
+/* Admin auth: set ADMIN_PASSWORD_HASH + SESSION_SECRET via `wrangler secret put`. No defaults in production. */
 
 const LEAD_TYPES = new Set([
   'contact',
@@ -43,7 +40,7 @@ const SECURITY_HEADERS = {
   'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=()',
   'cross-origin-opener-policy': 'same-origin-allow-popups',
   'content-security-policy':
-    "default-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://wa.me; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests",
+    "default-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://wa.me; frame-src 'self' https://www.google.com https://maps.google.com; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests",
 };
 
 export default {
@@ -218,7 +215,7 @@ async function isRateLimited(env, ipHash) {
 /* ------------------------------------------------------------------ admin */
 
 function adminPasswordHashes(env) {
-  const hashes = new Set([DEFAULT_ADMIN_PASSWORD_HASH]);
+  const hashes = new Set();
   if (typeof env.ADMIN_PASSWORD_HASH === 'string' && env.ADMIN_PASSWORD_HASH.trim()) {
     hashes.add(env.ADMIN_PASSWORD_HASH.trim().toLowerCase());
   }
@@ -226,10 +223,12 @@ function adminPasswordHashes(env) {
 }
 
 function sessionSecret(env) {
-  return (
-    (typeof env.SESSION_SECRET === 'string' && env.SESSION_SECRET.trim()) ||
-    DEFAULT_SESSION_SECRET
-  );
+  const secret =
+    typeof env.SESSION_SECRET === 'string' ? env.SESSION_SECRET.trim() : '';
+  if (!secret) {
+    throw new Error('SESSION_SECRET is not configured');
+  }
+  return secret;
 }
 
 async function handleLogin(request, env) {
@@ -237,9 +236,14 @@ async function handleLogin(request, env) {
   const password = body && typeof body.password === 'string' ? body.password : '';
   if (!password) return json({ ok: false, error: 'password_required' }, 400);
 
+  const hashes = adminPasswordHashes(env);
+  if (!hashes.size) {
+    return json({ ok: false, error: 'auth_not_configured' }, 503);
+  }
+
   const got = await sha256Hex(password);
   let matched = false;
-  for (const expected of adminPasswordHashes(env)) {
+  for (const expected of hashes) {
     if (timingSafeEqual(got, expected)) {
       matched = true;
       break;

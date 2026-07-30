@@ -59,17 +59,12 @@ npm run deploy
 `www.salaroutsourcing.com` is the canonical hostname. Every canonical tag and
 sitemap entry points at it.
 
-The apex `salaroutsourcing.com` currently has **no A/AAAA record**, so it does
-not resolve at all. Add it in Cloudflare → DNS:
+Production is the **Worker** `sk-immigration-website` with Cloudflare
+**Custom Domains** for both `www` and apex. The Worker redirects apex → www.
 
-| Type | Name | Target | Proxy |
-|------|------|--------|-------|
-| CNAME | `@` | `www.salaroutsourcing.com` | Proxied |
-| CNAME | `www` | (existing Workers route) | Proxied |
-
-Then add a redirect rule (Cloudflare → Rules → Redirect Rules) sending
-`salaroutsourcing.com/*` to `https://www.salaroutsourcing.com/$1` with a 301,
-so the apex and www never both serve the same content.
+Do **not** point the zone at the old Pages project (`*.pages.dev`). If a Pages
+custom domain still exists for the apex, remove it in Workers & Pages → project
+→ Custom domains so it cannot override the Worker.
 
 ## Cloudflare settings that affect SEO
 

@@ -1,12 +1,12 @@
 # Local development secrets. Copy to .dev.vars (which is gitignored).
-# Production Worker also accepts password salaar@98 by default.
+# Generate a password hash with:
+#   printf 'your-password' | sha256sum
+# Then set the same values as production secrets:
+#   npx wrangler secret put ADMIN_PASSWORD_HASH
+#   npx wrangler secret put SESSION_SECRET
 
-# Password: salaar@98
-# printf 'salaar@98' | shasum -a 256
-ADMIN_PASSWORD_HASH=5475cdfaa84f8594db8ad0db6015e9242a557d7eb1f127b33d8355441eaf069a
-
-# Long random string used to sign admin session cookies.
-SESSION_SECRET=sk-immigration-session-v1-salaroutsourcing-rawalpindi
+ADMIN_PASSWORD_HASH=
+SESSION_SECRET=
 
 # Optional. New leads are POSTed here as JSON.
 LEAD_WEBHOOK_URL=
