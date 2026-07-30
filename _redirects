@@ -12,3 +12,10 @@
 /visit-visa /visit-visa/ 301
 /study-visa/usa /study-visa/usa-study-visa-pakistan/ 301
 /study-visa/germany /study-visa/germany-study-visa-pakistan/ 301
+
+/official /official-links/ 301
+/embassy-links /official-links/ 301
+
+# Answers hub lives at /answers.html (individual answers stay under /answers/*.html)
+/answers /answers.html 301
+

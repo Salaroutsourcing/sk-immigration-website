@@ -1,6 +1,6 @@
 {
   "brand": "SK Immigration Services",
-  "updated": "2026-07-23",
+  "updated": "2026-07-30",
   "disclaimer": "Requirements change by embassy, nationality and intake. Always verify official sources. SK Immigration Services does not guarantee visa outcomes.",
   "countries": [
     {
@@ -110,7 +110,7 @@
       ],
       "official_sources": [
         {
-          "name": "German Missions / Visa",
+          "name": "German Missions — Visa service",
           "url": "https://www.auswaertiges-amt.de/en/visa-service"
         },
         {
@@ -118,8 +118,16 @@
           "url": "https://www.make-it-in-germany.com/en/"
         },
         {
-          "name": "DAAD Study in Germany",
+          "name": "DAAD — Study in Germany",
           "url": "https://www.daad.de/en/"
+        },
+        {
+          "name": "German Embassy Islamabad",
+          "url": "https://pakistan.diplo.de/"
+        },
+        {
+          "name": "VFS Germany — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/deu"
         }
       ],
       "checklists": {
@@ -456,12 +464,20 @@
           "url": "https://www.gov.uk/browse/visas-immigration"
         },
         {
-          "name": "Student visa GOV.UK",
+          "name": "Student visa (GOV.UK)",
           "url": "https://www.gov.uk/student-visa"
         },
         {
-          "name": "Visit visa GOV.UK",
+          "name": "Standard Visitor visa",
           "url": "https://www.gov.uk/standard-visitor"
+        },
+        {
+          "name": "Skilled Worker visa",
+          "url": "https://www.gov.uk/skilled-worker-visa"
+        },
+        {
+          "name": "UKVI in Pakistan (VFS)",
+          "url": "https://www.vfsglobal.co.uk/pk/en"
         }
       ],
       "checklists": {
@@ -680,12 +696,24 @@
       ],
       "official_sources": [
         {
-          "name": "IRCC Study Permit",
+          "name": "IRCC — Study in Canada",
           "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html"
         },
         {
-          "name": "IRCC Account",
+          "name": "IRCC — Visit Canada",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html"
+        },
+        {
+          "name": "IRCC — Work in Canada",
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html"
+        },
+        {
+          "name": "IRCC Account / Apply",
           "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application.html"
+        },
+        {
+          "name": "VFS Canada — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/can"
         }
       ],
       "checklists": {
@@ -898,12 +926,16 @@
       ],
       "official_sources": [
         {
-          "name": "Hungary Consular Services",
+          "name": "Hungary Consular Information",
           "url": "https://konzinfo.mfa.gov.hu/en"
         },
         {
           "name": "Study in Hungary",
           "url": "https://studyinhungary.hu/"
+        },
+        {
+          "name": "VFS Hungary — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/hun"
         }
       ],
       "checklists": {
@@ -1108,12 +1140,20 @@
       ],
       "official_sources": [
         {
+          "name": "France-Visas",
+          "url": "https://france-visas.gouv.fr/en/web/france-visas/"
+        },
+        {
           "name": "Campus France",
           "url": "https://www.campusfrance.org/en"
         },
         {
-          "name": "France-Visas",
-          "url": "https://france-visas.gouv.fr/en/web/france-visas/"
+          "name": "French MFA",
+          "url": "https://www.diplomatie.gouv.fr/en/"
+        },
+        {
+          "name": "VFS / TLS France — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/fra"
         }
       ],
       "checklists": {
@@ -1365,7 +1405,7 @@
       ],
       "official_sources": [
         {
-          "name": "Ministry of Foreign Affairs Italy",
+          "name": "Italy MFA",
           "url": "https://www.esteri.it/en/"
         },
         {
@@ -1375,6 +1415,10 @@
         {
           "name": "Study in Italy",
           "url": "https://studyinitaly.esteri.it/"
+        },
+        {
+          "name": "VFS Italy — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/ita"
         }
       ],
       "checklists": {
@@ -1626,12 +1670,16 @@
       ],
       "official_sources": [
         {
-          "name": "Portal das Comunidades",
+          "name": "Portal das Comunidades (MNE)",
           "url": "https://www.portaldascomunidades.mne.pt/"
         },
         {
           "name": "Study & Research in Portugal",
           "url": "https://www.study-research.pt/"
+        },
+        {
+          "name": "VFS Portugal — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/prt"
         }
       ],
       "checklists": {
@@ -1876,12 +1924,16 @@
       ],
       "official_sources": [
         {
-          "name": "Poland in your country (MFA)",
+          "name": "Poland MFA / Diplomacy",
           "url": "https://www.gov.pl/web/diplomacy"
         },
         {
           "name": "Study in Poland",
           "url": "https://study.gov.pl/"
+        },
+        {
+          "name": "VFS Poland — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/pol"
         }
       ],
       "checklists": {
@@ -2121,12 +2173,16 @@
       ],
       "official_sources": [
         {
-          "name": "Ministry of Interior CZ",
+          "name": "Ministry of the Interior CZ",
           "url": "https://www.mvcr.cz/mvcren/"
         },
         {
           "name": "Study in Czechia",
           "url": "https://www.studyin.cz/"
+        },
+        {
+          "name": "Czech MFA",
+          "url": "https://mzv.gov.cz/jnp/en/index.html"
         }
       ],
       "checklists": {
@@ -2314,7 +2370,7 @@
       ],
       "official_sources": [
         {
-          "name": "Identity Malta Agency",
+          "name": "Identity Malta",
           "url": "https://identitymalta.com/"
         },
         {
@@ -2511,7 +2567,7 @@
           "url": "https://mfa.gov.cy/"
         },
         {
-          "name": "Migration Department",
+          "name": "Migration Department Cyprus",
           "url": "https://www.mip.gov.cy/"
         }
       ],
@@ -2716,12 +2772,24 @@
       ],
       "official_sources": [
         {
-          "name": "Home Affairs Student Visa",
+          "name": "Home Affairs — Student visa (500)",
           "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+        },
+        {
+          "name": "Home Affairs — Visitor",
+          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600"
+        },
+        {
+          "name": "Home Affairs — Work visas",
+          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing"
         },
         {
           "name": "Study Australia",
           "url": "https://www.studyaustralia.gov.au/"
+        },
+        {
+          "name": "ImmiAccount",
+          "url": "https://online.immi.gov.au/lusc/login"
         }
       ],
       "checklists": {
@@ -2925,12 +2993,16 @@
       ],
       "official_sources": [
         {
-          "name": "Education Malaysia EMGS",
+          "name": "Education Malaysia (EMGS)",
           "url": "https://educationmalaysia.gov.my/"
         },
         {
           "name": "Immigration Department of Malaysia",
           "url": "https://www.imi.gov.my/"
+        },
+        {
+          "name": "Malaysia MFA",
+          "url": "https://www.kln.gov.my/"
         }
       ],
       "checklists": {
@@ -3130,12 +3202,16 @@
       ],
       "official_sources": [
         {
-          "name": "Spain MFA Consular",
+          "name": "Spain MFA — Embassies & Consulates",
           "url": "https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/EmbajadasConsulados.aspx"
         },
         {
-          "name": "Study in Spain",
+          "name": "Spain Study / Education portal",
           "url": "https://www.educacionyfp.gob.es/"
+        },
+        {
+          "name": "VFS Spain — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/esp"
         }
       ],
       "checklists": {
@@ -3380,12 +3456,16 @@
       ],
       "official_sources": [
         {
-          "name": "ISD Ireland",
+          "name": "Irish Immigration Service (ISD)",
           "url": "https://www.irishimmigration.ie/"
         },
         {
           "name": "Education in Ireland",
           "url": "https://www.educationinireland.com/"
+        },
+        {
+          "name": "VFS Ireland — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/irl"
         }
       ],
       "checklists": {
@@ -3589,6 +3669,14 @@
         {
           "name": "Study in NL",
           "url": "https://www.studyinnl.org/"
+        },
+        {
+          "name": "Netherlands MFA",
+          "url": "https://www.government.nl/ministries/ministry-of-foreign-affairs"
+        },
+        {
+          "name": "VFS Netherlands — Pakistan",
+          "url": "https://visa.vfsglobal.com/pak/en/nld"
         }
       ],
       "checklists": {
@@ -3776,12 +3864,16 @@
       ],
       "official_sources": [
         {
-          "name": "Republic of Türkiye MFA",
+          "name": "Türkiye MFA",
           "url": "https://www.mfa.gov.tr/"
         },
         {
           "name": "Study in Türkiye",
           "url": "https://www.studyinturkiye.gov.tr/"
+        },
+        {
+          "name": "e-Visa Türkiye",
+          "url": "https://www.evisa.gov.tr/en/"
         }
       ],
       "checklists": {
@@ -3985,12 +4077,16 @@
       ],
       "official_sources": [
         {
-          "name": "UAE ICP / GDRFA",
+          "name": "UAE ICP",
           "url": "https://icp.gov.ae/en/"
         },
         {
-          "name": "UAE Government Portal",
+          "name": "UAE Government — Visa & Emirates ID",
           "url": "https://u.ae/en/information-and-services/visa-and-emirates-id"
+        },
+        {
+          "name": "GDRFA Dubai",
+          "url": "https://www.gdrfad.gov.ae/en"
         }
       ],
       "checklists": {
@@ -4377,7 +4473,7 @@
       ],
       "official_sources": [
         {
-          "name": "Ministry of Foreign Affairs SK",
+          "name": "Slovakia MFA",
           "url": "https://www.mzv.sk/web/en"
         },
         {

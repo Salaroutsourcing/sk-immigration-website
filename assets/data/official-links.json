@@ -1,0 +1,238 @@
+{
+  "updated": "2026-07-30",
+  "disclaimer": "Always verify on official government sites before paying fees. SK Immigration prepares files; embassies and immigration authorities decide visas.",
+  "pakistan": [
+    { "name": "VFS Global — Pakistan", "url": "https://www.vfsglobal.com/en/individuals/index.html" },
+    { "name": "Pakistan MOFA", "url": "https://mofa.gov.pk/" },
+    { "name": "HEC Pakistan", "url": "https://www.hec.gov.pk/" }
+  ],
+  "countries": {
+    "de": {
+      "name": "Germany",
+      "links": [
+        { "name": "German Missions — Visa service", "url": "https://www.auswaertiges-amt.de/en/visa-service", "type": "visa" },
+        { "name": "Make it in Germany", "url": "https://www.make-it-in-germany.com/en/", "type": "work" },
+        { "name": "DAAD — Study in Germany", "url": "https://www.daad.de/en/", "type": "study" },
+        { "name": "German Embassy Islamabad", "url": "https://pakistan.diplo.de/", "type": "embassy" },
+        { "name": "VFS Germany — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/deu", "type": "vfs" }
+      ]
+    },
+    "gb": {
+      "name": "United Kingdom",
+      "links": [
+        { "name": "UK Visas and Immigration", "url": "https://www.gov.uk/browse/visas-immigration", "type": "visa" },
+        { "name": "Student visa (GOV.UK)", "url": "https://www.gov.uk/student-visa", "type": "study" },
+        { "name": "Standard Visitor visa", "url": "https://www.gov.uk/standard-visitor", "type": "visit" },
+        { "name": "Skilled Worker visa", "url": "https://www.gov.uk/skilled-worker-visa", "type": "work" },
+        { "name": "UKVI in Pakistan (VFS)", "url": "https://www.vfsglobal.co.uk/pk/en", "type": "vfs" }
+      ]
+    },
+    "ca": {
+      "name": "Canada",
+      "links": [
+        { "name": "IRCC — Study in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html", "type": "study" },
+        { "name": "IRCC — Visit Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html", "type": "visit" },
+        { "name": "IRCC — Work in Canada", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html", "type": "work" },
+        { "name": "IRCC Account / Apply", "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application.html", "type": "visa" },
+        { "name": "VFS Canada — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/can", "type": "vfs" }
+      ]
+    },
+    "us": {
+      "name": "United States",
+      "links": [
+        { "name": "US Student visas (F/M)", "url": "https://travel.state.gov/content/travel/en/us-visas/study.html", "type": "study" },
+        { "name": "US Visitor visas (B1/B2)", "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html", "type": "visit" },
+        { "name": "US Temporary worker visas", "url": "https://travel.state.gov/content/travel/en/us-visas/employment.html", "type": "work" },
+        { "name": "CEAC / DS-160", "url": "https://ceac.state.gov/genniv/", "type": "visa" },
+        { "name": "US Embassy Pakistan", "url": "https://pk.usembassy.gov/", "type": "embassy" }
+      ]
+    },
+    "au": {
+      "name": "Australia",
+      "links": [
+        { "name": "Home Affairs — Student visa (500)", "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500", "type": "study" },
+        { "name": "Home Affairs — Visitor", "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600", "type": "visit" },
+        { "name": "Home Affairs — Work visas", "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing", "type": "work" },
+        { "name": "Study Australia", "url": "https://www.studyaustralia.gov.au/", "type": "study" },
+        { "name": "ImmiAccount", "url": "https://online.immi.gov.au/lusc/login", "type": "visa" }
+      ]
+    },
+    "fr": {
+      "name": "France",
+      "links": [
+        { "name": "France-Visas", "url": "https://france-visas.gouv.fr/en/web/france-visas/", "type": "visa" },
+        { "name": "Campus France", "url": "https://www.campusfrance.org/en", "type": "study" },
+        { "name": "French MFA", "url": "https://www.diplomatie.gouv.fr/en/", "type": "embassy" },
+        { "name": "VFS / TLS France — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/fra", "type": "vfs" }
+      ]
+    },
+    "it": {
+      "name": "Italy",
+      "links": [
+        { "name": "Italy MFA", "url": "https://www.esteri.it/en/", "type": "embassy" },
+        { "name": "Universitaly", "url": "https://www.universitaly.it/", "type": "study" },
+        { "name": "Study in Italy", "url": "https://studyinitaly.esteri.it/", "type": "study" },
+        { "name": "VFS Italy — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/ita", "type": "vfs" }
+      ]
+    },
+    "es": {
+      "name": "Spain",
+      "links": [
+        { "name": "Spain MFA — Embassies & Consulates", "url": "https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/EmbajadasConsulados.aspx", "type": "embassy" },
+        { "name": "Spain Study / Education portal", "url": "https://www.educacionyfp.gob.es/", "type": "study" },
+        { "name": "VFS Spain — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/esp", "type": "vfs" }
+      ]
+    },
+    "nl": {
+      "name": "Netherlands",
+      "links": [
+        { "name": "IND Netherlands", "url": "https://ind.nl/en", "type": "visa" },
+        { "name": "Study in NL", "url": "https://www.studyinnl.org/", "type": "study" },
+        { "name": "Netherlands MFA", "url": "https://www.government.nl/ministries/ministry-of-foreign-affairs", "type": "embassy" },
+        { "name": "VFS Netherlands — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/nld", "type": "vfs" }
+      ]
+    },
+    "pt": {
+      "name": "Portugal",
+      "links": [
+        { "name": "Portal das Comunidades (MNE)", "url": "https://www.portaldascomunidades.mne.pt/", "type": "visa" },
+        { "name": "Study & Research in Portugal", "url": "https://www.study-research.pt/", "type": "study" },
+        { "name": "VFS Portugal — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/prt", "type": "vfs" }
+      ]
+    },
+    "pl": {
+      "name": "Poland",
+      "links": [
+        { "name": "Poland MFA / Diplomacy", "url": "https://www.gov.pl/web/diplomacy", "type": "embassy" },
+        { "name": "Study in Poland", "url": "https://study.gov.pl/", "type": "study" },
+        { "name": "VFS Poland — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/pol", "type": "vfs" }
+      ]
+    },
+    "hu": {
+      "name": "Hungary",
+      "links": [
+        { "name": "Hungary Consular Information", "url": "https://konzinfo.mfa.gov.hu/en", "type": "visa" },
+        { "name": "Study in Hungary", "url": "https://studyinhungary.hu/", "type": "study" },
+        { "name": "VFS Hungary — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/hun", "type": "vfs" }
+      ]
+    },
+    "cz": {
+      "name": "Czech Republic",
+      "links": [
+        { "name": "Ministry of the Interior CZ", "url": "https://www.mvcr.cz/mvcren/", "type": "visa" },
+        { "name": "Study in Czechia", "url": "https://www.studyin.cz/", "type": "study" },
+        { "name": "Czech MFA", "url": "https://mzv.gov.cz/jnp/en/index.html", "type": "embassy" }
+      ]
+    },
+    "mt": {
+      "name": "Malta",
+      "links": [
+        { "name": "Identity Malta", "url": "https://identitymalta.com/", "type": "visa" },
+        { "name": "Malta MFA", "url": "https://foreignandeu.gov.mt/", "type": "embassy" }
+      ]
+    },
+    "cy": {
+      "name": "Cyprus",
+      "links": [
+        { "name": "Cyprus MFA", "url": "https://mfa.gov.cy/", "type": "embassy" },
+        { "name": "Migration Department Cyprus", "url": "https://www.mip.gov.cy/", "type": "visa" }
+      ]
+    },
+    "sk": {
+      "name": "Slovakia",
+      "links": [
+        { "name": "Slovakia MFA", "url": "https://www.mzv.sk/web/en", "type": "embassy" },
+        { "name": "Study in Slovakia", "url": "https://www.studyinslovakia.sk/", "type": "study" }
+      ]
+    },
+    "ro": {
+      "name": "Romania",
+      "links": [
+        { "name": "Romanian MFA", "url": "https://www.mae.ro/en", "type": "embassy" },
+        { "name": "Study in Romania", "url": "https://www.studyinromania.gov.ro/", "type": "study" }
+      ]
+    },
+    "ie": {
+      "name": "Ireland",
+      "links": [
+        { "name": "Irish Immigration Service (ISD)", "url": "https://www.irishimmigration.ie/", "type": "visa" },
+        { "name": "Education in Ireland", "url": "https://www.educationinireland.com/", "type": "study" },
+        { "name": "VFS Ireland — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/irl", "type": "vfs" }
+      ]
+    },
+    "at": {
+      "name": "Austria",
+      "links": [
+        { "name": "Austria MFA — Visas", "url": "https://www.bmeia.gv.at/en/travel-stay/entry-and-residence-in-austria/", "type": "visa" },
+        { "name": "Study in Austria", "url": "https://www.studyinaustria.at/", "type": "study" },
+        { "name": "Migration.gv.at", "url": "https://www.migration.gv.at/en/", "type": "work" }
+      ]
+    },
+    "be": {
+      "name": "Belgium",
+      "links": [
+        { "name": "Belgium Immigration Office", "url": "https://dofi.ibz.be/en", "type": "visa" },
+        { "name": "Belgium MFA", "url": "https://diplomatie.belgium.be/en", "type": "embassy" },
+        { "name": "Study in Belgium", "url": "https://www.studyinbelgium.be/", "type": "study" }
+      ]
+    },
+    "gr": {
+      "name": "Greece",
+      "links": [
+        { "name": "Greece MFA", "url": "https://www.mfa.gr/en/", "type": "embassy" },
+        { "name": "Study in Greece", "url": "https://studyingreece.edu.gr/", "type": "study" },
+        { "name": "VFS Greece — Pakistan", "url": "https://visa.vfsglobal.com/pak/en/grc", "type": "vfs" }
+      ]
+    },
+    "ch": {
+      "name": "Switzerland",
+      "links": [
+        { "name": "State Secretariat for Migration (SEM)", "url": "https://www.sem.admin.ch/sem/en/home.html", "type": "visa" },
+        { "name": "Study in Switzerland", "url": "https://www.sbfi.admin.ch/sbfi/en/home/education/swiss-education-area.html", "type": "study" },
+        { "name": "Swiss MFA", "url": "https://www.eda.admin.ch/eda/en/fdfa.html", "type": "embassy" }
+      ]
+    },
+    "tr": {
+      "name": "Turkey",
+      "links": [
+        { "name": "Türkiye MFA", "url": "https://www.mfa.gov.tr/", "type": "embassy" },
+        { "name": "Study in Türkiye", "url": "https://www.studyinturkiye.gov.tr/", "type": "study" },
+        { "name": "e-Visa Türkiye", "url": "https://www.evisa.gov.tr/en/", "type": "visit" }
+      ]
+    },
+    "my": {
+      "name": "Malaysia",
+      "links": [
+        { "name": "Education Malaysia (EMGS)", "url": "https://educationmalaysia.gov.my/", "type": "study" },
+        { "name": "Immigration Department of Malaysia", "url": "https://www.imi.gov.my/", "type": "visa" },
+        { "name": "Malaysia MFA", "url": "https://www.kln.gov.my/", "type": "embassy" }
+      ]
+    },
+    "ae": {
+      "name": "UAE / Dubai",
+      "links": [
+        { "name": "UAE ICP", "url": "https://icp.gov.ae/en/", "type": "visa" },
+        { "name": "UAE Government — Visa & Emirates ID", "url": "https://u.ae/en/information-and-services/visa-and-emirates-id", "type": "visa" },
+        { "name": "GDRFA Dubai", "url": "https://www.gdrfad.gov.ae/en", "type": "visa" }
+      ]
+    },
+    "sa": {
+      "name": "Saudi Arabia",
+      "links": [
+        { "name": "Saudi Visa Platform (MOFA)", "url": "https://visa.mofa.gov.sa/", "type": "visa" },
+        { "name": "Saudi MFA", "url": "https://www.mofa.gov.sa/en", "type": "embassy" },
+        { "name": "Qiwa (employer / work)", "url": "https://www.qiwa.sa/", "type": "work" },
+        { "name": "HRSD Saudi Arabia", "url": "https://www.hrsd.gov.sa/en", "type": "work" },
+        { "name": "Saudi Embassy — Pakistan", "url": "https://embassies.mofa.gov.sa/sites/pakistan/EN/Pages/default.aspx", "type": "embassy" }
+      ]
+    },
+    "schengen": {
+      "name": "Schengen (general)",
+      "links": [
+        { "name": "EU Schengen visa information", "url": "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/visa-policy_en", "type": "visa" },
+        { "name": "European Commission — Short-stay visas", "url": "https://ec.europa.eu/home-affairs/policies/schengen-borders-and-visa/visa-policy/how-apply-schengen-visa_en", "type": "visa" },
+        { "name": "VFS Global Pakistan", "url": "https://www.vfsglobal.com/en/individuals/index.html", "type": "vfs" }
+      ]
+    }
+  }
+}

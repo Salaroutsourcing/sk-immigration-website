@@ -60,6 +60,11 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
+    // Hub lives at /answers.html; keep /answers/*.html answer pages as-is
+    if (url.pathname === '/answers' || url.pathname === '/answers/') {
+      return Response.redirect(new URL('/answers.html', url).toString(), 301);
+    }
+
     if (!url.pathname.startsWith('/api/')) {
       const assetResponse = await env.ASSETS.fetch(request);
       return withSecurityHeaders(assetResponse);

@@ -21,6 +21,7 @@
       'visit-visa',
       'local',
       'guides',
+      'official-links',
       'ur',
     ];
     if (parts[0] === 'ur' && parts.length >= 3) return '../../../';
@@ -223,6 +224,7 @@
             <a href="${href('calculator.html')}">Cost Calculator</a>
             <a href="${href('compare.html')}">Compare Countries</a>
             <a href="${href('answers.html')}">Answers Hub</a>
+            <a href="${href('official-links/')}">Official embassy links</a>
             <a href="${href('cv-builder.html')}">CV Builder</a>
           </div>
           <div class="footer-col">

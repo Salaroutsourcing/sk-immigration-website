@@ -795,7 +795,7 @@ function studyBody(c) {
         ${ul(c.mistakes)}
         <h2>Related</h2>
         ${blog}
-        <p><a href="../">All study visas</a> · <a href="../../visit-visa/${c.code === 'ie' ? 'ireland' : c.slug.replace('-study-visa-pakistan', '')}-visit-visa-pakistan/">Visit visa (if available)</a> · <a href="../../answers/">Answers hub</a> · <a href="../../eligibility.html">Eligibility quiz</a></p>
+        <p><a href="../">All study visas</a> · <a href="../../visit-visa/${c.code === 'ie' ? 'ireland' : c.slug.replace('-study-visa-pakistan', '')}-visit-visa-pakistan/">Visit visa (if available)</a> · <a href="../../answers.html">Answers hub</a> · <a href="../../eligibility.html">Eligibility quiz</a></p>
 `;
 }
 

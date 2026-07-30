@@ -2019,7 +2019,7 @@ function workSections(w) {
         ${listUl(w.mistakes)}
         <h2>Related links</h2>
         <p>${related}</p>
-        <p>Also see: <a href="../visit-visa/">Visit Visa hub</a> · <a href="../study-visa/">Study Visa hub</a> · <a href="../answers/">Answers</a></p>
+        <p>Also see: <a href="../../visit-visa/">Visit Visa hub</a> · <a href="../../study-visa/">Study Visa hub</a> · <a href="../../answers.html">Answers</a></p>
 `;
 }
 
