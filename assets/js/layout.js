@@ -105,7 +105,7 @@
     const brandShort = C().brand || 'SK Immigration';
     return `
       <a href="${href('index.html')}" class="logo" aria-label="${brand} home">
-        <span class="logo-mark"><span>SK</span></span>
+        <img class="logo-mark-img" src="${href('assets/img/sk-mark-exact.png')}" width="40" height="40" alt="" />
         <span class="logo-text">
           <span class="nav-name">
             <span class="nav-name-long">${brandShort}</span>
