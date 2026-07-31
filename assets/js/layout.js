@@ -232,7 +232,6 @@
             <a href="mailto:${C().email}">${C().email}</a>
             <a href="tel:${(C().phone || '').replace(/\s/g, '')}">${C().phoneDisplay}</a>
             <a href="${C().whatsappLink}" target="_blank" rel="noopener">WhatsApp Chat</a>
-            <a href="${href('trust.html')}">Verify us (CUIN / NAP)</a>
             <a href="${href('about.html')}">About</a>
             <a href="${href('faq.html')}">FAQ</a>
             <a href="${href('contact.html')}">Book consult</a>
@@ -247,7 +246,7 @@
         </div>
         <div class="container footer-bottom">
           <span>© ${year} ${brand}. All rights reserved. · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
-          <span class="parent-line"><a href="${href('trust.html')}">SK Immigration Services</a> · CUIN 0304985 · <a href="${href('trust.html')}">Verify before you pay</a> · Rawalpindi</span>
+          <span class="parent-line">SK Immigration Services · CUIN 0304985 · Rawalpindi, Pakistan</span>
         </div>
       </footer>
       <a class="wa-float" href="${C().whatsappLink}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
