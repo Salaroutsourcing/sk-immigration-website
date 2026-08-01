@@ -56,9 +56,14 @@
     countries: 'study-visa',
     ausbildung: 'work-permit',
     jobs: 'work-permit',
-    pricing: 'contact',
     blog: 'study-visa',
-    faq: 'contact',
+    /* Keep these unhighlighted — mapping to Contact confused visitors */
+    pricing: '',
+    faq: '',
+    about: '',
+    trust: '',
+    contact: 'contact',
+    home: '',
   };
 
   function activeId() {
@@ -84,7 +89,8 @@
     const cur = activeId();
     return NAV.map((n) => {
       const title = n.title ? ` title="${n.title}"` : '';
-      return `<a href="${href(n.href)}" class="${cls} ${cur === n.id ? 'active' : ''}"${title} ${cur === n.id ? 'aria-current="page"' : ''}>${n.label}</a>`;
+      const on = cur && cur === n.id;
+      return `<a href="${href(n.href)}" class="${cls}${on ? ' active' : ''}"${title}${on ? ' aria-current="page"' : ''}>${n.label}</a>`;
     }).join('');
   }
 

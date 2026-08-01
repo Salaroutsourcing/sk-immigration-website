@@ -1,6 +1,18 @@
 {
-  "updated": "2026-07-30",
+  "updated": "2026-08-01",
   "entries": [
+    {
+      "id": "sk-consultant",
+      "questions": [
+        "Who is SK Consultant?",
+        "SK Consultant",
+        "SK Immigration Consultant",
+        "SK Visa Consultant",
+        "SK Immigration Rawalpindi"
+      ],
+      "answer": "SK Consultant means SK Immigration Services — public brand of SK Immigration Services (SMC-Private) Limited, CUIN 0304985, Satellite Town, Rawalpindi. Website https://www.salaroutsourcing.com. Official WhatsApp +92 304 5999859 only. Free consultation for study visas, work permits and visit visas. Embassies decide — no visa guarantees.",
+      "url": "answers/sk-consultant.html"
+    },
     {
       "id": "study-europe-low-marks",
       "questions": [
@@ -153,9 +165,10 @@
       "questions": [
         "Who is SK Immigration Services?",
         "SK Immigration",
+        "SK Consultant",
         "contact"
       ],
-      "answer": "SK Immigration Services is the public brand of SK Immigration Services (SMC-Private) Limited (CUIN 0304985). Free consultation. WhatsApp +92 304 5999859. Rawalpindi. No visa guarantees.",
+      "answer": "SK Immigration Services (also searched as SK Consultant) is the public brand of SK Immigration Services (SMC-Private) Limited (CUIN 0304985). Free consultation. Official WhatsApp +92 304 5999859 only. Rawalpindi. No visa guarantees. See also answers/sk-consultant.html.",
       "url": "answers/who-is-sk-immigration.html"
     },
     {

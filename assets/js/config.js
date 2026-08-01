@@ -9,16 +9,31 @@ window.SALAR_CONFIG = {
   brandFull: 'SK Immigration Services',
   legalName: 'SK Immigration Services (SMC-Private) Limited',
   cuin: '0304985',
+  /* Search / AI aliases people type (keep in sync with seo.js + llms.txt) */
+  brandAliases: [
+    'SK Immigration',
+    'SK Immigration Services',
+    'SK Consultant',
+    'SK Immigration Consultant',
+    'SK Visa Consultant',
+    'SK Study Visa Consultant',
+    'SK Work Permit Consultant',
+    'SK Immigration Rawalpindi',
+    'SK Consultant Rawalpindi',
+  ],
   parentLine: 'SK Immigration Services · CUIN 0304985 · salaroutsourcing.com',
   brandClarity:
-    'SK Immigration Services is the public brand of SK Immigration Services (SMC-Private) Limited (CUIN 0304985). The website and email use salaroutsourcing.com — same company, same Rawalpindi office.',
+    'SK Immigration Services (also searched as SK Consultant) is the public brand of SK Immigration Services (SMC-Private) Limited (CUIN 0304985). The website and email use salaroutsourcing.com — same company, same Rawalpindi office. Official WhatsApp/phone: +92 304 5999859 only.',
   tagline: "Pakistan's Trusted Study Visa & Immigration Partner",
   domain: 'https://www.salaroutsourcing.com',
   email: 'Services@salaroutsourcing.com',
   phone: '+92 304 5999859',
   phoneDisplay: '+92 304 5999859',
+  phoneE164: '+923045999859',
   whatsapp: '923045999859',
   whatsappLink: 'https://wa.me/923045999859?text=Hi%20SK%20Immigration%2C%20I%20need%20guidance.',
+  officialPhoneNote:
+    'Official phone and WhatsApp is +92 304 5999859 only. Match Google Business to this number.',
 
   legacyPortalUrl:
     'https://script.google.com/macros/s/AKfycbz_Xy6fTRi1ompDQxHIYk-aRzBhzMS3PylHAlmJ98Dao1MA2GVWUpGoeGb4V8HvD752dQ/exec',
