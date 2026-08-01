@@ -28,9 +28,10 @@ You should **not** see Cloudflare Managed `Disallow: /` blocks for GPTBot / Goog
 ## After changing
 
 1. Resubmit sitemap in Google Search Console (`/sitemap.xml`).
-2. Request indexing for `/`, `/trust.html`, `/answers`, `/official-links/`, `/study-visa/`, `/work-permit/`, `/visit-visa/`, and top country pages.
+2. Request indexing for `/`, `/trust.html`, `/faq`, `/answers/sk-consultant`, `/answers`, `/official-links/`, `/study-visa/`, `/work-permit/`, `/visit-visa/`, and top country pages.
 3. Spot-check that ChatGPT / Perplexity can fetch `https://www.salaroutsourcing.com/llms.txt` and `/trust.html`.
 4. Re-run `node scripts/check-ai-ops.mjs --live` after deploy.
+5. **Google Business Profile (required for GEO):** set phone to **+92 304 5999859** only, website `https://www.salaroutsourcing.com`, same Satellite Town NAP as `trust.html`, and collect real reviews. Wrong GBP phone blocks brand + AI trust.
 
 ## Content-Signal note
 

@@ -56,9 +56,14 @@
     countries: 'study-visa',
     ausbildung: 'work-permit',
     jobs: 'work-permit',
-    pricing: 'contact',
     blog: 'study-visa',
-    faq: 'contact',
+    /* Keep these unhighlighted — mapping to Contact confused visitors */
+    pricing: '',
+    faq: '',
+    about: '',
+    trust: '',
+    contact: 'contact',
+    home: '',
   };
 
   function activeId() {
@@ -84,7 +89,8 @@
     const cur = activeId();
     return NAV.map((n) => {
       const title = n.title ? ` title="${n.title}"` : '';
-      return `<a href="${href(n.href)}" class="${cls} ${cur === n.id ? 'active' : ''}"${title} ${cur === n.id ? 'aria-current="page"' : ''}>${n.label}</a>`;
+      const on = cur && cur === n.id;
+      return `<a href="${href(n.href)}" class="${cls}${on ? ' active' : ''}"${title}${on ? ' aria-current="page"' : ''}>${n.label}</a>`;
     }).join('');
   }
 
@@ -246,7 +252,7 @@
         </div>
         <div class="container footer-bottom">
           <span>© ${year} ${brand}. All rights reserved. · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
-          <span class="parent-line">SK Immigration Services · CUIN 0304985 · Rawalpindi, Pakistan</span>
+          <span class="parent-line">SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi, Pakistan · salaroutsourcing.com is the official website of SK Immigration Services; “Salar Outsourcing” is our registered domain and overseas manpower brand.</span>
         </div>
       </footer>
       <a class="wa-float" href="${C().whatsappLink}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
