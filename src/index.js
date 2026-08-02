@@ -47,7 +47,7 @@ const SECURITY_HEADERS = {
   'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=()',
   'cross-origin-opener-policy': 'same-origin-allow-popups',
   'content-security-policy':
-    "default-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://wa.me; frame-src 'self' https://www.google.com https://maps.google.com; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests",
+    "default-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://wa.me https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src 'self' https://www.google.com https://maps.google.com; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests",
 };
 
 export default {
