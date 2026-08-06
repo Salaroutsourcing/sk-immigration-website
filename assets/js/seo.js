@@ -26,8 +26,8 @@
           'SK Immigration Satellite Town',
         ],
         url: SITE,
-        logo: SITE + '/assets/img/logo.svg',
-        image: [SITE + '/assets/img/hero-consult.jpg', SITE + '/assets/img/hero-library.jpg'],
+        logo: SITE + '/assets/img/logo.jpg',
+        image: [SITE + '/assets/img/logo.jpg'],
         description:
           "SK Immigration Services (SK Consultant) — Pakistan study visa, work permit, visit visa, Saudi work visa processing and document attestation consultant in Satellite Town, Rawalpindi. Free consultation. Official WhatsApp +92 304 5999859. No visa guarantees.",
         email: 'Services@salaroutsourcing.com',

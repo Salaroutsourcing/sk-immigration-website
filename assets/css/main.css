@@ -527,6 +527,14 @@ textarea {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.logo-img {
+  flex: none;
+  width: 44px;
+  height: auto;
+  max-height: 40px;
+  object-fit: contain;
+  display: block;
+}
 .logo-mark {
   flex: none;
   width: 34px;
