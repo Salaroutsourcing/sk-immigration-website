@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://skimmigrationservices.works/</loc><lastmod>2026-08-01</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>https://skimmigrationservices.works/about.html</loc><lastmod>2026-07-31</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://skimmigrationservices.works/trust.html</loc><lastmod>2026-08-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://skimmigrationservices.works/trust.html</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://skimmigrationservices.works/services.html</loc><lastmod>2026-07-31</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/pricing.html</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/ausbildung.html</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
@@ -13,12 +13,12 @@
   <url><loc>https://skimmigrationservices.works/calculator.html</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/compare.html</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/answers</loc><lastmod>2026-07-31</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://skimmigrationservices.works/faq.html</loc><lastmod>2026-08-01</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://skimmigrationservices.works/faq</loc><lastmod>2026-08-09</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://skimmigrationservices.works/blog.html</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/contact.html</loc><lastmod>2026-07-31</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/eligibility.html</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/cv-builder.html</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://skimmigrationservices.works/privacy.html</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://skimmigrationservices.works/privacy</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://skimmigrationservices.works/llms.txt</loc><lastmod>2026-08-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/ai.txt</loc><lastmod>2026-08-01</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/study-visa/</loc><lastmod>2026-08-01</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
@@ -29,7 +29,7 @@
   <url><loc>https://skimmigrationservices.works/hire-workers-from-pakistan/</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://skimmigrationservices.works/ur/</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://skimmigrationservices.works/ur/study-visa/</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://skimmigrationservices.works/study-visa/germany-study-visa-pakistan/</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://skimmigrationservices.works/study-visa/germany-study-visa-pakistan/</loc><lastmod>2026-08-09</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://skimmigrationservices.works/study-visa/italy-study-visa-pakistan/</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://skimmigrationservices.works/study-visa/france-study-visa-pakistan/</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://skimmigrationservices.works/study-visa/uk-study-visa-pakistan/</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
@@ -292,5 +292,4 @@
   <url><loc>https://skimmigrationservices.works/answers/ielts-for-france-study</loc><lastmod>2026-07-30</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://skimmigrationservices.works/official-links/</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
   <url><loc>https://skimmigrationservices.works/answers/sk-consultant</loc><lastmod>2026-08-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://skimmigrationservices.works/faq</loc><lastmod>2026-08-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 </urlset>

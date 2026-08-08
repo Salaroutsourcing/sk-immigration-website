@@ -239,6 +239,7 @@
             <a href="tel:${(C().phone || '').replace(/\s/g, '')}">${C().phoneDisplay}</a>
             <a href="${C().whatsappLink}" target="_blank" rel="noopener">WhatsApp Chat</a>
             <a href="${href('about.html')}">About</a>
+            <a href="${href('trust.html')}">Trust &amp; verify</a>
             <a href="${href('faq.html')}">FAQ</a>
             <a href="${href('contact.html')}">Book consult</a>
             <a href="${C().googleBusinessShare || 'https://share.google/hQzlV2rZbYtUzYZ9n'}" target="_blank" rel="noopener">Google Business</a>
@@ -251,7 +252,7 @@
           </div>
         </div>
         <div class="container footer-bottom">
-          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
+          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('trust.html')}">Trust</a> · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
           <span class="parent-line">SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi, Pakistan · Official website: skimmigrationservices.works</span>
         </div>
       </footer>

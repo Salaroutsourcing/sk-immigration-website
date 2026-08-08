@@ -66,6 +66,8 @@
           'https://www.linkedin.com/company/sk-immigration-service/',
           'https://www.youtube.com/@SKImmigrationtips',
           'https://share.google/hQzlV2rZbYtUzYZ9n',
+          'https://www.google.com/search?kgmid=/g/11zfnqjfgx',
+          'https://www.google.com/maps/search/?api=1&query=SK+Immigration+Services+Alfazal+Plaza+Satellite+Town+Rawalpindi',
           'https://leap.secp.gov.pk/#/verify-company-info/0304985',
           SITE + '/trust.html',
           SITE + '/about.html',
@@ -212,8 +214,36 @@
     document.head.appendChild(s);
   }
 
+  function pageAlreadyHasOrganization() {
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    for (const el of scripts) {
+      const text = el.textContent || '';
+      if (text.includes('/#organization')) return true;
+    }
+    return false;
+  }
+
   function inject() {
-    injectJsonLd('sk-org-schema', ORG);
+    /* Avoid duplicate Organization graph when the page already embeds it (e.g. homepage). */
+    if (!pageAlreadyHasOrganization()) {
+      injectJsonLd('sk-org-schema', ORG);
+    } else {
+      injectJsonLd('sk-website-schema', {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        '@id': SITE + '/#website',
+        url: SITE,
+        name: 'SK Immigration Services',
+        alternateName: ['SK Consultant', 'SK Immigration', 'skimmigrationservices.works'],
+        publisher: { '@id': SITE + '/#organization' },
+        inLanguage: ['en', 'ur'],
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: SITE + '/answers?q={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
+      });
+    }
 
     if (!document.querySelector('meta[name="author"]')) {
       const m = document.createElement('meta');
