@@ -44,7 +44,8 @@ If the site is in a subfolder of a larger repo, set Pages root to `/website`.
 3. At your DNS host (e.g. Name.com) set:
    - Apex `A` → `185.199.108.153` `185.199.109.153` `185.199.110.153` `185.199.111.153`
    - Apex `AAAA` → `2606:50c0:8000::153` `2606:50c0:8001::153` `2606:50c0:8002::153` `2606:50c0:8003::153`
-   - `www` `CNAME` → `sk-immigration-website.github.io`
+   - `www` `CNAME` → `salaroutsourcing.github.io`  
+     (**not** `sk-immigration-website.github.io` — that host has no Pages site and shows the GitHub 404 page)
 4. Canonical site URL is the **apex**: `https://skimmigrationservices.works` (not www).
 5. Google Analytics stream URL must match the apex.
 6. Old domain: use registrar **301 URL forwarding** → `https://skimmigrationservices.works`

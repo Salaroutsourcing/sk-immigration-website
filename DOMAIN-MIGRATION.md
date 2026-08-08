@@ -30,7 +30,8 @@ On-site phrasing:
 2. DNS at registrar (Name.com):
    - Apex `A` → `185.199.108.153` `185.199.109.153` `185.199.110.153` `185.199.111.153`
    - Apex `AAAA` → `2606:50c0:8000::153` `2606:50c0:8001::153` `2606:50c0:8002::153` `2606:50c0:8003::153`
-   - `www` `CNAME` → `sk-immigration-website.github.io`
+   - `www` `CNAME` → `salaroutsourcing.github.io`  
+     Do **not** use `sk-immigration-website.github.io` (that shows “There isn’t a GitHub Pages site here”).
 3. Google Analytics stream URL: `https://skimmigrationservices.works` (not www)
 4. Google Business Profile website: `https://skimmigrationservices.works`
 5. Search Console property for the new domain + submit `https://skimmigrationservices.works/sitemap.xml`
