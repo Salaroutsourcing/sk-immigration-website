@@ -3,7 +3,7 @@
  * Call SalarSEO.inject() on each page (layout does this automatically).
  */
 (function () {
-  const SITE = 'https://www.skimmigrationservices.works';
+  const SITE = 'https://skimmigrationservices.works';
 
   const ORG = {
     '@context': 'https://schema.org',

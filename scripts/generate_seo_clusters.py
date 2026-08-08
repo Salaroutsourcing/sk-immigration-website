@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE = "https://www.skimmigrationservices.works"
+SITE = "https://skimmigrationservices.works"
 UPDATED = "2026-07-30"
 
 

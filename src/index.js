@@ -54,9 +54,9 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // Apex → www on the new brand domain
-    if (url.hostname === 'skimmigrationservices.works') {
-      url.hostname = 'www.skimmigrationservices.works';
+    // www → apex (GitHub Pages primary host is the apex)
+    if (url.hostname === 'www.skimmigrationservices.works') {
+      url.hostname = 'skimmigrationservices.works';
       url.protocol = 'https:';
       return Response.redirect(url.toString(), 301);
     }
@@ -66,7 +66,7 @@ export default {
       url.hostname === 'salaroutsourcing.com' ||
       url.hostname === 'www.salaroutsourcing.com'
     ) {
-      url.hostname = 'www.skimmigrationservices.works';
+      url.hostname = 'skimmigrationservices.works';
       url.protocol = 'https:';
       return Response.redirect(url.toString(), 301);
     }

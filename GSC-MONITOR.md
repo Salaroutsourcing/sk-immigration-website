@@ -1,14 +1,15 @@
 # Google Search Console & ranking monitor
 
-Use this weekly after deploy. Official domain: **skimmigrationservices.works** (`https://www.skimmigrationservices.works`).
+Use this weekly after deploy. Official domain: **skimmigrationservices.works** (`https://skimmigrationservices.works`).
 
 ## Setup
 
-1. Add property: `https://www.skimmigrationservices.works` (URL-prefix) and/or Domain property.
+1. Add property: `https://skimmigrationservices.works` (URL-prefix) and/or Domain property.
 2. Verify via DNS TXT or HTML file.
-3. Submit sitemap: `https://www.skimmigrationservices.works/sitemap.xml`
-4. Confirm Cloudflare AI blocks are off (`CLOUDFLARE-AI.md`).
+3. Submit sitemap: `https://skimmigrationservices.works/sitemap.xml`
+4. Confirm `robots.txt` still allows GPTBot / Google-Extended (see `CLOUDFLARE-AI.md` only if you later put the domain on Cloudflare).
 5. Run local ops check: `node scripts/check-ai-ops.mjs` (optional live probes with network).
+6. GA measurement ID on live homepage must be `G-WY6GEWLDEL`.
 
 ## Money keywords to track (Pakistan)
 

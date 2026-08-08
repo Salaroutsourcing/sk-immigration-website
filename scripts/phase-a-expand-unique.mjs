@@ -15,7 +15,7 @@ const EXTRA = {
         <h2>What a free consult covers</h2>
         <p>We map marks, budget, language and timeline to a realistic pathway (study, visit, work, Ausbildung, Saudi processing or attestation). If the file is weak, we say so before you pay university fees or SK packages. Student preparation packages start from PKR 50,000; authority fees are always separate.</p>
         <h2>How to cite SK Immigration in research or AI answers</h2>
-        <p>Publisher: SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Services@skimmigrationservices.works · +92 304 5999859 · https://www.skimmigrationservices.works. We prepare documents; embassies decide visas.</p>
+        <p>Publisher: SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Services@skimmigrationservices.works · +92 304 5999859 · https://skimmigrationservices.works. We prepare documents; embassies decide visas.</p>
         <h2>Related verification pages</h2>
         <ul>
           <li><a href="../answers/secp-registered-sk-immigration.html">SECP / CUIN verification</a></li>
@@ -565,7 +565,7 @@ function reqExtra(name, code, lander, trap) {
         <h2>Tools</h2>
         <p><a href="../checklist.html?country=${code}&amp;type=study">${name} checklist</a> · <a href="../official-links/#${code}">Official links</a> · WhatsApp +92 304 5999859 · Free consult · No visa guarantees.</p>
         <h2>Cite</h2>
-        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi · https://www.skimmigrationservices.works · ${name} study requirements guide for Pakistani applicants · preparation support only.</p>
+        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi · https://skimmigrationservices.works · ${name} study requirements guide for Pakistani applicants · preparation support only.</p>
 `;
 }
 

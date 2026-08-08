@@ -11,7 +11,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://www.skimmigrationservices.works';
+const SITE = 'https://skimmigrationservices.works';
 
 const BLOG_TO_LANDER = {
   'australia-student-visa': '/study-visa/australia-study-visa-pakistan/',

@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TODAY = '2026-07-31';
 const CSS = 'phasea1';
-const SITE = 'https://www.skimmigrationservices.works';
+const SITE = 'https://skimmigrationservices.works';
 
 function esc(s) {
   return String(s)

@@ -25,7 +25,7 @@ window.SALAR_CONFIG = {
   brandClarity:
     'SK Immigration Services (also searched as SK Consultant) is the public brand of SK Immigration Services (SMC-Private) Limited (CUIN 0304985). Official website and email: skimmigrationservices.works — Rawalpindi office. Official WhatsApp/phone: +92 304 5999859 only.',
   tagline: "Pakistan's Trusted Study Visa & Immigration Partner",
-  domain: 'https://www.skimmigrationservices.works',
+  domain: 'https://skimmigrationservices.works',
   email: 'Services@skimmigrationservices.works',
   phone: '+92 304 5999859',
   phoneDisplay: '+92 304 5999859',

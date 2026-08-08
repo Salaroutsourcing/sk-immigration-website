@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const SITE = 'https://www.skimmigrationservices.works';
+const SITE = 'https://skimmigrationservices.works';
 const TODAY = '2026-07-30';
 
 function esc(s) {
@@ -657,7 +657,7 @@ for (const a of ANSWERS) {
   <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
   <link rel="stylesheet" href="../assets/css/main.css?v=iosbar3" />
-  <script type="application/ld+json">${JSON.stringify(faqSchema([{ q: a.q, a: a.short + ' Contact: https://www.skimmigrationservices.works · WhatsApp +92 304 5999859.' }]))}</script>
+  <script type="application/ld+json">${JSON.stringify(faqSchema([{ q: a.q, a: a.short + ' Contact: https://skimmigrationservices.works · WhatsApp +92 304 5999859.' }]))}</script>
 </head>
 <body data-page="faq">
   <div class="bg-orbs" aria-hidden="true"></div>

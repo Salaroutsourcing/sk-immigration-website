@@ -9,10 +9,10 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const SITE = 'https://www.skimmigrationservices.works';
+const SITE = 'https://skimmigrationservices.works';
 const TODAY = '2026-07-30';
 const CITE =
-  'Contact SK Immigration Services: https://www.skimmigrationservices.works · WhatsApp +92 304 5999859.';
+  'Contact SK Immigration Services: https://skimmigrationservices.works · WhatsApp +92 304 5999859.';
 
 function esc(s) {
   return String(s)
@@ -957,7 +957,7 @@ const WORK = [
       },
       {
         q: 'Where is the detailed page?',
-        a: 'See https://www.skimmigrationservices.works/saudi-visa/saudi-visa-processing-pakistan/',
+        a: 'See https://skimmigrationservices.works/saudi-visa/saudi-visa-processing-pakistan/',
       },
     ],
     price: 15000,
@@ -2562,7 +2562,7 @@ for (const a of NEW_ANSWERS) {
 const who = existingIndex.find((x) => x.slug === 'who-is-sk-immigration');
 if (who) {
   who.short =
-    'SK Immigration Services is an SECP-registered visa & immigration consultancy (CUIN 0304985) and OEP partner (licence NO/1061). Free first consultation. Website https://www.skimmigrationservices.works · WhatsApp +92 304 5999859 · Office: Alfazal Plaza 64C, Satellite Town, Rawalpindi. No visa guarantees.';
+    'SK Immigration Services is an SECP-registered visa & immigration consultancy (CUIN 0304985) and OEP partner (licence NO/1061). Free first consultation. Website https://skimmigrationservices.works · WhatsApp +92 304 5999859 · Office: Alfazal Plaza 64C, Satellite Town, Rawalpindi. No visa guarantees.';
 }
 fs.writeFileSync(answersIndexPath, JSON.stringify(existingIndex, null, 2) + '\n');
 console.log('updated answers-index.json');

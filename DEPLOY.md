@@ -37,16 +37,17 @@ git push -u origin main
 
 If the site is in a subfolder of a larger repo, set Pages root to `/website`.
 
-### 3. Cloudflare custom domain (skimmigrationservices.works)
+### 3. Custom domain on GitHub Pages (skimmigrationservices.works)
 
-1. Add site in [Cloudflare](https://dash.cloudflare.com) (free plan).
-2. Point domain nameservers to Cloudflare.
-3. **DNS** → CNAME:
-   - `www` → `YOUR_USER.github.io` (Proxied)
-   - Or A/AAAA records per GitHub Pages docs for apex `@`
-4. GitHub Pages → Custom domain → `skimmigrationservices.works` / `www.skimmigrationservices.works`
-5. Enable Cloudflare SSL (Full) + Always Use HTTPS
-6. Optional: Page Rules / Cache Everything for static assets
+1. Repo → **Settings → Pages → Custom domain** → `skimmigrationservices.works` → Save.
+2. Wait until **DNS check** passes and **Enforce HTTPS** is available/green.
+3. At your DNS host (e.g. Name.com) set:
+   - Apex `A` → `185.199.108.153` `185.199.109.153` `185.199.110.153` `185.199.111.153`
+   - Apex `AAAA` → `2606:50c0:8000::153` `2606:50c0:8001::153` `2606:50c0:8002::153` `2606:50c0:8003::153`
+   - `www` `CNAME` → `sk-immigration-website.github.io`
+4. Canonical site URL is the **apex**: `https://skimmigrationservices.works` (not www).
+5. Google Analytics stream URL must match the apex.
+6. Old domain: use registrar **301 URL forwarding** → `https://skimmigrationservices.works`
 
 ### 4. Forms / leads via Apps Script
 

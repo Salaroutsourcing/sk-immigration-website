@@ -19,7 +19,7 @@ function ok(label, pass, detail = '') {
 const robots = fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8');
 ok('robots allows GPTBot', /User-agent:\s*GPTBot[\s\S]*?Allow:\s*\//i.test(robots));
 ok('robots allows Google-Extended', /User-agent:\s*Google-Extended[\s\S]*?Allow:\s*\//i.test(robots));
-ok('robots lists sitemap', robots.includes('Sitemap: https://www.skimmigrationservices.works/sitemap.xml'));
+ok('robots lists sitemap', robots.includes('Sitemap: https://skimmigrationservices.works/sitemap.xml'));
 ok('robots allows /trust.html', robots.includes('Allow: /trust.html'));
 ok('robots allows /work-permit/', robots.includes('Allow: /work-permit/'));
 ok('robots allows /visit-visa/', robots.includes('Allow: /visit-visa/'));
@@ -46,10 +46,10 @@ ok('GSC-MONITOR.md present', fs.existsSync(path.join(ROOT, 'GSC-MONITOR.md')));
 
 if (live) {
   const urls = [
-    'https://www.skimmigrationservices.works/robots.txt',
-    'https://www.skimmigrationservices.works/llms.txt',
-    'https://www.skimmigrationservices.works/trust.html',
-    'https://www.skimmigrationservices.works/sitemap.xml',
+    'https://skimmigrationservices.works/robots.txt',
+    'https://skimmigrationservices.works/llms.txt',
+    'https://skimmigrationservices.works/trust.html',
+    'https://skimmigrationservices.works/sitemap.xml',
   ];
   for (const u of urls) {
     try {

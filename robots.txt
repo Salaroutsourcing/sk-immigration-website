@@ -1,10 +1,8 @@
 # SK Immigration Services — robots.txt
-# Domain: https://www.skimmigrationservices.works
+# Domain: https://skimmigrationservices.works
 #
-# Cloudflare AI Crawl Control can PREPEND Disallow rules for GPTBot,
-# ClaudeBot, Google-Extended, etc. Those managed rules win over this file.
-# Turn OFF Cloudflare → Security → AI Crawl Control (or allow citation bots)
-# so this Allow list actually works. See CLOUDFLARE-AI.md.
+# Hosted on GitHub Pages. If you later put the domain behind Cloudflare,
+# turn OFF AI Crawl Control blocks for citation bots (see CLOUDFLARE-AI.md).
 
 User-agent: *
 Allow: /
@@ -82,4 +80,4 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://www.skimmigrationservices.works/sitemap.xml
+Sitemap: https://skimmigrationservices.works/sitemap.xml

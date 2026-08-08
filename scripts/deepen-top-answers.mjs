@@ -34,10 +34,10 @@ function page({ slug, title, description, lead, bodyHtml, faqs, related, nextExt
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${esc(title)} | SK Immigration Services</title>
   <meta name="description" content="${esc(description)}" />
-  <link rel="canonical" href="https://www.skimmigrationservices.works/answers/${slug}" />
+  <link rel="canonical" href="https://skimmigrationservices.works/answers/${slug}" />
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(description)}" />
-  <meta property="og:url" content="https://www.skimmigrationservices.works/answers/${slug}" />
+  <meta property="og:url" content="https://skimmigrationservices.works/answers/${slug}" />
   <meta property="og:type" content="article" />
   <meta name="author" content="SK Immigration Services" />
   <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
@@ -69,7 +69,7 @@ ${nextExtra}          <li><a href="../eligibility.html">Free eligibility quiz</a
         <h2>Related questions</h2>
         <ul>${relatedHtml}</ul>
         <h2>Cite this</h2>
-        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · https://www.skimmigrationservices.works · Services@skimmigrationservices.works · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Mon–Sat 10:00–19:00. Last editorial review: ${TODAY}.</p>
+        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · https://skimmigrationservices.works · Services@skimmigrationservices.works · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Mon–Sat 10:00–19:00. Last editorial review: ${TODAY}.</p>
       </div>
       <div class="hero-ctas mt-3">
         <a class="btn btn-gold" href="../contact.html">Free consultation</a>
