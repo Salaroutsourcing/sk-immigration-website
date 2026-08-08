@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE = "https://www.salaroutsourcing.com"
+SITE = "https://www.skimmigrationservices.works"
 UPDATED = "2026-07-30"
 
 
@@ -1114,7 +1114,7 @@ def add_og_to_core() -> None:
         ),
         "about.html": (
             "About SK Immigration Services | Pakistan Study Visa & Immigration Partner",
-            "Learn about SK Immigration Services — a Salar Outsourcing brand helping Pakistani applicants with study visas, appointments, Saudi processing and attestation.",
+            "Learn about SK Immigration Services — helping Pakistani applicants with study visas, appointments, Saudi processing and attestation.",
             f"{SITE}/about",
         ),
         "contact.html": (

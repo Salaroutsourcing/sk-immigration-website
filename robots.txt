@@ -1,5 +1,5 @@
 # SK Immigration Services — robots.txt
-# Domain: https://www.salaroutsourcing.com
+# Domain: https://www.skimmigrationservices.works
 #
 # Cloudflare AI Crawl Control can PREPEND Disallow rules for GPTBot,
 # ClaudeBot, Google-Extended, etc. Those managed rules win over this file.
@@ -82,4 +82,4 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://www.salaroutsourcing.com/sitemap.xml
+Sitemap: https://www.skimmigrationservices.works/sitemap.xml

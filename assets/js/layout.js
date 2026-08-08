@@ -1,6 +1,6 @@
 /**
  * Shared layout — SK Immigration Services
- * Domain: salaroutsourcing.com (ops/email host for the same legal entity)
+ * Domain: skimmigrationservices.works
  */
 (function () {
   const C = () => window.SALAR_CONFIG || {};
@@ -252,7 +252,7 @@
         </div>
         <div class="container footer-bottom">
           <span>© ${year} ${brand}. All rights reserved. · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
-          <span class="parent-line">SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi, Pakistan · salaroutsourcing.com is the official website of SK Immigration Services; “Salar Outsourcing” is our registered domain and overseas manpower brand.</span>
+          <span class="parent-line">SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi, Pakistan · Official website: skimmigrationservices.works</span>
         </div>
       </footer>
       <a class="wa-float" href="${C().whatsappLink}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">

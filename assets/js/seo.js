@@ -3,7 +3,7 @@
  * Call SalarSEO.inject() on each page (layout does this automatically).
  */
 (function () {
-  const SITE = 'https://www.salaroutsourcing.com';
+  const SITE = 'https://www.skimmigrationservices.works';
 
   const ORG = {
     '@context': 'https://schema.org',
@@ -30,7 +30,7 @@
         image: [SITE + '/assets/img/logo.jpg'],
         description:
           "SK Immigration Services (SK Consultant) — Pakistan study visa, work permit, visit visa, Saudi work visa processing and document attestation consultant in Satellite Town, Rawalpindi. Free consultation. Official WhatsApp +92 304 5999859. No visa guarantees.",
-        email: 'Services@salaroutsourcing.com',
+        email: 'Services@skimmigrationservices.works',
         telephone: '+923045999859',
         priceRange: '$$',
         address: {
@@ -145,7 +145,7 @@
         '@id': SITE + '/#website',
         url: SITE,
         name: 'SK Immigration Services',
-        alternateName: ['SK Consultant', 'SK Immigration', 'salaroutsourcing.com'],
+        alternateName: ['SK Consultant', 'SK Immigration', 'skimmigrationservices.works'],
         publisher: { '@id': SITE + '/#organization' },
         inLanguage: ['en', 'ur'],
         potentialAction: {

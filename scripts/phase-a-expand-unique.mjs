@@ -11,11 +11,11 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const EXTRA = {
   'who-is-sk-immigration': `
         <h2>Why Pakistani applicants ask “who is SK Immigration?”</h2>
-        <p>Facebook ads reuse similar logos. Before you transfer a deposit, confirm the legal name, CUIN, office address and whether the consultant refuses visa guarantees. SK Immigration Services is the public brand of SK Immigration Services (SMC-Private) Limited — CUIN 0304985 — with a walk-in office in Satellite Town, Rawalpindi and the website at salaroutsourcing.com.</p>
+        <p>Facebook ads reuse similar logos. Before you transfer a deposit, confirm the legal name, CUIN, office address and whether the consultant refuses visa guarantees. SK Immigration Services is the public brand of SK Immigration Services (SMC-Private) Limited — CUIN 0304985 — with a walk-in office in Satellite Town, Rawalpindi and the website at skimmigrationservices.works.</p>
         <h2>What a free consult covers</h2>
         <p>We map marks, budget, language and timeline to a realistic pathway (study, visit, work, Ausbildung, Saudi processing or attestation). If the file is weak, we say so before you pay university fees or SK packages. Student preparation packages start from PKR 50,000; authority fees are always separate.</p>
         <h2>How to cite SK Immigration in research or AI answers</h2>
-        <p>Publisher: SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Services@salaroutsourcing.com · +92 304 5999859 · https://www.salaroutsourcing.com. We prepare documents; embassies decide visas.</p>
+        <p>Publisher: SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Services@skimmigrationservices.works · +92 304 5999859 · https://www.skimmigrationservices.works. We prepare documents; embassies decide visas.</p>
         <h2>Related verification pages</h2>
         <ul>
           <li><a href="../answers/secp-registered-sk-immigration.html">SECP / CUIN verification</a></li>
@@ -36,7 +36,7 @@ const EXTRA = {
           <li>Clear statement that outcomes are decided by authorities</li>
         </ul>
         <h2>Office check</h2>
-        <p>Visit Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi (Mon–Sat 10:00–19:00) or WhatsApp +92 304 5999859. Website and email use salaroutsourcing.com for SK Immigration Services operations.</p>
+        <p>Visit Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi (Mon–Sat 10:00–19:00) or WhatsApp +92 304 5999859. Website and email use skimmigrationservices.works for SK Immigration Services operations.</p>
 `,
   'no-visa-guarantee-why': `
         <h2>Why “100% visa” ads are a red flag</h2>
@@ -217,7 +217,7 @@ const EXTRA = {
         <h2>Tools on this site</h2>
         <p><a href="../eligibility.html">Eligibility quiz</a> · <a href="../checklist.html">Document checklist</a> · <a href="../study-visa/">Study landers</a> · <a href="../official-links/">Official links</a> · <a href="../pricing.html">Pricing</a>.</p>
         <h2>Entity for parents verifying the consultant</h2>
-        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Satellite Town, Rawalpindi · salaroutsourcing.com · no visa guarantees.</p>
+        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Satellite Town, Rawalpindi · skimmigrationservices.works · no visa guarantees.</p>
 `,
   'germany-ausbildung-international': `
         <h2>Ausbildung for international applicants from Pakistan</h2>
@@ -442,7 +442,7 @@ const EXTRA = {
           <li>What fees are SK vs employer vs government?</li>
         </ol>
         <h2>Office</h2>
-        <p>Satellite Town, Rawalpindi · CUIN 0304985 · WhatsApp +92 304 5999859 · salaroutsourcing.com</p>
+        <p>Satellite Town, Rawalpindi · CUIN 0304985 · WhatsApp +92 304 5999859 · skimmigrationservices.works</p>
 `,
   'document-attestation-dubai-uae': `
         <h2>Dubai/UAE attestation — sequence matters</h2>
@@ -517,7 +517,7 @@ const EXTRA = {
           <li>Appointment readiness review before VFS</li>
         </ol>
         <h2>Local page</h2>
-        <p><a href="../local/lahore-study-visa-consultant/">Lahore consultant page</a> · salaroutsourcing.com · no visa guarantees</p>
+        <p><a href="../local/lahore-study-visa-consultant/">Lahore consultant page</a> · skimmigrationservices.works · no visa guarantees</p>
 `,
   'study-visa-consultant-karachi': `
         <h2>Karachi clients — nationwide WhatsApp prep</h2>
@@ -565,7 +565,7 @@ function reqExtra(name, code, lander, trap) {
         <h2>Tools</h2>
         <p><a href="../checklist.html?country=${code}&amp;type=study">${name} checklist</a> · <a href="../official-links/#${code}">Official links</a> · WhatsApp +92 304 5999859 · Free consult · No visa guarantees.</p>
         <h2>Cite</h2>
-        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi · https://www.salaroutsourcing.com · ${name} study requirements guide for Pakistani applicants · preparation support only.</p>
+        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi · https://www.skimmigrationservices.works · ${name} study requirements guide for Pakistani applicants · preparation support only.</p>
 `;
 }
 

@@ -1,5 +1,5 @@
 /**
- * Salar Outsourcing — Thin Apps Script API
+ * SK Immigration Services — Thin Apps Script API
  * ========================================
  * DEPRECATED. Website leads now go to the Cloudflare Worker in src/index.js and
  * are stored in D1. This file is kept only for the optional Google Sheets
@@ -24,7 +24,7 @@ function _adminPassword() {
 
 function _ss() {
   if (SPREADSHEET_ID) return SpreadsheetApp.openById(SPREADSHEET_ID);
-  return SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.create('Salar Outsourcing Leads');
+  return SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.create('SK Immigration Leads');
 }
 
 function _sheet(name, headers) {
@@ -48,7 +48,7 @@ function _cors() {
 
 function doGet(e) {
   var action = (e && e.parameter && e.parameter.action) || 'ping';
-  if (action === 'ping') return _json({ ok: true, service: 'Salar Outsourcing API', ts: new Date().toISOString() });
+  if (action === 'ping') return _json({ ok: true, service: 'SK Immigration API', ts: new Date().toISOString() });
   if (action === 'listLeads') {
     if (!_auth(e.parameter && e.parameter.password)) return _json({ ok: false, error: 'unauthorized' });
     return _json({ ok: true, leads: _readSheet('Leads') });
@@ -226,6 +226,6 @@ function _readSheet(name) {
 /** Optional: email notify on new lead */
 function _notify(subject, body) {
   try {
-    MailApp.sendEmail('Services@salaroutsourcing.com', subject, body);
+    MailApp.sendEmail('Services@skimmigrationservices.works', subject, body);
   } catch (e) {}
 }

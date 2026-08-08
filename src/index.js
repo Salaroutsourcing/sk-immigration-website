@@ -54,8 +54,19 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    if (url.hostname === 'salaroutsourcing.com') {
-      url.hostname = 'www.salaroutsourcing.com';
+    // Apex → www on the new brand domain
+    if (url.hostname === 'skimmigrationservices.works') {
+      url.hostname = 'www.skimmigrationservices.works';
+      url.protocol = 'https:';
+      return Response.redirect(url.toString(), 301);
+    }
+
+    // Legacy domain → new brand domain (keep old zone routes until DNS is retired)
+    if (
+      url.hostname === 'salaroutsourcing.com' ||
+      url.hostname === 'www.salaroutsourcing.com'
+    ) {
+      url.hostname = 'www.skimmigrationservices.works';
       url.protocol = 'https:';
       return Response.redirect(url.toString(), 301);
     }

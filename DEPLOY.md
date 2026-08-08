@@ -1,4 +1,4 @@
-# Deploy Salar Outsourcing (free + fast)
+# Deploy SK Immigration Services (free + fast)
 
 > **After every production deploy:** follow [CLOUDFLARE-AI.md](CLOUDFLARE-AI.md) so AI crawlers are not blocked, then [GSC-MONITOR.md](GSC-MONITOR.md) for indexing. Brand-domain notes: [DOMAIN-MIGRATION.md](DOMAIN-MIGRATION.md).
 
@@ -21,10 +21,10 @@
 cd website
 git init
 git add .
-git commit -m "Initial Salar Outsourcing website"
+git commit -m "Initial SK Immigration Services website"
 # create repo on GitHub, then:
 git branch -M main
-git remote add origin https://github.com/YOUR_USER/salar-outsourcing.git
+git remote add origin https://github.com/YOUR_USER/sk-immigration-website.git
 git push -u origin main
 ```
 
@@ -33,24 +33,24 @@ git push -u origin main
 - Repo → **Settings → Pages**
 - Source: **Deploy from a branch**
 - Branch: `main` / root (or `/docs` if you move files)
-- Save — wait for `https://YOUR_USER.github.io/salar-outsourcing/`
+- Save — wait for `https://YOUR_USER.github.io/sk-immigration-website/`
 
 If the site is in a subfolder of a larger repo, set Pages root to `/website`.
 
-### 3. Cloudflare custom domain (salaroutsourcing.com)
+### 3. Cloudflare custom domain (skimmigrationservices.works)
 
 1. Add site in [Cloudflare](https://dash.cloudflare.com) (free plan).
 2. Point domain nameservers to Cloudflare.
 3. **DNS** → CNAME:
    - `www` → `YOUR_USER.github.io` (Proxied)
    - Or A/AAAA records per GitHub Pages docs for apex `@`
-4. GitHub Pages → Custom domain → `salaroutsourcing.com` / `www.salaroutsourcing.com`
+4. GitHub Pages → Custom domain → `skimmigrationservices.works` / `www.skimmigrationservices.works`
 5. Enable Cloudflare SSL (Full) + Always Use HTTPS
 6. Optional: Page Rules / Cache Everything for static assets
 
 ### 4. Forms / leads via Apps Script
 
-1. Open Google Drive → New Spreadsheet: `Salar Outsourcing Leads`
+1. Open Google Drive → New Spreadsheet: `SK Immigration Leads`
 2. **Extensions → Apps Script**
 3. Paste contents of `apps-script/Code.gs`
 4. **Deploy → New deployment → Web app**
@@ -74,7 +74,7 @@ Email notifications: uncomment / use `_notify()` in Code.gs if desired.
 1. Cloudflare Dashboard → **Workers & Pages → Create → Pages**
 2. Connect GitHub repo, root directory = `website` (or repo root if site is root)
 3. Build command: none (static) · Output: `/`
-4. Custom domain → add `salaroutsourcing.com`
+4. Custom domain → add `skimmigrationservices.works`
 
 ---
 

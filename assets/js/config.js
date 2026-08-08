@@ -2,7 +2,7 @@
  * SK Immigration Services — Site Configuration
  * Public brand: SK Immigration Services
  * Legal: SK Immigration Services (SMC-Private) Limited (CUIN 0304985)
- * Domain stays salaroutsourcing.com (website + email host — not a separate consultancy brand)
+ * Official domain: skimmigrationservices.works
  */
 window.SALAR_CONFIG = {
   brand: 'SK Immigration',
@@ -21,12 +21,12 @@ window.SALAR_CONFIG = {
     'SK Immigration Rawalpindi',
     'SK Consultant Rawalpindi',
   ],
-  parentLine: 'SK Immigration Services · CUIN 0304985 · salaroutsourcing.com',
+  parentLine: 'SK Immigration Services · CUIN 0304985 · skimmigrationservices.works',
   brandClarity:
-    'SK Immigration Services (also searched as SK Consultant) is the public brand of SK Immigration Services (SMC-Private) Limited (CUIN 0304985). The website and email use salaroutsourcing.com — same company, same Rawalpindi office. Official WhatsApp/phone: +92 304 5999859 only.',
+    'SK Immigration Services (also searched as SK Consultant) is the public brand of SK Immigration Services (SMC-Private) Limited (CUIN 0304985). Official website and email: skimmigrationservices.works — Rawalpindi office. Official WhatsApp/phone: +92 304 5999859 only.',
   tagline: "Pakistan's Trusted Study Visa & Immigration Partner",
-  domain: 'https://www.salaroutsourcing.com',
-  email: 'Services@salaroutsourcing.com',
+  domain: 'https://www.skimmigrationservices.works',
+  email: 'Services@skimmigrationservices.works',
   phone: '+92 304 5999859',
   phoneDisplay: '+92 304 5999859',
   phoneE164: '+923045999859',
