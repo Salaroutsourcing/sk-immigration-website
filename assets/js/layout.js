@@ -245,7 +245,9 @@
             <a href="${C().googleBusinessShare || 'https://share.google/hQzlV2rZbYtUzYZ9n'}" target="_blank" rel="noopener">Google Business</a>
             <a href="${href('privacy.html')}">Privacy Policy</a>
             <a href="${href('terms.html')}">Terms &amp; Conditions</a>
+            <a href="${href('local/')}">Cities we serve</a>
             <a href="${href('local/rawalpindi-study-visa-consultant/')}">Rawalpindi office</a>
+            <a href="${href('local/islamabad-study-visa-consultant/')}">Islamabad clients</a>
             <a href="${href('local/lahore-study-visa-consultant/')}">Lahore clients</a>
             <a href="${href('local/karachi-study-visa-consultant/')}">Karachi clients</a>
             <a href="${href('ur/')}">اردو</a>
