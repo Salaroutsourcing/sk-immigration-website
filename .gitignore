@@ -5,6 +5,10 @@
 .env*
 !.env.example
 
+# generated redirect site for the retired salaroutsourcing.com domain
+# (build with: npm run build:legacy-redirect)
+legacy-redirect/
+
 # os / editor cruft
 .DS_Store
 **/.DS_Store

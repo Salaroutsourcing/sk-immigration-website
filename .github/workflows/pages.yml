@@ -24,7 +24,7 @@ jobs:
         run: |
           rm -rf .git .github .cursor node_modules .wrangler .wrangler-logs
           rm -f wrangler.jsonc package.json package-lock.json schema.sql
-          rm -rf src scripts migrations apps-script
+          rm -rf src scripts migrations apps-script legacy-redirect
 
       - uses: actions/upload-pages-artifact@v3
         with:
