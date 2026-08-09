@@ -9,7 +9,7 @@
 | Website / email domain | **`skimmigrationservices.works`** |
 | Canonical URL | **`https://skimmigrationservices.works`** (apex — GitHub Pages primary) |
 | Hosting | **GitHub Pages** (`sk-immigration-website.github.io`) |
-| Analytics | **`G-WY6GEWLDEL`** |
+| Analytics | **`G-NLZG0RV6ZZ`** |
 | Legacy domain | **`salaroutsourcing.com`** — must 301 at registrar to the new apex |
 
 Searchers type “SK Immigration”, “study visa Rawalpindi”, etc. Entity clarity comes from **on-site NAP + CUIN + schema + trust.html**.

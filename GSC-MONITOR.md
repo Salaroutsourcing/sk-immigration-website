@@ -9,7 +9,7 @@ Use this weekly after deploy. Official domain: **skimmigrationservices.works** (
 3. Submit sitemap: `https://skimmigrationservices.works/sitemap.xml`
 4. Confirm `robots.txt` still allows GPTBot / Google-Extended (see `CLOUDFLARE-AI.md` only if you later put the domain on Cloudflare).
 5. Run local ops check: `node scripts/check-ai-ops.mjs` (optional live probes with network).
-6. GA measurement ID on live homepage must be `G-WY6GEWLDEL`.
+6. GA measurement ID on live homepage must be `G-NLZG0RV6ZZ`.
 
 ## Money keywords to track (Pakistan)
 

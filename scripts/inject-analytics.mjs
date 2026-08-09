@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 
-const GA_ID = 'G-WY6GEWLDEL';
+const GA_ID = 'G-NLZG0RV6ZZ';
 const SKIP_DIRS = new Set(['node_modules', '.git', '.wrangler', '.wrangler-logs', 'admin', 'apps-script', 'blog-posts']);
 
 const SNIPPET = `  <!-- Google tag (gtag.js) -->
