@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const SITE = 'https://skimmigrationservices.works';
+const SITE = 'https://immigration.salaroutsourcing.com';
 const TODAY = '2026-07-30';
 
 const esc = (s) =>
@@ -1078,7 +1078,7 @@ function answerPage(a) {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
   <link rel="stylesheet" href="../assets/css/main.css?v=iosbar3" />
   <script type="application/ld+json">${JSON.stringify(
-    faqSchema([{ q: a.q, a: a.short + ' Contact SK Immigration: https://skimmigrationservices.works · WhatsApp +92 304 5999859.' }])
+    faqSchema([{ q: a.q, a: a.short + ' Contact SK Immigration: https://immigration.salaroutsourcing.com · WhatsApp +92 304 5999859.' }])
   )}</script>
 </head>
 <body data-page="faq">
@@ -1167,7 +1167,7 @@ if (inject) {
 
 /* llms snippet */
 let llms = fs.readFileSync(path.join(ROOT, 'llms.txt'), 'utf8');
-const hubLine = '- Study Visa Pakistan hub: https://skimmigrationservices.works/study-visa/';
+const hubLine = '- Study Visa Pakistan hub: https://immigration.salaroutsourcing.com/study-visa/';
 const extraHubs = STUDY.slice(0, 8)
   .map((c) => `- ${c.name} Study Visa Pakistan: ${SITE}/study-visa/${c.slug}/`)
   .join('\n');

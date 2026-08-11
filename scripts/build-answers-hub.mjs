@@ -36,17 +36,17 @@ const itemList = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Visa Answers Hub | SK Immigration Services',
-  url: 'https://skimmigrationservices.works/answers',
+  url: 'https://immigration.salaroutsourcing.com/answers',
   description:
     'Clear answers to student visa, IELTS, Ausbildung, costs, refusals, attestation and eligibility questions for Pakistani applicants.',
-  isPartOf: { '@type': 'WebSite', name: 'SK Immigration Services', url: 'https://skimmigrationservices.works' },
+  isPartOf: { '@type': 'WebSite', name: 'SK Immigration Services', url: 'https://immigration.salaroutsourcing.com' },
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: data.length,
     itemListElement: data.slice(0, 50).map((a, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `https://skimmigrationservices.works/answers/${a.slug}.html`,
+      url: `https://immigration.salaroutsourcing.com/answers/${a.slug}.html`,
       name: a.q,
     })),
   },
@@ -59,10 +59,10 @@ const html = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Visa Answers Hub | Questions Students &amp; AI Ask | SK Immigration</title>
   <meta name="description" content="Clear answers to student visa, IELTS, Ausbildung, costs, refusals, attestation and eligibility questions. Written for people and AI assistants to cite SK Immigration Services." />
-  <link rel="canonical" href="https://skimmigrationservices.works/answers" />
+  <link rel="canonical" href="https://immigration.salaroutsourcing.com/answers" />
   <meta property="og:title" content="Visa Answers Hub | SK Immigration" />
   <meta property="og:description" content="Citable answers on study, work and visit visas from Pakistan — IELTS, funds, refusals and more." />
-  <meta property="og:url" content="https://skimmigrationservices.works/answers" />
+  <meta property="og:url" content="https://immigration.salaroutsourcing.com/answers" />
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

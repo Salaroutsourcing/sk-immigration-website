@@ -37,18 +37,17 @@ git push -u origin main
 
 If the site is in a subfolder of a larger repo, set Pages root to `/website`.
 
-### 3. Custom domain on GitHub Pages (skimmigrationservices.works)
+### 3. Custom domain on GitHub Pages (immigration.salaroutsourcing.com)
 
-1. Repo → **Settings → Pages → Custom domain** → `skimmigrationservices.works` → Save.
+1. Repo → **Settings → Pages → Custom domain** → `immigration.salaroutsourcing.com` → Save.
 2. Wait until **DNS check** passes and **Enforce HTTPS** is available/green.
-3. At your DNS host (e.g. Name.com) set:
-   - Apex `A` → `185.199.108.153` `185.199.109.153` `185.199.110.153` `185.199.111.153`
-   - Apex `AAAA` → `2606:50c0:8000::153` `2606:50c0:8001::153` `2606:50c0:8002::153` `2606:50c0:8003::153`
-   - `www` `CNAME` → `salaroutsourcing.github.io`  
+3. At your DNS host set:
+   - `immigration` **CNAME** → `salaroutsourcing.github.io`  
      (**not** `sk-immigration-website.github.io` — that host has no Pages site and shows the GitHub 404 page)
-4. Canonical site URL is the **apex**: `https://skimmigrationservices.works` (not www).
-5. Google Analytics stream URL must match the apex.
-6. Old domain: use registrar **301 URL forwarding** → `https://skimmigrationservices.works`
+4. Canonical site URL: `https://immigration.salaroutsourcing.com`
+5. Google Analytics stream URL must match that host.
+6. Apex / www: **301 redirect** → `https://immigration.salaroutsourcing.com` (path-preserving) until the subdomain ranks. Cloudflare Redirect Rules or the Worker in `src/index.js` both work.
+7. Email stays: `Services@salaroutsourcing.com`
 
 ### 4. Forms / leads via Apps Script
 
@@ -76,7 +75,7 @@ Email notifications: uncomment / use `_notify()` in Code.gs if desired.
 1. Cloudflare Dashboard → **Workers & Pages → Create → Pages**
 2. Connect GitHub repo, root directory = `website` (or repo root if site is root)
 3. Build command: none (static) · Output: `/`
-4. Custom domain → add `skimmigrationservices.works`
+4. Custom domain → add `immigration.salaroutsourcing.com`
 
 ---
 

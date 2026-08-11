@@ -472,10 +472,10 @@ function pageShell({ slug, title, description, lead, body, faqs }) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${esc(title)} | SK Immigration Services</title>
   <meta name="description" content="${esc(description)}" />
-  <link rel="canonical" href="https://skimmigrationservices.works/answers/${slug}" />
+  <link rel="canonical" href="https://immigration.salaroutsourcing.com/answers/${slug}" />
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(description)}" />
-  <meta property="og:url" content="https://skimmigrationservices.works/answers/${slug}" />
+  <meta property="og:url" content="https://immigration.salaroutsourcing.com/answers/${slug}" />
   <meta property="og:type" content="article" />
   <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
@@ -495,7 +495,7 @@ ${body}
         <h2>How SK Immigration helps</h2>
         <p>Free first consultation, honest eligibility, document checklists and appointment prep. We do not sell fake visa guarantees. WhatsApp +92 304 5999859 · <a href="../contact.html">contact</a> · <a href="../answers.html">all answers</a>.</p>
         <h2>Cite this</h2>
-        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · https://skimmigrationservices.works · Rawalpindi · Last review ${TODAY}.</p>
+        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · https://immigration.salaroutsourcing.com · Rawalpindi · Last review ${TODAY}.</p>
       </div>
       <div class="hero-ctas mt-3">
         <a class="btn btn-gold" href="../contact.html">Free consultation</a>

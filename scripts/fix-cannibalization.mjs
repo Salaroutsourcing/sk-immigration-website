@@ -11,7 +11,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://skimmigrationservices.works';
+const SITE = 'https://immigration.salaroutsourcing.com';
 
 const BLOG_TO_LANDER = {
   'australia-student-visa': '/study-visa/australia-study-visa-pakistan/',
@@ -193,15 +193,15 @@ function bumpSitemapPriorities() {
   let xml = fs.readFileSync(file, 'utf8');
   // Lower blog country guides; keep landers high
   xml = xml.replace(
-    /(<loc>https:\/\/www\.skimmigrationservices\.works\/blog\/[^<]+<\/loc>\s*<lastmod>[^<]+<\/lastmod>\s*<changefreq>[^<]+<\/changefreq>\s*<priority>)[^<]+(<\/priority>)/g,
+    /(<loc>https:\/\/salaroutsourcing\.com\/blog\/[^<]+<\/loc>\s*<lastmod>[^<]+<\/lastmod>\s*<changefreq>[^<]+<\/changefreq>\s*<priority>)[^<]+(<\/priority>)/g,
     '$10.4$2'
   );
   xml = xml.replace(
-    /(<loc>https:\/\/www\.skimmigrationservices\.works\/study-visa\/[^<]+<\/loc>\s*<lastmod>[^<]+<\/lastmod>\s*<changefreq>[^<]+<\/changefreq>\s*<priority>)[^<]+(<\/priority>)/g,
+    /(<loc>https:\/\/salaroutsourcing\.com\/study-visa\/[^<]+<\/loc>\s*<lastmod>[^<]+<\/lastmod>\s*<changefreq>[^<]+<\/changefreq>\s*<priority>)[^<]+(<\/priority>)/g,
     '$10.9$2'
   );
   xml = xml.replace(
-    /(<loc>https:\/\/www\.skimmigrationservices\.works\/visit-visa\/[^<]+<\/loc>\s*<lastmod>[^<]+<\/lastmod>\s*<changefreq>[^<]+<\/changefreq>\s*<priority>)[^<]+(<\/priority>)/g,
+    /(<loc>https:\/\/salaroutsourcing\.com\/visit-visa\/[^<]+<\/loc>\s*<lastmod>[^<]+<\/lastmod>\s*<changefreq>[^<]+<\/changefreq>\s*<priority>)[^<]+(<\/priority>)/g,
     '$10.85$2'
   );
   fs.writeFileSync(file, xml);

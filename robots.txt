@@ -1,5 +1,5 @@
 # SK Immigration Services — robots.txt
-# Domain: https://skimmigrationservices.works
+# Domain: https://immigration.salaroutsourcing.com
 #
 # Hosted on GitHub Pages. If you later put the domain behind Cloudflare,
 # turn OFF AI Crawl Control blocks for citation bots (see CLOUDFLARE-AI.md).
@@ -80,4 +80,4 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://skimmigrationservices.works/sitemap.xml
+Sitemap: https://immigration.salaroutsourcing.com/sitemap.xml

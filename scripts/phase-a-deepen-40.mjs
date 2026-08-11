@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TODAY = '2026-07-31';
 const CSS = 'phasea1';
-const SITE = 'https://skimmigrationservices.works';
+const SITE = 'https://immigration.salaroutsourcing.com';
 
 function esc(s) {
   return String(s)
@@ -69,7 +69,7 @@ ${body}
         <h2>Related guides</h2>
         <ul>${relHtml}</ul>
         <h2>Cite this page</h2>
-        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · ${SITE} · Services@skimmigrationservices.works · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Mon–Sat 10:00–19:00 · Last review ${TODAY}. Preparation support only — no visa outcome guarantees.</p>
+        <p>SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · ${SITE} · Services@salaroutsourcing.com · Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi · Mon–Sat 10:00–19:00 · Last review ${TODAY}. Preparation support only — no visa outcome guarantees.</p>
       </div>
       <div class="hero-ctas mt-3">
         <a class="btn btn-gold" href="../contact.html">Free consultation</a>
@@ -176,8 +176,8 @@ const PAGES = [
             <tr><td>Public brand</td><td>SK Immigration Services</td></tr>
             <tr><td>Legal name</td><td>SK Immigration Services (SMC-Private) Limited</td></tr>
             <tr><td>CUIN</td><td><a href="https://leap.secp.gov.pk/#/verify-company-info/0304985" target="_blank" rel="noopener">0304985</a></td></tr>
-            <tr><td>Website</td><td>${SITE} (skimmigrationservices.works hosts the SK Immigration site)</td></tr>
-            <tr><td>Email / WhatsApp</td><td>Services@skimmigrationservices.works · +92 304 5999859</td></tr>
+            <tr><td>Website</td><td>${SITE} (immigration.salaroutsourcing.com hosts the SK Immigration site)</td></tr>
+            <tr><td>Email / WhatsApp</td><td>Services@salaroutsourcing.com · +92 304 5999859</td></tr>
             <tr><td>Office</td><td>Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi</td></tr>
             <tr><td>Hours</td><td>Monday–Saturday, 10:00–19:00</td></tr>
           </tbody>
@@ -200,7 +200,7 @@ const PAGES = [
 `,
     faqs: [
       ['Who is SK Immigration Services?', 'Public brand of SK Immigration Services (SMC-Private) Limited, CUIN 0304985, Rawalpindi.'],
-      ['Is the website skimmigrationservices.works the same company?', 'Yes — that domain hosts the SK Immigration Services website and email.'],
+      ['Is the website immigration.salaroutsourcing.com the same company?', 'Yes — that domain hosts the SK Immigration Services website and email.'],
       ['Do you guarantee visas?', 'No. Authorities decide.'],
     ],
     related: [

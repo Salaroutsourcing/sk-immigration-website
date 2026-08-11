@@ -1,7 +1,8 @@
 # SK Immigration Services website
 
 Public site for **SK Immigration Services** (legal: SK Immigration Services (SMC-Private) Limited, CUIN 0304985).  
-Official domain: **`skimmigrationservices.works`** (`https://skimmigrationservices.works`).
+Official domain: **`immigration.salaroutsourcing.com`** (`https://immigration.salaroutsourcing.com`).  
+Email: **`Services@salaroutsourcing.com`**.
 
 - Static HTML + Cloudflare Worker (`wrangler` deploy)
 - Dark/light mode, glass UI, mobile-first
@@ -10,8 +11,8 @@ Official domain: **`skimmigrationservices.works`** (`https://skimmigrationservic
 
 ## Key URLs
 
-- Site: https://skimmigrationservices.works/
-- Trust / verify: https://skimmigrationservices.works/trust.html
+- Site: https://immigration.salaroutsourcing.com/
+- Trust / verify: https://immigration.salaroutsourcing.com/trust.html
 - Deploy notes: `DEPLOY.md` · AI crawl: `CLOUDFLARE-AI.md` · GSC: `GSC-MONITOR.md`
 
 ## Folder structure

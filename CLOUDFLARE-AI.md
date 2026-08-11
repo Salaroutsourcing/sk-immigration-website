@@ -6,7 +6,7 @@ Cloudflare’s managed **AI Crawl Control** feature can still **prepend Disallow
 
 ## Fix (dashboard) — do this after every plan change
 
-1. Open [Cloudflare Dashboard](https://dash.cloudflare.com/) → select **skimmigrationservices.works**.
+1. Open [Cloudflare Dashboard](https://dash.cloudflare.com/) → select **immigration.salaroutsourcing.com**.
 2. Go to **Security** → **Settings** / **AI Crawl Control** (wording varies by plan).
 3. **Allow / do not block** these bots for citation:
    - Google-Extended
@@ -18,9 +18,9 @@ Cloudflare’s managed **AI Crawl Control** feature can still **prepend Disallow
 5. Save, wait 2–5 minutes, then verify from your laptop:
 
 ```bash
-curl -sL https://skimmigrationservices.works/robots.txt | head -100
-curl -sI https://skimmigrationservices.works/llms.txt | head -15
-curl -sI -A "GPTBot" https://skimmigrationservices.works/answers | head -15
+curl -sL https://immigration.salaroutsourcing.com/robots.txt | head -100
+curl -sI https://immigration.salaroutsourcing.com/llms.txt | head -15
+curl -sI -A "GPTBot" https://immigration.salaroutsourcing.com/answers | head -15
 ```
 
 You should **not** see Cloudflare Managed `Disallow: /` blocks for GPTBot / Google-Extended ahead of your Allow rules. `llms.txt` and `/answers` should return **200**.
@@ -29,9 +29,9 @@ You should **not** see Cloudflare Managed `Disallow: /` blocks for GPTBot / Goog
 
 1. Resubmit sitemap in Google Search Console (`/sitemap.xml`).
 2. Request indexing for `/`, `/trust.html`, `/faq`, `/answers/sk-consultant`, `/answers`, `/official-links/`, `/study-visa/`, `/work-permit/`, `/visit-visa/`, and top country pages.
-3. Spot-check that ChatGPT / Perplexity can fetch `https://skimmigrationservices.works/llms.txt` and `/trust.html`.
+3. Spot-check that ChatGPT / Perplexity can fetch `https://immigration.salaroutsourcing.com/llms.txt` and `/trust.html`.
 4. Re-run `node scripts/check-ai-ops.mjs --live` after deploy.
-5. **Google Business Profile (required for GEO):** set phone to **+92 304 5999859** only, website `https://skimmigrationservices.works`, same Satellite Town NAP as `trust.html`, and collect real reviews. Wrong GBP phone blocks brand + AI trust.
+5. **Google Business Profile (required for GEO):** set phone to **+92 304 5999859** only, website `https://immigration.salaroutsourcing.com`, same Satellite Town NAP as `trust.html`, and collect real reviews. Wrong GBP phone blocks brand + AI trust.
 
 ## Content-Signal note
 

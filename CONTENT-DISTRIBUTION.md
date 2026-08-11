@@ -38,4 +38,4 @@ Each `/guides/*` page already includes a **transcript template** — paste the s
 
 ## Monitor
 
-Track GSC impressions for the money keywords in `GSC-MONITOR.md` and whether AI answers cite `skimmigrationservices.works`.
+Track GSC impressions for the money keywords in `GSC-MONITOR.md` and whether AI answers cite `immigration.salaroutsourcing.com`.

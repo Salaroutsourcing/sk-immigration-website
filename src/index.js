@@ -54,19 +54,12 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // www → apex (GitHub Pages primary host is the apex)
-    if (url.hostname === 'www.skimmigrationservices.works') {
-      url.hostname = 'skimmigrationservices.works';
-      url.protocol = 'https:';
-      return Response.redirect(url.toString(), 301);
-    }
-
-    // Legacy domain → new brand domain (keep old zone routes until DNS is retired)
+    // Apex / www → immigration subdomain (canonical host until subdomain ranks)
     if (
       url.hostname === 'salaroutsourcing.com' ||
       url.hostname === 'www.salaroutsourcing.com'
     ) {
-      url.hostname = 'skimmigrationservices.works';
+      url.hostname = 'immigration.salaroutsourcing.com';
       url.protocol = 'https:';
       return Response.redirect(url.toString(), 301);
     }

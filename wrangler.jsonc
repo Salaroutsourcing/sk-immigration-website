@@ -22,12 +22,8 @@
   ],
   "routes": [
     {
-      "pattern": "www.skimmigrationservices.works/*",
-      "zone_name": "skimmigrationservices.works"
-    },
-    {
-      "pattern": "skimmigrationservices.works/*",
-      "zone_name": "skimmigrationservices.works"
+      "pattern": "immigration.salaroutsourcing.com/*",
+      "zone_name": "salaroutsourcing.com"
     },
     {
       "pattern": "www.salaroutsourcing.com/*",

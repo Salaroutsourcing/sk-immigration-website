@@ -226,6 +226,6 @@ function _readSheet(name) {
 /** Optional: email notify on new lead */
 function _notify(subject, body) {
   try {
-    MailApp.sendEmail('Services@skimmigrationservices.works', subject, body);
+    MailApp.sendEmail('Services@salaroutsourcing.com', subject, body);
   } catch (e) {}
 }

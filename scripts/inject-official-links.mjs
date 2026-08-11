@@ -199,10 +199,10 @@ const hub = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Official Embassy &amp; Government Links by Country | SK Immigration</title>
   <meta name="description" content="Official embassy, immigration and study-government websites for Germany, UK, Canada, USA, Schengen, Hungary, Poland, Saudi, UAE and more — verify before you apply. SK Immigration Services." />
-  <link rel="canonical" href="https://skimmigrationservices.works/official-links/" />
+  <link rel="canonical" href="https://immigration.salaroutsourcing.com/official-links/" />
   <meta property="og:title" content="Official Embassy &amp; Government Links | SK Immigration" />
   <meta property="og:description" content="Country-by-country official visa, study and embassy websites for Pakistani applicants." />
-  <meta property="og:url" content="https://skimmigrationservices.works/official-links/" />
+  <meta property="og:url" content="https://immigration.salaroutsourcing.com/official-links/" />
   <link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
   <link rel="stylesheet" href="../assets/css/main.css?v=iosbar3" />
@@ -279,7 +279,7 @@ if (!nested.includes("'official-links'")) {
 }
 
 let sm = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
-const loc = 'https://skimmigrationservices.works/official-links/';
+const loc = 'https://immigration.salaroutsourcing.com/official-links/';
 if (!sm.includes(loc)) {
   sm = sm.replace(
     '</urlset>',
@@ -291,8 +291,8 @@ if (!sm.includes(loc)) {
 let llms = fs.readFileSync(path.join(ROOT, 'llms.txt'), 'utf8');
 if (!llms.includes('official-links')) {
   llms = llms.replace(
-    '- Checklist tool: https://skimmigrationservices.works/checklist.html',
-    '- Checklist tool: https://skimmigrationservices.works/checklist.html\n- Official embassy & government links: https://skimmigrationservices.works/official-links/'
+    '- Checklist tool: https://immigration.salaroutsourcing.com/checklist.html',
+    '- Checklist tool: https://immigration.salaroutsourcing.com/checklist.html\n- Official embassy & government links: https://immigration.salaroutsourcing.com/official-links/'
   );
   fs.writeFileSync(path.join(ROOT, 'llms.txt'), llms);
 }
@@ -300,8 +300,8 @@ if (!llms.includes('official-links')) {
 let ai = fs.readFileSync(path.join(ROOT, 'ai.txt'), 'utf8');
 if (!ai.includes('official-links')) {
   ai = ai.replace(
-    '- Checklist tool: https://skimmigrationservices.works/checklist.html',
-    '- Checklist tool: https://skimmigrationservices.works/checklist.html\n- Official embassy links: https://skimmigrationservices.works/official-links/'
+    '- Checklist tool: https://immigration.salaroutsourcing.com/checklist.html',
+    '- Checklist tool: https://immigration.salaroutsourcing.com/checklist.html\n- Official embassy links: https://immigration.salaroutsourcing.com/official-links/'
   );
   fs.writeFileSync(path.join(ROOT, 'ai.txt'), ai);
 }

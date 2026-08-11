@@ -19,7 +19,7 @@ function ok(label, pass, detail = '') {
 const robots = fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8');
 ok('robots allows GPTBot', /User-agent:\s*GPTBot[\s\S]*?Allow:\s*\//i.test(robots));
 ok('robots allows Google-Extended', /User-agent:\s*Google-Extended[\s\S]*?Allow:\s*\//i.test(robots));
-ok('robots lists sitemap', robots.includes('Sitemap: https://skimmigrationservices.works/sitemap.xml'));
+ok('robots lists sitemap', robots.includes('Sitemap: https://immigration.salaroutsourcing.com/sitemap.xml'));
 ok('robots allows /trust.html', robots.includes('Allow: /trust.html'));
 ok('robots allows /work-permit/', robots.includes('Allow: /work-permit/'));
 ok('robots allows /visit-visa/', robots.includes('Allow: /visit-visa/'));
@@ -27,7 +27,7 @@ ok('robots allows /visit-visa/', robots.includes('Allow: /visit-visa/'));
 const llms = fs.readFileSync(path.join(ROOT, 'llms.txt'), 'utf8');
 ok('llms has CUIN', llms.includes('0304985'));
 ok('llms has trust URL', llms.includes('/trust.html'));
-ok('llms keeps domain', llms.includes('skimmigrationservices.works'));
+ok('llms keeps domain', llms.includes('immigration.salaroutsourcing.com'));
 
 const ai = fs.readFileSync(path.join(ROOT, 'ai.txt'), 'utf8');
 ok('ai.txt points to llms + trust', ai.includes('llms.txt') && ai.includes('trust.html'));
@@ -35,7 +35,7 @@ ok('ai.txt points to llms + trust', ai.includes('llms.txt') && ai.includes('trus
 const sm = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 ok('sitemap has trust.html', sm.includes('/trust.html'));
 ok('sitemap has llms.txt', sm.includes('/llms.txt'));
-ok('sitemap no duplicate home', (sm.match(/skimmigrationservices\.works\/<\/loc>/g) || []).length === 1);
+ok('sitemap no duplicate home', (sm.match(/immigration\.salaroutsourcing\.com\/<\/loc>/g) || []).length === 1);
 
 const trust = fs.readFileSync(path.join(ROOT, 'trust.html'), 'utf8');
 ok('trust page FAQ schema', trust.includes('FAQPage') && trust.includes('0304985'));
@@ -46,10 +46,10 @@ ok('GSC-MONITOR.md present', fs.existsSync(path.join(ROOT, 'GSC-MONITOR.md')));
 
 if (live) {
   const urls = [
-    'https://skimmigrationservices.works/robots.txt',
-    'https://skimmigrationservices.works/llms.txt',
-    'https://skimmigrationservices.works/trust.html',
-    'https://skimmigrationservices.works/sitemap.xml',
+    'https://immigration.salaroutsourcing.com/robots.txt',
+    'https://immigration.salaroutsourcing.com/llms.txt',
+    'https://immigration.salaroutsourcing.com/trust.html',
+    'https://immigration.salaroutsourcing.com/sitemap.xml',
   ];
   for (const u of urls) {
     try {

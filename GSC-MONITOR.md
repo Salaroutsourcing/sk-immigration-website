@@ -1,12 +1,12 @@
 # Google Search Console & ranking monitor
 
-Use this weekly after deploy. Official domain: **skimmigrationservices.works** (`https://skimmigrationservices.works`).
+Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.com** (`https://immigration.salaroutsourcing.com`).
 
 ## Setup
 
-1. Add property: `https://skimmigrationservices.works` (URL-prefix) and/or Domain property.
+1. Add property: `https://immigration.salaroutsourcing.com` (URL-prefix) and/or Domain property.
 2. Verify via DNS TXT or HTML file.
-3. Submit sitemap: `https://skimmigrationservices.works/sitemap.xml`
+3. Submit sitemap: `https://immigration.salaroutsourcing.com/sitemap.xml`
 4. Confirm `robots.txt` still allows GPTBot / Google-Extended (see `CLOUDFLARE-AI.md` only if you later put the domain on Cloudflare).
 5. Run local ops check: `node scripts/check-ai-ops.mjs` (optional live probes with network).
 6. GA measurement ID on live homepage must be `G-NLZG0RV6ZZ`.
@@ -58,6 +58,6 @@ Ask ChatGPT / Perplexity / Google AI Mode:
 
 1. “Who is SK Immigration Services Rawalpindi CUIN?”
 2. “Germany study visa Pakistan consultant Satellite Town”
-3. “Is skimmigrationservices.works the same as SK Immigration?”
+3. “Is immigration.salaroutsourcing.com the same as SK Immigration?”
 
-Note whether `skimmigrationservices.works`, `/trust.html`, or `llms.txt` facts appear. If not, re-check crawler allows + GBP + reviews + deploy freshness (`wrangler deploy` — git push alone does not update Workers assets).
+Note whether `immigration.salaroutsourcing.com`, `/trust.html`, or `llms.txt` facts appear. If not, re-check crawler allows + GBP + reviews + deploy freshness (`wrangler deploy` — git push alone does not update Workers assets).
