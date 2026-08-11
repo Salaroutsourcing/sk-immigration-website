@@ -10,7 +10,7 @@
 | Email | **`Services@salaroutsourcing.com`** |
 | Hosting | **GitHub Pages** (org: Salaroutsourcing) |
 | Analytics | **`G-NLZG0RV6ZZ`** |
-| Apex / www | **301 → immigration subdomain** until the subdomain ranks |
+| Apex / www | Temporary redirect → immigration subdomain until it ranks |
 
 ## Decision (2026-08-11)
 
@@ -18,21 +18,17 @@
 
 Use that host in canonicals, sitemap, schema, GBP, Analytics, `ai.txt`, and `llms.txt`. Keep email on the parent domain: `Services@salaroutsourcing.com`.
 
-On-site phrasing:
-
-> SK Immigration Services is the public brand of SK Immigration Services (SMC-Private) Limited (CUIN 0304985). Official website: immigration.salaroutsourcing.com · Email: Services@salaroutsourcing.com — same company, same Rawalpindi office.
-
-## Live checklist (GitHub Pages)
+## Live checklist (GitHub Pages only — no Cloudflare required)
 
 1. Repo → Settings → Pages → Custom domain = `immigration.salaroutsourcing.com` → Wait until HTTPS is green.
 2. DNS at registrar for zone `salaroutsourcing.com`:
-   - `immigration` **CNAME** → `salaroutsourcing.github.io` (or the Pages host GitHub shows for this repo)
-3. Apex / www temporary SEO bridge (until subdomain ranks):
-   - Prefer Cloudflare Redirect Rule: `https://salaroutsourcing.com/*` and `https://www.salaroutsourcing.com/*` → `https://immigration.salaroutsourcing.com/${1}` (301, preserve query)
-   - Or deploy Worker routes in `wrangler.jsonc` / `src/index.js` (already redirects apex + www → immigration)
+   - `immigration` **CNAME** → `salaroutsourcing.github.io`
+3. Apex / www temporary SEO bridge (until subdomain ranks), pick one:
+   - Registrar **URL forward / redirect** (path-preserving if available) → `https://immigration.salaroutsourcing.com`
+   - Or run `npm run build:legacy-redirect` and publish the stubs from a separate Pages repo whose custom domain is `salaroutsourcing.com` / `www`
 4. Google Analytics stream URL: `https://immigration.salaroutsourcing.com`
 5. Google Business Profile website: `https://immigration.salaroutsourcing.com`
-6. Search Console: verify `https://immigration.salaroutsourcing.com` + submit `https://immigration.salaroutsourcing.com/sitemap.xml`
+6. Search Console: verify subdomain + submit `https://immigration.salaroutsourcing.com/sitemap.xml`
 7. Email stays: `Services@salaroutsourcing.com`
 
 ## Do not do
