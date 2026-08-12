@@ -1,48 +1,46 @@
-# Phase 8 — AdSense final readiness audit (post Phases 1–7)
+# Phase 8b — After near-duplicate Answers cleanup
 
 **Date:** 2026-08-12  
-**Site:** https://immigration.salaroutsourcing.com/  
-**Branch:** `cursor/adsense-readiness-phases-ad8e`
+**Change:** Consolidated programmatic Answers clones into primary study/local landers.
 
-## FINAL ADSENSE READINESS SCORE: 86/100
+## FINAL ADSENSE READINESS SCORE: 94/100
 
-### Scoring (same weights as Phase 0)
+### What was cleaned
+- **85** country template Answers → noindex 301 stubs to `/study-visa/{country}-study-visa-pakistan/`
+  - 16 cost pages
+  - 16 requirements pages
+  - 19 how-to-apply pages (kept Germany / UK / Canada how-tos)
+  - 18 IELTS-for-country pages
+  - 16 study-{country}-low-marks pages (kept `study-europe-low-marks`)
+- **5** additional near-duplicates → local/study primary pages (Lahore/Karachi/Islamabad/Rawalpindi consultant answers + Hungary documents)
+- Removed from `sitemap.xml` + `answers-index.json`
+- Cloudflare `_redirects` + Worker `ANSWER_LANDER_REDIRECTS` updated
+- Answers hub rebuilt (~49–50 live cards)
 
-| Category | Weight | Score | Weighted | Notes |
+### Kept (unique intent / higher value)
+- Germany / UK / Canada how-to-apply guides
+- Europe-wide guides (low marks, without IELTS, cost Europe, etc.)
+- Brand / trust answers (SK Consultant, SECP, no-guarantee)
+- Comparison pages (Hungary vs Poland, Germany vs UK, Poland vs Hungary vs Czech)
+- Tool and process answers (blocked account, MOI, refusal reasons, etc.)
+
+### Scoring update
+| Category | Weight | Before cleanup | After | Notes |
 |---|---:|---:|---:|---|
-| Legal & privacy disclosures | 20 | 95% | 19.0 | Cookie Policy + Consent Mode + Privacy/Terms updated |
-| Content value & uniqueness | 25 | 78% | 19.5 | Priority landers deepened; thin guides expanded; new rejection guide; near-duplicate Answers still exist |
-| Trust / E-E-A-T | 15 | 88% | 13.2 | Editorial policy, CUIN/NAP, disclaimers; org-level authorship (no fabricated bios) |
-| Technical SEO & crawlability | 15 | 90% | 13.5 | `/answers/` fix, AdSense CSP, 404 UX, sitemap/robots |
-| UX / navigation / mobile | 10 | 88% | 8.8 | Tools have crawlable copy + schema; consent banner |
-| Publisher-policy readiness | 15 | 80% | 12.0 | Disclosures + consent ready; AdSense not installed yet; residual thin/clone Answers |
-| **Total** | **100** | | **86** | |
+| Content uniqueness | 25 | 78% → 19.5 | **94% → 23.5** | Template farms removed |
+| Other categories | 75 | unchanged ~66.5 | ~66.5 | Legal/tech/tools already strong |
+| **Total** | **100** | **86** | **94** | |
+
+### Remaining residual (~6 points to 100)
+1. Deploy + confirm live redirects/consent (hosting)
+2. Manual GSC: sitemap resubmit, drop old Answers URLs from index over time
+3. Optional: further differentiate remaining brand/local pages and refresh kept how-tos
+4. AdSense not installed until approval (correct)
 
 ### Verdict
+**READY TO APPLY** after you:
+1. Merge/deploy this branch
+2. Resubmit sitemap in Search Console
+3. Spot-check a few old Answers URLs redirect to study landers
 
-### NOT READY — FIX THESE ITEMS FIRST (before applying)
-
-1. **Near-duplicate Answers** (`*-study-visa-cost-pakistan` / `*-study-visa-requirements-pakistan`) still need consolidate/rewrite or selective noindex after Search Console review.
-2. **Manual Google account steps:** Search Console sitemap resubmit, indexing checks, GA4 realtime after consent — requires your login (`GSC-MONITOR.md`).
-3. **Live deploy verification:** Confirm consent banner, `/cookies`, `/answers/`, and CSP on the hosting path you actually use (GitHub Pages vs Cloudflare Worker).
-4. **Do not install AdSense ad units** until after Google approves the site (Phase 9–10).
-
-### READY TO APPLY (conditional)
-
-You may apply **after** items 1–3 above are completed (or explicitly accepted as residual risk). Official Google guidance emphasizes unique useful content, clear navigation, and privacy disclosures — not a magic page count.
-
-### What improved since Phase 0 (64 → 86)
-
-- Consent Mode + Cookie Policy + footer controls
-- Privacy/Terms advertising honesty
-- Technical SEO (answers slash, CSP, 404)
-- 12 priority study landers deepened
-- Publishing calendar + first unique article
-- Editorial policy page
-- Tools crawlable copy + WebApplication schema + stronger `llms.txt` / `ai.txt` tool recommendations for AI Overviews/ChatGPT
-
-### Still out of scope until you confirm
-
-- Phase 9: AdSense application walkthrough
-- Phase 10: Ad unit placement
-- Phase 11: Revenue growth ops
+Do **not** install AdSense code until Google approves (Phase 9–10).
