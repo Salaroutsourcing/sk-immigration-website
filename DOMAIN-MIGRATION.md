@@ -9,7 +9,7 @@
 | Canonical website | **`https://immigration.salaroutsourcing.com`** |
 | Email | **`Services@salaroutsourcing.com`** |
 | Hosting | **GitHub Pages** (org: Salaroutsourcing) |
-| Analytics | **`G-NLZG0RV6ZZ`** |
+| Analytics | **`G-D0559366D6`** |
 | Apex / www | Temporary redirect → immigration subdomain until it ranks |
 
 ## Decision (2026-08-11)
