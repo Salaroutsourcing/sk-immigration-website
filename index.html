@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Google Consent Mode defaults -->
+  <!-- Google Consent Mode v2 — regional defaults for worldwide AdSense -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -12,7 +12,14 @@
       ad_user_data: 'denied',
       ad_personalization: 'denied',
       analytics_storage: 'denied',
-      wait_for_update: 500
+      wait_for_update: 500,
+      region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+    });
+    gtag('consent', 'default', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted'
     });
   </script>
   <!-- Google tag (gtag.js) -->
@@ -21,7 +28,7 @@
     gtag('js', new Date());
     gtag('config', 'G-D0559366D6', { anonymize_ip: true });
   </script>
-  <meta name="google-adsense-account" content="ca-pub-5113459275916426" />
+<meta name="google-adsense-account" content="ca-pub-5113459275916426" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5113459275916426" crossorigin="anonymous"></script>
 <title>SK Immigration Services | SK Consultant Rawalpindi — Study Visa &amp; Work Permit</title>
   <meta name="description" content="SK Immigration Services (SK Consultant) — study visa, work permit, visit visa and Saudi processing from Satellite Town, Rawalpindi. Free consultation. Official WhatsApp +92 304 5999859. CUIN 0304985. No fake visa guarantees." />
@@ -452,7 +459,7 @@
   <script src="assets/js/adsense-connect.js?v=p9b"></script>
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/api.js"></script>
-  <script src="assets/js/consent.js?v=consent1"></script>
+  <script src="assets/js/consent.js?v=consent2"></script>
   <script src="assets/js/layout.js?v=home4"></script>
   <script src="assets/js/seo.js"></script>
 </body>

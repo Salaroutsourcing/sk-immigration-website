@@ -59,9 +59,9 @@ Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.co
 - Consent Mode defaults deny analytics/ad storage until the visitor opts in (`assets/js/consent.js`)
 - Cookie Policy: `/cookies.html`
 - Do not remove GA or consent scripts without checking Privacy Policy wording
-- AdSense pub `ca-pub-5113459275916426` live on immigration host (script + ads.txt + Auto ads flag)
-- AdSense **Sites** approval stays on root `salaroutsourcing.com` / www (Google rule)
-- Consent Mode still defaults advertising storage to denied until opt-in
+- AdSense pub `ca-pub-5113459275916426` live (script + ads.txt + Auto ads)
+- AdSense **Sites** approval stays on root `salaroutsourcing.com` / www
+- Consent Mode: **granted worldwide** except EEA/UK/CH (deny until opt-in + enable Google Privacy & messaging CMP for EU personalised ads)
 
 ## Manual account checklist (needs your Google login)
 

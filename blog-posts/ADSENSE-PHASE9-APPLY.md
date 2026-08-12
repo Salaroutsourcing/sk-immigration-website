@@ -1,31 +1,37 @@
-# Phase 9 — AdSense (subdomain complete)
+# Phase 9 — AdSense worldwide earnings
 
 **Publisher:** `ca-pub-5113459275916426`  
-**Content host:** https://immigration.salaroutsourcing.com/  
-**AdSense Sites entry:** root domain `salaroutsourcing.com` / `www` (Google does not accept subdomains as separate Sites)
+**Ads host:** https://immigration.salaroutsourcing.com/  
+**AdSense Sites entry:** root domain `salaroutsourcing.com` / www (Google rule)
 
-## Subdomain status — DONE
+## Goal
+Earn from AdSense for visitors **in any country**, while staying compliant where Google requires a certified CMP (EEA / UK / Switzerland).
 
-| Item | Live |
-|------|------|
-| `ads.txt` | https://immigration.salaroutsourcing.com/ads.txt |
-| Ownership meta | `google-adsense-account` = ca-pub-5113459275916426 |
-| Client script | `adsbygoogle.js?client=ca-pub-5113459275916426` sitewide |
-| Auto ads flag | `SALAR_CONFIG.adsense.autoAds = true` |
-| Consent Mode | ad_storage denied until visitor opts in |
-| CSP | allows pagead / googlesyndication |
+## Subdomain — live setup
 
-Google approves the **main domain**; the same pub ID on this subdomain is enough for ads to serve here. No separate subdomain site add is required.
+| Piece | Status |
+|-------|--------|
+| Client script + meta | Sitewide `ca-pub-5113459275916426` |
+| Auto ads | `autoAds: true` |
+| ads.txt | `/ads.txt` |
+| Consent Mode | **Regional**: deny EEA/UK/CH; **grant rest of world** (Pakistan, Gulf, US, etc.) |
+| Cookie banner | Only for regulated-region hint; footer Cookie settings always available |
 
-## Your AdSense UI steps
+## What you must do in AdSense (UI)
 
-1. Add / verify **`https://www.salaroutsourcing.com`** (or `https://salaroutsourcing.com`) in Sites.
-2. Turn on **Auto ads** for that site when Ready.
-3. Do not add `immigration.salaroutsourcing.com` as its own site.
+1. Add/verify **`https://www.salaroutsourcing.com`** (or apex) — not the immigration subdomain alone.
+2. When Ready: enable **Auto ads**.
+3. Open **Privacy & messaging** → create **European regulations** message (Google’s certified CMP / TCF).  
+   This unlocks **personalised ads** in EEA/UK/CH per [Google’s CMP requirements](https://support.google.com/adsense/answer/13554116).  
+   Without it, Europe may only get limited / non-personalised ads.
 
-## Code map
+## How worldwide revenue works
 
-- `assets/js/config.js` — publisher + autoAds
-- `assets/js/adsense-connect.js` — meta + client script + page-level Auto ads
-- `/ads.txt` — `google.com, pub-5113459275916426, DIRECT, f08c47fec0942fa0`
-- Homepage also has static meta + script in `<head>`
+| Visitor region | Ads |
+|----------------|-----|
+| Pakistan, Middle East, Americas, Asia (non-EU), etc. | Consent granted by default → Auto ads can earn |
+| EEA / UK / Switzerland | Need opt-in + Google Privacy & messaging CMP for personalised ads |
+
+## Do not
+- Click your own ads or ask staff/clients to click ads.
+- Promise visas in ad-adjacent content.

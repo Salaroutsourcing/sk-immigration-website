@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Google Consent Mode defaults -->
+  <!-- Google Consent Mode v2 — regional defaults for worldwide AdSense -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -12,7 +12,14 @@
       ad_user_data: 'denied',
       ad_personalization: 'denied',
       analytics_storage: 'denied',
-      wait_for_update: 500
+      wait_for_update: 500,
+      region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
+    });
+    gtag('consent', 'default', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted'
     });
   </script>
   <!-- Google tag (gtag.js) -->
@@ -21,7 +28,7 @@
     gtag('js', new Date());
     gtag('config', 'G-D0559366D6', { anonymize_ip: true });
   </script>
-  <title>Cookie Policy | SK Immigration Services</title>
+<title>Cookie Policy | SK Immigration Services</title>
   <meta name="description" content="Cookie Policy for SK Immigration Services — essential cookies, Google Analytics, Google AdSense advertising cookies, and how to manage consent." />
   <link rel="canonical" href="https://immigration.salaroutsourcing.com/cookies" />
   <meta property="og:title" content="Cookie Policy | SK Immigration Services" />
@@ -73,7 +80,7 @@
       <p>Advertising cookies are set only after you choose <em>Accept all</em> (or an equivalent advertising opt-in). You can control Google ad personalisation at <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> and industry opt-outs at <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.</p>
 
       <h2>4. Consent Mode</h2>
-      <p>This site uses Google Consent Mode defaults that keep <code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code> and <code>ad_personalization</code> denied until you opt in. Essential site functions continue without optional cookies.</p>
+      <p>This site uses <strong>Google Consent Mode v2</strong> with regional defaults. For visitors in the EEA, UK and Switzerland (and closely related markets), analytics and advertising storage stay <strong>denied</strong> until you opt in via the banner (and, where enabled, Google’s certified Privacy &amp; messaging CMP for personalised ads). For visitors in other countries — including Pakistan and most of the world — advertising and analytics storage default to <strong>granted</strong> so AdSense can show ads, and you can still change preferences anytime via <strong>Cookie settings</strong> in the footer. Essential site functions always work.</p>
 
       <h2>5. How to manage cookies</h2>
       <ul>
@@ -96,7 +103,7 @@
   <script src="assets/js/adsense-connect.js?v=p9b"></script>
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/api.js"></script>
-  <script src="assets/js/consent.js?v=consent1"></script>
+  <script src="assets/js/consent.js?v=consent2"></script>
   <script src="assets/js/layout.js?v=consent1"></script>
   <script src="assets/js/seo.js"></script>
   <script>

@@ -1,11 +1,17 @@
 /**
- * Cookie / advertising consent (Google Consent Mode v2 compatible)
- * Essential prefs (theme, language) never require this banner.
- * Analytics + advertising storage stay denied until the visitor opts in.
+ * Cookie / advertising consent (Google Consent Mode v2)
+ *
+ * Worldwide AdSense strategy:
+ * - EEA / UK / CH (+ NO/IS/LI): deny until visitor opts in (banner).
+ *   Also enable Google Privacy & messaging (certified CMP) in AdSense for TCF.
+ * - Rest of world (incl. Pakistan): ads + analytics granted by default — no blocking banner.
  */
 (function () {
-  const STORAGE_KEY = 'sk_consent_v1';
+  const STORAGE_KEY = 'sk_consent_v2';
   const GA_ID = 'G-D0559366D6';
+
+  /* Approximate regulated-region hint (Google also applies region defaults via IP). */
+  const REGULATED_TZ = /^(Europe\/|Atlantic\/Reykjavik|Atlantic\/Faroe|Arctic\/)/i;
 
   function basePrefix() {
     const parts = location.pathname.split('/').filter(Boolean);
@@ -33,6 +39,18 @@
     }
   }
 
+  function isRegulatedRegion() {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      if (REGULATED_TZ.test(tz)) return true;
+    } catch (_) { /* ignore */ }
+    const lang = String(navigator.language || '').toLowerCase();
+    if (/\b(gb|uk|de|fr|es|it|nl|pl|se|no|fi|dk|ie|pt|be|at|ch)\b/.test(lang)) {
+      /* weak signal only — do not treat alone as regulated */
+    }
+    return false;
+  }
+
   function applyConsent(state) {
     ensureGtag();
     const granted = !!(state && state.analytics);
@@ -43,11 +61,6 @@
       ad_user_data: ads ? 'granted' : 'denied',
       ad_personalization: ads ? 'granted' : 'denied',
     });
-    if (granted) {
-      try {
-        window.gtag('event', 'consent_update', { consent_analytics: true, consent_ads: ads });
-      } catch (_) { /* ignore */ }
-    }
     window.SK_CONSENT = state || { analytics: false, advertising: false };
     document.documentElement.dataset.consentAnalytics = granted ? '1' : '0';
     document.documentElement.dataset.consentAds = ads ? '1' : '0';
@@ -101,7 +114,7 @@
           <p id="sk-consent-title" class="sk-consent-title">Cookies &amp; ads preferences</p>
           <p class="sk-consent-text">
             We use essential cookies for site functions. With your permission we also use
-            <strong>Google Analytics</strong> and may use <strong>Google AdSense</strong>
+            <strong>Google Analytics</strong> and <strong>Google AdSense</strong>
             (including advertising cookies) to measure traffic and show ads.
             See our
             <a href="${BASE}privacy.html">Privacy Policy</a> and
@@ -131,24 +144,34 @@
     showBanner();
   }
 
-  // Defaults already set in <head>; re-assert denied until stored choice applied.
   ensureGtag();
   const stored = readStored();
+  const regulated = isRegulatedRegion();
+
   if (stored) {
     applyConsent(stored);
-  } else {
+  } else if (regulated) {
+    /* EEA/UK/CH hint: wait for choice (head defaults already deny for those regions) */
     applyConsent({ analytics: false, advertising: false });
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showBanner);
     } else {
       showBanner();
     }
+  } else {
+    /* Rest of world: earn from ads — grant unless user later opens Cookie settings */
+    applyConsent({ analytics: true, advertising: true });
   }
 
   window.SKConsent = {
     open: openPreferences,
-    get: () => readStored() || { analytics: false, advertising: false },
+    get: () =>
+      readStored() ||
+      (regulated
+        ? { analytics: false, advertising: false }
+        : { analytics: true, advertising: true }),
     set: save,
     gaId: GA_ID,
+    regulatedRegion: regulated,
   };
 })();
