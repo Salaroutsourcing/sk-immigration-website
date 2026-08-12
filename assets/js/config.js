@@ -69,9 +69,9 @@ window.SALAR_CONFIG = {
    * Keep autoAds false until Google marks the site Ready (Phase 10).
    */
   adsense: {
-    publisherId: '',
+    publisherId: 'ca-pub-5113459275916426',
     connectMeta: true,
-    loadConnectScript: false,
+    loadConnectScript: true,
     autoAds: false,
   },
 

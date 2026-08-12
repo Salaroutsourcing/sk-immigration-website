@@ -1,7 +1,4 @@
-# Google AdSense ads.txt — activate in Phase 9 after you have a publisher ID.
-# Live file must be at: https://immigration.salaroutsourcing.com/ads.txt
-# Format (replace XXXX with your numeric pub id, without the ca- prefix):
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-#
-# Do not publish a fake pub ID. When AdSense shows your line, paste it here
-# as ads.txt (this example file is not served — rename/copy when ready).
+# Google AdSense ads.txt — live at /ads.txt
+# Publisher: ca-pub-5113459275916426 (pub-5113459275916426 in ads.txt)
+# AdSense Sites entry must be the ROOT domain salaroutsourcing.com / www
+# (not immigration subdomain). See blog-posts/ADSENSE-PHASE9-APPLY.md
