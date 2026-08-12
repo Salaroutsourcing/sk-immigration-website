@@ -16,6 +16,13 @@
 /official /official-links/ 301
 /embassy-links /official-links/ 301
 
+/cookies /cookies.html 301
+/cookie /cookies.html 301
+/cookie-policy /cookies.html 301
+/privacy-policy /privacy.html 301
+/terms-of-service /terms.html 301
+/tos /terms.html 301
+
 # Answers hub: Cloudflare Assets serves answers.html at /answers (no Worker bounce)
 # /answers.html is redirected to /answers in the Worker to avoid loops.
 

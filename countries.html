@@ -3,15 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0559366D6"></script>
+  <!-- Google Consent Mode defaults -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-D0559366D6');
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
   </script>
-  <title>Study & Work Destinations | 20 Countries Guides & Checklists | SK Immigration</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0559366D6"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-D0559366D6', { anonymize_ip: true });
+  </script>
+<title>Study & Work Destinations | 20 Countries Guides & Checklists | SK Immigration</title>
   <meta name="description" content="Explore 20 study and work destinations with SK Immigration — full guides, embassy-linked document checklists, cost calculator and country compare tool." />
     <meta property="og:type" content="website" />
   <meta property="og:title" content="Study Destinations | Country Guides | SK Immigration" />
@@ -55,6 +65,7 @@
   <script src="assets/js/config.js"></script>
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/api.js"></script>
+  <script src="assets/js/consent.js?v=consent1"></script>
   <script src="assets/js/layout.js?v=brandpolish1"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {

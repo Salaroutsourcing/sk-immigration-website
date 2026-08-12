@@ -1162,6 +1162,22 @@ textarea.form-control {
 .footer-col a:hover {
   color: var(--gold);
 }
+.footer-cookie-btn {
+  display: block;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0.2rem 0 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.footer-cookie-btn:hover {
+  color: var(--gold);
+  opacity: 1;
+}
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
@@ -1179,6 +1195,72 @@ textarea.form-control {
   font-weight: 400;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.48);
+}
+
+/* Cookie / advertising consent banner */
+.sk-consent-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 120;
+  padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(15, 23, 42, 0.96);
+  border-top: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.28);
+  color: #f8fafc;
+}
+.sk-consent-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.sk-consent-title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display, Sora, sans-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+.sk-consent-text {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(248, 250, 252, 0.82);
+  max-width: 46rem;
+}
+.sk-consent-text a {
+  color: var(--gold, #d4af37);
+  text-decoration: underline;
+}
+.sk-consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.sk-consent-actions .btn {
+  white-space: nowrap;
+}
+@media (max-width: 720px) {
+  .sk-consent-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sk-consent-actions {
+    width: 100%;
+  }
+  .sk-consent-actions .btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  .wa-float {
+    bottom: 7.5rem;
+  }
 }
 
 .wa-float {

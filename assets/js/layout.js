@@ -160,6 +160,7 @@
           <a href="${href('services.html')}">All Services</a>
           <a href="${href('about.html')}">About</a>
           <a href="${href('privacy.html')}">Privacy</a>
+          <a href="${href('cookies.html')}">Cookies</a>
           <a href="${href('terms.html')}">Terms</a>
           <a href="${C().whatsappLink || '#'}" class="btn btn-whatsapp mt-2" target="_blank" rel="noopener">WhatsApp</a>
           <div class="mobile-nav-toggles">
@@ -244,7 +245,9 @@
             <a href="${href('contact.html')}">Book consult</a>
             <a href="${C().googleBusinessShare || 'https://share.google/hQzlV2rZbYtUzYZ9n'}" target="_blank" rel="noopener">Google Business</a>
             <a href="${href('privacy.html')}">Privacy Policy</a>
+            <a href="${href('cookies.html')}">Cookie Policy</a>
             <a href="${href('terms.html')}">Terms &amp; Conditions</a>
+            <button type="button" class="footer-cookie-btn" id="skFooterCookieBtn">Cookie settings</button>
             <a href="${href('local/')}">Cities we serve</a>
             <a href="${href('local/rawalpindi-study-visa-consultant/')}">Rawalpindi office</a>
             <a href="${href('local/islamabad-study-visa-consultant/')}">Islamabad clients</a>
@@ -254,7 +257,7 @@
           </div>
         </div>
         <div class="container footer-bottom">
-          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('trust.html')}">Trust</a> · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
+          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('trust.html')}">Trust</a> · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('cookies.html')}">Cookies</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
           <span class="parent-line">SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi, Pakistan · Official website: immigration.salaroutsourcing.com</span>
         </div>
       </footer>
@@ -339,11 +342,25 @@
     buttons.forEach((b) => b.addEventListener('click', () => apply(b.textContent !== 'UR')));
   }
 
+  function ensureConsentScript() {
+    if (window.SKConsent || document.querySelector('script[src*="consent.js"]')) {
+      document.getElementById('skFooterCookieBtn')?.addEventListener('click', () => window.SKConsent?.open());
+      return;
+    }
+    const s = document.createElement('script');
+    s.src = BASE + 'assets/js/consent.js?v=consent1';
+    s.onload = () => {
+      document.getElementById('skFooterCookieBtn')?.addEventListener('click', () => window.SKConsent?.open());
+    };
+    document.body.appendChild(s);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
     renderFooter();
     revealOnScroll();
     bindLangToggle();
+    ensureConsentScript();
     if (window.SalarTheme) {
       const t = document.documentElement.getAttribute('data-theme');
       document.querySelectorAll('[data-theme-icon]').forEach((el) => {

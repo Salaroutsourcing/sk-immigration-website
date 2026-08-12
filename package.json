@@ -8,6 +8,7 @@
     "deploy": "wrangler deploy",
     "build:answers-hub": "node scripts/build-answers-hub.mjs",
     "build:legacy-redirect": "node scripts/build-legacy-redirect.mjs",
+    "inject:consent": "node scripts/inject-consent-mode.mjs",
     "db:create": "wrangler d1 create sk-immigration-leads",
     "db:migrate": "wrangler d1 execute sk-immigration-leads --remote --file=./schema.sql",
     "db:migrate:local": "wrangler d1 execute sk-immigration-leads --local --file=./schema.sql"
