@@ -47,7 +47,7 @@ const SECURITY_HEADERS = {
   'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=()',
   'cross-origin-opener-policy': 'same-origin-allow-popups',
   'content-security-policy':
-    "default-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://wa.me https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src 'self' https://www.google.com https://maps.google.com; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests",
+    "default-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.googleadservices.com https://www.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://wa.me https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://pagead2.googlesyndication.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://*.googlesyndication.com; frame-src 'self' https://www.google.com https://maps.google.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://pagead2.googlesyndication.com https://www.googletagmanager.com; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests",
 };
 
 export default {
@@ -103,6 +103,17 @@ export default {
     // Prefer extensionless Answers hub URL
     if (url.pathname === '/answers.html' || url.pathname === '/answers/') {
       return Response.redirect(new URL('/answers', url).toString(), 301);
+    }
+
+    // Legal aliases
+    if (url.pathname === '/cookies' || url.pathname === '/cookie' || url.pathname === '/cookie-policy') {
+      return Response.redirect(new URL('/cookies.html', url).toString(), 301);
+    }
+    if (url.pathname === '/privacy-policy') {
+      return Response.redirect(new URL('/privacy.html', url).toString(), 301);
+    }
+    if (url.pathname === '/terms-of-service' || url.pathname === '/tos') {
+      return Response.redirect(new URL('/terms.html', url).toString(), 301);
     }
 
     if (!url.pathname.startsWith('/api/')) {
