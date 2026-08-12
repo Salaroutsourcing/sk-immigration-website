@@ -59,7 +59,9 @@ Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.co
 - Consent Mode defaults deny analytics/ad storage until the visitor opts in (`assets/js/consent.js`)
 - Cookie Policy: `/cookies.html`
 - Do not remove GA or consent scripts without checking Privacy Policy wording
-- AdSense code is **not** installed until after approval (Phase 9+)
+- AdSense application: follow `blog-posts/ADSENSE-PHASE9-APPLY.md`
+- Connection meta / ads.txt only after you paste `ca-pub-…` into `assets/js/config.js`
+- Auto ads / ad units stay **off** until Google approves (Phase 10)
 
 ## Manual account checklist (needs your Google login)
 

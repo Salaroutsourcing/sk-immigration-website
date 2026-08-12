@@ -43,4 +43,5 @@
 2. Resubmit sitemap in Search Console
 3. Spot-check a few old Answers URLs redirect to study landers
 
-Do **not** install AdSense code until Google approves (Phase 9–10).
+Next: follow **[ADSENSE-PHASE9-APPLY.md](./ADSENSE-PHASE9-APPLY.md)** to submit the site for review.  
+Do **not** enable Auto ads / ad units until Google approves (Phase 10).

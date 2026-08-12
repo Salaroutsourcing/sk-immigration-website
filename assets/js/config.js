@@ -63,6 +63,18 @@ window.SALAR_CONFIG = {
   googleMapsSearch:
     'https://www.google.com/maps/search/?api=1&query=SK+Immigration+Services+Alfazal+Plaza+Satellite+Town+Rawalpindi',
 
+  /**
+   * Google AdSense — Phase 9 connection only.
+   * Paste ca-pub-XXXXXXXXXXXXXXXX from AdSense, commit + deploy, then Verify → Request review.
+   * Keep autoAds false until Google marks the site Ready (Phase 10).
+   */
+  adsense: {
+    publisherId: '',
+    connectMeta: true,
+    loadConnectScript: false,
+    autoAds: false,
+  },
+
   /* Professional imagery */
   images: {
     hero: 'assets/img/hero-library.jpg',
