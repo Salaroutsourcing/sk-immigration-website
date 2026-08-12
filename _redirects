@@ -23,6 +23,9 @@
 /terms-of-service /terms.html 301
 /tos /terms.html 301
 
+# Answers hub trailing slash (GitHub Pages directory vs answers.html)
+/answers/ /answers 301
+
 # Answers hub: Cloudflare Assets serves answers.html at /answers (no Worker bounce)
 # /answers.html is redirected to /answers in the Worker to avoid loops.
 

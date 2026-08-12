@@ -1,8 +1,8 @@
 # SK Immigration Services — robots.txt
 # Domain: https://immigration.salaroutsourcing.com
 #
-# Hosted on GitHub Pages. If you later put the domain behind Cloudflare,
-# turn OFF AI Crawl Control blocks for citation bots (see CLOUDFLARE-AI.md).
+# Public site is served from this repository (GitHub Pages and/or Cloudflare).
+# If Cloudflare AI Crawl Control is enabled, allow citation bots (see CLOUDFLARE-AI.md).
 
 User-agent: *
 Allow: /
@@ -30,6 +30,14 @@ Allow: /guides/
 Allow: /trust.html
 Allow: /about.html
 Allow: /services.html
+Allow: /privacy.html
+Allow: /cookies.html
+Allow: /terms.html
+Allow: /eligibility.html
+Allow: /checklist.html
+Allow: /calculator.html
+Allow: /compare.html
+Allow: /cv-builder.html
 Allow: /llms.txt
 Allow: /ai.txt
 Allow: /sitemap.xml
