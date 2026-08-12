@@ -28,16 +28,47 @@ Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.co
 
 - `/`
 - `/trust.html`
+- `/editorial-policy.html`
+- `/cookies.html`
+- `/privacy`
 - `/study-visa/`
 - `/study-visa/germany-study-visa-pakistan/`
 - `/study-visa/hungary-study-visa-pakistan/`
 - `/study-visa/uk-study-visa-pakistan/`
+- `/study-visa/italy-study-visa-pakistan/`
+- `/study-visa/canada-study-visa-pakistan/`
+- `/eligibility.html`
+- `/checklist.html`
+- `/calculator.html`
+- `/compare.html`
+- `/cv-builder.html`
+- `/answers`
+- `/answers/student-visa-rejection-reasons-pakistan`
+- `/guides/study-abroad-without-ielts-pakistan/`
+- `/guides/study-abroad-low-marks-pakistan/`
 - `/visit-visa/uk-visit-visa-pakistan/`
 - `/visit-visa/schengen-visit-visa-pakistan/`
 - `/work-permit/germany-work-permit-pakistan/`
 - `/saudi-visa/saudi-visa-processing-pakistan/`
 - `/local/rawalpindi-study-visa-consultant/`
-- `/answers`
+- `/llms.txt`
+
+## Analytics & consent (AdSense readiness)
+
+- GA4 ID: `G-D0559366D6`
+- Consent Mode defaults deny analytics/ad storage until the visitor opts in (`assets/js/consent.js`)
+- Cookie Policy: `/cookies.html`
+- Do not remove GA or consent scripts without checking Privacy Policy wording
+- AdSense code is **not** installed until after approval (Phase 9+)
+
+## Manual account checklist (needs your Google login)
+
+1. Search Console → Coverage / Pages: fix any soft-404 on `/answers/`
+2. Submit updated sitemap after each major content phase
+3. Inspect Core Web Vitals for mobile on home + Germany study lander
+4. Confirm GA4 realtime after accepting cookies on a test browser
+5. Keep WhatsApp lead events separate from ad-click goals (never incentivize ad clicks)
+
 - `/answers/who-is-sk-immigration`
 - `/llms.txt`
 - `/services.html`

@@ -241,6 +241,7 @@
             <a href="${C().whatsappLink}" target="_blank" rel="noopener">WhatsApp Chat</a>
             <a href="${href('about.html')}">About</a>
             <a href="${href('trust.html')}">Trust &amp; verify</a>
+            <a href="${href('editorial-policy.html')}">Editorial policy</a>
             <a href="${href('faq.html')}">FAQ</a>
             <a href="${href('contact.html')}">Book consult</a>
             <a href="${C().googleBusinessShare || 'https://share.google/hQzlV2rZbYtUzYZ9n'}" target="_blank" rel="noopener">Google Business</a>
