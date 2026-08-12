@@ -64,15 +64,15 @@ window.SALAR_CONFIG = {
     'https://www.google.com/maps/search/?api=1&query=SK+Immigration+Services+Alfazal+Plaza+Satellite+Town+Rawalpindi',
 
   /**
-   * Google AdSense — Phase 9 connection only.
-   * Paste ca-pub-XXXXXXXXXXXXXXXX from AdSense, commit + deploy, then Verify → Request review.
-   * Keep autoAds false until Google marks the site Ready (Phase 10).
+   * Google AdSense (subdomain host).
+   * Sites list / approval = root domain salaroutsourcing.com (Google rule).
+   * This subdomain loads the same ca-pub so Auto ads can run here after Ready.
    */
   adsense: {
     publisherId: 'ca-pub-5113459275916426',
     connectMeta: true,
     loadConnectScript: true,
-    autoAds: false,
+    autoAds: true,
   },
 
   /* Professional imagery */

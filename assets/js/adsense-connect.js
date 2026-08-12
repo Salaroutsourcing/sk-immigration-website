@@ -1,7 +1,8 @@
 /**
- * Phase 9 — AdSense site connection (no visible ads).
- * Activates only when SALAR_CONFIG.adsense.publisherId is set (ca-pub-…).
- * Phase 10 turns on autoAds / units after Google approval.
+ * AdSense on immigration.salaroutsourcing.com
+ * Publisher: ca-pub-5113459275916426
+ * AdSense Sites list uses the root domain (salaroutsourcing.com); this subdomain
+ * loads the same client so ads can serve here once the root site is Ready.
  */
 (function () {
   const ads = (window.SALAR_CONFIG && window.SALAR_CONFIG.adsense) || {};
@@ -23,19 +24,32 @@
     }
   }
 
-  /* Optional: AdSense head connect script (still no Auto ads / units). */
-  if (ads.loadConnectScript && !document.querySelector('script[data-sk-adsense-connect]')) {
+  const hasClientScript = !!document.querySelector(
+    'script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'
+  );
+
+  if (ads.loadConnectScript !== false && !hasClientScript) {
     const s = document.createElement('script');
     s.async = true;
-    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(pub);
+    s.src =
+      'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' +
+      encodeURIComponent(pub);
     s.crossOrigin = 'anonymous';
     s.setAttribute('data-sk-adsense-connect', '1');
     document.head.appendChild(s);
   }
 
-  /* Phase 10 only — never enable until approved. */
-  if (ads.autoAds === true) {
+  /* Auto ads / page-level — served when AdSense root domain is Ready */
+  if (ads.autoAds === true && !window.__SK_ADSENSE_AUTO__) {
+    window.__SK_ADSENSE_AUTO__ = true;
     window.adsbygoogle = window.adsbygoogle || [];
-    window.adsbygoogle.push({ google_ad_client: pub, enable_page_level_ads: true });
+    try {
+      window.adsbygoogle.push({
+        google_ad_client: pub,
+        enable_page_level_ads: true,
+      });
+    } catch (_) {
+      /* ignore if script not ready yet */
+    }
   }
 })();
