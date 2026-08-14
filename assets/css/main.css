@@ -1203,7 +1203,7 @@ textarea.form-control {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 120;
+  z-index: 1100;
   padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
   background: rgba(15, 23, 42, 0.96);
   border-top: 1px solid rgba(212, 175, 55, 0.28);
@@ -1246,7 +1246,7 @@ textarea.form-control {
 .sk-consent-actions .btn {
   white-space: nowrap;
 }
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .sk-consent-inner {
     flex-direction: column;
     align-items: stretch;
@@ -1257,9 +1257,19 @@ textarea.form-control {
   .sk-consent-actions .btn {
     flex: 1 1 auto;
     text-align: center;
+    min-height: 44px;
   }
-  .wa-float {
-    bottom: 7.5rem;
+}
+
+/* Cookie banner must sit above mobile CTAs; hide duplicate bottom bars while open */
+body.sk-consent-open .sk-mobile-action-bar,
+body.sk-consent-open .wa-float {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  body.sk-consent-open {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -3898,9 +3908,9 @@ a[href*="wa.me"] {
     padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
   }
 
-  /* Reposition floating WhatsApp button above action bar */
+  /* Mobile action bar already has WhatsApp — hide redundant float */
   .wa-float {
-    bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+    display: none !important;
   }
 }
 
