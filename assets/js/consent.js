@@ -99,10 +99,14 @@
 
   function hideBanner() {
     document.getElementById('sk-consent-banner')?.remove();
+    document.body.classList.remove('sk-consent-open');
   }
 
   function showBanner() {
-    if (document.getElementById('sk-consent-banner')) return;
+    if (document.getElementById('sk-consent-banner')) {
+      document.body.classList.add('sk-consent-open');
+      return;
+    }
     const el = document.createElement('div');
     el.id = 'sk-consent-banner';
     el.className = 'sk-consent-banner';
@@ -131,6 +135,7 @@
       </div>
     `;
     document.body.appendChild(el);
+    document.body.classList.add('sk-consent-open');
     el.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-consent]');
       if (!btn) return;

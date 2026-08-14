@@ -36,7 +36,6 @@
   const BASE = basePrefix();
 
   const NAV = [
-    { href: 'success-stories.html', label: 'Success Stories', title: 'Visa Success Stories', id: 'success' },
     { href: 'study-visa/', label: 'Study Visa', title: 'Study visa Pakistan', id: 'study-visa' },
     { href: 'work-permit/', label: 'Work Permit', title: 'Work permits', id: 'work-permit' },
     { href: 'visit-visa/', label: 'Visit Visa', title: 'Visit visas', id: 'visit-visa' },
@@ -113,7 +112,7 @@
     const brandShort = C().brand || 'SK Immigration';
     return `
       <a href="${href('index.html')}" class="logo" aria-label="${brand} home">
-        <img class="logo-img" src="${BASE}assets/img/logo.jpg" width="44" height="36" alt="" decoding="async" />
+        <img class="logo-img" src="${BASE}assets/img/logo.jpg" width="44" height="36" alt="${brand}" decoding="async" />
         <span class="logo-text">
           <span class="nav-name">
             <span class="nav-name-long">${brandShort}</span>
