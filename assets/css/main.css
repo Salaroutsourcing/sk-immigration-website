@@ -3733,3 +3733,263 @@ body:not([data-page='home']) section .container > .card:last-child {
     text-align: left;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Google AdSense Monetization Containers (Zero-CLS & Policy Safe)
+   ═══════════════════════════════════════════════════════════ */
+.sk-ad-container {
+  width: 100%;
+  margin: 2.2rem auto;
+  text-align: center;
+  position: relative;
+  clear: both;
+}
+
+.sk-ad-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-dim, #7a8ba0);
+  margin-bottom: 6px;
+}
+
+.sk-ad-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.02);
+  border: 1px dashed rgba(15, 23, 42, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto;
+  transition: min-height 0.2s ease;
+}
+
+[data-theme='dark'] .sk-ad-slot {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(232, 197, 71, 0.15);
+}
+
+.sk-ad-slot ins.adsbygoogle {
+  display: block !important;
+  margin: 0 auto;
+}
+
+/* Specific standard responsive ad placements */
+.sk-ad-leaderboard {
+  max-width: 728px;
+  min-height: 90px;
+}
+
+.sk-ad-infeed {
+  max-width: 960px;
+  min-height: 120px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  border-style: solid;
+  border-color: rgba(15, 23, 42, 0.07);
+}
+
+[data-theme='dark'] .sk-ad-infeed {
+  background: rgba(10, 22, 40, 0.65);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.sk-ad-sidebar {
+  width: 100%;
+  max-width: 336px;
+  min-height: 280px;
+}
+
+.sk-ad-footer {
+  max-width: 970px;
+  min-height: 90px;
+}
+
+@media (max-width: 768px) {
+  .sk-ad-leaderboard {
+    min-height: 60px;
+  }
+  .sk-ad-container {
+    margin: 1.5rem auto;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Mobile Sticky Quick Action Bar (Thumb-friendly & High-Converting)
+   ═══════════════════════════════════════════════════════════ */
+.sk-mobile-action-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sk-mobile-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    padding: 10px 16px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(232, 197, 71, 0.3);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  [data-theme='light'] .sk-mobile-action-bar {
+    background: rgba(255, 255, 255, 0.92);
+    border-top-color: rgba(15, 23, 42, 0.1);
+    box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.12);
+  }
+
+  .sk-mobile-action-bar a {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 11px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .sk-mobile-action-bar a:active {
+    transform: scale(0.97);
+  }
+
+  .sk-m-action-wa {
+    background: #25d366;
+    color: #ffffff !important;
+  }
+
+  .sk-m-action-consult {
+    background: linear-gradient(135deg, #c9a84c 0%, #a07830 100%);
+    color: #ffffff !important;
+  }
+
+  /* Pad body so footer and bottom content aren't hidden under action bar */
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Reposition floating WhatsApp button above action bar */
+  .wa-float {
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Executive Guide Dossier Layout (World #1 Standard)
+   ═══════════════════════════════════════════════════════════ */
+.guide-dossier-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+.guide-dossier-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 36px;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .guide-dossier-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.guide-main-article {
+  background: var(--glass-bg, rgba(255, 255, 255, 0.85));
+  border: 1px solid var(--glass-border, rgba(15, 23, 42, 0.08));
+  border-radius: 24px;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme='dark'] .guide-main-article {
+  background: rgba(10, 22, 40, 0.85);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.guide-sidebar {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.guide-sidebar-card {
+  background: var(--glass-bg, rgba(255, 255, 255, 0.85));
+  border: 1px solid var(--glass-border, rgba(15, 23, 42, 0.08));
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme='dark'] .guide-sidebar-card {
+  background: rgba(10, 22, 40, 0.85);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.guide-sidebar-card h4 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text, #0f172a);
+}
+
+.guide-sidebar-card p {
+  font-size: 13.5px;
+  color: var(--text-muted, #64748b);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.guide-sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.guide-sidebar-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(201, 162, 74, 0.06);
+  border: 1px solid rgba(201, 162, 74, 0.15);
+  color: var(--text, #0f172a);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.guide-sidebar-links a:hover {
+  background: rgba(201, 162, 74, 0.14);
+  border-color: var(--gold-400, #c9a84c);
+  transform: translateX(3px);
+}
+
+

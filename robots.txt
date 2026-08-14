@@ -14,6 +14,9 @@ Disallow: /scripts/
 Disallow: /.wrangler/
 Disallow: /.dev.vars
 
+# AI / GEO discovery files — always public
+Allow: /.well-known/
+
 # Public knowledge clusters for AI citation
 Allow: /study-visa/
 Allow: /work-permit/

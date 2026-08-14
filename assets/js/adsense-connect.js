@@ -52,4 +52,47 @@
       /* ignore if script not ready yet */
     }
   }
+
+  /* Initialize manual ad slots when in viewport */
+  function initManualAds() {
+    const slots = document.querySelectorAll('.sk-ad-slot:not([data-ad-loaded])');
+    if (!slots.length) return;
+
+    const pushAd = (slot) => {
+      if (slot.dataset.adLoaded === '1') return;
+      slot.dataset.adLoaded = '1';
+      
+      const ins = slot.querySelector('ins.adsbygoogle');
+      if (ins && !ins.getAttribute('data-ad-status')) {
+        window.adsbygoogle = window.adsbygoogle || [];
+        try {
+          (window.adsbygoogle).push({});
+        } catch (e) {
+          console.debug('[adsense] Slot push skipped:', e);
+        }
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            pushAd(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+
+      slots.forEach((s) => observer.observe(s));
+    } else {
+      slots.forEach((s) => pushAd(s));
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initManualAds);
+  } else {
+    initManualAds();
+  }
 })();
+

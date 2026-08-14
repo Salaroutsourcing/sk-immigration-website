@@ -55,14 +55,6 @@ const itemList = {
 const html = `<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-NFWDQ5XB');</script>
-  <!-- End Google Tag Manager -->
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Visa Answers Hub | Questions Students &amp; AI Ask | SK Immigration</title>
@@ -79,11 +71,6 @@ const html = `<!DOCTYPE html>
   <script type="application/ld+json">${JSON.stringify(itemList)}</script>
 </head>
 <body data-page="faq">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFWDQ5XB"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
   <div class="bg-orbs" aria-hidden="true"></div>
   <div id="site-header"></div>
   <main id="main">
@@ -108,10 +95,8 @@ ${cards}
   </main>
   <div id="site-footer"></div>
   <script src="assets/js/config.js"></script>
-  <script src="assets/js/adsense-connect.js?v=p9b"></script>
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/api.js"></script>
-  <script src="assets/js/consent.js?v=consent2"></script>
   <script src="assets/js/layout.js?v=iosbar3"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {

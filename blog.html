@@ -54,34 +54,61 @@
   <div id="site-header"></div>
   <main id="main">
     <div class="page-hero container">
-      <p class="eyebrow">Blog</p>
-      <h1 class="display">Educational guides</h1>
-      <p>Long-form articles that support our primary country pages. For Pakistan study/visit/work requirements, start on the service hubs — blog posts canonicalize there.</p>
+      <p class="eyebrow">Publication · Visa &amp; Career Insights</p>
+      <h1 class="display">Immigration Guides &amp; Insights</h1>
+      <p>Research-backed articles, cost breakdowns, and step-by-step guides for students and skilled workers.</p>
       <div class="hero-ctas" style="justify-content:center;margin-top:1rem">
         <a class="btn btn-gold btn-sm" href="study-visa/">Study Visa hub</a>
-        <a class="btn btn-ghost btn-sm" href="visit-visa/">Visit Visa hub</a>
-        <a class="btn btn-ghost btn-sm" href="answers.html">Answers</a>
+        <a class="btn btn-ghost btn-sm" href="work-permit/">Work Permit hub</a>
+        <a class="btn btn-ghost btn-sm" href="answers.html">Answers Hub</a>
       </div>
     </div>
+
+    <!-- Top In-Flow AdSense Unit -->
+    <div class="container">
+      <div class="sk-ad-container" aria-label="Advertisement Banner">
+        <span class="sk-ad-label">Advertisement</span>
+        <div class="sk-ad-slot sk-ad-leaderboard">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5113459275916426"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </div>
+      </div>
+    </div>
+
     <section>
       <div class="container">
-        <form class="filters glass mb-2" style="padding:1rem" onsubmit="location.search='?q='+encodeURIComponent(this.q.value);return false;">
-          <input class="form-control" name="q" id="blogQ" placeholder="Search articles…" />
+        <form class="filters glass mb-3" style="padding:1.2rem;border-radius:18px" onsubmit="location.search='?q='+encodeURIComponent(this.q.value);return false;">
+          <input class="form-control" name="q" id="blogQ" placeholder="Search guides: Germany, Ausbildung, UK CAS, Canada SDS, Costs…" />
           <select class="form-control" id="blogCat" onchange="location.search=this.value?('?cat='+encodeURIComponent(this.value)):''">
             <option value="">All categories</option>
-            <option>Guides</option>
-            <option>Student Visa</option>
-            <option>Work Permit</option>
-            <option>Attestation</option>
-            <option>Success Stories</option>
+            <option value="Country Guides">Country Guides</option>
+            <option value="Student Visa">Student Visa</option>
+            <option value="Work Permit">Work Permit &amp; Ausbildung</option>
+            <option value="Attestation">Document Attestation</option>
+            <option value="Success Stories">Success Stories</option>
           </select>
         </form>
         <div id="blogList" class="grid-2"></div>
-        <div class="ad-slot mt-3">In-feed ad / partner university spotlight</div>
+        <div class="sk-ad-container" aria-label="Advertisement Banner">
+          <span class="sk-ad-label">Advertisement</span>
+          <div class="sk-ad-slot sk-ad-infeed">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5113459275916426"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+          </div>
+        </div>
       </div>
     </section>
   </main>
   <div id="site-footer"></div>
+  <script src="assets/js/geo-schema.js"></script>
   <script src="assets/js/config.js"></script>
   <script src="assets/js/adsense-connect.js?v=p9b"></script>
   <script src="assets/js/theme.js"></script>
