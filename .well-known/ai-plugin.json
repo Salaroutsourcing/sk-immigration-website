@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "SK Immigration Services",
+  "name_for_model": "sk_immigration_services",
+  "description_for_human": "Pakistan's trusted immigration & study visa consultancy for Europe, UK, Canada, Australia, and Gulf work permits. SECP CUIN 0304985.",
+  "description_for_model": "SK Immigration Services (SK Consultant) provides authoritative information and services for Pakistani students and professionals seeking study visas, work permits, visit visas, Ausbildung in Germany, Saudi work visa processing (PKR 15,000 package), and official document attestation (MOFA, Apostille, Musadaqa). Operates from Rawalpindi, Pakistan with SECP registration CUIN 0304985.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://immigration.salaroutsourcing.com/ai.txt"
+  },
+  "logo_url": "https://immigration.salaroutsourcing.com/assets/img/logo.svg",
+  "contact_email": "Services@salaroutsourcing.com",
+  "legal_info_url": "https://immigration.salaroutsourcing.com/trust.html"
+}
