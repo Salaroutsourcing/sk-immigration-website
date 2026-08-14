@@ -46,6 +46,9 @@ Allow: /ai.txt
 Allow: /sitemap.xml
 
 # Explicitly welcome search and AI crawlers (citation / overviews)
+User-agent: Mediapartners-Google
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 

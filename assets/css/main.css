@@ -3739,10 +3739,25 @@ body:not([data-page='home']) section .container > .card:last-child {
    ═══════════════════════════════════════════════════════════ */
 .sk-ad-container {
   width: 100%;
-  margin: 2.2rem auto;
+  margin: 2.2rem auto 3rem;
   text-align: center;
   position: relative;
   clear: both;
+}
+
+/* Keep ads away from WhatsApp / consultation CTAs (AdSense accidental-click risk) */
+.hl-cta,
+.btn-whatsapp,
+a[href*="wa.me"] {
+  position: relative;
+  z-index: 1;
+}
+.hl-cta {
+  margin-top: 1.5rem;
+}
+.sk-ad-container + .hl-cta,
+.sk-ad-container + section.hl-cta {
+  margin-top: 2.5rem;
 }
 
 .sk-ad-label {
