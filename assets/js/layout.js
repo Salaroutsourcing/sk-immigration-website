@@ -36,6 +36,7 @@
   const BASE = basePrefix();
 
   const NAV = [
+    { href: 'success-stories.html', label: 'Success Stories', title: 'Visa Success Stories', id: 'success' },
     { href: 'study-visa/', label: 'Study Visa', title: 'Study visa Pakistan', id: 'study-visa' },
     { href: 'work-permit/', label: 'Work Permit', title: 'Work permits', id: 'work-permit' },
     { href: 'visit-visa/', label: 'Visit Visa', title: 'Visit visas', id: 'visit-visa' },
@@ -62,6 +63,7 @@
     faq: '',
     about: '',
     trust: '',
+    success: 'success',
     contact: 'contact',
     home: '',
   };
