@@ -2,9 +2,10 @@
  * Cookie / advertising consent (Google Consent Mode v2)
  *
  * Worldwide AdSense strategy:
- * - EEA / UK / CH (+ NO/IS/LI): deny until visitor opts in (banner).
- *   Also enable Google Privacy & messaging (certified CMP) in AdSense for TCF.
- * - Rest of world (incl. Pakistan): ads + analytics granted by default — no blocking banner.
+ * - EEA / UK / CH: head defaults deny until opt-in; banner required.
+ * - Rest of world: head defaults grant ads/analytics, but banner still shows
+ *   on first visit so visitors can choose (like before). Footer Cookie settings
+ *   reopens the banner anytime.
  */
 (function () {
   const STORAGE_KEY = 'sk_consent_v2';
@@ -151,16 +152,20 @@
   if (stored) {
     applyConsent(stored);
   } else if (regulated) {
-    /* EEA/UK/CH hint: wait for choice (head defaults already deny for those regions) */
     applyConsent({ analytics: false, advertising: false });
+    scheduleBanner();
+  } else {
+    /* Pakistan / global: Consent Mode defaults already grant in <head>; still show banner */
+    applyConsent({ analytics: true, advertising: true });
+    scheduleBanner();
+  }
+
+  function scheduleBanner() {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showBanner);
     } else {
       showBanner();
     }
-  } else {
-    /* Rest of world: earn from ads — grant unless user later opens Cookie settings */
-    applyConsent({ analytics: true, advertising: true });
   }
 
   window.SKConsent = {
