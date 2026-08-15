@@ -27,7 +27,7 @@
     if (!document.querySelector('link[href*="sk-theme.css"]')) {
       const l = document.createElement('link');
       l.rel = 'stylesheet';
-      l.href = BASE + 'assets/css/sk-theme.css?v=neon1';
+      l.href = BASE + 'assets/css/sk-theme.css?v=yellow1';
       document.head.appendChild(l);
     }
     if (!document.querySelector('script[src*="lucide"]')) {
