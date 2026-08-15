@@ -1,28 +1,16 @@
 /**
  * Shared layout — SK Immigration Services
- * Domain: immigration.salaroutsourcing.com
+ * Neon template chrome (header, menu, FAB, bottom nav, footer)
  */
 (function () {
   const C = () => window.SALAR_CONFIG || {};
 
-  /** Fix relative links when page is in a subfolder */
   function basePrefix() {
     const parts = location.pathname.split('/').filter(Boolean);
     const nestedRoots = [
-      'blog',
-      'answers',
-      'admin',
-      'study-visa',
-      'visa-appointment',
-      'saudi-visa',
-      'document-services',
-      'hire-workers-from-pakistan',
-      'work-permit',
-      'visit-visa',
-      'local',
-      'guides',
-      'official-links',
-      'ur',
+      'blog', 'answers', 'admin', 'study-visa', 'visa-appointment', 'saudi-visa',
+      'document-services', 'hire-workers-from-pakistan', 'work-permit', 'visit-visa',
+      'local', 'guides', 'official-links', 'ur',
     ];
     if (parts[0] === 'ur' && parts.length >= 3) return '../../../';
     if (parts[0] === 'ur' && parts.length >= 2) return '../../';
@@ -35,64 +23,69 @@
 
   const BASE = basePrefix();
 
+  function ensureAssets() {
+    if (!document.querySelector('link[href*="sk-theme.css"]')) {
+      const l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = BASE + 'assets/css/sk-theme.css?v=neon1';
+      document.head.appendChild(l);
+    }
+    if (!document.querySelector('script[src*="lucide"]')) {
+      const s = document.createElement('script');
+      s.src = 'https://unpkg.com/lucide@latest';
+      s.onload = () => window.lucide && window.lucide.createIcons();
+      document.head.appendChild(s);
+    }
+  }
+  ensureAssets();
+
   const NAV = [
-    { href: 'study-visa/', label: 'Study Visa', title: 'Study visa Pakistan', id: 'study-visa' },
-    { href: 'work-permit/', label: 'Work Permit', title: 'Work permits', id: 'work-permit' },
-    { href: 'visit-visa/', label: 'Visit Visa', title: 'Visit visas', id: 'visit-visa' },
-    { href: 'visa-appointment/', label: 'Appointments', title: 'Visa appointments', id: 'visa-appointment' },
-    { href: 'saudi-visa/saudi-visa-processing-pakistan/', label: 'Saudi Visa', title: 'Saudi work visa processing', id: 'saudi-visa' },
-    { href: 'document-services/', label: 'Attestation', title: 'Document attestation', id: 'document-services' },
-    { href: 'contact.html', label: 'Contact', id: 'contact' },
+    { href: 'services.html', label: 'Services', id: 'services' },
+    { href: 'checklist.html', label: 'Checklist', id: 'checklist' },
+    { href: 'process.html', label: 'Process', id: 'process' },
+    { href: 'pricing.html', label: 'Pricing', id: 'pricing' },
   ];
 
-  /** Pages without their own nav entry highlight their closest parent */
   const NAV_ALIAS = {
-    calculator: 'document-services',
-    compare: 'document-services',
-    checklist: 'document-services',
-    attestation: 'document-services',
-    eligibility: 'study-visa',
-    services: 'study-visa',
-    countries: 'study-visa',
-    ausbildung: 'work-permit',
-    jobs: 'work-permit',
-    blog: 'study-visa',
-    /* Keep these unhighlighted — mapping to Contact confused visitors */
-    pricing: '',
-    faq: '',
-    about: '',
-    trust: '',
-    success: 'success',
-    contact: 'contact',
-    home: '',
+    calculator: 'tools', compare: 'tools', eligibility: 'tools',
+    attestation: 'services', 'study-visa': 'services', 'work-permit': 'services',
+    'visit-visa': 'services', 'visa-appointment': 'services', 'saudi-visa': 'services',
+    'document-services': 'services', ausbildung: 'services', jobs: 'services',
+    tracker: 'tracker', success: 'success', contact: 'contact', home: 'home',
+    about: 'about', faq: '', blog: '',
   };
 
   function activeId() {
     const path = location.pathname;
-    if (path.includes('/study-visa')) return 'study-visa';
-    if (path.includes('/work-permit')) return 'work-permit';
-    if (path.includes('/visit-visa')) return 'visit-visa';
-    if (path.includes('/visa-appointment')) return 'visa-appointment';
-    if (path.includes('/saudi-visa')) return 'saudi-visa';
-    if (path.includes('/document-services') || path.includes('attestation')) return 'document-services';
-    if (path.includes('/hire-workers')) return 'document-services';
-    if (path.includes('/answers/')) return 'study-visa';
-    if (path.includes('/blog/')) return 'study-visa';
-    const page = document.body.dataset.page || 'home';
+    if (path.endsWith('/') && (path === '/' || path.endsWith('/index.html') || /\/$/.test(path) && partsLen(path) <= 1)) {
+      if (!path.split('/').filter(Boolean).length) return 'home';
+    }
+    const file = path.split('/').pop() || '';
+    if (file === '' || file === 'index.html') {
+      if (!path.split('/').filter(Boolean).length) return 'home';
+    }
+    if (path.includes('/study-visa') || path.includes('/work-permit') || path.includes('/visit-visa') || path.includes('/saudi-visa') || path.includes('/document-services') || path.includes('services')) return 'services';
+    if (path.includes('checklist')) return 'checklist';
+    if (path.includes('process')) return 'process';
+    if (path.includes('pricing')) return 'pricing';
+    if (path.includes('contact')) return 'contact';
+    if (path.includes('eligibility') || path.includes('calculator') || path.includes('compare') || path.includes('cv-builder') || path.includes('tools')) return 'tools';
+    if (path.includes('tracker') || path.includes('portal')) return 'tracker';
+    const page = document.body.dataset.page || '';
+    if (page === 'home' && !path.split('/').filter(Boolean).length) return 'home';
     return NAV_ALIAS[page] || page;
+  }
+
+  function partsLen(path) {
+    return path.split('/').filter(Boolean).length;
   }
 
   function href(path) {
     return BASE + path;
   }
 
-  function navLinks(cls) {
-    const cur = activeId();
-    return NAV.map((n) => {
-      const title = n.title ? ` title="${n.title}"` : '';
-      const on = cur && cur === n.id;
-      return `<a href="${href(n.href)}" class="${cls}${on ? ' active' : ''}"${title}${on ? ' aria-current="page"' : ''}>${n.label}</a>`;
-    }).join('');
+  function icon(name) {
+    return `<i data-lucide="${name}" width="20" height="20"></i>`;
   }
 
   function socialRow() {
@@ -107,95 +100,108 @@
     return items.map(([label, u]) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${label}</a>`).join('');
   }
 
-  function logoBlock() {
-    const brand = C().brandFull || C().brand || 'SK Immigration Services';
-    const brandShort = C().brand || 'SK Immigration';
+  function logoBlock(text) {
     return `
-      <a href="${href('index.html')}" class="logo" aria-label="${brand} home">
-        <img class="logo-img" src="${BASE}assets/img/logo.jpg" width="44" height="36" alt="${brand}" decoding="async" />
-        <span class="logo-text">
-          <span class="nav-name">
-            <span class="nav-name-long">${brandShort}</span>
-            <span class="nav-name-short" aria-hidden="true">${brandShort}</span>
-          </span>
-        </span>
+      <a href="${href('index.html')}" class="sk-logo" aria-label="SK Immigration Services home">
+        <div class="sk-logo-icon">SK</div>
+        <span>${text || 'SK Immigration'}</span>
       </a>`;
   }
 
   function renderHeader() {
     const el = document.getElementById('site-header');
     if (!el) return;
+    const cur = activeId();
+    const desktop = NAV.map((n) => {
+      const on = cur === n.id;
+      return `<a href="${href(n.href)}" class="${on ? 'active' : ''}"${on ? ' aria-current="page"' : ''}>${n.label}</a>`;
+    }).join('');
+
     el.innerHTML = `
       <a href="#main" class="skip-link">Skip to main content</a>
-      <header class="site-header" id="header">
-        <div class="container header-shell">
-          <div class="header-inner">
-            ${logoBlock()}
-            <nav class="nav-desktop" aria-label="Primary">${navLinks('nav-pill')}</nav>
-            <div class="header-actions">
-              <button type="button" class="lang-toggle glass-chip" id="langToggle" aria-label="Toggle English / Urdu summary">EN</button>
-              <button type="button" class="theme-toggle glass-chip" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
-                <span data-theme-icon>☾</span>
-              </button>
-              <a href="${href('contact.html')}" class="btn btn-gold btn-sm btn-consult">Consult</a>
-              <button type="button" class="menu-toggle glass-chip" aria-label="Open menu" aria-expanded="false" id="menuBtn">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
-              </button>
-            </div>
-          </div>
+      <header class="sk-header" id="header">
+        <div class="sk-header-inner">
+          ${logoBlock()}
+          <nav class="sk-desktop-nav" aria-label="Primary">
+            ${desktop}
+            <a href="${href('tools.html')}">Tools</a>
+            <a href="${href('contact.html')}" class="btn btn-primary" style="min-height:40px;padding:0 18px;font-size:0.85rem;">Free Consultation</a>
+          </nav>
+          <button class="sk-menu-btn" id="menuBtn" aria-label="Open menu">${icon('menu')}</button>
         </div>
       </header>
-      <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile menu">
-        <div class="mobile-nav-panel">
-          <p class="mobile-nav-label">Services</p>
-          ${navLinks('')}
-          <p class="mobile-nav-label">Tools</p>
-          <a href="${href('eligibility.html')}">Eligibility Quiz</a>
-          <a href="${href('checklist.html')}">Document Checklist</a>
-          <a href="${href('calculator.html')}">Cost Calculator</a>
-          <a href="${href('compare.html')}">Compare Countries</a>
-          <a href="${href('cv-builder.html')}">CV Builder</a>
-          <a href="${href('answers.html')}">Answers / Guides</a>
-          <a href="${href('faq.html')}">FAQ</a>
-          <a href="${href('blog.html')}">Blog</a>
-          <a href="${href('services.html')}">All Services</a>
-          <a href="${href('about.html')}">About</a>
-          <a href="${href('privacy.html')}">Privacy</a>
-          <a href="${href('cookies.html')}">Cookies</a>
-          <a href="${href('terms.html')}">Terms</a>
-          <a href="${C().whatsappLink || '#'}" class="btn btn-whatsapp mt-2" target="_blank" rel="noopener">WhatsApp</a>
-          <div class="mobile-nav-toggles">
-            <button type="button" class="lang-toggle glass-chip" aria-label="Toggle English / Urdu summary">EN</button>
-            <button type="button" class="theme-toggle glass-chip" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
-              <span data-theme-icon>☾</span>
-            </button>
-          </div>
+      <div class="sk-menu-overlay" id="menuOverlay"></div>
+      <div class="sk-mobile-menu" id="mobileMenu">
+        <div class="sk-mobile-menu-header">
+          ${logoBlock()}
+          <button class="sk-menu-btn" id="closeMenu" aria-label="Close menu">${icon('x')}</button>
+        </div>
+        <nav class="sk-mobile-links">
+          <a href="${href('index.html')}" data-close>${icon('home')} Home</a>
+          <a href="${href('services.html')}" data-close>${icon('briefcase')} Services</a>
+          <a href="${href('checklist.html')}" data-close>${icon('clipboard-check')} Document Checklist</a>
+          <a href="${href('process.html')}" data-close>${icon('git-branch')} How It Works</a>
+          <a href="${href('about.html')}" data-close>${icon('shield-check')} Why Choose Us</a>
+          <a href="${href('pricing.html')}" data-close>${icon('tag')} Pricing</a>
+          <a href="${href('contact.html')}" data-close>${icon('message-circle')} Contact</a>
+          <p class="sk-mobile-label">Tools</p>
+          <a href="${href('tools.html')}" data-close>${icon('layout-grid')} All tools</a>
+          <a href="${href('eligibility.html')}" data-close>${icon('sparkles')} Eligibility Quiz</a>
+          <a href="${href('calculator.html')}" data-close>${icon('calculator')} Cost Calculator</a>
+          <a href="${href('compare.html')}" data-close>${icon('git-compare')} Compare Countries</a>
+          <a href="${href('tracker.html')}" data-close>${icon('radar')} Application Tracker</a>
+          <a href="${href('cv-builder.html')}" data-close>${icon('file-text')} CV Builder</a>
+          <p class="sk-mobile-label">Visa hubs</p>
+          <a href="${href('study-visa/')}" data-close>${icon('graduation-cap')} Study Visa</a>
+          <a href="${href('work-permit/')}" data-close>${icon('briefcase')} Work Permit</a>
+          <a href="${href('visit-visa/')}" data-close>${icon('plane')} Visit Visa</a>
+          <a href="${href('visa-appointment/')}" data-close>${icon('calendar')} Appointments</a>
+          <a href="${href('saudi-visa/saudi-visa-processing-pakistan/')}" data-close>${icon('building-2')} Saudi Visa</a>
+          <a href="${href('document-services/')}" data-close>${icon('stamp')} Attestation</a>
+          <p class="sk-mobile-label">More</p>
+          <a href="${href('success-stories.html')}" data-close>${icon('star')} Success Stories</a>
+          <a href="${href('faq.html')}" data-close>${icon('help-circle')} FAQ</a>
+          <a href="${href('blog.html')}" data-close>${icon('book-open')} Blog</a>
+          <a href="${href('trust.html')}" data-close>${icon('badge-check')} Trust &amp; verify</a>
+          <a href="${href('ur/')}" data-close>اردو</a>
+        </nav>
+        <div class="sk-mobile-footer">
+          <a href="${href('contact.html')}" class="btn btn-primary btn-full" data-close>Free Consultation</a>
         </div>
       </div>
+      <a href="${C().whatsappLink || href('contact.html')}" class="sk-fab" id="fab" aria-label="WhatsApp consultation" target="_blank" rel="noopener">
+        ${icon('message-circle')}
+      </a>
     `;
 
     const header = document.getElementById('header');
+    const fab = document.getElementById('fab');
     const menuBtn = document.getElementById('menuBtn');
-    const mobileNav = document.getElementById('mobileNav');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
 
     const onScroll = () => {
-      header?.classList.toggle('scrolled', window.scrollY > 8);
+      header?.classList.toggle('scrolled', window.scrollY > 40);
+      fab?.classList.toggle('visible', window.scrollY > 300);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    menuBtn?.addEventListener('click', () => {
-      const open = mobileNav.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-    mobileNav?.addEventListener('click', (e) => {
-      if (e.target === mobileNav) {
-        mobileNav.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
-    });
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenuFn() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    menuBtn?.addEventListener('click', openMenu);
+    closeMenu?.addEventListener('click', closeMenuFn);
+    menuOverlay?.addEventListener('click', closeMenuFn);
+    el.querySelectorAll('[data-close]').forEach((n) => n.addEventListener('click', closeMenuFn));
   }
 
   function renderFooter() {
@@ -203,132 +209,107 @@
     if (!el) return;
     const year = new Date().getFullYear();
     const brand = C().brandFull || 'SK Immigration Services';
+    const cur = activeId();
+
     el.innerHTML = `
-      <footer class="site-footer">
+      <footer class="sk-footer site-footer">
         <div class="container footer-grid">
           <div class="footer-brand">
-            ${logoBlock()}
-            <p>Trusted visa, Ausbildung and career guidance for students &amp; professionals from any country. Honest advice — no false guarantees.</p>
+            ${logoBlock('SK Immigration Services')}
+            <p>Making global opportunities accessible through clear guidance, transparent processes, and genuine care. Embassies decide visas — we never sell guarantees.</p>
             <div class="footer-col" style="margin-top:1rem">
               <h4>Follow us</h4>
               ${socialRow()}
             </div>
           </div>
           <div class="footer-col">
-            <h4>Services</h4>
-            <a href="${href('study-visa/')}">Study Visa Pakistan</a>
-            <a href="${href('work-permit/')}">Work Permit Pakistan</a>
-            <a href="${href('visit-visa/')}">Visit Visa Pakistan</a>
-            <a href="${href('visa-appointment/')}">Visa Appointments</a>
-            <a href="${href('saudi-visa/saudi-visa-processing-pakistan/')}">Saudi Work Visa Processing</a>
-            <a href="${href('document-services/')}">Document Attestation</a>
-            <a href="${href('hire-workers-from-pakistan/')}">Hire Workers from Pakistan</a>
-            <a href="${href('jobs.html')}">Jobs board</a>
+            <h4>Pages</h4>
+            <a href="${href('services.html')}">Services</a>
+            <a href="${href('process.html')}">How it works</a>
+            <a href="${href('pricing.html')}">Pricing</a>
+            <a href="${href('about.html')}">About / Why us</a>
+            <a href="${href('success-stories.html')}">Success stories</a>
+            <a href="${href('contact.html')}">Contact</a>
+            <a href="${href('study-visa/')}">Study Visa hub</a>
+            <a href="${href('work-permit/')}">Work Permit hub</a>
+            <a href="${href('visit-visa/')}">Visit Visa hub</a>
           </div>
           <div class="footer-col">
-            <h4>Quick tools</h4>
+            <h4>Tools</h4>
+            <a href="${href('tools.html')}">All tools</a>
             <a href="${href('eligibility.html')}">Eligibility Quiz</a>
             <a href="${href('checklist.html')}">Document Checklist</a>
             <a href="${href('calculator.html')}">Cost Calculator</a>
             <a href="${href('compare.html')}">Compare Countries</a>
-            <a href="${href('answers.html')}">Answers Hub</a>
-            <a href="${href('official-links/')}">Official embassy links</a>
+            <a href="${href('tracker.html')}">Application Tracker</a>
             <a href="${href('cv-builder.html')}">CV Builder</a>
+            <a href="${href('official-links/')}">Official embassy links</a>
           </div>
           <div class="footer-col">
             <h4>Contact &amp; legal</h4>
-            <a href="mailto:${C().email}">${C().email}</a>
-            <a href="tel:${(C().phone || '').replace(/\s/g, '')}">${C().phoneDisplay}</a>
-            <a href="${C().whatsappLink}" target="_blank" rel="noopener">WhatsApp Chat</a>
-            <a href="${href('about.html')}">About</a>
+            <a href="mailto:${C().email || 'Services@salaroutsourcing.com'}">${C().email || 'Services@salaroutsourcing.com'}</a>
+            <a href="tel:+923045999859">${C().phoneDisplay || '+92 304 5999859'}</a>
+            <a href="${C().whatsappLink || 'https://wa.me/923045999859'}" target="_blank" rel="noopener">WhatsApp Chat</a>
             <a href="${href('trust.html')}">Trust &amp; verify</a>
-            <a href="${href('editorial-policy.html')}">Editorial policy</a>
             <a href="${href('faq.html')}">FAQ</a>
-            <a href="${href('contact.html')}">Book consult</a>
-            <a href="${C().googleBusinessShare || 'https://share.google/hQzlV2rZbYtUzYZ9n'}" target="_blank" rel="noopener">Google Business</a>
-            <a href="${href('privacy.html')}">Privacy Policy</a>
-            <a href="${href('cookies.html')}">Cookie Policy</a>
-            <a href="${href('terms.html')}">Terms &amp; Conditions</a>
+            <a href="${href('privacy.html')}">Privacy</a>
+            <a href="${href('cookies.html')}">Cookies</a>
+            <a href="${href('terms.html')}">Terms</a>
             <button type="button" class="footer-cookie-btn" id="skFooterCookieBtn">Cookie settings</button>
             <a href="${href('local/')}">Cities we serve</a>
-            <a href="${href('local/rawalpindi-study-visa-consultant/')}">Rawalpindi office</a>
-            <a href="${href('local/islamabad-study-visa-consultant/')}">Islamabad clients</a>
-            <a href="${href('local/lahore-study-visa-consultant/')}">Lahore clients</a>
-            <a href="${href('local/karachi-study-visa-consultant/')}">Karachi clients</a>
             <a href="${href('ur/')}">اردو</a>
           </div>
         </div>
         <div class="container footer-bottom">
-          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('trust.html')}">Trust</a> · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('cookies.html')}">Cookies</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
-          <span class="parent-line">SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi, Pakistan · Official website: immigration.salaroutsourcing.com</span>
+          <span>© ${year} ${brand}. All rights reserved. · CUIN 0304985 · Rawalpindi, Pakistan</span>
         </div>
       </footer>
-      <a class="wa-float" href="${C().whatsappLink}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 6.165L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </a>
-      <div class="sk-mobile-action-bar" aria-label="Quick contact actions">
-        <a href="${C().whatsappLink}" class="sk-m-action-wa" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 6.165L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <span>WhatsApp Chat</span>
+      <nav class="sk-bottom-nav" id="bottomNav" aria-label="Mobile">
+        <a href="${href('index.html')}" class="sk-bottom-nav-item ${cur === 'home' ? 'active' : ''}" data-nav="home">
+          ${icon('home')}<span>Home</span>
         </a>
-        <a href="${href('contact.html')}" class="sk-m-action-consult">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM16 2v4M8 2v4M3 10h18"/></svg>
-          <span>Book Consult</span>
+        <a href="${href('services.html')}" class="sk-bottom-nav-item ${cur === 'services' ? 'active' : ''}" data-nav="services">
+          ${icon('briefcase')}<span>Services</span>
         </a>
-      </div>
+        <a href="${href('checklist.html')}" class="sk-bottom-nav-item ${cur === 'checklist' ? 'active' : ''}" data-nav="checklist">
+          ${icon('clipboard-check')}<span>Checklist</span>
+        </a>
+        <a href="${href('tools.html')}" class="sk-bottom-nav-item ${cur === 'tools' ? 'active' : ''}" data-nav="tools">
+          ${icon('layout-grid')}<span>Tools</span>
+        </a>
+        <a href="${href('contact.html')}" class="sk-bottom-nav-item ${cur === 'contact' ? 'active' : ''}" data-nav="contact">
+          ${icon('message-circle')}<span>Contact</span>
+        </a>
+      </nav>
     `;
   }
 
   function revealOnScroll() {
-    const els = document.querySelectorAll('.reveal');
+    const els = document.querySelectorAll('.reveal, .fade-in');
     if (!els.length) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce || !('IntersectionObserver' in window)) {
       els.forEach((el) => el.classList.add('visible'));
       return;
     }
-    requestAnimationFrame(() => {
-      els.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
-        if (inView) el.classList.add('visible');
-        else el.classList.add('reveal-ready');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
       });
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add('visible');
-              e.target.classList.remove('reveal-ready');
-              io.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.08, rootMargin: '0px 0px -5% 0px' }
-      );
-      els.forEach((el) => {
-        if (!el.classList.contains('visible')) io.observe(el);
-      });
-      setTimeout(() => {
-        document.querySelectorAll('.reveal:not(.visible)').forEach((el) => {
-          el.classList.add('visible');
-          el.classList.remove('reveal-ready');
-        });
-      }, 1200);
-    });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => io.observe(el));
   }
 
   function bindLangToggle() {
-    const buttons = [...document.querySelectorAll('.lang-toggle')];
+    const buttons = [...document.querySelectorAll('.lang-toggle, .sk-lang-btn')];
     if (!buttons.length) return;
     const apply = (ur) => {
       document.documentElement.lang = ur ? 'ur' : 'en';
       document.documentElement.dir = ur ? 'rtl' : 'ltr';
       buttons.forEach((b) => { b.textContent = ur ? 'UR' : 'EN'; });
-      document.querySelectorAll('[data-en][data-ur]').forEach((el) => {
-        if (el.closest('.logo')) return;
-        el.textContent = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
-      });
       let banner = document.getElementById('urBanner');
       if (ur) {
         if (!banner) {
@@ -340,9 +321,7 @@
           banner.innerHTML =
             'اردو خلاصہ: مفت مشورہ · واٹس ایپ <a href="https://wa.me/923045999859">+92 304 5999859</a> · مکمل اردو صفحات: <a href="' +
             href('ur/') +
-            '">یہاں</a> · <a href="' +
-            href('contact.html') +
-            '">اب بک کریں</a>';
+            '">یہاں</a>';
           document.getElementById('site-header')?.after(banner);
         }
       } else {
@@ -367,23 +346,64 @@
     document.body.appendChild(s);
   }
 
+  function bindUiWidgets() {
+    document.querySelectorAll('[data-toggle]').forEach((header) => {
+      header.addEventListener('click', () => {
+        const card = header.closest('.service-card');
+        if (!card) return;
+        const wasOpen = card.classList.contains('open');
+        card.parentElement.querySelectorAll('.service-card').forEach((c) => c.classList.remove('open'));
+        if (!wasOpen) card.classList.add('open');
+      });
+    });
+    document.querySelectorAll('[data-timeline]').forEach((card) => {
+      card.addEventListener('click', () => card.closest('.timeline-item')?.classList.toggle('open'));
+    });
+
+    const counters = document.querySelectorAll('[data-count]');
+    let countersAnimated = false;
+    function animateCounters() {
+      if (countersAnimated || !counters.length) return;
+      countersAnimated = true;
+      counters.forEach((el) => {
+        const target = parseInt(el.dataset.count, 10);
+        const start = performance.now();
+        function update(now) {
+          const progress = Math.min((now - start) / 1800, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(target * eased).toLocaleString();
+          if (progress < 1) requestAnimationFrame(update);
+          else el.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(update);
+      });
+    }
+    const trust = document.querySelector('.trust-strip');
+    if (trust && counters.length) {
+      const obs = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) animateCounters();
+      }, { threshold: 0.3 });
+      obs.observe(trust);
+    }
+  }
+
+  function icons() {
+    if (window.lucide) window.lucide.createIcons();
+    else setTimeout(icons, 120);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
     renderFooter();
     revealOnScroll();
     bindLangToggle();
     ensureConsentScript();
-    if (window.SalarTheme) {
-      const t = document.documentElement.getAttribute('data-theme');
-      document.querySelectorAll('[data-theme-icon]').forEach((el) => {
-        el.textContent = t === 'dark' ? '☀' : '☾';
-      });
-    }
+    bindUiWidgets();
+    icons();
     if (!document.querySelector('script[src*="seo.js"]') && !document.getElementById('sk-org-schema')) {
       const s = document.createElement('script');
       s.src = BASE + 'assets/js/seo.js';
       document.body.appendChild(s);
     }
-    /* Ask SK chatbot removed — WhatsApp + guides are the support path */
   });
 })();

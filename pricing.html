@@ -45,6 +45,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" />
   <link rel="stylesheet" href="assets/css/main.css?v=mob1" />
+  <link rel="stylesheet" href="assets/css/sk-theme.css?v=neon1" />
   <script type="application/ld+json">
   {
     "@context":"https://schema.org","@type":"OfferCatalog","name":"SK Immigration Service Packages",
@@ -66,140 +67,78 @@
   <div class="bg-orbs" aria-hidden="true"></div>
   <div id="site-header"></div>
   <main id="main">
-    <div class="page-hero container">
-      <p class="eyebrow">Transparent Pricing</p>
-      <h1 class="display">No hidden fees. <span class="gradient-text">Clear from day one.</span></h1>
-      <p>Your first consultation is always free. Service fees depend on destination and case complexity. Embassy fees are separate. <strong>We never guarantee visa approval.</strong></p>
-    </div>
-    <section>
+    <section class="sk-hero">
       <div class="container">
-        <div class="grid-3">
-          <article class="glass card pricing-card">
-            <span class="badge">Start here</span>
-            <h2>Free Consultation</h2>
-            <p class="text-muted" style="font-size:0.92rem">For anyone exploring options. Honest assessment — no obligation.</p>
-            <p class="price-tag">Free</p>
-            <ul class="price-list">
+        <div class="hero-badge eyebrow"><i data-lucide="tag" width="14" height="14"></i> Transparent pricing</div>
+        <h1 class="sk-hero-title">No hidden fees. <span class="neon-text">Clear from day one.</span></h1>
+        <p class="sk-hero-subtitle">First consultation is free. Embassy / VFS / university fees are separate. We never guarantee a visa stamp.</p>
+      </div>
+    </section>
+    <section class="section" style="background:var(--off-white)">
+      <div class="container">
+        <div class="pricing-grid">
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">Free Consultation</div>
+            <div class="pricing-price">PKR 0</div>
+            <p class="pricing-desc">Honest assessment — no obligation.</p>
+            <ul class="pricing-features">
               <li>Profile assessment</li>
               <li>Country recommendations</li>
               <li>Rough document checklist</li>
-              <li>Honest eligibility advice</li>
-              <li>In-person or WhatsApp call</li>
+              <li>In-person or WhatsApp</li>
             </ul>
-            <a class="btn btn-navy w-full" href="contact.html">Book Free Call</a>
-          </article>
-          <article class="glass card pricing-card featured-price">
-            <span class="badge">Most Popular</span>
-            <h2>Student Visa Package</h2>
-            <p class="text-muted" style="font-size:0.92rem">End-to-end support from university shortlist to visa filing. Most popular for Europe.</p>
-            <p class="price-tag">From PKR 50,000</p>
-            <ul class="price-list">
-              <li>University shortlisting (5+ options)</li>
-              <li>Full SOP &amp; personal statement</li>
-              <li>Document checklist &amp; review</li>
-              <li>Visa application filing support</li>
-              <li>Embassy appointment guidance</li>
+            <a href="contact.html" class="btn btn-outline btn-full">Book free call</a>
+          </div>
+          <div class="pricing-card featured fade-in">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-name">Student Visa Package</div>
+            <div class="pricing-price">PKR 50,000 <span>from</span></div>
+            <p class="pricing-desc">End-to-end support from shortlist to filing.</p>
+            <ul class="pricing-features">
+              <li>University shortlisting</li>
+              <li>SOP &amp; document review</li>
+              <li>Visa filing support</li>
+              <li>Appointment guidance</li>
               <li>Pre-departure briefing</li>
             </ul>
-            <a class="btn btn-gold w-full" href="contact.html">Get Started</a>
-          </article>
-          <article class="glass card pricing-card">
-            <span class="badge">Work / Visit</span>
-            <h2>Work Permit / Visit Visa</h2>
-            <p class="text-muted" style="font-size:0.92rem">Country-by-country work permits and visit visas (UK, USA, Schengen, Dubai…). Pricing depends on destination.</p>
-            <p class="price-tag">From PKR 80,000</p>
-            <p class="text-muted" style="font-size:0.85rem;margin-top:-0.5rem;margin-bottom:1rem">Visit visa from PKR 30,000</p>
-            <ul class="price-list">
-              <li>Employer matching (work permit)</li>
-              <li>Contract &amp; document preparation</li>
-              <li>Itinerary planning (visit visa)</li>
-              <li>Financial document guidance</li>
-              <li>Cover letter writing</li>
+            <a href="contact.html" class="btn btn-primary btn-full">Get started</a>
+            <div class="no-fees">No hidden consultancy fees</div>
+          </div>
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">Work Permit</div>
+            <div class="pricing-price">PKR 80,000 <span>from</span></div>
+            <p class="pricing-desc">Visit visas from PKR 30,000. Destination-based.</p>
+            <ul class="pricing-features">
+              <li>Employer / contract review</li>
+              <li>Document preparation</li>
+              <li>Visit: itinerary &amp; cover letter</li>
+              <li>Financial evidence coaching</li>
             </ul>
-            <div class="hero-ctas" style="margin-bottom:0;gap:0.5rem;flex-wrap:wrap">
-              <a class="btn btn-navy btn-sm" href="work-permit/">Work hub</a>
-              <a class="btn btn-ghost btn-sm" href="visit-visa/">Visit hub</a>
-            </div>
-          </article>
+            <a href="work-permit/" class="btn btn-outline btn-full">Work hub</a>
+          </div>
         </div>
-        <div class="grid-2 mt-2">
-          <article class="glass card pricing-card">
-            <h2>Complete Saudi Work Visa Processing</h2>
-            <p class="text-muted" style="font-size:0.92rem">Not E-Number only — E-Number + Protector + visa processing. </p>
-            <p class="price-tag">PKR 15,000</p>
-            <ul class="price-list">
-              <li>E-Number biometrics assistance</li>
-              <li>Protector included</li>
-              <li>Visa processing support</li>
-              <li>Authority/medical fees separate</li>
-            </ul>
-            <a class="btn btn-gold w-full" href="saudi-visa/saudi-visa-processing-pakistan/">Saudi package details</a>
-          </article>
-          <article class="glass card pricing-card">
-            <h2>Ausbildung Package</h2>
-            <p class="price-tag">From quote</p>
-            <ul class="price-list">
-              <li>Europass CV polish</li>
-              <li>Job / training matching</li>
-              <li>Language plan guidance</li>
-              <li>Document &amp; visa checklist</li>
-            </ul>
-            <a class="btn btn-ghost w-full" href="ausbildung.html">Browse Ausbildung jobs</a>
-          </article>
-        </div>
-        <div class="grid-2 mt-2">
-          <article class="glass card pricing-card">
-            <h2>Attestation Support</h2>
-            <p class="price-tag">Per document / chain</p>
-            <ul class="price-list">
-              <li>Musadaqa / Gulf chains</li>
-              <li>Apostille guidance</li>
-              <li>MOFA / HEC pathways</li>
-              <li>QVP &amp; embassy steps</li>
-            </ul>
-            <a class="btn btn-ghost w-full" href="attestation.html">Attestation details</a>
-          </article>
-          <article class="glass card pricing-card">
-            <h2>Why trust our pricing</h2>
-            <ul class="price-list">
-              <li>Incorporated company (details on About)</li>
-              <li>Clear packages before work begins</li>
-              <li>Free first consultation</li>
-              <li>No fake “100% visa” promises</li>
-            </ul>
-            <a class="btn btn-navy w-full" href="about.html">About SK Immigration</a>
-          </article>
-        </div>
-        <div class="glass card mt-2" style="padding:1.5rem">
-          <h2 class="section-title" style="font-size:1.3rem">What’s never included</h2>
-          <ul class="price-list">
-            <li>Embassy / VFS visa fees</li>
-            <li>University tuition or deposits</li>
-            <li>Blocked account deposits or flights</li>
-            <li>A promised visa stamp (illegal &amp; unethical)</li>
-          </ul>
-          <p class="text-muted" style="margin-top:1rem">Final fee confirmed after free consultation. All embassy fees paid separately by applicant.</p>
+        <div class="pricing-grid" style="margin-top:16px">
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">Saudi Complete Processing</div>
+            <div class="pricing-price">PKR 15,000</div>
+            <p class="pricing-desc">E-Number + Protector + visa support. Authority fees extra.</p>
+            <a href="saudi-visa/saudi-visa-processing-pakistan/" class="btn btn-outline btn-full">Saudi details</a>
+          </div>
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">Ausbildung / Attestation</div>
+            <div class="pricing-price">Quote</div>
+            <p class="pricing-desc">Training matching or per-document legalization chains.</p>
+            <a href="ausbildung.html" class="btn btn-outline btn-full">Ausbildung</a>
+          </div>
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">Never included</div>
+            <div class="pricing-price" style="font-size:1.25rem">Embassy fees</div>
+            <p class="pricing-desc">Tuition, blocked accounts, flights, and promised stamps are never in our fee.</p>
+            <a href="about.html" class="btn btn-outline btn-full">Why trust us</a>
+          </div>
         </div>
       </div>
     </section>
-  
-    <!-- ═══════════════════════════════════════════════════════════
-         Google AdSense Monetization Slot: Non-Intrusive Bottom
-         ═══════════════════════════════════════════════════════════ -->
-    <div class="hl-wrap" style="padding-top: 2rem; padding-bottom: 3rem;">
-      <div class="sk-ad-container" aria-label="Advertisement">
-        <span class="sk-ad-label">Advertisement</span>
-        <div class="sk-ad-slot sk-ad-leaderboard">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-5113459275916426"
-               data-ad-slot="auto"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
-      </div>
-    </div>
-
   </main>
   <div id="site-footer"></div>
   <script src="assets/js/config.js"></script>
@@ -207,6 +146,6 @@
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/api.js"></script>
   <script src="assets/js/consent.js?v=consent4"></script>
-  <script src="assets/js/layout.js?v=mob1"></script>
+  <script src="assets/js/layout.js?v=neon1"></script>
 </body>
 </html>
