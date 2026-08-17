@@ -1,4 +1,14 @@
 # Google AdSense ads.txt — live at /ads.txt
 # Publisher: ca-pub-5113459275916426 (pub-5113459275916426 in ads.txt)
-# AdSense Sites entry must be the ROOT domain salaroutsourcing.com / www
-# (not immigration subdomain). See blog-posts/ADSENSE-PHASE9-APPLY.md
+#
+# IMPORTANT — two hosts:
+# 1) immigration.salaroutsourcing.com — ads.txt is in THIS repo root (deployed).
+# 2) www.salaroutsourcing.com — AdSense Sites uses the ROOT domain; ads.txt must
+#    live in repo Salaroutsourcing/salaroutsourcing.com (see blog-posts/root-domain-adsense/).
+#
+# Root domain file content (copy to www repo):
+#   google.com, pub-5113459275916426, DIRECT, f08c47fec0942fa0
+#   subdomain=immigration.salaroutsourcing.com
+#
+# Immigration subdomain file content (this repo /ads.txt):
+google.com, pub-5113459275916426, DIRECT, f08c47fec0942fa0

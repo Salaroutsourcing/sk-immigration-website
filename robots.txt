@@ -43,6 +43,7 @@ Allow: /compare.html
 Allow: /cv-builder.html
 Allow: /llms.txt
 Allow: /ai.txt
+Allow: /ads.txt
 Allow: /sitemap.xml
 
 # Explicitly welcome search and AI crawlers (citation / overviews)
