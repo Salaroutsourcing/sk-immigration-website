@@ -8,5 +8,18 @@
 ADMIN_PASSWORD_HASH=
 SESSION_SECRET=
 
+# Studio GitHub OAuth (required for /studio/)
+# Callback: https://immigration.salaroutsourcing.com/api/auth/github/callback
+# Local callback: http://localhost:8787/api/auth/github/callback
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+STUDIO_GITHUB_ALLOWLIST=
+
+# Optional publish target (defaults shown)
+GITHUB_REPO=Salaroutsourcing/sk-immigration-website
+STUDIO_PUBLISH_BRANCH=main
+# Optional PAT if OAuth token should not write to the repo
+GITHUB_TOKEN=
+
 # Optional. New leads are POSTed here as JSON.
 LEAD_WEBHOOK_URL=

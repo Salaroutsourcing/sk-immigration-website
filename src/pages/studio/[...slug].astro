@@ -1,0 +1,23 @@
+---
+import StudioLayout from '../../layouts/StudioLayout.astro';
+import StudioApp from '../../studio/App';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'login' } },
+    { params: { slug: 'news' } },
+    { params: { slug: 'blog' } },
+    { params: { slug: 'stories' } },
+    { params: { slug: 'media' } },
+    { params: { slug: 'keywords' } },
+    { params: { slug: 'settings' } },
+    { params: { slug: 'news/new' } },
+    { params: { slug: 'blog/new' } },
+    { params: { slug: 'stories/new' } },
+  ];
+}
+---
+
+<StudioLayout title="Studio | SK Immigration">
+  <StudioApp client:only="react" />
+</StudioLayout>
