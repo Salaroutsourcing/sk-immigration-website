@@ -14,10 +14,12 @@ const ERRORS: Record<string, string> = {
 export function Login({
   githubConfigured,
   passwordConfigured,
+  apiOnline,
   onPasswordOk,
 }: {
   githubConfigured: boolean;
   passwordConfigured: boolean;
+  apiOnline: boolean;
   onPasswordOk: () => void;
 }) {
   const [password, setPassword] = useState('');
@@ -31,6 +33,10 @@ export function Login({
 
   async function submit(e: { preventDefault: () => void }) {
     e.preventDefault();
+    if (!apiOnline) {
+      setError('Login is not connected on GitHub Pages. Deploy the Cloudflare Worker first.');
+      return;
+    }
     setBusy(true);
     setError('');
     try {
@@ -55,36 +61,51 @@ export function Login({
         </div>
         <h1>Sign in to publish</h1>
         <p className="lede">Private console for news, blogs, and Web Stories. This route is noindex.</p>
+        {!apiOnline && (
+          <div className="login-error">
+            You can see Studio, but login is not connected yet. This copy of the site is GitHub Pages (files only).
+            Sign-in needs Cloudflare — the same system that ran the old /admin.
+          </div>
+        )}
         {(oauthError || error) && <div className="login-error">{oauthError || error}</div>}
-        {githubConfigured ? (
+        {githubConfigured && apiOnline ? (
           <a className="btn btn-gold btn-block" href="/api/auth/github">
             <IconGitHub width={18} height={18} />
             Continue with GitHub
           </a>
         ) : (
-          <p className="hint">
-            GitHub OAuth is off until <code>GITHUB_CLIENT_ID</code>, <code>GITHUB_CLIENT_SECRET</code>, and{' '}
-            <code>STUDIO_GITHUB_ALLOWLIST</code> are set on the Worker.
-          </p>
+          <button
+            className="btn btn-gold btn-block"
+            type="button"
+            disabled
+            title="GitHub login turns on after Cloudflare is connected"
+          >
+            <IconGitHub width={18} height={18} />
+            Continue with GitHub
+          </button>
         )}
-        {passwordConfigured && (
-          <form onSubmit={submit} style={{ marginTop: 18 }}>
-            <div className="field">
-              <label htmlFor="studio-password">Password fallback</label>
-              <input
-                id="studio-password"
-                type="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button className="btn btn-block" type="submit" disabled={busy}>
-              {busy ? 'Signing in…' : 'Sign in with password'}
-            </button>
-          </form>
-        )}
+        <form onSubmit={submit} style={{ marginTop: 18 }}>
+          <div className="field">
+            <label htmlFor="studio-password">Password</label>
+            <input
+              id="studio-password"
+              type="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Same password as the old /admin"
+              required
+            />
+          </div>
+          <button className="btn btn-block" type="submit" disabled={busy}>
+            {busy ? 'Signing in…' : 'Sign in with password'}
+          </button>
+          {apiOnline && !passwordConfigured && (
+            <p className="hint" style={{ marginTop: 10 }}>
+              Password login is off until the old admin password is set on Cloudflare.
+            </p>
+          )}
+        </form>
       </div>
     </div>
   );

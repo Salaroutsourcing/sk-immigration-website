@@ -32,7 +32,12 @@ migrations/002_studio.sql
 docs/PHASE-1-STUDIO.md
 ```
 
-## How to log in
+## GitHub Pages vs Cloudflare
+
+GitHub Pages can show `/studio/` (the screen). **Login only works after the Cloudflare Worker is deployed** to `immigration.salaroutsourcing.com`. Pages has no `/api/auth` or `/api/studio`.
+
+Add GitHub secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` to auto-deploy the Worker from `main` (workflow `.github/workflows/cloudflare.yml`).
+
 
 ### 1. Secrets (required)
 
