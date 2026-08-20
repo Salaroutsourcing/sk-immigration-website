@@ -6,6 +6,7 @@ const ERRORS: Record<string, string> = {
   oauth_state: 'GitHub sign-in was interrupted. Try again.',
   oauth_expired: 'The sign-in link expired. Try again.',
   oauth_config: 'GitHub OAuth is not fully configured on the Worker.',
+  invalid_password: 'Wrong password. Try again.',
   oauth_token: 'GitHub did not return an access token.',
   oauth_user: 'Could not read your GitHub profile.',
   not_allowlisted: 'This GitHub account is not on the Studio allowlist.',
@@ -102,7 +103,12 @@ export function Login({
           </button>
           {apiOnline && !passwordConfigured && (
             <p className="hint" style={{ marginTop: 10 }}>
-              Password login is off until the old admin password is set on Cloudflare.
+              Password login is off until the Studio password is set on Cloudflare.
+            </p>
+          )}
+          {apiOnline && !githubConfigured && (
+            <p className="hint" style={{ marginTop: 10 }}>
+              GitHub sign-in turns on after the GitHub app is connected. Use the password for now.
             </p>
           )}
         </form>
