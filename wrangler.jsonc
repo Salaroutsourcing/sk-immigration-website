@@ -7,7 +7,7 @@
   "workers_dev": true,
   "vars": {
     "GITHUB_REPO": "Salaroutsourcing/sk-immigration-website",
-    "STUDIO_GITHUB_ALLOWLIST": "Salaroutsourcing"
+    "STUDIO_GITHUB_ALLOWLIST": "Salaroutsourcing,isajidkhan00"
   },
   "observability": {
     "enabled": true
