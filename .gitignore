@@ -17,6 +17,7 @@ node_modules/
 *.log
 
 .cursor/
+!.cursor/mcp.json
 
 # Astro
 dist/
