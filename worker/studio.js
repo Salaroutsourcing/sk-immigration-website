@@ -13,7 +13,8 @@ const ALLOWED_COLLECTIONS = new Set(["news", "blog", "web-stories"]);
 const IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"]);
 
 export function isStudioPath(pathname) {
-  return pathname === "/studio" || pathname.startsWith("/studio/");
+  const p = String(pathname || "").toLowerCase();
+  return p === "/studio" || p.startsWith("/studio/");
 }
 
 export function isStudioApi(pathname) {
@@ -115,23 +116,38 @@ export async function studioAssetFallback(request, env) {
   const url = new URL(request.url);
   if (request.method !== "GET" && request.method !== "HEAD") return null;
   if (!isStudioPath(url.pathname)) return null;
-  if (url.pathname.includes(".") && !url.pathname.endsWith(".html")) return null;
-  const normalized = url.pathname.replace(/\/+$/, "") || "/studio";
-  // Let the real index file be served by ASSETS. Rewriting /studio/index.html
-  // caused a 307 back to /studio/ (redirect loop).
-  if (normalized === "/studio") return null;
-  const indexReq = new Request(new URL("/studio/", url.origin), {
-    method: request.method,
-    headers: request.headers,
-    redirect: "manual",
-  });
-  const res = await env.ASSETS.fetch(indexReq);
+  if (/\.[a-z0-9]+$/i.test(url.pathname) && !url.pathname.toLowerCase().endsWith(".html")) {
+    return null;
+  }
+
+  const lowerPath = url.pathname.toLowerCase();
+  if (url.pathname !== lowerPath || lowerPath === "/studio") {
+    const dest = new URL(request.url);
+    dest.pathname = lowerPath === "/studio" ? "/studio/" : lowerPath;
+    if (dest.toString() !== url.toString()) {
+      return Response.redirect(dest.toString(), 301);
+    }
+  }
+
+  const tryUrls = ["/studio/", "/studio/index.html"];
+  let res = null;
+  for (const path of tryUrls) {
+    res = await env.ASSETS.fetch(
+      new Request(new URL(path, url.origin), {
+        method: "GET",
+        headers: request.headers,
+        redirect: "manual",
+      }),
+    );
+    if (res && res.status === 200) break;
+  }
+  if (!res || res.status !== 200) return null;
+
   const headers = new Headers(res.headers);
   headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
   headers.set("Cache-Control", "no-store");
   headers.delete("Location");
-  const status = res.status >= 300 && res.status < 400 ? 200 : res.status;
-  return new Response(res.body, { status, headers });
+  return new Response(res.body, { status: 200, headers });
 }
 
 function cors(request, response) {
