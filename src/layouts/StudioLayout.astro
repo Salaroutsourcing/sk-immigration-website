@@ -46,6 +46,13 @@ const { title = 'SK Immigration Studio' } = Astro.props;
     </script>
   </head>
   <body class="studio-body">
+    <div id="studio-static" style="min-height:100vh;display:grid;place-items:center;padding:24px;background:#09090b;color:#f4f4f5;font-family:ui-sans-serif,system-ui,sans-serif">
+      <div class="card" style="width:min(100%,420px);padding:28px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:#111114">
+        <h1 style="margin:0 0 8px;font-size:1.5rem">SK Immigration Studio</h1>
+        <p style="margin:0 0 14px;color:#a1a1aa;line-height:1.5">Loading the editor. If this box stays here, tap the gold button.</p>
+        <a href="https://immigration.salaroutsourcing.com/studio/" style="display:inline-block;color:#111;background:#c9a84c;font-weight:700;text-decoration:none;padding:12px 16px;border-radius:10px">Open Studio</a>
+      </div>
+    </div>
     <slot />
   </body>
 </html>

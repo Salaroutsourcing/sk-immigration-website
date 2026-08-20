@@ -61,6 +61,7 @@ export default function StudioApp() {
   }, []);
 
   useEffect(() => {
+    document.getElementById('studio-static')?.setAttribute('hidden', '');
     setPath(readPath());
     const stored = localStorage.getItem('sk-studio-theme');
     const next =
