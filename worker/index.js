@@ -3,7 +3,15 @@
  *
  * Static site via ASSETS (Astro dist/) + /api/* for leads.
  * Old /admin HTML is retired; /admin 301s to /studio/.
+ * Studio auth + CMS: worker/studio.js
  */
+
+import {
+  handleStudioRequest,
+  studioAssetFallback,
+  isStudioApi,
+  isStudioPath,
+} from './studio.js';
 
 const SESSION_COOKIE = 'sk_admin';
 const SESSION_TTL_MS = 12 * 60 * 60 * 1000;
@@ -305,9 +313,30 @@ export default {
       return Response.redirect(new URL('/terms.html', url).toString(), 301);
     }
 
+    if (isStudioApi(url.pathname)) {
+      try {
+        const studioResponse = await handleStudioRequest(request, env, ctx, {
+          adminPasswordHashes,
+          sha256Hex,
+          timingSafeEqual,
+          isLoginLocked,
+          recordLoginFail,
+          clearLoginFails,
+          clientIpHash,
+          sleep,
+        });
+        if (studioResponse) return withStudioHeaders(url.pathname, studioResponse);
+      } catch (err) {
+        console.error('Unhandled Studio API error', err);
+        return withStudioHeaders(url.pathname, json({ ok: false, error: 'internal_error' }, 500));
+      }
+    }
+
     if (!url.pathname.startsWith('/api/')) {
+      const spa = await studioAssetFallback(request, env);
+      if (spa) return withStudioHeaders(url.pathname, spa);
       const assetResponse = await env.ASSETS.fetch(request);
-      return withSecurityHeaders(assetResponse);
+      return withStudioHeaders(url.pathname, assetResponse);
     }
 
     try {
@@ -328,6 +357,19 @@ function withSecurityHeaders(response) {
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
+    headers,
+  });
+}
+
+function withStudioHeaders(pathname, response) {
+  const secured = withSecurityHeaders(response);
+  if (!isStudioPath(pathname) && !isStudioApi(pathname)) return secured;
+  const headers = new Headers(secured.headers);
+  headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+  headers.set('Cache-Control', 'no-store');
+  return new Response(secured.body, {
+    status: secured.status,
+    statusText: secured.statusText,
     headers,
   });
 }

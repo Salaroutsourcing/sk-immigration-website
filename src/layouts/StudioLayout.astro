@@ -1,25 +1,51 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import '../styles/studio.css';
 
 interface Props {
-  title: string;
-  description: string;
-  canonical: string;
-  noindex?: boolean;
-  jsonLd?: unknown[];
-  page?: string;
+  title?: string;
 }
 
-const { title, description, canonical, noindex, jsonLd, page = 'studio' } = Astro.props;
+const { title = 'SK Immigration Studio' } = Astro.props;
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  canonical={canonical}
-  noindex={noindex}
-  jsonLd={jsonLd}
-  page={page}
->
-  <slot />
-</BaseLayout>
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta
+      name="description"
+      content="Private publishing studio for SK Immigration Services. Not indexed."
+    />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive" />
+    <link rel="canonical" href="https://immigration.salaroutsourcing.com/studio/" />
+    <link rel="icon" href="/assets/img/logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('sk-studio-theme');
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      })();
+    </script>
+  </head>
+  <body class="studio-body">
+    <slot />
+  </body>
+</html>
