@@ -32,6 +32,7 @@ export default function StudioApp() {
   const [ready, setReady] = useState(false);
   const [user, setUser] = useState<StudioUser | null>(null);
   const [auth, setAuth] = useState({ githubConfigured: false, passwordConfigured: false });
+  const [apiOnline, setApiOnline] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [navOpen, setNavOpen] = useState(false);
   const [palette, setPalette] = useState(false);
@@ -47,6 +48,7 @@ export default function StudioApp() {
     const me = await api.me();
     setUser(me.user);
     setAuth(me.auth);
+    setApiOnline(true);
     return me.user;
   }, []);
 
@@ -70,7 +72,10 @@ export default function StudioApp() {
     setTheme(next);
     document.documentElement.dataset.theme = next;
     refreshMe()
-      .catch(() => setUser(null))
+      .catch(() => {
+        setUser(null);
+        setApiOnline(false);
+      })
       .finally(() => setReady(true));
   }, [refreshMe]);
 
@@ -173,6 +178,7 @@ export default function StudioApp() {
         <Login
           githubConfigured={auth.githubConfigured}
           passwordConfigured={auth.passwordConfigured}
+          apiOnline={apiOnline}
           onPasswordOk={() => {
             void refreshMe().then(() => navigate('/studio/'));
           }}
