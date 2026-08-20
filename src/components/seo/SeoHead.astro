@@ -12,6 +12,8 @@ interface Props {
   updated?: Date;
   noindex?: boolean;
   jsonLd?: unknown[];
+  /** HTML player → AMP Web Story. Do not put AMP runtime on this layout. */
+  amphtml?: string;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   updated,
   noindex = false,
   jsonLd = [],
+  amphtml,
 } = Astro.props;
 
 const canonicalAbs = absoluteUrl(canonical);
@@ -85,6 +88,7 @@ const euRegions = [...EU_CONSENT_REGIONS];
   <meta name="robots" content="index, follow, max-image-preview:large" />
 )}
 <link rel="canonical" href={canonicalAbs} />
+{amphtml && <link rel="amphtml" href={absoluteUrl(amphtml)} />}
 <link rel="alternate" hreflang="en" href={canonicalAbs} />
 <link rel="alternate" hreflang="x-default" href={canonicalAbs} />
 <meta name="author" content={SITE.brandFull} />

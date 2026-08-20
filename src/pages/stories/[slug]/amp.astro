@@ -1,0 +1,135 @@
+---
+/**
+ * Valid AMP Web Story for Google Discover.
+ * No GTM, AdSense, Clarity, or regular JS. Canonical is this AMP URL.
+ */
+import { getRelatedBlog, publishedStories, storyAmpPath, storyFunnelCta } from '../../../lib/content';
+import { SITE, absoluteUrl } from '../../../lib/site';
+import { organizationSchema, webStoryArticleSchema } from '../../../lib/seo';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const items = await publishedStories();
+  return items.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const blog = await getRelatedBlog(entry.data.relatedBlog);
+const ampPath = storyAmpPath(entry.id);
+const ampUrl = absoluteUrl(ampPath);
+const poster = absoluteUrl(entry.data.posterPortrait);
+const logo = absoluteUrl(SITE.logo);
+const cta = storyFunnelCta(entry, blog);
+const ctaHref = absoluteUrl(cta.href);
+const lastIndex = entry.data.slides.length - 1;
+const autoAdvance = `${entry.data.durationSeconds}s`;
+const jsonLd = [
+  organizationSchema(),
+  webStoryArticleSchema({
+    headline: entry.data.title,
+    description: entry.data.description,
+    url: ampUrl,
+    datePublished: entry.data.publishDate,
+    dateModified: entry.data.updatedDate,
+    image: entry.data.posterPortrait,
+    keywords: entry.data.keywords,
+  }),
+];
+---
+
+<!doctype html>
+<html ⚡ lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script is:inline async src="https://cdn.ampproject.org/v0.js"></script>
+    <script is:inline async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
+    <title>{entry.data.title}</title>
+    <link rel="canonical" href={ampUrl} />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <meta name="description" content={entry.data.description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <style is:inline amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+    <noscript><style is:inline amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style is:inline amp-custom>
+      amp-story {
+        font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        color: #fff;
+      }
+      .slide-copy {
+        justify-content: flex-end;
+        padding: 48px 28px 96px;
+        background: linear-gradient(180deg, rgba(11, 18, 32, 0.05) 0%, rgba(11, 18, 32, 0.78) 70%);
+      }
+      .kicker {
+        margin: 0 0 10px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #e2c36a;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 32px;
+        line-height: 1.2;
+        font-weight: 800;
+      }
+      .slide-copy p {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.45;
+        color: #e8eef8;
+      }
+      .cta {
+        display: block;
+        margin: 0 20px 28px;
+        padding: 14px 18px;
+        background: #c9a84c;
+        color: #0f172a;
+        font-weight: 800;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 999px;
+        font-size: 16px;
+      }
+    </style>
+    {jsonLd.map((block) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(block)} />
+    ))}
+  </head>
+  <body>
+    <amp-story
+      standalone=""
+      title={entry.data.title}
+      publisher={SITE.brandFull}
+      publisher-logo-src={logo}
+      poster-portrait-src={poster}
+    >
+      {entry.data.slides.map((slide, index) => {
+        const bg = absoluteUrl(slide.background || entry.data.posterPortrait);
+        const isLast = index === lastIndex;
+        return (
+          <amp-story-page id={`slide-${index + 1}`} auto-advance-after={isLast ? undefined : autoAdvance}>
+            <amp-story-grid-layer template="fill">
+              <amp-img src={bg} layout="fill" alt=""></amp-img>
+            </amp-story-grid-layer>
+            <amp-story-grid-layer template="vertical" class="slide-copy">
+              <p class="kicker">{entry.data.category.replace('-', ' ')}</p>
+              <h1>{slide.heading}</h1>
+              <p>{slide.text}</p>
+            </amp-story-grid-layer>
+            {isLast && (
+              <amp-story-cta-layer>
+                <a class="cta" href={ctaHref}>{cta.label}</a>
+              </amp-story-cta-layer>
+            )}
+          </amp-story-page>
+        );
+      })}
+    </amp-story>
+  </body>
+</html>

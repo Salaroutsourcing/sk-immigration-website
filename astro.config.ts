@@ -42,6 +42,9 @@ export default defineConfig({
         if (item.url.includes('/news/')) {
           item.changefreq = ChangeFreqEnum.HOURLY;
           item.priority = 0.85;
+        } else if (item.url.includes('/stories/') && item.url.includes('/amp')) {
+          item.changefreq = ChangeFreqEnum.DAILY;
+          item.priority = 0.9;
         } else if (item.url.includes('/stories/')) {
           item.changefreq = ChangeFreqEnum.DAILY;
           item.priority = 0.8;

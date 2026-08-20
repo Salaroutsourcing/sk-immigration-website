@@ -59,6 +59,25 @@ const SECURITY_HEADERS = {
     "default-src 'self'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.googleadservices.com https://www.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://wa.me https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://pagead2.googlesyndication.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://*.googlesyndication.com; frame-src 'self' https://www.google.com https://maps.google.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://pagead2.googlesyndication.com https://www.googletagmanager.com; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests",
 };
 
+/** AMP Web Stories — no GTM/AdSense JS. Do not apply the site-wide CSP here. */
+const AMP_STORY_CSP = [
+  "default-src 'none'",
+  "base-uri 'none'",
+  "form-action 'none'",
+  'script-src https://cdn.ampproject.org',
+  "style-src 'unsafe-inline'",
+  "img-src 'self' data: https:",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  'connect-src https://cdn.ampproject.org',
+  "media-src 'self' https:",
+  "object-src 'none'",
+].join('; ');
+
+function isAmpStoryPath(pathname = '') {
+  const path = String(pathname).split('?')[0];
+  return /^\/stories\/[^/]+\/amp(?:\/(?:index\.html)?)?$/.test(path);
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -350,10 +369,17 @@ export default {
   },
 };
 
-function withSecurityHeaders(response) {
+function withSecurityHeaders(response, pathname = '') {
   const headers = new Headers(response.headers);
+  const amp = isAmpStoryPath(pathname);
   for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
-    if (!headers.has(key)) headers.set(key, value);
+    if (headers.has(key)) continue;
+    /* Google Discover / AMP cache embed stories; skip SAMEORIGIN frame lock. */
+    if (amp && (key === 'content-security-policy' || key === 'x-frame-options')) continue;
+    headers.set(key, value);
+  }
+  if (amp) {
+    headers.set('content-security-policy', AMP_STORY_CSP);
   }
   return new Response(response.body, {
     status: response.status,
@@ -363,7 +389,7 @@ function withSecurityHeaders(response) {
 }
 
 function withStudioHeaders(pathname, response) {
-  const secured = withSecurityHeaders(response);
+  const secured = withSecurityHeaders(response, pathname);
   if (!isStudioPath(pathname) && !isStudioApi(pathname)) return secured;
   const headers = new Headers(secured.headers);
   headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
