@@ -6,9 +6,10 @@ interface Props {
   date: Date;
   category?: string;
   kind?: 'news' | 'blog' | 'story';
+  ampHref?: string;
 }
 
-const { href, title, excerpt, date, category, kind = 'news' } = Astro.props;
+const { href, title, excerpt, date, category, kind = 'news', ampHref } = Astro.props;
 const formatted = date.toLocaleDateString('en-GB', {
   day: 'numeric',
   month: 'short',
@@ -16,24 +17,28 @@ const formatted = date.toLocaleDateString('en-GB', {
 });
 ---
 
-<a class="content-card reveal" href={href} data-kind={kind}>
-  <div class="content-card__meta">
-    {category && <span class="content-card__cat">{category.replace('-', ' ')}</span>}
-    <time datetime={date.toISOString()}>{formatted}</time>
-  </div>
-  <h3>{title}</h3>
-  <p>{excerpt}</p>
-</a>
+<article class="content-card" data-kind={kind}>
+  <a class="content-card__main" href={href}>
+    <div class="content-card__meta">
+      {category && <span class="content-card__cat">{category.replace('-', ' ')}</span>}
+      <time datetime={date.toISOString()}>{formatted}</time>
+    </div>
+    <h3>{title}</h3>
+    <p>{excerpt}</p>
+  </a>
+  {ampHref && (
+    <a class="content-card__amp" href={ampHref}>Open AMP Web Story</a>
+  )}
+</article>
 
 <style>
   .content-card {
     display: grid;
-    gap: 0.45rem;
+    gap: 0.55rem;
     padding: 1.15rem 1.2rem;
     border-radius: 16px;
     border: 1px solid var(--glass-border);
     background: var(--glass);
-    text-decoration: none;
     color: inherit;
     transition:
       transform 0.22s ease,
@@ -42,6 +47,12 @@ const formatted = date.toLocaleDateString('en-GB', {
   .content-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow);
+  }
+  .content-card__main {
+    display: grid;
+    gap: 0.45rem;
+    text-decoration: none;
+    color: inherit;
   }
   .content-card__meta {
     display: flex;
@@ -61,5 +72,14 @@ const formatted = date.toLocaleDateString('en-GB', {
   .content-card p {
     color: var(--text-muted);
     font-size: 0.95rem;
+  }
+  .content-card__amp {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--gold-dark);
+    text-decoration: none;
+  }
+  .content-card__amp:hover {
+    text-decoration: underline;
   }
 </style>

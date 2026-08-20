@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getRelatedBlog, publishedStories } from '../../lib/content';
-import { SITE, absoluteUrl } from '../../lib/site';
-import { breadcrumbSchema, organizationSchema } from '../../lib/seo';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getRelatedBlog, publishedStories, storyAmpPath, storyFunnelCta, storyHtmlPath } from '../../../lib/content';
+import { SITE, absoluteUrl } from '../../../lib/site';
+import { breadcrumbSchema, organizationSchema, webStoryArticleSchema } from '../../../lib/seo';
 
 export async function getStaticPaths() {
   const items = await publishedStories();
@@ -14,14 +14,17 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const blog = await getRelatedBlog(entry.data.relatedBlog);
-const path = `/stories/${entry.id}/`;
+const path = storyHtmlPath(entry.id);
+const ampPath = storyAmpPath(entry.id);
 const durationMs = `${entry.data.durationSeconds * 1000}ms`;
+const cta = storyFunnelCta(entry, blog);
 ---
 
 <BaseLayout
   title={`${entry.data.title} | Web Story | ${SITE.brand}`}
   description={entry.data.description}
   canonical={path}
+  amphtml={ampPath}
   image={entry.data.posterPortrait}
   type="article"
   published={entry.data.publishDate}
@@ -33,18 +36,15 @@ const durationMs = `${entry.data.durationSeconds * 1000}ms`;
       { name: 'Stories', path: '/stories/' },
       { name: entry.data.title, path },
     ]),
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
+    webStoryArticleSchema({
       headline: entry.data.title,
       description: entry.data.description,
-      url: absoluteUrl(path),
-      image: absoluteUrl(entry.data.posterPortrait),
-      datePublished: entry.data.publishDate.toISOString(),
-      author: { '@id': `${SITE.url}/#organization` },
-      publisher: { '@id': `${SITE.url}/#organization` },
-      mainEntityOfPage: absoluteUrl(blog ? `/blog/${blog.id}/` : path),
-    },
+      url: absoluteUrl(ampPath),
+      datePublished: entry.data.publishDate,
+      dateModified: entry.data.updatedDate,
+      image: entry.data.posterPortrait,
+      keywords: entry.data.keywords,
+    }),
   ]}
 >
   <div class="story-stage">
@@ -72,11 +72,13 @@ const durationMs = `${entry.data.durationSeconds * 1000}ms`;
         <button type="button" data-story-next aria-label="Next slide"></button>
       </div>
       <div class="story-cta">
-        <a href={blog ? `/blog/${blog.id}/` : '/blog.html'}>
-          {blog ? `Read the full guide: ${blog.data.title}` : 'Read the full guide'}
-        </a>
+        <a href={cta.href}>{cta.label}</a>
       </div>
     </article>
+    <p class="story-amp-note">
+      <a href={ampPath}>Open AMP Web Story</a>
+      — this is the Discover version Google reads.
+    </p>
   </div>
 </BaseLayout>
 

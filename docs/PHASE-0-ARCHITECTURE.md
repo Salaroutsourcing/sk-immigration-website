@@ -31,7 +31,8 @@ New surfaces (Astro):
 | `/news/`, `/news/{slug}/`, `/news/category/{category}/` | Newsroom |
 | `/blog/` | Index of **new** MDX blogs only |
 | `/blog/{new-slug}/` | New MDX posts (do not reuse an existing HTML slug) |
-| `/stories/`, `/stories/{slug}/` | Web Stories → blog funnel |
+| `/stories/`, `/stories/{slug}/` | HTML Web Story player → blog funnel |
+| `/stories/{slug}/amp/` | AMP Web Story (Discover canonical) — Phase 2 |
 | `/rss.xml` | News RSS |
 | `/studio/` | `noindex` placeholder |
 
@@ -73,7 +74,7 @@ Secrets unchanged: `ADMIN_PASSWORD_HASH`, `SESSION_SECRET` (used by remaining `/
 ## What Phase 0 does **not** do (waiting)
 
 1. Premium Studio UI, GitHub OAuth, media library, duplicate templates.
-2. AMP Web Story XML / Discover feed packaging.
+2. AMP Web Story XML / Discover feed packaging — **done, see `docs/PHASE-2-AMP-STORIES.md`**.
 3. Full JSON-LD expansion + `llms.txt` rewrite (Phase 3).
 4. AdSense slot fill + Clarity script inject (Phase 4) — IDs are already in `site.ts`.
 5. Daily publishing SOP (Phase 5).

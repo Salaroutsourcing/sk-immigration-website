@@ -93,6 +93,18 @@
   padding: 4.5rem 1rem 2rem;
 }
 
+.story-amp-note {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.story-amp-note a {
+  font-weight: 800;
+  color: var(--gold-dark);
+}
+
 .story-frame {
   width: min(420px, 100%);
   aspect-ratio: 9 / 16;

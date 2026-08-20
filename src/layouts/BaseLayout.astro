@@ -14,6 +14,7 @@ interface Props {
   noindex?: boolean;
   jsonLd?: unknown[];
   page?: string;
+  amphtml?: string;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   noindex,
   jsonLd = [],
   page = 'content',
+  amphtml,
 } = Astro.props;
 ---
 
@@ -43,6 +45,7 @@ const {
       updated={updated}
       noindex={noindex}
       jsonLd={jsonLd}
+      amphtml={amphtml}
     />
     <slot name="head" />
   </head>

@@ -1,14 +1,7 @@
 import type { APIRoute } from 'astro';
 import { publishedNews } from '../lib/content';
 import { SITE } from '../lib/site';
-
-function escapeXml(value: string): string {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;');
-}
+import { escapeXml } from '../lib/xml';
 
 export const GET: APIRoute = async () => {
   const items = await publishedNews();

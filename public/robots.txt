@@ -102,3 +102,5 @@ Allow: /
 
 Sitemap: https://immigration.salaroutsourcing.com/sitemap.xml
 Sitemap: https://immigration.salaroutsourcing.com/sitemap-platform-index.xml
+Sitemap: https://immigration.salaroutsourcing.com/stories/sitemap.xml
+Sitemap: https://immigration.salaroutsourcing.com/webstories.xml

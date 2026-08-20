@@ -2,7 +2,7 @@
 
 Premium publishing console for the daily **5 news + 5 Web Stories + 1 blog** machine. Public pages stay static. Studio is a client app served from Astro, authenticated by the Worker.
 
-**Stop here.** Do not start Phase 2 until this is confirmed.
+**Phase 1 is confirmed.** AMP Web Stories are Phase 2 — see `docs/PHASE-2-AMP-STORIES.md`.
 
 ## What shipped
 
@@ -118,6 +118,6 @@ Sample pieces already in git (and bootstrapped into D1 if the table is empty):
 
 Theme follows system preference, defaulting to dark. Toggle is in the top bar.
 
-## What Phase 1 does not do (wait for confirmation)
+## What Phase 1 does not do
 
-Public MDX rendering, AMP Web Stories, AI citation expansion, AdSense/Clarity inject, and the daily SOP are later phases.
+Public MDX rendering, AMP Web Stories, AI citation expansion, AdSense/Clarity inject, and the daily SOP are later phases. AMP packaging is `docs/PHASE-2-AMP-STORIES.md`.

@@ -109,6 +109,34 @@ export function blogPostingSchema(opts: {
   return graph;
 }
 
+/** JSON-LD for AMP Web Stories. Canonical `url` must be the AMP document. */
+export function webStoryArticleSchema(opts: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: Date;
+  dateModified?: Date;
+  image?: string;
+  keywords?: string[];
+}): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: opts.headline,
+    description: opts.description,
+    url: opts.url,
+    mainEntityOfPage: opts.url,
+    datePublished: opts.datePublished.toISOString(),
+    dateModified: (opts.dateModified ?? opts.datePublished).toISOString(),
+    image: absoluteUrl(opts.image || SITE.defaultOg),
+    keywords: opts.keywords?.join(', '),
+    inLanguage: 'en',
+    author: { '@id': `${SITE.url}/#organization` },
+    publisher: { '@id': `${SITE.url}/#organization` },
+    isAccessibleForFree: true,
+  };
+}
+
 export function breadcrumbSchema(items: { name: string; path: string }[]): JsonLd {
   return {
     '@context': 'https://schema.org',

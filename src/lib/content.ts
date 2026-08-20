@@ -46,4 +46,24 @@ export async function getRelatedStory(id: string | undefined): Promise<StoryEntr
   }
 }
 
+export function storyHtmlPath(slug: string): string {
+  return `/stories/${slug}/`;
+}
+
+/** AMP document URL — this is the canonical Web Story for Google Discover. */
+export function storyAmpPath(slug: string): string {
+  return `/stories/${slug}/amp/`;
+}
+
+export function storyFunnelCta(
+  entry: StoryEntry,
+  blog: BlogEntry | undefined,
+): { href: string; label: string } {
+  const last = entry.data.slides[entry.data.slides.length - 1];
+  const href = last?.ctaHref || (blog ? `/blog/${blog.id}/` : '/blog/');
+  const label =
+    last?.ctaLabel || (blog ? `Read the full guide: ${blog.data.title}` : 'Read the full guide');
+  return { href, label };
+}
+
 export { render };
