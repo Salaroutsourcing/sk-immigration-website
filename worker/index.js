@@ -298,7 +298,8 @@ export default {
     }
 
     // Retired CRM — new studio ships in Phase 1
-    if (url.pathname === '/admin' || url.pathname.startsWith('/admin/')) {
+    const pathLower = url.pathname.toLowerCase();
+    if (pathLower === '/admin' || pathLower.startsWith('/admin/')) {
       return Response.redirect(new URL('/studio/', url).toString(), 301);
     }
 
