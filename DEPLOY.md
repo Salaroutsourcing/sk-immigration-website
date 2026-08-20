@@ -16,7 +16,7 @@ npx wrangler deploy
 - Worker entry: `worker/index.js`
 - Assets: `wrangler.jsonc` → `assets.directory = "./dist"`
 - Custom host: `immigration.salaroutsourcing.com` (existing routes)
-- Secrets (unchanged): `ADMIN_PASSWORD_HASH`, `SESSION_SECRET`
+- Secrets: `ADMIN_PASSWORD_HASH`, `SESSION_SECRET`, plus Studio OAuth (`GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `STUDIO_GITHUB_ALLOWLIST`). See [docs/PHASE-1-STUDIO.md](docs/PHASE-1-STUDIO.md).
 
 Do not upload the repo root. Astro must run first.
 
@@ -42,5 +42,5 @@ Public HTML forms still `POST /api/lead` on the Worker (D1). Optional Sheets mir
 1. Confirm `https://immigration.salaroutsourcing.com/ads.txt` still has `pub-5113459275916426`
 2. Confirm `/llms.txt`, `/robots.txt`, `/sitemap.xml`
 3. Spot-check `/news/`, `/stories/`, `/blog/study-europe-without-ielts-from-pakistan/`
-4. Confirm `/admin` redirects to `/studio/` (placeholder, noindex)
+4. Confirm `/admin` redirects to `/studio/` (noindex). Log in with GitHub OAuth — [docs/PHASE-1-STUDIO.md](docs/PHASE-1-STUDIO.md)
 5. Submit sitemap in Search Console if new URLs are missing

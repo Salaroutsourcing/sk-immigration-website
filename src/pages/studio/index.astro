@@ -1,27 +1,8 @@
 ---
 import StudioLayout from '../../layouts/StudioLayout.astro';
-import { SITE } from '../../lib/site';
+import StudioApp from '../../studio/App';
 ---
 
-<StudioLayout
-  title={`Studio (coming in Phase 1) | ${SITE.brand}`}
-  description="The new SK Immigration publishing studio will replace the retired /admin CRM. Phase 0 reserved this route."
-  canonical="/studio/"
-  noindex={true}
-  page="studio"
->
-  <section class="studio-lock">
-    <div class="panel">
-      <p class="platform-kicker">Publishing studio</p>
-      <h1>Phase 1 starts after you confirm</h1>
-      <p class="lede">
-        The old <code>/admin</code> CRM is retired and is no longer on the public site. This route is reserved for the
-        new GitHub-OAuth studio: news, blogs, Web Stories, media, keywords, and daily publishing stats.
-      </p>
-      <p>
-        <a class="btn btn-gold" href="/news/">View the newsroom</a>
-        <a class="btn" href="/">Back to site</a>
-      </p>
-    </div>
-  </section>
+<StudioLayout title="Studio | SK Immigration">
+  <StudioApp client:only="react" />
 </StudioLayout>

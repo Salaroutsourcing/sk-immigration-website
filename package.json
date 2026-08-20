@@ -19,15 +19,22 @@
     "inject:consent": "node scripts/inject-consent-mode.mjs",
     "db:create": "wrangler d1 create sk-immigration-leads",
     "db:migrate": "wrangler d1 execute sk-immigration-leads --remote --file=./schema.sql",
-    "db:migrate:local": "wrangler d1 execute sk-immigration-leads --local --file=./schema.sql"
+    "db:migrate:local": "wrangler d1 execute sk-immigration-leads --local --file=./schema.sql",
+    "db:migrate:studio": "wrangler d1 execute sk-immigration-leads --remote --file=./migrations/002_studio.sql",
+    "db:migrate:studio:local": "wrangler d1 execute sk-immigration-leads --local --file=./migrations/002_studio.sql"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.7",
+    "@astrojs/react": "^6.0.4",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.2.4"
+    "astro": "^7.2.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
     "typescript": "^5.9.3",
     "wrangler": "^4.42.0"
   }
