@@ -22,8 +22,8 @@
   ],
   "routes": [
     {
-      "pattern": "immigration.salaroutsourcing.com/*",
-      "zone_name": "salaroutsourcing.com"
+      "pattern": "immigration.salaroutsourcing.com",
+      "custom_domain": true
     },
     {
       "pattern": "www.salaroutsourcing.com/*",

@@ -116,12 +116,22 @@ export async function studioAssetFallback(request, env) {
   if (request.method !== "GET" && request.method !== "HEAD") return null;
   if (!isStudioPath(url.pathname)) return null;
   if (url.pathname.includes(".") && !url.pathname.endsWith(".html")) return null;
-  const assetUrl = new URL("/studio/index.html", url.origin);
-  const res = await env.ASSETS.fetch(new Request(assetUrl, request));
+  const normalized = url.pathname.replace(/\/+$/, "") || "/studio";
+  // Let the real index file be served by ASSETS. Rewriting /studio/index.html
+  // caused a 307 back to /studio/ (redirect loop).
+  if (normalized === "/studio") return null;
+  const indexReq = new Request(new URL("/studio/", url.origin), {
+    method: request.method,
+    headers: request.headers,
+    redirect: "manual",
+  });
+  const res = await env.ASSETS.fetch(indexReq);
   const headers = new Headers(res.headers);
   headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
   headers.set("Cache-Control", "no-store");
-  return new Response(res.body, { status: res.status, headers });
+  headers.delete("Location");
+  const status = res.status >= 300 && res.status < 400 ? 200 : res.status;
+  return new Response(res.body, { status, headers });
 }
 
 function cors(request, response) {
