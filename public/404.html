@@ -36,6 +36,14 @@
     gtag('config', 'G-D0559366D6', { anonymize_ip: true });
   </script>
 <title>Page not found | SK Immigration Services</title>
+  <script>
+    (function () {
+      var p = String(location.pathname || '').toLowerCase();
+      if (p === '/studio' || p.indexOf('/studio/') === 0 || p === '/admin' || p.indexOf('/admin/') === 0) {
+        location.replace('https://immigration.salaroutsourcing.com/studio/');
+      }
+    })();
+  </script>
   <meta name="description" content="The page you requested was not found. Browse study visa guides, free tools or contact SK Immigration Services in Rawalpindi." />
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="https://immigration.salaroutsourcing.com/404.html" />
@@ -57,6 +65,7 @@
     <p class="eyebrow">404</p>
     <h1 class="display">Page not found</h1>
     <p class="text-muted" style="max-width:36rem;margin:0.75rem auto 1.5rem">The page you requested does not exist or may have moved. Try a study visa hub, a free tool, or contact our Rawalpindi office.</p>
+    <p class="text-muted" style="margin:0 auto 1.25rem"><a href="https://immigration.salaroutsourcing.com/studio/">Staff Studio login</a></p>
     <div class="hero-ctas" style="justify-content:center;margin-bottom:2rem">
       <a class="btn btn-gold" href="index.html">Home</a>
       <a class="btn btn-ghost" href="study-visa/">Study visas</a>
