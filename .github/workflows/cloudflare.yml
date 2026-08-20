@@ -1,3 +1,7 @@
+# Deploys the Worker when main is updated.
+# Needs one GitHub Actions *Repository secret* named exactly CLOUDFLARE_API_TOKEN.
+# Put it here (Secrets tab, not Variables, not Environments):
+# https://github.com/Salaroutsourcing/sk-immigration-website/settings/secrets/actions
 name: Deploy Cloudflare Worker
 
 on:
@@ -5,10 +9,17 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
+      # Not a secret. This is the Cloudflare account that serves
+      # immigration.salaroutsourcing.com. A repository secret with the same
+      # name is optional and is ignored on purpose so a missing secret cannot
+      # blank this out.
       CLOUDFLARE_ACCOUNT_ID: e480701d9e4150072f4f9a09b43e9749
     steps:
       - uses: actions/checkout@v4
@@ -16,34 +27,83 @@ jobs:
         with:
           node-version: 22
           cache: npm
+
       - name: Check Cloudflare token is present
         env:
-          TOKEN_SECRET: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          TOKEN_ALT: ${{ secrets.CF_API_TOKEN }}
-          TOKEN_VAR: ${{ vars.CLOUDFLARE_API_TOKEN }}
+          SECRET_CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          SECRET_CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          SECRET_CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+          SECRET_CF_TOKEN: ${{ secrets.CF_TOKEN }}
+          # Booleans only — never interpolate Variable *values* (public repo).
+          HAS_VAR_CLOUDFLARE_API_TOKEN: ${{ vars.CLOUDFLARE_API_TOKEN != '' }}
+          HAS_VAR_CF_API_TOKEN: ${{ vars.CF_API_TOKEN != '' }}
         run: |
-          if [ -n "$TOKEN_VAR" ] && [ -z "$TOKEN_SECRET" ] && [ -z "$TOKEN_ALT" ]; then
-            echo "CLOUDFLARE_API_TOKEN is a Variable. Move it to Secrets."
-            echo "Open: https://github.com/Salaroutsourcing/sk-immigration-website/settings/secrets/actions"
-            echo "New repository secret → name CLOUDFLARE_API_TOKEN"
+          set +x
+          echo "This job only reads GitHub Actions Repository secrets."
+          echo "It cannot see Variables, Environment secrets, Codespaces secrets, or Dependabot secrets."
+          echo
+          present() {
+            if [ -n "$1" ]; then echo "found"; else echo "missing"; fi
+          }
+          echo "Secret CLOUDFLARE_API_TOKEN: $(present "$SECRET_CLOUDFLARE_API_TOKEN")"
+          echo "Secret CF_API_TOKEN: $(present "$SECRET_CF_API_TOKEN")"
+          echo "Secret CLOUDFLARE_TOKEN: $(present "$SECRET_CLOUDFLARE_TOKEN")"
+          echo "Secret CF_TOKEN: $(present "$SECRET_CF_TOKEN")"
+          echo "Variable CLOUDFLARE_API_TOKEN: ${HAS_VAR_CLOUDFLARE_API_TOKEN}"
+          echo "Variable CF_API_TOKEN: ${HAS_VAR_CF_API_TOKEN}"
+          echo "CLOUDFLARE_ACCOUNT_ID: using hardcoded e480701d9e4150072f4f9a09b43e9749"
+          echo
+
+          TOKEN="${SECRET_CLOUDFLARE_API_TOKEN:-$SECRET_CF_API_TOKEN}"
+          TOKEN="${TOKEN:-$SECRET_CLOUDFLARE_TOKEN}"
+          TOKEN="${TOKEN:-$SECRET_CF_TOKEN}"
+
+          if [ "$HAS_VAR_CLOUDFLARE_API_TOKEN" = "true" ] || [ "$HAS_VAR_CF_API_TOKEN" = "true" ]; then
+            if [ -z "$TOKEN" ]; then
+              echo "::error::CLOUDFLARE_API_TOKEN is saved as a Variable. Delete that Variable and add it as a Repository secret instead. Direct link: https://github.com/Salaroutsourcing/sk-immigration-website/settings/secrets/actions"
+              echo "This repository is public. A Variable is visible to anyone."
+              echo "Open the Secrets tab (not Variables) → New repository secret → name CLOUDFLARE_API_TOKEN"
+              exit 1
+            fi
+            echo "::warning::A GitHub Variable with a similar name exists. Keep the token only as a Repository secret and delete the Variable."
+          fi
+
+          if [ -z "$TOKEN" ]; then
+            echo "::error::GitHub Actions has no Repository secret named CLOUDFLARE_API_TOKEN. Direct link: https://github.com/Salaroutsourcing/sk-immigration-website/settings/secrets/actions"
+            echo
+            echo "Do this once:"
+            echo "1. Open https://github.com/Salaroutsourcing/sk-immigration-website/settings/secrets/actions"
+            echo "2. Stay on the Secrets tab. Do not open Variables."
+            echo "3. Do not open Environments (github-pages / copilot), Codespaces, or Dependabot."
+            echo "4. Click New repository secret."
+            echo "5. Name (copy exactly): CLOUDFLARE_API_TOKEN"
+            echo "6. Value: a Cloudflare API token that can edit Workers."
+            echo "7. Click Add secret."
+            echo "8. Merge the workflow fix PR, then wait for a NEW run on main."
+            echo "   Re-running an old failed job is not enough — main still has the old file until that PR is merged."
+            echo
+            echo "CLOUDFLARE_ACCOUNT_ID is optional. This workflow already has the account id."
             exit 1
           fi
-          if [ -z "$TOKEN_SECRET" ] && [ -z "$TOKEN_ALT" ]; then
-            echo "GitHub did not find CLOUDFLARE_API_TOKEN."
-            echo "Open: https://github.com/Salaroutsourcing/sk-immigration-website/settings/secrets/actions"
-            echo "It must be a Repository secret (not a Variable), name exactly CLOUDFLARE_API_TOKEN"
-            exit 1
-          fi
-          echo "Cloudflare token secret is set."
+
+          echo "::add-mask::$TOKEN"
+          {
+            echo "CLOUDFLARE_API_TOKEN<<__CF_TOKEN_EOF__"
+            printf '%s\n' "$TOKEN"
+            echo "__CF_TOKEN_EOF__"
+          } >> "$GITHUB_ENV"
+          echo "Cloudflare token secret is set. Account id is hardcoded."
+
       - name: Install and build
         run: |
           npm ci
           npm run build
+
       - name: Deploy Worker + assets
         uses: cloudflare/wrangler-action@v3
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN || secrets.CF_API_TOKEN }}
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN || secrets.CF_API_TOKEN }}
           accountId: e480701d9e4150072f4f9a09b43e9749
           command: deploy
+          # Token comes from CLOUDFLARE_API_TOKEN in the environment (set above).
+          # Do not pass secrets.CLOUDFLARE_API_TOKEN here — a missing secret
+          # evaluates to null and would wipe the env fallback names.
