@@ -1,30 +1,31 @@
 # SK Immigration Services website
 
 Public site for **SK Immigration Services** (legal: SK Immigration Services (SMC-Private) Limited, CUIN 0304985).  
-Official domain: **`immigration.salaroutsourcing.com`** (`https://immigration.salaroutsourcing.com`).  
+Official domain: **`immigration.salaroutsourcing.com`**.  
 Email: **`Services@salaroutsourcing.com`**.
 
-- Static HTML + Cloudflare Worker (`wrangler` deploy)
-- Dark/light mode, glass UI, mobile-first
-- Eligibility quiz, CV builder, jobs/Ausbildung, answers hub, Admin CRM
-- Citation assets: `llms.txt`, `trust.html`, country landers, FAQ schema
+Phase 0 is live in this branch: the public site is an **Astro 7 static** project. Existing ranking HTML is copied from `public/` so URLs do not change. New news, blogs, and Web Stories are content collections.
+
+## Commands
+
+```bash
+npm install
+npm run dev          # Astro preview of new routes + public HTML
+npm run build        # static output → dist/
+npm run cf:dev       # build + wrangler (Worker API + dist assets)
+npm run deploy       # build + wrangler deploy
+```
 
 ## Key URLs
 
 - Site: https://immigration.salaroutsourcing.com/
-- Trust / verify: https://immigration.salaroutsourcing.com/trust.html
-- Deploy notes: `DEPLOY.md` · AI crawl: `CLOUDFLARE-AI.md` · GSC: `GSC-MONITOR.md`
+- Newsroom: `/news/`
+- Web Stories: `/stories/`
+- New MDX blogs: `/blog/{slug}/` (legacy country guides stay at `/blog/{country-guide}/`)
+- Studio placeholder (noindex): `/studio/`
+- Trust: `/trust.html`
+- Architecture: [`docs/PHASE-0-ARCHITECTURE.md`](docs/PHASE-0-ARCHITECTURE.md)
 
-## Folder structure
+## Hosting
 
-```
-├── index.html, about.html, trust.html, contact.html
-├── study-visa/, visit-visa/, work-permit/, visa-appointment/, saudi-visa/
-├── document-services/, hire-workers-from-pakistan/, local/, ur/, guides/
-├── answers/, blog/, admin/
-├── assets/
-├── robots.txt, sitemap.xml, llms.txt
-└── wrangler.jsonc, src/
-```
-
-See prior README history for Apps Script / Sheets optional mirror details.
+Cloudflare Workers + static assets from `dist/`. Worker still handles `/api/*`, host redirects, and security headers. D1 lead capture is unchanged.

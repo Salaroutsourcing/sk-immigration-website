@@ -1,0 +1,239 @@
+/* New Astro content surfaces — sits on top of public/assets/css/main.css */
+.platform-wrap {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6.5rem 0 4rem;
+}
+
+.platform-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+
+.platform-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin: 0.55rem 0 0.75rem;
+}
+
+.platform-hero p.lede {
+  max-width: 62ch;
+  color: var(--text-muted);
+  font-size: 1.08rem;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.article-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 720px) 280px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.article-body {
+  font-size: 1.08rem;
+}
+
+.article-body h2 {
+  font-family: var(--font-display);
+  margin: 1.8rem 0 0.6rem;
+}
+
+.article-body p {
+  margin: 0.85rem 0;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0.7rem 0 0.7rem 1.2rem;
+}
+
+.article-aside {
+  position: sticky;
+  top: 92px;
+}
+
+.article-aside .aside-card {
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+}
+
+.crumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+.crumb a {
+  color: inherit;
+}
+
+.story-stage {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 4.5rem 1rem 2rem;
+}
+
+.story-frame {
+  width: min(420px, 100%);
+  aspect-ratio: 9 / 16;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  background: #0b1220;
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+.story-slide {
+  position: absolute;
+  inset: 0;
+  padding: 1.6rem 1.4rem 5.5rem;
+  display: none;
+  background:
+    linear-gradient(180deg, rgba(11, 18, 32, 0.15), rgba(11, 18, 32, 0.82)),
+    var(--slide-bg, #14213d);
+  background-size: cover;
+  background-position: center;
+}
+
+.story-slide.is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  animation: storyIn 0.35s ease;
+}
+
+.story-progress {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+  z-index: 2;
+}
+
+.story-progress span {
+  flex: 1;
+  height: 3px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+}
+
+.story-progress span i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #c9a84c;
+}
+
+.story-progress span.is-done i {
+  width: 100%;
+}
+
+.story-progress span.is-active i {
+  animation: storyBar var(--story-ms, 12s) linear forwards;
+}
+
+.story-nav {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  z-index: 1;
+}
+
+.story-cta {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1.1rem;
+  z-index: 3;
+}
+
+.story-cta a {
+  display: block;
+  text-align: center;
+  background: #c9a84c;
+  color: #0f172a;
+  font-weight: 800;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+@keyframes storyIn {
+  from {
+    opacity: 0.4;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes storyBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.studio-lock {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 7rem 1.25rem 4rem;
+}
+
+.studio-lock .panel {
+  width: min(560px, 100%);
+  padding: 2rem 1.6rem;
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-strong);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 900px) {
+  .article-shell {
+    grid-template-columns: 1fr;
+  }
+  .article-aside {
+    position: static;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-slide.is-active,
+  .story-progress span.is-active i,
+  .content-card {
+    animation: none;
+    transition: none;
+  }
+}

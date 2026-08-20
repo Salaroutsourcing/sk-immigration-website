@@ -7,6 +7,8 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /studio/
+Disallow: /dashboard/
 Disallow: /portal.html
 Disallow: /portal
 Disallow: /apps-script/
@@ -30,6 +32,9 @@ Allow: /official-links/
 Allow: /local/
 Allow: /ur/
 Allow: /guides/
+Allow: /news/
+Allow: /stories/
+Allow: /blog/
 Allow: /trust.html
 Allow: /about.html
 Allow: /services.html
@@ -96,3 +101,4 @@ User-agent: Bytespider
 Allow: /
 
 Sitemap: https://immigration.salaroutsourcing.com/sitemap.xml
+Sitemap: https://immigration.salaroutsourcing.com/sitemap-platform-index.xml

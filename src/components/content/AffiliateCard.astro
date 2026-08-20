@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  url: string;
+  blurb: string;
+}
+
+const { title, url, blurb } = Astro.props;
+---
+
+<aside class="affiliate-card">
+  <p class="affiliate-card__kicker">Recommended · sponsored</p>
+  <a href={url} rel="sponsored nofollow" target="_blank">
+    <strong>{title}</strong>
+    <span>{blurb}</span>
+  </a>
+</aside>
+
+<style>
+  .affiliate-card {
+    margin: 1.5rem 0;
+    padding: 1rem 1.15rem;
+    border-radius: 14px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass);
+  }
+  .affiliate-card__kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.35rem;
+  }
+  .affiliate-card a {
+    display: grid;
+    gap: 0.25rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .affiliate-card strong {
+    color: var(--gold-dark);
+  }
+</style>

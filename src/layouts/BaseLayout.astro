@@ -1,0 +1,69 @@
+---
+import SeoHead from '../components/seo/SeoHead.astro';
+import { SITE } from '../lib/site';
+import '../styles/platform.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  type?: 'website' | 'article';
+  image?: string;
+  published?: Date;
+  updated?: Date;
+  noindex?: boolean;
+  jsonLd?: unknown[];
+  page?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  type,
+  image,
+  published,
+  updated,
+  noindex,
+  jsonLd = [],
+  page = 'content',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <SeoHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      type={type}
+      image={image}
+      published={published}
+      updated={updated}
+      noindex={noindex}
+      jsonLd={jsonLd}
+    />
+    <slot name="head" />
+  </head>
+  <body data-page={page}>
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${SITE.analytics.gtm}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <div class="bg-orbs" aria-hidden="true"></div>
+    <div id="site-header"></div>
+    <main id="main">
+      <slot />
+    </main>
+    <div id="site-footer"></div>
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/theme.js"></script>
+    <script is:inline src="/assets/js/layout.js"></script>
+    <script is:inline src="/assets/js/consent.js"></script>
+    <slot name="scripts" />
+  </body>
+</html>

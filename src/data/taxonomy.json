@@ -1,0 +1,53 @@
+{
+  "tags": [
+    { "id": "germany", "label": "Germany", "cluster": "study" },
+    { "id": "uk", "label": "United Kingdom", "cluster": "study" },
+    { "id": "canada", "label": "Canada", "cluster": "study" },
+    { "id": "italy", "label": "Italy", "cluster": "study" },
+    { "id": "hungary", "label": "Hungary", "cluster": "study" },
+    { "id": "poland", "label": "Poland", "cluster": "study" },
+    { "id": "ielts", "label": "IELTS / MOI", "cluster": "process" },
+    { "id": "ausbildung", "label": "Ausbildung", "cluster": "work" },
+    { "id": "saudi", "label": "Saudi Work Visa", "cluster": "saudi" },
+    { "id": "schengen", "label": "Schengen", "cluster": "visit" },
+    { "id": "attestation", "label": "Attestation / Apostille", "cluster": "docs" },
+    { "id": "rawalpindi", "label": "Rawalpindi", "cluster": "local" }
+  ],
+  "keywords": [
+    {
+      "id": "study-visa-pakistan",
+      "phrase": "study visa from Pakistan",
+      "intent": "commercial",
+      "status": "winning",
+      "mappedTo": "lander"
+    },
+    {
+      "id": "germany-student-visa",
+      "phrase": "Germany student visa Pakistan",
+      "intent": "informational",
+      "status": "winning",
+      "mappedTo": "blog"
+    },
+    {
+      "id": "blocked-account",
+      "phrase": "Germany blocked account 2026",
+      "intent": "informational",
+      "status": "tracking",
+      "mappedTo": "news"
+    },
+    {
+      "id": "study-europe-no-ielts",
+      "phrase": "study in Europe without IELTS from Pakistan",
+      "intent": "informational",
+      "status": "winning",
+      "mappedTo": "story"
+    },
+    {
+      "id": "saudi-work-visa-15000",
+      "phrase": "Saudi work visa processing PKR 15000",
+      "intent": "transactional",
+      "status": "winning",
+      "mappedTo": "lander"
+    }
+  ]
+}

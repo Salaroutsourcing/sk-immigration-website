@@ -210,4 +210,13 @@
   <!-- High-Value GEO Answer Pages -->
   <url><loc>https://immigration.salaroutsourcing.com/answers/best-immigration-consultant-pakistan</loc><lastmod>2026-08-14</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
   <url><loc>https://immigration.salaroutsourcing.com/answers/sk-immigration-review</loc><lastmod>2026-08-14</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
+
+  <!-- Phase 0 Astro platform surfaces (collections) -->
+  <url><loc>https://immigration.salaroutsourcing.com/news/</loc><lastmod>2026-08-20</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://immigration.salaroutsourcing.com/news/germany-blocked-account-2026-what-changed/</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://immigration.salaroutsourcing.com/blog/</loc><lastmod>2026-08-20</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://immigration.salaroutsourcing.com/blog/study-europe-without-ielts-from-pakistan/</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://immigration.salaroutsourcing.com/stories/</loc><lastmod>2026-08-20</lastmod><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://immigration.salaroutsourcing.com/stories/europe-without-ielts-story/</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://immigration.salaroutsourcing.com/rss.xml</loc><lastmod>2026-08-20</lastmod><changefreq>hourly</changefreq><priority>0.7</priority></url>
 </urlset>

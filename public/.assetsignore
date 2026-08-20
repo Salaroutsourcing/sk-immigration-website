@@ -1,0 +1,7 @@
+# Copied into dist. Wrangler now uploads dist/ only, so source-tree
+# exclusions are belt-and-suspenders.
+
+.assetsignore
+.dev.vars
+.env
+*.map

@@ -1,0 +1,65 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { getRelatedStory, publishedBlogs } from '../../lib/content';
+import { SITE, absoluteUrl } from '../../lib/site';
+import { blogPostingSchema, breadcrumbSchema, organizationSchema } from '../../lib/seo';
+import { render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const items = await publishedBlogs();
+  return items.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const path = `/blog/${entry.id}/`;
+const relatedStory = await getRelatedStory(entry.data.relatedStories[0]);
+---
+
+<ArticleLayout
+  title={`${entry.data.title} | ${SITE.brand}`}
+  description={entry.data.description}
+  canonical={path}
+  published={entry.data.publishDate}
+  updated={entry.data.updatedDate}
+  image={entry.data.heroImage}
+  page="blog"
+  category={entry.data.category}
+  crumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog.html' },
+    { name: entry.data.title, path },
+  ]}
+  faqs={entry.data.faqs}
+  affiliates={entry.data.affiliates}
+  relatedBlogHref={relatedStory ? `/stories/${relatedStory.id}/` : undefined}
+  relatedBlogTitle={relatedStory ? 'Prefer a 15-second recap? Open the Web Story.' : undefined}
+  jsonLd={[
+    organizationSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Blog', path: '/blog.html' },
+      { name: entry.data.title, path },
+    ]),
+    ...blogPostingSchema({
+      headline: entry.data.title,
+      description: entry.data.description,
+      url: absoluteUrl(path),
+      datePublished: entry.data.publishDate,
+      dateModified: entry.data.updatedDate,
+      image: entry.data.heroImage,
+      keywords: entry.data.keywords,
+      faqs: entry.data.faqs,
+    }),
+  ]}
+>
+  <Content />
+  {entry.data.relatedService && (
+    <p>
+      <a href={entry.data.relatedService}>Related service page →</a>
+    </p>
+  )}
+</ArticleLayout>
