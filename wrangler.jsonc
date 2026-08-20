@@ -5,6 +5,10 @@
   "compatibility_date": "2026-08-20",
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
+  "vars": {
+    "GITHUB_REPO": "Salaroutsourcing/sk-immigration-website",
+    "STUDIO_GITHUB_ALLOWLIST": "Salaroutsourcing"
+  },
   "observability": {
     "enabled": true
   },

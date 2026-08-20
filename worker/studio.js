@@ -300,13 +300,9 @@ async function startGithubOAuth(url, env) {
   const clientId = env.GITHUB_CLIENT_ID || "";
   const allow = githubAllowlist(env);
   if (!clientId || allow.length === 0) {
-    return json(
-      {
-        error:
-          "GitHub OAuth is not configured. Set GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, and STUDIO_GITHUB_ALLOWLIST.",
-      },
-      503,
-    );
+    const res = new Response(null, { status: 302 });
+    res.headers.set("Location", `${url.origin}/studio/login?error=oauth_config`);
+    return res;
   }
   const state = crypto.randomUUID();
   const exp = Date.now() + 10 * 60 * 1000;
@@ -395,23 +391,53 @@ async function finishGithubOAuth(url, request, env) {
   return res;
 }
 
+async function readPasswordBody(request) {
+  const ctype = String(request.headers.get("content-type") || "").toLowerCase();
+  if (ctype.includes("application/x-www-form-urlencoded") || ctype.includes("multipart/form-data")) {
+    const form = await request.formData();
+    return {
+      password: String(form.get("password") || ""),
+      redirect: String(form.get("redirect") || "/studio/"),
+      html: true,
+    };
+  }
+  try {
+    const body = await request.json();
+    return {
+      password: typeof body?.password === "string" ? body.password : "",
+      redirect: "/studio/",
+      html: false,
+    };
+  } catch {
+    return { password: "", redirect: "/studio/", html: false, invalid: true };
+  }
+}
+
+function loginFail(html, origin, error, status, message) {
+  if (html) {
+    const res = new Response(null, { status: 302 });
+    res.headers.set("Location", `${origin}/studio/login?error=${encodeURIComponent(error)}`);
+    return res;
+  }
+  return json({ error: message }, status);
+}
+
 async function passwordLogin(request, env, helpers) {
+  const url = new URL(request.url);
+  const parsed = await readPasswordBody(request);
   const hashes = helpers?.adminPasswordHashes?.(env);
   const hashSet = hashes instanceof Set ? hashes : new Set();
+  if (parsed.invalid) {
+    return loginFail(false, url.origin, "invalid_password", 400, "Invalid JSON");
+  }
   if (!hashSet.size) {
-    return json({ error: "Password login is disabled. Use GitHub OAuth." }, 403);
+    return loginFail(parsed.html, url.origin, "oauth_config", 403, "Password login is disabled. Use GitHub OAuth.");
   }
-  let body;
-  try {
-    body = await request.json();
-  } catch {
-    return json({ error: "Invalid JSON" }, 400);
-  }
-  const password = typeof body.password === "string" ? body.password : "";
+  const password = parsed.password;
   const ipHash = helpers?.clientIpHash ? await helpers.clientIpHash(request) : "";
   if (env.DB && ipHash && helpers?.isLoginLocked && (await helpers.isLoginLocked(env, ipHash))) {
     if (helpers.sleep) await helpers.sleep(800);
-    return json({ error: "Too many attempts. Try again later." }, 429);
+    return loginFail(parsed.html, url.origin, "invalid_password", 429, "Too many attempts. Try again later.");
   }
   const got = helpers?.sha256Hex ? await helpers.sha256Hex(password) : await sha256HexLocal(password);
   let matched = false;
@@ -427,7 +453,7 @@ async function passwordLogin(request, env, helpers) {
   if (!matched) {
     if (env.DB && ipHash && helpers?.recordLoginFail) await helpers.recordLoginFail(env, ipHash);
     if (helpers?.sleep) await helpers.sleep(600);
-    return json({ error: "Invalid password" }, 401);
+    return loginFail(parsed.html, url.origin, "invalid_password", 401, "Invalid password");
   }
   if (env.DB && ipHash && helpers?.clearLoginFails) await helpers.clearLoginFails(env, ipHash);
   const session = await signSession(env, {
@@ -437,7 +463,10 @@ async function passwordLogin(request, env, helpers) {
     avatar: "",
     method: "password",
   });
-  const res = json({ ok: true });
+  const dest = parsed.redirect.startsWith("/studio") ? parsed.redirect : "/studio/";
+  const res = parsed.html
+    ? new Response(null, { status: 302, headers: { Location: `${url.origin}${dest}` } })
+    : json({ ok: true });
   res.headers.append(
     "Set-Cookie",
     cookieHeader(SESSION_COOKIE, session, { maxAge: SESSION_TTL_MS / 1000, sameSite: "Lax" }),
