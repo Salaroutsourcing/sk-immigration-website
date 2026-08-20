@@ -1,0 +1,57 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { publishedNews } from '../../lib/content';
+import { SITE, absoluteUrl } from '../../lib/site';
+import { breadcrumbSchema, newsArticleSchema, organizationSchema } from '../../lib/seo';
+import { render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const items = await publishedNews();
+  return items.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const path = `/news/${entry.id}/`;
+const relatedBlogHref = entry.data.relatedBlog ? `/blog/${entry.data.relatedBlog}/` : undefined;
+---
+
+<ArticleLayout
+  title={`${entry.data.title} | ${SITE.brand}`}
+  description={entry.data.description}
+  canonical={path}
+  published={entry.data.publishDate}
+  updated={entry.data.updatedDate}
+  image={entry.data.heroImage}
+  page="news"
+  category={entry.data.category}
+  crumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'News', path: '/news/' },
+    { name: entry.data.title, path },
+  ]}
+  relatedBlogHref={relatedBlogHref}
+  relatedBlogTitle={relatedBlogHref ? 'Continue with the in-depth guide' : undefined}
+  jsonLd={[
+    organizationSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'News', path: '/news/' },
+      { name: entry.data.title, path },
+    ]),
+    newsArticleSchema({
+      headline: entry.data.title,
+      description: entry.data.description,
+      url: absoluteUrl(path),
+      datePublished: entry.data.publishDate,
+      dateModified: entry.data.updatedDate,
+      image: entry.data.heroImage,
+      keywords: entry.data.keywords,
+    }),
+  ]}
+>
+  <Content />
+</ArticleLayout>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ContentCard from '../../../components/content/ContentCard.astro';
+import { newsByCategory, publishedNews } from '../../../lib/content';
+import { NEWS_CATEGORIES, SITE } from '../../../lib/site';
+import { breadcrumbSchema, organizationSchema } from '../../../lib/seo';
+
+export async function getStaticPaths() {
+  return NEWS_CATEGORIES.map((category) => ({ params: { category } }));
+}
+
+const { category } = Astro.params;
+const items = await newsByCategory(category);
+const all = await publishedNews();
+const path = `/news/category/${category}/`;
+---
+
+<BaseLayout
+  title={`${category.replace('-', ' ')} news | ${SITE.brandFull}`}
+  description={`Latest ${category.replace('-', ' ')} updates for Pakistani students and workers from SK Immigration Services.`}
+  canonical={path}
+  page="news"
+  jsonLd={[
+    organizationSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'News', path: '/news/' },
+      { name: category, path },
+    ]),
+  ]}
+>
+  <section class="platform-wrap">
+    <p class="platform-kicker">Newsroom</p>
+    <header class="platform-hero">
+      <h1>{category.replace('-', ' ')}</h1>
+      <p class="lede">{items.length} update{items.length === 1 ? '' : 's'} in this category.</p>
+    </header>
+    <nav class="crumb" aria-label="News categories">
+      <a href="/news/">All</a>
+      {NEWS_CATEGORIES.map((item) => (
+        <a href={`/news/category/${item}/`} aria-current={item === category ? 'page' : undefined}>
+          {item.replace('-', ' ')}
+        </a>
+      ))}
+    </nav>
+    <div class="platform-grid">
+      {items.map((entry) => (
+        <ContentCard
+          kind="news"
+          href={`/news/${entry.id}/`}
+          title={entry.data.title}
+          excerpt={entry.data.description}
+          date={entry.data.publishDate}
+          category={entry.data.category}
+        />
+      ))}
+    </div>
+    {items.length === 0 && (
+      <p class="lede">No stories in this category yet. Browse the {all.length} updates in the full newsroom.</p>
+    )}
+  </section>
+</BaseLayout>

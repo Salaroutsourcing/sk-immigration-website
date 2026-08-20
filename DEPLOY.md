@@ -1,126 +1,46 @@
 # Deploy SK Immigration Services (free + fast)
 
-> **After every production deploy:** follow [CLOUDFLARE-AI.md](CLOUDFLARE-AI.md) so AI crawlers are not blocked, then [GSC-MONITOR.md](GSC-MONITOR.md) for indexing. Brand-domain notes: [DOMAIN-MIGRATION.md](DOMAIN-MIGRATION.md).
+> **Phase 0:** `npm run build` then Wrangler deploys `dist/`. Ranking HTML lives in `public/` and is copied into `dist/` unchanged.
 
-## Why this is faster than Apps Script alone
+> **After every production deploy:** follow [CLOUDFLARE-AI.md](CLOUDFLARE-AI.md), then [GSC-MONITOR.md](GSC-MONITOR.md). Architecture: [docs/PHASE-0-ARCHITECTURE.md](docs/PHASE-0-ARCHITECTURE.md).
 
-| Layer | Where it runs | Speed |
-|-------|---------------|-------|
-| Website UI | Cloudflare / GitHub Pages CDN | Very fast |
-| Admin CRM | Same static host | Very fast |
-| Lead storage | Google Apps Script → Sheets | Only API calls (small) |
-| Legacy case portal | Existing Apps Script UI | Optional / slower |
-
----
-
-## Option A — GitHub Pages + Cloudflare (recommended)
-
-### 1. Create repo & push
+## Production (Cloudflare Workers)
 
 ```bash
-cd website
-git init
-git add .
-git commit -m "Initial SK Immigration Services website"
-# create repo on GitHub, then:
-git branch -M main
-git remote add origin https://github.com/YOUR_USER/sk-immigration-website.git
-git push -u origin main
+npm ci
+npm run build
+npx wrangler deploy
 ```
 
-### 2. Enable GitHub Pages
+- Output: `dist/`
+- Worker entry: `worker/index.js`
+- Assets: `wrangler.jsonc` → `assets.directory = "./dist"`
+- Custom host: `immigration.salaroutsourcing.com` (existing routes)
+- Secrets (unchanged): `ADMIN_PASSWORD_HASH`, `SESSION_SECRET`
 
-- Repo → **Settings → Pages**
-- Source: **Deploy from a branch**
-- Branch: `main` / root (or `/docs` if you move files)
-- Save — wait for `https://YOUR_USER.github.io/sk-immigration-website/`
+Do not upload the repo root. Astro must run first.
 
-If the site is in a subfolder of a larger repo, set Pages root to `/website`.
+## GitHub Pages (backup)
 
-### 3. Custom domain on GitHub Pages (immigration.salaroutsourcing.com)
+`.github/workflows/pages.yml` runs `npm ci && npm run build` and publishes `dist`.
 
-1. Repo → **Settings → Pages → Custom domain** → `immigration.salaroutsourcing.com` → Save.
-2. Wait until **DNS check** passes and **Enforce HTTPS** is available/green.
-3. At your DNS host set:
-   - `immigration` **CNAME** → `salaroutsourcing.github.io`  
-     (**not** `sk-immigration-website.github.io` — that host has no Pages site and shows the GitHub 404 page)
-4. Canonical site URL: `https://immigration.salaroutsourcing.com`
-5. Google Analytics stream URL must match that host.
-6. Apex / www: **301 redirect** → `https://immigration.salaroutsourcing.com` (path-preserving) until the subdomain ranks. Cloudflare Redirect Rules or the Worker in `src/index.js` both work.
-7. Email stays: `Services@salaroutsourcing.com`
+Canonical URL stays `https://immigration.salaroutsourcing.com`.
 
-### 4. Forms / leads via Apps Script
+## Local
 
-1. Open Google Drive → New Spreadsheet: `SK Immigration Leads`
-2. **Extensions → Apps Script**
-3. Paste contents of `apps-script/Code.gs`
-4. **Deploy → New deployment → Web app**
-   - Execute as: **Me**
-   - Who has access: **Anyone**
-5. Copy Web App URL
-6. Set in `assets/js/config.js`:
-
-```js
-appsScriptUrl: 'https://script.google.com/macros/s/XXXX/exec',
+```bash
+npm run dev          # Astro
+npm run cf:dev       # build + wrangler (API + assets)
 ```
 
-7. Commit & push. Test a contact form — rows appear in the Sheet.
+## Forms / leads
 
-Email notifications: uncomment / use `_notify()` in Code.gs if desired.
+Public HTML forms still `POST /api/lead` on the Worker (D1). Optional Sheets mirror: `LEAD_WEBHOOK_URL`.
 
----
+## After deploy
 
-## Option B — Cloudflare Pages (even simpler)
-
-1. Cloudflare Dashboard → **Workers & Pages → Create → Pages**
-2. Connect GitHub repo, root directory = `website` (or repo root if site is root)
-3. Build command: none (static) · Output: `/`
-4. Custom domain → add `immigration.salaroutsourcing.com`
-
----
-
-## Option C — Netlify / Vercel
-
-- Drag-and-drop the `website` folder, or connect Git.
-- Publish directory = site root.
-- Add custom domain in project settings.
-
----
-
-## Legacy portal (keep both)
-
-Your existing portal:
-
-`https://script.google.com/macros/s/AKfycbz_Xy6fTRi1ompDQxHIYk-aRzBhzMS3PylHAlmJ98Dao1MA2GVWUpGoeGb4V8HvD752dQ/exec`
-
-Linked from **portal.html**. Use it for existing candidate workflows.
-
-Use **Admin CRM** (`/admin/`) for fast collection of:
-
-- Bookings / contact forms  
-- Eligibility quiz leads  
-- CV builder submissions  
-- Job / Ausbildung applications  
-- Blog & job posting  
-
----
-
-## Security notes
-
-- Admin login is **server-side**: `ADMIN_PASSWORD_HASH` + `SESSION_SECRET` via `wrangler secret put`. Never put the plaintext password in HTML, JS, or git.
-- Session cookie: HttpOnly, Secure, SameSite=Strict, 12h TTL.
-- Failed logins are delayed and rate-limited by IP hash.
-- `Disallow: /admin/` and `/portal` in robots.txt (already done).
-- Blog/jobs admin still store drafts in browser localStorage until Phase C (CMS) — CRM leads use D1.
-
----
-
-## Post-launch checklist
-
-- [ ] Confirm `ADMIN_PASSWORD_HASH` + `SESSION_SECRET` are set on the Worker  
-- [ ] Test `/admin/` login with the new password (hard-refresh first)  
-- [ ] Submit sitemap in Google Search Console  
-- [ ] Test WhatsApp link on mobile  
-- [ ] Test dark/light toggle persistence  
-- [ ] Submit sample contact + CV and confirm they appear in Admin CRM  
-- [ ] Replace ad placeholders with real partners when ready  
+1. Confirm `https://immigration.salaroutsourcing.com/ads.txt` still has `pub-5113459275916426`
+2. Confirm `/llms.txt`, `/robots.txt`, `/sitemap.xml`
+3. Spot-check `/news/`, `/stories/`, `/blog/study-europe-without-ielts-from-pakistan/`
+4. Confirm `/admin` redirects to `/studio/` (placeholder, noindex)
+5. Submit sitemap in Search Console if new URLs are missing

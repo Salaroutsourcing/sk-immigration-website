@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentCard from '../../components/content/ContentCard.astro';
+import { publishedBlogs } from '../../lib/content';
+import { SITE } from '../../lib/site';
+import { breadcrumbSchema, organizationSchema } from '../../lib/seo';
+
+const items = await publishedBlogs();
+---
+
+<BaseLayout
+  title={`New visa guides | ${SITE.brandFull}`}
+  description="Long-form visa guides with FAQs, official sources, and internal links. Web Stories and news feed this hub."
+  canonical="/blog/"
+  page="blog"
+  jsonLd={[
+    organizationSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Blog', path: '/blog/' },
+    ]),
+  ]}
+>
+  <section class="platform-wrap">
+    <p class="platform-kicker">Blog collection · 1 pillar / day target</p>
+    <header class="platform-hero">
+      <h1>Guides built to rank and convert</h1>
+      <p class="lede">
+        New MDX blogs publish here. Country guides already ranking at
+        <a href="/blog.html">/blog.html</a> and <code>/blog/{'{country}'}/</code> stay exactly where they are.
+      </p>
+    </header>
+    <div class="platform-grid">
+      {items.map((entry) => (
+        <ContentCard
+          kind="blog"
+          href={`/blog/${entry.id}/`}
+          title={entry.data.title}
+          excerpt={entry.data.description}
+          date={entry.data.publishDate}
+          category={entry.data.category}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

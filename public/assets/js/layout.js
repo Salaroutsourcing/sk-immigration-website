@@ -10,6 +10,9 @@
     const parts = location.pathname.split('/').filter(Boolean);
     const nestedRoots = [
       'blog',
+      'news',
+      'stories',
+      'studio',
       'answers',
       'admin',
       'study-visa',
@@ -42,6 +45,7 @@
     { href: 'visa-appointment/', label: 'Appointments', title: 'Visa appointments', id: 'visa-appointment' },
     { href: 'saudi-visa/saudi-visa-processing-pakistan/', label: 'Saudi Visa', title: 'Saudi work visa processing', id: 'saudi-visa' },
     { href: 'document-services/', label: 'Attestation', title: 'Document attestation', id: 'document-services' },
+    { href: 'news/', label: 'News', title: 'Immigration news', id: 'news' },
     { href: 'contact.html', label: 'Contact', id: 'contact' },
   ];
 
@@ -57,6 +61,8 @@
     ausbildung: 'work-permit',
     jobs: 'work-permit',
     blog: 'study-visa',
+    news: 'news',
+    story: 'news',
     /* Keep these unhighlighted — mapping to Contact confused visitors */
     pricing: '',
     faq: '',
@@ -78,6 +84,8 @@
     if (path.includes('/hire-workers')) return 'document-services';
     if (path.includes('/answers/')) return 'study-visa';
     if (path.includes('/blog/')) return 'study-visa';
+    if (path.includes('/news')) return 'news';
+    if (path.includes('/stories')) return 'news';
     const page = document.body.dataset.page || 'home';
     return NAV_ALIAS[page] || page;
   }
@@ -158,6 +166,8 @@
           <a href="${href('answers.html')}">Answers / Guides</a>
           <a href="${href('faq.html')}">FAQ</a>
           <a href="${href('blog.html')}">Blog</a>
+          <a href="${href('news/')}">News</a>
+          <a href="${href('stories/')}">Web Stories</a>
           <a href="${href('services.html')}">All Services</a>
           <a href="${href('about.html')}">About</a>
           <a href="${href('privacy.html')}">Privacy</a>
@@ -224,6 +234,9 @@
             <a href="${href('document-services/')}">Document Attestation</a>
             <a href="${href('hire-workers-from-pakistan/')}">Hire Workers from Pakistan</a>
             <a href="${href('jobs.html')}">Jobs board</a>
+            <a href="${href('news/')}">Newsroom</a>
+            <a href="${href('stories/')}">Web Stories</a>
+            <a href="${href('blog/')}">New guides</a>
           </div>
           <div class="footer-col">
             <h4>Quick tools</h4>

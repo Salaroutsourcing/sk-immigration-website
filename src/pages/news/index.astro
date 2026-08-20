@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentCard from '../../components/content/ContentCard.astro';
+import { publishedNews } from '../../lib/content';
+import { NEWS_CATEGORIES, SITE } from '../../lib/site';
+import { breadcrumbSchema, organizationSchema } from '../../lib/seo';
+
+const items = await publishedNews();
+---
+
+<BaseLayout
+  title={`Immigration news from Pakistan | ${SITE.brandFull}`}
+  description="Daily visa, study-abroad, and policy news for Pakistani students and professionals. Written for Google, AI citation, and real decisions."
+  canonical="/news/"
+  page="news"
+  jsonLd={[
+    organizationSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'News', path: '/news/' },
+    ]),
+  ]}
+>
+  <section class="platform-wrap">
+    <p class="platform-kicker">Newsroom · 5 stories / day target</p>
+    <header class="platform-hero">
+      <h1>News that sends readers to the right guide</h1>
+      <p class="lede">
+        Short, sourced updates. Each story can open a Web Story for reach and a long-form blog for ranking and leads.
+      </p>
+    </header>
+    <nav class="crumb" aria-label="News categories">
+      <a href="/news/" aria-current="page">All</a>
+      {NEWS_CATEGORIES.map((item) => (
+        <a href={`/news/category/${item}/`}>{item.replace('-', ' ')}</a>
+      ))}
+    </nav>
+    <div class="platform-grid">
+      {items.map((entry) => (
+        <ContentCard
+          kind="news"
+          href={`/news/${entry.id}/`}
+          title={entry.data.title}
+          excerpt={entry.data.description}
+          date={entry.data.publishDate}
+          category={entry.data.category}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

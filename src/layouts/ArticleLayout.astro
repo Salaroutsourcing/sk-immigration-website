@@ -1,0 +1,104 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AdSlot from '../components/ads/AdSlot.astro';
+import FaqList from '../components/content/FaqList.astro';
+import AffiliateCard from '../components/content/AffiliateCard.astro';
+import StoryToBlogCta from '../components/content/StoryToBlogCta.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  published: Date;
+  updated?: Date;
+  image?: string;
+  jsonLd?: unknown[];
+  page?: string;
+  category?: string;
+  crumbs: { name: string; path: string }[];
+  faqs?: { question: string; answer: string }[];
+  affiliates?: { title: string; url: string; blurb: string }[];
+  relatedBlogHref?: string;
+  relatedBlogTitle?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  published,
+  updated,
+  image,
+  jsonLd,
+  page,
+  category,
+  crumbs,
+  faqs,
+  affiliates,
+  relatedBlogHref,
+  relatedBlogTitle,
+} = Astro.props;
+
+const publishedLabel = published.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  type="article"
+  image={image}
+  published={published}
+  updated={updated}
+  jsonLd={jsonLd}
+  page={page}
+>
+  <article class="platform-wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      {
+        crumbs.map((crumb, i) => (
+          <>
+            {i > 0 && <span aria-hidden="true">/</span>}
+            <a href={crumb.path}>{crumb.name}</a>
+          </>
+        ))
+      }
+    </nav>
+    {category && <p class="platform-kicker">{category.replace('-', ' ')}</p>}
+    <header class="platform-hero">
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+      <p class="lede"><time datetime={published.toISOString()}>{publishedLabel}</time></p>
+    </header>
+    <div class="article-shell">
+      <div>
+        <AdSlot placement="in-article" />
+        <div class="article-body">
+          <slot />
+        </div>
+        {relatedBlogHref && relatedBlogTitle && (
+          <StoryToBlogCta title={relatedBlogTitle} href={relatedBlogHref} />
+        )}
+        {affiliates?.map((item) => <AffiliateCard {...item} />)}
+        {faqs && faqs.length > 0 && <FaqList faqs={faqs} />}
+        <AdSlot placement="display" />
+      </div>
+      <aside class="article-aside">
+        <div class="aside-card">
+          <h2>Free consultation</h2>
+          <p>Honest file guidance from Rawalpindi. Embassies decide visas — we never sell guarantees.</p>
+          <p>
+            <a class="btn btn-gold" href="/contact.html">Book consult</a>
+          </p>
+          <p>
+            <a class="btn btn-whatsapp" href="https://wa.me/923045999859">WhatsApp</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

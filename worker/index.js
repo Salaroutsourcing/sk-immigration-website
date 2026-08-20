@@ -1,7 +1,8 @@
 /**
  * SK Immigration Services — Worker API
  *
- * Static site via ASSETS + /api/* for leads, admin CRM, blog/jobs CMS.
+ * Static site via ASSETS (Astro dist/) + /api/* for leads.
+ * Old /admin HTML is retired; /admin 301s to /studio/.
  */
 
 const SESSION_COOKIE = 'sk_admin';
@@ -286,6 +287,11 @@ export default {
     // Prefer extensionless Answers hub URL
     if (url.pathname === '/answers.html' || url.pathname === '/answers/') {
       return Response.redirect(new URL('/answers', url).toString(), 301);
+    }
+
+    // Retired CRM — new studio ships in Phase 1
+    if (url.pathname === '/admin' || url.pathname.startsWith('/admin/')) {
+      return Response.redirect(new URL('/studio/', url).toString(), 301);
     }
 
     // Legal aliases

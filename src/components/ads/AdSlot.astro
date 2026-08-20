@@ -1,0 +1,38 @@
+---
+interface Props {
+  label?: string;
+  placement?: 'in-article' | 'in-feed' | 'display' | 'anchor';
+}
+
+const { label = 'Advertisement', placement = 'in-article' } = Astro.props;
+---
+
+<aside class={`ad-slot ad-slot--${placement}`} aria-label={label} data-ad-slot={placement}>
+  <p class="ad-slot__label">{label}</p>
+  <div class="ad-slot__box">
+    <!-- Phase 4: AdSense unit mounts here. Empty box keeps CLS stable and stays policy-safe. -->
+  </div>
+</aside>
+
+<style>
+  .ad-slot {
+    margin: 1.75rem 0;
+    text-align: center;
+  }
+  .ad-slot__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.4rem;
+  }
+  .ad-slot__box {
+    min-height: 90px;
+    border: 1px dashed var(--glass-border);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--bg2) 80%, transparent);
+  }
+  .ad-slot--in-article .ad-slot__box {
+    min-height: 250px;
+  }
+</style>

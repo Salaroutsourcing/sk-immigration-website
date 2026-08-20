@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentCard from '../../components/content/ContentCard.astro';
+import { publishedStories } from '../../lib/content';
+import { SITE } from '../../lib/site';
+import { breadcrumbSchema, organizationSchema } from '../../lib/seo';
+
+const items = await publishedStories();
+---
+
+<BaseLayout
+  title={`Web Stories | ${SITE.brandFull}`}
+  description="Fast, mobile-first visa stories. Every story ends on a long-form blog so traffic can rank, convert, and earn."
+  canonical="/stories/"
+  page="story"
+  jsonLd={[
+    organizationSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Stories', path: '/stories/' },
+    ]),
+  ]}
+>
+  <section class="platform-wrap">
+    <p class="platform-kicker">Web Stories · 5 / day target</p>
+    <header class="platform-hero">
+      <h1>Stories that land on blogs</h1>
+      <p class="lede">
+        Tap-through recaps for Discover and social. The last screen always opens a deep guide — never a dead end.
+      </p>
+    </header>
+    <div class="platform-grid">
+      {items.map((entry) => (
+        <ContentCard
+          kind="story"
+          href={`/stories/${entry.id}/`}
+          title={entry.data.title}
+          excerpt={entry.data.description}
+          date={entry.data.publishDate}
+          category={entry.data.category}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getRelatedBlog, publishedStories } from '../../lib/content';
+import { SITE, absoluteUrl } from '../../lib/site';
+import { breadcrumbSchema, organizationSchema } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const items = await publishedStories();
+  return items.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const blog = await getRelatedBlog(entry.data.relatedBlog);
+const path = `/stories/${entry.id}/`;
+const durationMs = `${entry.data.durationSeconds * 1000}ms`;
+---
+
+<BaseLayout
+  title={`${entry.data.title} | Web Story | ${SITE.brand}`}
+  description={entry.data.description}
+  canonical={path}
+  image={entry.data.posterPortrait}
+  type="article"
+  published={entry.data.publishDate}
+  page="story"
+  jsonLd={[
+    organizationSchema(),
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Stories', path: '/stories/' },
+      { name: entry.data.title, path },
+    ]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: entry.data.title,
+      description: entry.data.description,
+      url: absoluteUrl(path),
+      image: absoluteUrl(entry.data.posterPortrait),
+      datePublished: entry.data.publishDate.toISOString(),
+      author: { '@id': `${SITE.url}/#organization` },
+      publisher: { '@id': `${SITE.url}/#organization` },
+      mainEntityOfPage: absoluteUrl(blog ? `/blog/${blog.id}/` : path),
+    },
+  ]}
+>
+  <div class="story-stage">
+    <article
+      class="story-frame"
+      data-story
+      style={`--story-ms: ${durationMs}; --slide-bg: url('${entry.data.posterPortrait}')`}
+    >
+      <div class="story-progress" aria-hidden="true">
+        {entry.data.slides.map((_, index) => (
+          <span data-bar={index}>
+            <i></i>
+          </span>
+        ))}
+      </div>
+      {entry.data.slides.map((slide, index) => (
+        <section class:list={['story-slide', { 'is-active': index === 0 }]} data-slide={index}>
+          <p class="platform-kicker">{entry.data.category.replace('-', ' ')}</p>
+          <h1>{slide.heading}</h1>
+          <p>{slide.text}</p>
+        </section>
+      ))}
+      <div class="story-nav">
+        <button type="button" data-story-prev aria-label="Previous slide"></button>
+        <button type="button" data-story-next aria-label="Next slide"></button>
+      </div>
+      <div class="story-cta">
+        <a href={blog ? `/blog/${blog.id}/` : '/blog.html'}>
+          {blog ? `Read the full guide: ${blog.data.title}` : 'Read the full guide'}
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<script>
+  const root = document.querySelector('[data-story]');
+  if (root) {
+    const slides = [...root.querySelectorAll('[data-slide]')];
+    const bars = [...root.querySelectorAll('[data-bar]')];
+    const ms = parseInt(getComputedStyle(root).getPropertyValue('--story-ms'), 10) || 12000;
+    let index = 0;
+    let timer: number | undefined;
+
+    const show = (next: number) => {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+      bars.forEach((bar, i) => {
+        bar.classList.toggle('is-done', i < index);
+        bar.classList.toggle('is-active', i === index);
+      });
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => show(index + 1), ms);
+    };
+
+    root.querySelector('[data-story-next]')?.addEventListener('click', () => show(index + 1));
+    root.querySelector('[data-story-prev]')?.addEventListener('click', () => show(index - 1));
+    show(0);
+  }
+</script>
