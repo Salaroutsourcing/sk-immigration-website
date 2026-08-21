@@ -57,6 +57,8 @@ jobs:
           TOKEN="${SECRET_CLOUDFLARE_API_TOKEN:-$SECRET_CF_API_TOKEN}"
           TOKEN="${TOKEN:-$SECRET_CLOUDFLARE_TOKEN}"
           TOKEN="${TOKEN:-$SECRET_CF_TOKEN}"
+          # Pasted secrets often include a trailing newline or space.
+          TOKEN="$(printf '%s' "$TOKEN" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
 
           if [ "$HAS_VAR_CLOUDFLARE_API_TOKEN" = "true" ] || [ "$HAS_VAR_CF_API_TOKEN" = "true" ]; then
             if [ -z "$TOKEN" ]; then
@@ -87,11 +89,7 @@ jobs:
           fi
 
           echo "::add-mask::$TOKEN"
-          {
-            echo "CLOUDFLARE_API_TOKEN<<__CF_TOKEN_EOF__"
-            printf '%s\n' "$TOKEN"
-            echo "__CF_TOKEN_EOF__"
-          } >> "$GITHUB_ENV"
+          printf 'CLOUDFLARE_API_TOKEN=%s\n' "$TOKEN" >> "$GITHUB_ENV"
           echo "Cloudflare token secret is set. Account id is hardcoded."
 
       - name: Install and build
@@ -99,11 +97,17 @@ jobs:
           npm ci
           npm run build
 
+      # Do not use cloudflare/wrangler-action here. That action copies
+      # `with.apiToken` into CLOUDFLARE_API_TOKEN (empty if omitted) and
+      # wrangler then fails with "set a CLOUDFLARE_API_TOKEN environment
+      # variable" even when GitHub already has the secret. `npx wrangler`
+      # inherits the token the check step wrote to GITHUB_ENV.
       - name: Deploy Worker + assets
-        uses: cloudflare/wrangler-action@v3
-        with:
-          accountId: e480701d9e4150072f4f9a09b43e9749
-          command: deploy
-          # Token comes from CLOUDFLARE_API_TOKEN in the environment (set above).
-          # Do not pass secrets.CLOUDFLARE_API_TOKEN here — a missing secret
-          # evaluates to null and would wipe the env fallback names.
+        run: |
+          set +x
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::CLOUDFLARE_API_TOKEN is empty at deploy time. Put it in Repository secrets (not Variables): https://github.com/Salaroutsourcing/sk-immigration-website/settings/secrets/actions"
+            exit 1
+          fi
+          echo "Deploying Worker with a token of length ${#CLOUDFLARE_API_TOKEN}."
+          npx wrangler deploy
