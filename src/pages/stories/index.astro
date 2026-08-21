@@ -2,8 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContentCard from '../../components/content/ContentCard.astro';
 import { publishedStories, storyAmpPath, storyHtmlPath } from '../../lib/content';
-import { SITE } from '../../lib/site';
-import { breadcrumbSchema, organizationSchema } from '../../lib/seo';
+import { SITE, absoluteUrl } from '../../lib/site';
+import { basePageGraph, collectionPageSchema } from '../../lib/seo';
 
 const items = await publishedStories();
 ---
@@ -14,11 +14,19 @@ const items = await publishedStories();
   canonical="/stories/"
   page="story"
   jsonLd={[
-    organizationSchema(),
-    breadcrumbSchema([
+    ...basePageGraph([
       { name: 'Home', path: '/' },
       { name: 'Stories', path: '/stories/' },
     ]),
+    collectionPageSchema({
+      name: `Web Stories | ${SITE.brandFull}`,
+      description: 'Fast, mobile-first visa stories. Every story ends on a long-form blog.',
+      url: absoluteUrl('/stories/'),
+      items: items.map((entry) => ({
+        name: entry.data.title,
+        url: storyAmpPath(entry.id),
+      })),
+    }),
   ]}
 >
   <section class="platform-wrap">

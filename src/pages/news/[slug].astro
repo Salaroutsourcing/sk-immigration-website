@@ -2,7 +2,7 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import { publishedNews } from '../../lib/content';
 import { SITE, absoluteUrl } from '../../lib/site';
-import { breadcrumbSchema, newsArticleSchema, organizationSchema } from '../../lib/seo';
+import { basePageGraph, newsArticleSchema } from '../../lib/seo';
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -36,8 +36,7 @@ const relatedBlogHref = entry.data.relatedBlog ? `/blog/${entry.data.relatedBlog
   relatedBlogHref={relatedBlogHref}
   relatedBlogTitle={relatedBlogHref ? 'Continue with the in-depth guide' : undefined}
   jsonLd={[
-    organizationSchema(),
-    breadcrumbSchema([
+    ...basePageGraph([
       { name: 'Home', path: '/' },
       { name: 'News', path: '/news/' },
       { name: entry.data.title, path },
@@ -50,6 +49,10 @@ const relatedBlogHref = entry.data.relatedBlog ? `/blog/${entry.data.relatedBlog
       dateModified: entry.data.updatedDate,
       image: entry.data.heroImage,
       keywords: entry.data.keywords,
+      dateline: entry.data.dateline,
+      articleSection: entry.data.category,
+      sources: entry.data.sources,
+      relatedBlog: entry.data.relatedBlog,
     }),
   ]}
 >

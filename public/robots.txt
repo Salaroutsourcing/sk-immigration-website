@@ -47,6 +47,7 @@ Allow: /calculator.html
 Allow: /compare.html
 Allow: /cv-builder.html
 Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /ai.txt
 Allow: /ads.txt
 Allow: /sitemap.xml

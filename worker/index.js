@@ -92,6 +92,13 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
+    if (url.pathname === '/.well-known/llms.txt' || url.pathname === '/.well-known/llms.txt/') {
+      return Response.redirect(new URL('/llms.txt', url).toString(), 301);
+    }
+    if (url.pathname === '/.well-known/ai.txt' || url.pathname === '/.well-known/ai.txt/') {
+      return Response.redirect(new URL('/ai.txt', url).toString(), 301);
+    }
+
     // Do NOT redirect /answers ↔ /answers.html — Cloudflare Assets already
     // serves answers.html at /answers; redirecting creates a loop.
 
