@@ -5,7 +5,7 @@
  */
 import { getRelatedBlog, publishedStories, storyAmpPath, storyFunnelCta } from '../../../lib/content';
 import { SITE, absoluteUrl } from '../../../lib/site';
-import { organizationSchema, webStoryArticleSchema } from '../../../lib/seo';
+import { organizationSchema, webStoryArticleSchema, websiteSchema } from '../../../lib/seo';
 
 export const prerender = true;
 
@@ -29,6 +29,7 @@ const lastIndex = entry.data.slides.length - 1;
 const autoAdvance = `${entry.data.durationSeconds}s`;
 const jsonLd = [
   organizationSchema(),
+  websiteSchema(),
   webStoryArticleSchema({
     headline: entry.data.title,
     description: entry.data.description,
@@ -37,6 +38,7 @@ const jsonLd = [
     dateModified: entry.data.updatedDate,
     image: entry.data.posterPortrait,
     keywords: entry.data.keywords,
+    relatedBlog: entry.data.relatedBlog,
   }),
 ];
 ---

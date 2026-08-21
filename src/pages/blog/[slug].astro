@@ -2,7 +2,7 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import { getRelatedStory, publishedBlogs } from '../../lib/content';
 import { SITE, absoluteUrl } from '../../lib/site';
-import { blogPostingSchema, breadcrumbSchema, organizationSchema } from '../../lib/seo';
+import { basePageGraph, blogPostingSchema } from '../../lib/seo';
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -38,8 +38,7 @@ const relatedStory = await getRelatedStory(entry.data.relatedStories[0]);
   relatedBlogHref={relatedStory ? `/stories/${relatedStory.id}/` : undefined}
   relatedBlogTitle={relatedStory ? 'Prefer a 15-second recap? Open the Web Story.' : undefined}
   jsonLd={[
-    organizationSchema(),
-    breadcrumbSchema([
+    ...basePageGraph([
       { name: 'Home', path: '/' },
       { name: 'Blog', path: '/blog.html' },
       { name: entry.data.title, path },
@@ -52,7 +51,10 @@ const relatedStory = await getRelatedStory(entry.data.relatedStories[0]);
       dateModified: entry.data.updatedDate,
       image: entry.data.heroImage,
       keywords: entry.data.keywords,
+      articleSection: entry.data.category,
       faqs: entry.data.faqs,
+      relatedStories: entry.data.relatedStories,
+      relatedService: entry.data.relatedService,
     }),
   ]}
 >

@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getRelatedBlog, publishedStories, storyAmpPath, storyFunnelCta, storyHtmlPath } from '../../../lib/content';
 import { SITE, absoluteUrl } from '../../../lib/site';
-import { breadcrumbSchema, organizationSchema, webStoryArticleSchema } from '../../../lib/seo';
+import { basePageGraph, webStoryArticleSchema } from '../../../lib/seo';
 
 export async function getStaticPaths() {
   const items = await publishedStories();
@@ -30,8 +30,7 @@ const cta = storyFunnelCta(entry, blog);
   published={entry.data.publishDate}
   page="story"
   jsonLd={[
-    organizationSchema(),
-    breadcrumbSchema([
+    ...basePageGraph([
       { name: 'Home', path: '/' },
       { name: 'Stories', path: '/stories/' },
       { name: entry.data.title, path },
@@ -44,6 +43,7 @@ const cta = storyFunnelCta(entry, blog);
       dateModified: entry.data.updatedDate,
       image: entry.data.posterPortrait,
       keywords: entry.data.keywords,
+      relatedBlog: entry.data.relatedBlog,
     }),
   ]}
 >

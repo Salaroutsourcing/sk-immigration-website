@@ -27,6 +27,11 @@ export const SITE = {
   whatsapp: '923045999859',
   whatsappLink:
     'https://wa.me/923045999859?text=Hi%20SK%20Immigration%2C%20I%20need%20guidance.',
+  foundingDate: '2020',
+  geo: {
+    latitude: 33.6149,
+    longitude: 73.0643,
+  },
   office: {
     name: 'Rawalpindi Office',
     street: 'Office No. 10, Alfazal Plaza 64C, Satellite Town',

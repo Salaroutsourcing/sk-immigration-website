@@ -2,8 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContentCard from '../../components/content/ContentCard.astro';
 import { publishedNews } from '../../lib/content';
-import { NEWS_CATEGORIES, SITE } from '../../lib/site';
-import { breadcrumbSchema, organizationSchema } from '../../lib/seo';
+import { NEWS_CATEGORIES, SITE, absoluteUrl } from '../../lib/site';
+import { basePageGraph, collectionPageSchema } from '../../lib/seo';
 
 const items = await publishedNews();
 ---
@@ -14,11 +14,20 @@ const items = await publishedNews();
   canonical="/news/"
   page="news"
   jsonLd={[
-    organizationSchema(),
-    breadcrumbSchema([
+    ...basePageGraph([
       { name: 'Home', path: '/' },
       { name: 'News', path: '/news/' },
     ]),
+    collectionPageSchema({
+      name: `Immigration news from Pakistan | ${SITE.brandFull}`,
+      description:
+        'Daily visa, study-abroad, and policy news for Pakistani students and professionals.',
+      url: absoluteUrl('/news/'),
+      items: items.map((entry) => ({
+        name: entry.data.title,
+        url: `/news/${entry.id}/`,
+      })),
+    }),
   ]}
 >
   <section class="platform-wrap">

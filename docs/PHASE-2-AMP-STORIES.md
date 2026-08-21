@@ -2,7 +2,7 @@
 
 Every Web Story now has a real AMP document for Google Discover, plus a Discover feed. The on-site HTML player is unchanged. The last screen still opens a long-form blog.
 
-**Stop here.** Do not start Phase 3 (JSON-LD / `llms.txt`) until this is confirmed.
+**Phase 2 is confirmed.** JSON-LD / `llms.txt` are Phase 3 — see `docs/PHASE-3-JSONLD-LLMS.md`.
 
 ## What shipped
 
@@ -41,7 +41,7 @@ Poster images should be portrait (3:4) when you can. A square publisher logo (at
 
 ## What Phase 2 does **not** do (waiting)
 
-3. Full JSON-LD expansion + `llms.txt` rewrite (Phase 3)
+3. Full JSON-LD expansion + `llms.txt` rewrite — **done, see `docs/PHASE-3-JSONLD-LLMS.md`**
 4. AdSense slot fill + Clarity script inject (Phase 4)
 5. Daily publishing SOP (Phase 5)
 

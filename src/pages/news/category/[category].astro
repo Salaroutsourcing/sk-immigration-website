@@ -2,8 +2,8 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ContentCard from '../../../components/content/ContentCard.astro';
 import { newsByCategory, publishedNews } from '../../../lib/content';
-import { NEWS_CATEGORIES, SITE } from '../../../lib/site';
-import { breadcrumbSchema, organizationSchema } from '../../../lib/seo';
+import { NEWS_CATEGORIES, SITE, absoluteUrl } from '../../../lib/site';
+import { basePageGraph, collectionPageSchema } from '../../../lib/seo';
 
 export async function getStaticPaths() {
   return NEWS_CATEGORIES.map((category) => ({ params: { category } }));
@@ -21,12 +21,20 @@ const path = `/news/category/${category}/`;
   canonical={path}
   page="news"
   jsonLd={[
-    organizationSchema(),
-    breadcrumbSchema([
+    ...basePageGraph([
       { name: 'Home', path: '/' },
       { name: 'News', path: '/news/' },
       { name: category, path },
     ]),
+    collectionPageSchema({
+      name: `${category.replace('-', ' ')} news | ${SITE.brandFull}`,
+      description: `Latest ${category.replace('-', ' ')} updates for Pakistani students and workers from SK Immigration Services.`,
+      url: absoluteUrl(path),
+      items: items.map((entry) => ({
+        name: entry.data.title,
+        url: `/news/${entry.id}/`,
+      })),
+    }),
   ]}
 >
   <section class="platform-wrap">
