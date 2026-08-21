@@ -1,6 +1,7 @@
 ---
 import { SITE, absoluteUrl } from '../../lib/site';
 import { EU_CONSENT_REGIONS } from '../../lib/consent';
+import Clarity from './Clarity.astro';
 
 interface Props {
   title: string;
@@ -80,6 +81,7 @@ const euRegions = [...EU_CONSENT_REGIONS];
   src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.analytics.adsense}`}
   crossorigin="anonymous"
 ></script>
+<Clarity />
 <title>{title}</title>
 <meta name="description" content={description} />
 {noindex ? (

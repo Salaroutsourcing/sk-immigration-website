@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ContentCard from '../../../components/content/ContentCard.astro';
+import AdSlot from '../../../components/ads/AdSlot.astro';
 import { newsByCategory, publishedNews } from '../../../lib/content';
 import { NEWS_CATEGORIES, SITE, absoluteUrl } from '../../../lib/site';
 import { basePageGraph, collectionPageSchema } from '../../../lib/seo';
@@ -66,5 +67,6 @@ const path = `/news/category/${category}/`;
     {items.length === 0 && (
       <p class="lede">No stories in this category yet. Browse the {all.length} updates in the full newsroom.</p>
     )}
+    {items.length > 0 && <AdSlot placement="in-feed" />}
   </section>
 </BaseLayout>
