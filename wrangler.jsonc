@@ -4,6 +4,9 @@
   "main": "worker/index.js",
   "compatibility_date": "2026-08-20",
   "compatibility_flags": ["nodejs_compat"],
+  "build": {
+    "command": "npm run build"
+  },
   "workers_dev": true,
   "vars": {
     "GITHUB_REPO": "Salaroutsourcing/sk-immigration-website",
