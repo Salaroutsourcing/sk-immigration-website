@@ -576,6 +576,53 @@ html[data-theme="light"] .nav-item.active {
   font-weight: 700;
 }
 
+.sop-steps {
+  margin: 0 0 18px;
+  padding: 14px 16px 14px 36px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--elev);
+  display: grid;
+  gap: 8px;
+}
+
+.sop-steps li {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.sop-steps strong {
+  color: var(--text);
+}
+
+.sop-plan {
+  margin: 18px 0;
+}
+
+.sop-slot {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.sop-slot:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.sop-kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
 .list {
   display: grid;
 }
@@ -934,7 +981,8 @@ kbd {
   .grid-3,
   .quick-row,
   .editor-grid,
-  .grid-2 {
+  .grid-2,
+  .sop-slot {
     grid-template-columns: 1fr;
   }
   .row {

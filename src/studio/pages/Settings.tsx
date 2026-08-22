@@ -56,6 +56,15 @@ export function Settings({ toast }: { toast: (kind: 'ok' | 'err', text: string) 
           <p>Password fallback: {data.passwordFallback ? 'on' : 'off'}</p>
         </section>
         <section className="card">
+          <h2>Daily desk</h2>
+          <p>
+            Timezone <code>{data.timezone || 'Asia/Karachi'}</code>
+          </p>
+          <p className="hint">
+            Quota is 5 news, 5 Web Stories, and 1 blog per Pakistan day. Counts only published pieces, not drafts.
+          </p>
+        </section>
+        <section className="card">
           <h2>Shortcuts</h2>
           <p>
             <kbd>G</kbd> then <kbd>D</kbd> <kbd>N</kbd> <kbd>B</kbd> <kbd>S</kbd> <kbd>M</kbd> <kbd>K</kbd>

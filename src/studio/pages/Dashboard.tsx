@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { COLLECTION_META, pathForCollection } from '../constants';
-import type { Collection, DashboardPayload } from '../types';
+import type { Collection, DashboardPayload, SopSlot } from '../types';
 
 export function Dashboard({
   onNavigate,
@@ -31,10 +31,12 @@ export function Dashboard({
   }
 
   const cards: { key: Collection; label: string; target: number }[] = [
+    { key: 'blog', label: 'Blog', target: data.targets.blog },
     { key: 'news', label: 'News', target: data.targets.news },
     { key: 'web-stories', label: 'Web Stories', target: data.targets['web-stories'] },
-    { key: 'blog', label: 'Blog', target: data.targets.blog },
   ];
+
+  const remainingTotal = data.remaining.blog + data.remaining.news + data.remaining['web-stories'];
 
   return (
     <>
@@ -42,10 +44,31 @@ export function Dashboard({
         <div>
           <h1>Today’s desk</h1>
           <p>
-            {data.today} · daily machine is 5 news, 5 stories, 1 blog.
+            {data.today} {data.timezone} · {data.sop.theme || 'Daily 5 news, 5 stories, 1 blog'}
           </p>
         </div>
+        <div className="actions">
+          <span className={`badge ${data.complete ? 'published' : 'draft'}`}>
+            {data.complete ? 'Quota done' : `${remainingTotal} left today`}
+          </span>
+        </div>
       </div>
+
+      <ol className="sop-steps">
+        <li>
+          <strong>1. Blog first.</strong> Stories need this URL. Write the long guide, 3 FAQs, then Publish.
+        </li>
+        <li>
+          <strong>2. Five news briefs.</strong> Each needs an official https source. No visa guarantees.
+        </li>
+        <li>
+          <strong>3. Five Web Stories.</strong> Last slide must open today’s blog, not WhatsApp alone.
+        </li>
+        <li>
+          <strong>4. Wait for deploy.</strong> After Publish, GitHub Actions rebuilds the live site. Then open the public URL.
+        </li>
+      </ol>
+
       <div className="grid-3">
         {cards.map((card) => {
           const c = data.counts[card.key];
@@ -72,34 +95,60 @@ export function Dashboard({
           );
         })}
       </div>
-      <div className="quick-row">
-        <a className="quick" href="/studio/news/new" onClick={(e) => (e.preventDefault(), onNavigate('/studio/news/new'))}>
-          <span className="mark">N</span>
-          <div>
-            <strong>New News</strong>
-            <div className="hint">Brief + official source</div>
-          </div>
-        </a>
-        <a className="quick" href="/studio/blog/new" onClick={(e) => (e.preventDefault(), onNavigate('/studio/blog/new'))}>
-          <span className="mark">B</span>
-          <div>
-            <strong>New Blog</strong>
-            <div className="hint">Long guide · 3 FAQs min</div>
-          </div>
-        </a>
-        <a
-          className="quick"
-          href="/studio/stories/new"
-          onClick={(e) => (e.preventDefault(), onNavigate('/studio/stories/new'))}
-        >
-          <span className="mark">S</span>
-          <div>
-            <strong>New Web Story</strong>
-            <div className="hint">Must land on a blog</div>
-          </div>
-        </a>
-      </div>
+
+      <section className="card sop-plan">
+        <h2>
+          Today’s plan · {data.sop.weekday}
+          {data.complete ? ' · complete' : ''}
+        </h2>
+        <p className="hint" style={{ marginTop: -8, marginBottom: 14 }}>
+          Click Start. Edit the facts. Publish only after the checklist on the editor is clear. Skip a slot rather than invent a fee.
+        </p>
+        {data.sop.blog ? (
+          <SlotRow
+            kicker="Blog · do this first"
+            slot={data.sop.blog}
+            onStart={() => onNavigate('/studio/blog/new?slot=blog')}
+          />
+        ) : (
+          <p className="hint">Today’s blog quota is filled.</p>
+        )}
+        {data.sop.news.map((slot, i) => (
+          <SlotRow
+            key={slot.id}
+            kicker={`News ${i + 1 + (data.targets.news - data.remaining.news)}`}
+            slot={slot}
+            onStart={() => onNavigate(`/studio/news/new?slot=${slot.id}`)}
+          />
+        ))}
+        {data.sop.stories.map((slot, i) => (
+          <SlotRow
+            key={slot.id}
+            kicker={`Story ${i + 1 + (data.targets['web-stories'] - data.remaining['web-stories'])}`}
+            slot={slot}
+            onStart={() => onNavigate(`/studio/stories/new?slot=${slot.id}`)}
+          />
+        ))}
+      </section>
+
       <div className="grid-2">
+        <section className="card">
+          <h2>Published today</h2>
+          {!data.todayEntries.length && <div className="empty">Nothing published yet today (PKT).</div>}
+          {data.todayEntries.map((row) => (
+            <button
+              key={row.id}
+              type="button"
+              className="row"
+              style={{ width: '100%', border: 0, background: 'transparent' }}
+              onClick={() => onNavigate(pathForCollection(row.collection, row.id))}
+            >
+              <span className={`badge ${row.collection}`}>{COLLECTION_META[row.collection].label}</span>
+              <span style={{ textAlign: 'left', fontWeight: 600 }}>{row.title}</span>
+              <span className="hint">{COLLECTION_META[row.collection].publicBase}/{row.slug}/</span>
+            </button>
+          ))}
+        </section>
         <section className="card">
           <h2>Recent content</h2>
           {!data.recent.length && <div className="empty">Nothing in Studio yet.</div>}
@@ -118,23 +167,30 @@ export function Dashboard({
             </button>
           ))}
         </section>
-        <section className="card">
-          <h2>Keyword wins</h2>
-          {!data.keywords.length && <p className="hint">Seeded from the site taxonomy on first load.</p>}
-          {data.keywords.map((k) => (
-            <div key={k.keyword} className="row" style={{ gridTemplateColumns: '1fr auto' }}>
-              <div>
-                <strong>{k.keyword}</strong>
-                <div className="hint">{k.cluster}</div>
-              </div>
-              <span className="badge">{k.status}</span>
-            </div>
-          ))}
-          <button className="btn btn-sm" type="button" style={{ marginTop: 12 }} onClick={() => onNavigate('/studio/keywords')}>
-            Open keywords
-          </button>
-        </section>
       </div>
     </>
+  );
+}
+
+function SlotRow({
+  kicker,
+  slot,
+  onStart,
+}: {
+  kicker: string;
+  slot: SopSlot;
+  onStart: () => void;
+}) {
+  return (
+    <div className="sop-slot">
+      <div>
+        <div className="sop-kicker">{kicker}</div>
+        <strong>{slot.title}</strong>
+        <div className="hint">{slot.angle}</div>
+      </div>
+      <button className="btn btn-gold btn-sm" type="button" onClick={onStart}>
+        Start
+      </button>
+    </div>
   );
 }

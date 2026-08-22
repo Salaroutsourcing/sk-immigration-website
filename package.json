@@ -12,6 +12,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "check:sop": "node scripts/check-daily-sop.mjs",
     "cf:dev": "astro build && wrangler dev",
     "deploy": "astro build && wrangler deploy",
     "build:answers-hub": "node scripts/build-answers-hub.mjs",

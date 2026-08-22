@@ -23,6 +23,7 @@ npm run deploy       # build + wrangler deploy
 - Web Stories: `/stories/`
 - New MDX blogs: `/blog/{slug}/` (legacy country guides stay at `/blog/{country-guide}/`)
 - Studio (noindex, GitHub OAuth): `/studio/` — [`docs/PHASE-1-STUDIO.md`](docs/PHASE-1-STUDIO.md)
+- Daily desk (5 news + 5 stories + 1 blog): [`docs/PHASE-5-DAILY-SOP.md`](docs/PHASE-5-DAILY-SOP.md)
 - Trust: `/trust.html`
 - Architecture: [`docs/PHASE-0-ARCHITECTURE.md`](docs/PHASE-0-ARCHITECTURE.md)
 

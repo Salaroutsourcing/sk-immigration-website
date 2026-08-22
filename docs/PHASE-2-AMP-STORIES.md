@@ -43,7 +43,7 @@ Poster images should be portrait (3:4) when you can. A square publisher logo (at
 
 3. Full JSON-LD expansion + `llms.txt` rewrite — **done, see `docs/PHASE-3-JSONLD-LLMS.md`**
 4. AdSense slot fill + Clarity script inject (Phase 4)
-5. Daily publishing SOP (Phase 5)
+5. Daily publishing SOP — **done, see `docs/PHASE-5-DAILY-SOP.md`**.
 
 ## How to confirm
 

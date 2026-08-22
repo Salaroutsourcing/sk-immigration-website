@@ -74,6 +74,8 @@ export const api = {
       githubOAuth: boolean;
       passwordFallback: boolean;
       publishReady: boolean;
+      timezone?: string;
+      targets?: { news: number; 'web-stories': number; blog: number };
       user: StudioUser;
     }>('/api/studio/settings'),
 };

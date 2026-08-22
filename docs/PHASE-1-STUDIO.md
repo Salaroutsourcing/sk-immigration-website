@@ -120,4 +120,4 @@ Theme follows system preference, defaulting to dark. Toggle is in the top bar.
 
 ## What Phase 1 does not do
 
-Public MDX rendering, AMP Web Stories, AI citation expansion, AdSense/Clarity inject, and the daily SOP are later phases. AMP packaging is `docs/PHASE-2-AMP-STORIES.md`.
+Public MDX rendering, AMP Web Stories, AI citation expansion, and AdSense/Clarity inject are later phases (now shipped). Daily SOP: `docs/PHASE-5-DAILY-SOP.md`. AMP packaging is `docs/PHASE-2-AMP-STORIES.md`.
