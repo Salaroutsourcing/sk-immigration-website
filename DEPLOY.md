@@ -19,10 +19,10 @@ On the Worker **sk-immigration-website** → **Settings** → **Build**:
 | Field | Set to |
 | --- | --- |
 | **Build command** | `npm run build` |
-| **Non-production branch deploy command** | `node scripts/wrangler-preview.mjs` |
+| **Non-production branch deploy command** | `npx wrangler versions upload` is fine — `postinstall` sanitizes `/` in the branch alias |
 | **Deploy command** (production / `main`) | `npx wrangler deploy` |
 
-Leave production as `npx wrangler deploy`. The preview command sanitizes branch names that contain `/` (Cloudflare otherwise fails with invalid preview alias 10021). Then **Retry**.
+Optional, same effect: set the non-production command to `node scripts/wrangler-preview.mjs`. Then **Retry**.
 
 ### One GitHub secret
 

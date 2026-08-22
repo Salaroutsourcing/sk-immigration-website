@@ -2,46 +2,19 @@
  * Workers Builds preview deploy. Cloudflare rejects branch names with `/`
  * as --preview-alias (API 10021), e.g. cursor/adsense-track-b-ad8e.
  *
- * Dashboard (non-production deploy command): node scripts/wrangler-preview.mjs
+ * Optional dashboard command: node scripts/wrangler-preview.mjs
+ * Default `npx wrangler versions upload` is patched in postinstall.
  */
 import { spawnSync } from 'node:child_process';
-import { createHash } from 'node:crypto';
-import { existsSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+const require = createRequire(import.meta.url);
+const { ALIAS_RE, MAX_DNS_LABEL, WORKER, applyToArgv, sanitizePreviewAlias } = require('./sanitize-preview-alias.cjs');
+
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const WORKER = 'sk-immigration-website';
-const MAX_DNS_LABEL = 63;
-const HASH_LENGTH = 4;
-const ALIAS_RE = /^[a-z](?:[a-z0-9-]*[a-z0-9])?$/;
-
-function sanitizePreviewAlias(raw, workerName = WORKER) {
-  const branchName = String(raw || '').trim() || 'preview';
-  let alias = branchName
-    .replace(/[^a-zA-Z0-9-]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .toLowerCase();
-
-  if (!alias) alias = 'preview';
-  if (!/^[a-z]/.test(alias)) alias = `p-${alias}`;
-
-  const available = MAX_DNS_LABEL - workerName.length - 1;
-  if (available < 1) return 'preview';
-
-  if (alias.length > available) {
-    const spaceForHash = HASH_LENGTH + 1;
-    const maxPrefix = available - spaceForHash;
-    if (maxPrefix < 1) return 'preview';
-    const hash = createHash('sha256').update(branchName).digest('hex').slice(0, HASH_LENGTH);
-    alias = `${alias.slice(0, maxPrefix).replace(/-+$/g, '')}-${hash}`;
-  }
-
-  alias = alias.replace(/-+$/g, '');
-  if (!ALIAS_RE.test(alias)) return 'preview';
-  return alias;
-}
 
 function parseArgs(argv) {
   const rest = [];
@@ -85,6 +58,22 @@ function selfTest() {
   const maxAlias = MAX_DNS_LABEL - WORKER.length - 1;
   if (truncated.length > maxAlias) errors.push(`truncated alias too long: ${truncated.length}`);
   if (!ALIAS_RE.test(truncated)) errors.push(`truncated alias invalid: ${truncated}`);
+
+  const argv = ['node', 'wrangler', 'versions', 'upload', '--preview-alias', 'cursor/adsense-track-b-ad8e'];
+  applyToArgv(argv);
+  if (argv[5] !== 'cursor-adsense-track-b-ad8e') {
+    errors.push(`applyToArgv failed: ${argv[5]}`);
+  }
+
+  const patch = spawnSync(process.execPath, [join(root, 'scripts/patch-wrangler-alias.mjs')], {
+    cwd: root,
+    encoding: 'utf8',
+  });
+  if (patch.status !== 0) errors.push(`patch-wrangler-alias failed: ${patch.stderr}`);
+  const wranglerBin = join(root, 'node_modules/wrangler/bin/wrangler.js');
+  if (existsSync(wranglerBin) && !readFileSync(wranglerBin, 'utf8').includes('SK_SANITIZE_PREVIEW_ALIAS')) {
+    errors.push('wrangler bin was not patched with SK_SANITIZE_PREVIEW_ALIAS');
+  }
 
   if (errors.length) {
     console.error(errors.join('\n'));
