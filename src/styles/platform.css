@@ -73,6 +73,31 @@
   background: var(--glass);
 }
 
+.article-aside .aside-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+}
+
+.article-aside .aside-card > p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.aside-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+}
+
+.aside-actions .btn {
+  width: 100%;
+}
+
 .crumb {
   display: flex;
   flex-wrap: wrap;
@@ -187,11 +212,12 @@
 .story-cta a {
   display: block;
   text-align: center;
-  background: #c9a84c;
+  background: linear-gradient(180deg, #e4c36a 0%, #c9a84c 55%, #a07830 100%);
   color: #0f172a;
-  font-weight: 800;
-  padding: 0.8rem 1rem;
-  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
   text-decoration: none;
 }
 
