@@ -2,7 +2,7 @@
 
 Studio’s **Today’s desk** is now the daily machine: **1 blog, then 5 news, then 5 Web Stories**, counted in **Pakistan time (Asia/Karachi)**. Drafts do not fill the quota. Publish is blocked if the piece is too thin, sells a visa guarantee, or (for stories) does not open a blog.
 
-**Stop here.** Do not start Phase 6 until this is confirmed.
+**Phase 5 is confirmed.** Launch handbook is Phase 6 — see `docs/PHASE-6-LAUNCH.md` and `docs/DAILY-USE.md`.
 
 ## Open this
 
@@ -38,12 +38,6 @@ The public page is not instant. Studio writes the MDX file into GitHub; the next
 2. Start a news slot → **Sources** already has an official URL to verify
 3. Try to Publish a story whose last slide is WhatsApp-only → it should refuse
 
-## What Phase 5 does **not** do (waiting)
+## What Phase 5 does **not** do
 
-6. Phase 6 (next after you confirm this desk)
-
-It also does not auto-write articles, post to TikTok/YouTube, or rewrite the old ranking HTML landers.
-
-## How to confirm
-
-After you have used Today’s desk for a real day (or reviewed the slots), reply **“Phase 5 confirmed — start Phase 6”**.
+Auto-write articles, post to TikTok/YouTube, or rewrite ranking HTML landers. Launch docs are `docs/PHASE-6-LAUNCH.md`.
