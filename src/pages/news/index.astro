@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContentCard from '../../components/content/ContentCard.astro';
+import AdSlot from '../../components/ads/AdSlot.astro';
 import { publishedNews } from '../../lib/content';
 import { NEWS_CATEGORIES, SITE, absoluteUrl } from '../../lib/site';
 import { basePageGraph, collectionPageSchema } from '../../lib/seo';
@@ -56,5 +57,6 @@ const items = await publishedNews();
         />
       ))}
     </div>
+    <AdSlot placement="in-feed" />
   </section>
 </BaseLayout>

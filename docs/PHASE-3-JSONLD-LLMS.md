@@ -2,7 +2,7 @@
 
 Astro news, blogs, and Web Stories now emit the same class of entity JSON-LD as the ranking HTML pages (Organization, LocalBusiness, WebSite, speakable, citations, FAQ). `llms.txt` is generated at build time from published collections so the daily 5+5+1 machine stays visible to AI crawlers.
 
-**Stop here.** Do not start Phase 4 (AdSense slot fill + Clarity) until this is confirmed.
+**Phase 3 is confirmed.** AdSense / Clarity are Phase 4 — see `docs/PHASE-4-ADSENSE-CLARITY.md`.
 
 ## What shipped
 
@@ -32,7 +32,7 @@ Studio does not change. **Publish** still writes MDX; the next deploy regenerate
 
 ## What Phase 3 does **not** do (waiting)
 
-4. AdSense slot fill + Clarity script inject (Phase 4) — IDs are already in `site.ts`
+4. AdSense slot fill + Clarity script inject — **done, see `docs/PHASE-4-ADSENSE-CLARITY.md`**
 5. Daily publishing SOP (Phase 5)
 6. Rewriting the 313 ranking HTML landers (they already inject schema via `geo-schema.js`)
 
