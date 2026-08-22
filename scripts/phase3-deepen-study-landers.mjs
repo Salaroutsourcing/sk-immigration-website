@@ -9,8 +9,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.join(__dirname, '..');
-const TODAY = '2026-08-12';
+const ROOT = path.join(__dirname, '..', 'public');
+const TODAY = '2026-08-22';
 
 const BLOCKS = {
   'germany-study-visa-pakistan': `
@@ -372,6 +372,215 @@ const BLOCKS = {
           <li>Incomplete forms and name mismatches</li>
         </ul>
         <p>Official: <a href="https://www.studyinromania.gov.ro/" target="_blank" rel="noopener noreferrer">Study in Romania</a> · <a href="../../official-links/#ro">Romania links hub</a> · <a href="../../checklist.html?country=ro&amp;type=study">Romania checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'austria-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Austria study from Pakistan — admission before VFS</h2>
+        <p>Austria offers English and German-taught programmes in Vienna, Salzburg and regional universities. Pakistani files need credible admission, funds and often German language evidence — not broker-only PDFs.</p>
+        <h2>Checklist focus</h2>
+        <ul>
+          <li>University admission with fee letter on official domain</li>
+          <li>Funds for tuition + living per mission guidance</li>
+          <li>German or English proof matching the programme clause</li>
+          <li>Attestation / legalization order for academics</li>
+        </ul>
+        <h2>Process</h2>
+        <ol>
+          <li>Shortlist with realistic language timeline</li>
+          <li>Apply and secure admission</li>
+          <li>Compile financial and insurance evidence</li>
+          <li>Book VFS Austria only when file complete</li>
+        </ol>
+        <h2>Mistakes</h2>
+        <ul>
+          <li>Assuming MOI without written university acceptance</li>
+          <li>One-month bank spikes</li>
+          <li>Visit visa used to scout universities</li>
+        </ul>
+        <p><a href="../../official-links/#at">Austria links</a> · <a href="../../checklist.html?country=at&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'belgium-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Belgium study visa from Pakistan</h2>
+        <p>Belgium suits EU-focused students targeting Brussels institutions and regional universities. Files need admission, funds and clear study purpose — Belgian missions decide.</p>
+        <h2>Requirements (verify live list)</h2>
+        <ul>
+          <li>Admission / enrolment from recognized institution</li>
+          <li>Proof of means and accommodation</li>
+          <li>Language evidence per programme</li>
+          <li>Medical insurance meeting stated rules</li>
+        </ul>
+        <h2>Refusal risks</h2>
+        <ul>
+          <li>Weak academic progression story</li>
+          <li>Unexplained sponsor transfers</li>
+          <li>Incomplete translations</li>
+        </ul>
+        <p><a href="../../official-links/#be">Belgium links</a> · <a href="../../checklist.html?country=be&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'cyprus-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Cyprus study from Pakistan — verify pathway</h2>
+        <p>Cyprus attracts interest for English-taught colleges. Verify institution recognition and the correct long-stay student route before paying agents — not every brochure equals embassy-ready admission.</p>
+        <h2>Prepare</h2>
+        <ul>
+          <li>Admission letter from institution you can document</li>
+          <li>Tuition payment trail to the school</li>
+          <li>Funds and insurance per checklist</li>
+          <li>Attestation when required</li>
+        </ul>
+        <h2>Mistakes</h2>
+        <ul>
+          <li>Broker campuses without independent verification</li>
+          <li>Confusing visit entry with degree intent</li>
+          <li>Weak funds narrative</li>
+        </ul>
+        <p><a href="../../official-links/#cy">Cyprus links</a> · <a href="../../checklist.html?country=cy&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'czech-republic-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Czech Republic study from Pakistan</h2>
+        <p>Prague and regional Czech universities offer English programmes. National student visas need admission, funds and often nostrification or recognition steps for some fields — verify early.</p>
+        <h2>Process outline</h2>
+        <ol>
+          <li>Programme shortlist and language plan</li>
+          <li>University application and admission</li>
+          <li>Funds and accommodation evidence</li>
+          <li>VFS appointment with complete set</li>
+        </ol>
+        <h2>Mistakes</h2>
+        <ul>
+          <li>Ignoring recognition for regulated fields</li>
+          <li>Generic SOP with no Czech programme detail</li>
+          <li>Booking VFS empty-handed</li>
+        </ul>
+        <p><a href="../../official-links/#cz">Czech links</a> · <a href="../../checklist.html?country=cz&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'greece-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Greece study from Pakistan</h2>
+        <p>Greece offers English-taught options especially in Athens and islands-based colleges. Mission files need real admission, funds and insurance — tourism visits are not study shortcuts.</p>
+        <h2>Focus areas</h2>
+        <ul>
+          <li>Admission authenticity on university domains</li>
+          <li>Funds covering tuition and living</li>
+          <li>Language clause on offer letter</li>
+          <li>Complete attestation chain</li>
+        </ul>
+        <p><a href="../../official-links/#gr">Greece links</a> · <a href="../../checklist.html?country=gr&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'ireland-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Ireland study from Pakistan — separate from UK</h2>
+        <p>Ireland uses its own student immigration permission. Pakistani applicants need admission from an eligible Irish institution, funds, and online application steps — not a UK student visa.</p>
+        <h2>Building blocks</h2>
+        <ul>
+          <li>Offer letter / admission evidence</li>
+          <li>Proof of funds per INIS guidance</li>
+          <li>English evidence matching programme</li>
+          <li>Online application and biometrics when required</li>
+        </ul>
+        <h2>Mistakes</h2>
+        <ul>
+          <li>Assuming UK CAS covers Ireland</li>
+          <li>Funds only shown as one-day balance</li>
+          <li>Weak study purpose narrative</li>
+        </ul>
+        <p><a href="../../official-links/#ie">Ireland links</a> · <a href="../../checklist.html?country=ie&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'malaysia-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Malaysia study from Pakistan</h2>
+        <p>Malaysia offers affordable English programmes and student pass routes. Files need institution acceptance, funds and correct student pass category — not visit visas for degrees.</p>
+        <h2>Prepare</h2>
+        <ul>
+          <li>Offer from recognized institution</li>
+          <li>EMGS / student pass steps when applicable</li>
+          <li>Funds and health requirements per checklist</li>
+        </ul>
+        <h2>Mistakes</h2>
+        <ul>
+          <li>Unverified college agents</li>
+          <li>Visit visa instead of student pass</li>
+          <li>Incomplete medical insurance</li>
+        </ul>
+        <p><a href="../../official-links/#my">Malaysia links</a> · <a href="../../checklist.html?country=my&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'malta-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Malta study from Pakistan</h2>
+        <p>Malta hosts English-language colleges and EU base interest. Student files need admission, funds and mission-ready documentation — island living costs still require honest budgeting.</p>
+        <h2>Checklist</h2>
+        <ul>
+          <li>Admission with fee schedule on college site</li>
+          <li>Funds and accommodation proof</li>
+          <li>Language evidence per programme</li>
+        </ul>
+        <p><a href="../../official-links/#mt">Malta links</a> · <a href="../../checklist.html?country=mt&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'slovakia-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Slovakia study from Pakistan</h2>
+        <p>Slovakia offers EU study at lower living costs than Western Europe. Admission, funds and attestation order decide visa outcomes — not social media “easy EU” ads.</p>
+        <h2>Process</h2>
+        <ol>
+          <li>University shortlist and applications</li>
+          <li>Admission and tuition planning</li>
+          <li>Document legalization</li>
+          <li>Visa appointment when complete</li>
+        </ol>
+        <p><a href="../../official-links/#sk">Slovakia links</a> · <a href="../../checklist.html?country=sk&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'switzerland-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Switzerland study from Pakistan — high cost realism</h2>
+        <p>Switzerland offers top universities but very high living costs. Files need strong admission, funds that match Swiss subsistence levels, and often language proof — weak budgets fail credibility checks.</p>
+        <h2>Requirements focus</h2>
+        <ul>
+          <li>Admission from recognized Swiss institution</li>
+          <li>Funds substantially above Eastern EU levels</li>
+          <li>Language per programme (German/French/English)</li>
+          <li>Health insurance meeting Swiss rules</li>
+        </ul>
+        <p><a href="../../official-links/#ch">Switzerland links</a> · <a href="../../checklist.html?country=ch&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'turkey-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Turkey study from Pakistan</h2>
+        <p>Turkey attracts students for affordable programmes and Turkish universities. Student residence files need admission, funds and correct sticker/e-visa sequencing — verify High Commission instructions.</p>
+        <h2>Prepare</h2>
+        <ul>
+          <li>University acceptance letter</li>
+          <li>Tuition payment evidence</li>
+          <li>Funds and passport validity</li>
+          <li>Translations when listed</li>
+        </ul>
+        <p><a href="../../official-links/#tr">Turkey links</a> · <a href="../../checklist.html?country=tr&amp;type=study">checklist</a>.</p>
+<!-- /lander-depth -->`,
+
+  'netherlands-study-visa-pakistan': `
+<!-- lander-depth -->
+        <h2>Netherlands study from Pakistan</h2>
+        <p>Dutch universities offer strong English-taught programmes. IND/MVV steps and institution admission must be sequenced correctly before VFS — not “print offer and run”.</p>
+        <h2>Focus</h2>
+        <ul>
+          <li>Admission and tuition deposit rules</li>
+          <li>Funds per IND guidance</li>
+          <li>Nuffic / institution procedures when applicable</li>
+          <li>Complete biometrics package</li>
+        </ul>
+        <p><a href="../../official-links/#nl">Netherlands links</a> · <a href="../../checklist.html?country=nl&amp;type=study">checklist</a>.</p>
 <!-- /lander-depth -->`,
 };
 

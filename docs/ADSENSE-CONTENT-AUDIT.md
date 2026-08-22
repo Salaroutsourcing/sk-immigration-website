@@ -1,18 +1,26 @@
 # AdSense “Low value content” — content audit & replacement list
 
-Track B plan for **immigration.salaroutsourcing.com**. You handle **blogs** in Studio; this doc lists everything else that needs expansion or is duplicated.
+Track B plan for **immigration.salaroutsourcing.com**. English only. You handle **blogs** in Studio; this doc lists everything else.
 
 ## Phase status
 
 | Phase | What | Status |
 |-------|------|--------|
-| **0** | Disable `autoAds` until reapply | Done in `public/assets/js/config.js` |
-| **1** | noindex + sitemap cleanup (Urdu, guides, Saudi stub) | Done — run `node scripts/adsense-phase1-cleanup.mjs` if needed again |
-| **2** | Unique visit-visa pages (biggest duplicate cluster) | **Your team + next commits** |
-| **3** | Homepage depth, appointments, tier-2 study | Homepage block added; rest ongoing |
+| **0** | Disable `autoAds` until reapply | Done — `public/assets/js/config.js` |
+| **1** | noindex + sitemap cleanup (Urdu, guides, Saudi stub) | Done — `node scripts/adsense-phase1-cleanup.mjs` |
+| **2** | Unique visit-visa pages | Done — `node scripts/adsense-phase2-visit-visa.mjs` + `adsense-phase2-visit-extra.mjs` |
+| **3** | Appointments, tier-2 study, local cities | Done — see scripts below |
 | **4** | Blogs | **You** — Studio `/studio/` → Publish → deploy |
-| **5** | E-E-A-T (process stories, Google reviews link) | Planned |
-| **6** | Re-enable ads + AdSense “Request review” | After Phases 2–4 |
+| **5** | E-E-A-T (client journey, Google reviews link) | Done — `client-journey.html` |
+| **6** | Re-enable ads + AdSense “Request review” | After you finish blogs + deploy |
+
+### Phase 3 scripts (re-run after edits)
+
+```bash
+node scripts/adsense-phase3-appointments.mjs
+node scripts/phase3-deepen-study-landers.mjs
+node scripts/adsense-phase3-local.mjs
+```
 
 ---
 
@@ -43,7 +51,7 @@ These live under `public/blog/*/index.html`. They are **noindex** and **canonica
 | `public/blog/cyprus-student-visa/` | `index.html` | `study-visa/cyprus-study-visa-pakistan/` |
 | `public/blog/dubai-visit-visa/` | `index.html` | `visit-visa/dubai-visit-visa-pakistan/` |
 
-**Target:** 800–1,200+ words unique editorial content per file, or delete/stop linking once Studio MDX posts replace them.
+**Target:** 800–1,200+ words unique editorial per file, or stop linking once Studio MDX posts replace them.
 
 ---
 
@@ -64,7 +72,7 @@ See `docs/BLOG-STUDIO-WORKFLOW.md` for why drafts don’t appear instantly.
 
 | Path | Action |
 |------|--------|
-| `guides/study-abroad-without-ielts-pakistan/` | Expand to 1,000w+ or merge into `answers/` |
+| `guides/study-abroad-without-ielts-pakistan/` | Expand or merge into `answers/` |
 | `guides/study-abroad-low-marks-pakistan/` | Same |
 | `guides/ausbildung-pakistan/` | Same |
 | `guides/saudi-e-number-pakistan/` | Same |
@@ -75,59 +83,61 @@ Removed from `public/sitemap.xml`. Do not reindex until deep.
 
 ## D. Urdu section — **removed** (English only)
 
-All `public/ur/**` → **noindex**, **redirect** `/ur` → `/`, **Disallow** in `robots.txt`. Do not restore without full English-quality translations.
+All `public/ur/**` → **noindex**, **redirect** `/ur` → `/`, **Disallow** in `robots.txt`.
 
 ---
 
-## E. Visit visa — **highest duplicate risk** (~85–90% similar text)
+## E. Visit visa — duplicate cluster (Phase 2 expanded)
 
-Expand each to **800w+** with **unique**: embassy/VFS centre, fee table, Pakistan-specific refusal tips, official links.
+Each country page now has unique VFS channel, fees table, refusal risks and cover-letter outline. Re-run Phase 2 scripts if you edit templates.
 
-**Priority batch (traffic):** `uk`, `usa`, `dubai`, `germany`, `schengen-visit-visa-pakistan`
+**Strongest pages:** UK, USA, Schengen hub, Germany, France, Dubai (750–900+ words).
 
-**Schengen secondaries (very similar templates):**  
-`belgium`, `austria`, `slovakia`, `greece`, `czech-republic`, `cyprus`, `malta`, `romania`, `hungary`, `netherlands`, `portugal`, `poland`, `spain`, `france`, `italy`, `switzerland`, `ireland`
-
-**Others:** `canada`, `turkey`, `malaysia`, `australia`
+**Still polish optional:** Hungary, Malaysia, Malta, Poland, Portugal (700–750w) — add manual country news if AdSense asks again.
 
 ---
 
-## F. Study visa — tier 2 (formulaic, 600–700w)
+## F. Study visa — tier 2 (Phase 3 deepened)
 
-Expand with country-specific fees, MOI rules, embassy quirks:
+Expanded with country-specific blocks: Austria, Belgium, Cyprus, Czech, Greece, Ireland, Malaysia, Malta, Romania, Slovakia, Switzerland, Turkey, Netherlands (+ prior Germany/UK/Canada batch).
 
-`austria`, `belgium`, `cyprus`, `czech-republic`, `greece`, `ireland`, `malaysia`, `malta`, `romania`, `slovakia`, `switzerland`, `turkey`, `usa`, `australia` (under `study-visa/*-study-visa-pakistan/`)
+**Strong (keep):** Germany, UK, Canada, Hungary, Italy, France, Poland, Portugal, Spain, Romania, USA.
 
-**Strong (keep, minor polish):** Germany, UK, Canada, Hungary, Italy, France, Poland, Portugal, Netherlands
-
----
-
-## G. Visa appointment pages (~478w, similar)
-
-Deepen to match France depth (~1,200w):  
-`uk`, `germany`, `usa`, `canada`, `italy`, `australia`, `schengen-visa-appointment-pakistan`
+**Missing lander:** `australia-study-visa-pakistan` — no page in repo yet.
 
 ---
 
-## H. Local city pages (thin consultant landers)
+## G. Visa appointment pages (Phase 3)
 
-`local/islamabad-study-visa-consultant/`, `local/lahore-study-visa-consultant/`, `local/karachi-study-visa-consultant/` — add city-specific office logistics, popular destinations, FAQ.
-
-**Stronger:** `local/rawalpindi-study-visa-consultant/`
+Deepened: UK, Germany, USA, Canada, Italy, Australia, Schengen hub. **Reference depth:** France appointment page (~1,200w).
 
 ---
 
-## I. Old `blog.html` + D1 admin (legacy)
+## H. Local city pages (Phase 3)
 
-`public/blog.html` + `admin/blog.html` use Cloudflare D1 (`/api/blog`). That is **separate** from Studio MDX. Prefer **Studio** for new English articles.
+Islamabad, Lahore, Karachi, Rawalpindi — added process, destinations and logistics blocks.
+
+---
+
+## I. Duplicate / thin content map
+
+| Type | Duplication risk | Action |
+|------|------------------|--------|
+| **20 legacy `public/blog/*`** | Near-duplicate of `study-visa/*` | **You replace** or rely on canonical + noindex |
+| **Schengen visit secondaries** | Was ~85% same template | Phase 2 unique blocks per country |
+| **Tier-2 study landers** | Formulaic 600w | Phase 3 lander-depth blocks |
+| **Appointment pages** | Generic 420w | Phase 3 appointment-depth (except France) |
+| **Guides `public/guides/*`** | Thin vs answers | noindex — do not reindex until merged |
+| **Urdu `public/ur/*`** | Duplicate of English | Removed from index |
+| **Legacy D1 `blog.html`** | Separate from Astro `/blog/` | Use Studio for new English posts |
 
 ---
 
 ## Before AdSense reapply checklist
 
-- [ ] No indexed page under ~500w (except intentional redirects)
-- [ ] Visit-visa cluster unique or consolidated
+- [ ] You publish 3–5 high-quality Studio blogs (Phase 4)
+- [ ] Visit-visa cluster deployed (Phase 2)
 - [ ] `autoAds: true` only after approval (`config.js`)
-- [ ] `www.salaroutsourcing.com/ads.txt` live
-- [ ] No fake `aggregateRating` in schema (removed from homepage)
+- [ ] `www.salaroutsourcing.com/ads.txt` live on root domain
+- [ ] No fake `aggregateRating` in schema
 - [ ] Do **not** click “Request review” until above are done

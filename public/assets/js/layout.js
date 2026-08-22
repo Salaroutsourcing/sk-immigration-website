@@ -252,6 +252,7 @@
             <a href="tel:${(C().phone || '').replace(/\s/g, '')}">${C().phoneDisplay}</a>
             <a href="${C().whatsappLink}" target="_blank" rel="noopener">WhatsApp Chat</a>
             <a href="${href('about.html')}">About</a>
+            <a href="${href('client-journey.html')}">Client journey</a>
             <a href="${href('trust.html')}">Trust &amp; verify</a>
             <a href="${href('editorial-policy.html')}">Editorial policy</a>
             <a href="${href('faq.html')}">FAQ</a>
