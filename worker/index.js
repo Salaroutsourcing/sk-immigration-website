@@ -397,15 +397,33 @@ function withSecurityHeaders(response, pathname = '') {
 
 function withStudioHeaders(pathname, response) {
   const secured = withSecurityHeaders(response, pathname);
-  if (!isStudioPath(pathname) && !isStudioApi(pathname)) return secured;
   const headers = new Headers(secured.headers);
-  headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
-  headers.set('Cache-Control', 'no-store');
+  if (isStudioPath(pathname) || isStudioApi(pathname)) {
+    headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+    headers.set('Cache-Control', 'no-store');
+  } else {
+    applyPublicCache(pathname, headers);
+  }
   return new Response(secured.body, {
     status: secured.status,
     statusText: secured.statusText,
     headers,
   });
+}
+
+/** Hashed Astro assets can be cached for a year. HTML must stay short so publishes show up. */
+function applyPublicCache(pathname, headers) {
+  if (headers.has('cache-control')) return;
+  const path = String(pathname || '').split('?')[0];
+  if (path.startsWith('/_astro/')) {
+    headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+    return;
+  }
+  if (path.startsWith('/assets/') || path.startsWith('/uploads/')) {
+    headers.set('Cache-Control', 'public, max-age=86400');
+    return;
+  }
+  headers.set('Cache-Control', 'public, max-age=300, must-revalidate');
 }
 
 async function route(request, env, ctx, url) {

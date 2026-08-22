@@ -78,6 +78,7 @@ Secrets unchanged: `ADMIN_PASSWORD_HASH`, `SESSION_SECRET` (used by remaining `/
 3. Full JSON-LD expansion + `llms.txt` rewrite — **done, see `docs/PHASE-3-JSONLD-LLMS.md`**.
 4. AdSense slot fill + Clarity script inject — **done, see `docs/PHASE-4-ADSENSE-CLARITY.md`**.
 5. Daily publishing SOP — **done, see `docs/PHASE-5-DAILY-SOP.md`**.
+6. Final polish & launch readiness — **done, see `docs/PHASE-6-LAUNCH.md`**.
 
 ## How to confirm
 

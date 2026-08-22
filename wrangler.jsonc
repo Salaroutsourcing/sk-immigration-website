@@ -10,7 +10,8 @@
     "STUDIO_GITHUB_ALLOWLIST": "Salaroutsourcing,isajidkhan00"
   },
   "observability": {
-    "enabled": true
+    "enabled": true,
+    "head_sampling_rate": 1
   },
   "assets": {
     "directory": "./dist",
