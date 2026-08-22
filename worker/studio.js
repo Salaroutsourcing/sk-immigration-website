@@ -2,6 +2,8 @@
  * SK Immigration Studio — GitHub OAuth, D1 CMS, media, and GitHub publish.
  * Mounted from worker/index.js. Public pages stay static; Studio is the editor.
  */
+import { planForDate, publishIssues, SOP_TARGETS, SOP_TIMEZONE, todayPkt } from "./sop.js";
+
 const SESSION_COOKIE = "sk_studio";
 const STATE_COOKIE = "sk_studio_oauth";
 const SESSION_TTL_MS = 12 * 60 * 60 * 1000;
@@ -504,18 +506,16 @@ async function studioMe(request, env) {
   });
 }
 
-function todayUtc() {
-  return new Date().toISOString().slice(0, 10);
-}
-
 async function dashboard(request, env, session) {
   await ensureTables(env);
   await bootstrapIfEmptyInner(env, session, false);
-  const today = todayUtc();
+  const today = todayPkt();
   const rows = env.DB
     ? (
         await env.DB.prepare(
-          `SELECT collection, status, date(published_at) as pubday, date(created_at) as createday
+          `SELECT collection, status,
+                  date(published_at, '+5 hours') as pubday,
+                  date(created_at, '+5 hours') as createday
            FROM studio_entries`,
         ).all()
       ).results || []
@@ -531,9 +531,7 @@ async function dashboard(request, env, session) {
     bucket.total += 1;
     if (row.status === "published") bucket.published += 1;
     if (row.status === "draft") bucket.drafts += 1;
-    if (row.pubday === today || (row.status !== "published" && row.createday === today)) {
-      bucket.today += 1;
-    }
+    if (row.status === "published" && row.pubday === today) bucket.today += 1;
   }
   const recent = env.DB
     ? (
@@ -541,6 +539,18 @@ async function dashboard(request, env, session) {
           `SELECT id, collection, slug, title, status, updated_at, published_at
            FROM studio_entries ORDER BY updated_at DESC LIMIT 12`,
         ).all()
+      ).results || []
+    : [];
+  const todayEntries = env.DB
+    ? (
+        await env.DB.prepare(
+          `SELECT id, collection, slug, title, status, updated_at, published_at
+           FROM studio_entries
+           WHERE status = 'published' AND date(published_at, '+5 hours') = ?
+           ORDER BY published_at DESC`,
+        )
+          .bind(today)
+          .all()
       ).results || []
     : [];
   const keywords = env.DB
@@ -554,10 +564,27 @@ async function dashboard(request, env, session) {
         ).all()
       ).results || []
     : [];
+  const plan = planForDate();
+  const remaining = {
+    news: Math.max(0, SOP_TARGETS.news - counts.news.today),
+    "web-stories": Math.max(0, SOP_TARGETS["web-stories"] - counts["web-stories"].today),
+    blog: Math.max(0, SOP_TARGETS.blog - counts.blog.today),
+  };
   return json({
     today,
-    targets: { news: 5, "web-stories": 5, blog: 1 },
+    timezone: SOP_TIMEZONE,
+    targets: SOP_TARGETS,
     counts,
+    remaining,
+    complete: remaining.news === 0 && remaining["web-stories"] === 0 && remaining.blog === 0,
+    sop: {
+      weekday: plan.weekday,
+      theme: plan.theme,
+      blog: remaining.blog > 0 ? plan.blog : null,
+      news: remaining.news > 0 ? plan.news.slice(SOP_TARGETS.news - remaining.news) : [],
+      stories: remaining["web-stories"] > 0 ? plan.stories.slice(SOP_TARGETS["web-stories"] - remaining["web-stories"]) : [],
+    },
+    todayEntries,
     recent,
     keywords,
     activity,
@@ -734,6 +761,8 @@ async function publishEntry(request, env, session) {
   if (!row) return json({ error: "Not found" }, 404);
   const token = session.gh || env.GITHUB_TOKEN || "";
   const data = JSON.parse(row.data_json);
+  const issues = publishIssues(row.collection, data, row.body, row.slug);
+  if (issues.length) return json({ error: issues[0], issues }, 400);
   const mdx = serializeMdx(row.collection, data, row.body);
   const folder = row.collection === "web-stories" ? "web-stories" : row.collection;
   const path = `src/content/${folder}/${row.slug}.mdx`;
@@ -885,6 +914,8 @@ async function studioSettings(request, env, session) {
     githubOAuth: Boolean(env.GITHUB_CLIENT_ID) && githubAllowlist(env).length > 0,
     passwordFallback: Boolean(env.ADMIN_PASSWORD_HASH),
     publishReady: Boolean(session.gh || env.GITHUB_TOKEN),
+    timezone: SOP_TIMEZONE,
+    targets: SOP_TARGETS,
     user: { login: session.login, name: session.name, avatar: session.avatar, method: session.method },
   });
 }

@@ -25,12 +25,13 @@ const ICONS = {
 };
 
 function activeId(path: string) {
-  if (path.startsWith('/studio/news')) return 'news';
-  if (path.startsWith('/studio/blog')) return 'blog';
-  if (path.startsWith('/studio/stories')) return 'stories';
-  if (path.startsWith('/studio/media')) return 'media';
-  if (path.startsWith('/studio/keywords')) return 'keywords';
-  if (path.startsWith('/studio/settings')) return 'settings';
+  const pathname = path.split('?')[0];
+  if (pathname.startsWith('/studio/news')) return 'news';
+  if (pathname.startsWith('/studio/blog')) return 'blog';
+  if (pathname.startsWith('/studio/stories')) return 'stories';
+  if (pathname.startsWith('/studio/media')) return 'media';
+  if (pathname.startsWith('/studio/keywords')) return 'keywords';
+  if (pathname.startsWith('/studio/settings')) return 'settings';
   return 'dashboard';
 }
 

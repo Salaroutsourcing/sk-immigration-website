@@ -93,13 +93,35 @@ export type StudioKeyword = {
   updated_at: string;
 };
 
+export type SopSlot = {
+  id: string;
+  title: string;
+  slug?: string;
+  angle: string;
+  keyword: string;
+  category: string;
+  relatedService?: string;
+  officialHint?: string;
+};
+
 export type DashboardPayload = {
   today: string;
+  timezone: string;
   targets: { news: number; 'web-stories': number; blog: number };
+  remaining: { news: number; 'web-stories': number; blog: number };
+  complete: boolean;
+  sop: {
+    weekday: string;
+    theme: string;
+    blog: SopSlot | null;
+    news: SopSlot[];
+    stories: SopSlot[];
+  };
   counts: Record<
     Collection,
     { today: number; published: number; drafts: number; total: number }
   >;
+  todayEntries: StudioEntrySummary[];
   recent: StudioEntrySummary[];
   keywords: Pick<StudioKeyword, 'keyword' | 'cluster' | 'status'>[];
   activity: { action: string; collection?: string; actor?: string; detail?: string; created_at: string }[];

@@ -33,7 +33,7 @@ Studio does not change. **Publish** still writes MDX; the next deploy regenerate
 ## What Phase 3 does **not** do (waiting)
 
 4. AdSense slot fill + Clarity script inject — **done, see `docs/PHASE-4-ADSENSE-CLARITY.md`**
-5. Daily publishing SOP (Phase 5)
+5. Daily publishing SOP — **done, see `docs/PHASE-5-DAILY-SOP.md`**.
 6. Rewriting the 313 ranking HTML landers (they already inject schema via `geo-schema.js`)
 
 ## How to confirm

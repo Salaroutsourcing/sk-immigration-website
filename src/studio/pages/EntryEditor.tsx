@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../api';
 import { COLLECTION_META, TAXONOMY_KEYWORDS, TAXONOMY_TAGS, pathForCollection } from '../constants';
-import { blankData, dailyTemplates, slugFromTitle } from '../templates';
+import { entryFromSlot, findSlot, planForDate, publishIssues } from '../sop';
+import { blankData, slugFromTitle } from '../templates';
 import type { Collection, EntryData } from '../types';
 
 export function EntryEditor({
@@ -29,9 +30,18 @@ export function EntryEditor({
 
   useEffect(() => {
     if (isNew || !id) {
-      setData(blankData(collection));
-      setBody('');
-      setSlug('');
+      const params = new URLSearchParams(window.location.search);
+      const slot = findSlot(collection, params.get('slot'));
+      if (slot) {
+        const filled = entryFromSlot(collection, slot);
+        setData(filled.data);
+        setBody(filled.body);
+        setSlug(slot.slug || slugFromTitle(filled.data.title));
+      } else {
+        setData(blankData(collection));
+        setBody('');
+        setSlug('');
+      }
       setStatus('draft');
       setLoaded(true);
       return;
@@ -70,7 +80,7 @@ export function EntryEditor({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, body, slug, status, entryId]);
 
-  const issues = useMemo(() => validate(collection, data, slug), [collection, data, slug]);
+  const issues = useMemo(() => publishIssues(collection, data, body, slug), [collection, data, body, slug]);
 
   function patch(partial: Partial<EntryData>) {
     setData((prev) => ({ ...prev, ...partial }));
@@ -171,11 +181,17 @@ export function EntryEditor({
   }
 
   function applyTemplate() {
-    const t = dailyTemplates(collection)[0];
-    setData(t.data);
-    setBody(t.body);
-    setSlug(slugFromTitle(t.data.title));
-    toast('ok', `Loaded ${t.name}`);
+    const plan = planForDate();
+    const fromUrl = findSlot(collection, new URLSearchParams(window.location.search).get('slot'));
+    const slot =
+      fromUrl ||
+      (collection === 'blog' ? plan.blog : collection === 'news' ? plan.news[0] : plan.stories[0]);
+    if (!slot) return;
+    const filled = entryFromSlot(collection, slot);
+    setData(filled.data);
+    setBody(filled.body);
+    setSlug(slot.slug || slugFromTitle(filled.data.title));
+    toast('ok', `Loaded today’s ${plan.theme} starter`);
   }
 
   if (!loaded) {
@@ -363,7 +379,7 @@ export function EntryEditor({
             <span className={`badge ${status}`}>{status}</span>
           </p>
           <p className="hint">
-            Save writes to D1 instantly. Publish writes MDX into the GitHub repo so the public site can rebuild.
+            Save writes to D1 instantly. Publish writes MDX into GitHub. The public URL appears after the next site deploy. Never publish a visa guarantee.
           </p>
           <label className="chip" style={{ marginTop: 8 }}>
             <input type="checkbox" checked={Boolean(data.featured)} onChange={(e) => patch({ featured: e.target.checked })} />{' '}
@@ -384,22 +400,6 @@ function extraLabel(collection: Collection) {
   if (collection === 'news') return 'Sources';
   if (collection === 'blog') return 'FAQs';
   return 'Funnel';
-}
-
-function validate(collection: Collection, data: EntryData, slug: string) {
-  const issues: string[] = [];
-  if (!data.title || data.title.length < 12) issues.push('title too short');
-  if (!data.description || data.description.length < 40) issues.push('description too short');
-  if (!slug) issues.push('slug required');
-  if (collection === 'blog' && (data.faqs || []).filter((f) => f.question && f.answer).length < 3) {
-    issues.push('blog needs 3 FAQs');
-  }
-  if (collection === 'web-stories') {
-    if (!data.relatedBlog) issues.push('story needs relatedBlog');
-    if (!data.posterPortrait) issues.push('poster required');
-    if ((data.slides || []).length < 4) issues.push('need 4–12 slides');
-  }
-  return issues;
 }
 
 function NewsExtra({ data, patch }: { data: EntryData; patch: (p: Partial<EntryData>) => void }) {

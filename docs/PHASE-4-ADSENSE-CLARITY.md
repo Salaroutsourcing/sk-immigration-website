@@ -1,8 +1,8 @@
 # Phase 4 — AdSense slots + Microsoft Clarity (stop here)
 
-Public Astro pages now mount real AdSense units (same publisher as the ranking HTML) and load Microsoft Clarity. Studio and AMP Web Stories stay ad-free and Clarity-free.
+**Phase 4 is confirmed.** Daily publishing SOP is Phase 5 — see `docs/PHASE-5-DAILY-SOP.md`.
 
-**Stop here.** Do not start Phase 5 (daily publishing SOP) until this is confirmed.
+Public Astro pages now mount real AdSense units (same publisher as the ranking HTML) and load Microsoft Clarity. Studio and AMP Web Stories stay ad-free and Clarity-free.
 
 ## What shipped
 
@@ -29,11 +29,6 @@ Ads may show as a blank reserved box until Google serves a creative. That is nor
 2. https://immigration.salaroutsourcing.com/studio/ — must **not** contain `clarity.ms` or `adsbygoogle`
 3. https://immigration.salaroutsourcing.com/stories/europe-without-ielts-story/amp/ — must **not** contain ads or Clarity
 
-## What Phase 4 does **not** do (waiting)
+## What Phase 4 does **not** do
 
-5. Daily publishing SOP (Phase 5)
-6. Rewriting ranking HTML landers to add Clarity (they already have AdSense)
-
-## How to confirm
-
-After review, reply **“Phase 4 confirmed — start Phase 5”**.
+Ranking HTML landers were not rewritten to add Clarity (they already have AdSense). Daily publishing SOP is `docs/PHASE-5-DAILY-SOP.md`.

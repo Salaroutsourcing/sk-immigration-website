@@ -30,9 +30,10 @@ export const TAXONOMY_TAGS = taxonomy.tags;
 export const TAXONOMY_KEYWORDS = taxonomy.keywords;
 
 export function collectionFromPath(pathname: string): Collection | null {
-  if (pathname.startsWith('/studio/news')) return 'news';
-  if (pathname.startsWith('/studio/blog')) return 'blog';
-  if (pathname.startsWith('/studio/stories')) return 'web-stories';
+  const path = pathname.split('?')[0];
+  if (path.startsWith('/studio/news')) return 'news';
+  if (path.startsWith('/studio/blog')) return 'blog';
+  if (path.startsWith('/studio/stories')) return 'web-stories';
   return null;
 }
 

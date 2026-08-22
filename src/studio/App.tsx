@@ -14,11 +14,13 @@ import { Settings } from './pages/Settings';
 import type { StudioUser } from './types';
 
 function readPath() {
-  return window.location.pathname.replace(/\/+$/, '') || '/studio';
+  const pathname = window.location.pathname.replace(/\/+$/, '') || '/studio';
+  return `${pathname}${window.location.search}`;
 }
 
 function parseRoute(path: string) {
-  const clean = path.endsWith('/') && path !== '/studio/' ? path.slice(0, -1) : path;
+  const pathname = path.split('?')[0];
+  const clean = pathname.endsWith('/') && pathname !== '/studio/' ? pathname.slice(0, -1) : pathname;
   const parts = clean.split('/').filter(Boolean);
   // ['studio', ...]
   const rest = parts.slice(1);
@@ -198,9 +200,11 @@ export default function StudioApp() {
   else if (route.section === 'keywords') page = <Keywords toast={toast} />;
   else if (route.section === 'settings') page = <Settings toast={toast} />;
   else if (collection && isNew) {
-    page = <EntryEditor collection={collection} isNew onNavigate={navigate} toast={toast} />;
+    page = <EntryEditor key={path} collection={collection} isNew onNavigate={navigate} toast={toast} />;
   } else if (collection && isEditor) {
-    page = <EntryEditor collection={collection} id={route.second} isNew={false} onNavigate={navigate} toast={toast} />;
+    page = (
+      <EntryEditor key={path} collection={collection} id={route.second} isNew={false} onNavigate={navigate} toast={toast} />
+    );
   } else if (collection) {
     page = <ContentList collection={collection} onNavigate={navigate} toast={toast} />;
   }

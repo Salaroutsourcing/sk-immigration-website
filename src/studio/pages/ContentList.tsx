@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { COLLECTION_META, pathForCollection } from '../constants';
-import { dailyTemplates } from '../templates';
+import { entryFromSlot, planForDate } from '../sop';
 import type { Collection, StudioEntrySummary } from '../types';
 
 export function ContentList({
@@ -47,15 +47,18 @@ export function ContentList({
   }
 
   async function fromTemplate() {
-    const t = dailyTemplates(collection)[0];
+    const plan = planForDate();
+    const slot =
+      collection === 'blog' ? plan.blog : collection === 'news' ? plan.news[0] : plan.stories[0];
+    const t = entryFromSlot(collection, slot);
     try {
       const res = await api.create({
         collection,
-        slug: `${collection}-template-${Date.now().toString(36)}`,
+        slug: slot.slug || `${collection}-template-${Date.now().toString(36)}`,
         data: t.data,
         body: t.body,
       });
-      toast('ok', `Started from “${t.name}”`);
+      toast('ok', `Started from today’s ${plan.theme} slot`);
       onNavigate(pathForCollection(collection, res.entry.id));
     } catch (err) {
       toast('err', err instanceof Error ? err.message : 'Template failed');
@@ -68,7 +71,7 @@ export function ContentList({
         <div>
           <h1>{meta.label}</h1>
           <p>
-            Public URLs live at {meta.publicBase}/. Duplicate yesterday’s piece when you need volume.
+            Public URLs live at {meta.publicBase}/. Today’s desk has the 5+5+1 slots. Duplicate yesterday only when the intent is new.
           </p>
         </div>
         <div className="actions">

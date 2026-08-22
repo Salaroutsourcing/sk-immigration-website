@@ -1,0 +1,644 @@
+{
+  "timezone": "Asia/Karachi",
+  "targets": { "news": 5, "web-stories": 5, "blog": 1 },
+  "order": ["blog", "news", "web-stories"],
+  "week": {
+    "monday": {
+      "theme": "Germany study from Pakistan",
+      "blog": {
+        "id": "blog",
+        "title": "Germany student visa from Pakistan — 2026 file checklist",
+        "slug": "germany-student-visa-pakistan-2026-checklist",
+        "angle": "Walk through admission vs visa, blocked account, language, and what German missions actually ask.",
+        "keyword": "Germany student visa Pakistan",
+        "category": "country-guides",
+        "relatedService": "/study-visa/germany-study-visa-pakistan/"
+      },
+      "news": [
+        {
+          "id": "news-1",
+          "title": "Germany blocked account: confirm the live amount before you move funds",
+          "angle": "Sperrkonto figures change. Link the German mission page, not a WhatsApp screenshot.",
+          "keyword": "Germany blocked account 2026",
+          "category": "study-visa",
+          "officialHint": "https://pakistan.diplo.de/"
+        },
+        {
+          "id": "news-2",
+          "title": "German mission appointments in Pakistan: what to verify this week",
+          "angle": "VFS vs embassy slots. Tell applicants to screenshot the live calendar, not a broker’s claim.",
+          "keyword": "Germany student visa Pakistan",
+          "category": "appointments",
+          "officialHint": "https://www.tlscontact.com/"
+        },
+        {
+          "id": "news-3",
+          "title": "MOI vs IELTS for Germany: admission is not the visa",
+          "angle": "A university waiver does not bind the mission. State that clearly.",
+          "keyword": "study in Europe without IELTS from Pakistan",
+          "category": "study-visa",
+          "officialHint": "https://www.daad.de/"
+        },
+        {
+          "id": "news-4",
+          "title": "Ausbildung vs university: two Germany files, two checklists",
+          "angle": "Do not mix a skilled-training contract with a student blocked-account file.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "work-permit",
+          "officialHint": "https://www.make-it-in-germany.com/"
+        },
+        {
+          "id": "news-5",
+          "title": "Germany student refusals: ties, funds, and purpose still fail files",
+          "angle": "No scare tactics. List the usual weak spots and send people to the long guide.",
+          "keyword": "Germany student visa Pakistan",
+          "category": "policy",
+          "officialHint": "https://pakistan.diplo.de/"
+        }
+      ],
+      "stories": [
+        {
+          "id": "story-1",
+          "title": "Germany file in 15 seconds — admission is not a visa",
+          "angle": "Hook on the search query, then send them to today’s blog.",
+          "keyword": "Germany student visa Pakistan",
+          "category": "study-visa"
+        },
+        {
+          "id": "story-2",
+          "title": "Blocked account: confirm euros, then book VFS",
+          "angle": "One number on an official page beats any agent screenshot.",
+          "keyword": "Germany blocked account 2026",
+          "category": "tips"
+        },
+        {
+          "id": "story-3",
+          "title": "IELTS waiver on paper, interview in the hall",
+          "angle": "MOI can help admission. The mission still decides.",
+          "keyword": "study in Europe without IELTS from Pakistan",
+          "category": "faq"
+        },
+        {
+          "id": "story-4",
+          "title": "Low marks for Germany: honest routes, not fake offers",
+          "angle": "Self-select weak files out. Point to the checklist blog.",
+          "keyword": "Germany student visa Pakistan",
+          "category": "study-visa"
+        },
+        {
+          "id": "story-5",
+          "title": "Tap through: Germany 2026 checklist from Rawalpindi",
+          "angle": "Last screen must open the blog, not WhatsApp alone.",
+          "keyword": "Germany student visa Pakistan",
+          "category": "tips"
+        }
+      ]
+    },
+    "tuesday": {
+      "theme": "Europe without IELTS / MOI",
+      "blog": {
+        "id": "blog",
+        "title": "Study in Europe without IELTS from Pakistan — what is actually accepted",
+        "slug": "europe-moi-vs-ielts-pakistan-2026",
+        "angle": "Refresh the existing pillar if it already ranks; otherwise write a new angle (country + intake).",
+        "keyword": "study in Europe without IELTS from Pakistan",
+        "category": "how-to",
+        "relatedService": "/guides/study-abroad-without-ielts-pakistan/"
+      },
+      "news": [
+        {
+          "id": "news-1",
+          "title": "MOI letters: who writes them and who still asks for IELTS",
+          "angle": "Name the difference between a university letter and a SELT.",
+          "keyword": "study in Europe without IELTS from Pakistan",
+          "category": "study-visa",
+          "officialHint": "https://www.ielts.org/"
+        },
+        {
+          "id": "news-2",
+          "title": "Hungary / Italy / Poland intakes: language rules to re-check this week",
+          "angle": "One country, one official page. Do not copy a ‘no IELTS list’ from social media.",
+          "keyword": "study visa from Pakistan",
+          "category": "study-visa",
+          "officialHint": "https://konzuliszolgalat.kormany.hu/"
+        },
+        {
+          "id": "news-3",
+          "title": "UK and Canada still want a SELT — do not mix them into ‘Europe without IELTS’",
+          "angle": "Keep UKVI/IRCC out of fake no-IELTS promises.",
+          "keyword": "study visa from Pakistan",
+          "category": "policy",
+          "officialHint": "https://www.gov.uk/student-visa"
+        },
+        {
+          "id": "news-4",
+          "title": "Interview English vs test waiver: what VFS still hears",
+          "angle": "A waiver on paper can still fail if the applicant cannot explain the course.",
+          "keyword": "study in Europe without IELTS from Pakistan",
+          "category": "study-visa",
+          "officialHint": "https://www.daad.de/"
+        },
+        {
+          "id": "news-5",
+          "title": "Low marks + no IELTS: when SK should say no",
+          "angle": "Honest refusals-to-file beat fake offers.",
+          "keyword": "study visa from Pakistan",
+          "category": "policy",
+          "officialHint": "https://immigration.salaroutsourcing.com/trust.html"
+        }
+      ],
+      "stories": [
+        {
+          "id": "story-1",
+          "title": "Without IELTS — which Europe files are real",
+          "angle": "Hook the search query. Last slide opens the blog.",
+          "keyword": "study in Europe without IELTS from Pakistan",
+          "category": "study-visa"
+        },
+        {
+          "id": "story-2",
+          "title": "MOI letter in 15 seconds",
+          "angle": "Who signs it, what it is not.",
+          "keyword": "study in Europe without IELTS from Pakistan",
+          "category": "faq"
+        },
+        {
+          "id": "story-3",
+          "title": "UK student visa still wants a test",
+          "angle": "Do not let Discover traffic think every country waived IELTS.",
+          "keyword": "study visa from Pakistan",
+          "category": "tips"
+        },
+        {
+          "id": "story-4",
+          "title": "Tap for the country checklist",
+          "angle": "Send them to the long guide, then a lander.",
+          "keyword": "study in Europe without IELTS from Pakistan",
+          "category": "study-visa"
+        },
+        {
+          "id": "story-5",
+          "title": "Embassies decide — we prepare the file",
+          "angle": "CUIN 0304985. No guarantees on the last screen.",
+          "keyword": "study visa from Pakistan",
+          "category": "tips"
+        }
+      ]
+    },
+    "wednesday": {
+      "theme": "Saudi work visa from Pakistan",
+      "blog": {
+        "id": "blog",
+        "title": "Saudi work visa from Pakistan — E-Number, Protector, and SK’s PKR 15,000 processing",
+        "slug": "saudi-work-visa-pakistan-e-number-guide",
+        "angle": "Separate SK’s processing fee from medical, Wafid, and embassy fees. Never sell a job-offer guarantee.",
+        "keyword": "Saudi work visa processing PKR 15000",
+        "category": "how-to",
+        "relatedService": "/saudi-visa/"
+      },
+      "news": [
+        {
+          "id": "news-1",
+          "title": "Saudi E-Number this week: what applicants should confirm on MOFA",
+          "angle": "Link visa.mofa.gov.sa. No ‘instant visa’ language.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "saudi",
+          "officialHint": "https://visa.mofa.gov.sa/"
+        },
+        {
+          "id": "news-2",
+          "title": "Wafid / medical: SK processing is not the clinic fee",
+          "angle": "Itemise what PKR 15,000 includes vs what it does not.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "saudi",
+          "officialHint": "https://www.wafid.com/"
+        },
+        {
+          "id": "news-3",
+          "title": "Protector of Emigrants: documents to carry from Rawalpindi",
+          "angle": "Process support, not a visa promise.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "documents",
+          "officialHint": "https://beoe.gov.pk/"
+        },
+        {
+          "id": "news-4",
+          "title": "Fake Saudi job offers: how to walk away",
+          "angle": "SK does not sell job offers. Say it in the first paragraph.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "policy",
+          "officialHint": "https://immigration.salaroutsourcing.com/trust.html"
+        },
+        {
+          "id": "news-5",
+          "title": "Iqama vs visit: do not mix the file types",
+          "angle": "Work visa and visit visa are different missions and fees.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "saudi",
+          "officialHint": "https://visa.mofa.gov.sa/"
+        }
+      ],
+      "stories": [
+        {
+          "id": "story-1",
+          "title": "Saudi work file: E-Number in 15 seconds",
+          "angle": "Tap through to the long guide.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "work-permit"
+        },
+        {
+          "id": "story-2",
+          "title": "PKR 15,000 covers processing — not medical",
+          "angle": "Honest fee split. Last slide = blog.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "faq"
+        },
+        {
+          "id": "story-3",
+          "title": "We do not sell Saudi job offers",
+          "angle": "Trust slide. CUIN 0304985.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "tips"
+        },
+        {
+          "id": "story-4",
+          "title": "Protector day: papers to take",
+          "angle": "Checklist teaser, then the blog.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "work-permit"
+        },
+        {
+          "id": "story-5",
+          "title": "WhatsApp the file — after you read the guide",
+          "angle": "Blog first, consult second.",
+          "keyword": "Saudi work visa processing PKR 15000",
+          "category": "tips"
+        }
+      ]
+    },
+    "thursday": {
+      "theme": "Schengen visit and appointments",
+      "blog": {
+        "id": "blog",
+        "title": "Schengen visit visa from Pakistan — purpose, funds, and appointment reality",
+        "slug": "schengen-visit-visa-pakistan-appointment-guide",
+        "angle": "No ‘fast slot’ claims. Teach purpose letters, ties, and official VFS pages.",
+        "keyword": "Schengen visa appointment Pakistan",
+        "category": "how-to",
+        "relatedService": "/visa-appointment/schengen-visa-appointment-pakistan/"
+      },
+      "news": [
+        {
+          "id": "news-1",
+          "title": "Schengen appointment Pakistan: check VFS, not a reseller",
+          "angle": "Link the official VFS Global page for the destination country.",
+          "keyword": "Schengen visa appointment Pakistan",
+          "category": "appointments",
+          "officialHint": "https://www.vfsglobal.com/"
+        },
+        {
+          "id": "news-2",
+          "title": "Visit purpose letters: hotels, invites, and matching tickets",
+          "angle": "Inconsistencies refuse files. Show a honest template, not a guarantee.",
+          "keyword": "Schengen visa appointment Pakistan",
+          "category": "visit-visa",
+          "officialHint": "https://www.schengenvisainfo.com/"
+        },
+        {
+          "id": "news-3",
+          "title": "Bank statements for visit files: explain large deposits",
+          "angle": "No invented ‘minimum balance’ number unless an official page states one.",
+          "keyword": "Schengen visa appointment Pakistan",
+          "category": "visit-visa",
+          "officialHint": "https://www.vfsglobal.com/"
+        },
+        {
+          "id": "news-4",
+          "title": "One Schengen country, one itinerary — do not shop five missions",
+          "angle": "Main destination rule, in plain English.",
+          "keyword": "Schengen visa appointment Pakistan",
+          "category": "policy",
+          "officialHint": "https://home-affairs.ec.europa.eu/"
+        },
+        {
+          "id": "news-5",
+          "title": "Visit vs study: do not use a tourist file for a course",
+          "angle": "Send course-seekers to the study lander.",
+          "keyword": "study visa from Pakistan",
+          "category": "visit-visa",
+          "officialHint": "https://immigration.salaroutsourcing.com/study-visa/"
+        }
+      ],
+      "stories": [
+        {
+          "id": "story-1",
+          "title": "Schengen slot: official VFS only",
+          "angle": "Hook, then the appointment blog.",
+          "keyword": "Schengen visa appointment Pakistan",
+          "category": "visit-visa"
+        },
+        {
+          "id": "story-2",
+          "title": "Purpose letter in 15 seconds",
+          "angle": "Match hotels, tickets, invite.",
+          "keyword": "Schengen visa appointment Pakistan",
+          "category": "tips"
+        },
+        {
+          "id": "story-3",
+          "title": "Funds: explain the deposits",
+          "angle": "No fake minimums.",
+          "keyword": "Schengen visa appointment Pakistan",
+          "category": "faq"
+        },
+        {
+          "id": "story-4",
+          "title": "Main destination — pick one mission",
+          "angle": "Policy, then blog CTA.",
+          "keyword": "Schengen visa appointment Pakistan",
+          "category": "visit-visa"
+        },
+        {
+          "id": "story-5",
+          "title": "Tap the Schengen checklist",
+          "angle": "Last screen opens today’s blog.",
+          "keyword": "Schengen visa appointment Pakistan",
+          "category": "tips"
+        }
+      ]
+    },
+    "friday": {
+      "theme": "UK and Canada from Pakistan",
+      "blog": {
+        "id": "blog",
+        "title": "UK student visa vs Canada study permit from Pakistan — which file fits",
+        "slug": "uk-vs-canada-study-from-pakistan",
+        "angle": "Compare CAS vs PAL, SELT, funds, and that both missions decide. No ranking of ‘easy visas’.",
+        "keyword": "study visa from Pakistan",
+        "category": "comparisons",
+        "relatedService": "/study-visa/"
+      },
+      "news": [
+        {
+          "id": "news-1",
+          "title": "UKVI this week: student vs visitor — do not mix the forms",
+          "angle": "Link GOV.UK. No appointment-scalping.",
+          "keyword": "study visa from Pakistan",
+          "category": "study-visa",
+          "officialHint": "https://www.gov.uk/student-visa"
+        },
+        {
+          "id": "news-2",
+          "title": "CAS / PAL: the paper that must exist before you pay SK a packaging fee",
+          "angle": "No university offer, no student file.",
+          "keyword": "study visa from Pakistan",
+          "category": "study-visa",
+          "officialHint": "https://www.gov.uk/student-visa"
+        },
+        {
+          "id": "news-3",
+          "title": "IRCC study permit: funds and biometrics to re-check",
+          "angle": "canada.ca only for numbers.",
+          "keyword": "study visa from Pakistan",
+          "category": "study-visa",
+          "officialHint": "https://www.canada.ca/en/immigration-refugees-citizenship.html"
+        },
+        {
+          "id": "news-4",
+          "title": "UK visit from Pakistan: ties and purpose still decide",
+          "angle": "Point to the visit lander; do not promise.",
+          "keyword": "study visa from Pakistan",
+          "category": "visit-visa",
+          "officialHint": "https://www.gov.uk/standard-visitor"
+        },
+        {
+          "id": "news-5",
+          "title": "Work routes: Skilled Worker and Canada work are not ‘study backups’",
+          "angle": "Separate files. Separate fees.",
+          "keyword": "study visa from Pakistan",
+          "category": "work-permit",
+          "officialHint": "https://www.gov.uk/skilled-worker-visa"
+        }
+      ],
+      "stories": [
+        {
+          "id": "story-1",
+          "title": "UK or Canada — pick the file, not a rumour",
+          "angle": "Comparison hook → blog.",
+          "keyword": "study visa from Pakistan",
+          "category": "study-visa"
+        },
+        {
+          "id": "story-2",
+          "title": "No CAS, no UK student file",
+          "angle": "Honest gate.",
+          "keyword": "study visa from Pakistan",
+          "category": "faq"
+        },
+        {
+          "id": "story-3",
+          "title": "Canada funds: confirm on canada.ca",
+          "angle": "Official number only.",
+          "keyword": "study visa from Pakistan",
+          "category": "tips"
+        },
+        {
+          "id": "story-4",
+          "title": "Visitor vs student — two UK forms",
+          "angle": "Stop mixed files.",
+          "keyword": "study visa from Pakistan",
+          "category": "study-visa"
+        },
+        {
+          "id": "story-5",
+          "title": "Read the UK vs Canada guide",
+          "angle": "Last slide = today’s blog.",
+          "keyword": "study visa from Pakistan",
+          "category": "tips"
+        }
+      ]
+    },
+    "saturday": {
+      "theme": "Ausbildung and Europe work permits",
+      "blog": {
+        "id": "blog",
+        "title": "Ausbildung from Pakistan — contract, language, and what SK will not fake",
+        "slug": "ausbildung-pakistan-honest-guide",
+        "angle": "Need a real training contract. No fake job offers. Link Make it in Germany.",
+        "keyword": "Ausbildung Pakistan",
+        "category": "ausbildung",
+        "relatedService": "/guides/ausbildung-pakistan/"
+      },
+      "news": [
+        {
+          "id": "news-1",
+          "title": "Ausbildung contracts: if there is no employer, there is no file",
+          "angle": "SK does not print job offers.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "work-permit",
+          "officialHint": "https://www.make-it-in-germany.com/"
+        },
+        {
+          "id": "news-2",
+          "title": "German language for Ausbildung: B1 talk vs brochure claims",
+          "angle": "Confirm the employer’s real requirement.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "work-permit",
+          "officialHint": "https://www.make-it-in-germany.com/"
+        },
+        {
+          "id": "news-3",
+          "title": "Poland / Romania / Hungary work: employer papers first",
+          "angle": "Work-permit landers, not study templates.",
+          "keyword": "study visa from Pakistan",
+          "category": "work-permit",
+          "officialHint": "https://immigration.salaroutsourcing.com/work-permit/"
+        },
+        {
+          "id": "news-4",
+          "title": "Malta / Cyprus / Portugal: training vs work — read the permit name",
+          "angle": "Do not copy one country’s checklist onto another.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "work-permit",
+          "officialHint": "https://immigration.salaroutsourcing.com/work-permit/"
+        },
+        {
+          "id": "news-5",
+          "title": "CV for Europe employers: use the on-site builder, then a consult",
+          "angle": "Link /cv-builder.html.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "documents",
+          "officialHint": "https://immigration.salaroutsourcing.com/cv-builder.html"
+        }
+      ],
+      "stories": [
+        {
+          "id": "story-1",
+          "title": "Ausbildung: no contract, no visa file",
+          "angle": "Honest hook → blog.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "work-permit"
+        },
+        {
+          "id": "story-2",
+          "title": "Language the employer actually asked for",
+          "angle": "Not a brochure.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "faq"
+        },
+        {
+          "id": "story-3",
+          "title": "Europe work permit ≠ study visa",
+          "angle": "Separate landers.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "tips"
+        },
+        {
+          "id": "story-4",
+          "title": "We do not sell job offers",
+          "angle": "Trust + CUIN.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "tips"
+        },
+        {
+          "id": "story-5",
+          "title": "Open the Ausbildung guide",
+          "angle": "Last screen = blog.",
+          "keyword": "Ausbildung Pakistan",
+          "category": "work-permit"
+        }
+      ]
+    },
+    "sunday": {
+      "theme": "Documents, attestation, Rawalpindi desk",
+      "blog": {
+        "id": "blog",
+        "title": "Document attestation from Pakistan — MOFA, apostille, and what SK can file",
+        "slug": "document-attestation-pakistan-mofa-guide",
+        "angle": "Process map only. No embassy-decision claims. Link document-services.",
+        "keyword": "study visa from Pakistan",
+        "category": "attestation",
+        "relatedService": "/document-services/"
+      },
+      "news": [
+        {
+          "id": "news-1",
+          "title": "MOFA attestation this week: hours and what to carry",
+          "angle": "Confirm on the official MOFA page before anyone travels.",
+          "keyword": "study visa from Pakistan",
+          "category": "documents",
+          "officialHint": "https://mofa.gov.pk/"
+        },
+        {
+          "id": "news-2",
+          "title": "Apostille vs embassy attestation — pick the destination rule",
+          "angle": "Do not mix Hague and non-Hague checklists.",
+          "keyword": "study visa from Pakistan",
+          "category": "documents",
+          "officialHint": "https://www.hcch.net/"
+        },
+        {
+          "id": "news-3",
+          "title": "Rawalpindi walk-in: Satellite Town hours and what to bring",
+          "angle": "Office No. 10, Alfazal Plaza 64C. WhatsApp nationwide.",
+          "keyword": "study visa from Pakistan",
+          "category": "policy",
+          "officialHint": "https://immigration.salaroutsourcing.com/local/rawalpindi-study-visa-consultant/"
+        },
+        {
+          "id": "news-4",
+          "title": "Weekly wrap: five official pages worth bookmarking",
+          "angle": "German mission, GOV.UK, IRCC, VFS, Saudi MOFA.",
+          "keyword": "study visa from Pakistan",
+          "category": "policy",
+          "officialHint": "https://immigration.salaroutsourcing.com/official-links/"
+        },
+        {
+          "id": "news-5",
+          "title": "CUIN 0304985: how to verify SK Immigration before you pay",
+          "angle": "Link SECP verify. Trust page. No pressure CTA.",
+          "keyword": "study visa from Pakistan",
+          "category": "policy",
+          "officialHint": "https://leap.secp.gov.pk/#/verify-company-info/0304985"
+        }
+      ],
+      "stories": [
+        {
+          "id": "story-1",
+          "title": "Attestation map in 15 seconds",
+          "angle": "MOFA vs apostille → blog.",
+          "keyword": "study visa from Pakistan",
+          "category": "tips"
+        },
+        {
+          "id": "story-2",
+          "title": "Bring these papers to Satellite Town",
+          "angle": "Walk-in teaser.",
+          "keyword": "study visa from Pakistan",
+          "category": "faq"
+        },
+        {
+          "id": "story-3",
+          "title": "Verify CUIN 0304985",
+          "angle": "Trust slide.",
+          "keyword": "study visa from Pakistan",
+          "category": "tips"
+        },
+        {
+          "id": "story-4",
+          "title": "Official links hub",
+          "angle": "Send them to /official-links/ via the blog.",
+          "keyword": "study visa from Pakistan",
+          "category": "tips"
+        },
+        {
+          "id": "story-5",
+          "title": "Read the attestation guide",
+          "angle": "Last screen = today’s blog.",
+          "keyword": "study visa from Pakistan",
+          "category": "faq"
+        }
+      ]
+    }
+  }
+}
