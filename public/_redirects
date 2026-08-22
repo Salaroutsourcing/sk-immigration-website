@@ -1,9 +1,10 @@
 # HTTPS and apex→www redirects are handled by the Worker (src/index.js)
 # and Cloudflare "Always Use HTTPS". Keep only relative aliases here.
 
-# English-only site — retire Urdu stubs (AdSense Phase 1)
+# English-only site — exact /ur alias. Nested /ur/* is handled in the Worker
+# (a splat here would make every following rule count as dynamic; CF max is 100).
 /ur / 301
-/ur/* / 301
+/ur/ / 301
 
 /hire-workers /hire-workers-from-pakistan/ 301
 /hire-workers/ /hire-workers-from-pakistan/ 301

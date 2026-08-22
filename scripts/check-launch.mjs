@@ -58,8 +58,31 @@ if (!existsSync(join(root, 'scripts/wrangler-preview.mjs'))) {
 if (!existsSync(join(root, 'scripts/sanitize-preview-alias.cjs'))) {
   errors.push('missing scripts/sanitize-preview-alias.cjs');
 }
-if (!existsSync(join(root, 'scripts/patch-wrangler-alias.mjs'))) {
-  errors.push('missing scripts/patch-wrangler-alias.mjs');
+const redirects = read('public/_redirects');
+if (redirects) {
+  const rules = redirects
+    .split('\n')
+    .map((l) => l.trim())
+    .filter((l) => l && !l.startsWith('#'));
+  let sawDynamic = false;
+  let dynamic = 0;
+  let staticCount = 0;
+  for (const rule of rules) {
+    const from = rule.split(/\s+/)[0] || '';
+    const isDynamic = /[*]|:[A-Za-z]/.test(from);
+    if (isDynamic) sawDynamic = true;
+    if (sawDynamic) dynamic += 1;
+    else staticCount += 1;
+  }
+  if (dynamic > 100) {
+    errors.push(`public/_redirects has ${dynamic} dynamic rules (Cloudflare max 100). Put exact paths first; keep splats last or in the Worker.`);
+  }
+  if (staticCount > 2000) {
+    errors.push(`public/_redirects has ${staticCount} static rules (Cloudflare max 2000)`);
+  }
+  if (rules.some((r) => (r.split(/\s+/)[0] || '').includes('*'))) {
+    errors.push('public/_redirects must not use splat rules; handle prefixes in worker/index.js so static aliases stay under the 100 dynamic cap');
+  }
 }
 
 const required = [

@@ -99,6 +99,13 @@ export default {
       return Response.redirect(new URL('/ai.txt', url).toString(), 301);
     }
 
+    // Retired Urdu tree (AdSense Phase 1). Keep this in the Worker — a /ur/*
+    // splat in public/_redirects makes every later rule count as dynamic
+    // (Cloudflare limit 100, error 100324).
+    if (url.pathname === '/ur' || url.pathname === '/ur/' || url.pathname.startsWith('/ur/')) {
+      return Response.redirect(new URL('/', url).toString(), 301);
+    }
+
     // Do NOT redirect /answers ↔ /answers.html — Cloudflare Assets already
     // serves answers.html at /answers; redirecting creates a loop.
 
