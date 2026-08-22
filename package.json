@@ -13,8 +13,10 @@
     "preview": "astro preview",
     "check": "astro check",
     "check:sop": "node scripts/check-daily-sop.mjs",
-    "check:launch": "node scripts/check-launch.mjs && node scripts/check-daily-sop.mjs",
+    "check:launch": "node scripts/check-launch.mjs && node scripts/check-daily-sop.mjs && node scripts/wrangler-preview.mjs --self-test",
+    "postinstall": "node scripts/patch-wrangler-alias.mjs",
     "cf:dev": "astro build && wrangler dev",
+    "cf:preview": "node scripts/wrangler-preview.mjs",
     "deploy": "astro build && wrangler deploy",
     "build:answers-hub": "node scripts/build-answers-hub.mjs",
     "build:legacy-redirect": "node scripts/build-legacy-redirect.mjs",
@@ -31,13 +33,13 @@
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.4",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "wrangler": "^4.42.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "typescript": "^5.9.3",
-    "wrangler": "^4.42.0"
+    "typescript": "^5.9.3"
   }
 }

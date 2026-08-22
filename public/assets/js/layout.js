@@ -141,7 +141,6 @@
             ${logoBlock()}
             <nav class="nav-desktop" aria-label="Primary">${navLinks('nav-pill')}</nav>
             <div class="header-actions">
-              <button type="button" class="lang-toggle glass-chip" id="langToggle" aria-label="Toggle English / Urdu summary">EN</button>
               <button type="button" class="theme-toggle glass-chip" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
                 <span data-theme-icon>☾</span>
               </button>
@@ -175,7 +174,6 @@
           <a href="${href('terms.html')}">Terms</a>
           <a href="${C().whatsappLink || '#'}" class="btn btn-whatsapp mt-2" target="_blank" rel="noopener">WhatsApp</a>
           <div class="mobile-nav-toggles">
-            <button type="button" class="lang-toggle glass-chip" aria-label="Toggle English / Urdu summary">EN</button>
             <button type="button" class="theme-toggle glass-chip" aria-label="Toggle dark/light mode" onclick="SalarTheme.toggle()">
               <span data-theme-icon>☾</span>
             </button>
@@ -254,6 +252,7 @@
             <a href="tel:${(C().phone || '').replace(/\s/g, '')}">${C().phoneDisplay}</a>
             <a href="${C().whatsappLink}" target="_blank" rel="noopener">WhatsApp Chat</a>
             <a href="${href('about.html')}">About</a>
+            <a href="${href('client-journey.html')}">Client journey</a>
             <a href="${href('trust.html')}">Trust &amp; verify</a>
             <a href="${href('editorial-policy.html')}">Editorial policy</a>
             <a href="${href('faq.html')}">FAQ</a>
@@ -268,11 +267,10 @@
             <a href="${href('local/islamabad-study-visa-consultant/')}">Islamabad clients</a>
             <a href="${href('local/lahore-study-visa-consultant/')}">Lahore clients</a>
             <a href="${href('local/karachi-study-visa-consultant/')}">Karachi clients</a>
-            <a href="${href('ur/')}">اردو</a>
           </div>
         </div>
         <div class="container footer-bottom">
-          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('trust.html')}">Trust</a> · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('cookies.html')}">Cookies</a> · <a href="${href('terms.html')}">Terms</a> · <a href="${href('ur/')}">اردو</a></span>
+          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('trust.html')}">Trust</a> · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('cookies.html')}">Cookies</a> · <a href="${href('terms.html')}">Terms</a></span>
           <span class="parent-line">SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi, Pakistan · Official website: immigration.salaroutsourcing.com</span>
         </div>
       </footer>
@@ -331,42 +329,6 @@
     });
   }
 
-  function bindLangToggle() {
-    const buttons = [...document.querySelectorAll('.lang-toggle')];
-    if (!buttons.length) return;
-    const apply = (ur) => {
-      document.documentElement.lang = ur ? 'ur' : 'en';
-      document.documentElement.dir = ur ? 'rtl' : 'ltr';
-      buttons.forEach((b) => { b.textContent = ur ? 'UR' : 'EN'; });
-      document.querySelectorAll('[data-en][data-ur]').forEach((el) => {
-        if (el.closest('.logo')) return;
-        el.textContent = ur ? el.getAttribute('data-ur') : el.getAttribute('data-en');
-      });
-      let banner = document.getElementById('urBanner');
-      if (ur) {
-        if (!banner) {
-          banner = document.createElement('div');
-          banner.id = 'urBanner';
-          banner.className = 'ur-banner';
-          banner.setAttribute('lang', 'ur');
-          banner.dir = 'rtl';
-          banner.innerHTML =
-            'اردو خلاصہ: مفت مشورہ · واٹس ایپ <a href="https://wa.me/923045999859">+92 304 5999859</a> · مکمل اردو صفحات: <a href="' +
-            href('ur/') +
-            '">یہاں</a> · <a href="' +
-            href('contact.html') +
-            '">اب بک کریں</a>';
-          document.getElementById('site-header')?.after(banner);
-        }
-      } else {
-        banner?.remove();
-      }
-      localStorage.setItem('sk_lang', ur ? 'ur' : 'en');
-    };
-    apply(localStorage.getItem('sk_lang') === 'ur');
-    buttons.forEach((b) => b.addEventListener('click', () => apply(b.textContent !== 'UR')));
-  }
-
   function ensureConsentScript() {
     if (window.SKConsent || document.querySelector('script[src*="consent.js"]')) {
       document.getElementById('skFooterCookieBtn')?.addEventListener('click', () => window.SKConsent?.open());
@@ -384,7 +346,6 @@
     renderHeader();
     renderFooter();
     revealOnScroll();
-    bindLangToggle();
     ensureConsentScript();
     if (window.SalarTheme) {
       const t = document.documentElement.getAttribute('data-theme');

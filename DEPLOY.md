@@ -12,6 +12,18 @@ Architecture: [docs/PHASE-0-ARCHITECTURE.md](docs/PHASE-0-ARCHITECTURE.md) · La
 
 The Worker Custom Domain is already `immigration.salaroutsourcing.com`. Do not upload the repo root by hand. Astro must run first (`dist/`).
 
+Cloudflare **Workers Builds** (the red check on pull requests) is a preview only. Production still ships from GitHub Actions on `main`.
+
+On the Worker **sk-immigration-website** → **Settings** → **Build**:
+
+| Field | Set to |
+| --- | --- |
+| **Build command** | `npm run build` |
+| **Non-production branch deploy command** | `npx wrangler versions upload` is fine — `postinstall` sanitizes `/` in the branch alias |
+| **Deploy command** (production / `main`) | `npx wrangler deploy` |
+
+Optional, same effect: set the non-production command to `node scripts/wrangler-preview.mjs`. Then **Retry**.
+
 ### One GitHub secret
 
 https://github.com/Salaroutsourcing/sk-immigration-website/settings/secrets/actions

@@ -72,7 +72,8 @@ window.SALAR_CONFIG = {
     publisherId: 'ca-pub-5113459275916426',
     connectMeta: true,
     loadConnectScript: true,
-    autoAds: true,
+    /* Phase 0: disabled until AdSense low-value content review passes — set true in Phase 6 */
+    autoAds: false,
   },
 
   /* Professional imagery */
