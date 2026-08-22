@@ -12,7 +12,17 @@ Architecture: [docs/PHASE-0-ARCHITECTURE.md](docs/PHASE-0-ARCHITECTURE.md) · La
 
 The Worker Custom Domain is already `immigration.salaroutsourcing.com`. Do not upload the repo root by hand. Astro must run first (`dist/`).
 
-Cloudflare **Workers Builds** (the check on pull requests) also needs that Astro step. This repo sets `build.command` to `npm run build` in `wrangler.jsonc`. If a PR still shows “Workers Builds: Deployment failed”, open the Worker → **Settings** → **Build** and set **Build command** to `npm run build`, then retry.
+Cloudflare **Workers Builds** (the red check on pull requests) is a preview only. Production still ships from GitHub Actions on `main`.
+
+On the Worker **sk-immigration-website** → **Settings** → **Build**:
+
+| Field | Set to |
+| --- | --- |
+| **Build command** | `npm run build` |
+| **Non-production branch deploy command** | `node scripts/wrangler-preview.mjs` |
+| **Deploy command** (production / `main`) | `npx wrangler deploy` |
+
+Leave production as `npx wrangler deploy`. The preview command sanitizes branch names that contain `/` (Cloudflare otherwise fails with invalid preview alias 10021). Then **Retry**.
 
 ### One GitHub secret
 

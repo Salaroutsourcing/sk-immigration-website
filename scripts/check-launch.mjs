@@ -44,6 +44,17 @@ const wrangler = read('wrangler.jsonc');
 if (wrangler && !wrangler.includes('immigration.salaroutsourcing.com')) {
   errors.push('wrangler.jsonc must pin the immigration custom domain');
 }
+if (wrangler && !wrangler.includes('e480701d9e4150072f4f9a09b43e9749')) {
+  errors.push('wrangler.jsonc must pin Cloudflare account_id');
+}
+
+const pkg = read('package.json');
+if (pkg && !pkg.includes('"cf:preview"')) {
+  errors.push('package.json missing cf:preview script');
+}
+if (!existsSync(join(root, 'scripts/wrangler-preview.mjs'))) {
+  errors.push('missing scripts/wrangler-preview.mjs');
+}
 
 const required = [
   'docs/PHASE-0-ARCHITECTURE.md',
