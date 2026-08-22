@@ -7,6 +7,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /ur/
 Disallow: /studio/
 Disallow: /dashboard/
 Disallow: /portal.html

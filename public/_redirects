@@ -1,6 +1,10 @@
 # HTTPS and apex→www redirects are handled by the Worker (src/index.js)
 # and Cloudflare "Always Use HTTPS". Keep only relative aliases here.
 
+# English-only site — retire Urdu stubs (AdSense Phase 1)
+/ur / 301
+/ur/* / 301
+
 /hire-workers /hire-workers-from-pakistan/ 301
 /hire-workers/ /hire-workers-from-pakistan/ 301
 /saudi-visa /saudi-visa/saudi-visa-processing-pakistan/ 301

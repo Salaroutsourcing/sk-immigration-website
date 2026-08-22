@@ -39,8 +39,11 @@
     document.head.appendChild(s);
   }
 
+  /* Auto ads — only when explicitly enabled (after AdSense approval) */
+  if (ads.autoAds !== true) return;
+
   /* Auto ads / page-level — served when AdSense root domain is Ready */
-  if (ads.autoAds === true && !window.__SK_ADSENSE_AUTO__) {
+  if (!window.__SK_ADSENSE_AUTO__) {
     window.__SK_ADSENSE_AUTO__ = true;
     window.adsbygoogle = window.adsbygoogle || [];
     try {
