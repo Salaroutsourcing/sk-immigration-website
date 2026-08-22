@@ -112,14 +112,15 @@ const euRegions = [...EU_CONSENT_REGIONS];
 <link rel="icon" href={SITE.logo} type="image/jpeg" />
 <link rel="manifest" href="/manifest.json" />
 <meta name="theme-color" content="#0f172a" />
-<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="sitemap" href="/sitemap.xml" />
+<link rel="sitemap" href="/sitemap-platform-index.xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
 />
-<link rel="stylesheet" href="/assets/css/main.css?v=astro0" />
+<link rel="stylesheet" href="/assets/css/main.css?v=launch6" />
 {jsonLd.map((block) => (
   <script is:inline type="application/ld+json" set:html={JSON.stringify(block)} />
 ))}
