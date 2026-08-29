@@ -354,9 +354,11 @@
       path.indexOf('/news/') === 0;
     if (!allowed) return;
     if (document.querySelector('script[src*="adsterra-connect.js"]')) return;
+    if (!document.body) return;
     const s = document.createElement('script');
-    s.src = BASE + 'assets/js/adsterra-connect.js?v=ad1';
-    s.async = true;
+    s.type = 'text/javascript';
+    s.src = BASE + 'assets/js/adsterra-connect.js?v=ad2';
+    s.setAttribute('data-cfasync', 'false');
     document.body.appendChild(s);
   }
 
