@@ -39,8 +39,21 @@
     document.head.appendChild(s);
   }
 
+  /* Content pages use Adsterra for display inventory — skip AdSense slot pushes there */
+  function isAdsterraContentPath(pathname) {
+    const path = String(pathname || '/').split('?')[0];
+    if (path === '/blog' || path === '/blog/' || path === '/blog.html') return true;
+    if (path.indexOf('/blog/') === 0) return true;
+    if (path.indexOf('/guides/') === 0) return true;
+    if (path.indexOf('/news/') === 0) return true;
+    return false;
+  }
+
   /* Auto ads — only when explicitly enabled (after AdSense approval) */
   if (ads.autoAds !== true) return;
+
+  /* Do not compete with Adsterra on blogs / guides / news */
+  if (isAdsterraContentPath(location.pathname)) return;
 
   /* Auto ads / page-level — served when AdSense root domain is Ready */
   if (!window.__SK_ADSENSE_AUTO__) {

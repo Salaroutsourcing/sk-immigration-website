@@ -56,6 +56,8 @@ export const SITE = {
     adsensePub: 'pub-5113459275916426',
     clarity: 'y3u0myqn1l',
   },
+  /** Adsterra display inventory — content pages only */
+  adsterra: true,
   defaultOg: '/assets/img/og-share.jpg',
   logo: '/assets/img/logo.jpg',
   locale: 'en_PK',

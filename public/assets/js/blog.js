@@ -166,12 +166,9 @@
 
       el.innerHTML = html;
 
-      // Trigger lazy AdSense push on new infeed units
-      if (window.adsbygoogle) {
-        document.querySelectorAll('.sk-ad-slot:not([data-ad-loaded])').forEach((slot) => {
-          slot.dataset.adLoaded = '1';
-          try { (window.adsbygoogle).push({}); } catch (_) {}
-        });
+      // Prefer Adsterra on blog surfaces (caps + soft units)
+      if (typeof window.__SK_ADSTERRA_REFRESH__ === 'function') {
+        window.__SK_ADSTERRA_REFRESH__();
       }
     },
 
@@ -234,11 +231,8 @@
           </div>
         </article>`;
 
-      if (window.adsbygoogle) {
-        document.querySelectorAll('.sk-ad-slot:not([data-ad-loaded])').forEach((slot) => {
-          slot.dataset.adLoaded = '1';
-          try { (window.adsbygoogle).push({}); } catch (_) {}
-        });
+      if (typeof window.__SK_ADSTERRA_REFRESH__ === 'function') {
+        window.__SK_ADSTERRA_REFRESH__();
       }
     },
 

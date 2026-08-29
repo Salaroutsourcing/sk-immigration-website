@@ -342,11 +342,30 @@
     document.body.appendChild(s);
   }
 
+  function ensureAdsterraScript() {
+    const path = location.pathname.split('?')[0];
+    const allowed =
+      path === '/blog' ||
+      path === '/blog/' ||
+      path === '/blog.html' ||
+      path === '/blog-post.html' ||
+      path.indexOf('/blog/') === 0 ||
+      path.indexOf('/guides/') === 0 ||
+      path.indexOf('/news/') === 0;
+    if (!allowed) return;
+    if (document.querySelector('script[src*="adsterra-connect.js"]')) return;
+    const s = document.createElement('script');
+    s.src = BASE + 'assets/js/adsterra-connect.js?v=ad1';
+    s.async = true;
+    document.body.appendChild(s);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
     renderFooter();
     revealOnScroll();
     ensureConsentScript();
+    ensureAdsterraScript();
     if (window.SalarTheme) {
       const t = document.documentElement.getAttribute('data-theme');
       document.querySelectorAll('[data-theme-icon]').forEach((el) => {
