@@ -1,28 +1,30 @@
 ---
-import { SITE } from '../../lib/site';
-
+/**
+ * Reserved Adsterra slot. Scripts are injected by /assets/js/adsterra-connect.js
+ * so banner `atOptions` never race and only content pages load inventory.
+ */
 interface Props {
   label?: string;
-  placement?: 'in-article' | 'in-feed' | 'display' | 'anchor';
+  /** Semantic placement → mapped in adsterra-connect.js */
+  placement?: 'in-article' | 'in-feed' | 'display' | 'sidebar' | 'leaderboard';
 }
 
 const { label = 'Advertisement', placement = 'in-article' } = Astro.props;
 
-const format =
-  placement === 'in-article' ? 'fluid' : placement === 'in-feed' ? 'fluid' : 'auto';
+const unit =
+  placement === 'in-article' || placement === 'in-feed'
+    ? 'native'
+    : placement === 'leaderboard'
+      ? 'leaderboard'
+      : '300x250';
 ---
 
 <aside class={`ad-slot ad-slot--${placement}`} aria-label={label}>
   <p class="ad-slot__label">{label}</p>
-  <div class={`ad-slot__box sk-ad-slot sk-ad-${placement}`}>
-    <ins
-      class="adsbygoogle"
-      style={placement === 'in-article' ? 'display:block;text-align:center;' : 'display:block'}
-      data-ad-client={SITE.analytics.adsense}
-      data-ad-slot="auto"
-      data-ad-format={format}
-      data-ad-layout={placement === 'in-article' ? 'in-article' : undefined}
-      data-full-width-responsive="true"></ins>
+  <div
+    class={`ad-slot__box sk-adsterra-slot sk-ad-${placement === 'sidebar' ? 'sidebar' : placement === 'leaderboard' ? 'leaderboard' : placement === 'in-feed' ? 'infeed' : 'in-article'}`}
+    data-adsterra-unit={unit}
+  >
   </div>
 </aside>
 
@@ -39,15 +41,29 @@ const format =
     margin-bottom: 0.4rem;
   }
   .ad-slot__box {
-    min-height: 90px;
-    border-radius: 12px;
+    margin: 0 auto;
     overflow: hidden;
+    border-radius: 12px;
+    min-height: 90px;
   }
   .ad-slot--in-article .ad-slot__box,
   .ad-slot--in-feed .ad-slot__box {
+    min-height: 120px;
+    max-width: 960px;
+  }
+  .ad-slot--sidebar .ad-slot__box,
+  .ad-slot--display .ad-slot__box {
+    width: 300px;
+    max-width: 100%;
     min-height: 250px;
   }
-  .ad-slot ins.adsbygoogle {
-    min-height: inherit;
+  .ad-slot--leaderboard .ad-slot__box {
+    max-width: 728px;
+    min-height: 90px;
+  }
+  @media (max-width: 767px) {
+    .ad-slot--leaderboard .ad-slot__box {
+      min-height: 50px;
+    }
   }
 </style>

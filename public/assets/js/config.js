@@ -76,6 +76,16 @@ window.SALAR_CONFIG = {
     autoAds: false,
   },
 
+  /**
+   * Adsterra — blogs, guides, news only (see assets/js/adsterra-connect.js).
+   * Kept: Social Bar, Native, 300x250, 728x90, 320x50.
+   * Skipped: 468x60, 160x600, 160x300.
+   */
+  adsterra: {
+    enabled: true,
+    allowPaths: ['/blog', '/blog.html', '/blog-post.html', '/guides/', '/news/'],
+  },
+
   /* Professional imagery */
   images: {
     hero: 'assets/img/hero-library.jpg',

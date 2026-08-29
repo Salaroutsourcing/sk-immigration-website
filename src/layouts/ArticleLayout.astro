@@ -76,16 +76,16 @@ const publishedLabel = published.toLocaleDateString('en-GB', {
     </header>
     <div class="article-shell">
       <div>
-        <AdSlot placement="in-article" />
+        <AdSlot placement="leaderboard" />
         <div class="article-body">
           <slot />
         </div>
+        <AdSlot placement="in-article" />
         {relatedBlogHref && relatedBlogTitle && (
           <StoryToBlogCta title={relatedBlogTitle} href={relatedBlogHref} />
         )}
         {affiliates?.map((item) => <AffiliateCard {...item} />)}
         {faqs && faqs.length > 0 && <FaqList faqs={faqs} />}
-        <AdSlot placement="display" />
       </div>
       <aside class="article-aside">
         <div class="aside-card">
@@ -96,7 +96,7 @@ const publishedLabel = published.toLocaleDateString('en-GB', {
             <a class="btn btn-whatsapp" href="https://wa.me/923045999859">WhatsApp</a>
           </div>
         </div>
-        <AdSlot placement="display" label="Advertisement" />
+        <AdSlot placement="sidebar" label="Advertisement" />
       </aside>
     </div>
   </article>
