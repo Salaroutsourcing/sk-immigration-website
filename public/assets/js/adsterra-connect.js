@@ -56,6 +56,10 @@
   var queue = Promise.resolve();
   var counts = { native: 0, leaderboard: 0, box: 0, social: 0 };
 
+  /**
+   * Rocket Loader rewrites scripts unless data-cfasync="false".
+   * Always append into <body> (or a body descendant slot), never <head>.
+   */
   function loadScript(src, attrs, opts) {
     opts = opts || {};
     return new Promise(function (resolve, reject) {
@@ -66,21 +70,33 @@
           return;
         }
       }
+      var parent = opts.parent;
+      if (!parent || !document.body || !document.body.contains(parent)) {
+        parent = document.body;
+      }
+      if (!parent) {
+        reject(new Error('adsterra: document.body not ready'));
+        return;
+      }
       var s = document.createElement('script');
+      s.type = 'text/javascript';
       s.src = src;
-      s.async = true;
+      /* Required so Cloudflare Rocket Loader does not rewrite Adsterra */
+      s.setAttribute('data-cfasync', 'false');
       if (attrs) {
         Object.keys(attrs).forEach(function (k) {
           s.setAttribute(k, attrs[k]);
         });
       }
+      /* Keep cfasync even if attrs tried to override */
+      s.setAttribute('data-cfasync', 'false');
       s.onload = function () {
         resolve();
       };
       s.onerror = function () {
         reject(new Error('adsterra script failed'));
       };
-      (opts.parent || document.body).appendChild(s);
+      parent.appendChild(s);
     });
   }
 
@@ -100,7 +116,7 @@
         };
         /* Cache-bust so each banner zone can invoke independently */
         var src = unit.invoke + (unit.invoke.indexOf('?') >= 0 ? '&' : '?') + 'sk=' + Date.now() + counts.box;
-        return loadScript(src, null, { force: true, parent: el });
+        return loadScript(src, { 'data-cfasync': 'false' }, { force: true, parent: el });
       })
       .catch(function () {});
     return queue;
@@ -115,7 +131,11 @@
       box.id = CFG.native.containerId;
       el.appendChild(box);
     }
-    loadScript(CFG.native.src, { 'data-cfasync': 'false' }, { parent: el }).catch(function () {});
+    loadScript(
+      CFG.native.src,
+      { async: 'async', 'data-cfasync': 'false' },
+      { parent: el }
+    ).catch(function () {});
     return true;
   }
 
@@ -204,29 +224,38 @@
       counts.social = 1;
       return;
     }
+    if (!document.body) return;
     counts.social = 1;
+    /* Exact Adsterra pattern: body + data-cfasync="false" */
     var s = document.createElement('script');
+    s.type = 'text/javascript';
     s.src = CFG.socialBar;
-    s.async = true;
+    s.setAttribute('data-cfasync', 'false');
     s.setAttribute('data-sk-adsterra', 'social-bar');
     document.body.appendChild(s);
   }
 
   function run() {
+    if (!document.body) return;
     fillExplicit();
     fillLegacyShells();
     loadSocialBar();
   }
 
   window.__SK_ADSTERRA_REFRESH__ = function () {
+    if (!document.body) return;
     fillExplicit();
     fillLegacyShells();
     loadSocialBar();
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', run);
-  } else {
-    run();
+  function whenBodyReady(fn) {
+    if (document.body) {
+      fn();
+      return;
+    }
+    document.addEventListener('DOMContentLoaded', fn);
   }
+
+  whenBodyReady(run);
 })();

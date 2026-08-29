@@ -9,6 +9,8 @@ export const ADSTERRA = {
   enabled: true,
   /** Path prefixes where Adsterra may load */
   allowPaths: ['/blog', '/blog.html', '/guides/', '/news/'] as const,
+  /** All Adsterra <script> tags must use data-cfasync="false" and live in <body>. */
+  rocketLoaderSafe: true,
   socialBar: {
     id: 'SocialBar_1',
     src: 'https://pl31086248.profitableratecpmnetwork.com/3f/73/43/3f73439fbb844ab44c84fadd6864bb9b.js',
