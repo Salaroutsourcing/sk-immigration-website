@@ -106,8 +106,10 @@ export default {
       return Response.redirect(new URL('/', url).toString(), 301);
     }
 
-    // Do NOT redirect /answers ↔ /answers.html — Cloudflare Assets already
-    // serves answers.html at /answers; redirecting creates a loop.
+    // Canonical Answers hub is /answers/ (Astro trailing slash).
+    if (url.pathname === '/answers.html' || url.pathname === '/answers') {
+      return Response.redirect(new URL('/answers/', url).toString(), 301);
+    }
 
     // Canonical Schengen appointment page (dedupe thin alias)
     if (
@@ -229,8 +231,8 @@ export default {
       '/answers/ielts-for-switzerland-study.html': '/study-visa/switzerland-study-visa-pakistan/',
       '/answers/ielts-for-turkey-study': '/study-visa/turkey-study-visa-pakistan/',
       '/answers/ielts-for-turkey-study.html': '/study-visa/turkey-study-visa-pakistan/',
-      '/answers/index': '/answers',
-      '/answers/index.html': '/answers',
+      '/answers/index': '/answers/',
+      '/answers/index.html': '/answers/',
       '/answers/ireland-study-visa-cost-pakistan': '/study-visa/ireland-study-visa-pakistan/',
       '/answers/ireland-study-visa-cost-pakistan.html': '/study-visa/ireland-study-visa-pakistan/',
       '/answers/ireland-study-visa-requirements-pakistan': '/study-visa/ireland-study-visa-pakistan/',
@@ -323,11 +325,6 @@ export default {
     const landerTarget = ANSWER_LANDER_REDIRECTS[url.pathname];
     if (landerTarget) {
       return Response.redirect(new URL(landerTarget, url).toString(), 301);
-    }
-
-    // Prefer extensionless Answers hub URL
-    if (url.pathname === '/answers.html' || url.pathname === '/answers/') {
-      return Response.redirect(new URL('/answers', url).toString(), 301);
     }
 
     // Retired CRM — new studio ships in Phase 1

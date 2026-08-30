@@ -22,11 +22,11 @@ const HUBS: { title: string; path: string }[] = [
 ];
 
 const TOOLS: { title: string; path: string }[] = [
-  { title: 'Eligibility Quiz (60 seconds)', path: '/eligibility.html' },
-  { title: 'Document Checklist', path: '/checklist.html' },
-  { title: 'Study Cost Calculator', path: '/calculator.html' },
-  { title: 'Country Comparison Tool', path: '/compare.html' },
-  { title: 'CV Builder (Europass-style)', path: '/cv-builder.html' },
+  { title: 'Eligibility Quiz (60 seconds)', path: '/eligibility/' },
+  { title: 'Document Checklist', path: '/checklist/' },
+  { title: 'Study Cost Calculator', path: '/calculator/' },
+  { title: 'Country Comparison Tool', path: '/compare/' },
+  { title: 'CV Builder (Europass-style)', path: '/cv-builder/' },
   { title: 'Official Embassy Links', path: '/official-links/' },
 ];
 

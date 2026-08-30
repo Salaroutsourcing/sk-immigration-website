@@ -1,0 +1,20 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/tools.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  jsonLd?: unknown;
+}
+
+const { title, description, canonical, jsonLd } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} jsonLd={jsonLd} page="tools">
+  <slot />
+  <Fragment slot="scripts">
+    <slot name="scripts" />
+  </Fragment>
+</BaseLayout>

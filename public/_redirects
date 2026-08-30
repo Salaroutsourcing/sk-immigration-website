@@ -41,7 +41,6 @@
 /tos /terms/ 301
 
 # Answers hub trailing slash (GitHub Pages directory vs answers.html)
-/answers/ /answers 301
 
 # Answers hub: Cloudflare Assets serves answers.html at /answers (no Worker bounce)
 # /answers.html is redirected to /answers in the Worker to avoid loops.
@@ -247,3 +246,125 @@
 /answers/best-study-visa-consultant-rawalpindi.html /local/rawalpindi-study-visa-consultant/ 301
 /answers/hungary-study-visa-documents /study-visa/hungary-study-visa-pakistan/ 301
 /answers/hungary-study-visa-documents.html /study-visa/hungary-study-visa-pakistan/ 301
+
+/answers.html /answers/ 301
+
+# Astro 7 lander + tool pretty URLs
+/blog/germany-student-visa /study-visa/germany-study-visa-pakistan/ 301
+/blog/germany-student-visa/ /study-visa/germany-study-visa-pakistan/ 301
+/blog/uk-student-visa /study-visa/uk-study-visa-pakistan/ 301
+/blog/uk-student-visa/ /study-visa/uk-study-visa-pakistan/ 301
+/blog/canada-student-visa /study-visa/canada-study-visa-pakistan/ 301
+/blog/canada-student-visa/ /study-visa/canada-study-visa-pakistan/ 301
+/blog/italy-student-visa /study-visa/italy-study-visa-pakistan/ 301
+/blog/italy-student-visa/ /study-visa/italy-study-visa-pakistan/ 301
+/blog/australia-student-visa /study-visa/australia-study-visa-pakistan/ 301
+/blog/australia-student-visa/ /study-visa/australia-study-visa-pakistan/ 301
+/blog/australia-study-visa-from-pakistan-2026 /study-visa/australia-study-visa-pakistan/ 301
+/blog/australia-study-visa-from-pakistan-2026/ /study-visa/australia-study-visa-pakistan/ 301
+/blog/france-student-visa /study-visa/france-study-visa-pakistan/ 301
+/blog/france-student-visa/ /study-visa/france-study-visa-pakistan/ 301
+/blog/hungary-student-visa /study-visa/hungary-study-visa-pakistan/ 301
+/blog/hungary-student-visa/ /study-visa/hungary-study-visa-pakistan/ 301
+/blog/poland-student-visa /study-visa/poland-study-visa-pakistan/ 301
+/blog/poland-student-visa/ /study-visa/poland-study-visa-pakistan/ 301
+/blog/romania-student-visa /study-visa/romania-study-visa-pakistan/ 301
+/blog/romania-student-visa/ /study-visa/romania-study-visa-pakistan/ 301
+/blog/spain-student-visa /study-visa/spain-study-visa-pakistan/ 301
+/blog/spain-student-visa/ /study-visa/spain-study-visa-pakistan/ 301
+/blog/malaysia-student-visa /study-visa/malaysia-study-visa-pakistan/ 301
+/blog/malaysia-student-visa/ /study-visa/malaysia-study-visa-pakistan/ 301
+/blog/turkey-student-visa /study-visa/turkey-study-visa-pakistan/ 301
+/blog/turkey-student-visa/ /study-visa/turkey-study-visa-pakistan/ 301
+/blog/dubai-visit-visa /visit-visa/dubai-visit-visa-pakistan/ 301
+/blog/dubai-visit-visa/ /visit-visa/dubai-visit-visa-pakistan/ 301
+/blog/ireland-student-visa /study-visa/ireland-study-visa-pakistan/ 301
+/blog/ireland-student-visa/ /study-visa/ireland-study-visa-pakistan/ 301
+/blog/netherlands-student-visa /study-visa/netherlands-study-visa-pakistan/ 301
+/blog/netherlands-student-visa/ /study-visa/netherlands-study-visa-pakistan/ 301
+/blog/cyprus-student-visa /study-visa/cyprus-study-visa-pakistan/ 301
+/blog/cyprus-student-visa/ /study-visa/cyprus-study-visa-pakistan/ 301
+/blog/malta-student-visa /study-visa/malta-study-visa-pakistan/ 301
+/blog/malta-student-visa/ /study-visa/malta-study-visa-pakistan/ 301
+/blog/slovakia-student-visa /study-visa/slovakia-study-visa-pakistan/ 301
+/blog/slovakia-student-visa/ /study-visa/slovakia-study-visa-pakistan/ 301
+/blog/czech-republic-student-visa /study-visa/czech-republic-study-visa-pakistan/ 301
+/blog/czech-republic-student-visa/ /study-visa/czech-republic-study-visa-pakistan/ 301
+/blog/portugal-student-visa /study-visa/portugal-study-visa-pakistan/ 301
+/blog/portugal-student-visa/ /study-visa/portugal-study-visa-pakistan/ 301
+/guides/ausbildung-pakistan /guides/germany-student-visa-ausbildung/ 301
+/guides/ausbildung-pakistan/ /guides/germany-student-visa-ausbildung/ 301
+/attestation.html /document-services/ 301
+/attestation /document-services/ 301
+/countries.html /study-visa/ 301
+/countries /study-visa/ 301
+/embassy-links.html /official-links/ 301
+/official.html /official-links/ 301
+/hire-workers.html /hire-workers-from-pakistan/ 301
+/saudi.html /saudi-visa/saudi-visa-processing-pakistan/ 301
+/visit.html /visit-visa/ 301
+/work.html /work-permit/ 301
+/work-visa.html /work-permit/ 301
+/eligibility.html /eligibility/ 301
+/checklist.html /checklist/ 301
+/calculator.html /calculator/ 301
+/compare.html /compare/ 301
+/cv-builder.html /cv-builder/ 301
+/blog-post.html /blog/ 301
+/study-visa/germany.html /study-visa/germany-study-visa-pakistan/ 301
+/study-visa/usa.html /study-visa/usa-study-visa-pakistan/ 301
+/answers/apostille-vs-mofa-vs-musadaqa.html /answers/apostille-vs-mofa-vs-musadaqa/ 301
+/answers/ausbildung-vs-work-permit-germany.html /answers/ausbildung-vs-work-permit-germany/ 301
+/answers/best-countries-no-ielts-2026.html /answers/best-countries-no-ielts-2026/ 301
+/answers/best-country-study-abroad-low-budget.html /answers/best-country-study-abroad-low-budget/ 301
+/answers/best-immigration-consultant-pakistan.html /answers/best-immigration-consultant-pakistan/ 301
+/answers/best-schengen-country-study-pakistan.html /answers/best-schengen-country-study-pakistan/ 301
+/answers/best-study-visa-consultant-pakistan.html /answers/best-study-visa-consultant-pakistan/ 301
+/answers/best-visit-visa-consultant-pakistan.html /answers/best-visit-visa-consultant-pakistan/ 301
+/answers/best-work-permit-consultant-pakistan.html /answers/best-work-permit-consultant-pakistan/ 301
+/answers/blocked-account-germany.html /answers/blocked-account-germany/ 301
+/answers/can-i-work-on-schengen-student-visa.html /answers/can-i-work-on-schengen-student-visa/ 301
+/answers/canada-study-permit-requirements.html /answers/canada-study-permit-requirements/ 301
+/answers/cv-for-ausbildung-germany.html /answers/cv-for-ausbildung-germany/ 301
+/answers/document-attestation-dubai-uae.html /answers/document-attestation-dubai-uae/ 301
+/answers/eligibility-quiz-study-abroad.html /answers/eligibility-quiz-study-abroad/ 301
+/answers/free-consultation-sk-immigration.html /answers/free-consultation-sk-immigration/ 301
+/answers/germany-ausbildung-international.html /answers/germany-ausbildung-international/ 301
+/answers/germany-ausbildung-without-german.html /answers/germany-ausbildung-without-german/ 301
+/answers/germany-vs-uk-study.html /answers/germany-vs-uk-study/ 301
+/answers/how-to-apply-canada-study-permit-pakistan.html /answers/how-to-apply-canada-study-permit-pakistan/ 301
+/answers/how-to-apply-germany-student-visa-pakistan.html /answers/how-to-apply-germany-student-visa-pakistan/ 301
+/answers/how-to-apply-uk-student-visa-pakistan.html /answers/how-to-apply-uk-student-visa-pakistan/ 301
+/answers/hungary-vs-poland-student-visa.html /answers/hungary-vs-poland-student-visa/ 301
+/answers/medical-study-europe-pakistan.html /answers/medical-study-europe-pakistan/ 301
+/answers/moi-letter-instead-of-ielts.html /answers/moi-letter-instead-of-ielts/ 301
+/answers/no-visa-guarantee-why.html /answers/no-visa-guarantee-why/ 301
+/answers/nursing-ausbildung-germany.html /answers/nursing-ausbildung-germany/ 301
+/answers/oep-partner-licence-1061.html /answers/oep-partner-licence-1061/ 301
+/answers/pakistan-students-study-abroad.html /answers/pakistan-students-study-abroad/ 301
+/answers/poland-vs-hungary-vs-czech-study.html /answers/poland-vs-hungary-vs-czech-study/ 301
+/answers/proof-of-funds-hungary-poland.html /answers/proof-of-funds-hungary-poland/ 301
+/answers/proof-of-funds-student-visa.html /answers/proof-of-funds-student-visa/ 301
+/answers/saudi-work-visa-processing-15000.html /answers/saudi-work-visa-processing-15000/ 301
+/answers/schengen-student-visa-documents.html /answers/schengen-student-visa-documents/ 301
+/answers/schengen-student-visa-refusal-reasons.html /answers/schengen-student-visa-refusal-reasons/ 301
+/answers/schengen-study-visa-without-ielts.html /answers/schengen-study-visa-without-ielts/ 301
+/answers/secp-registered-sk-immigration.html /answers/secp-registered-sk-immigration/ 301
+/answers/sk-consultant.html /answers/sk-consultant/ 301
+/answers/sk-immigration-review.html /answers/sk-immigration-review/ 301
+/answers/student-visa-cost-europe.html /answers/student-visa-cost-europe/ 301
+/answers/student-visa-process-time.html /answers/student-visa-process-time/ 301
+/answers/student-visa-rejection-reasons-pakistan.html /answers/student-visa-rejection-reasons-pakistan/ 301
+/answers/study-europe-low-marks.html /answers/study-europe-low-marks/ 301
+/answers/study-europe-without-ielts.html /answers/study-europe-without-ielts/ 301
+/answers/study-gap-3-5-years.html /answers/study-gap-3-5-years/ 301
+/answers/uk-student-visa-cas.html /answers/uk-student-visa-cas/ 301
+/answers/visa-refused-what-next.html /answers/visa-refused-what-next/ 301
+/answers/visit-visa-refusal-reasons-pakistan.html /answers/visit-visa-refusal-reasons-pakistan/ 301
+/answers/visit-visa-vs-student-visa.html /answers/visit-visa-vs-student-visa/ 301
+/answers/who-is-sk-immigration.html /answers/who-is-sk-immigration/ 301
+/answers/work-permit-documents-pakistan.html /answers/work-permit-documents-pakistan/ 301
+/answers/work-while-studying-europe.html /answers/work-while-studying-europe/ 301
+
+# Astro 7 lander + tool pretty URLs
+

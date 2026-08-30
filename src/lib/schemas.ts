@@ -94,3 +94,22 @@ export const webStorySchema = z.object({
   slides: z.array(storySlideSchema).min(4).max(12),
   durationSeconds: z.number().int().min(8).max(20).default(12),
 });
+
+export const landerSchema = z.object({
+  cluster: z.string(),
+  slug: z.string(),
+  title: z.string().min(8).max(220),
+  h1: z.string().min(4).max(220),
+  description: z.string().min(20).max(500),
+  image: z.string().optional(),
+  publishDate: z.coerce.date(),
+  faqs: z
+    .array(
+      z.object({
+        question: z.string(),
+        answer: z.string(),
+      }),
+    )
+    .default([]),
+  body: z.string(),
+});

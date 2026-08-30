@@ -1,11 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { SITE, SERVICE_HUBS } from '../../lib/config';
+import { SERVICE_HUBS } from '../../lib/config';
+import { landerPath } from '../../lib/landers';
+
+const SKIP_JSON_GUIDES = new Set(['ausbildung-pakistan']);
 
 const guides = (await getCollection('guides')).sort(
   (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
 );
+const jsonGuides = (
+  await getCollection(
+    'landers',
+    (entry) => entry.data.cluster === 'guides' && !SKIP_JSON_GUIDES.has(entry.data.slug),
+  )
+).sort((a, b) => a.data.h1.localeCompare(b.data.h1));
 ---
 
 <BaseLayout
@@ -53,6 +62,24 @@ const guides = (await getCollection('guides')).sort(
             </h3>
             <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{guide.data.description}</p>
             <a href={`/guides/${guide.id}/`} class="text-sm font-semibold text-primary-600 hover:underline dark:text-primary-400">
+              Read guide →
+            </a>
+          </div>
+        </article>
+      ))}
+      {jsonGuides.map((entry) => (
+        <article class="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:border-primary-500/40 dark:border-slate-800 dark:bg-slate-900">
+          <div class="flex flex-1 flex-col p-6">
+            <div class="mb-3 flex items-center gap-2">
+              <span class="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-primary-700 dark:bg-slate-800 dark:text-blue-300">
+                How-to
+              </span>
+            </div>
+            <h3 class="mb-2 font-heading text-xl font-bold text-slate-900 dark:text-white">
+              <a href={landerPath(entry)}>{entry.data.h1}</a>
+            </h3>
+            <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{entry.data.description}</p>
+            <a href={landerPath(entry)} class="text-sm font-semibold text-primary-600 hover:underline dark:text-primary-400">
               Read guide →
             </a>
           </div>

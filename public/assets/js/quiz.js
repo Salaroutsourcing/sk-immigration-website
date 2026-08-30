@@ -140,8 +140,8 @@
                   .join('')}
               </div>
               <div class="hero-ctas" style="margin-bottom:1rem">
-                <a class="btn btn-gold" href="checklist.html?country=${checkHint}">Open my checklist</a>
-                <a class="btn btn-navy" href="calculator.html?country=${checkHint}">See costs</a>
+                <a class="btn btn-gold" href="/checklist/?country=${checkHint}">Open my checklist</a>
+                <a class="btn btn-navy" href="/calculator/?country=${checkHint}">See costs</a>
                 <a class="btn btn-whatsapp" href="https://wa.me/923045999859?text=${encodeURIComponent('Hi SK Immigration, my quiz top match is ' + top)}" target="_blank" rel="noopener">WhatsApp results</a>
               </div>
               <form id="quizLeadForm" class="glass-strong" style="padding:1.25rem;border-radius:1rem;border:1px solid var(--glass-border)">
@@ -155,8 +155,8 @@
                 <div class="form-msg" id="quizMsg"></div>
               </form>
               <div class="hero-ctas mt-2">
-                <a class="btn btn-ghost" href="contact.html">Book free consultation</a>
-                <a class="btn btn-ghost" href="compare.html">Compare countries</a>
+                <a class="btn btn-ghost" href="/contact/">Book free consultation</a>
+                <a class="btn btn-ghost" href="/compare/">Compare countries</a>
                 <button type="button" class="btn btn-ghost" id="quizRestart">Retake quiz</button>
               </div>
             </div>`;

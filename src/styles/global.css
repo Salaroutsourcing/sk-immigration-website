@@ -101,9 +101,29 @@
   color: #64748b;
   text-align: center;
 }
-.story-amp-note a {
-  font-weight: 800;
-  color: #2563eb;
+.prose .lead-answer {
+  @apply text-lg leading-relaxed text-slate-700 dark:text-slate-300;
+}
+.prose .text-muted {
+  @apply text-slate-500;
+}
+.prose .viz-strip {
+  @apply my-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4;
+}
+.prose .viz-pill {
+  @apply rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm dark:border-slate-800 dark:bg-slate-900;
+}
+.prose .viz-pill span {
+  @apply block text-xs uppercase tracking-wide text-slate-500;
+}
+.prose .hero-ctas {
+  @apply mt-6 flex flex-wrap gap-3;
+}
+:root {
+  --gold-light: #fffbeb;
+  --gold-soft: #fde68a;
+  --gold-dark: #b45309;
+  --font-display: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
 }
 .story-frame {
   width: min(420px, 100%);

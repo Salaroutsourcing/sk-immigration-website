@@ -1,0 +1,55 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'SK Immigration CV Builder',
+  url: 'https://immigration.salaroutsourcing.com/cv-builder/',
+  applicationCategory: 'BusinessApplication',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'PKR' },
+};
+---
+
+<ToolLayout
+  title="Free CV Builder | Europass-style"
+  description="Build a professional Europass-style CV for student visas, Ausbildung and job applications. Send it directly to SK Immigration."
+  canonical="/cv-builder/"
+  jsonLd={jsonLd}
+>
+  <section class="not-prose border-b border-slate-200 bg-slate-50 py-12 dark:border-slate-800 dark:bg-dark-950 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary-600">Free CV builder</p>
+      <h1 class="mb-4 font-heading text-3xl font-bold text-slate-900 md:text-5xl dark:text-white">Build. Preview. Send.</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-400">
+        Create a clean CV for study or job files. Data stays in your browser unless you choose to send it to our team.
+      </p>
+    </div>
+  </section>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-3xl">
+      <div id="cvRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>Why use this CV builder</h2>
+        <p>
+          Pakistani students applying for Europe study files or Germany Ausbildung often need a clean, chronological CV.
+          Sending the CV to our team is optional.
+        </p>
+        <p>
+          Next steps: <a href="/eligibility/">eligibility quiz</a> · <a href="/checklist/">document checklist</a> ·
+          <a href="/study-visa/">study visa hub</a> · WhatsApp <a href="https://wa.me/923045999859">+92 304 5999859</a>.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/cv-builder.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SalarCV && window.SalarCV.mount('#cvRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

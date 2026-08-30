@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import LanderLayout from '../../layouts/LanderLayout.astro';
+import { HUB_INDEX_CLUSTERS } from '../../lib/landers';
+
+export async function getStaticPaths() {
+  const hubs = new Set<string>(HUB_INDEX_CLUSTERS);
+  const items = await getCollection(
+    'landers',
+    (entry) => hubs.has(entry.data.cluster) && entry.data.slug !== 'index' && entry.data.slug !== 'hub',
+  );
+  return items.map((entry) => ({
+    params: { hub: entry.data.cluster, slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<LanderLayout entry={entry} />

@@ -1,0 +1,65 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'SK Immigration Document Checklist',
+  url: 'https://immigration.salaroutsourcing.com/checklist/',
+  applicationCategory: 'BusinessApplication',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'PKR' },
+};
+---
+
+<ToolLayout
+  title="Document Checklist by Country | Embassy-Linked Visa Lists"
+  description="Interactive visa document checklist for 20 countries. Tick what you have, verify official embassy sources, and get a personal list from SK Immigration Services."
+  canonical="/checklist/"
+  jsonLd={jsonLd}
+>
+  <section class="not-prose border-b border-slate-200 bg-slate-50 py-12 dark:border-slate-800 dark:bg-dark-950 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary-600">Free interactive tool · 20 destinations</p>
+      <h1 class="mb-4 font-heading text-3xl font-bold text-slate-900 md:text-5xl dark:text-white">
+        Your document checklist — tick what you have
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-400">
+        Pick a country and visa type. Tick boxes for documents you already have. Verify against
+        <a class="font-semibold text-primary-600 hover:underline" href="/official-links/">official embassy &amp; government links</a>,
+        then WhatsApp us for a personal review.
+      </p>
+    </div>
+  </section>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-3xl">
+      <div id="checklistRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>How to use this visa document checklist</h2>
+        <p>
+          This free SK Immigration tool helps Pakistani applicants build a country-specific tick list for study, visit or work
+          files. It is a planning aid — always confirm the final list on
+          <a href="/official-links/">official embassy and government pages</a> before you pay fees.
+        </p>
+        <ol>
+          <li>Choose destination and visa type.</li>
+          <li>Tick documents you already hold; note gaps.</li>
+          <li>Open the matching <a href="/study-visa/">study visa</a> guide for process context.</li>
+          <li>WhatsApp <a href="https://wa.me/923045999859">+92 304 5999859</a> for a human review if you want file packaging help.</li>
+        </ol>
+        <p>
+          <strong>Disclaimer:</strong> Embassies decide visas. Checklists can lag rule changes. No outcome guarantees.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/visa-tools.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SalarTools && window.SalarTools.mountChecklist('#checklistRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

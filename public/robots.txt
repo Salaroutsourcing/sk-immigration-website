@@ -42,11 +42,11 @@ Allow: /privacy/
 Allow: /terms/
 Allow: /contact/
 Allow: /cookies.html
-Allow: /eligibility.html
-Allow: /checklist.html
-Allow: /calculator.html
-Allow: /compare.html
-Allow: /cv-builder.html
+Allow: /eligibility/
+Allow: /checklist/
+Allow: /calculator/
+Allow: /compare/
+Allow: /cv-builder/
 Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /ai.txt

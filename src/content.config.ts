@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { blogSchema, guideSchema, newsSchema, webStorySchema } from './lib/schemas';
+import { blogSchema, guideSchema, landerSchema, newsSchema, webStorySchema } from './lib/schemas';
 
 const news = defineCollection({
   loader: glob({
@@ -34,9 +34,19 @@ const guides = defineCollection({
   schema: guideSchema,
 });
 
+const landers = defineCollection({
+  loader: glob({
+    pattern: '**/*.json',
+    base: './src/content/landers',
+    generateId: ({ entry }) => entry.replace(/\.json$/, '').replace(/\\/g, '/'),
+  }),
+  schema: landerSchema,
+});
+
 export const collections = {
   news,
   blog,
   guides,
+  landers,
   'web-stories': webStories,
 };
