@@ -30,12 +30,12 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #2563eb;
+  color: #0161ef;
 }
 .tool-shell .section-title,
 .tool-shell .text-gold {
   color: #0f172a;
-  font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-weight: 700;
 }
 .dark .tool-shell .section-title,
@@ -69,13 +69,13 @@
 .tool-shell .btn-gold,
 .tool-shell .btn-navy,
 .tool-shell .btn-primary {
-  background: #2563eb;
+  background: #0161ef;
   color: #fff;
 }
 .tool-shell .btn-gold:hover,
 .tool-shell .btn-navy:hover,
 .tool-shell .btn-primary:hover {
-  background: #1d4ed8;
+  background: #0154cf;
 }
 .tool-shell .btn-whatsapp {
   background: #25d366;
@@ -153,7 +153,7 @@
 }
 .tool-shell .quiz-option:hover,
 .tool-shell .quiz-option.selected {
-  border-color: #2563eb;
+  border-color: #0161ef;
   background: #eff6ff;
 }
 .dark .tool-shell .quiz-option:hover,
@@ -178,7 +178,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: #2563eb;
+  background: #0161ef;
   color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
@@ -211,7 +211,7 @@
 .tool-shell .progress-fill {
   height: 100%;
   border-radius: 999px;
-  background: #2563eb;
+  background: #0161ef;
 }
 .tool-shell .check-list,
 .tool-shell .source-list {
@@ -234,7 +234,7 @@
 }
 .tool-shell .check-item input {
   margin-top: 0.35rem;
-  accent-color: #2563eb;
+  accent-color: #0161ef;
   width: 1.1rem;
   height: 1.1rem;
 }
@@ -255,14 +255,14 @@
   padding: 0.15rem 0.55rem;
   font-size: 0.7rem;
   font-weight: 700;
-  color: #1d4ed8;
+  color: #0154cf;
 }
 .tool-shell .badge-muted {
   background: #f1f5f9;
   color: #64748b;
 }
 .tool-shell .source-list a {
-  color: #2563eb;
+  color: #0161ef;
   font-weight: 600;
 }
 .tool-shell .cost-viz {
@@ -277,7 +277,7 @@
 .tool-shell .cost-bar span {
   display: block;
   height: 100%;
-  background: #2563eb;
+  background: #0161ef;
 }
 .tool-shell .cost-nums,
 .tool-shell .viz-strip {

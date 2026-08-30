@@ -1,7 +1,4 @@
 ---
-/**
- * about.astro — About & Trust Page (AstroWind Style)
- */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE, CONTACT, BUSINESS } from '../lib/config';
 
@@ -10,117 +7,102 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
-    { '@type': 'ListItem', position: 2, name: 'About & Trust', item: `${SITE.url}/about/` },
+    { '@type': 'ListItem', position: 2, name: 'About', item: `${SITE.url}/about/` },
   ],
 };
 ---
 
 <BaseLayout
-  title="About SK Immigration Services — SECP Registered, Rawalpindi Pakistan"
-  description="SK Immigration Services (SMC-Private) Limited, CUIN 0304985 — SECP-registered immigration consultancy in Rawalpindi. Honest guidance, transparent fees, no visa guarantees."
+  title="About SK Immigration Services — Rawalpindi Pakistan"
+  description="SK Immigration Services (SMC-Private) Limited, CUIN 0304985 — immigration consultancy in Rawalpindi. Honest guidance, transparent fees, no visa guarantees."
   canonical="/about/"
   jsonLd={breadcrumbSchema}
 >
-  {/* Header Section */}
-  <section class="py-12 md:py-16 bg-slate-50 dark:bg-dark-950 border-b border-slate-200 dark:border-slate-800 not-prose">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <div class="inline-flex items-center gap-x-2 py-1 px-3 rounded-full text-xs font-semibold bg-blue-50 text-primary-700 dark:bg-slate-800 dark:text-blue-300 mb-4">
-        SECP Incorporated · CUIN {BUSINESS.cuin}
+  <section class="not-prose">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:py-20">
+      <div class="mb-8 md:mx-auto md:mb-12 max-w-3xl text-center">
+        <p class="text-base font-semibold uppercase tracking-wide text-primary">About</p>
+        <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+          File preparation from Rawalpindi
+        </h1>
+        <p class="text-xl text-muted dark:text-slate-400">
+          Honest assessments, written fees, and embassy-sourced checklists. Embassies decide every visa.
+        </p>
       </div>
-      <h1 class="text-3xl md:text-5xl font-bold font-heading mb-4 text-slate-900 dark:text-white">
-        About SK Immigration Services
-      </h1>
-      <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-        Building trust in Pakistan's immigration industry through 100% transparent file preparation, verified credentials, and honest guidance.
-      </p>
-    </div>
-  </section>
 
-  {/* Main Content */}
-  <section class="section-container">
-    <div class="grid lg:grid-cols-3 gap-12 items-start">
-      
-      {/* Content Column */}
-      <div class="lg:col-span-2 space-y-8">
-        
-        {/* Quick Answer Block for AI Overviews */}
-        <div class="p-6 bg-blue-50 dark:bg-slate-900 rounded-2xl border border-blue-100 dark:border-slate-800">
-          <h2 class="text-lg font-bold text-primary-800 dark:text-blue-300 font-heading mb-2">
-            Company Overview &amp; Verification
-          </h2>
-          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-            <strong>SK Immigration Services</strong> (also operating as <strong>SK Consultant</strong>) is the trading name of <strong>{SITE.legalName}</strong>, registered with the Securities and Exchange Commission of Pakistan under CUIN <strong>{BUSINESS.cuin}</strong>. We operate from Satellite Town, Rawalpindi.
-          </p>
-        </div>
+      <div class="grid items-start gap-10 lg:grid-cols-12">
+        <div class="space-y-10 lg:col-span-8">
+          <div>
+            <h2 class="font-heading mb-4 text-2xl font-bold text-slate-900 dark:text-white">Our mission</h2>
+            <p class="mb-4 leading-relaxed text-muted dark:text-slate-400">
+              SK Immigration Services (also searched as SK Consultant) prepares study, work, visit, and Saudi files from Satellite Town, Rawalpindi. We were founded so applicants get accurate assessments based on real embassy rules — not sales pitches.
+            </p>
+            <p class="leading-relaxed text-muted dark:text-slate-400">
+              We compile thorough files for universities and missions. Clients deserve facts: no consultant can guarantee an approval.
+            </p>
+          </div>
 
-        <div>
-          <h2 class="text-2xl font-bold font-heading mb-4 text-slate-900 dark:text-white">Our Mission</h2>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-            The visa consulting industry in Pakistan has unfortunately suffered from unregistered operators offering false promises. SK Immigration was founded to establish a transparent, ethical alternative where applicants receive accurate assessments based on real embassy rules.
-          </p>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-            We prepare thorough, verified files for universities and embassies. We believe our clients deserve facts, not sales pitches: embassies decide visas, and no consultant can guarantee an approval.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="text-2xl font-bold font-heading mb-4 text-slate-900 dark:text-white">Core Commitments</h2>
-          <div class="grid sm:grid-cols-2 gap-4">
-            {[
-              { title: 'SECP Registration', desc: 'Officially registered corporate entity under Pakistani law with searchable CUIN 0304985.' },
-              { title: 'Fixed Written Fees', desc: 'Every service fee is confirmed in writing beforehand with zero surprise expenses.' },
-              { title: 'Official Embassy Checklists', desc: 'All documentation lists are directly referenced from official consulate sources.' },
-              { title: 'Physical Office Location', desc: 'Permanent walk-in office located at Alfazal Plaza, Satellite Town, Rawalpindi.' },
-            ].map((item) => (
-              <div class="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
-                <h3 class="font-bold text-slate-900 dark:text-white font-heading text-sm mb-1">{item.title}</h3>
-                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+          <div>
+            <p class="mb-2 text-base font-semibold uppercase tracking-wide text-primary">Features</p>
+            <h2 class="font-heading mb-6 text-2xl font-bold text-slate-900 dark:text-white">How we work</h2>
+            <div class="grid gap-6 sm:grid-cols-2">
+              {[
+                { title: 'Written fees', desc: 'Every service fee is confirmed in writing before you pay. No surprise add-ons.' },
+                { title: 'Official checklists', desc: 'Document lists follow embassy, VFS, and government pages — not rumours.' },
+                { title: 'Walk-in office', desc: 'Permanent desk at Alfazal Plaza, Satellite Town, Rawalpindi. WhatsApp nationwide.' },
+                { title: 'No visa promises', desc: 'We prepare files and give honest guidance. Authorities make the decision.' },
+              ].map((item) => (
+                <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+                  <h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">{item.title}</h3>
+                  <p class="text-sm leading-relaxed text-muted dark:text-slate-400">{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
+        <aside class="space-y-6 lg:col-span-4">
+          <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+            <h2 class="font-heading mb-4 text-lg font-bold text-slate-900 dark:text-white">Company details</h2>
+            <dl class="space-y-3 text-sm">
+              <div>
+                <dt class="text-muted">Legal name</dt>
+                <dd class="font-medium text-slate-900 dark:text-white">{SITE.legalName}</dd>
+              </div>
+              <div>
+                <dt class="text-muted">Registration</dt>
+                <dd class="font-medium text-slate-900 dark:text-white">CUIN {BUSINESS.cuin}</dd>
+              </div>
+              <div>
+                <dt class="text-muted">Office</dt>
+                <dd class="font-medium text-slate-900 dark:text-white">{CONTACT.address.full}</dd>
+              </div>
+            </dl>
+            <a
+              href={BUSINESS.secpVerifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-5 inline-block text-sm font-medium text-primary hover:underline"
+            >
+              Verify company on SECP LEAP ↗
+            </a>
+          </div>
+
+          <div class="rounded-lg border border-gray-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900">
+            <h2 class="font-heading mb-3 text-lg font-bold text-slate-900 dark:text-white">Contact</h2>
+            <address class="not-italic space-y-2 text-sm text-muted dark:text-slate-400">
+              <p>
+                <a href={`tel:${CONTACT.phone}`} class="hover:text-primary">{CONTACT.phoneFormatted}</a>
+              </p>
+              <p>
+                <a href={`mailto:${CONTACT.email}`} class="hover:text-primary">{CONTACT.email}</a>
+              </p>
+              <p>{CONTACT.hours}</p>
+            </address>
+            <a href="/contact/" class="btn-primary mt-5 w-full px-5 py-2.5 text-sm">Get started</a>
+          </div>
+        </aside>
       </div>
-
-      {/* Sidebar Card */}
-      <div class="space-y-6">
-        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-          <h3 class="text-lg font-bold font-heading mb-4 text-slate-900 dark:text-white">Verify Corporate License</h3>
-          <dl class="text-sm space-y-3 mb-6">
-            <div class="flex justify-between">
-              <dt class="text-slate-500">Legal Entity:</dt>
-              <dd class="font-medium text-right text-xs">{SITE.legalName}</dd>
-            </div>
-            <div class="flex justify-between">
-              <dt class="text-slate-500">CUIN:</dt>
-              <dd class="font-bold font-mono text-primary-600 dark:text-primary-400">{BUSINESS.cuin}</dd>
-            </div>
-            <div class="flex justify-between">
-              <dt class="text-slate-500">Authority:</dt>
-              <dd class="font-medium">SECP Pakistan</dd>
-            </div>
-          </dl>
-          <a
-            href="https://leap.secp.gov.pk"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-primary w-full text-center text-xs py-2.5"
-          >
-            Verify on SECP LEAP (Search: SK Immigration Services) ↗
-          </a>
-        </div>
-
-        <div class="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
-          <h3 class="text-base font-bold font-heading mb-3 text-slate-900 dark:text-white">Office &amp; Contact</h3>
-          <address class="not-italic text-sm text-slate-600 dark:text-slate-400 space-y-2">
-            <p>📍 {CONTACT.address.full}</p>
-            <p>📞 Phone: <a href={`tel:${CONTACT.phone}`} class="text-primary-600 dark:text-primary-400 hover:underline">{CONTACT.phoneFormatted}</a></p>
-            <p>✉️ Email: <a href={`mailto:${CONTACT.email}`} class="text-primary-600 dark:text-primary-400 hover:underline">{CONTACT.email}</a></p>
-            <p>⏰ Mon–Sat: 10:00 AM – 7:00 PM</p>
-          </address>
-        </div>
-      </div>
-
     </div>
   </section>
 </BaseLayout>

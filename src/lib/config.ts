@@ -77,7 +77,6 @@ export const FOOTER_LINKS = {
     { label: 'Blog & Insights', href: '/blog/' },
     { label: 'Newsroom', href: '/news/' },
     { label: 'About SK Immigration', href: '/about/' },
-    { label: 'Verify SECP License', href: CORE.secpVerify },
   ],
   legal: [
     { label: 'Privacy Policy', href: '/privacy/' },

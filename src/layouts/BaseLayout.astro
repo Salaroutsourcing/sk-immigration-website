@@ -4,6 +4,7 @@ import SeoHead from '../components/seo/SeoHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Announcement from '../components/Announcement.astro';
 import { SITE as CORE } from '../lib/site';
 import { SITE, ANALYTICS } from '../lib/config';
 import { organizationSchema, websiteSchema } from '../lib/seo';
@@ -98,6 +99,7 @@ const schemas = [organizationSchema(), websiteSchema(), ...extraJsonLd];
     >
       Skip to main content
     </a>
+    <Announcement />
     <Header />
     <main id="main-content">
       <slot />
