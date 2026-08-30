@@ -1,0 +1,210 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+  --color-primary: #2563eb;
+
+  --color-secondary-50: #f0fdf4;
+  --color-secondary-100: #dcfce7;
+  --color-secondary-200: #bbf7d0;
+  --color-secondary-500: #10b981;
+  --color-secondary-600: #059669;
+  --color-secondary-700: #047857;
+  --color-secondary: #10b981;
+
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-accent: #f59e0b;
+
+  --color-dark-50: #f8fafc;
+  --color-dark-800: #1e293b;
+  --color-dark-900: #0f172a;
+  --color-dark-950: #030712;
+  --color-dark: #0f172a;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-slate-700 tracking-tight dark:bg-dark-950 dark:text-slate-300;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    @apply font-bold tracking-tight text-slate-900 dark:text-slate-100;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full shadow-md text-sm font-semibold text-center leading-snug transition duration-200 ease-in cursor-pointer hover:shadow-none px-6 py-3;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full shadow-md text-sm font-semibold text-center leading-snug transition duration-200 ease-in cursor-pointer hover:shadow-none px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full shadow-md text-sm font-semibold text-center leading-snug transition duration-200 ease-in cursor-pointer hover:shadow-none px-6 py-3 bg-secondary-600 hover:bg-secondary-700 text-white;
+  }
+
+  .btn-tertiary {
+    @apply inline-flex items-center justify-center rounded-full shadow-md text-sm font-semibold text-center leading-snug transition duration-200 ease-in cursor-pointer hover:shadow-none px-6 py-3 bg-transparent hover:bg-slate-100 text-slate-700 border border-slate-300 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center rounded-full shadow-md text-sm font-semibold text-center leading-snug transition duration-200 ease-in cursor-pointer hover:shadow-none px-6 py-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white;
+  }
+
+  .section-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 py-12 md:py-20;
+  }
+}
+
+/* Web Stories HTML player — kept after the old CSS chrome was removed */
+.story-stage {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 4.5rem 1rem 2rem;
+}
+.story-amp-note {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  text-align: center;
+}
+.prose .lead-answer {
+  @apply text-lg leading-relaxed text-slate-700 dark:text-slate-300;
+}
+.prose .text-muted {
+  @apply text-slate-500;
+}
+.prose .viz-strip {
+  @apply my-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4;
+}
+.prose .viz-pill {
+  @apply rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm dark:border-slate-800 dark:bg-slate-900;
+}
+.prose .viz-pill span {
+  @apply block text-xs uppercase tracking-wide text-slate-500;
+}
+.prose .hero-ctas {
+  @apply mt-6 flex flex-wrap gap-3;
+}
+:root {
+  --gold-light: #fffbeb;
+  --gold-soft: #fde68a;
+  --gold-dark: #b45309;
+  --font-display: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+}
+.story-frame {
+  width: min(420px, 100%);
+  aspect-ratio: 9 / 16;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  background: #0b1220;
+  color: #fff;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+}
+.story-slide {
+  position: absolute;
+  inset: 0;
+  padding: 1.6rem 1.4rem 5.5rem;
+  display: none;
+  background:
+    linear-gradient(180deg, rgba(11, 18, 32, 0.15), rgba(11, 18, 32, 0.82)),
+    var(--slide-bg, #14213d);
+  background-size: cover;
+  background-position: center;
+}
+.story-slide.is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.story-progress {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+  z-index: 2;
+}
+.story-progress span {
+  flex: 1;
+  height: 3px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+}
+.story-progress span i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #60a5fa;
+}
+.story-progress span.is-done i {
+  width: 100%;
+}
+.story-progress span.is-active i {
+  animation: storyBar var(--story-ms, 12s) linear forwards;
+}
+.story-nav {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  z-index: 1;
+}
+.story-cta {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1.1rem;
+  z-index: 3;
+}
+.story-cta a {
+  display: block;
+  text-align: center;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+@keyframes storyBar {
+  from { width: 0; }
+  to { width: 100%; }
+}

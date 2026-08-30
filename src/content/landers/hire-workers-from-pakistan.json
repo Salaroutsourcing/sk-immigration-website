@@ -1,0 +1,24 @@
+{
+  "cluster": "hire-workers-from-pakistan",
+  "slug": "hub",
+  "title": "Hire Workers from Pakistan \u2014 Manpower Recruitment Agency | SK Immigration",
+  "h1": "Hire Workers from Pakistan",
+  "description": "Hire skilled workers from Pakistan. Manpower recruitment agency supporting international employers with trades, candidate screening, workforce requirement forms and quotations.",
+  "image": "/assets/img/about-office.jpg",
+  "publishDate": "2026-08-01",
+  "faqs": [
+    {
+      "question": "How can international companies hire workers from Pakistan?",
+      "answer": "Share your workforce requirement (trade, quantity, destination, contract terms). SK Immigration screens candidates, packages CVs, and supports visa documentation coordination. Final hiring and visa decisions remain with the employer and destination authorities."
+    },
+    {
+      "question": "Which trades are commonly available?",
+      "answer": "Construction, welding, electrical, plumbing, HVAC, driving, hospitality, caregiving, warehouse and general skilled labour \u2014 availability depends on current candidate pipeline."
+    },
+    {
+      "question": "Is SK Immigration a manpower recruitment agency in Pakistan?",
+      "answer": "Yes. SK Immigration Services (SK Immigration Services (SMC-Private) Limited, CUIN 0304985) supports international employers with candidate sourcing and documentation guidance from Rawalpindi, Pakistan."
+    }
+  ],
+  "body": "<h3 style=\"font-family:var(--font-display);font-size:1.1rem;margin-bottom:0.4rem\">Trade-ready pipeline</h3><p class=\"text-muted\" style=\"font-size:0.92rem\">Access candidates across construction, technical and service trades with CV screening.</p>"
+}

@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
 const SITE = 'https://immigration.salaroutsourcing.com';
 
@@ -13,7 +14,7 @@ const SITE = 'https://immigration.salaroutsourcing.com';
 export default defineConfig({
   site: SITE,
   output: 'static',
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
   compressHTML: true,
   build: {
     format: 'directory',
@@ -37,7 +38,8 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/studio') &&
         !page.includes('/dashboard') &&
-        !page.includes('/admin'),
+        !page.includes('/admin') &&
+        !page.includes('/404'),
       serialize(item) {
         if (item.url.includes('/news/')) {
           item.changefreq = ChangeFreqEnum.HOURLY;
@@ -57,6 +59,7 @@ export default defineConfig({
     }),
   ],
   vite: {
+    plugins: [tailwindcss()],
     build: {
       cssMinify: true,
     },

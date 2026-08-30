@@ -1,0 +1,119 @@
+---
+const inputClass =
+  'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-slate-700 dark:bg-dark-950';
+---
+
+<form id="sk-contact-form" class="space-y-4" data-lead-type="contact">
+  <p id="sk-contact-status" class="hidden rounded-xl px-4 py-3 text-sm" role="status"></p>
+  <div class="hidden" aria-hidden="true">
+    <label for="sk_hp">Company</label>
+    <input id="sk_hp" name="sk_hp" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="name" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        Full Name *
+      </label>
+      <input class={inputClass} type="text" id="name" name="name" required placeholder="Muhammad Ahmed" />
+    </div>
+    <div>
+      <label for="phone" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        Phone / WhatsApp *
+      </label>
+      <input class={inputClass} type="tel" id="phone" name="phone" required placeholder="+92 3XX XXXXXXX" />
+    </div>
+  </div>
+  <div>
+    <label for="email" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+      Email Address
+    </label>
+    <input class={inputClass} type="email" id="email" name="email" placeholder="you@domain.com" />
+  </div>
+  <div>
+    <label for="service" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+      Service of Interest *
+    </label>
+    <select class={inputClass} id="service" name="service" required>
+      <option value="">— Select Service —</option>
+      <option value="germany-study">Germany Study Visa &amp; Ausbildung</option>
+      <option value="uk-study">UK Student Visa</option>
+      <option value="canada-study">Canada Study Visa</option>
+      <option value="saudi-work">Saudi Arabia Work Visa (PKR 15k Fixed)</option>
+      <option value="visit-visa">Visit / Tourist Visa</option>
+      <option value="attestation">Document Attestation (MOFA/HEC)</option>
+      <option value="other">Other Inquiry</option>
+    </select>
+  </div>
+  <div>
+    <label for="message" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+      Message / Qualifications *
+    </label>
+    <textarea
+      class={`${inputClass} resize-none`}
+      id="message"
+      name="message"
+      rows="4"
+      required
+      placeholder="Your academic background, IELTS/German score, and preferred destination..."
+    ></textarea>
+  </div>
+  <button type="submit" class="btn-primary mt-2 w-full py-3" id="sk-contact-submit">
+    Submit Assessment Request
+  </button>
+</form>
+
+<script>
+  const form = document.getElementById('sk-contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('sk-contact-status');
+  const submit = document.getElementById('sk-contact-submit') as HTMLButtonElement | null;
+
+  function show(kind: 'ok' | 'err', text: string) {
+    if (!status) return;
+    status.textContent = text;
+    status.className =
+      kind === 'ok'
+        ? 'rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200'
+        : 'rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800 dark:bg-red-900/30 dark:text-red-200';
+  }
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const payload = {
+      type: form.dataset.leadType || 'contact',
+      sk_hp: String(data.get('sk_hp') || ''),
+      data: {
+        name: String(data.get('name') || '').trim(),
+        phone: String(data.get('phone') || '').trim(),
+        email: String(data.get('email') || '').trim(),
+        service: String(data.get('service') || '').trim(),
+        message: String(data.get('message') || '').trim(),
+      },
+    };
+    if (submit) {
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+    }
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const body = await res.json().catch(() => null);
+      if (res.ok && body?.ok) {
+        form.reset();
+        show('ok', 'Thank you. We will reply within 24 hours on WhatsApp or email.');
+      } else {
+        show('err', 'Could not send the form. Please WhatsApp us instead.');
+      }
+    } catch {
+      show('err', 'Network error. Please WhatsApp +92 304 5999859.');
+    } finally {
+      if (submit) {
+        submit.disabled = false;
+        submit.textContent = 'Submit Assessment Request';
+      }
+    }
+  });
+</script>

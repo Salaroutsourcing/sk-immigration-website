@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT, BUSINESS } from '../lib/config';
+---
+
+<BaseLayout
+  title="Terms of Service — SK Immigration Services"
+  description="Terms of Service for SK Immigration Services (SMC-Private) Limited. No visa guarantees policy, fee structure, limitation of liability, and service conditions."
+  canonical="/terms/"
+>
+  <section class="bg-slate-900 py-12">
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6">
+      <h1 class="font-heading text-3xl font-bold text-white">Terms of Service</h1>
+      <p class="mt-2 text-sm text-slate-400">Last updated: August 2026</p>
+    </div>
+  </section>
+  <section class="section-container">
+    <div class="prose prose-slate mx-auto max-w-3xl dark:prose-invert">
+      <div class="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-5 not-prose dark:border-amber-700/50 dark:bg-amber-900/20">
+        <p class="text-sm font-medium text-amber-800 dark:text-amber-300">
+          SK Immigration Services does not guarantee visa outcomes. All visa decisions are made exclusively by embassies, consulates, VFS Global, and immigration authorities.
+        </p>
+      </div>
+      <h2>1. About the Company</h2>
+      <p>
+        These terms govern services provided by <strong>SK Immigration Services (SMC-Private) Limited</strong>
+        (CUIN {BUSINESS.cuin}), operating from Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi, Punjab, Pakistan.
+      </p>
+      <h2>2. Nature of Services</h2>
+      <ul>
+        <li>Immigration file preparation and documentation assistance</li>
+        <li>Educational guidance on visa categories</li>
+        <li>University and employer admission assistance</li>
+        <li>Document attestation coordination</li>
+        <li>Visa appointment booking assistance</li>
+      </ul>
+      <p>We are an immigration consultancy, not a legal firm. We do not provide court representation.</p>
+      <h2>3. No Visa Guarantee Policy</h2>
+      <p>
+        SK Immigration Services does <strong>not</strong> guarantee, promise, or imply any specific visa outcome.
+        Final decisions rest solely with the relevant embassy, consulate, or immigration authority.
+      </p>
+      <h2>4. Fee Policy</h2>
+      <ul>
+        <li>All consultancy fees are communicated in writing before payment</li>
+        <li>Government fees (BEOE, Enjaz, VFS, embassy, medical) are paid to the authority and are separate</li>
+        <li>Consultancy fees are non-refundable once file preparation has commenced, unless we cannot begin the service</li>
+        <li>A visa refusal does not automatically entitle a fee refund — our service is file preparation, not visa approval</li>
+      </ul>
+      <h2>5. Client Responsibilities</h2>
+      <ul>
+        <li>Provide accurate, complete, and truthful information</li>
+        <li>Respond promptly to document requests</li>
+        <li>Attend scheduled appointments</li>
+        <li>Not misrepresent profile, finances, or intentions to any authority</li>
+      </ul>
+      <p>False documents may result in permanent visa bans. We cease services if fraud is discovered.</p>
+      <h2>6. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by Pakistani law, SK Immigration Services is not liable for:</p>
+      <ul>
+        <li>Visa refusals</li>
+        <li>Changes in embassy requirements or immigration rules</li>
+        <li>Government processing delays</li>
+        <li>Indirect or consequential losses</li>
+      </ul>
+      <h2>7. Governing Law</h2>
+      <p>These terms are governed by the laws of the Islamic Republic of Pakistan. Disputes are subject to the courts of Rawalpindi, Punjab.</p>
+      <h2>8. Website Content Disclaimer</h2>
+      <p>Guides and blog posts are educational. Embassy requirements change. Always verify official sources.</p>
+      <h2>9. Contact</h2>
+      <p>
+        <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a><br />
+        WhatsApp: <a href={`tel:${CONTACT.phone}`}>{CONTACT.phoneFormatted}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

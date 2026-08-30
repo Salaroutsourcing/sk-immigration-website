@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTACT } from '../lib/config';
+---
+
+<BaseLayout title="Page not found" description="The page you requested is not on the SK Immigration Services website." canonical="/404/" noindex>
+  <section class="section-container text-center">
+    <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary-600">404</p>
+    <h1 class="mb-4 font-heading text-4xl font-bold text-slate-900 dark:text-white">This page is not available</h1>
+    <p class="mx-auto mb-8 max-w-lg text-slate-600 dark:text-slate-400">
+      The link may be old. Use the services on the homepage, or message us on WhatsApp.
+    </p>
+    <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/" class="btn-primary">Back to home</a>
+      <a href="/services/" class="btn-tertiary">View services</a>
+      <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">WhatsApp {CONTACT.phoneFormatted}</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,11 @@
+---
+import LanderLayout from '../../layouts/LanderLayout.astro';
+import { landerByPath } from '../../lib/landers';
+
+const entry = await landerByPath('official-links', 'hub');
+if (!entry) {
+  throw new Error('Missing official-links lander');
+}
+---
+
+<LanderLayout entry={entry} />

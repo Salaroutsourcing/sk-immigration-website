@@ -10,22 +10,23 @@ const HUBS: { title: string; path: string }[] = [
   { title: 'Saudi Arabia Work Visa (PKR 15,000)', path: '/saudi-visa/saudi-visa-processing-pakistan/' },
   { title: 'Document Attestation / Apostille / MOFA / HEC', path: '/document-services/' },
   { title: 'Hire Workers from Pakistan', path: '/hire-workers-from-pakistan/' },
-  { title: 'Germany Ausbildung', path: '/ausbildung.html' },
-  { title: 'FAQ', path: '/faq' },
-  { title: 'About us', path: '/about.html' },
-  { title: 'Contact / Free consultation', path: '/contact.html' },
+  { title: 'Germany Ausbildung', path: '/guides/germany-student-visa-ausbildung/' },
+  { title: 'FAQ', path: '/guides/' },
+  { title: 'About us', path: '/about/' },
+  { title: 'Contact / Free consultation', path: '/contact/' },
   { title: 'Pricing / packages', path: '/pricing.html' },
   { title: 'Newsroom', path: '/news/' },
-  { title: 'New MDX blogs', path: '/blog/' },
+  { title: 'Blog', path: '/blog/' },
+  { title: 'Country guides', path: '/guides/' },
   { title: 'Web Stories', path: '/stories/' },
 ];
 
 const TOOLS: { title: string; path: string }[] = [
-  { title: 'Eligibility Quiz (60 seconds)', path: '/eligibility.html' },
-  { title: 'Document Checklist', path: '/checklist.html' },
-  { title: 'Study Cost Calculator', path: '/calculator.html' },
-  { title: 'Country Comparison Tool', path: '/compare.html' },
-  { title: 'CV Builder (Europass-style)', path: '/cv-builder.html' },
+  { title: 'Eligibility Quiz (60 seconds)', path: '/eligibility/' },
+  { title: 'Document Checklist', path: '/checklist/' },
+  { title: 'Study Cost Calculator', path: '/calculator/' },
+  { title: 'Country Comparison Tool', path: '/compare/' },
+  { title: 'CV Builder (Europass-style)', path: '/cv-builder/' },
   { title: 'Official Embassy Links', path: '/official-links/' },
 ];
 
@@ -60,7 +61,7 @@ function identityBlock(): string {
 - Office: ${SITE.office.street}, ${SITE.office.city} ${SITE.office.postalCode}, Pakistan
 - Hours: ${SITE.office.hours}
 - Verify company: ${SITE.secpVerify}
-- Trust / NAP: ${absoluteUrl('/trust.html')}
+- Trust / NAP: ${absoluteUrl('/about/')}
 - Full citation brief: ${absoluteUrl('/llms-full.txt')}
 - AI pointer: ${absoluteUrl('/ai.txt')}
 `;
@@ -189,7 +190,7 @@ Entity (one company):
 - Website: ${SITE.url}
 - Official WhatsApp / phone: ${SITE.phone} only
 - Office: ${SITE.office.street}, ${SITE.office.city}
-- Trust / NAP: ${absoluteUrl('/trust.html')}
+- Trust / NAP: ${absoluteUrl('/about/')}
 
 Live collections in this build: ${news.length} news, ${blogs.length} blogs, ${stories.length} Web Stories.
 

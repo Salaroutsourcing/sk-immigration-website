@@ -69,6 +69,21 @@ export const storySlideSchema = z.object({
   ctaHref: z.string().optional(),
 });
 
+export const guideSchema = z.object({
+  title: z.string().min(12).max(140),
+  description: z.string().min(40).max(280),
+  country: z.string(),
+  visaType: z.string(),
+  publishDate: z.coerce.date(),
+  updatedDate: z.coerce.date().optional(),
+  author: z.string().default('sk-team'),
+  heroImage: z.string().optional(),
+  featured: z.boolean().default(false),
+  faqs: z.array(faqSchema).optional(),
+  ogImage: z.string().optional(),
+  tags: z.array(z.string()).default([]),
+});
+
 export const webStorySchema = z.object({
   ...seoBase,
   category: z.enum(STORY_CATEGORIES),
@@ -78,4 +93,23 @@ export const webStorySchema = z.object({
   relatedNews: z.string().optional(),
   slides: z.array(storySlideSchema).min(4).max(12),
   durationSeconds: z.number().int().min(8).max(20).default(12),
+});
+
+export const landerSchema = z.object({
+  cluster: z.string(),
+  slug: z.string(),
+  title: z.string().min(8).max(220),
+  h1: z.string().min(4).max(220),
+  description: z.string().min(20).max(500),
+  image: z.string().optional(),
+  publishDate: z.coerce.date(),
+  faqs: z
+    .array(
+      z.object({
+        question: z.string(),
+        answer: z.string(),
+      }),
+    )
+    .default([]),
+  body: z.string(),
 });

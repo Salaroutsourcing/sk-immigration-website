@@ -1,0 +1,56 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'SK Immigration Country Compare Tool',
+  url: 'https://immigration.salaroutsourcing.com/compare/',
+  applicationCategory: 'BusinessApplication',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'PKR' },
+};
+---
+
+<ToolLayout
+  title="Compare Study Destinations | Side-by-Side Visa Countries"
+  description="Compare two study destinations: costs, IELTS, low-marks fit, timeline, work rights and post-study options. SK Immigration Services — free consultation."
+  canonical="/compare/"
+  jsonLd={jsonLd}
+>
+  <section class="not-prose border-b border-slate-200 bg-slate-50 py-12 dark:border-slate-800 dark:bg-dark-950 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary-600">Free tool · 30-second clarity</p>
+      <h1 class="mb-4 font-heading text-3xl font-bold text-slate-900 md:text-5xl dark:text-white">Compare 2 countries visually</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-400">
+        Cost, IELTS, low marks, language, work rights and after-study options — side by side.
+      </p>
+    </div>
+  </section>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-4xl">
+      <div id="compareRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>Compare study destinations from Pakistan</h2>
+        <p>
+          Use this tool to contrast two countries on cost, IELTS, low-marks fit, language, work rights and post-study options.
+          It does not replace embassy rules — SK Immigration prepares files; embassies decide visas.
+        </p>
+        <p>
+          Read full guides in the <a href="/study-visa/">Study Visa hub</a>, run the
+          <a href="/eligibility/">eligibility quiz</a>, or book a free consult on WhatsApp
+          <a href="https://wa.me/923045999859">+92 304 5999859</a>.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/visa-tools.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SalarTools && window.SalarTools.mountCompare('#compareRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

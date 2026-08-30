@@ -1,0 +1,11 @@
+---
+import LanderLayout from '../../layouts/LanderLayout.astro';
+import { landerByPath } from '../../lib/landers';
+
+const entry = await landerByPath('hire-workers-from-pakistan', 'hub');
+if (!entry) {
+  throw new Error('Missing hire-workers-from-pakistan lander');
+}
+---
+
+<LanderLayout entry={entry} />

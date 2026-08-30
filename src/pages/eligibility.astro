@@ -1,0 +1,71 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'SK Immigration Eligibility Quiz',
+  url: 'https://immigration.salaroutsourcing.com/eligibility/',
+  applicationCategory: 'BusinessApplication',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'PKR' },
+};
+---
+
+<ToolLayout
+  title="Free Eligibility Quiz | Find Your Study Destination"
+  description="Free 6-question eligibility quiz for students from Pakistan. Get destination matches for Germany, UK, Canada, Hungary and more. Save results for SK Immigration follow-up."
+  canonical="/eligibility/"
+  jsonLd={jsonLd}
+>
+  <section class="not-prose border-b border-slate-200 bg-slate-50 py-12 dark:border-slate-800 dark:bg-dark-950 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary-600">Free tool · ~60 seconds</p>
+      <h1 class="mb-4 font-heading text-3xl font-bold text-slate-900 md:text-5xl dark:text-white">
+        Find pathways that fit your profile
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-400">
+        Answer 6 questions. Get destination matches. Optionally save results so SK Immigration advisors can follow up on WhatsApp
+        <strong>+92 304 5999859</strong>.
+      </p>
+    </div>
+  </section>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-3xl">
+      <div id="quizRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>What this eligibility quiz checks</h2>
+        <p>
+          The quiz helps Pakistani students and professionals shortlist realistic study or work pathways before a free
+          consultation. It is guidance only — embassies and universities decide outcomes.
+        </p>
+        <ul>
+          <li>Education level and marks profile</li>
+          <li>Budget and preferred region (Europe, UK, Canada, Gulf, and more)</li>
+          <li>Language readiness (IELTS / German / other)</li>
+          <li>Timeline and whether Ausbildung or degree routes fit better</li>
+        </ul>
+        <h2>After your result</h2>
+        <ol>
+          <li>Open the matching <a href="/study-visa/">study visa</a> or <a href="/work-permit/">work permit</a> country guide.</li>
+          <li>Tick documents on the <a href="/checklist/">checklist</a>.</li>
+          <li>Book a free consult via <a href="/contact/">contact</a> or WhatsApp.</li>
+        </ol>
+        <p>
+          Prefer reading first? See <a href="/guides/study-abroad-without-ielts-pakistan/">study without IELTS</a>,
+          <a href="/guides/germany-student-visa-ausbildung/">Ausbildung Pakistan</a>, and the
+          <a href="/answers/">Answers hub</a>.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/quiz.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SalarQuiz && window.SalarQuiz.mount('#quizRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

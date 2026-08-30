@@ -13,7 +13,6 @@ interface Props {
   updated?: Date;
   noindex?: boolean;
   jsonLd?: unknown[];
-  /** HTML player → AMP Web Story. Do not put AMP runtime on this layout. */
   amphtml?: string;
 }
 
@@ -37,6 +36,7 @@ const euRegions = [...EU_CONSENT_REGIONS];
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <script is:inline define:vars={{ euRegions }}>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
@@ -79,8 +79,7 @@ const euRegions = [...EU_CONSENT_REGIONS];
   is:inline
   async
   src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.analytics.adsense}`}
-  crossorigin="anonymous"
-></script>
+  crossorigin="anonymous"></script>
 <Clarity />
 <title>{title}</title>
 <meta name="description" content={description} />
@@ -92,8 +91,12 @@ const euRegions = [...EU_CONSENT_REGIONS];
 <link rel="canonical" href={canonicalAbs} />
 {amphtml && <link rel="amphtml" href={absoluteUrl(amphtml)} />}
 <link rel="alternate" hreflang="en" href={canonicalAbs} />
-<link rel="alternate" hreflang="x-default" href={canonicalAbs} />
+<link rel="alternate" hreflang="x-default" href={SITE.url + '/'} />
 <meta name="author" content={SITE.brandFull} />
+<meta
+  name="keywords"
+  content="SK Immigration Services, SK Consultant, study visa Pakistan, work permit Pakistan, visit visa Pakistan, Rawalpindi visa consultant, Germany Ausbildung Pakistan, Saudi work visa Pakistan"
+/>
 <meta property="og:type" content={type} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -110,6 +113,7 @@ const euRegions = [...EU_CONSENT_REGIONS];
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageAbs} />
 <link rel="icon" href={SITE.logo} type="image/jpeg" />
+<link rel="apple-touch-icon" href={SITE.logo} />
 <link rel="manifest" href="/manifest.json" />
 <meta name="theme-color" content="#0f172a" />
 <link rel="sitemap" href="/sitemap.xml" />
@@ -118,9 +122,8 @@ const euRegions = [...EU_CONSENT_REGIONS];
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
 />
-<link rel="stylesheet" href="/assets/css/main.css?v=launch6" />
 {jsonLd.map((block) => (
   <script is:inline type="application/ld+json" set:html={JSON.stringify(block)} />
 ))}

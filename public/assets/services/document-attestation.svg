@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="attestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="50%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="stampGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#attestGrad)" />
+
+  <!-- Document & Official Ribbon Stamp -->
+  <g transform="translate(400, 190)">
+    <!-- Document Stack -->
+    <rect x="-70" y="-80" width="140" height="180" rx="10" fill="#ffffff" filter="drop-shadow(0 10px 20px rgba(0,0,0,0.3))" />
+    <!-- Document Lines -->
+    <line x1="-45" y1="-50" x2="45" y2="-50" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+    <line x1="-45" y1="-30" x2="45" y2="-30" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+    <line x1="-45" y1="-10" x2="20" y2="-10" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+    <line x1="-45" y1="10" x2="35" y2="10" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Official Seal -->
+    <g transform="translate(30, 50)">
+      <!-- Ribbon Tails -->
+      <path d="M-10 15 L-20 45 L0 35 L20 45 L10 15 Z" fill="#ef4444" />
+      <!-- Seal Circle -->
+      <circle cx="0" cy="0" r="30" fill="url(#stampGold)" />
+      <circle cx="0" cy="0" r="24" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="4 2" />
+      <text x="0" y="6" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#78350f" text-anchor="middle">MOFA</text>
+    </g>
+  </g>
+
+  <!-- Authority Badges -->
+  <g transform="translate(200, 360)">
+    <rect x="-65" y="-18" width="130" height="36" rx="18" fill="#ffffff" fill-opacity="0.15" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="0" y="6" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">MOFA Pakistan</text>
+  </g>
+  <g transform="translate(340, 360)">
+    <rect x="-55" y="-18" width="110" height="36" rx="18" fill="#ffffff" fill-opacity="0.15" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="0" y="6" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">HEC Degree</text>
+  </g>
+  <g transform="translate(470, 360)">
+    <rect x="-55" y="-18" width="110" height="36" rx="18" fill="#ffffff" fill-opacity="0.15" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="0" y="6" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Apostille</text>
+  </g>
+  <g transform="translate(605, 360)">
+    <rect x="-60" y="-18" width="120" height="36" rx="18" fill="#ffffff" fill-opacity="0.15" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="0" y="6" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">QVP &amp; IBCC</text>
+  </g>
+</svg>

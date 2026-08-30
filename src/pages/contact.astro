@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { SITE, CONTACT, BUSINESS } from '../lib/config';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: `${SITE.url}/contact/` },
+  ],
+};
+---
+
+<BaseLayout
+  title="Contact SK Immigration Services — Rawalpindi Office"
+  description="Contact SK Immigration Services in Satellite Town, Rawalpindi. WhatsApp +92 304 5999859, visit our office, or book an online consultation."
+  canonical="/contact/"
+  jsonLd={breadcrumbSchema}
+>
+  <section class="not-prose border-b border-slate-200 bg-slate-50 py-12 dark:border-slate-800 dark:bg-dark-950 md:py-16">
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6">
+      <h1 class="mb-4 font-heading text-3xl font-bold text-slate-900 md:text-5xl dark:text-white">
+        Contact our immigration desk
+      </h1>
+      <p class="mx-auto max-w-xl text-lg text-slate-600 dark:text-slate-400">
+        Questions about study visas, Ausbildung, or Saudi work processing? Reach the Rawalpindi team.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-container">
+    <div class="grid items-start gap-12 lg:grid-cols-12">
+      <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:col-span-7">
+        <h2 class="mb-2 font-heading text-2xl font-bold text-slate-900 dark:text-white">Send us an inquiry</h2>
+        <p class="mb-6 text-sm text-slate-600 dark:text-slate-400">
+          Free assessment. We typically reply within 24 hours. Leads are stored on our secure desk — not a mailto form.
+        </p>
+        <ContactForm />
+      </div>
+      <div class="space-y-6 lg:col-span-5">
+        <div class="rounded-3xl border border-[#25D366]/30 bg-[#25D366]/10 p-6">
+          <h3 class="mb-2 font-heading text-lg font-bold text-slate-900 dark:text-white">Instant WhatsApp support</h3>
+          <p class="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+            Message the official desk for quick answers on requirements and eligibility.
+          </p>
+          <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp w-full py-2.5 text-center text-sm">
+            WhatsApp {CONTACT.phoneFormatted}
+          </a>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="mb-4 font-heading text-lg font-bold text-slate-900 dark:text-white">Head office</h3>
+          <div class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+            <p><strong>Address:</strong> {CONTACT.address.full}</p>
+            <p><strong>Hours:</strong> {CONTACT.hours}</p>
+            <p><strong>Email:</strong> {CONTACT.email}</p>
+            <p><strong>SECP CUIN:</strong> {BUSINESS.cuin}</p>
+          </div>
+          <div class="mt-6 border-t border-slate-200 pt-4 dark:border-slate-800">
+            <a href={BUSINESS.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-semibold text-primary-600 hover:underline dark:text-primary-400">
+              Open location in Google Maps ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

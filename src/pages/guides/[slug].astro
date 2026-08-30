@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import LanderLayout from '../../layouts/LanderLayout.astro';
+import { SITE } from '../../lib/site';
+import { basePageGraph } from '../../lib/seo';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const skipJsonGuides = new Set(['ausbildung-pakistan']);
+  const markdown = await getCollection('guides');
+  const json = await getCollection(
+    'landers',
+    (entry) => entry.data.cluster === 'guides' && !skipJsonGuides.has(entry.data.slug),
+  );
+  const markdownIds = new Set(markdown.map((guide) => guide.id));
+  return [
+    ...markdown.map((guide) => ({
+      params: { slug: guide.id },
+      props: { kind: 'md' as const, guide },
+    })),
+    ...json
+      .filter((entry) => !markdownIds.has(entry.data.slug))
+      .map((entry) => ({
+        params: { slug: entry.data.slug },
+        props: { kind: 'json' as const, entry },
+      })),
+  ];
+}
+
+interface Props {
+  kind: 'md' | 'json';
+  guide?: CollectionEntry<'guides'>;
+  entry?: CollectionEntry<'landers'>;
+}
+
+const { kind, guide, entry } = Astro.props as Props;
+const rendered = kind === 'md' && guide ? await render(guide) : null;
+const Content = rendered?.Content;
+const path = guide ? `/guides/${guide.id}/` : '';
+const words = (guide?.body ?? '').split(/\s+/).length;
+---
+
+{kind === 'json' && entry && <LanderLayout entry={entry} />}
+
+{kind === 'md' && guide && Content && (
+  <ArticleLayout
+    title={`${guide.data.title} | ${SITE.brand}`}
+    description={guide.data.description}
+    canonical={path}
+    published={guide.data.publishDate}
+    updated={guide.data.updatedDate}
+    image={guide.data.heroImage ?? guide.data.ogImage}
+    page="guides"
+    category={guide.data.visaType}
+    crumbs={[
+      { name: 'Home', path: '/' },
+      { name: 'Guides', path: '/guides/' },
+      { name: guide.data.title, path },
+    ]}
+    faqs={guide.data.faqs}
+    jsonLd={[
+      ...basePageGraph([
+        { name: 'Home', path: '/' },
+        { name: 'Guides', path: '/guides/' },
+        { name: guide.data.title, path },
+      ]),
+    ]}
+  >
+    <Content />
+    <p class="text-sm text-slate-500">Estimated read: {Math.max(3, Math.ceil(words / 200))} minutes.</p>
+  </ArticleLayout>
+)}

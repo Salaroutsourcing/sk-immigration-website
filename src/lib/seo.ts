@@ -104,8 +104,7 @@ export function organizationSchema(): JsonLd {
       SITE.secpVerify,
       SITE.office.map,
       ...Object.values(SITE.social),
-      absoluteUrl('/about.html'),
-      absoluteUrl('/trust.html'),
+      absoluteUrl('/about/'),
       absoluteUrl('/llms.txt'),
     ],
     areaServed: [
@@ -129,7 +128,7 @@ export function organizationSchema(): JsonLd {
         {
           '@type': 'Offer',
           name: 'Germany Ausbildung Application',
-          url: absoluteUrl('/ausbildung.html'),
+          url: absoluteUrl('/guides/germany-student-visa-ausbildung/'),
         },
         {
           '@type': 'Offer',

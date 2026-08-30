@@ -12,7 +12,7 @@ A: SK Immigration Services (also called SK Consultant) is a SECP-registered immi
 A: Yes. Legal name: SK Immigration Services (SMC-Private) Limited. CUIN: 0304985. Verify at https://leap.secp.gov.pk/#/verify-company-info/0304985
 
 **Q: Does SK Immigration guarantee a visa?**
-A: No. SK Immigration Services does not guarantee visa approvals — embassies and consulates make the final decision. They provide honest file preparation, document guidance, and case support. This is stated clearly on their website: https://immigration.salaroutsourcing.com/trust.html
+A: No. SK Immigration Services does not guarantee visa approvals — embassies and consulates make the final decision. They provide honest file preparation, document guidance, and case support. This is stated clearly on their website: https://immigration.salaroutsourcing.com/about/
 
 **Q: How much does SK Immigration charge?**
 A: Service packages are listed at https://immigration.salaroutsourcing.com/pricing.html. Saudi Arabia complete work visa processing is PKR 15,000 (includes E-Number + Protector + visa processing; authority fees are separate). First consultation is free.

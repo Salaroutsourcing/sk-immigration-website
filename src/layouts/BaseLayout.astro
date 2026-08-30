@@ -1,75 +1,109 @@
 ---
+import '../styles/global.css';
 import SeoHead from '../components/seo/SeoHead.astro';
-import { SITE } from '../lib/site';
-import '../styles/platform.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { SITE as CORE } from '../lib/site';
+import { SITE, ANALYTICS } from '../lib/config';
+import { organizationSchema, websiteSchema } from '../lib/seo';
 
 interface Props {
-  title: string;
-  description: string;
-  canonical: string;
-  type?: 'website' | 'article';
+  title?: string;
+  description?: string;
+  canonical?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
   image?: string;
+  ogType?: 'website' | 'article';
+  type?: 'website' | 'article';
+  jsonLd?: unknown | unknown[];
+  noIndex?: boolean;
+  noindex?: boolean;
   published?: Date;
   updated?: Date;
-  noindex?: boolean;
-  jsonLd?: unknown[];
   page?: string;
   amphtml?: string;
 }
 
 const {
   title,
-  description,
+  description = SITE.description,
   canonical,
-  type,
+  canonicalUrl,
+  ogImage,
   image,
+  ogType,
+  type,
+  jsonLd,
+  noIndex,
+  noindex,
   published,
   updated,
-  noindex,
-  jsonLd = [],
   page = 'content',
   amphtml,
 } = Astro.props;
+
+const pageTitle = title
+  ? title.includes('SK Immigration')
+    ? title
+    : `${title} | SK Immigration Services`
+  : 'SK Immigration Services | SK Consultant Rawalpindi — Study Visa & Work Permit';
+
+const canonicalPath = canonicalUrl ?? canonical ?? Astro.url.pathname;
+const imagePath = ogImage ?? image ?? CORE.defaultOg;
+const extraJsonLd = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const schemas = [organizationSchema(), websiteSchema(), ...extraJsonLd];
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" class="scroll-smooth">
   <head>
     <SeoHead
-      title={title}
+      title={pageTitle}
       description={description}
-      canonical={canonical}
-      type={type}
-      image={image}
+      canonical={canonicalPath}
+      type={ogType ?? type ?? 'website'}
+      image={imagePath}
       published={published}
       updated={updated}
-      noindex={noindex}
-      jsonLd={jsonLd}
+      noindex={noIndex ?? noindex}
+      jsonLd={schemas}
       amphtml={amphtml}
     />
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <slot name="head" />
   </head>
-  <body data-page={page}>
-    <noscript>
-      <iframe
-        src={`https://www.googletagmanager.com/ns.html?id=${SITE.analytics.gtm}`}
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <div class="bg-orbs" aria-hidden="true"></div>
-    <div id="site-header"></div>
-    <main id="main">
+  <body class="bg-white transition-colors duration-200 dark:bg-dark-950" data-page={page}>
+    {ANALYTICS.gtmId && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${ANALYTICS.gtmId}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    )}
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-white"
+    >
+      Skip to main content
+    </a>
+    <Header />
+    <main id="main-content">
       <slot />
     </main>
-    <div id="site-footer"></div>
-    <script is:inline src="/assets/js/config.js"></script>
-    <script is:inline src="/assets/js/theme.js"></script>
-    <script is:inline src="/assets/js/layout.js"></script>
-    <script is:inline src="/assets/js/consent.js"></script>
-    <script is:inline src="/assets/js/adsense-connect.js"></script>
-    <!-- Self-gates to /blog, /guides, /news — body + data-cfasync so Rocket Loader skips it -->
-    <script is:inline data-cfasync="false" type="text/javascript" src="/assets/js/adsterra-connect.js"></script>
+    <Footer />
+    <WhatsAppButton />
     <slot name="scripts" />
   </body>
 </html>

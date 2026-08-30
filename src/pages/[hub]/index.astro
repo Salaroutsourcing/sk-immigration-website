@@ -1,0 +1,12 @@
+---
+import HubIndex from '../../components/HubIndex.astro';
+import { HUB_INDEX_CLUSTERS } from '../../lib/landers';
+
+export function getStaticPaths() {
+  return HUB_INDEX_CLUSTERS.map((hub) => ({ params: { hub } }));
+}
+
+const { hub } = Astro.params;
+---
+
+<HubIndex cluster={hub!} />
