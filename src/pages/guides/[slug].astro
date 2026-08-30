@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { SITE } from '../../lib/site';
+import { basePageGraph } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((guide) => ({
+    params: { slug: guide.id },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+const path = `/guides/${guide.id}/`;
+const words = (guide.body ?? '').split(/\s+/).length;
+---
+
+<ArticleLayout
+  title={`${guide.data.title} | ${SITE.brand}`}
+  description={guide.data.description}
+  canonical={path}
+  published={guide.data.publishDate}
+  updated={guide.data.updatedDate}
+  image={guide.data.heroImage ?? guide.data.ogImage}
+  page="guides"
+  category={guide.data.visaType}
+  crumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Guides', path: '/guides/' },
+    { name: guide.data.title, path },
+  ]}
+  faqs={guide.data.faqs}
+  jsonLd={[
+    ...basePageGraph([
+      { name: 'Home', path: '/' },
+      { name: 'Guides', path: '/guides/' },
+      { name: guide.data.title, path },
+    ]),
+  ]}
+>
+  <Content />
+  <p class="text-sm text-slate-500">Estimated read: {Math.max(3, Math.ceil(words / 200))} minutes.</p>
+</ArticleLayout>

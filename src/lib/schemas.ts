@@ -69,6 +69,21 @@ export const storySlideSchema = z.object({
   ctaHref: z.string().optional(),
 });
 
+export const guideSchema = z.object({
+  title: z.string().min(12).max(140),
+  description: z.string().min(40).max(280),
+  country: z.string(),
+  visaType: z.string(),
+  publishDate: z.coerce.date(),
+  updatedDate: z.coerce.date().optional(),
+  author: z.string().default('sk-team'),
+  heroImage: z.string().optional(),
+  featured: z.boolean().default(false),
+  faqs: z.array(faqSchema).optional(),
+  ogImage: z.string().optional(),
+  tags: z.array(z.string()).default([]),
+});
+
 export const webStorySchema = z.object({
   ...seoBase,
   category: z.enum(STORY_CATEGORIES),

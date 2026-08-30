@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { blogSchema, newsSchema, webStorySchema } from './lib/schemas';
+import { blogSchema, guideSchema, newsSchema, webStorySchema } from './lib/schemas';
 
 const news = defineCollection({
   loader: glob({
@@ -26,8 +26,17 @@ const webStories = defineCollection({
   schema: webStorySchema,
 });
 
+const guides = defineCollection({
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/guides',
+  }),
+  schema: guideSchema,
+});
+
 export const collections = {
   news,
   blog,
+  guides,
   'web-stories': webStories,
 };

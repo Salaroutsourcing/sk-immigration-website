@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="appGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4338ca" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <radialGradient id="glow5" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#appGrad)" />
+  <circle cx="400" cy="225" r="300" fill="url(#glow5)" />
+
+  <!-- Calendar Icon Graphics -->
+  <g transform="translate(400, 190)">
+    <!-- Calendar Body -->
+    <rect x="-80" y="-70" width="160" height="150" rx="16" fill="#ffffff" filter="drop-shadow(0 12px 24px rgba(0,0,0,0.25))" />
+    <!-- Calendar Top Bar -->
+    <path d="M-80 -54 Q-80 -70 -64 -70 L64 -70 Q80 -70 80 -54 L80 -25 L-80 -25 Z" fill="#ef4444" />
+    <!-- Rings -->
+    <rect x="-45" y="-85" width="12" height="25" rx="6" fill="#1e1b4b" />
+    <rect x="33" y="-85" width="12" height="25" rx="6" fill="#1e1b4b" />
+    
+    <!-- Grid Dots / Confirmed check -->
+    <g transform="translate(0, 25)">
+      <circle cx="-40" cy="-20" r="7" fill="#cbd5e1" />
+      <circle cx="0" cy="-20" r="7" fill="#cbd5e1" />
+      <circle cx="40" cy="-20" r="7" fill="#cbd5e1" />
+      <circle cx="-40" cy="15" r="7" fill="#cbd5e1" />
+      <!-- Booked date -->
+      <circle cx="0" cy="15" r="18" fill="#10b981" />
+      <path d="M-6 15 L-2 19 L7 10" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="40" cy="15" r="7" fill="#cbd5e1" />
+    </g>
+  </g>
+
+  <!-- Facilitator Badges -->
+  <g transform="translate(180, 360)">
+    <rect x="-55" y="-18" width="110" height="36" rx="18" fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="0" y="6" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">VFS Global</text>
+  </g>
+  <g transform="translate(325, 360)">
+    <rect x="-55" y="-18" width="110" height="36" rx="18" fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="0" y="6" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Gerry's FMC</text>
+  </g>
+  <g transform="translate(470, 360)">
+    <rect x="-55" y="-18" width="110" height="36" rx="18" fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="0" y="6" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">TLScontact</text>
+  </g>
+  <g transform="translate(615, 360)">
+    <rect x="-55" y="-18" width="110" height="36" rx="18" fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="0" y="6" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">BLS / Embassy</text>
+  </g>
+</svg>

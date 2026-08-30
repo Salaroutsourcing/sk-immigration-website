@@ -1,0 +1,33 @@
+---
+/**
+ * AdSense slot for template pages. Adsterra content slots stay in ads/AdSlot.astro.
+ */
+import { ANALYTICS } from '../lib/config';
+
+interface Props {
+  slotId?: string;
+  format?: 'auto' | 'rectangle' | 'horizontal';
+  label?: string;
+}
+
+const { slotId = '1234567890', format = 'auto', label = 'Advertisement' } = Astro.props;
+---
+
+{ANALYTICS.adsenseId && (
+  <div class="not-prose my-8 overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-50/50 p-4 text-center dark:border-slate-800 dark:bg-slate-900/50">
+    <div class="mb-2 text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+      {label}
+    </div>
+    <ins
+      class="adsbygoogle block"
+      style="display:block"
+      data-ad-client={ANALYTICS.adsenseId}
+      data-ad-slot={slotId}
+      data-ad-format={format}
+      data-full-width-responsive="true"
+    ></ins>
+    <script is:inline>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+)}

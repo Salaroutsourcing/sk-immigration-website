@@ -1,9 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import AdSlot from '../components/ads/AdSlot.astro';
-import FaqList from '../components/content/FaqList.astro';
+import AdSlot from '../components/AdSlot.astro';
+import AdsterraSlot from '../components/ads/AdSlot.astro';
 import AffiliateCard from '../components/content/AffiliateCard.astro';
 import StoryToBlogCta from '../components/content/StoryToBlogCta.astro';
+import { CONTACT } from '../lib/config';
 
 interface Props {
   title: string;
@@ -57,47 +58,88 @@ const publishedLabel = published.toLocaleDateString('en-GB', {
   jsonLd={jsonLd}
   page={page}
 >
-  <article class="platform-wrap">
-    <nav class="crumb" aria-label="Breadcrumb">
-      {
-        crumbs.map((crumb, i) => (
+  <article class="mx-auto max-w-4xl px-4 py-8 sm:px-6 md:py-12">
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex flex-wrap items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+        {crumbs.map((crumb, i) => (
           <>
-            {i > 0 && <span aria-hidden="true">/</span>}
-            <a href={crumb.path}>{crumb.name}</a>
+            {i > 0 && <li aria-hidden="true">/</li>}
+            <li>
+              {i === crumbs.length - 1 ? (
+                <span class="font-medium text-slate-900 dark:text-white">{crumb.name}</span>
+              ) : (
+                <a href={crumb.path} class="hover:text-primary-600">{crumb.name}</a>
+              )}
+            </li>
           </>
-        ))
-      }
+        ))}
+      </ol>
     </nav>
-    {category && <p class="platform-kicker">{category.replace('-', ' ')}</p>}
-    <header class="platform-hero">
-      <h1>{title}</h1>
-      <p class="lede">{description}</p>
-      <p class="lede"><time datetime={published.toISOString()}>{publishedLabel}</time></p>
-    </header>
-    <div class="article-shell">
-      <div>
-        <AdSlot placement="leaderboard" />
-        <div class="article-body">
-          <slot />
-        </div>
-        <AdSlot placement="in-article" />
-        {relatedBlogHref && relatedBlogTitle && (
-          <StoryToBlogCta title={relatedBlogTitle} href={relatedBlogHref} />
-        )}
-        {affiliates?.map((item) => <AffiliateCard {...item} />)}
-        {faqs && faqs.length > 0 && <FaqList faqs={faqs} />}
+
+    <header class="mb-8">
+      {category && (
+        <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-primary-600 dark:text-blue-400">
+          {category.replace('-', ' ')}
+        </p>
+      )}
+      <h1 class="mb-4 font-heading text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-5xl dark:text-white">
+        {title.replace(/\s*\|\s*SK Immigration.*$/, '')}
+      </h1>
+      <p class="mb-4 text-lg text-slate-600 dark:text-slate-400">{description}</p>
+      <div class="flex flex-wrap items-center gap-4 border-y border-slate-100 py-3 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+        <time datetime={published.toISOString()}>{publishedLabel}</time>
+        <span>·</span>
+        <span>SK Immigration Advisory Team</span>
       </div>
-      <aside class="article-aside">
-        <div class="aside-card">
-          <h2>Free consultation</h2>
-          <p>Honest file guidance from Rawalpindi. Embassies decide visas — we never sell guarantees.</p>
-          <div class="aside-actions">
-            <a class="btn btn-gold" href="/contact.html">Book consult</a>
-            <a class="btn btn-whatsapp" href="https://wa.me/923045999859">WhatsApp</a>
-          </div>
+      <div class="mt-4 flex items-start gap-2.5 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+        <strong class="text-slate-800 dark:text-slate-200">Educational resource:</strong>
+        Visa rules come from official embassy sources. Embassies decide every outcome —
+        <a href="/about/" class="font-semibold text-primary-600 hover:underline">verify our SECP registration</a>.
+      </div>
+    </header>
+
+    <AdSlot slotId="1122334455" format="horizontal" />
+    <div class="prose prose-slate max-w-none prose-headings:font-heading prose-headings:font-bold prose-a:text-primary-600 prose-img:rounded-2xl dark:prose-invert">
+      <slot />
+    </div>
+    <AdSlot slotId="9876543210" format="auto" />
+    <AdsterraSlot placement="in-article" />
+
+    {relatedBlogHref && relatedBlogTitle && (
+      <StoryToBlogCta title={relatedBlogTitle} href={relatedBlogHref} />
+    )}
+    {affiliates?.map((item) => <AffiliateCard {...item} />)}
+
+    {faqs && faqs.length > 0 && (
+      <section class="not-prose mt-12 border-t border-slate-200 pt-8 dark:border-slate-800">
+        <h2 class="mb-6 font-heading text-2xl font-bold text-slate-900 dark:text-white">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqs.map((faq) => (
+            <details class="group rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
+              <summary class="flex cursor-pointer list-none items-center justify-between font-heading text-base font-bold text-slate-900 dark:text-white">
+                <span>{faq.question}</span>
+                <span class="ml-4 text-primary-600 transition-transform group-open:rotate-180">▾</span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{faq.answer}</p>
+            </details>
+          ))}
         </div>
-        <AdSlot placement="sidebar" label="Advertisement" />
-      </aside>
+      </section>
+    )}
+
+    <div class="not-prose mt-12 rounded-3xl bg-slate-900 p-8 text-center text-white">
+      <h3 class="mb-2 font-heading text-2xl font-bold">Questions about this pathway?</h3>
+      <p class="mx-auto mb-6 max-w-md text-sm text-slate-300">
+        Free profile assessment from our Rawalpindi office. Embassies decide visas — we never sell guarantees.
+      </p>
+      <div class="flex flex-col justify-center gap-3 sm:flex-row">
+        <a href="/contact/" class="btn-primary bg-white px-5 py-2.5 text-sm text-slate-900 hover:bg-slate-100">
+          Book Free Assessment
+        </a>
+        <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp px-5 py-2.5 text-sm">
+          WhatsApp {CONTACT.phoneFormatted}
+        </a>
+      </div>
     </div>
   </article>
 </BaseLayout>

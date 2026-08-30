@@ -1,6 +1,18 @@
 # HTTPS and apex→www redirects are handled by the Worker (src/index.js)
 # and Cloudflare "Always Use HTTPS". Keep only relative aliases here.
 
+# Astro 7 template pretty URLs
+/about.html /about/ 301
+/trust.html /about/ 301
+/contact.html /contact/ 301
+/services.html /services/ 301
+/privacy.html /privacy/ 301
+/terms.html /terms/ 301
+/blog.html /blog/ 301
+/ausbildung.html /guides/germany-student-visa-ausbildung/ 301
+/faq.html /guides/ 301
+/faq /guides/ 301
+
 # English-only site — exact /ur alias. Nested /ur/* is handled in the Worker
 # (a splat here would make every following rule count as dynamic; CF max is 100).
 /ur / 301
@@ -24,9 +36,9 @@
 /cookies /cookies.html 301
 /cookie /cookies.html 301
 /cookie-policy /cookies.html 301
-/privacy-policy /privacy.html 301
-/terms-of-service /terms.html 301
-/tos /terms.html 301
+/privacy-policy /privacy/ 301
+/terms-of-service /terms/ 301
+/tos /terms/ 301
 
 # Answers hub trailing slash (GitHub Pages directory vs answers.html)
 /answers/ /answers 301

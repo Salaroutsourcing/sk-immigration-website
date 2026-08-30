@@ -30,7 +30,7 @@ const relatedStory = await getRelatedStory(entry.data.relatedStories[0]);
   category={entry.data.category}
   crumbs={[
     { name: 'Home', path: '/' },
-    { name: 'Blog', path: '/blog.html' },
+    { name: 'Blog', path: '/blog/' },
     { name: entry.data.title, path },
   ]}
   faqs={entry.data.faqs}
@@ -40,7 +40,7 @@ const relatedStory = await getRelatedStory(entry.data.relatedStories[0]);
   jsonLd={[
     ...basePageGraph([
       { name: 'Home', path: '/' },
-      { name: 'Blog', path: '/blog.html' },
+      { name: 'Blog', path: '/blog/' },
       { name: entry.data.title, path },
     ]),
     ...blogPostingSchema({

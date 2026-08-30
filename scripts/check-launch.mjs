@@ -31,8 +31,8 @@ const seo = read('src/components/seo/SeoHead.astro');
 if (seo.includes('/sitemap-index.xml') && !seo.includes('sitemap-platform-index.xml')) {
   errors.push('SeoHead still points at missing /sitemap-index.xml');
 }
-if (seo.includes('Playfair+Display') || seo.includes('Plus+Jakarta')) {
-  errors.push('SeoHead still loads unused display fonts');
+if (seo.includes('Playfair+Display')) {
+  errors.push('SeoHead still loads unused Playfair font');
 }
 
 const studio = read('src/layouts/StudioLayout.astro');

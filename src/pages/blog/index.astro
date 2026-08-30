@@ -10,8 +10,8 @@ const items = await publishedBlogs();
 ---
 
 <BaseLayout
-  title={`New visa guides | ${SITE.brandFull}`}
-  description="Long-form visa guides with FAQs, official sources, and internal links. Web Stories and news feed this hub."
+  title={`Visa guides & insights | ${SITE.brandFull}`}
+  description="Long-form visa guides with FAQs, official sources, and internal links. Written for ranking, AI citation, and real decisions."
   canonical="/blog/"
   page="blog"
   jsonLd={[
@@ -20,7 +20,7 @@ const items = await publishedBlogs();
       { name: 'Blog', path: '/blog/' },
     ]),
     collectionPageSchema({
-      name: `New visa guides | ${SITE.brandFull}`,
+      name: `Visa guides & insights | ${SITE.brandFull}`,
       description: 'Long-form visa guides with FAQs, official sources, and internal links.',
       url: absoluteUrl('/blog/'),
       items: items.map((entry) => ({
@@ -30,16 +30,17 @@ const items = await publishedBlogs();
     }),
   ]}
 >
-  <section class="platform-wrap">
-    <p class="platform-kicker">Blog collection · 1 pillar / day target</p>
-    <header class="platform-hero">
-      <h1>Guides built to rank and convert</h1>
-      <p class="lede">
-        New MDX blogs publish here. Country guides already ranking at
-        <a href="/blog.html">/blog.html</a> and <code>/blog/{'{country}'}/</code> stay exactly where they are.
+  <section class="not-prose border-b border-slate-200 bg-slate-50 py-12 dark:border-slate-800 dark:bg-dark-950 md:py-16">
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6">
+      <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-blue-400">Blog</p>
+      <h1 class="mb-4 font-heading text-3xl font-bold text-slate-900 md:text-5xl dark:text-white">Guides built to rank and convert</h1>
+      <p class="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+        Unique insight articles live here. Country landers stay on their service URLs — no duplicate Germany/UK/Canada posts.
       </p>
-    </header>
-    <div class="platform-grid">
+    </div>
+  </section>
+  <section class="section-container not-prose">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((entry) => (
         <ContentCard
           kind="blog"

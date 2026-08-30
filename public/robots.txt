@@ -36,12 +36,12 @@ Allow: /guides/
 Allow: /news/
 Allow: /stories/
 Allow: /blog/
-Allow: /trust.html
-Allow: /about.html
-Allow: /services.html
-Allow: /privacy.html
+Allow: /about/
+Allow: /services/
+Allow: /privacy/
+Allow: /terms/
+Allow: /contact/
 Allow: /cookies.html
-Allow: /terms.html
 Allow: /eligibility.html
 Allow: /checklist.html
 Allow: /calculator.html
