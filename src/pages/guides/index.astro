@@ -22,15 +22,17 @@ const jsonGuides = (
   description="Embassy-verified immigration guides for Pakistani applicants: Germany Ausbildung, study visas, work files, and attestation."
   canonical="/guides/"
 >
-  <section class="not-prose border-b border-slate-200 bg-slate-50 py-12 dark:border-slate-800 dark:bg-dark-950 md:py-16">
-    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6">
-      <p class="mb-2 text-base font-semibold uppercase tracking-wide text-primary-600 dark:text-blue-400">Knowledge Base</p>
-      <h1 class="mb-4 font-heading text-3xl font-bold text-slate-900 md:text-5xl dark:text-white">
+  <section class="not-prose">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
+      <div class="mb-4 md:mx-auto max-w-3xl text-center">
+      <p class="mb-2 text-base font-semibold uppercase tracking-wide text-primary">Knowledge Base</p>
+      <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
         Immigration &amp; country guides
       </h1>
-      <p class="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+      <p class="text-xl text-muted dark:text-slate-400">
         Deep breakdowns of admissions, blocked accounts, language prerequisites, and embassy checklists.
       </p>
+      </div>
     </div>
   </section>
 
@@ -38,7 +40,7 @@ const jsonGuides = (
     <h2 class="mb-6 font-heading text-2xl font-bold text-slate-900 dark:text-white">Service hubs</h2>
     <div class="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {SERVICE_HUBS.map((hub) => (
-        <a href={hub.href} class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-primary-500/40 dark:border-slate-800 dark:bg-slate-900">
+        <a href={hub.href} class="rounded-lg border border-gray-200 bg-white p-6 shadow-none transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
           <p class="mb-1 text-xs font-semibold text-primary-600">{hub.badge}</p>
           <h3 class="mb-2 font-heading text-lg font-bold text-slate-900 dark:text-white">{hub.title}</h3>
           <p class="text-sm text-slate-600 dark:text-slate-400">{hub.description}</p>
@@ -49,40 +51,36 @@ const jsonGuides = (
     <h2 class="mb-6 font-heading text-2xl font-bold text-slate-900 dark:text-white">Long-form guides</h2>
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {guides.map((guide) => (
-        <article class="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:border-primary-500/40 dark:border-slate-800 dark:bg-slate-900">
-          <div class="flex flex-1 flex-col p-6">
+        <article class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 shadow-none transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
             <div class="mb-3 flex items-center gap-2">
-              <span class="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-primary-700 dark:bg-slate-800 dark:text-blue-300">
+              <span class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
                 {guide.data.country}
               </span>
-              <span class="text-xs text-slate-500">{guide.data.visaType}</span>
+              <span class="text-xs text-muted">{guide.data.visaType}</span>
             </div>
             <h3 class="mb-2 font-heading text-xl font-bold text-slate-900 dark:text-white">
               <a href={`/guides/${guide.id}/`}>{guide.data.title}</a>
             </h3>
-            <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{guide.data.description}</p>
-            <a href={`/guides/${guide.id}/`} class="text-sm font-semibold text-primary-600 hover:underline dark:text-primary-400">
+            <p class="mb-4 flex-1 text-sm leading-relaxed text-muted dark:text-slate-400">{guide.data.description}</p>
+            <a href={`/guides/${guide.id}/`} class="text-sm font-semibold text-primary hover:underline">
               Read guide →
             </a>
-          </div>
         </article>
       ))}
       {jsonGuides.map((entry) => (
-        <article class="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:border-primary-500/40 dark:border-slate-800 dark:bg-slate-900">
-          <div class="flex flex-1 flex-col p-6">
+        <article class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 shadow-none transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
             <div class="mb-3 flex items-center gap-2">
-              <span class="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-primary-700 dark:bg-slate-800 dark:text-blue-300">
+              <span class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
                 How-to
               </span>
             </div>
             <h3 class="mb-2 font-heading text-xl font-bold text-slate-900 dark:text-white">
               <a href={landerPath(entry)}>{entry.data.h1}</a>
             </h3>
-            <p class="mb-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{entry.data.description}</p>
-            <a href={landerPath(entry)} class="text-sm font-semibold text-primary-600 hover:underline dark:text-primary-400">
+            <p class="mb-4 flex-1 text-sm leading-relaxed text-muted dark:text-slate-400">{entry.data.description}</p>
+            <a href={landerPath(entry)} class="text-sm font-semibold text-primary hover:underline">
               Read guide →
             </a>
-          </div>
         </article>
       ))}
     </div>

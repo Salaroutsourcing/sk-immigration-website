@@ -4,7 +4,6 @@ import AdSlot from '../components/AdSlot.astro';
 import AdsterraSlot from '../components/ads/AdSlot.astro';
 import AffiliateCard from '../components/content/AffiliateCard.astro';
 import StoryToBlogCta from '../components/content/StoryToBlogCta.astro';
-import { CONTACT } from '../lib/config';
 
 interface Props {
   title: string;
@@ -91,10 +90,8 @@ const publishedLabel = published.toLocaleDateString('en-GB', {
         <span>·</span>
         <span>SK Immigration Advisory Team</span>
       </div>
-      <div class="mt-4 flex items-start gap-2.5 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
-        <strong class="text-slate-800 dark:text-slate-200">Educational resource:</strong>
-        Visa rules come from official embassy sources. Embassies decide every outcome —
-        <a href="/about/" class="font-semibold text-primary-600 hover:underline">verify our SECP registration</a>.
+      <div class="mt-4 text-sm text-muted dark:text-slate-400">
+        Visa rules come from official embassy sources. Embassies decide every outcome.
       </div>
     </header>
 
@@ -115,7 +112,7 @@ const publishedLabel = published.toLocaleDateString('en-GB', {
         <h2 class="mb-6 font-heading text-2xl font-bold text-slate-900 dark:text-white">Frequently Asked Questions</h2>
         <div class="space-y-3">
           {faqs.map((faq) => (
-            <details class="group rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
+            <details class="group rounded-lg border border-gray-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
               <summary class="flex cursor-pointer list-none items-center justify-between font-heading text-base font-bold text-slate-900 dark:text-white">
                 <span>{faq.question}</span>
                 <span class="ml-4 text-primary-600 transition-transform group-open:rotate-180">▾</span>
@@ -127,18 +124,14 @@ const publishedLabel = published.toLocaleDateString('en-GB', {
       </section>
     )}
 
-    <div class="not-prose mt-12 rounded-3xl bg-slate-900 p-8 text-center text-white">
-      <h3 class="mb-2 font-heading text-2xl font-bold">Questions about this pathway?</h3>
-      <p class="mx-auto mb-6 max-w-md text-sm text-slate-300">
+    <div class="not-prose mt-12 rounded-md bg-slate-50 px-6 py-10 text-center dark:bg-slate-900">
+      <h3 class="font-heading mb-2 text-2xl font-bold text-slate-900 dark:text-white">Questions about this pathway?</h3>
+      <p class="mx-auto mb-6 max-w-md text-muted dark:text-slate-400">
         Free profile assessment from our Rawalpindi office. Embassies decide visas — we never sell guarantees.
       </p>
-      <div class="flex flex-col justify-center gap-3 sm:flex-row">
-        <a href="/contact/" class="btn-primary bg-white px-5 py-2.5 text-sm text-slate-900 hover:bg-slate-100">
-          Book Free Assessment
-        </a>
-        <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp px-5 py-2.5 text-sm">
-          WhatsApp {CONTACT.phoneFormatted}
-        </a>
+      <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="/contact/" class="btn-primary">Get started</a>
+        <a href="/services/" class="btn">Learn more</a>
       </div>
     </div>
   </article>

@@ -45,7 +45,7 @@ faqs:
 
 The main requirements are: a German language certificate (B1 minimum), a blocked account (€11,904), and genuine academic qualifications. This guide explains everything honestly.
 
-> ⚠️ **Disclaimer:** SK Immigration Services (CUIN 0304985) provides file preparation and honest guidance. The German Embassy makes all final visa decisions. We never sell visa guarantees.
+> ⚠️ **Disclaimer:** SK Immigration Services provides file preparation and honest guidance. The German Embassy makes all final visa decisions. We never sell visa guarantees.
 
 ---
 
@@ -218,7 +218,7 @@ Germany actively wants skilled workers. After Ausbildung + 2 years of employment
 
 ## Ready to Start?
 
-**SK Immigration Services (CUIN 0304985)** offers free profile assessments for Germany study and Ausbildung applications. We will give you an honest evaluation of your eligibility — including language requirements and realistic timelines — before you pay anything.
+**SK Immigration Services** offers free profile assessments for Germany study and Ausbildung applications. We will give you an honest evaluation of your eligibility — including language requirements and realistic timelines — before you pay anything.
 
 📍 Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi
 📞 WhatsApp: [+92 304 5999859](https://wa.me/923045999859?text=Hi%20SK%20Immigration%2C%20I%20need%20guidance%20on%20Germany%20Ausbildung.)
