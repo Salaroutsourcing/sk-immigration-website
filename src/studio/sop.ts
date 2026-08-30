@@ -135,7 +135,7 @@ Treat social posts as a rumour until you open the **official page**.
 2. Keep funds, appointment proof, and identity documents together.
 3. Do not pay anyone who promises a visa.
 
-SK Immigration Services (CUIN 0304985) reviews files from Rawalpindi. Embassies decide visas.
+SK Immigration Services reviews files from Rawalpindi. Embassies decide visas.
 
 **Next:** read [${plan.blog.title}](${blogHref}) or WhatsApp [+92 304 5999859](https://wa.me/923045999859).
 `;
@@ -155,7 +155,7 @@ SK Immigration Services (CUIN 0304985) reviews files from Rawalpindi. Embassies 
         {
           question: 'Does SK Immigration guarantee this visa?',
           answer:
-            'No. Embassies and consulates decide. CUIN 0304985. We prepare files and tell you honestly if a route is weak.',
+            'No. Embassies and consulates decide. We prepare files and tell you honestly if a route is weak.',
         },
         {
           question: 'Where should I confirm fees and checklists?',

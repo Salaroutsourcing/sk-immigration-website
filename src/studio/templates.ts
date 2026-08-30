@@ -73,7 +73,7 @@ export function dailyTemplates(collection: Collection): { name: string; data: En
 2. Keep funds, insurance, and appointment proof together.
 3. Do not pay anyone who promises a visa.
 
-SK Immigration Services (CUIN 0304985) reviews files. Embassies decide visas.
+SK Immigration Services reviews files. Embassies decide visas.
 
 **Next:** pair this brief with a long guide and a Web Story.`,
       },
@@ -95,7 +95,7 @@ SK Immigration Services (CUIN 0304985) reviews files. Embassies decide visas.
             {
               question: 'Does SK Immigration guarantee this visa?',
               answer:
-                'No. Embassies and consulates decide. CUIN 0304985. We prepare files and tell you honestly if a route is weak.',
+                'No. Embassies and consulates decide. We prepare files and tell you honestly if a route is weak.',
             },
             {
               question: 'Is IELTS always required?',
