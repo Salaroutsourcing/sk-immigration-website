@@ -2,6 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../lib/config';
 import { PROCESS_STEPS, ASSESSMENT_HREF, WHATSAPP_HREF } from '../lib/home';
+import PageHero from '../components/ui/PageHero.astro';
+import ProcessTimeline from '../components/home/ProcessTimeline.astro';
+import FeesBlock from '../components/home/FeesBlock.astro';
+import BeforeYouPay from '../components/home/BeforeYouPay.astro';
+import AuthoritySplit from '../components/home/AuthoritySplit.astro';
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -20,44 +25,41 @@ const breadcrumbSchema = {
   jsonLd={breadcrumbSchema}
   schemaVariant="global"
 >
-  <section class="not-prose">
-    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:py-20">
-      <div class="mb-10 md:mx-auto md:mb-12 max-w-3xl text-center">
-        <p class="text-base font-semibold uppercase tracking-wide text-primary">Process</p>
-        <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-          A clearer process, from the first conversation to the next step.
-        </h1>
-        <p class="text-xl text-muted dark:text-slate-400">
-          You don't have to figure everything out alone. We help you prepare properly for the journey — without
-          promising the outcome.
-        </p>
-      </div>
-
-      <ol class="mx-auto max-w-3xl space-y-8">
+  <PageHero
+    eyebrow="Process"
+    title="From the first conversation to the next step."
+    text="You don’t have to figure everything out alone. We help you prepare — without promising the outcome."
+  />
+  <ProcessTimeline />
+  <section class="sk-section sk-section--canvas">
+    <div class="sk-wrap max-w-3xl">
+      <h2 class="sk-h2 mb-8">Working with us</h2>
+      <ol class="space-y-6">
         {PROCESS_STEPS.map((step) => (
-          <li class="flex gap-4">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-white">
-              {step.n}
-            </div>
+          <li class="grid grid-cols-[auto_1fr] gap-4">
+            <span class="text-xs font-bold tracking-[0.14em] text-gold">{step.n}</span>
             <div>
-              <h2 class="mb-1 text-xl font-medium leading-6 text-slate-900 dark:text-white">{step.title}</h2>
-              <p class="text-muted dark:text-slate-400">{step.text}</p>
+              <h3 class="text-lg font-bold text-navy">{step.title}</h3>
+              <p class="mt-1 text-sm leading-relaxed text-ink-soft">{step.text}</p>
             </div>
           </li>
         ))}
       </ol>
-
-      <p class="mx-auto mt-10 max-w-3xl text-center text-sm text-muted dark:text-slate-400">
-        Government, embassy, university and regulatory decisions remain outside our control.
-      </p>
-
-      <div class="mx-auto mt-12 max-w-3xl rounded-md bg-slate-50 px-6 py-10 text-center dark:bg-slate-900">
-        <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Ready to talk through your options?</h2>
-        <p class="mb-6 text-muted dark:text-slate-400">No pressure. No false promises. Just a clear conversation.</p>
-        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
-          <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Chat on WhatsApp</a>
-        </div>
+      <p class="mt-8 text-sm text-ink-soft">Government, embassy, university and regulatory decisions remain outside our control.</p>
+    </div>
+  </section>
+  <FeesBlock />
+  <AuthoritySplit compact />
+  <div class="sk-wrap">
+    <BeforeYouPay embedded />
+  </div>
+  <section class="sk-wrap pb-20">
+    <div class="rounded-2xl bg-navy px-6 py-12 text-center text-white">
+      <h2 class="text-2xl font-extrabold tracking-tight">Ready to talk through your options?</h2>
+      <p class="mx-auto mt-3 max-w-lg text-white/70">No pressure. No false promises. Just a clear conversation.</p>
+      <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={ASSESSMENT_HREF} class="btn-primary !bg-gold !border-gold !text-navy-dark">Start My Assessment</a>
+        <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Chat on WhatsApp</a>
       </div>
     </div>
   </section>

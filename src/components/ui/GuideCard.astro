@@ -1,0 +1,28 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  excerpt: string;
+  date?: Date;
+  category?: string;
+  readingMinutes?: number;
+}
+
+const { href, title, excerpt, date, category, readingMinutes } = Astro.props;
+const formatted = date
+  ? date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+  : null;
+---
+
+<a class="sk-card" href={href}>
+  {category && <span class="sk-card-n">{category}</span>}
+  <h3 class="!text-[1.05rem] !leading-snug">{title}</h3>
+  <p class="line-clamp-2">{excerpt}</p>
+  <div class="sk-card-foot text-xs text-ink-soft">
+    <span>
+      {formatted}
+      {readingMinutes ? ` · ${readingMinutes} min` : ''}
+    </span>
+    <span class="sk-card-arrow" aria-hidden="true">→</span>
+  </div>
+</a>

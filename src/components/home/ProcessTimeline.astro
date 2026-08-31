@@ -1,0 +1,44 @@
+---
+import { PATHWAY_STEPS } from '../../lib/home';
+
+const icons: Record<string, string> = {
+  goal: 'M12 2.5l2.2 6.6H21l-5.4 4 2.1 6.5L12 15.8 6.3 19.6l2.1-6.5L3 9.1h6.8L12 2.5z',
+  assessment: 'M10 3a7 7 0 015.6 11.2l4.1 4.1-1.4 1.4-4.1-4.1A7 7 0 1110 3zm0 2a5 5 0 100 10 5 5 0 000-10z',
+  documents: 'M7 3h7l5 5v13H7V3zm7 1.5V9h4.5',
+  prep: 'M5 6h14M5 12h10M5 18h7M19 16l2 2 4-4',
+  application: 'M5 4h9l5 5v11H5V4zm12 14l3-3-3-3',
+  decision: 'M4 20V8l8-5 8 5v12H4zm4-3h8v3H8v-3z',
+};
+---
+
+<section class="sk-section" id="how-it-works">
+  <div class="sk-wrap">
+    <div class="mx-auto max-w-2xl text-center sk-reveal">
+      <p class="sk-eyebrow justify-center before:hidden">From idea to application</p>
+      <h2 class="sk-h2">How the process unfolds.</h2>
+      <p class="sk-lead mx-auto mt-4">We prepare the file. Official authorities make the decision.</p>
+    </div>
+    <div class="sk-timeline mt-12 md:mt-16" data-timeline>
+      <div class="sk-timeline-line" aria-hidden="true"><i></i></div>
+      <ol class="sk-timeline-track">
+        {PATHWAY_STEPS.map((step) => (
+          <li class="sk-node" data-node>
+            <div class="sk-node-rail">
+              <span class="sk-node-dot"></span>
+            </div>
+            <div>
+              <span class="sk-node-icon" aria-hidden="true">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d={icons[step.icon]}></path>
+                </svg>
+              </span>
+              <p class="text-[0.68rem] font-bold tracking-[0.14em] text-gold">{step.n}</p>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

@@ -4,6 +4,7 @@ import { HUB_META, landerPath, landersIn } from '../lib/landers';
 import ClusterNotice from './ClusterNotice.astro';
 import AuthoritySplit from './home/AuthoritySplit.astro';
 import BeforeYouPay from './home/BeforeYouPay.astro';
+import FinalCta from './home/FinalCta.astro';
 
 interface Props {
   cluster: string;
@@ -16,38 +17,38 @@ const path = `/${cluster}/`;
 ---
 
 <BaseLayout title={meta.title} description={meta.description} canonical={path} page={cluster}>
-  <section class="not-prose">
-    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
-      <div class="mb-10 md:mx-auto md:mb-12 max-w-3xl text-center">
-        <p class="text-base font-semibold uppercase tracking-wide text-primary">{meta.kicker}</p>
-        <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">{meta.title}</h1>
-        <p class="text-xl text-muted dark:text-slate-400">{meta.description}</p>
-        <div class="mx-auto mt-6 max-w-2xl text-left">
-          <ClusterNotice cluster={cluster} />
-        </div>
-        <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="/contact/" class="btn-primary">Start My Assessment</a>
-          <a href="/guides/" class="btn">Explore Guides</a>
-        </div>
-      </div>
-      <div class="mx-auto mb-12 max-w-5xl">
-        <AuthoritySplit compact />
-      </div>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <section class="sk-wrap py-14 md:py-16">
+    <p class="sk-eyebrow">{meta.kicker}</p>
+    <h1 class="sk-h1 !text-[clamp(2rem,4.4vw,3.4rem)] max-w-3xl">{meta.title}</h1>
+    <p class="sk-lead mt-5">{meta.description}</p>
+    <div class="mt-6 max-w-2xl">
+      <ClusterNotice cluster={cluster} />
+    </div>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <a href="/contact/" class="btn-primary">Start My Assessment</a>
+      <a href="/services/" class="btn">Explore Services</a>
+    </div>
+  </section>
+  <AuthoritySplit compact />
+  <section class="sk-section sk-section--canvas">
+    <div class="sk-wrap">
+      <h2 class="sk-h2 mb-8">Destinations and guides</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((entry) => (
-          <a
-            href={landerPath(entry)}
-            class="rounded-lg border border-gray-200 bg-white p-6 shadow-none transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
-          >
-            <h2 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">{entry.data.h1}</h2>
-            <p class="line-clamp-3 text-sm text-muted dark:text-slate-400">{entry.data.description}</p>
-            <p class="mt-4 text-sm font-semibold text-primary">Open guide →</p>
+          <a href={landerPath(entry)} class="sk-card">
+            <h3 class="!text-[1.08rem]">{entry.data.h1}</h3>
+            <p class="line-clamp-3">{entry.data.description}</p>
+            <div class="sk-card-foot">
+              <span></span>
+              <span class="sk-card-arrow">→</span>
+            </div>
           </a>
         ))}
       </div>
-      <div class="mx-auto mt-12 max-w-5xl">
-        <BeforeYouPay embedded />
-      </div>
     </div>
   </section>
+  <div class="sk-wrap pb-8">
+    <BeforeYouPay embedded />
+  </div>
+  <FinalCta />
 </BaseLayout>

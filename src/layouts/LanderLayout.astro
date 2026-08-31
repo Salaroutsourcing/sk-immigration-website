@@ -6,6 +6,7 @@ import ArticleSidebar from '../components/content/ArticleSidebar.astro';
 import ArticleCta from '../components/content/ArticleCta.astro';
 import ContinueReading from '../components/content/ContinueReading.astro';
 import OfficialSources from '../components/content/OfficialSources.astro';
+import FaqAccordion from '../components/ui/FaqAccordion.astro';
 import { HUB_META, landerPath, relatedLanders, type LanderEntry } from '../lib/landers';
 import { basePageGraph } from '../lib/seo';
 import {
@@ -81,69 +82,41 @@ const faqSchema =
     ...(faqSchema ? [faqSchema] : []),
   ]}
 >
-  <article class="mx-auto max-w-5xl px-4 py-6 sm:px-6 md:py-8">
-    <nav aria-label="Breadcrumb" class="mb-3 text-xs text-slate-500 dark:text-slate-400">
-      <a href="/" class="hover:text-primary-600">Home</a>
-      <span aria-hidden="true"> / </span>
-      {slug !== 'index' && slug !== 'hub' && (
-        <>
-          <a href={hubPath} class="hover:text-primary-600">{hub?.title || cluster}</a>
-          <span aria-hidden="true"> / </span>
-        </>
-      )}
-      <span class="font-medium text-slate-900 dark:text-white">{h1}</span>
-    </nav>
-
-    <header class="mx-auto mb-5 max-w-3xl">
-      <p class="mb-2 text-sm text-slate-500 dark:text-slate-400">
-        <time datetime={publishDate.toISOString()}>{publishedLabel}</time>
-        <span aria-hidden="true"> · </span>
-        <span>SK Immigration</span>
-        {hub?.kicker && (
+  <article class="sk-article">
+    <header class="sk-article-head">
+      <nav class="sk-crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        {slug !== 'index' && slug !== 'hub' && (
           <>
-            <span aria-hidden="true"> · </span>
-            <span>{hub.kicker}</span>
+            <span aria-hidden="true">/</span>
+            <a href={hubPath}>{hub?.title || cluster}</a>
           </>
         )}
-        <span aria-hidden="true"> · </span>
+        <span aria-hidden="true">/</span>
+        <span class="text-navy">{h1}</span>
+      </nav>
+      {hub?.kicker && <p class="sk-eyebrow">{hub.kicker}</p>}
+      <h1>{h1}</h1>
+      <p class="sk-article-summary">{description}</p>
+      <p class="sk-article-meta">
+        <time datetime={publishDate.toISOString()}>{publishedLabel}</time>
         <span>{readingMinutes} min read</span>
       </p>
-      <h1 class="font-heading text-3xl font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl md:text-5xl dark:text-white">
-        {h1}
-      </h1>
-      <p class="mt-3 text-lg leading-snug text-slate-500 dark:text-slate-400">{description}</p>
-      <img
-        src={cover}
-        alt=""
-        class="mt-6 w-full rounded-md object-cover aspect-[16/9] max-h-[28rem]"
-        width="960"
-        height="540"
-      />
     </header>
-
-    <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]">
+    <img class="sk-article-cover" src={cover} alt="" width="960" height="540" />
+    <div class="sk-wrap grid items-start gap-10 lg:grid-cols-[minmax(0,760px)_16rem]">
       <div class="min-w-0">
         <ClusterNotice cluster={cluster} slug={slug} />
         <ArticleToc items={toc} variant="panel" />
         <div
-          class="prose prose-slate article-prose prose-headings:font-heading prose-a:text-primary-600 prose-table:text-sm dark:prose-invert"
+          class="prose prose-slate article-prose max-w-none prose-headings:font-heading prose-a:text-navy prose-table:text-sm dark:prose-invert"
           set:html={articleHtml}
         />
         <OfficialSources sources={officialSources} />
         {faqs.length > 0 && (
-          <section class="not-prose mt-7 border-t border-slate-200 pt-5 dark:border-slate-800">
-            <h2 class="mb-3 font-heading text-xl font-bold text-slate-900 dark:text-white">Frequently asked questions</h2>
-            <div class="space-y-1.5">
-              {faqs.map((faq) => (
-                <details class="group rounded-lg border border-gray-200 bg-slate-50 px-4 py-2.5 dark:border-slate-800 dark:bg-slate-900">
-                  <summary class="flex cursor-pointer list-none items-center justify-between font-heading font-bold text-slate-900 dark:text-white">
-                    <span>{faq.question}</span>
-                    <span class="ml-4 text-primary-600 group-open:rotate-180">▾</span>
-                  </summary>
-                  <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{faq.answer}</p>
-                </details>
-              ))}
-            </div>
+          <section class="not-prose mt-10">
+            <h2 class="mb-4 font-heading text-2xl font-bold text-navy">Frequently asked questions</h2>
+            <FaqAccordion faqs={faqs.map((faq) => ({ q: faq.question, a: faq.answer }))} />
           </section>
         )}
         <ArticleCta />

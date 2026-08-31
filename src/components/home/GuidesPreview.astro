@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import { publishedBlogs } from '../../lib/content';
+import { readingMinutesFromText } from '../../lib/article';
+import GuideCard from '../ui/GuideCard.astro';
+
+const guides = (await getCollection('guides')).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+);
+const blogs = await publishedBlogs();
+const items = [
+  ...guides.slice(0, 2).map((guide) => ({
+    href: `/guides/${guide.id}/`,
+    title: guide.data.title,
+    excerpt: guide.data.description,
+    date: guide.data.publishDate,
+    category: guide.data.country,
+    readingMinutes: readingMinutesFromText(guide.body),
+  })),
+  ...blogs.slice(0, 2).map((entry) => ({
+    href: `/blog/${entry.id}/`,
+    title: entry.data.title,
+    excerpt: entry.data.description,
+    date: entry.data.publishDate,
+    category: 'Guide',
+    readingMinutes: entry.data.readingTime ?? readingMinutesFromText(entry.body),
+  })),
+].slice(0, 3);
+---
+
+<section class="sk-section sk-section--canvas" id="guides">
+  <div class="sk-wrap">
+    <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+      <div>
+        <p class="sk-eyebrow">Guides</p>
+        <h2 class="sk-h2">Read before you apply.</h2>
+      </div>
+      <a class="text-sm font-semibold text-navy hover:text-gold" href="/guides/">All guides →</a>
+    </div>
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      {items.map((item) => <GuideCard {...item} />)}
+    </div>
+  </div>
+</section>

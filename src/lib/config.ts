@@ -53,15 +53,12 @@ export const ANALYTICS = {
   clarityId: CORE.analytics.clarity,
 };
 
-/** Short header — service hubs live on the homepage as cards. */
+/** Short header — service hubs live in the mega-menu and on /services/. */
 export const NAVIGATION = [
-  { label: 'Home', href: '/' },
   { label: 'Services', href: '/services/' },
-  { label: 'Business Registration', href: '/business-registration/' },
   { label: 'How It Works', href: '/how-it-works/' },
+  { label: 'Guides', href: '/guides/' },
   { label: 'About', href: '/about/' },
-  { label: 'FAQ', href: '/faq/' },
-  { label: 'Contact', href: '/contact/' },
 ];
 
 export const FOOTER_LINKS = {

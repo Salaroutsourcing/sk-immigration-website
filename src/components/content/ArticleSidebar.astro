@@ -10,28 +10,26 @@ const { services = [] } = Astro.props;
 
 <aside class="not-prose space-y-4 lg:sticky lg:top-24">
   <slot />
-  <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-    <h2 class="mb-1.5 font-heading text-base font-bold text-slate-900 dark:text-white">Start your assessment</h2>
-    <p class="mb-3 text-sm leading-snug text-muted dark:text-slate-400">
-      Not sure which pathway fits your situation?
-    </p>
-    <a href={ASSESSMENT_HREF} class="btn-primary w-full px-5 py-2.5 text-sm">Start Assessment</a>
+  <div class="rounded-xl border border-line bg-white p-5">
+    <h2 class="mb-1.5 font-heading text-base font-bold text-navy">Start with your goal.</h2>
+    <p class="mb-4 text-sm leading-snug text-ink-soft">Not sure which pathway fits?</p>
+    <a href={ASSESSMENT_HREF} class="btn-primary w-full px-5 py-2.5 text-sm">Start My Assessment</a>
     <a
       href={WHATSAPP_HREF}
       target="_blank"
       rel="noopener noreferrer"
-      class="mt-2 inline-flex w-full items-center justify-center text-sm font-semibold text-primary hover:underline"
+      class="mt-2 inline-flex w-full items-center justify-center text-sm font-semibold text-navy hover:text-gold"
     >
       Chat on WhatsApp
     </a>
   </div>
   {services.length > 0 && (
-    <div class="rounded-lg border border-gray-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
-      <h2 class="mb-2 font-heading text-base font-bold text-slate-900 dark:text-white">Related services</h2>
+    <div class="rounded-xl border border-line bg-canvas p-5">
+      <h2 class="mb-2 font-heading text-base font-bold text-navy">Related services</h2>
       <ul class="space-y-2 text-sm">
         {services.map((item) => (
           <li>
-            <a class="font-medium text-primary hover:underline" href={item.href}>{item.title}</a>
+            <a class="font-medium text-navy hover:text-gold" href={item.href}>{item.title}</a>
           </li>
         ))}
       </ul>
