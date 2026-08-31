@@ -9,45 +9,124 @@ const inputClass =
     <label for="sk_hp">Company</label>
     <input id="sk_hp" name="sk_hp" type="text" tabindex="-1" autocomplete="off" />
   </div>
+
+  <div>
+    <label for="service" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+      What are you planning? *
+    </label>
+    <select class={inputClass} id="service" name="service" required>
+      <option value="">— Select —</option>
+      <option value="study-visa">Study abroad</option>
+      <option value="visit-visa">Visit / travel</option>
+      <option value="ausbildung">Work / training</option>
+      <option value="company-registration">Company registration</option>
+      <option value="attestation">Document attestation</option>
+      <option value="appointments">Visa appointment / interview</option>
+      <option value="saudi-work">Saudi sponsor-driven visa</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div id="sk-saudi-extra" class="hidden rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-700/50 dark:bg-amber-900/20">
+    <p class="mb-3 text-sm font-medium text-amber-900 dark:text-amber-200">
+      We only assist when a legitimate sponsor in Saudi Arabia has already initiated the process. We do not offer,
+      arrange or sell jobs.
+    </p>
+    <label for="sponsor_initiated" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+      Has a sponsor already initiated the process?
+    </label>
+    <select class={inputClass} id="sponsor_initiated" name="sponsor_initiated">
+      <option value="">— Select —</option>
+      <option value="yes">Yes, a sponsor has started the process</option>
+      <option value="no">No, I do not have a sponsor yet</option>
+      <option value="unsure">I'm not sure</option>
+    </select>
+  </div>
+
+  <div id="sk-study-extra" class="hidden grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="education" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        Education level
+      </label>
+      <input class={inputClass} type="text" id="education" name="education" placeholder="e.g. Bachelor's, Intermediate" />
+    </div>
+    <div>
+      <label for="study_goal" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        Intended programme
+      </label>
+      <input class={inputClass} type="text" id="study_goal" name="study_goal" placeholder="e.g. Master's in CS" />
+    </div>
+  </div>
+
+  <div id="sk-company-extra" class="hidden">
+    <label for="business_goal" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+      What are you trying to build?
+    </label>
+    <input class={inputClass} type="text" id="business_goal" name="business_goal" placeholder="e.g. UK limited company for a consulting practice" />
+    <p class="mt-2 text-xs text-muted">Company registration does not automatically provide a visa or residency.</p>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="destination" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        Destination / country
+      </label>
+      <input class={inputClass} type="text" id="destination" name="destination" placeholder="e.g. Germany, UK, UAE" />
+    </div>
+    <div>
+      <label for="current_location" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        Current location
+      </label>
+      <input class={inputClass} type="text" id="current_location" name="current_location" placeholder="City / country" />
+    </div>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="profession" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        Profession
+      </label>
+      <input class={inputClass} type="text" id="profession" name="profession" placeholder="Optional" />
+    </div>
+    <div>
+      <label for="timeline" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        Desired timeline
+      </label>
+      <select class={inputClass} id="timeline" name="timeline">
+        <option value="">— Select —</option>
+        <option value="asap">As soon as practical</option>
+        <option value="3-months">Within 3 months</option>
+        <option value="6-months">Within 6 months</option>
+        <option value="exploring">I'm still exploring</option>
+      </select>
+    </div>
+  </div>
+
   <div class="grid gap-4 sm:grid-cols-2">
     <div>
       <label for="name" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Full Name *
+        Full name *
       </label>
-      <input class={inputClass} type="text" id="name" name="name" required placeholder="Muhammad Ahmed" />
+      <input class={inputClass} type="text" id="name" name="name" required autocomplete="name" />
     </div>
     <div>
       <label for="phone" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Phone / WhatsApp *
+        WhatsApp number *
       </label>
-      <input class={inputClass} type="tel" id="phone" name="phone" required placeholder="+92 3XX XXXXXXX" />
+      <input class={inputClass} type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+country code" />
     </div>
   </div>
+
   <div>
     <label for="email" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-      Email Address
+      Email
     </label>
-    <input class={inputClass} type="email" id="email" name="email" placeholder="you@domain.com" />
+    <input class={inputClass} type="email" id="email" name="email" autocomplete="email" />
   </div>
-  <div>
-    <label for="service" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-      Service of Interest *
-    </label>
-    <select class={inputClass} id="service" name="service" required>
-      <option value="">— Select Service —</option>
-      <option value="study-visa">Study Visa &amp; University Admissions</option>
-      <option value="ausbildung">Germany Ausbildung &amp; EU Opportunity Card</option>
-      <option value="visit-visa">Visit / Tourist Visa</option>
-      <option value="company-registration">Company &amp; Business Registration</option>
-      <option value="saudi-work">Saudi Visa Processing (sponsor-driven)</option>
-      <option value="attestation">Document Attestation &amp; Legalization</option>
-      <option value="appointments">Visa Appointments &amp; Interview Prep</option>
-      <option value="other">Other Inquiry</option>
-    </select>
-  </div>
+
   <div>
     <label for="message" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-      Message / Qualifications *
+      What help do you need? *
     </label>
     <textarea
       class={`${inputClass} resize-none`}
@@ -55,11 +134,15 @@ const inputClass =
       name="message"
       rows="4"
       required
-      placeholder="Tell us what you're planning, where you're hoping to go, or what you're trying to build."
+      placeholder="Tell us what you're planning. You don't need to have everything figured out."
     ></textarea>
   </div>
+
+  <p class="text-xs text-muted">
+    No pressure. No false promises. Authorities make the final decisions.
+  </p>
   <button type="submit" class="btn-primary mt-2 w-full py-3" id="sk-contact-submit">
-    Submit Assessment Request
+    Start My Assessment
   </button>
 </form>
 
@@ -67,6 +150,20 @@ const inputClass =
   const form = document.getElementById('sk-contact-form') as HTMLFormElement | null;
   const status = document.getElementById('sk-contact-status');
   const submit = document.getElementById('sk-contact-submit') as HTMLButtonElement | null;
+  const service = document.getElementById('service') as HTMLSelectElement | null;
+  const saudiExtra = document.getElementById('sk-saudi-extra');
+  const studyExtra = document.getElementById('sk-study-extra');
+  const companyExtra = document.getElementById('sk-company-extra');
+
+  function syncExtras() {
+    const value = service?.value || '';
+    saudiExtra?.classList.toggle('hidden', value !== 'saudi-work');
+    studyExtra?.classList.toggle('hidden', value !== 'study-visa' && value !== 'ausbildung');
+    companyExtra?.classList.toggle('hidden', value !== 'company-registration');
+  }
+
+  service?.addEventListener('change', syncExtras);
+  syncExtras();
 
   function show(kind: 'ok' | 'err', text: string) {
     if (!status) return;
@@ -89,6 +186,14 @@ const inputClass =
         email: String(data.get('email') || '').trim(),
         service: String(data.get('service') || '').trim(),
         message: String(data.get('message') || '').trim(),
+        destination: String(data.get('destination') || '').trim(),
+        current_location: String(data.get('current_location') || '').trim(),
+        education: String(data.get('education') || '').trim(),
+        profession: String(data.get('profession') || '').trim(),
+        timeline: String(data.get('timeline') || '').trim(),
+        sponsor_initiated: String(data.get('sponsor_initiated') || '').trim(),
+        business_goal: String(data.get('business_goal') || '').trim(),
+        study_goal: String(data.get('study_goal') || '').trim(),
       },
     };
     if (submit) {
@@ -104,16 +209,17 @@ const inputClass =
       const body = await res.json().catch(() => null);
       if (res.ok && body?.ok) {
         form.reset();
+        syncExtras();
         show('ok', 'Thank you. We will reply within 24 hours on WhatsApp or email.');
       } else {
         show('err', 'Could not send the form. Please WhatsApp us instead.');
       }
     } catch {
-      show('err', 'Network error. Please WhatsApp +92 304 5999859.');
+      show('err', 'Network error. Please WhatsApp us instead.');
     } finally {
       if (submit) {
         submit.disabled = false;
-        submit.textContent = 'Submit Assessment Request';
+        submit.textContent = 'Start My Assessment';
       }
     }
   });

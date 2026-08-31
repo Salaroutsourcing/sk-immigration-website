@@ -1,0 +1,36 @@
+---
+interface Props {
+  cluster: string;
+  slug?: string;
+}
+
+const { cluster, slug = '' } = Astro.props;
+
+const notices: Record<string, { title: string; body: string }> = {
+  'saudi-visa': {
+    title: 'Sponsor-driven cases only',
+    body: 'We assist with Saudi visa processing only when a legitimate sponsor in Saudi Arabia has already initiated the relevant process. We do not offer, arrange or sell jobs in Saudi Arabia. Authorities decide every visa.',
+  },
+  'work-permit': {
+    title: 'Guidance, not job placement',
+    body: 'This is a documentation and pathway-guidance service. We do not promise employment, an Ausbildung contract, a salary or a visa. A genuine training or job offer — where required — comes from an employer, not from a guarantee.',
+  },
+  'visa-appointment': {
+    title: 'Appointments cannot be guaranteed',
+    body: 'We can guide the process and help you prepare. We do not have privileged access to embassy or visa-centre systems, and we cannot guarantee slot availability.',
+  },
+};
+
+const saudiNotice = notices['saudi-visa'];
+const notice =
+  cluster === 'saudi-visa' || slug.includes('saudi')
+    ? saudiNotice
+    : notices[cluster];
+---
+
+{notice && (
+  <div class="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-4 text-sm dark:border-amber-700/50 dark:bg-amber-900/20" role="note">
+    <p class="font-bold uppercase tracking-wide text-amber-900 dark:text-amber-200">{notice.title}</p>
+    <p class="mt-1 leading-relaxed text-amber-950 dark:text-amber-100">{notice.body}</p>
+  </div>
+)}

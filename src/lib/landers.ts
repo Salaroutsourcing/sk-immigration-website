@@ -19,10 +19,10 @@ export const HUB_META: Record<
       'UK, USA, Schengen, Dubai, and Malaysia visit visa file preparation from Rawalpindi. Ties-to-home and financial documentation — no fake guarantees.',
   },
   'work-permit': {
-    kicker: 'Work permit',
-    title: 'Work Permit & Ausbildung Pakistan',
+    kicker: 'Work & training guidance',
+    title: 'Germany Ausbildung & Work Pathways',
     description:
-      'Germany Ausbildung, EU work permits, and skilled-worker pathways from Pakistan. Honest eligibility, language, and document guidance.',
+      'Guidance for applicants exploring vocational training, the EU Opportunity Card and related documentation. We do not promise employment, placement or visa outcomes.',
   },
   'visa-appointment': {
     kicker: 'Appointments',
@@ -37,10 +37,10 @@ export const HUB_META: Record<
       'MOFA, HEC, Apostille, Musadaqa, and QVP document attestation coordination from Rawalpindi.',
   },
   'saudi-visa': {
-    kicker: 'Saudi work visa',
-    title: 'Saudi Arabia Work Visa Pakistan',
+    kicker: 'Sponsor-driven cases only',
+    title: 'Saudi Visa Processing',
     description:
-      'Saudi work visa processing at a fixed consultancy fee of PKR 15,000 — medical, Enjaz, Musaned, and BEOE protector. Authority fees are separate.',
+      'We assist with Saudi visa processing only when a legitimate sponsor in Saudi Arabia has already initiated the process. We do not offer, arrange or sell jobs. Authority fees are separate.',
   },
   local: {
     kicker: 'Local offices',

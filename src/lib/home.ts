@@ -4,7 +4,8 @@
  */
 import { CONTACT } from './config';
 
-export const ASSESSMENT_HREF = '/eligibility/';
+export const ASSESSMENT_HREF = '/contact/';
+export const FINDER_HREF = '/eligibility/';
 export const WHATSAPP_HREF = CONTACT.whatsappLink;
 export const SERVICES_HREF = '/services/';
 export const BUSINESS_HREF = '/business-registration/';
@@ -13,27 +14,27 @@ export const HOW_IT_WORKS_HREF = '/how-it-works/';
 export const TRUST_ITEMS = [
   {
     title: '100% Online',
-    text: 'Remote support from anywhere.',
+    text: 'Remote support from wherever you are.',
     icon: 'globe',
   },
   {
-    title: 'Written Scope',
+    title: 'Clear Service Scope',
     text: 'Know what is included before payment.',
     icon: 'document',
   },
   {
     title: 'Transparent Fees',
-    text: 'Clear pricing with no surprise charges.',
+    text: 'Understand our service fees and external costs.',
     icon: 'fees',
   },
   {
     title: 'No False Guarantees',
-    text: 'We prepare and guide. Authorities decide.',
+    text: 'Authorities make the final decisions.',
     icon: 'shield',
   },
   {
     title: 'Human Support',
-    text: 'Real people for important decisions.',
+    text: 'Real guidance for important decisions.',
     icon: 'people',
   },
 ] as const;
@@ -41,14 +42,14 @@ export const TRUST_ITEMS = [
 export const PATHWAYS = [
   {
     title: 'Study Abroad',
-    description: 'University admissions, study pathways and visa file preparation.',
+    description: 'University admissions, study pathway guidance and visa file preparation.',
     cta: 'Explore Study Services',
     href: '/study-visa/',
     image: '/assets/hubs/study-visa.svg',
   },
   {
     title: 'Travel Abroad',
-    description: 'Visit and tourist visa preparation for selected destinations.',
+    description: 'Visit and tourist visa preparation for legitimate temporary travel.',
     cta: 'Explore Visit Visas',
     href: '/visit-visa/',
     image: '/assets/hubs/appointments.svg',
@@ -74,8 +75,8 @@ export const TRUST_BENEFITS = [
   'Know which documents are required',
   'Understand the process before you commit',
   'Receive a clear service scope',
-  'Know what is within our responsibility',
-  "Know what remains the authority's decision",
+  'Understand what we can help with',
+  'Understand what remains outside our control',
 ] as const;
 
 export const HOME_SERVICES = [
@@ -83,9 +84,9 @@ export const HOME_SERVICES = [
     id: 'study',
     title: 'Study Visa & University Admissions',
     description:
-      'University shortlisting, pathway guidance, SOP support and complete visa file preparation.',
+      'Guidance for students preparing for international university applications and study visa processes.',
     benefits: [
-      'University/program selection guidance',
+      'University/program shortlisting',
       'Application documentation',
       'SOP and motivation guidance',
       'Financial-document preparation guidance',
@@ -155,7 +156,7 @@ export const HOME_SERVICES = [
     id: 'appointments',
     title: 'Visa Appointment Monitoring & Interview Preparation',
     description:
-      'Support with appointment monitoring where applicable and preparation before interviews.',
+      'Support with appointment processes where applicable and practical preparation before interviews.',
     note: 'Appointment availability cannot be guaranteed.',
     benefits: [
       'Appointment guidance',
@@ -173,7 +174,9 @@ export const HOME_SERVICES = [
   {
     id: 'saudi',
     title: 'Saudi Visa Processing',
-    description: 'Sponsor-driven cases only.',
+    badge: 'Sponsor-driven cases only',
+    description:
+      'We assist with Saudi visa processing when a legitimate sponsor in Saudi Arabia has already initiated the relevant visa process.',
     notice:
       'We only assist with Saudi visa processing when a sponsor in Saudi Arabia has already initiated the process.',
     jobsDisclaimer: 'We do not offer, arrange or sell jobs in Saudi Arabia.',
@@ -250,6 +253,7 @@ export const NEVER_PROMISE = [
   'Guaranteed immigration outcomes',
   'Guaranteed university admission',
   'Guaranteed employment',
+  'Guaranteed business success',
   'Fake documents',
   'Misleading information',
   'Hidden charges',
@@ -268,7 +272,7 @@ export const WE_PROMISE = [
 
 export const AUDIENCES = [
   { title: 'Students', text: 'Education and international study pathways.' },
-  { title: 'Professionals', text: 'Training, career and opportunity pathways.' },
+  { title: 'Professionals', text: 'Training, career and international opportunity pathways.' },
   { title: 'Travelers', text: 'Legitimate temporary travel applications.' },
   { title: 'Entrepreneurs', text: 'International company formation and expansion.' },
   { title: 'Businesses', text: 'Cross-border documentation and support.' },
@@ -301,4 +305,74 @@ export const HOME_FAQS = [
     q: 'Do I need to know the perfect pathway before I contact you?',
     a: 'No. You don’t need to have everything figured out. Tell us what you’re planning, where you’re hoping to go, or what you’re trying to build — we’ll help you understand your options and the steps involved.',
   },
+  {
+    q: 'Do you guarantee visa approval?',
+    a: 'No. We prepare documentation and explain the process. Visa, immigration and related decisions are made by the relevant authorities.',
+  },
+  {
+    q: 'Are your services available online?',
+    a: 'Yes. SK Immigration operates through remote/digital communication for these services. You can start with an assessment or WhatsApp conversation from wherever you are.',
+  },
+  {
+    q: 'Can company registration give me residency?',
+    a: 'No. Company registration and immigration status are separate matters. Forming a company does not automatically provide residency, a visa, a work permit or the right to operate in a particular country.',
+  },
+  {
+    q: 'Do you prepare documents?',
+    a: 'We provide documentation guidance and preparation support according to the selected service. You remain responsible for supplying accurate, genuine information and originals when required.',
+  },
+  {
+    q: 'Do government fees come separately?',
+    a: 'Where applicable, yes. Government and third-party charges should be distinguished from SK Immigration’s service fee. We explain this before you pay.',
+  },
+  {
+    q: 'Can you guarantee a visa appointment?',
+    a: 'No. Appointment availability is controlled by visa centres and authorities. We can guide the process and help you prepare, but we cannot guarantee a slot.',
+  },
+  {
+    q: 'Can you guarantee university admission?',
+    a: 'No. Universities and colleges make their own admission decisions. We help with shortlisting, documentation and application preparation.',
+  },
+  {
+    q: 'Can you help me choose the right service?',
+    a: 'Yes. Use the assessment or contact process to explain your situation. You don’t need to know the perfect pathway before you write to us.',
+  },
+] as const;
+
+export const WE_HANDLE = [
+  'Profile review',
+  'Documentation guidance',
+  'File preparation',
+  'Application guidance',
+  'File organization',
+  'Interview preparation',
+  'Process communication',
+  'Company registration documentation support',
+] as const;
+
+export const AUTHORITIES_DECIDE = [
+  'Visa approval',
+  'Immigration status',
+  'University admission',
+  'Government decisions',
+  'Regulatory approvals',
+  'Appointment availability',
+  'Registration approvals',
+] as const;
+
+export const HOW_WE_WORK = [
+  { title: 'Written scope', text: 'You know what is included before you pay.' },
+  { title: 'Transparent pricing', text: 'Service fees are separated from government and third-party costs.' },
+  { title: 'Clear communication', text: 'You stay informed throughout the agreed service.' },
+  { title: 'Official-source guidance', text: 'We explain requirements using public, official information.' },
+  { title: 'No guarantees', text: 'We prepare and guide. Authorities decide.' },
+] as const;
+
+export const BEFORE_YOU_PAY = [
+  { q: 'What service am I buying?', a: 'Clear service scope.' },
+  { q: 'What is included?', a: 'Specific deliverables.' },
+  { q: 'What does it cost?', a: 'Service fees separated from third-party costs.' },
+  { q: 'What can SK Immigration control?', a: 'Preparation and guidance.' },
+  { q: 'What can SK Immigration NOT control?', a: 'Government and authority decisions.' },
+  { q: 'What happens next?', a: 'Clear process.' },
 ] as const;
