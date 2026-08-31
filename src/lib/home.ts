@@ -43,28 +43,28 @@ export const PATHWAYS = [
   {
     title: 'Study Abroad',
     description: 'University admissions, study pathway guidance and visa file preparation.',
-    cta: 'Explore Study Services',
+    cta: 'Explore service',
     href: '/study-visa/',
     image: '/assets/hubs/study-visa.svg',
   },
   {
     title: 'Travel Abroad',
     description: 'Visit and tourist visa preparation for legitimate temporary travel.',
-    cta: 'Explore Visit Visas',
+    cta: 'Explore service',
     href: '/visit-visa/',
     image: '/assets/hubs/appointments.svg',
   },
   {
     title: 'Work or Training',
     description: 'Germany Ausbildung and EU Opportunity Card guidance.',
-    cta: 'Explore Opportunities',
+    cta: 'Explore service',
     href: '/work-permit/',
     image: '/assets/hubs/ausbildung-work.svg',
   },
   {
     title: 'Start a Company Abroad',
     description: 'Company formation and documentation support for international entrepreneurs.',
-    cta: 'Explore Business Services',
+    cta: 'Explore service',
     href: BUSINESS_HREF,
     image: '/assets/hubs/company-registration.svg',
   },
@@ -79,46 +79,36 @@ export const TRUST_BENEFITS = [
   'Understand what remains outside our control',
 ] as const;
 
+export const WHY_CHOOSE = [
+  { n: '01', title: 'Clear Guidance', text: 'Understand your options before you commit.' },
+  { n: '02', title: 'Transparent Scope', text: 'Know exactly what is included.' },
+  { n: '03', title: 'No False Promises', text: 'Authorities make the final decisions.' },
+  { n: '04', title: 'Digital Convenience', text: 'Manage your process remotely.' },
+  { n: '05', title: 'Human Support', text: 'Get real assistance when it matters.' },
+  { n: '06', title: 'International Focus', text: 'Support for multiple countries and pathways.' },
+] as const;
+
 export const HOME_SERVICES = [
   {
     id: 'study',
+    category: 'Study abroad',
     title: 'Study Visa & University Admissions',
     description:
-      'Guidance for students preparing for international university applications and study visa processes.',
+      'Guidance for students preparing international university applications and study visa files.',
     benefits: [
-      'University/program shortlisting',
-      'Application documentation',
-      'SOP and motivation guidance',
-      'Financial-document preparation guidance',
+      'University and programme shortlisting',
+      'Application and SOP guidance',
+      'Financial-document preparation',
       'Visa file organization',
       'Interview preparation',
     ],
-    cta: 'Explore Study Services',
+    cta: 'Explore service',
     href: '/study-visa/',
     image: '/assets/services/student-visa.svg',
-    featured: false,
-  },
-  {
-    id: 'ausbildung',
-    title: 'Germany Ausbildung & EU Opportunity Card',
-    description:
-      'Guidance for applicants exploring vocational training and European opportunity pathways.',
-    note: 'We do not promise employment or placement.',
-    benefits: [
-      'Profile assessment',
-      'Pathway guidance',
-      'CV/document preparation',
-      'Application documentation',
-      'Visa preparation',
-      'Interview preparation',
-    ],
-    cta: 'Explore Opportunities',
-    href: '/work-permit/',
-    image: '/assets/services/ausbildung-work.svg',
-    featured: false,
   },
   {
     id: 'visit',
+    category: 'Visit & tourist visas',
     title: 'Visit & Tourist Visas',
     description: 'Structured preparation for legitimate temporary travel applications.',
     destinations: ['UK', 'Schengen', 'USA', 'Dubai/UAE', 'Other supported destinations'],
@@ -126,20 +116,37 @@ export const HOME_SERVICES = [
       'Document checklist',
       'Financial evidence organization',
       'Travel-purpose documentation',
-      'Itinerary guidance',
       'Application preparation',
       'Interview preparation where applicable',
     ],
-    cta: 'Explore Visit Visas',
+    cta: 'Explore service',
     href: '/visit-visa/',
     image: '/assets/services/visit-visa.svg',
-    featured: false,
+  },
+  {
+    id: 'ausbildung',
+    category: 'Work / training / opportunities',
+    title: 'Germany Ausbildung & EU Opportunity Card',
+    description:
+      'Guidance for applicants exploring vocational training and European opportunity pathways.',
+    note: 'We do not promise employment or placement.',
+    benefits: [
+      'Profile and pathway assessment',
+      'CV and document preparation',
+      'Application documentation',
+      'Visa preparation',
+      'Interview preparation',
+    ],
+    cta: 'Explore service',
+    href: '/work-permit/',
+    image: '/assets/services/ausbildung-work.svg',
   },
   {
     id: 'attestation',
+    category: 'Document attestation',
     title: 'Document Attestation & Legalization',
     description:
-      'Remote coordination and guidance for documents that require verification, attestation or legalization.',
+      'Remote coordination for documents that require verification, attestation or legalization.',
     benefits: [
       'Document review',
       'Attestation pathway guidance',
@@ -147,38 +154,37 @@ export const HOME_SERVICES = [
       'Apostille guidance where applicable',
       'Embassy-related document preparation',
     ],
-    cta: 'Explore Document Services',
+    cta: 'Explore service',
     href: '/document-services/',
     image: '/assets/services/document-attestation.svg',
-    featured: false,
   },
   {
     id: 'appointments',
-    title: 'Visa Appointment Monitoring & Interview Preparation',
+    category: 'Appointment & interview preparation',
+    title: 'Visa Appointments & Interview Preparation',
     description:
-      'Support with appointment processes where applicable and practical preparation before interviews.',
+      'Support with appointment processes where applicable, and practical preparation before interviews.',
     note: 'Appointment availability cannot be guaranteed.',
     benefits: [
-      'Appointment guidance',
-      'Portal/process guidance',
+      'Appointment and portal guidance',
       'Document readiness checks',
       'Mock interviews',
       'Interview preparation',
       'Final file review',
     ],
-    cta: 'Explore Appointment Support',
+    cta: 'Explore service',
     href: '/visa-appointment/',
     image: '/assets/services/visa-appointments.svg',
-    featured: false,
   },
   {
     id: 'saudi',
+    category: 'Saudi sponsor-driven processing',
     title: 'Saudi Visa Processing',
     badge: 'Sponsor-driven cases only',
     description:
-      'We assist with Saudi visa processing when a legitimate sponsor in Saudi Arabia has already initiated the relevant visa process.',
+      'Assistance with Saudi visa processing when a legitimate sponsor in Saudi Arabia has already initiated the process.',
     notice:
-      'We only assist with Saudi visa processing when a sponsor in Saudi Arabia has already initiated the process.',
+      'We only assist when a sponsor in Saudi Arabia has already initiated the process.',
     jobsDisclaimer: 'We do not offer, arrange or sell jobs in Saudi Arabia.',
     benefits: [
       'Document preparation',
@@ -186,38 +192,44 @@ export const HOME_SERVICES = [
       'Required-step coordination',
       'Application support',
     ],
-    cta: 'Learn About Saudi Processing',
+    cta: 'Explore service',
     href: '/saudi-visa/saudi-visa-processing-pakistan/',
     image: '/assets/services/saudi-visa.svg',
-    featured: false,
   },
   {
     id: 'company',
+    category: 'International company registration',
     title: 'Company & Business Registration',
-    headline: 'Build your business internationally.',
     description:
-      'Starting a company in another country can feel complicated. Different jurisdictions, documents, registration procedures and compliance requirements can quickly become overwhelming.',
-    extra:
-      'We provide remote guidance and documentation support for entrepreneurs planning to establish or expand their businesses internationally.',
-    markets: ['United States', 'United Kingdom', 'Canada', 'Australia', 'Selected European jurisdictions'],
+      'Remote guidance and documentation support for entrepreneurs establishing or expanding a company internationally.',
     benefits: [
       'Company structure guidance',
-      'Registration/document preparation',
-      'Founder/shareholder documentation',
-      'Government-form preparation',
-      'Registration process coordination',
+      'Registration document preparation',
+      'Founder and shareholder documentation',
+      'Process coordination',
       'Basic post-registration guidance',
-      'International expansion documentation support',
     ],
-    disclaimers: [
-      'Company registration does not automatically provide immigration status, residency, a visa, a work permit or the right to operate in a particular country.',
-      'Each jurisdiction has its own legal, tax and regulatory requirements. We explain the process and support documentation preparation; official authorities make the final decisions.',
-    ],
-    cta: 'Explore Company Registration',
+    note: 'Company registration does not provide a visa or residency.',
+    cta: 'Explore service',
     href: BUSINESS_HREF,
     image: '/assets/hubs/company-registration.svg',
-    featured: true,
   },
+] as const;
+
+export const COMPANY_EXTRA =
+  'We provide remote guidance and documentation support for entrepreneurs planning to establish or expand their businesses internationally.';
+
+export const COMPANY_MARKETS = [
+  'United States',
+  'United Kingdom',
+  'Canada',
+  'Australia',
+  'Selected European jurisdictions',
+] as const;
+
+export const COMPANY_DISCLAIMERS = [
+  'Company registration does not automatically provide immigration status, residency, a visa, a work permit or the right to operate in a particular country.',
+  'Each jurisdiction has its own legal, tax and regulatory requirements. We explain the process and support documentation preparation; official authorities make the final decisions.',
 ] as const;
 
 export const PROCESS_STEPS = [
@@ -251,9 +263,7 @@ export const PROCESS_STEPS = [
 export const NEVER_PROMISE = [
   'Guaranteed visa approval',
   'Guaranteed immigration outcomes',
-  'Guaranteed university admission',
   'Guaranteed employment',
-  'Guaranteed business success',
   'Fake documents',
   'Misleading information',
   'Hidden charges',
@@ -265,9 +275,7 @@ export const WE_PROMISE = [
   'Transparent communication',
   'Proper documentation support',
   'Realistic expectations',
-  'Respect for your information',
-  'Remote accessibility',
-  'Human support when it matters',
+  'Human support',
 ] as const;
 
 export const AUDIENCES = [
@@ -283,11 +291,11 @@ export const REGIONS = ['Gulf', 'South Asia', 'Africa', 'Europe', 'Worldwide'] a
 export const HOME_FAQS = [
   {
     q: 'Do you guarantee visa approval or immigration outcomes?',
-    a: 'No. We help you understand your options, prepare documentation and navigate the process clearly. Government, embassy, university and regulatory authorities make the final decisions. We will never tell you something is guaranteed when it isn’t.',
+    a: 'No. We help you understand your options, prepare documentation and navigate the process clearly. Government, embassy, university and regulatory authorities make the final decisions.',
   },
   {
     q: 'How does a fully online service work?',
-    a: 'You start with a short assessment or a conversation. We review your situation, explain the likely pathway and scope, then support documentation and preparation remotely. You stay informed at every step of the agreed service.',
+    a: 'You start with a short assessment or a conversation. We review your situation, explain the likely pathway and scope, then support documentation and preparation remotely.',
   },
   {
     q: 'Do you arrange jobs in Saudi Arabia?',
@@ -295,47 +303,23 @@ export const HOME_FAQS = [
   },
   {
     q: 'Does company registration give me a visa or residency?',
-    a: 'No. Company registration does not automatically provide immigration status, residency, a visa, a work permit or the right to operate in a particular country. Each jurisdiction has its own legal, tax and regulatory requirements.',
+    a: 'No. Company registration does not automatically provide immigration status, residency, a visa or a work permit. Each jurisdiction has its own legal, tax and regulatory requirements.',
   },
   {
     q: 'Will I know the fees and scope before I pay?',
-    a: 'Yes. You receive a written service scope and clear pricing before payment. There are no surprise charges for work that was not agreed.',
+    a: 'Yes. You receive a written service scope and clear pricing before payment. Government and third-party charges are separate from our service fee.',
   },
   {
     q: 'Do I need to know the perfect pathway before I contact you?',
-    a: 'No. You don’t need to have everything figured out. Tell us what you’re planning, where you’re hoping to go, or what you’re trying to build — we’ll help you understand your options and the steps involved.',
+    a: 'No. Tell us what you’re planning, where you’re hoping to go, or what you’re trying to build — we’ll help you understand your options and the steps involved.',
   },
   {
-    q: 'Do you guarantee visa approval?',
-    a: 'No. We prepare documentation and explain the process. Visa, immigration and related decisions are made by the relevant authorities.',
-  },
-  {
-    q: 'Are your services available online?',
-    a: 'Yes. SK Immigration operates through remote/digital communication for these services. You can start with an assessment or WhatsApp conversation from wherever you are.',
-  },
-  {
-    q: 'Can company registration give me residency?',
-    a: 'No. Company registration and immigration status are separate matters. Forming a company does not automatically provide residency, a visa, a work permit or the right to operate in a particular country.',
+    q: 'Can you guarantee a visa appointment or university admission?',
+    a: 'No. Appointment availability is controlled by visa centres, and universities make their own admission decisions. We help you prepare; we cannot guarantee a slot or an offer.',
   },
   {
     q: 'Do you prepare documents?',
     a: 'We provide documentation guidance and preparation support according to the selected service. You remain responsible for supplying accurate, genuine information and originals when required.',
-  },
-  {
-    q: 'Do government fees come separately?',
-    a: 'Where applicable, yes. Government and third-party charges should be distinguished from SK Immigration’s service fee. We explain this before you pay.',
-  },
-  {
-    q: 'Can you guarantee a visa appointment?',
-    a: 'No. Appointment availability is controlled by visa centres and authorities. We can guide the process and help you prepare, but we cannot guarantee a slot.',
-  },
-  {
-    q: 'Can you guarantee university admission?',
-    a: 'No. Universities and colleges make their own admission decisions. We help with shortlisting, documentation and application preparation.',
-  },
-  {
-    q: 'Can you help me choose the right service?',
-    a: 'Yes. Use the assessment or contact process to explain your situation. You don’t need to know the perfect pathway before you write to us.',
   },
 ] as const;
 

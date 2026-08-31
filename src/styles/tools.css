@@ -30,7 +30,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #0161ef;
+  color: #0B1F3A;
 }
 .tool-shell .section-title,
 .tool-shell .text-gold {
@@ -69,13 +69,14 @@
 .tool-shell .btn-gold,
 .tool-shell .btn-navy,
 .tool-shell .btn-primary {
-  background: #0161ef;
-  color: #fff;
+  background: #C9A227;
+  color: #0B1F3A;
+  border-radius: 0.5rem;
 }
 .tool-shell .btn-gold:hover,
 .tool-shell .btn-navy:hover,
 .tool-shell .btn-primary:hover {
-  background: #0154cf;
+  background: #A88820;
 }
 .tool-shell .btn-whatsapp {
   background: #25d366;
@@ -153,8 +154,8 @@
 }
 .tool-shell .quiz-option:hover,
 .tool-shell .quiz-option.selected {
-  border-color: #0161ef;
-  background: #eff6ff;
+  border-color: #0B1F3A;
+  background: #f8f3e3;
 }
 .dark .tool-shell .quiz-option:hover,
 .dark .tool-shell .quiz-option.selected {
@@ -178,7 +179,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: #0161ef;
+  background: #0B1F3A;
   color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
@@ -211,7 +212,7 @@
 .tool-shell .progress-fill {
   height: 100%;
   border-radius: 999px;
-  background: #0161ef;
+  background: #0B1F3A;
 }
 .tool-shell .check-list,
 .tool-shell .source-list {
@@ -234,7 +235,7 @@
 }
 .tool-shell .check-item input {
   margin-top: 0.35rem;
-  accent-color: #0161ef;
+  accent-color: #0B1F3A;
   width: 1.1rem;
   height: 1.1rem;
 }
@@ -251,18 +252,18 @@
   display: inline-flex;
   margin-left: 0.35rem;
   border-radius: 999px;
-  background: #eff6ff;
+  background: #f8f3e3;
   padding: 0.15rem 0.55rem;
   font-size: 0.7rem;
   font-weight: 700;
-  color: #0154cf;
+  color: #0B1F3A;
 }
 .tool-shell .badge-muted {
   background: #f1f5f9;
   color: #64748b;
 }
 .tool-shell .source-list a {
-  color: #0161ef;
+  color: #0B1F3A;
   font-weight: 600;
 }
 .tool-shell .cost-viz {
@@ -277,7 +278,7 @@
 .tool-shell .cost-bar span {
   display: block;
   height: 100%;
-  background: #0161ef;
+  background: #0B1F3A;
 }
 .tool-shell .cost-nums,
 .tool-shell .viz-strip {

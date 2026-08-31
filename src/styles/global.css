@@ -5,42 +5,49 @@
 
 @theme {
   --font-sans: Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-  --font-heading: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-heading: Manrope, Inter, ui-sans-serif, system-ui, sans-serif;
 
-  --color-primary: #0161ef;
-  --color-primary-50: #e8f0fe;
-  --color-primary-100: #d2e3fd;
-  --color-primary-200: #a6c7fb;
-  --color-primary-300: #6ea4f8;
-  --color-primary-400: #3b82f4;
-  --color-primary-500: #0161ef;
-  --color-primary-600: #0161ef;
-  --color-primary-700: #0154cf;
-  --color-primary-800: #0143a6;
-  --color-primary-900: #01357f;
-  --color-primary-950: #021f4d;
+  --color-primary: #0b1f3a;
+  --color-primary-50: #eef2f6;
+  --color-primary-100: #d9e1ea;
+  --color-primary-200: #b3c3d5;
+  --color-primary-300: #7f98b4;
+  --color-primary-400: #4d6d93;
+  --color-primary-500: #142b4a;
+  --color-primary-600: #0b1f3a;
+  --color-primary-700: #081628;
+  --color-primary-800: #06101c;
+  --color-primary-900: #040b14;
+  --color-primary-950: #02060c;
 
-  --color-secondary: #0154cf;
-  --color-secondary-50: #e8f0fc;
-  --color-secondary-100: #cfe0f8;
-  --color-secondary-500: #0154cf;
-  --color-secondary-600: #0154cf;
-  --color-secondary-700: #0143a6;
+  --color-secondary: #142b4a;
+  --color-secondary-50: #eef2f6;
+  --color-secondary-100: #d9e1ea;
+  --color-secondary-500: #142b4a;
+  --color-secondary-600: #0b1f3a;
+  --color-secondary-700: #081628;
 
-  --color-accent: #eab308;
-  --color-accent-50: #fefce8;
-  --color-accent-100: #fef9c3;
-  --color-accent-500: #eab308;
-  --color-accent-600: #ca8a04;
+  --color-accent: #c9a227;
+  --color-accent-50: #f8f3e3;
+  --color-accent-100: #e5d18a;
+  --color-accent-500: #c9a227;
+  --color-accent-600: #a88820;
 
-  --color-muted: #64748b;
-  --color-default: #1e293b;
+  --color-gold: #c9a227;
+  --color-gold-light: #e5d18a;
+  --color-page: #f7f8fa;
+  --color-ink: #172033;
+  --color-line: #e5e7eb;
+  --color-success: #16803c;
 
-  --color-dark-50: #f8fafc;
-  --color-dark-800: #1e293b;
-  --color-dark-900: #0f172a;
-  --color-dark-950: #030621;
-  --color-dark: #030621;
+  --color-muted: #667085;
+  --color-default: #172033;
+
+  --color-dark-50: #f7f8fa;
+  --color-dark-800: #142b4a;
+  --color-dark-900: #0b1f3a;
+  --color-dark-950: #06101c;
+  --color-dark: #0b1f3a;
 }
 
 @layer base {
@@ -48,7 +55,7 @@
     font-family: var(--font-sans);
     scroll-behavior: smooth;
     color-scheme: light;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: 5.75rem;
   }
 
   html.dark {
@@ -56,7 +63,8 @@
   }
 
   body {
-    @apply bg-white text-slate-600 tracking-tight dark:bg-dark-950 dark:text-slate-300;
+    @apply bg-page text-muted tracking-normal dark:bg-dark-950 dark:text-slate-300;
+    line-height: 1.62;
   }
 
   h1,
@@ -66,33 +74,54 @@
   h5,
   h6 {
     font-family: var(--font-heading);
-    @apply font-bold tracking-tight text-slate-900 dark:text-slate-100;
+    @apply font-bold tracking-tight text-ink dark:text-slate-100;
+    line-height: 1.2;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-full border border-slate-400 bg-transparent px-6 py-3.5 text-center text-base font-medium leading-snug text-slate-800 transition duration-200 ease-in hover:border-slate-600 hover:bg-slate-100 md:px-8 dark:border-slate-500 dark:text-slate-300 dark:hover:border-slate-800 dark:hover:bg-slate-800;
+    @apply inline-flex cursor-pointer items-center justify-center rounded-lg border border-primary bg-transparent px-5 py-2.5 text-center text-sm font-semibold leading-snug text-primary transition duration-200 ease-in hover:bg-primary hover:text-white md:px-6 dark:border-slate-500 dark:text-slate-200 dark:hover:border-white dark:hover:bg-white dark:hover:text-primary;
   }
 
   .btn-primary {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-full border border-primary bg-primary px-6 py-3.5 text-center text-base font-semibold leading-snug text-white transition duration-200 ease-in hover:border-secondary hover:bg-secondary md:px-8 dark:border-primary dark:bg-primary dark:text-white dark:hover:border-secondary dark:hover:bg-secondary;
+    @apply inline-flex cursor-pointer items-center justify-center rounded-lg border border-accent bg-accent px-5 py-2.5 text-center text-sm font-semibold leading-snug text-primary transition duration-200 ease-in hover:border-gold-light hover:bg-gold-light md:px-6;
   }
 
   .btn-secondary {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-full border border-slate-400 bg-transparent px-6 py-3.5 text-center text-base font-medium leading-snug text-slate-800 transition duration-200 ease-in hover:border-slate-600 hover:bg-slate-100 md:px-8 dark:border-slate-500 dark:text-slate-300 dark:hover:border-slate-800 dark:hover:bg-slate-800;
+    @apply inline-flex cursor-pointer items-center justify-center rounded-lg border border-primary bg-transparent px-5 py-2.5 text-center text-sm font-semibold leading-snug text-primary transition duration-200 ease-in hover:bg-primary hover:text-white md:px-6 dark:border-slate-500 dark:text-slate-200;
   }
 
   .btn-tertiary {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-transparent px-6 py-3 text-center text-base font-medium leading-snug text-slate-500 shadow-none transition hover:text-slate-900 dark:text-slate-400 dark:hover:text-white;
+    @apply inline-flex cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent px-4 py-2 text-center text-sm font-medium leading-snug text-muted shadow-none transition hover:text-ink dark:text-slate-400 dark:hover:text-white;
   }
 
   .btn-whatsapp {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-full border border-[#25D366] bg-[#25D366] px-6 py-3.5 text-center text-base font-semibold leading-snug text-white transition duration-200 ease-in hover:bg-[#1ebe5d] md:px-8;
+    @apply inline-flex cursor-pointer items-center justify-center rounded-lg border border-[#25D366] bg-[#25D366] px-5 py-2.5 text-center text-sm font-semibold leading-snug text-white transition duration-200 ease-in hover:bg-[#1ebe5d] md:px-6;
   }
 
   .section-container {
-    @apply mx-auto max-w-7xl px-3 py-12 sm:px-6 md:py-16 lg:py-20;
+    @apply mx-auto max-w-7xl px-4 py-14 sm:px-6 md:py-20 lg:py-24;
+  }
+
+  .eyebrow {
+    @apply text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-primary;
+  }
+
+  .accent-line {
+    @apply mb-4 h-0.5 w-10 bg-accent;
+  }
+
+  .card-premium {
+    @apply rounded-xl border border-line bg-white p-6 shadow-[0_1px_2px_rgba(11,31,58,0.04)] transition duration-200 ease-out md:p-7 dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  .card-premium:hover {
+    @apply -translate-y-1 border-accent shadow-[0_10px_28px_rgba(11,31,58,0.08)];
+  }
+
+  .page-intro {
+    @apply mx-auto max-w-3xl px-4 py-12 text-center sm:px-6 md:py-16;
   }
 
   details > summary {
@@ -132,23 +161,38 @@
   }
 }
 
-#header.scroll > div:first-child,
-#header.expanded > div:first-child {
-  @apply bg-white/90 backdrop-blur-md dark:bg-[#030621e6];
-  box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+#header {
+  background: rgba(247, 248, 250, 0.72);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
 }
-.dark #header.scroll > div:first-child,
-.dark #header.expanded > div:first-child {
-  border-bottom: 1px solid rgb(100 116 139 / 0.2);
+#header.scroll,
+#header.expanded {
+  background: #ffffff;
+  border-bottom-color: #e5e7eb;
+  box-shadow: 0 8px 24px rgb(11 31 58 / 6%);
+}
+.dark #header {
+  background: rgba(6, 16, 28, 0.78);
+}
+.dark #header.scroll,
+.dark #header.expanded {
+  background: #0b1f3a;
+  border-bottom-color: rgb(255 255 255 / 0.08);
   box-shadow: none;
 }
 @media (max-width: 767px) {
-  #header > div:first-child {
-    @apply bg-white/95 backdrop-blur-md dark:bg-[#030621e6];
+  #header {
+    background: #ffffff;
+    border-bottom-color: #e5e7eb;
   }
-}
-#header.expanded nav {
-  display: block;
+  .dark #header {
+    background: #0b1f3a;
+  }
 }
 
 .prose .lead-answer {
@@ -177,8 +221,8 @@
 .prose.article-prose {
   max-width: 42rem;
   font-size: 1.0625rem;
-  line-height: 1.62;
-  color: #334155;
+  line-height: 1.65;
+  color: #172033;
 }
 
 .dark .prose.article-prose {
@@ -555,8 +599,8 @@
 .story-cta a {
   display: block;
   text-align: center;
-  background: #0161ef;
-  color: #fff;
+  background: #c9a227;
+  color: #0b1f3a;
   font-weight: 600;
   font-size: 0.8125rem;
   padding: 0.45rem 0.9rem;

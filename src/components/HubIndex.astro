@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { HUB_META, landerPath, landersIn } from '../lib/landers';
 import ClusterNotice from './ClusterNotice.astro';
 import AuthoritySplit from './home/AuthoritySplit.astro';
-import BeforeYouPay from './home/BeforeYouPay.astro';
+import FinalCta from './home/FinalCta.astro';
 
 interface Props {
   cluster: string;
@@ -18,36 +18,32 @@ const path = `/${cluster}/`;
 <BaseLayout title={meta.title} description={meta.description} canonical={path} page={cluster}>
   <section class="not-prose">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
-      <div class="mb-10 md:mx-auto md:mb-12 max-w-3xl text-center">
-        <p class="text-base font-semibold uppercase tracking-wide text-primary">{meta.kicker}</p>
-        <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">{meta.title}</h1>
-        <p class="text-xl text-muted dark:text-slate-400">{meta.description}</p>
+      <div class="mb-10 text-center md:mx-auto md:mb-12 max-w-3xl">
+        <p class="eyebrow">{meta.kicker}</p>
+        <span class="accent-line mx-auto"></span>
+        <h1 class="font-heading mt-3 mb-4 text-3xl font-bold tracking-tight text-ink sm:text-5xl dark:text-white">{meta.title}</h1>
+        <p class="text-base leading-[1.65] text-muted sm:text-lg">{meta.description}</p>
         <div class="mx-auto mt-6 max-w-2xl text-left">
           <ClusterNotice cluster={cluster} />
         </div>
-        <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a href="/contact/" class="btn-primary">Start My Assessment</a>
-          <a href="/guides/" class="btn">Explore Guides</a>
+          <a href="/services/" class="btn">Explore Services</a>
         </div>
       </div>
       <div class="mx-auto mb-12 max-w-5xl">
         <AuthoritySplit compact />
       </div>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((entry) => (
-          <a
-            href={landerPath(entry)}
-            class="rounded-lg border border-gray-200 bg-white p-6 shadow-none transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
-          >
-            <h2 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">{entry.data.h1}</h2>
-            <p class="line-clamp-3 text-sm text-muted dark:text-slate-400">{entry.data.description}</p>
-            <p class="mt-4 text-sm font-semibold text-primary">Open guide →</p>
+          <a href={landerPath(entry)} class="card-premium group block">
+            <h2 class="mb-2 font-heading text-lg font-bold text-ink dark:text-white">{entry.data.h1}</h2>
+            <p class="line-clamp-3 text-sm leading-[1.6] text-muted">{entry.data.description}</p>
+            <p class="mt-4 text-sm font-semibold text-primary group-hover:text-accent">Read guide →</p>
           </a>
         ))}
       </div>
-      <div class="mx-auto mt-12 max-w-5xl">
-        <BeforeYouPay embedded />
-      </div>
     </div>
   </section>
+  <FinalCta />
 </BaseLayout>

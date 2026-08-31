@@ -1,26 +1,23 @@
 ---
-import { ASSESSMENT_HREF, WHATSAPP_HREF } from '../../lib/home';
+import { ASSESSMENT_HREF, SERVICES_HREF } from '../../lib/home';
 ---
 
-<section class="section-container not-prose" id="start">
-  <div class="mx-auto max-w-4xl rounded-md bg-slate-50 px-6 py-12 text-center dark:bg-slate-900 md:px-12 md:py-16">
-    <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-      Not sure what your next step should be?
-    </h2>
-    <p class="mx-auto mb-2 max-w-2xl text-xl font-medium text-slate-800 dark:text-slate-200">That's okay.</p>
-    <p class="mx-auto mb-4 max-w-2xl text-lg text-muted dark:text-slate-400">
-      You don't need to have everything figured out before you contact us.
-    </p>
-    <p class="mx-auto mb-8 max-w-2xl text-base text-muted dark:text-slate-400">
-      Tell us what you're planning, where you're hoping to go, or what you're trying to build. We'll help you
-      understand your options and the steps involved.
-    </p>
-    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
-      <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Chat on WhatsApp</a>
+<section class="not-prose" id="start">
+  <div class="mx-auto max-w-7xl px-4 pb-14 sm:px-6 md:pb-20">
+    <div class="rounded-2xl bg-primary px-6 py-12 text-center text-white md:px-12 md:py-16">
+      <p class="eyebrow text-gold-light">Next step</p>
+      <span class="accent-line mx-auto mt-3 block"></span>
+      <h2 class="font-heading mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        Not sure what your next step should be?
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-base leading-[1.65] text-white/75">
+        Tell us what you're planning, where you're hoping to go, or what you're trying to build. We'll help you
+        understand your options and the steps involved.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
+        <a href={SERVICES_HREF} class="btn border-white/30 text-white hover:bg-white hover:text-primary">Explore Services</a>
+      </div>
     </div>
-    <p class="mt-6 text-sm text-muted dark:text-slate-400">
-      No pressure. No false promises. Just a clear conversation about your options.
-    </p>
   </div>
 </section>

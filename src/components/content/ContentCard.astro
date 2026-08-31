@@ -19,10 +19,10 @@ const formatted = date.toLocaleDateString('en-GB', {
 const ctaLabel = kind === 'news' ? 'Read update →' : kind === 'story' ? 'Open story →' : 'Read guide →';
 ---
 
-<article class="flex flex-col rounded-lg border border-gray-200 bg-white p-5 shadow-none transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900" data-kind={kind}>
+<article class="card-premium flex h-full flex-col overflow-hidden p-5" data-kind={kind}>
   <a class="flex flex-1 flex-col gap-1.5 no-underline" href={href}>
     <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-      {category && <span class="font-semibold uppercase tracking-wide text-primary-600">{category.replace(/-/g, ' ')}</span>}
+      {category && <span class="eyebrow">{category.replace(/-/g, ' ')}</span>}
       <time datetime={date.toISOString()}>{formatted}</time>
       {readingMinutes && <span>· {readingMinutes} min read</span>}
     </div>

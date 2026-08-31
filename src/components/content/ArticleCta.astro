@@ -1,5 +1,5 @@
 ---
-import { ASSESSMENT_HREF, WHATSAPP_HREF } from '../../lib/home';
+import { ASSESSMENT_HREF, SERVICES_HREF } from '../../lib/home';
 
 interface Props {
   heading?: string;
@@ -10,16 +10,13 @@ const {
 } = Astro.props;
 ---
 
-<div class="not-prose mt-8 rounded-md border border-gray-200 bg-slate-50 px-5 py-6 text-center dark:border-slate-800 dark:bg-slate-900">
-  <h2 class="font-heading mb-1.5 text-xl font-bold text-slate-900 dark:text-white">{heading}</h2>
-  <p class="mx-auto mb-4 max-w-lg text-sm leading-snug text-muted dark:text-slate-400">
+<div class="not-prose mt-8 rounded-xl border border-line bg-page px-5 py-6 text-center dark:border-slate-800 dark:bg-secondary">
+  <h2 class="font-heading mb-1.5 text-xl font-bold text-ink dark:text-white">{heading}</h2>
+  <p class="mx-auto mb-4 max-w-lg text-sm leading-snug text-muted">
     Reading a guide can help you understand the process, but every situation is different.
   </p>
   <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
     <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
-    <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Chat on WhatsApp</a>
+    <a href={SERVICES_HREF} class="btn">Explore Services</a>
   </div>
-  <p class="mx-auto mt-4 max-w-lg text-xs leading-snug text-muted">
-    We provide guidance and preparation support. Authorities make the final decisions.
-  </p>
 </div>

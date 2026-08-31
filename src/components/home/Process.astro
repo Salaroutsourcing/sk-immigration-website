@@ -3,21 +3,29 @@ import { PROCESS_STEPS } from '../../lib/home';
 ---
 
 <section class="section-container not-prose" id="how-it-works">
-  <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
-    <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-      A clearer process, from the first conversation to the next step.
+  <div class="mb-10 text-center md:mx-auto md:mb-14 max-w-3xl">
+    <p class="eyebrow">How it works</p>
+    <span class="accent-line mx-auto"></span>
+    <h2 class="font-heading mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl dark:text-white">
+      Five clear steps from first conversation to next action
     </h2>
   </div>
-  <ol class="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-5">
-    {PROCESS_STEPS.map((step) => (
-      <li class="rounded-lg border border-gray-200 bg-white p-6 shadow-none dark:border-slate-800 dark:bg-slate-900">
-        <p class="mb-3 font-heading text-2xl font-bold text-primary">{step.n}</p>
-        <h3 class="mb-2 text-lg font-bold text-slate-900 dark:text-white">{step.title}</h3>
-        <p class="text-sm leading-relaxed text-muted dark:text-slate-400">{step.text}</p>
-      </li>
-    ))}
+  <ol class="relative mx-auto max-w-7xl">
+    <div class="absolute left-[1.35rem] top-5 bottom-5 w-px bg-line md:hidden" aria-hidden="true"></div>
+    <div class="absolute left-[8%] right-[8%] top-5 hidden h-px bg-line lg:block" aria-hidden="true"></div>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+      {PROCESS_STEPS.map((step) => (
+        <li class="relative pl-14 md:pl-0">
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full border-2 border-accent bg-white font-heading text-sm font-bold text-primary shadow-sm md:mx-auto dark:bg-primary dark:text-gold-light">
+            {step.n}
+          </div>
+          <h3 class="mb-2 font-heading text-base font-bold text-ink md:text-center dark:text-white">{step.title}</h3>
+          <p class="text-sm leading-[1.6] text-muted md:text-center">{step.text}</p>
+        </li>
+      ))}
+    </div>
   </ol>
-  <p class="mx-auto mt-8 max-w-3xl text-center text-sm text-muted dark:text-slate-400">
+  <p class="mx-auto mt-10 max-w-3xl text-center text-sm text-muted">
     Government, embassy, university and regulatory decisions remain outside our control.
   </p>
 </section>

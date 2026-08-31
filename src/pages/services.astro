@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../lib/config';
-import { HOME_SERVICES, ASSESSMENT_HREF } from '../lib/home';
+import { HOME_SERVICES } from '../lib/home';
 import AuthoritySplit from '../components/home/AuthoritySplit.astro';
-import BeforeYouPay from '../components/home/BeforeYouPay.astro';
+import ServiceCard from '../components/home/ServiceCard.astro';
+import FinalCta from '../components/home/FinalCta.astro';
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -13,9 +14,6 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE.url}/services/` },
   ],
 };
-
-const standard = HOME_SERVICES.filter((s) => !s.featured);
-const featured = HOME_SERVICES.find((s) => s.featured);
 ---
 
 <BaseLayout
@@ -27,99 +25,28 @@ const featured = HOME_SERVICES.find((s) => s.featured);
 >
   <section class="not-prose">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:py-20">
-      <div class="mb-10 md:mx-auto md:mb-12 max-w-3xl text-center">
-        <p class="text-base font-semibold uppercase tracking-wide text-primary">Services</p>
-        <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+      <div class="mb-10 text-center md:mx-auto md:mb-12 max-w-3xl">
+        <p class="eyebrow">Services</p>
+        <span class="accent-line mx-auto"></span>
+        <h1 class="font-heading mt-3 text-3xl font-bold tracking-tight text-ink sm:text-5xl dark:text-white">
           Support for the journey you're planning
         </h1>
-        <p class="text-xl text-muted dark:text-slate-400">
+        <p class="mt-4 text-base leading-[1.65] text-muted sm:text-lg">
           Choose the service that matches your goal. Every service is delivered remotely with clear communication and
           defined scope.
         </p>
       </div>
-
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {standard.map((service) => (
-          <article class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 shadow-none transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900" id={service.id}>
-            <div class="mb-4 flex items-center gap-4">
-              <img src={service.image} alt="" class="h-12 w-12 rounded-md object-cover" width="48" height="48" loading="lazy" />
-            </div>
-            <h2 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">{service.title}</h2>
-            {'badge' in service && service.badge && (
-              <p class="mb-3 text-xs font-bold uppercase tracking-wide text-amber-800 dark:text-amber-200">{service.badge}</p>
-            )}
-            <p class="mb-4 text-sm leading-relaxed text-muted dark:text-slate-400">{service.description}</p>
-            {'notice' in service && service.notice && (
-              <p class="mb-4 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-900 dark:border-amber-700/50 dark:bg-amber-900/20 dark:text-amber-200">
-                {service.notice}
-              </p>
-            )}
-            <ul class="mb-6 flex-1 space-y-2 text-sm text-slate-700 dark:text-slate-300">
-              {service.benefits.map((item) => (
-                <li class="flex items-start gap-2">
-                  <span class="mt-0.5 text-primary">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            {'note' in service && service.note && (
-              <p class="mb-4 text-xs italic text-muted">{service.note}</p>
-            )}
-            {'jobsDisclaimer' in service && service.jobsDisclaimer && (
-              <p class="mb-4 text-sm font-semibold text-slate-800 dark:text-slate-200">{service.jobsDisclaimer}</p>
-            )}
-            <a href={service.href} class="btn-primary w-full px-5 py-2.5 text-sm">{service.cta}</a>
-          </article>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {HOME_SERVICES.map((service) => (
+          <ServiceCard service={service} />
         ))}
       </div>
-
-      {featured && (
-        <article class="mt-8 overflow-hidden rounded-lg border border-primary/20 bg-white shadow-none dark:border-primary/30 dark:bg-slate-900" id={featured.id}>
-          <div class="grid lg:grid-cols-12">
-            <div class="bg-linear-to-br from-primary/10 to-transparent p-6 md:p-10 lg:col-span-5">
-              <p class="mb-2 text-xs font-bold uppercase tracking-widest text-primary">New major service</p>
-              <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
-                {featured.headline}
-              </h2>
-              <p class="mb-4 text-sm leading-relaxed text-muted dark:text-slate-400">{featured.description}</p>
-              <p class="text-sm leading-relaxed text-muted dark:text-slate-400">{featured.extra}</p>
-            </div>
-            <div class="p-6 md:p-10 lg:col-span-7">
-              <ul class="mb-6 grid gap-2 sm:grid-cols-2">
-                {featured.benefits.map((item) => (
-                  <li class="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                    <span class="mt-0.5 text-primary">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href={featured.href} class="btn-primary px-5 py-2.5 text-sm">{featured.cta}</a>
-            </div>
-          </div>
-        </article>
-      )}
     </div>
   </section>
 
-  <section class="mx-auto max-w-7xl px-4 sm:px-6">
+  <section class="mx-auto max-w-7xl px-4 pb-4 sm:px-6">
     <AuthoritySplit compact />
-    <div class="mt-4">
-      <BeforeYouPay embedded />
-    </div>
   </section>
 
-  <section class="section-container not-prose">
-    <div class="mx-auto max-w-4xl rounded-md bg-slate-50 px-6 py-12 text-center dark:bg-slate-900 md:px-12 md:py-16">
-      <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-        Not sure which pathway fits?
-      </h2>
-      <p class="mx-auto mb-6 max-w-2xl text-xl text-muted dark:text-slate-400">
-        You don't need to know the perfect pathway before you contact us.
-      </p>
-      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
-        <a href="/how-it-works/" class="btn">See How It Works</a>
-      </div>
-    </div>
-  </section>
+  <FinalCta />
 </BaseLayout>

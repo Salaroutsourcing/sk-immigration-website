@@ -1,174 +1,206 @@
 ---
 const inputClass =
-  'w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary dark:border-slate-700 dark:bg-dark-950';
+  'w-full rounded-lg border border-line bg-white px-4 py-2.5 text-sm text-ink accent-accent focus:outline-none focus:ring-2 focus:ring-accent dark:border-slate-700 dark:bg-dark-950 dark:text-white';
+
+const steps = [
+  { n: '01', label: 'Planning' },
+  { n: '02', label: 'Destination' },
+  { n: '03', label: 'Profile' },
+  { n: '04', label: 'Contact' },
+];
 ---
 
 <div>
   <div id="sk-contact-status" class="hidden rounded-xl px-4 py-3 text-sm" role="status"></div>
-  <form id="sk-contact-form" class="space-y-4" data-lead-type="contact">
-  <div class="hidden" aria-hidden="true">
-    <label for="sk_hp">Company</label>
-    <input id="sk_hp" name="sk_hp" type="text" tabindex="-1" autocomplete="off" />
-  </div>
-
-  <div>
-    <label for="service" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-      What are you planning? *
-    </label>
-    <select class={inputClass} id="service" name="service" required>
-      <option value="">— Select —</option>
-      <option value="study-visa">Study abroad</option>
-      <option value="visit-visa">Visit / travel</option>
-      <option value="ausbildung">Work / training</option>
-      <option value="company-registration">Company registration</option>
-      <option value="attestation">Document attestation</option>
-      <option value="appointments">Visa appointment / interview</option>
-      <option value="saudi-work">Saudi sponsor-driven visa</option>
-      <option value="other">Other</option>
-    </select>
-  </div>
-
-  <div id="sk-saudi-extra" class="hidden rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-700/50 dark:bg-amber-900/20">
-    <p class="mb-3 text-sm font-medium text-amber-900 dark:text-amber-200">
-      We only assist when a legitimate sponsor in Saudi Arabia has already initiated the process. We do not offer,
-      arrange or sell jobs.
-    </p>
-    <label for="sponsor_initiated" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-      Has a sponsor already initiated the process?
-    </label>
-    <select class={inputClass} id="sponsor_initiated" name="sponsor_initiated">
-      <option value="">— Select —</option>
-      <option value="yes">Yes, a sponsor has started the process</option>
-      <option value="no">No, I do not have a sponsor yet</option>
-      <option value="unsure">I'm not sure</option>
-    </select>
-  </div>
-
-  <div id="sk-study-extra" class="hidden grid gap-4 sm:grid-cols-2">
-    <div>
-      <label for="education" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Education level
-      </label>
-      <input class={inputClass} type="text" id="education" name="education" placeholder="e.g. Bachelor's, Intermediate" />
+  <form id="sk-contact-form" class="space-y-6" data-lead-type="contact">
+    <div class="hidden" aria-hidden="true">
+      <label for="sk_hp">Company</label>
+      <input id="sk_hp" name="sk_hp" type="text" tabindex="-1" autocomplete="off" />
     </div>
-    <div>
-      <label for="study_goal" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Intended programme
-      </label>
-      <input class={inputClass} type="text" id="study_goal" name="study_goal" placeholder="e.g. Master's in CS" />
-    </div>
-  </div>
 
-  <div id="sk-company-extra" class="hidden grid gap-4">
-    <div>
-      <label for="business_goal" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        What are you trying to build?
-      </label>
-      <input class={inputClass} type="text" id="business_goal" name="business_goal" placeholder="e.g. UK limited company for a consulting practice" />
+    <ol class="grid grid-cols-4 gap-2" aria-label="Assessment steps">
+      {steps.map((step, i) => (
+        <li class="sk-step-indicator text-center" data-step={i + 1}>
+          <p class="font-heading text-xs font-bold text-accent">{step.n}</p>
+          <p class="mt-1 hidden text-[11px] font-medium text-muted sm:block">{step.label}</p>
+        </li>
+      ))}
+    </ol>
+    <div class="h-1 overflow-hidden rounded-full bg-line">
+      <div id="sk-progress" class="h-full w-1/4 bg-accent transition-all duration-200"></div>
     </div>
-    <div>
-      <label for="company_status" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Is this a new or existing business?
+
+    <div class="sk-step min-h-[11rem]" data-step="1">
+      <label for="service" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+        What are you planning? *
       </label>
-      <select class={inputClass} id="company_status" name="company_status">
+      <select class={inputClass} id="service" name="service">
         <option value="">— Select —</option>
-        <option value="new">New company</option>
-        <option value="existing">Existing business expanding</option>
-        <option value="unsure">Not sure yet</option>
+        <option value="study-visa">Study abroad</option>
+        <option value="visit-visa">Visit / travel</option>
+        <option value="ausbildung">Work / training</option>
+        <option value="company-registration">Company registration</option>
+        <option value="attestation">Document attestation</option>
+        <option value="appointments">Visa appointment / interview</option>
+        <option value="saudi-work">Saudi sponsor-driven visa</option>
+        <option value="other">Other</option>
       </select>
-    </div>
-    <p class="text-xs text-muted">Company registration does not automatically provide a visa or residency.</p>
-  </div>
 
-  <div class="grid gap-4 sm:grid-cols-2">
-    <div>
-      <label for="destination" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Destination / country
-      </label>
-      <input class={inputClass} type="text" id="destination" name="destination" placeholder="e.g. Germany, UK, UAE" />
-    </div>
-    <div>
-      <label for="current_location" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Current location
-      </label>
-      <input class={inputClass} type="text" id="current_location" name="current_location" placeholder="City / country" />
-    </div>
-  </div>
+      <div id="sk-saudi-extra" class="mt-4 hidden rounded-lg border border-line bg-page p-4 dark:border-slate-700 dark:bg-secondary">
+        <p class="mb-3 text-sm font-medium text-ink dark:text-slate-200">
+          We only assist when a legitimate sponsor in Saudi Arabia has already initiated the process. We do not offer,
+          arrange or sell jobs.
+        </p>
+        <label for="sponsor_initiated" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+          Has a sponsor already initiated the process?
+        </label>
+        <select class={inputClass} id="sponsor_initiated" name="sponsor_initiated">
+          <option value="">— Select —</option>
+          <option value="yes">Yes, a sponsor has started the process</option>
+          <option value="no">No, I do not have a sponsor yet</option>
+          <option value="unsure">I'm not sure</option>
+        </select>
+      </div>
 
-  <div class="grid gap-4 sm:grid-cols-2">
-    <div>
-      <label for="profession" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Profession
-      </label>
-      <input class={inputClass} type="text" id="profession" name="profession" placeholder="Optional" />
-    </div>
-    <div>
-      <label for="timeline" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Desired timeline
-      </label>
-      <select class={inputClass} id="timeline" name="timeline">
-        <option value="">— Select —</option>
-        <option value="asap">As soon as practical</option>
-        <option value="3-months">Within 3 months</option>
-        <option value="6-months">Within 6 months</option>
-        <option value="exploring">I'm still exploring</option>
-      </select>
-    </div>
-  </div>
+      <div id="sk-study-extra" class="mt-4 hidden grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for="education" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            Education level
+          </label>
+          <input class={inputClass} type="text" id="education" name="education" placeholder="e.g. Bachelor's, Intermediate" />
+        </div>
+        <div>
+          <label for="study_goal" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            Intended programme
+          </label>
+          <input class={inputClass} type="text" id="study_goal" name="study_goal" placeholder="e.g. Master's in CS" />
+        </div>
+      </div>
 
-  <div class="grid gap-4 sm:grid-cols-2">
-    <div>
-      <label for="name" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        Full name *
-      </label>
-      <input class={inputClass} type="text" id="name" name="name" required autocomplete="name" />
+      <div id="sk-company-extra" class="mt-4 hidden grid gap-4">
+        <div>
+          <label for="business_goal" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            What are you trying to build?
+          </label>
+          <input class={inputClass} type="text" id="business_goal" name="business_goal" placeholder="e.g. UK limited company for a consulting practice" />
+        </div>
+        <div>
+          <label for="company_status" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            Is this a new or existing business?
+          </label>
+          <select class={inputClass} id="company_status" name="company_status">
+            <option value="">— Select —</option>
+            <option value="new">New company</option>
+            <option value="existing">Existing business expanding</option>
+            <option value="unsure">Not sure yet</option>
+          </select>
+        </div>
+        <p class="text-xs text-muted">Company registration does not automatically provide a visa or residency.</p>
+      </div>
     </div>
-    <div>
-      <label for="phone" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-        WhatsApp number *
-      </label>
-      <input class={inputClass} type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+country code" />
+
+    <div class="sk-step hidden min-h-[11rem]" data-step="2">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for="destination" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            Destination / country
+          </label>
+          <input class={inputClass} type="text" id="destination" name="destination" placeholder="e.g. Germany, UK, UAE" />
+        </div>
+        <div>
+          <label for="current_location" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            Current location
+          </label>
+          <input class={inputClass} type="text" id="current_location" name="current_location" placeholder="City / country" />
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="email" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-      Email
-    </label>
-    <input class={inputClass} type="email" id="email" name="email" autocomplete="email" />
-  </div>
+    <div class="sk-step hidden min-h-[11rem]" data-step="3">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for="profession" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            Profession
+          </label>
+          <input class={inputClass} type="text" id="profession" name="profession" placeholder="Optional" />
+        </div>
+        <div>
+          <label for="timeline" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            Desired timeline
+          </label>
+          <select class={inputClass} id="timeline" name="timeline">
+            <option value="">— Select —</option>
+            <option value="asap">As soon as practical</option>
+            <option value="3-months">Within 3 months</option>
+            <option value="6-months">Within 6 months</option>
+            <option value="exploring">I'm still exploring</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-4">
+        <label for="message" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+          What help do you need? *
+        </label>
+        <textarea
+          class={`${inputClass} resize-none`}
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Tell us what you're planning. You don't need to have everything figured out."
+        ></textarea>
+      </div>
+    </div>
 
-  <div>
-    <label for="message" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-      What help do you need? *
-    </label>
-    <textarea
-      class={`${inputClass} resize-none`}
-      id="message"
-      name="message"
-      rows="4"
-      required
-      placeholder="Tell us what you're planning. You don't need to have everything figured out."
-    ></textarea>
-  </div>
+    <div class="sk-step hidden min-h-[11rem]" data-step="4">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for="name" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            Full name *
+          </label>
+          <input class={inputClass} type="text" id="name" name="name" autocomplete="name" />
+        </div>
+        <div>
+          <label for="phone" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+            WhatsApp number *
+          </label>
+          <input class={inputClass} type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+country code" />
+        </div>
+      </div>
+      <div class="mt-4">
+        <label for="email" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink dark:text-slate-300">
+          Email
+        </label>
+        <input class={inputClass} type="email" id="email" name="email" autocomplete="email" />
+      </div>
+      <p class="mt-4 text-xs text-muted">
+        No pressure. No false promises. Authorities make the final decisions.
+      </p>
+    </div>
 
-  <p class="text-xs text-muted">
-    No pressure. No false promises. Authorities make the final decisions.
-  </p>
-  <button type="submit" class="btn-primary mt-2 w-full py-3" id="sk-contact-submit">
-    Start My Assessment
-  </button>
-</form>
+    <div class="flex items-center justify-between gap-3 pt-2">
+      <button type="button" id="sk-back" class="btn hidden px-4 py-2">Back</button>
+      <button type="button" id="sk-next" class="btn-primary ml-auto px-5 py-2.5">Continue</button>
+      <button type="submit" class="btn-primary ml-auto hidden px-5 py-2.5" id="sk-contact-submit">
+        Start My Assessment
+      </button>
+    </div>
+  </form>
 </div>
 
 <script>
   const form = document.getElementById('sk-contact-form') as HTMLFormElement | null;
   const status = document.getElementById('sk-contact-status');
   const submit = document.getElementById('sk-contact-submit') as HTMLButtonElement | null;
+  const nextBtn = document.getElementById('sk-next') as HTMLButtonElement | null;
+  const backBtn = document.getElementById('sk-back') as HTMLButtonElement | null;
   const service = document.getElementById('service') as HTMLSelectElement | null;
   const saudiExtra = document.getElementById('sk-saudi-extra');
   const studyExtra = document.getElementById('sk-study-extra');
   const companyExtra = document.getElementById('sk-company-extra');
+  const progress = document.getElementById('sk-progress');
+  const stepPanels = Array.from(document.querySelectorAll<HTMLElement>('.sk-step'));
+  const indicators = Array.from(document.querySelectorAll<HTMLElement>('.sk-step-indicator'));
+  let current = 1;
 
   function syncExtras() {
     const value = service?.value || '';
@@ -177,14 +209,54 @@ const inputClass =
     companyExtra?.classList.toggle('hidden', value !== 'company-registration');
   }
 
+  function showStep(n: number) {
+    current = n;
+    stepPanels.forEach((panel) => panel.classList.toggle('hidden', panel.dataset.step !== String(n)));
+    indicators.forEach((item) => {
+      const active = Number(item.dataset.step) <= n;
+      item.classList.toggle('opacity-100', active);
+      item.classList.toggle('opacity-40', !active);
+    });
+    if (progress) progress.style.width = `${(n / 4) * 100}%`;
+    backBtn?.classList.toggle('hidden', n === 1);
+    nextBtn?.classList.toggle('hidden', n === 4);
+    submit?.classList.toggle('hidden', n !== 4);
+  }
+
+  function validStep(n: number) {
+    if (n === 1) return Boolean(service?.value);
+    if (n === 3) return Boolean((document.getElementById('message') as HTMLTextAreaElement | null)?.value.trim());
+    if (n === 4) {
+      const name = (document.getElementById('name') as HTMLInputElement | null)?.value.trim();
+      const phone = (document.getElementById('phone') as HTMLInputElement | null)?.value.trim();
+      return Boolean(name && phone);
+    }
+    return true;
+  }
+
   service?.addEventListener('change', syncExtras);
   syncExtras();
+  showStep(1);
+
+  nextBtn?.addEventListener('click', () => {
+    if (!validStep(current)) {
+      show('err', current === 1 ? 'Please choose what you are planning.' : 'Please complete the required fields.');
+      return;
+    }
+    status?.classList.add('hidden');
+    showStep(Math.min(4, current + 1));
+  });
+  backBtn?.addEventListener('click', () => {
+    status?.classList.add('hidden');
+    showStep(Math.max(1, current - 1));
+  });
 
   function show(kind: 'ok' | 'err', text: string) {
     if (!status) return;
+    status.classList.remove('hidden');
     status.innerHTML =
       kind === 'ok'
-        ? '<p class="font-heading mb-1 text-base font-bold text-emerald-900 dark:text-emerald-100">Thank you — your assessment request has been received.</p><p>' +
+        ? '<p class="font-heading mb-1 text-base font-bold text-success">Thank you — your assessment request has been received.</p><p>' +
           text +
           '</p>'
         : text;
@@ -197,6 +269,10 @@ const inputClass =
 
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (!validStep(4) || !validStep(1) || !validStep(3)) {
+      show('err', 'Please complete the required fields.');
+      return;
+    }
     const data = new FormData(form);
     const payload = {
       type: form.dataset.leadType || 'contact',
@@ -232,6 +308,7 @@ const inputClass =
       if (res.ok && body?.ok) {
         form.reset();
         syncExtras();
+        showStep(1);
         show(
           'ok',
           'We have received your information. Our team can review the details and explain the next step.',
