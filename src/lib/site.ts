@@ -19,7 +19,7 @@ export const SITE = {
     'SK Immigration Rawalpindi',
     'SK Consultant Rawalpindi',
   ],
-  tagline: "Pakistan's Trusted Study Visa & Immigration Partner",
+  tagline: 'Digital Immigration & Business Services',
   url: 'https://immigration.salaroutsourcing.com',
   email: 'Services@salaroutsourcing.com',
   phone: '+92 304 5999859',

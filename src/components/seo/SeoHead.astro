@@ -14,6 +14,7 @@ interface Props {
   noindex?: boolean;
   jsonLd?: unknown[];
   amphtml?: string;
+  keywords?: string;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   noindex = false,
   jsonLd = [],
   amphtml,
+  keywords = 'SK Immigration Services, SK Consultant, study visa Pakistan, work permit Pakistan, visit visa Pakistan, Rawalpindi visa consultant, Germany Ausbildung Pakistan, Saudi work visa Pakistan',
 } = Astro.props;
 
 const canonicalAbs = absoluteUrl(canonical);
@@ -95,7 +97,7 @@ const euRegions = [...EU_CONSENT_REGIONS];
 <meta name="author" content={SITE.brandFull} />
 <meta
   name="keywords"
-  content="SK Immigration Services, SK Consultant, study visa Pakistan, work permit Pakistan, visit visa Pakistan, Rawalpindi visa consultant, Germany Ausbildung Pakistan, Saudi work visa Pakistan"
+  content={keywords}
 />
 <meta property="og:type" content={type} />
 <meta property="og:title" content={title} />

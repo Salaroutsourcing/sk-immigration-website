@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../lib/config';
+import { HOME_SERVICES, ASSESSMENT_HREF } from '../lib/home';
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -11,156 +12,87 @@ const breadcrumbSchema = {
   ],
 };
 
-const services = [
-  {
-    id: 'study-visa',
-    title: 'Study Visa & Admissions',
-    badge: 'Higher Education',
-    image: '/assets/services/student-visa.svg',
-    alt: 'Study visa and admissions for Germany, UK, Canada, Italy, and Europe',
-    description:
-      'University shortlisting, SOP guidance, and visa file preparation for Germany, UK, Canada, Italy, Australia, and 15+ European destinations.',
-    highlights: [
-      'University and programme shortlisting',
-      'SOP and motivation letter audit',
-      'Blocked account and maintenance-fund guidance',
-      'APS and document verification',
-      'VFS/embassy appointment and interview coaching',
-    ],
-    ctaText: 'Open study visa page',
-    ctaLink: '/study-visa/',
-  },
-  {
-    id: 'work-permit',
-    title: 'Germany Ausbildung & Work Permits',
-    badge: 'Vocational Training · Paid',
-    image: '/assets/services/ausbildung-work.svg',
-    alt: 'Germany Ausbildung vocational training and work permits',
-    description:
-      'Paid vocational training placement and visa support for nursing, IT, hospitality, and technical trades with €600–€1,200/month training allowance.',
-    highlights: [
-      'Ausbildung employer matching',
-      'Goethe B1/B2 language pathways',
-      'National Visa (Type D) file compilation',
-      'EU Opportunity Card (Chancenkarte)',
-      'German CV (Lebenslauf) and cover letter',
-    ],
-    ctaText: 'Open work permit page',
-    ctaLink: '/work-permit/',
-  },
-  {
-    id: 'saudi-visa',
-    title: 'Saudi Arabia Work Visa Processing',
-    badge: 'Fixed PKR 15,000 Fee',
-    image: '/assets/services/saudi-visa.svg',
-    alt: 'Saudi Arabia work visa processing at a fixed fee',
-    description:
-      'End-to-end Saudi work visa processing at a fixed consultancy fee of PKR 15,000. Medical, stamping, and protector steps with written receipts.',
-    highlights: [
-      'GAMCA medical tracking',
-      'Enjaz registration and embassy stamping',
-      'Musaned domestic worker registration',
-      'BEOE protector clearance',
-      'Government fee receipts provided',
-    ],
-    ctaText: 'Open Saudi visa page',
-    ctaLink: '/saudi-visa/saudi-visa-processing-pakistan/',
-  },
-  {
-    id: 'visit-visa',
-    title: 'Visit & Tourist Visas',
-    badge: 'Tourism & Business',
-    image: '/assets/services/visit-visa.svg',
-    alt: 'Visit and tourist visas for UK, USA, Schengen, and Dubai',
-    description:
-      'Structured applications for UK Standard Visitor, US B1/B2, Schengen, Dubai, and Malaysia with financial and ties documentation.',
-    highlights: [
-      'Bank statement structuring',
-      'Itineraries and hotel reservations',
-      'Ties to home country evidence',
-      'Purpose-of-travel cover letters',
-      'VFS and embassy appointment coordination',
-    ],
-    ctaText: 'Open visit visa page',
-    ctaLink: '/visit-visa/',
-  },
-  {
-    id: 'attestation',
-    title: 'Document Attestation Services',
-    badge: 'Legal & Verification',
-    image: '/assets/services/document-attestation.svg',
-    alt: 'Document attestation MOFA HEC and Apostille services',
-    description:
-      'Authentication and legalisation across Pakistani educational and government bodies for study and work files.',
-    highlights: [
-      'MOFA attestation',
-      'HEC degree verification',
-      'Apostille for Hague countries',
-      'Musadaqa and notary legalisations',
-      'IBCC / QVP equivalence',
-    ],
-    ctaText: 'Open attestation page',
-    ctaLink: '/document-services/',
-  },
-  {
-    id: 'appointments',
-    title: 'Visa Appointments & Interview Prep',
-    badge: 'Submission Support',
-    image: '/assets/services/visa-appointments.svg',
-    alt: 'Visa appointments booking and interview coaching',
-    description:
-      'Slot monitoring across major facilitators and mock interview preparation before submission.',
-    highlights: [
-      'VFS, Gerry’s, TLS, and BLS monitoring',
-      'Embassy direct portal scheduling',
-      'Mock interview coaching',
-      'Pre-submission file audit',
-    ],
-    ctaText: 'Open appointments page',
-    ctaLink: '/visa-appointment/',
-  },
-];
+const standard = HOME_SERVICES.filter((s) => !s.featured);
+const featured = HOME_SERVICES.find((s) => s.featured);
 ---
 
 <BaseLayout
-  title="Immigration & Visa Services — SK Immigration Services Rawalpindi"
-  description="Study visas, Germany Ausbildung, Saudi work visa processing (PKR 15,000 fixed), visit visas, document attestation, and visa appointments from Rawalpindi."
+  title="Digital Immigration & Business Services — SK Immigration"
+  description="Remote visa preparation, education pathways, document support, and international company registration. Clear scope, written fees, and no false guarantees."
   canonical="/services/"
   jsonLd={breadcrumbSchema}
+  schemaVariant="global"
 >
   <section class="not-prose">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:py-20">
       <div class="mb-10 md:mx-auto md:mb-12 max-w-3xl text-center">
         <p class="text-base font-semibold uppercase tracking-wide text-primary">Services</p>
         <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-          Immigration and visa file preparation
+          Support for the journey you're planning
         </h1>
         <p class="text-xl text-muted dark:text-slate-400">
-          Honest guidance, written fees, and embassy-sourced checklists. Each card opens the full service page.
+          Choose the service that matches your goal. Every service is delivered remotely with clear communication and
+          defined scope.
         </p>
       </div>
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
+        {standard.map((service) => (
           <article class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 shadow-none transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900" id={service.id}>
             <div class="mb-4 flex items-center gap-4">
               <img src={service.image} alt="" class="h-12 w-12 rounded-md object-cover" width="48" height="48" loading="lazy" />
-              <span class="text-xs font-bold uppercase tracking-wide text-primary">{service.badge}</span>
             </div>
             <h2 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">{service.title}</h2>
             <p class="mb-4 text-sm leading-relaxed text-muted dark:text-slate-400">{service.description}</p>
+            {'notice' in service && service.notice && (
+              <p class="mb-4 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-900 dark:border-amber-700/50 dark:bg-amber-900/20 dark:text-amber-200">
+                {service.notice}
+              </p>
+            )}
             <ul class="mb-6 flex-1 space-y-2 text-sm text-slate-700 dark:text-slate-300">
-              {service.highlights.map((item) => (
+              {service.benefits.map((item) => (
                 <li class="flex items-start gap-2">
                   <span class="mt-0.5 text-primary">✓</span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-            <a href={service.ctaLink} class="btn-primary w-full px-5 py-2.5 text-sm">{service.ctaText}</a>
+            {'note' in service && service.note && (
+              <p class="mb-4 text-xs italic text-muted">{service.note}</p>
+            )}
+            {'jobsDisclaimer' in service && service.jobsDisclaimer && (
+              <p class="mb-4 text-sm font-semibold text-slate-800 dark:text-slate-200">{service.jobsDisclaimer}</p>
+            )}
+            <a href={service.href} class="btn-primary w-full px-5 py-2.5 text-sm">{service.cta}</a>
           </article>
         ))}
       </div>
+
+      {featured && (
+        <article class="mt-8 overflow-hidden rounded-lg border border-primary/20 bg-white shadow-none dark:border-primary/30 dark:bg-slate-900" id={featured.id}>
+          <div class="grid lg:grid-cols-12">
+            <div class="bg-linear-to-br from-primary/10 to-transparent p-6 md:p-10 lg:col-span-5">
+              <p class="mb-2 text-xs font-bold uppercase tracking-widest text-primary">New major service</p>
+              <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
+                {featured.headline}
+              </h2>
+              <p class="mb-4 text-sm leading-relaxed text-muted dark:text-slate-400">{featured.description}</p>
+              <p class="text-sm leading-relaxed text-muted dark:text-slate-400">{featured.extra}</p>
+            </div>
+            <div class="p-6 md:p-10 lg:col-span-7">
+              <ul class="mb-6 grid gap-2 sm:grid-cols-2">
+                {featured.benefits.map((item) => (
+                  <li class="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
+                    <span class="mt-0.5 text-primary">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={featured.href} class="btn-primary px-5 py-2.5 text-sm">{featured.cta}</a>
+            </div>
+          </div>
+        </article>
+      )}
     </div>
   </section>
 
@@ -170,11 +102,11 @@ const services = [
         Not sure which pathway fits?
       </h2>
       <p class="mx-auto mb-6 max-w-2xl text-xl text-muted dark:text-slate-400">
-        Book a free profile evaluation in Satellite Town, Rawalpindi.
+        You don't need to know the perfect pathway before you contact us.
       </p>
       <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a href="/contact/" class="btn-primary">Get started</a>
-        <a href="/guides/" class="btn">Learn more</a>
+        <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
+        <a href="/how-it-works/" class="btn">See How It Works</a>
       </div>
     </div>
   </section>

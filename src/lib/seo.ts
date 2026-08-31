@@ -145,6 +145,11 @@ export function organizationSchema(): JsonLd {
           name: 'Visa Appointment Booking',
           url: absoluteUrl('/visa-appointment/'),
         },
+        {
+          '@type': 'Offer',
+          name: 'Company & Business Registration',
+          url: absoluteUrl('/business-registration/'),
+        },
       ],
     },
     priceRange: 'PKR',
@@ -203,6 +208,67 @@ export function websiteSchema(): JsonLd {
       },
       'query-input': 'required name=search_term_string',
     },
+  };
+}
+
+/** Homepage schema: global digital positioning, no city or office claims. */
+export function digitalOrganizationSchema(): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': ['Organization', 'ProfessionalService'],
+    '@id': `${SITE.url}/#digital-organization`,
+    name: 'SK Immigration',
+    alternateName: ['SK Immigration Services', 'SK Consultant'],
+    legalName: SITE.legalName,
+    description:
+      'Digital immigration and business services. We help people prepare strong visa files, understand international pathways, and register companies with honesty, clarity, and care — completely online. Authorities make the final decisions.',
+    slogan: SITE.tagline,
+    url: `${SITE.url}/`,
+    logo: logoObject(),
+    image: [absoluteUrl(SITE.defaultOg), absoluteUrl(SITE.logo)],
+    email: SITE.email,
+    telephone: SITE.phoneE164,
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'Gulf' },
+      { '@type': 'AdministrativeArea', name: 'South Asia' },
+      { '@type': 'AdministrativeArea', name: 'Africa' },
+      { '@type': 'AdministrativeArea', name: 'Europe' },
+      { '@type': 'Place', name: 'Worldwide' },
+    ],
+    knowsAbout: [
+      'Study visa file preparation',
+      'University admissions guidance',
+      'Visit and tourist visa preparation',
+      'Germany Ausbildung guidance',
+      'EU Opportunity Card guidance',
+      'Document attestation and legalization',
+      'International company registration',
+    ],
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: SITE.phoneE164,
+        contactType: 'customer service',
+        areaServed: 'Worldwide',
+        availableLanguage: ['English', 'Urdu'],
+        url: SITE.whatsappLink,
+      },
+    ],
+    sameAs: Object.values(SITE.social),
+  };
+}
+
+export function digitalWebsiteSchema(): JsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE.url}/#website-digital`,
+    name: 'SK Immigration',
+    url: `${SITE.url}/`,
+    description:
+      'Digital immigration and business services — visa preparation, education pathways, and company registration, delivered online.',
+    publisher: { '@id': `${SITE.url}/#digital-organization` },
+    inLanguage: 'en',
   };
 }
 

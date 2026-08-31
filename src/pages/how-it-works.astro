@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/config';
+import { PROCESS_STEPS, ASSESSMENT_HREF, WHATSAPP_HREF } from '../lib/home';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'How It Works', item: `${SITE.url}/how-it-works/` },
+  ],
+};
+---
+
+<BaseLayout
+  title="How It Works — SK Immigration"
+  description="A clear remote process: tell us your goal, receive a roadmap, and get documentation support. Government, embassy, university and regulatory decisions remain outside our control."
+  canonical="/how-it-works/"
+  jsonLd={breadcrumbSchema}
+  schemaVariant="global"
+>
+  <section class="not-prose">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:py-20">
+      <div class="mb-10 md:mx-auto md:mb-12 max-w-3xl text-center">
+        <p class="text-base font-semibold uppercase tracking-wide text-primary">Process</p>
+        <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+          A clearer process, from the first conversation to the next step.
+        </h1>
+        <p class="text-xl text-muted dark:text-slate-400">
+          You don't have to figure everything out alone. We help you prepare properly for the journey — without
+          promising the outcome.
+        </p>
+      </div>
+
+      <ol class="mx-auto max-w-3xl space-y-8">
+        {PROCESS_STEPS.map((step) => (
+          <li class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-white">
+              {step.n}
+            </div>
+            <div>
+              <h2 class="mb-1 text-xl font-medium leading-6 text-slate-900 dark:text-white">{step.title}</h2>
+              <p class="text-muted dark:text-slate-400">{step.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <p class="mx-auto mt-10 max-w-3xl text-center text-sm text-muted dark:text-slate-400">
+        Government, embassy, university and regulatory decisions remain outside our control.
+      </p>
+
+      <div class="mx-auto mt-12 max-w-3xl rounded-md bg-slate-50 px-6 py-10 text-center dark:bg-slate-900">
+        <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Ready to talk through your options?</h2>
+        <p class="mb-6 text-muted dark:text-slate-400">No pressure. No false promises. Just a clear conversation.</p>
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
+          <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
