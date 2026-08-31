@@ -7,7 +7,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Announcement from '../components/Announcement.astro';
 import { SITE as CORE } from '../lib/site';
 import { SITE, ANALYTICS } from '../lib/config';
-import { organizationSchema, websiteSchema } from '../lib/seo';
+import { organizationSchema, websiteSchema, digitalOrganizationSchema, digitalWebsiteSchema } from '../lib/seo';
 
 interface Props {
   title?: string;
@@ -25,6 +25,8 @@ interface Props {
   updated?: Date;
   page?: string;
   amphtml?: string;
+  keywords?: string;
+  schemaVariant?: 'local' | 'global';
 }
 
 const {
@@ -43,6 +45,8 @@ const {
   updated,
   page = 'content',
   amphtml,
+  keywords,
+  schemaVariant = 'local',
 } = Astro.props;
 
 const pageTitle = title
@@ -54,7 +58,11 @@ const pageTitle = title
 const canonicalPath = canonicalUrl ?? canonical ?? Astro.url.pathname;
 const imagePath = ogImage ?? image ?? CORE.defaultOg;
 const extraJsonLd = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
-const schemas = [organizationSchema(), websiteSchema(), ...extraJsonLd];
+const baseSchemas =
+  schemaVariant === 'global'
+    ? [digitalOrganizationSchema(), digitalWebsiteSchema()]
+    : [organizationSchema(), websiteSchema()];
+const schemas = [...baseSchemas, ...extraJsonLd];
 ---
 
 <!doctype html>
@@ -71,6 +79,7 @@ const schemas = [organizationSchema(), websiteSchema(), ...extraJsonLd];
       noindex={noIndex ?? noindex}
       jsonLd={schemas}
       amphtml={amphtml}
+      keywords={keywords}
     />
     <script is:inline>
       (function () {
