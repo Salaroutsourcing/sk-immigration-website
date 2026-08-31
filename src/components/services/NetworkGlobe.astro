@@ -8,30 +8,30 @@ interface Dot {
   r: number;
 }
 
-function cluster(cx: number, cy: number, n: number, spread: number, seed: number, squash = 0.72): Dot[] {
+function cluster(cx: number, cy: number, n: number, rx: number, ry: number, seed: number): Dot[] {
   const dots: Dot[] = [];
   let s = seed;
   for (let i = 0; i < n; i++) {
     s = (s * 16807) % 2147483647;
     const a = ((s % 628) / 100);
     s = (s * 16807) % 2147483647;
-    const d = ((s % 1000) / 1000) * spread;
+    const t = ((s % 1000) / 1000) ** 0.55;
     dots.push({
-      x: cx + Math.cos(a) * d,
-      y: cy + Math.sin(a) * d * squash,
-      r: 0.85 + (i % 4) * 0.28,
+      x: cx + Math.cos(a) * t * rx,
+      y: cy + Math.sin(a) * t * ry,
+      r: 1.05 + (i % 4) * 0.32,
     });
   }
   return dots;
 }
 
-const continents: { dots: Dot[]; pulse?: boolean }[] = [
-  { dots: cluster(148, 158, 22, 28, 17) }, // North America
-  { dots: cluster(218, 148, 16, 16, 41) }, // Europe
-  { dots: cluster(214, 198, 20, 22, 73) }, // Africa
-  { dots: cluster(268, 162, 28, 32, 99) }, // Asia
-  { dots: cluster(164, 232, 14, 16, 23, 0.9) }, // South America
-  { dots: cluster(292, 236, 10, 12, 61) }, // Australia-ish
+const continents: { dots: Dot[] }[] = [
+  { dots: cluster(146, 156, 34, 26, 18, 17) }, // North America
+  { dots: cluster(216, 146, 20, 14, 10, 41) }, // Europe
+  { dots: cluster(212, 198, 28, 16, 24, 73) }, // Africa
+  { dots: cluster(266, 158, 40, 30, 18, 99) }, // Asia
+  { dots: cluster(162, 230, 18, 12, 18, 23) }, // South America
+  { dots: cluster(292, 234, 12, 12, 7, 61) }, // Australia-ish
 ];
 
 const meridians = [0, 28, 56, 84, 118];
@@ -114,8 +114,8 @@ const nodes = [
             ry={R}
             fill="none"
             stroke="#e0f2fe"
-            stroke-opacity="0.22"
-            stroke-width="0.7"
+            stroke-opacity="0.38"
+            stroke-width="0.95"
           />
         ))
       }
@@ -131,8 +131,8 @@ const nodes = [
               ry={Math.max(7, 16 - Math.abs(off) * 0.08)}
               fill="none"
               stroke="#e0f2fe"
-              stroke-opacity="0.2"
-              stroke-width="0.65"
+              stroke-opacity="0.36"
+              stroke-width="0.9"
             />
           );
         })
@@ -142,13 +142,13 @@ const nodes = [
         continents.map((land) => (
           <g class="continent-dots">
             {land.dots.map((d) => (
-              <circle cx={d.x} cy={d.y} r={d.r} fill="#eff6ff" fill-opacity="0.82"></circle>
+              <circle cx={d.x} cy={d.y} r={d.r} fill="#f8fafc" fill-opacity="0.95"></circle>
             ))}
           </g>
         ))
       }
 
-      <g class="network-arcs" filter="url(#ngGlow)" fill="none" stroke="url(#ngArc)" stroke-width="1.35" stroke-linecap="round">
+      <g class="network-arcs" filter="url(#ngGlow)" fill="none" stroke="url(#ngArc)" stroke-width="1.85" stroke-linecap="round">
         {arcs.map((d) => <path class="network-arc" d={d}></path>)}
       </g>
 
