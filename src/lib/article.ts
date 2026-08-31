@@ -76,7 +76,7 @@ function stripTags(html: string): string {
     .trim();
 }
 
-export function headingsFromHtml(html: string): TocItem[] {
+export function headingsFromHtml(html: string = ''): TocItem[] {
   const items: TocItem[] = [];
   const seen = new Map<string, number>();
   const re = /<h([23])\b([^>]*)>([\s\S]*?)<\/h\1>/gi;
@@ -94,7 +94,7 @@ export function headingsFromHtml(html: string): TocItem[] {
   return items;
 }
 
-export function headingsFromMarkdown(markdown: string): TocItem[] {
+export function headingsFromMarkdown(markdown: string = ''): TocItem[] {
   const items: TocItem[] = [];
   const seen = new Map<string, number>();
   for (const line of markdown.split('\n')) {
@@ -136,7 +136,7 @@ export function prepareArticleHtml(html: string): string {
   return wrapTables(injectHeadingIds(html));
 }
 
-export function readingMinutesFromText(text: string): number {
+export function readingMinutesFromText(text: string = ''): number {
   const words = stripTags(text).split(/\s+/).filter(Boolean).length;
   return Math.max(2, Math.ceil(words / 220));
 }
