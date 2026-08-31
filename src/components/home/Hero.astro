@@ -1,35 +1,40 @@
 ---
 import { ASSESSMENT_HREF, SERVICES_HREF } from '../../lib/home';
+import HeroVisual from './HeroVisual.astro';
+
+const ticks = ['Clear service scope', 'Transparent fees', 'No false guarantees', 'Human support'];
 ---
 
-<section class="not-prose relative md:-mt-[76px] md:pt-[76px]">
-  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
-  <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:py-24">
-    <div class="mx-auto max-w-4xl text-center">
-      <p class="text-base font-bold tracking-wide text-primary dark:text-blue-200">
-        DIGITAL IMMIGRATION &amp; BUSINESS SERVICES
-      </p>
-      <h1 class="font-heading mb-6 text-4xl font-bold leading-tighter tracking-tighter text-slate-900 sm:text-5xl md:text-6xl dark:text-white">
-        Your international plans deserve{' '}
-        <span class="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">honest guidance.</span>
-      </h1>
-      <p class="mx-auto mb-4 max-w-3xl text-xl text-muted dark:text-slate-400">
-        Visa preparation, education pathways and company registration — handled digitally, clearly and carefully.
-      </p>
-      <p class="mx-auto mb-8 max-w-3xl text-base text-muted dark:text-slate-400">
-        We help individuals and businesses understand requirements, prepare documentation and navigate complex
-        international processes without confusion or false promises.
-      </p>
-      <p class="mx-auto mb-8 max-w-2xl text-sm font-semibold tracking-wide text-slate-700 dark:text-slate-300">
-        100% online • Clear scope • Written fees • No false guarantees
-      </p>
-      <div class="flex max-w-xs sm:max-w-md mx-auto flex-col gap-4 sm:flex-row sm:justify-center">
-        <a class="btn-primary w-full sm:mb-0 sm:w-auto" href={ASSESSMENT_HREF}>Start My Assessment</a>
-        <a class="btn w-full sm:w-auto" href={SERVICES_HREF}>Explore Our Services</a>
+<section class="not-prose relative overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(201,162,39,0.08),_transparent_42%),radial-gradient(ellipse_at_bottom_right,_rgba(11,31,58,0.06),_transparent_50%)]"></div>
+  <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:py-20">
+    <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+      <div class="lg:col-span-7">
+        <p class="eyebrow">Digital immigration &amp; international business services</p>
+        <span class="accent-line mt-3 block"></span>
+        <h1 class="font-heading mt-4 max-w-2xl text-[2.15rem] font-bold leading-[1.12] tracking-tight text-ink sm:text-5xl lg:text-[3.25rem] dark:text-white">
+          Your international plans deserve clear, honest guidance.
+        </h1>
+        <p class="mt-5 max-w-xl text-base leading-[1.65] text-muted sm:text-lg">
+          Visa preparation, education pathways, document services and international business support — handled digitally,
+          clearly and carefully.
+        </p>
+        <div class="mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
+          <a class="btn-primary" href={ASSESSMENT_HREF}>Start My Assessment</a>
+          <a class="btn" href={SERVICES_HREF}>Explore Services</a>
+        </div>
+        <ul class="mt-8 grid max-w-xl grid-cols-1 gap-2 sm:grid-cols-2">
+          {ticks.map((item) => (
+            <li class="flex items-center gap-2 text-sm text-ink dark:text-slate-200">
+              <span class="flex h-4 w-4 items-center justify-center rounded-full bg-accent/15 text-[10px] font-bold text-primary" aria-hidden="true">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
-      <p class="mx-auto mt-6 max-w-2xl text-sm text-muted dark:text-slate-400">
-        You stay informed at every step. We handle the preparation and guidance. Authorities make the final decisions.
-      </p>
+      <div class="lg:col-span-5">
+        <HeroVisual />
+      </div>
     </div>
   </div>
 </section>

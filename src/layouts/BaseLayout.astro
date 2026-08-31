@@ -93,7 +93,7 @@ const schemas = [...baseSchemas, ...extraJsonLd];
     </script>
     <slot name="head" />
   </head>
-  <body class="bg-white transition-colors duration-200 dark:bg-dark-950" data-page={page}>
+  <body class="bg-page text-muted transition-colors duration-200 dark:bg-dark-950" data-page={page}>
     {ANALYTICS.gtmId && (
       <noscript>
         <iframe

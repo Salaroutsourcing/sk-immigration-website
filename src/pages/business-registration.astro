@@ -1,7 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../lib/config';
-import { ASSESSMENT_HREF, HOW_IT_WORKS_HREF, WHATSAPP_HREF, HOME_SERVICES } from '../lib/home';
+import {
+  ASSESSMENT_HREF,
+  COMPANY_DISCLAIMERS,
+  COMPANY_EXTRA,
+  COMPANY_MARKETS,
+  HOME_SERVICES,
+  SERVICES_HREF,
+} from '../lib/home';
 
 const company = HOME_SERVICES.find((s) => s.id === 'company')!;
 
@@ -57,8 +64,9 @@ const jsonLd = [
   <section class="not-prose">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:py-20">
       <div class="mb-10 md:mx-auto md:mb-12 max-w-3xl text-center">
-        <p class="text-base font-semibold uppercase tracking-wide text-primary">International Company Registration</p>
-        <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+        <p class="eyebrow">International company registration</p>
+        <span class="accent-line mx-auto"></span>
+        <h1 class="font-heading mt-3 mb-4 text-3xl font-bold tracking-tight text-ink sm:text-5xl dark:text-white">
           Start your company internationally — with clearer guidance.
         </h1>
         <p class="text-xl text-muted dark:text-slate-400">
@@ -70,14 +78,14 @@ const jsonLd = [
         <div>
           <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Why this can feel complicated</h2>
           <p class="mb-4 leading-relaxed text-muted dark:text-slate-400">{company.description}</p>
-          <p class="leading-relaxed text-muted dark:text-slate-400">{company.extra}</p>
+          <p class="leading-relaxed text-muted dark:text-slate-400">{COMPANY_EXTRA}</p>
         </div>
 
         <div>
           <h2 class="font-heading mb-4 text-2xl font-bold text-slate-900 dark:text-white">Jurisdictions we can help you understand</h2>
           <div class="flex flex-wrap gap-3">
-            {company.markets?.map((market) => (
-              <span class="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            {COMPANY_MARKETS.map((market) => (
+              <span class="rounded-lg border border-line bg-white px-4 py-2 text-sm font-semibold text-ink dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
                 {market}
               </span>
             ))}
@@ -142,14 +150,16 @@ const jsonLd = [
         </div>
 
         <div class="grid gap-6 md:grid-cols-2">
-          <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
-            <h2 class="mb-2 text-lg font-bold text-slate-900 dark:text-white">Our service fee</h2>
+          <div class="rounded-xl border border-line bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-accent">Our service fee</p>
+            <h2 class="mt-2 mb-2 text-lg font-bold text-ink dark:text-white">SK Immigration fee</h2>
             <p class="text-sm leading-relaxed text-muted dark:text-slate-400">
               Charged by SK Immigration for the agreed documentation and guidance work, confirmed in writing first.
             </p>
           </div>
-          <div class="rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
-            <h2 class="mb-2 text-lg font-bold text-slate-900 dark:text-white">Government / third-party fees</h2>
+          <div class="rounded-xl border border-line bg-page p-6 dark:border-slate-800 dark:bg-secondary">
+            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-primary">External / government fees</p>
+            <h2 class="mt-2 mb-2 text-lg font-bold text-ink dark:text-white">Paid to other providers</h2>
           <p class="text-sm leading-relaxed text-muted dark:text-slate-400">
             Registration authorities, filings, notaries and other providers charge separately. Those are not our
             service fee.
@@ -165,10 +175,10 @@ const jsonLd = [
           </p>
         </div>
 
-        <div class="space-y-3 rounded-lg border border-amber-200 bg-amber-50 p-6 dark:border-amber-700/50 dark:bg-amber-900/20">
-          <h2 class="text-lg font-bold text-amber-950 dark:text-amber-100">What company registration does not provide</h2>
-          {company.disclaimers?.map((d) => (
-            <p class="text-sm leading-relaxed text-amber-900 dark:text-amber-200">{d}</p>
+        <div class="space-y-3 rounded-xl border border-line bg-page p-6 dark:border-slate-800 dark:bg-secondary">
+          <h2 class="text-lg font-bold text-ink dark:text-white">What company registration does not provide</h2>
+          {COMPANY_DISCLAIMERS.map((d) => (
+            <p class="text-sm leading-relaxed text-muted">{d}</p>
           ))}
         </div>
 
@@ -187,13 +197,12 @@ const jsonLd = [
           </div>
         </div>
 
-        <div class="rounded-md bg-slate-50 px-6 py-10 text-center dark:bg-slate-900">
-          <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Ready to talk through a structure?</h2>
-          <p class="mb-6 text-muted dark:text-slate-400">Tell us what you're trying to build. We'll help you understand the steps involved.</p>
-          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={ASSESSMENT_HREF} class="btn-primary">Start Business Assessment</a>
-            <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Chat on WhatsApp</a>
-            <a href={HOW_IT_WORKS_HREF} class="btn">See How It Works</a>
+        <div class="rounded-2xl bg-primary px-6 py-10 text-center text-white">
+          <h2 class="font-heading mb-3 text-2xl font-bold text-white">Ready to talk through a structure?</h2>
+          <p class="mb-6 text-white/75">Tell us what you're trying to build. We'll help you understand the steps involved.</p>
+          <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
+            <a href={SERVICES_HREF} class="btn border-white/30 text-white hover:bg-white hover:text-primary">Explore Services</a>
           </div>
         </div>
       </div>
