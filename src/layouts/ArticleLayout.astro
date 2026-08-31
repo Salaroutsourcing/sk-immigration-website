@@ -4,6 +4,12 @@ import AdSlot from '../components/AdSlot.astro';
 import AdsterraSlot from '../components/ads/AdSlot.astro';
 import AffiliateCard from '../components/content/AffiliateCard.astro';
 import StoryToBlogCta from '../components/content/StoryToBlogCta.astro';
+import ArticleToc from '../components/content/ArticleToc.astro';
+import ArticleSidebar from '../components/content/ArticleSidebar.astro';
+import ArticleCta from '../components/content/ArticleCta.astro';
+import ContinueReading from '../components/content/ContinueReading.astro';
+import OfficialSources from '../components/content/OfficialSources.astro';
+import { topicLabel, type OfficialSource, type RelatedLink, type TocItem } from '../lib/article';
 
 interface Props {
   title: string;
@@ -20,6 +26,11 @@ interface Props {
   affiliates?: { title: string; url: string; blurb: string }[];
   relatedBlogHref?: string;
   relatedBlogTitle?: string;
+  toc?: TocItem[];
+  readingMinutes?: number;
+  relatedItems?: RelatedLink[];
+  relatedServices?: { href: string; title: string }[];
+  officialSources?: OfficialSource[];
 }
 
 const {
@@ -37,13 +48,23 @@ const {
   affiliates,
   relatedBlogHref,
   relatedBlogTitle,
+  toc = [],
+  readingMinutes,
+  relatedItems = [],
+  relatedServices = [],
+  officialSources = [],
 } = Astro.props;
 
+const displayTitle = title.replace(/\s*\|\s*SK Immigration.*$/, '');
 const publishedLabel = published.toLocaleDateString('en-GB', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
 });
+const updatedLabel = updated
+  ? updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  : null;
+const categoryLabel = topicLabel(category);
 ---
 
 <BaseLayout
@@ -57,8 +78,8 @@ const publishedLabel = published.toLocaleDateString('en-GB', {
   jsonLd={jsonLd}
   page={page}
 >
-  <article class="mx-auto max-w-4xl px-4 py-8 sm:px-6 md:py-12">
-    <nav aria-label="Breadcrumb" class="mb-6">
+  <article class="mx-auto max-w-6xl px-4 py-6 sm:px-6 md:py-10">
+    <nav aria-label="Breadcrumb" class="mb-4">
       <ol class="flex flex-wrap items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
         {crumbs.map((crumb, i) => (
           <>
@@ -75,64 +96,99 @@ const publishedLabel = published.toLocaleDateString('en-GB', {
       </ol>
     </nav>
 
-    <header class="mb-8">
-      {category && (
-        <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-primary-600 dark:text-blue-400">
-          {category.replace('-', ' ')}
-        </p>
-      )}
-      <h1 class="mb-4 font-heading text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl md:text-5xl dark:text-white">
-        {title.replace(/\s*\|\s*SK Immigration.*$/, '')}
-      </h1>
-      <p class="mb-4 text-lg text-slate-600 dark:text-slate-400">{description}</p>
-      <div class="flex flex-wrap items-center gap-4 border-y border-slate-100 py-3 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
-        <time datetime={published.toISOString()}>{publishedLabel}</time>
-        <span>·</span>
-        <span>SK Immigration Advisory Team</span>
-      </div>
-      <div class="mt-4 text-sm text-muted dark:text-slate-400">
-        Visa rules come from official embassy sources. Embassies decide every outcome.
-      </div>
-    </header>
+    <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_16.5rem] lg:gap-12">
+      <div class="min-w-0">
+        <header class="mb-5 max-w-3xl">
+          {category && (
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-primary-600 dark:text-blue-400">
+              {categoryLabel}
+            </p>
+          )}
+          <h1 class="mb-3 font-heading text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+            {displayTitle}
+          </h1>
+          <div class="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
+            <time datetime={published.toISOString()}>Published {publishedLabel}</time>
+            {updatedLabel && updated && (
+              <>
+                <span aria-hidden="true">·</span>
+                <time datetime={updated.toISOString()}>Last updated {updatedLabel}</time>
+              </>
+            )}
+            {readingMinutes && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span>{readingMinutes} min read</span>
+              </>
+            )}
+          </div>
+          <p class="text-[1.0625rem] leading-relaxed text-slate-600 dark:text-slate-400">{description}</p>
+        </header>
 
-    <AdSlot slotId="1122334455" format="horizontal" />
-    <div class="prose prose-slate max-w-none prose-headings:font-heading prose-headings:font-bold prose-a:text-primary-600 prose-img:rounded-2xl dark:prose-invert">
-      <slot />
-    </div>
-    <AdSlot slotId="9876543210" format="auto" />
-    <AdsterraSlot placement="in-article" />
-
-    {relatedBlogHref && relatedBlogTitle && (
-      <StoryToBlogCta title={relatedBlogTitle} href={relatedBlogHref} />
-    )}
-    {affiliates?.map((item) => <AffiliateCard {...item} />)}
-
-    {faqs && faqs.length > 0 && (
-      <section class="not-prose mt-12 border-t border-slate-200 pt-8 dark:border-slate-800">
-        <h2 class="mb-6 font-heading text-2xl font-bold text-slate-900 dark:text-white">Frequently Asked Questions</h2>
-        <div class="space-y-3">
-          {faqs.map((faq) => (
-            <details class="group rounded-lg border border-gray-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
-              <summary class="flex cursor-pointer list-none items-center justify-between font-heading text-base font-bold text-slate-900 dark:text-white">
-                <span>{faq.question}</span>
-                <span class="ml-4 text-primary-600 transition-transform group-open:rotate-180">▾</span>
-              </summary>
-              <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{faq.answer}</p>
-            </details>
-          ))}
+        <ArticleToc items={toc} variant="panel" />
+        <AdSlot slotId="1122334455" format="horizontal" />
+        <div class="prose prose-slate article-prose prose-headings:font-heading prose-headings:font-bold prose-a:text-primary-600 prose-img:rounded-2xl dark:prose-invert">
+          <slot />
         </div>
-      </section>
-    )}
+        <OfficialSources sources={officialSources} />
+        <AdSlot slotId="9876543210" format="auto" />
+        <AdsterraSlot placement="in-article" />
 
-    <div class="not-prose mt-12 rounded-md bg-slate-50 px-6 py-10 text-center dark:bg-slate-900">
-      <h3 class="font-heading mb-2 text-2xl font-bold text-slate-900 dark:text-white">Questions about this pathway?</h3>
-      <p class="mx-auto mb-6 max-w-md text-muted dark:text-slate-400">
-        Tell us what you're planning. We prepare files — authorities decide. We never sell guarantees.
-      </p>
-      <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a href="/contact/" class="btn-primary">Start My Assessment</a>
-        <a href="/services/" class="btn">Explore Services</a>
+        {relatedBlogHref && relatedBlogTitle && (
+          <StoryToBlogCta title={relatedBlogTitle} href={relatedBlogHref} />
+        )}
+        {affiliates?.map((item) => <AffiliateCard {...item} />)}
+
+        {faqs && faqs.length > 0 && (
+          <section class="not-prose mt-8 border-t border-slate-200 pt-6 dark:border-slate-800">
+            <h2 class="mb-4 font-heading text-xl font-bold text-slate-900 dark:text-white">Frequently asked questions</h2>
+            <div class="space-y-2">
+              {faqs.map((faq) => (
+                <details class="group rounded-lg border border-gray-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-900">
+                  <summary class="flex cursor-pointer list-none items-center justify-between font-heading text-base font-bold text-slate-900 dark:text-white">
+                    <span>{faq.question}</span>
+                    <span class="ml-4 text-primary-600 transition-transform group-open:rotate-180">▾</span>
+                  </summary>
+                  <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <ArticleCta />
+        <ContinueReading items={relatedItems} />
+      </div>
+
+      <div class="mt-6 lg:mt-0">
+        <ArticleSidebar services={relatedServices}>
+          <ArticleToc items={toc} variant="aside" />
+        </ArticleSidebar>
       </div>
     </div>
   </article>
+  <script is:inline>
+    (function () {
+      var root = document.querySelector('.article-prose');
+      if (!root) return;
+      function slug(text) {
+        return String(text || '')
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .trim()
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-');
+      }
+      root.querySelectorAll('h2, h3').forEach(function (heading) {
+        if (!heading.id) heading.id = slug(heading.textContent);
+      });
+      root.querySelectorAll('table').forEach(function (table) {
+        if (table.parentElement && table.parentElement.classList.contains('table-scroll')) return;
+        var wrap = document.createElement('div');
+        wrap.className = 'table-scroll';
+        table.parentNode.insertBefore(wrap, table);
+        wrap.appendChild(table);
+      });
+    })();
+  </script>
 </BaseLayout>

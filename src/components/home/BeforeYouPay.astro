@@ -1,11 +1,17 @@
 ---
 import { BEFORE_YOU_PAY } from '../../lib/home';
+
+interface Props {
+  embedded?: boolean;
+}
+
+const { embedded = false } = Astro.props;
 ---
 
-<section class="not-prose" id="before-you-pay">
-  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
-    <div class="mx-auto max-w-5xl rounded-lg border border-gray-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900 md:p-10">
-      <h2 class="font-heading mb-8 text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+<section class:list={['not-prose', embedded ? '' : '']} id={embedded ? undefined : 'before-you-pay'}>
+  <div class:list={[embedded ? '' : 'mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16']}>
+    <div class:list={['rounded-lg border border-gray-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900', embedded ? 'p-5 md:p-7' : 'mx-auto max-w-5xl p-6 md:p-10']}>
+      <h2 class:list={['font-heading text-center font-bold tracking-tight text-slate-900 dark:text-white', embedded ? 'mb-6 text-2xl' : 'mb-8 text-3xl sm:text-4xl']}>
         Before you pay, you should know:
       </h2>
       <dl class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

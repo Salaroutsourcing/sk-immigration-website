@@ -1,18 +1,24 @@
 ---
 import { WE_HANDLE, AUTHORITIES_DECIDE } from '../../lib/home';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
 ---
 
-<section class="section-container not-prose" id="roles">
-  <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
-    <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+<section class:list={['not-prose', compact ? 'py-8' : 'section-container']} id={compact ? undefined : 'roles'}>
+  <div class:list={['text-center', compact ? 'mb-6 max-w-2xl' : 'mb-8 md:mx-auto md:mb-12 max-w-3xl', compact ? '' : 'md:mx-auto']}>
+    <h2 class:list={['font-heading font-bold tracking-tight text-slate-900 dark:text-white', compact ? 'mb-2 text-2xl' : 'mb-4 text-3xl sm:text-4xl']}>
       What we handle — and what authorities decide
     </h2>
-    <p class="text-xl text-muted dark:text-slate-400">
+    <p class:list={['text-muted dark:text-slate-400', compact ? 'text-base' : 'text-xl']}>
       We'll be clear about our role. You shouldn't have to guess where our work ends.
     </p>
   </div>
-  <div class="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
-    <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-none md:p-8 dark:border-slate-800 dark:bg-slate-900">
+  <div class:list={['grid gap-6 md:grid-cols-2', compact ? '' : 'mx-auto max-w-5xl']}>
+    <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-none dark:border-slate-800 dark:bg-slate-900 md:p-8">
       <h3 class="mb-5 text-lg font-bold text-slate-900 dark:text-white">What we handle</h3>
       <ul class="space-y-3">
         {WE_HANDLE.map((item) => (
@@ -23,7 +29,7 @@ import { WE_HANDLE, AUTHORITIES_DECIDE } from '../../lib/home';
         ))}
       </ul>
     </div>
-    <div class="rounded-lg border border-gray-200 bg-slate-50 p-6 shadow-none md:p-8 dark:border-slate-800 dark:bg-slate-900">
+    <div class="rounded-lg border border-gray-200 bg-slate-50 p-6 shadow-none dark:border-slate-800 dark:bg-slate-900 md:p-8">
       <h3 class="mb-5 text-lg font-bold text-slate-900 dark:text-white">What authorities decide</h3>
       <ul class="space-y-3">
         {AUTHORITIES_DECIDE.map((item) => (
@@ -35,7 +41,7 @@ import { WE_HANDLE, AUTHORITIES_DECIDE } from '../../lib/home';
       </ul>
     </div>
   </div>
-  <p class="mt-8 text-center text-lg font-semibold text-slate-900 dark:text-white">
+  <p class:list={['text-center font-semibold text-slate-900 dark:text-white', compact ? 'mt-6 text-base' : 'mt-8 text-lg']}>
     We never confuse our role with the authority's role.
   </p>
 </section>

@@ -25,7 +25,7 @@ const KNOWS_ABOUT = [
 
 const ARTICLE_SPEAKABLE = {
   '@type': 'SpeakableSpecification',
-  cssSelector: ['.platform-hero h1', '.lede', '.article-body'],
+  cssSelector: ['.platform-hero h1', '.lede', '.article-body', '.article-prose'],
 };
 
 function postalAddress(): JsonLd {
