@@ -1,0 +1,48 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+const key = name.toLowerCase();
+---
+
+<span class="inline-flex text-accent" aria-hidden="true">
+  {(key === 'study' || key.includes('study')) && (
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5 12 6l9 4.5-9 4.5L3 10.5Zm3.5 3.2v3.1c0 .6 2.4 2.2 5.5 2.2s5.5-1.6 5.5-2.2v-3.1" />
+    </svg>
+  )}
+  {(key === 'visit' || key.includes('travel')) && (
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="12" cy="12" r="8.25" />
+      <path stroke-linecap="round" d="M3.8 12h16.4M12 3.8c2.4 2.8 2.4 13.6 0 16.4M12 3.8c-2.4 2.8-2.4 13.6 0 16.4" />
+    </svg>
+  )}
+  {(key === 'ausbildung' || key.includes('work')) && (
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 17h16M7 17V8.5L12 6l5 2.5V17M9.5 11h5" />
+    </svg>
+  )}
+  {key === 'attestation' && (
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M7 4.8h7.2L19 9.6v9.6H7V4.8Zm7.2 0V9.6H19M9.5 13.2h5M9.5 16.2h3.6" />
+    </svg>
+  )}
+  {key === 'appointments' && (
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M7 5h10a2 2 0 0 1 2 2v11H5V7a2 2 0 0 1 2-2Zm-2 5h14" />
+      <path stroke-linecap="round" d="M9 3.8V6M15 3.8V6" />
+    </svg>
+  )}
+  {key === 'saudi' && (
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.5 19V9.5L12 5l5.5 4.5V19H6.5Zm4-6.5h3" />
+    </svg>
+  )}
+  {(key === 'company' || key.includes('company')) && (
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.8 19V8.2L10 5.5 14.5 8v3.2H19.2V19H4.8Zm4.4 0v-4.2h5.6V19" />
+    </svg>
+  )}
+</span>

@@ -1,5 +1,6 @@
 ---
 import { HOME_SERVICES } from '../../lib/home';
+import BrandIcon from './BrandIcon.astro';
 
 interface Props {
   service: (typeof HOME_SERVICES)[number];
@@ -11,7 +12,7 @@ const { service } = Astro.props;
 <article class="card-premium group flex h-full flex-col" id={service.id}>
   <div class="mb-4 flex items-start justify-between gap-3">
     <div class="flex h-11 w-11 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
-      <img src={service.image} alt="" class="h-7 w-7 object-contain" width="28" height="28" loading="lazy" />
+      <BrandIcon name={service.id} />
     </div>
     <p class="eyebrow text-right">{service.category}</p>
   </div>
