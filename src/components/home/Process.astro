@@ -1,0 +1,23 @@
+---
+import { PROCESS_STEPS } from '../../lib/home';
+---
+
+<section class="section-container not-prose" id="how-it-works">
+  <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+    <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+      A clearer process, from the first conversation to the next step.
+    </h2>
+  </div>
+  <ol class="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-5">
+    {PROCESS_STEPS.map((step) => (
+      <li class="rounded-lg border border-gray-200 bg-white p-6 shadow-none dark:border-slate-800 dark:bg-slate-900">
+        <p class="mb-3 font-heading text-2xl font-bold text-primary">{step.n}</p>
+        <h3 class="mb-2 text-lg font-bold text-slate-900 dark:text-white">{step.title}</h3>
+        <p class="text-sm leading-relaxed text-muted dark:text-slate-400">{step.text}</p>
+      </li>
+    ))}
+  </ol>
+  <p class="mx-auto mt-8 max-w-3xl text-center text-sm text-muted dark:text-slate-400">
+    Government, embassy, university and regulatory decisions remain outside our control.
+  </p>
+</section>

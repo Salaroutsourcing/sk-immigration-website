@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/config';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Disclaimer', item: `${SITE.url}/disclaimer/` },
+  ],
+};
+---
+
+<BaseLayout
+  title="Disclaimer — SK Immigration"
+  description="SK Immigration provides documentation, preparation and guidance services. Visa, immigration, university, company-registration and regulatory decisions are made by the relevant authorities. No outcome is guaranteed."
+  canonical="/disclaimer/"
+  jsonLd={breadcrumbSchema}
+>
+  <section class="not-prose">
+    <div class="mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 md:py-16">
+      <p class="text-base font-semibold uppercase tracking-wide text-primary">Legal</p>
+      <h1 class="font-heading mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+        Disclaimer
+      </h1>
+    </div>
+  </section>
+  <section class="section-container">
+    <div class="prose prose-slate mx-auto max-w-3xl dark:prose-invert">
+      <p>
+        SK Immigration provides documentation, preparation and guidance services. Visa, immigration, university,
+        company-registration and regulatory decisions are made by the relevant authorities and organizations. No
+        outcome is guaranteed.
+      </p>
+      <h2>What our service includes</h2>
+      <p>
+        We help individuals and businesses understand requirements, prepare documentation, and navigate complex
+        international processes. We prepare, guide, organize and support — completely online.
+      </p>
+      <h2>What we do not control</h2>
+      <ul>
+        <li>Visa, immigration or residency decisions</li>
+        <li>University or college admissions</li>
+        <li>Employment or training placements</li>
+        <li>Company-registration or regulatory approvals</li>
+        <li>Appointment availability at government or visa centres</li>
+        <li>Government processing times</li>
+      </ul>
+      <h2>What we will never promise</h2>
+      <p>
+        We will never tell you something is guaranteed when it isn't. We do not offer guaranteed visas, guaranteed
+        immigration, guaranteed admission, guaranteed jobs, or guaranteed business success. We do not create or
+        use fake documents.
+      </p>
+      <h2>Saudi visa processing</h2>
+      <p>
+        We only assist with Saudi visa processing when a sponsor in Saudi Arabia has already initiated the process.
+        We do not offer, arrange or sell jobs in Saudi Arabia.
+      </p>
+      <h2>Company registration</h2>
+      <p>
+        Company registration does not automatically provide immigration status, residency, a visa, a work permit or
+        the right to operate in a particular country. Each jurisdiction has its own legal, tax and regulatory
+        requirements.
+      </p>
+      <p>
+        See also our <a href="/terms/">Terms</a> and <a href="/privacy/">Privacy Policy</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

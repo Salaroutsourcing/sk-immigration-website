@@ -1,0 +1,39 @@
+---
+import { BUSINESS_HREF, HOW_IT_WORKS_HREF } from '../../lib/home';
+---
+
+<section class="not-prose" id="company-formation">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:py-20">
+    <div class="overflow-hidden rounded-lg border border-gray-200 bg-slate-50 shadow-none dark:border-slate-800 dark:bg-slate-900">
+      <div class="grid items-center lg:grid-cols-12">
+        <div class="p-8 md:p-12 lg:col-span-7">
+          <p class="mb-3 text-base font-semibold uppercase tracking-wide text-primary">International business</p>
+          <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+            Your ambitions don't have to stop at borders.
+          </h2>
+          <p class="mb-6 max-w-2xl text-lg leading-relaxed text-muted dark:text-slate-400">
+            Whether you're launching a new company, expanding an existing business or exploring an international
+            structure, the first step is understanding the process.
+          </p>
+          <p class="mb-8 text-sm font-semibold tracking-wide text-slate-800 dark:text-slate-200">
+            Company Formation • Documentation • International Expansion
+          </p>
+          <div class="flex flex-col gap-4 sm:flex-row">
+            <a href={BUSINESS_HREF} class="btn-primary">Explore Business Registration</a>
+            <a href={HOW_IT_WORKS_HREF} class="btn">See How It Works</a>
+          </div>
+        </div>
+        <div class="hidden items-center justify-center p-8 lg:col-span-5 lg:flex">
+          <img
+            src="/assets/hubs/company-registration.svg"
+            alt=""
+            class="h-56 w-56 rounded-lg object-cover"
+            width="224"
+            height="224"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

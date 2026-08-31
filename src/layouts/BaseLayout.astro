@@ -49,7 +49,7 @@ const pageTitle = title
   ? title.includes('SK Immigration')
     ? title
     : `${title} | SK Immigration Services`
-  : 'SK Immigration Services | SK Consultant Rawalpindi — Study Visa & Work Permit';
+  : 'SK Immigration | Digital Immigration & Business Services';
 
 const canonicalPath = canonicalUrl ?? canonical ?? Astro.url.pathname;
 const imagePath = ogImage ?? image ?? CORE.defaultOg;
@@ -75,9 +75,10 @@ const schemas = [organizationSchema(), websiteSchema(), ...extraJsonLd];
     <script is:inline>
       (function () {
         const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && prefersDark)) {
+        if (stored === 'dark') {
           document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
         }
       })();
     </script>

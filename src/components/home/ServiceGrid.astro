@@ -1,0 +1,97 @@
+---
+import { HOME_SERVICES } from '../../lib/home';
+
+const standard = HOME_SERVICES.filter((s) => !s.featured);
+const featured = HOME_SERVICES.find((s) => s.featured);
+---
+
+<section class="section-container not-prose" id="services">
+  <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+    <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+      Support for the journey you're planning
+    </h2>
+    <p class="text-xl text-muted dark:text-slate-400">
+      Choose the service that matches your goal. Every service is delivered remotely with clear communication and
+      defined scope.
+    </p>
+  </div>
+
+  <div class="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {standard.map((service) => (
+      <article class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 shadow-none transition hover:shadow-lg dark:border-slate-800 dark:bg-slate-900" id={service.id}>
+        <div class="mb-4 flex items-center gap-4">
+          <img src={service.image} alt="" class="h-12 w-12 rounded-md object-cover" width="48" height="48" loading="lazy" />
+        </div>
+        <h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">{service.title}</h3>
+        <p class="mb-4 text-sm leading-relaxed text-muted dark:text-slate-400">{service.description}</p>
+        {'notice' in service && service.notice && (
+          <p class="mb-4 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-900 dark:border-amber-700/50 dark:bg-amber-900/20 dark:text-amber-200">
+            {service.notice}
+          </p>
+        )}
+        {'destinations' in service && service.destinations && (
+          <p class="mb-3 text-xs font-medium uppercase tracking-wide text-primary">
+            {service.destinations.join(' · ')}
+          </p>
+        )}
+        <ul class="mb-4 flex-1 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+          {service.benefits.map((item) => (
+            <li class="flex items-start gap-2">
+              <span class="mt-0.5 text-primary" aria-hidden="true">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        {'note' in service && service.note && (
+          <p class="mb-4 text-xs italic text-muted">{service.note}</p>
+        )}
+        {'jobsDisclaimer' in service && service.jobsDisclaimer && (
+          <p class="mb-4 text-sm font-semibold text-slate-800 dark:text-slate-200">{service.jobsDisclaimer}</p>
+        )}
+        <a href={service.href} class="mt-auto text-sm font-semibold text-primary hover:underline">{service.cta} →</a>
+      </article>
+    ))}
+  </div>
+
+  {featured && (
+    <article
+      id={featured.id}
+      class="mx-auto mt-8 max-w-7xl overflow-hidden rounded-lg border border-primary/20 bg-white shadow-none dark:border-primary/30 dark:bg-slate-900"
+    >
+      <div class="grid lg:grid-cols-12">
+        <div class="bg-linear-to-br from-primary/10 to-transparent p-6 md:p-10 lg:col-span-5">
+          <p class="mb-2 text-xs font-bold uppercase tracking-widest text-primary">New major service</p>
+          <img src={featured.image} alt="" class="mb-5 h-16 w-16 rounded-md object-cover" width="64" height="64" loading="lazy" />
+          <h3 class="font-heading mb-3 text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
+            {featured.headline}
+          </h3>
+          <p class="mb-4 text-sm leading-relaxed text-muted dark:text-slate-400">{featured.description}</p>
+          <p class="text-sm leading-relaxed text-muted dark:text-slate-400">{featured.extra}</p>
+        </div>
+        <div class="p-6 md:p-10 lg:col-span-7">
+          {'markets' in featured && featured.markets && (
+            <p class="mb-5 text-sm font-semibold text-slate-800 dark:text-slate-200">
+              {featured.markets.join(' · ')}
+            </p>
+          )}
+          <ul class="mb-6 grid gap-2 sm:grid-cols-2">
+            {featured.benefits.map((item) => (
+              <li class="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
+                <span class="mt-0.5 text-primary" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          {'disclaimers' in featured && featured.disclaimers && (
+            <div class="mb-6 space-y-3 rounded-md bg-slate-50 p-4 text-sm leading-relaxed text-muted dark:bg-slate-800/60 dark:text-slate-400">
+              {featured.disclaimers.map((d) => (
+                <p>{d}</p>
+              ))}
+            </div>
+          )}
+          <a href={featured.href} class="btn-primary px-5 py-2.5 text-sm">{featured.cta}</a>
+        </div>
+      </div>
+    </article>
+  )}
+</section>

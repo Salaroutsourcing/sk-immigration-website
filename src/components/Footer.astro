@@ -7,19 +7,26 @@ const currentYear = new Date().getFullYear();
 <footer class="not-prose relative border-t border-gray-200 dark:border-slate-800">
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8">
-      <div class="col-span-12 lg:col-span-4">
+      <div class="col-span-12 lg:col-span-5">
         <a class="inline-block text-xl font-bold text-slate-900 dark:text-white" href="/">
-          {SITE.name}
+          SK Immigration
         </a>
-        <p class="mt-2 text-muted text-sm leading-relaxed">
-          Study, work, and visit visa file preparation from Rawalpindi. Honest guidance — embassies decide every visa.
+        <p class="mt-1 text-sm font-medium text-primary">{SITE.tagline}</p>
+        <p class="mt-3 text-muted text-sm leading-relaxed">
+          Honest guidance. Clear processes. Completely online.
+        </p>
+        <p class="mt-4 text-sm text-muted leading-relaxed">
+          We help people prepare strong visa files, understand international pathways, and register companies
+          with honesty, clarity, and care.
         </p>
         <div class="mt-4 space-y-1 text-sm text-muted">
-          <p>{CONTACT.address.street}, {CONTACT.address.city}</p>
           <p>
-            <a href={`tel:${CONTACT.phone}`} class="hover:text-primary">{CONTACT.phoneFormatted}</a>
-            ·
             <a href={`mailto:${CONTACT.email}`} class="hover:text-primary">{CONTACT.email}</a>
+          </p>
+          <p>
+            <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer" class="hover:text-primary">
+              WhatsApp {CONTACT.phoneFormatted}
+            </a>
           </p>
         </div>
         <ul class="mt-6 mb-4 flex md:order-1 md:mb-0 rtl:space-x-reverse">
@@ -30,7 +37,7 @@ const currentYear = new Date().getFullYear();
           </li>
           <li>
             <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-700" aria-label="Instagram">
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
           </li>
           <li>
@@ -46,7 +53,20 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="col-span-6 md:col-span-3 lg:col-span-2">
+      <div class="col-span-6 md:col-span-4 lg:col-span-2">
+        <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">Explore</div>
+        <ul class="text-sm">
+          {FOOTER_LINKS.explore.map((link) => (
+            <li class="mb-2">
+              <a class="text-muted transition duration-150 ease-in-out hover:text-gray-700 dark:hover:text-white" href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="col-span-6 md:col-span-4 lg:col-span-2">
         <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">Services</div>
         <ul class="text-sm">
           {FOOTER_LINKS.services.map((link) => (
@@ -59,21 +79,8 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="col-span-6 md:col-span-3 lg:col-span-2">
-        <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">Resources</div>
-        <ul class="text-sm">
-          {FOOTER_LINKS.resources.map((link) => (
-            <li class="mb-2">
-              <a class="text-muted transition duration-150 ease-in-out hover:text-gray-700 dark:hover:text-white" href={link.href}>
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div class="col-span-6 md:col-span-3 lg:col-span-2">
-        <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">Company</div>
+      <div class="col-span-6 md:col-span-4 lg:col-span-3">
+        <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">Legal</div>
         <ul class="text-sm">
           {FOOTER_LINKS.legal.map((link) => (
             <li class="mb-2">
@@ -84,27 +91,24 @@ const currentYear = new Date().getFullYear();
           ))}
         </ul>
       </div>
-
-      <div class="col-span-6 md:col-span-3 lg:col-span-2">
-        <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">Tools</div>
-        <ul class="text-sm">
-          <li class="mb-2"><a class="text-muted hover:text-gray-700 dark:hover:text-white" href="/eligibility/">Eligibility quiz</a></li>
-          <li class="mb-2"><a class="text-muted hover:text-gray-700 dark:hover:text-white" href="/checklist/">Document checklist</a></li>
-          <li class="mb-2"><a class="text-muted hover:text-gray-700 dark:hover:text-white" href="/calculator/">Cost calculator</a></li>
-          <li class="mb-2"><a class="text-muted hover:text-gray-700 dark:hover:text-white" href="/compare/">Compare countries</a></li>
-        </ul>
-      </div>
     </div>
+
+    <p class="mt-10 max-w-4xl text-xs leading-relaxed text-muted">
+      SK Immigration provides documentation, preparation and guidance services. Visa, immigration, university,
+      company-registration and regulatory decisions are made by the relevant authorities and organizations. No
+      outcome is guaranteed.
+    </p>
+
     <div class="mt-8 border-t border-gray-200 py-6 text-sm text-muted md:flex md:items-center md:justify-between dark:border-slate-800">
       <div class="mr-4">
-        &copy; {currentYear} · {SITE.name}. All rights reserved.
+        &copy; {currentYear} · SK Immigration. All rights reserved.
       </div>
       <div>
-        <a class="text-muted hover:underline" href="/about/">About</a>
-        <span class="mx-2">·</span>
-        <a class="text-muted hover:underline" href="/privacy/">Privacy</a>
+        <a class="text-muted hover:underline" href="/privacy/">Privacy Policy</a>
         <span class="mx-2">·</span>
         <a class="text-muted hover:underline" href="/terms/">Terms</a>
+        <span class="mx-2">·</span>
+        <a class="text-muted hover:underline" href="/disclaimer/">Disclaimer</a>
       </div>
     </div>
   </div>

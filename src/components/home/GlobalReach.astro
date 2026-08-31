@@ -1,0 +1,24 @@
+---
+import { REGIONS } from '../../lib/home';
+---
+
+<section class="not-prose" id="global">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+        Digital support, wherever your plans take you.
+      </h2>
+      <p class="mb-8 text-xl text-muted dark:text-slate-400">
+        Our services are designed to be delivered remotely, allowing clients to communicate with us and manage
+        documentation digitally from wherever they are.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        {REGIONS.map((region) => (
+          <span class="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            {region}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

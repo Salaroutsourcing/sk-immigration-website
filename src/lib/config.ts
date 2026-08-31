@@ -9,7 +9,7 @@ export const SITE = {
   legalName: CORE.legalName,
   tagline: CORE.tagline,
   description:
-    "SK Immigration Services (SK Consultant) — Pakistan's trusted SECP-registered immigration consultancy for study visas, work permits, visit visas, Germany Ausbildung, Saudi Arabia work visa, and document attestation. Free consultation. CUIN 0304985.",
+    'SK Immigration — digital immigration and business services. We help people prepare strong visa files, understand international pathways, and register companies with honesty, clarity, and care — completely online. Authorities make the final decisions.',
   url: CORE.url,
   ogImage: CORE.defaultOg,
   logo: CORE.logo,
@@ -57,31 +57,35 @@ export const ANALYTICS = {
 export const NAVIGATION = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services/' },
-  { label: 'Guides', href: '/guides/' },
-  { label: 'Blog', href: '/blog/' },
+  { label: 'Business Registration', href: '/business-registration/' },
+  { label: 'How It Works', href: '/how-it-works/' },
   { label: 'About', href: '/about/' },
+  { label: 'FAQ', href: '/faq/' },
   { label: 'Contact', href: '/contact/' },
 ];
 
 export const FOOTER_LINKS = {
+  explore: [
+    { label: 'Services', href: '/services/' },
+    { label: 'Business Registration', href: '/business-registration/' },
+    { label: 'How It Works', href: '/how-it-works/' },
+    { label: 'About', href: '/about/' },
+    { label: 'FAQ', href: '/faq/' },
+    { label: 'Contact', href: '/contact/' },
+  ],
   services: [
     { label: 'Study Visa', href: '/study-visa/' },
     { label: 'Work Permit & Ausbildung', href: '/work-permit/' },
-    { label: 'Saudi Work Visa', href: '/saudi-visa/saudi-visa-processing-pakistan/' },
     { label: 'Visit & Tourist Visa', href: '/visit-visa/' },
+    { label: 'Company Registration', href: '/business-registration/' },
     { label: 'Document Attestation', href: '/document-services/' },
     { label: 'Visa Appointments', href: '/visa-appointment/' },
   ],
-  resources: [
-    { label: 'Country Guides', href: '/guides/' },
-    { label: 'Blog & Insights', href: '/blog/' },
-    { label: 'Newsroom', href: '/news/' },
-    { label: 'About SK Immigration', href: '/about/' },
-  ],
   legal: [
     { label: 'Privacy Policy', href: '/privacy/' },
-    { label: 'Terms of Service', href: '/terms/' },
-    { label: 'Contact Us', href: '/contact/' },
+    { label: 'Terms', href: '/terms/' },
+    { label: 'Disclaimer', href: '/disclaimer/' },
+    { label: 'Contact', href: '/contact/' },
   ],
 };
 
@@ -145,5 +149,15 @@ export const SERVICE_HUBS = [
       'Slot monitoring for VFS Global, Gerry’s FMC, TLScontact, BLS, and embassy portals, plus mock interview prep.',
     tags: ['VFS Global', 'Gerry’s FMC', 'TLS', 'Mock Interview'],
     href: '/visa-appointment/',
+  },
+  {
+    title: 'Company & Business Registration',
+    badge: 'New · International',
+    image: '/assets/hubs/company-registration.svg',
+    alt: 'International company formation and documentation support',
+    description:
+      'Remote company formation and documentation support for entrepreneurs in the United States, United Kingdom, Canada, Australia, and selected European jurisdictions.',
+    tags: ['Company Formation', 'Documentation', 'Expansion'],
+    href: '/business-registration/',
   },
 ] as const;

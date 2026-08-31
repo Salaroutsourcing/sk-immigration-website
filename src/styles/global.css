@@ -47,6 +47,11 @@
   html {
     font-family: var(--font-sans);
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
@@ -87,6 +92,14 @@
 
   .section-container {
     @apply mx-auto max-w-7xl px-3 py-12 sm:px-6 md:py-16 lg:py-20;
+  }
+
+  details > summary {
+    list-style: none;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
   }
 }
 

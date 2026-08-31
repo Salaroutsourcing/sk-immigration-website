@@ -145,6 +145,11 @@ export function organizationSchema(): JsonLd {
           name: 'Visa Appointment Booking',
           url: absoluteUrl('/visa-appointment/'),
         },
+        {
+          '@type': 'Offer',
+          name: 'Company & Business Registration',
+          url: absoluteUrl('/business-registration/'),
+        },
       ],
     },
     priceRange: 'PKR',

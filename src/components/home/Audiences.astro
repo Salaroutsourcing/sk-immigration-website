@@ -1,0 +1,19 @@
+---
+import { AUDIENCES } from '../../lib/home';
+---
+
+<section class="section-container not-prose" id="who-we-help">
+  <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+    <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+      Built for people planning their next chapter.
+    </h2>
+  </div>
+  <div class="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-5">
+    {AUDIENCES.map((item) => (
+      <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-none dark:border-slate-800 dark:bg-slate-900">
+        <h3 class="mb-2 text-lg font-bold text-slate-900 dark:text-white">{item.title}</h3>
+        <p class="text-sm leading-relaxed text-muted dark:text-slate-400">{item.text}</p>
+      </div>
+    ))}
+  </div>
+</section>
