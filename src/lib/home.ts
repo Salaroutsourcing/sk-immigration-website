@@ -282,32 +282,49 @@ export const REGIONS = ['Gulf', 'South Asia', 'Africa', 'Europe', 'Worldwide'] a
 
 export const HOME_FAQS = [
   {
+    q: 'Do you guarantee visa approval or immigration outcomes?',
+    a: 'No. We help you understand your options, prepare documentation and navigate the process clearly. Government, embassy, university and regulatory authorities make the final decisions. We will never tell you something is guaranteed when it isn’t.',
+  },
+  {
+    q: 'How does a fully online service work?',
+    a: 'You start with a short assessment or a conversation. We review your situation, explain the likely pathway and scope, then support documentation and preparation remotely. You stay informed at every step of the agreed service.',
+  },
+  {
+    q: 'Do you arrange jobs in Saudi Arabia?',
+    a: 'No. We do not offer, arrange or sell jobs in Saudi Arabia. We only assist with Saudi visa processing when a sponsor in Saudi Arabia has already initiated the process.',
+  },
+  {
+    q: 'Does company registration give me a visa or residency?',
+    a: 'No. Company registration does not automatically provide immigration status, residency, a visa, a work permit or the right to operate in a particular country. Each jurisdiction has its own legal, tax and regulatory requirements.',
+  },
+  {
+    q: 'Will I know the fees and scope before I pay?',
+    a: 'Yes. You receive a written service scope and clear pricing before payment. There are no surprise charges for work that was not agreed.',
+  },
+  {
+    q: 'Do I need to know the perfect pathway before I contact you?',
+    a: 'No. You don’t need to have everything figured out. Tell us what you’re planning, where you’re hoping to go, or what you’re trying to build — we’ll help you understand your options and the steps involved.',
+  },
+  {
     q: 'Do you guarantee visa approval?',
-    a: 'No. We prepare documentation and explain the process. Visa, immigration, university and regulatory decisions remain with the relevant authorities.',
+    a: 'No. We prepare documentation and explain the process. Visa, immigration and related decisions are made by the relevant authorities.',
   },
   {
-    q: 'How does the online service work?',
-    a: 'You start with a short assessment or a conversation. We review your situation, explain the likely pathway and scope, then support documentation and preparation remotely.',
+    q: 'Are your services available online?',
+    a: 'Yes. SK Immigration operates through remote/digital communication for these services. You can start with an assessment or WhatsApp conversation from wherever you are.',
   },
   {
-    q: 'What fees do I pay?',
-    a: 'You receive a written service scope and SK Immigration’s fee before payment. Government, embassy, university and other third-party charges are separate and paid to those providers.',
+    q: 'Can company registration give me residency?',
+    a: 'No. Company registration and immigration status are separate matters. Forming a company does not automatically provide residency, a visa, a work permit or the right to operate in a particular country.',
   },
   {
-    q: 'Do you arrange jobs?',
-    a: 'No. We do not offer, arrange or sell jobs. For Saudi processing we only assist when a legitimate sponsor in Saudi Arabia has already initiated the visa process.',
+    q: 'Do you prepare documents?',
+    a: 'We provide documentation guidance and preparation support according to the selected service. You remain responsible for supplying accurate, genuine information and originals when required.',
   },
   {
-    q: 'Does company registration give me a visa?',
-    a: 'No. Company registration does not automatically provide immigration status, residency, a visa, a work permit or the right to operate in a particular country.',
+    q: 'Do government fees come separately?',
+    a: 'Where applicable, yes. Government and third-party charges should be distinguished from SK Immigration’s service fee. We explain this before you pay.',
   },
-  {
-    q: 'Do I need to know my pathway before contacting you?',
-    a: 'No. Tell us what you’re planning. We’ll help you understand the options and the next step.',
-  },
-] as const;
-
-export const MORE_FAQS = [
   {
     q: 'Can you guarantee a visa appointment?',
     a: 'No. Appointment availability is controlled by visa centres and authorities. We can guide the process and help you prepare, but we cannot guarantee a slot.',
@@ -317,24 +334,20 @@ export const MORE_FAQS = [
     a: 'No. Universities and colleges make their own admission decisions. We help with shortlisting, documentation and application preparation.',
   },
   {
-    q: 'Do you prepare documents?',
-    a: 'We provide documentation guidance and preparation support according to the selected service. You remain responsible for supplying accurate, genuine information and originals when required.',
-  },
-  {
-    q: 'Are services available from outside Pakistan?',
-    a: 'Yes. Support is remote by default. You can start an assessment or WhatsApp conversation from wherever you are.',
+    q: 'Can you help me choose the right service?',
+    a: 'Yes. Use the assessment or contact process to explain your situation. You don’t need to know the perfect pathway before you write to us.',
   },
 ] as const;
-
-export const ALL_FAQS = [...HOME_FAQS, ...MORE_FAQS];
 
 export const WE_HANDLE = [
   'Profile review',
   'Documentation guidance',
   'File preparation',
   'Application guidance',
+  'File organization',
   'Interview preparation',
   'Process communication',
+  'Company registration documentation support',
 ] as const;
 
 export const AUTHORITIES_DECIDE = [
@@ -344,6 +357,7 @@ export const AUTHORITIES_DECIDE = [
   'Government decisions',
   'Regulatory approvals',
   'Appointment availability',
+  'Registration approvals',
 ] as const;
 
 export const HOW_WE_WORK = [
@@ -362,122 +376,4 @@ export const BEFORE_YOU_PAY = [
   { q: 'What can we control?', a: 'Preparation, documentation quality and clear communication.' },
   { q: 'What can we not control?', a: 'Visa, immigration, university, appointment and regulatory decisions.' },
   { q: 'What happens next?', a: 'Assessment, written scope, then the agreed work. Authorities decide the outcome.' },
-] as const;
-
-export const PLANNING_CARDS = [
-  {
-    n: '01',
-    title: 'Study',
-    text: 'International university admissions and study visa preparation.',
-    href: '/study-visa/',
-    icon: 'study',
-  },
-  {
-    n: '02',
-    title: 'Visit',
-    text: 'Temporary travel and visitor visa preparation.',
-    href: '/visit-visa/',
-    icon: 'visit',
-  },
-  {
-    n: '03',
-    title: 'Work & Training',
-    text: 'Germany Ausbildung, EU opportunity pathways and related preparation.',
-    href: '/work-permit/',
-    icon: 'work',
-  },
-  {
-    n: '04',
-    title: 'Documents',
-    text: 'Attestation, legalization and document preparation.',
-    href: '/document-services/',
-    icon: 'docs',
-  },
-  {
-    n: '05',
-    title: 'Business',
-    text: 'International company registration and expansion support.',
-    href: '/business-registration/',
-    icon: 'business',
-  },
-] as const;
-
-export const PATHWAY_STEPS = [
-  { n: '01', title: 'Goal', text: 'Tell us what you are planning.', icon: 'goal' },
-  { n: '02', title: 'Assessment', text: 'We review your profile and options.', icon: 'assessment' },
-  { n: '03', title: 'Documents', text: 'Checklists and file organisation.', icon: 'documents' },
-  { n: '04', title: 'Preparation', text: 'Guidance, review and interview prep.', icon: 'prep' },
-  { n: '05', title: 'Application', text: 'Submit through the official channel.', icon: 'application' },
-  { n: '06', title: 'Authority decision', text: 'Official bodies make the outcome.', icon: 'decision' },
-] as const;
-
-export const TRUST_CARDS = [
-  {
-    n: '01',
-    title: 'Clear Scope',
-    text: 'Know exactly what is included before you commit.',
-  },
-  {
-    n: '02',
-    title: 'Transparent Fees',
-    text: 'Service fees are separated from external charges.',
-  },
-  {
-    n: '03',
-    title: 'Official-Source Guidance',
-    text: 'Requirements are explained using reliable public information.',
-  },
-  {
-    n: '04',
-    title: 'Human Support',
-    text: 'Real assistance when important decisions need to be made.',
-  },
-] as const;
-
-export const WHY_ITEMS = [
-  { n: '01', title: 'Understand your options' },
-  { n: '02', title: 'Know the requirements' },
-  { n: '03', title: 'Prepare properly' },
-  { n: '04', title: 'Stay informed' },
-  { n: '05', title: 'Take the next step' },
-] as const;
-
-export const HONESTY_NO = [
-  'NO GUARANTEED VISAS',
-  'NO GUARANTEED JOBS',
-  'NO FAKE DOCUMENTS',
-  'NO HIDDEN CHARGES',
-] as const;
-
-export const HONESTY_YES = [
-  'CLEAR GUIDANCE',
-  'CLEAR SCOPE',
-  'CLEAR COMMUNICATION',
-  'PROPER PREPARATION',
-] as const;
-
-export const JOURNEY_NODES = [
-  { id: 'uk', label: 'UK', x: 41, y: 28 },
-  { id: 'de', label: 'Germany', x: 48, y: 31 },
-  { id: 'eu', label: 'Europe', x: 50, y: 24 },
-  { id: 'us', label: 'USA', x: 18, y: 36 },
-  { id: 'ca', label: 'Canada', x: 22, y: 24 },
-  { id: 'ae', label: 'UAE', x: 60, y: 46 },
-  { id: 'sa', label: 'Saudi Arabia', x: 56, y: 42 },
-  { id: 'au', label: 'Australia', x: 82, y: 72 },
-] as const;
-
-export const COMPANY_NODES = [
-  { id: 'us', label: 'USA', x: 16, y: 42 },
-  { id: 'uk', label: 'UK', x: 38, y: 28 },
-  { id: 'ca', label: 'Canada', x: 22, y: 22 },
-  { id: 'au', label: 'Australia', x: 84, y: 68 },
-  { id: 'eu', label: 'Europe', x: 48, y: 32 },
-] as const;
-
-export const COUNTRY_PATHWAYS = [
-  { label: 'Study', href: '/study-visa/' },
-  { label: 'Work & Training', href: '/work-permit/' },
-  { label: 'Opportunity Card', href: '/work-permit/' },
-  { label: 'Documents', href: '/document-services/' },
 ] as const;
