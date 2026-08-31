@@ -1,0 +1,28 @@
+---
+interface Faq {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  faqs: readonly Faq[] | Faq[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<div class="sk-faq" data-faq>
+  {faqs.map((faq, index) => (
+    <div class:list={['sk-faq-item', index === 0 && 'is-open']}>
+      <button type="button" aria-expanded={index === 0 ? 'true' : 'false'}>
+        <span>{faq.q}</span>
+        <span class="sk-faq-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="sk-faq-panel">
+        <div>
+          <p>{faq.a}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

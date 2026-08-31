@@ -1,25 +1,17 @@
 ---
 import { ASSESSMENT_HREF, WHATSAPP_HREF } from '../../lib/home';
-
-interface Props {
-  heading?: string;
-}
-
-const {
-  heading = 'Need help understanding your options?',
-} = Astro.props;
 ---
 
-<div class="not-prose mt-8 rounded-md border border-gray-200 bg-slate-50 px-5 py-6 text-center dark:border-slate-800 dark:bg-slate-900">
-  <h2 class="font-heading mb-1.5 text-xl font-bold text-slate-900 dark:text-white">{heading}</h2>
-  <p class="mx-auto mb-4 max-w-lg text-sm leading-snug text-muted dark:text-slate-400">
+<div class="not-prose mt-10 overflow-hidden rounded-2xl bg-navy px-6 py-8 text-center text-white">
+  <h2 class="font-heading mb-2 text-2xl font-bold tracking-tight">Need help understanding your options?</h2>
+  <p class="mx-auto mb-6 max-w-lg text-sm leading-relaxed text-white/70">
     Reading a guide can help you understand the process, but every situation is different.
   </p>
   <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
-    <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
+    <a href={ASSESSMENT_HREF} class="btn-primary !bg-gold !border-gold !text-navy-dark">Start My Assessment</a>
     <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Chat on WhatsApp</a>
   </div>
-  <p class="mx-auto mt-4 max-w-lg text-xs leading-snug text-muted">
+  <p class="mx-auto mt-4 max-w-lg text-xs text-white/50">
     We provide guidance and preparation support. Authorities make the final decisions.
   </p>
 </div>

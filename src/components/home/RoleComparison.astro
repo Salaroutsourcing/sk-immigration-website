@@ -1,20 +1,14 @@
 ---
-import { WE_HANDLE, AUTHORITIES_DECIDE } from '../../lib/home';
-
-interface Props {
-  compact?: boolean;
-}
-
-const { compact = false } = Astro.props;
+import { AUTHORITIES_DECIDE, WE_HANDLE } from '../../lib/home';
 ---
 
-<section class:list={['not-prose', compact ? 'sk-section pt-4' : 'sk-section']} id={compact ? undefined : 'roles'}>
+<section class="sk-section" id="roles">
   <div class="sk-wrap">
-    <div class:list={['mx-auto max-w-2xl text-center', compact ? 'mb-8' : 'mb-10']}>
+    <div class="mx-auto max-w-2xl text-center sk-reveal">
       <h2 class="sk-h2">What we handle. What authorities decide.</h2>
-      <p class="sk-lead mx-auto mt-4">We prepare. We guide. Authorities decide.</p>
+      <p class="sk-lead mx-auto mt-4">Professional role clarity — not a legal warning.</p>
     </div>
-    <div class="sk-compare">
+    <div class="sk-compare mt-10 sk-reveal">
       <article>
         <h3>We handle</h3>
         <ul>
@@ -32,5 +26,6 @@ const { compact = false } = Astro.props;
         </ul>
       </article>
     </div>
+    <p class="mt-8 text-center text-lg font-bold tracking-tight text-navy">We prepare. We guide. Authorities decide.</p>
   </div>
 </section>

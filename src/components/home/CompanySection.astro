@@ -1,0 +1,23 @@
+---
+import { BUSINESS_HREF, COMPANY_NODES } from '../../lib/home';
+import DestinationNetwork from '../visuals/DestinationNetwork.astro';
+---
+
+<section class="sk-section sk-section--canvas" id="business">
+  <div class="sk-wrap grid items-center gap-10 lg:grid-cols-2">
+    <div class="sk-reveal">
+      <p class="sk-eyebrow">International company registration</p>
+      <h2 class="sk-h2">Build beyond borders.</h2>
+      <p class="sk-lead mt-4">
+        Guidance and documentation support for entrepreneurs establishing or expanding businesses internationally.
+      </p>
+      <p class="mt-5 max-w-lg text-sm leading-relaxed text-ink-soft">
+        Company registration does not automatically provide immigration status, residency, a visa, a work permit or the right to operate in a particular country.
+      </p>
+      <a class="btn-primary mt-8" href={BUSINESS_HREF}>Explore Services</a>
+    </div>
+    <div class="sk-reveal">
+      <DestinationNetwork nodes={COMPANY_NODES} />
+    </div>
+  </div>
+</section>

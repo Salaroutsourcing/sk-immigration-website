@@ -1,0 +1,40 @@
+---
+interface Node {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+}
+
+interface Props {
+  nodes: readonly Node[];
+  caption?: string;
+}
+
+const { nodes, caption = 'Destinations for company registration support. Registration does not grant a visa.' } = Astro.props;
+---
+
+<div class="network" aria-hidden="true">
+  <svg viewBox="0 0 100 80" class="w-full">
+    <ellipse cx="48" cy="40" rx="38" ry="24" fill="none" stroke="#142B4A" stroke-opacity="0.14" stroke-width="0.18"></ellipse>
+    {nodes.map((node, i) => {
+      const next = nodes[(i + 1) % nodes.length];
+      return (
+        <path
+          d={`M${node.x} ${node.y} Q ${(node.x + next.x) / 2} ${(node.y + next.y) / 2 - 8} ${next.x} ${next.y}`}
+          fill="none"
+          stroke="#0B1F3A"
+          stroke-opacity="0.18"
+          stroke-width="0.16"
+        />
+      );
+    })}
+    {nodes.map((node, i) => (
+      <g>
+        <circle cx={node.x} cy={node.y} r={i % 2 === 0 ? 1.05 : 0.85} fill={i % 2 === 0 ? '#C9A227' : '#0B1F3A'}></circle>
+        <text x={node.x} y={node.y - 2.4} text-anchor="middle" fill="#667085" font-size="2.2" font-family="Manrope, sans-serif">{node.label}</text>
+      </g>
+    ))}
+  </svg>
+  <p class="mt-2 text-center text-[0.72rem] tracking-wide text-ink-soft">{caption}</p>
+</div>
