@@ -133,7 +133,9 @@ export function wrapTables(html: string): string {
 }
 
 export function prepareArticleHtml(html: string): string {
-  return wrapTables(injectHeadingIds(html));
+  return wrapTables(injectHeadingIds(html))
+    .replace(/<p>(?:\s|&nbsp;)*<\/p>/gi, '')
+    .replace(/(?:\s*<br\s*\/?>\s*){2,}/gi, '<br>');
 }
 
 export function readingMinutesFromText(text: string = ''): number {
@@ -252,4 +254,28 @@ export function officialSourcesFor(cluster?: string): OfficialSource[] {
   return CLUSTER_OFFICIAL_SOURCES[cluster || ''] ?? [
     { label: 'Official embassy & government links hub', url: '/official-links/' },
   ];
+}
+
+const CLUSTER_COVER: Record<string, string> = {
+  'study-visa': '/assets/img/service-study.jpg',
+  'work-permit': '/assets/img/svc-ausbildung.jpg',
+  'visit-visa': '/assets/img/cta-flight.jpg',
+  'saudi-visa': '/assets/img/svc-saudi.jpg',
+  'document-services': '/assets/img/service-docs.jpg',
+  'visa-appointment': '/assets/img/svc-appointment.jpg',
+  guides: '/assets/img/hero-library.jpg',
+  blog: '/assets/img/hero-library.jpg',
+  news: '/assets/img/hero-consult.jpg',
+  answers: '/assets/img/hero-consult.jpg',
+  ausbildung: '/assets/img/svc-ausbildung.jpg',
+  'country-guides': '/assets/img/hero-library.jpg',
+  study: '/assets/img/service-study.jpg',
+  travel: '/assets/img/cta-flight.jpg',
+  documents: '/assets/img/service-docs.jpg',
+};
+
+export function coverImageFor(options: { image?: string; cluster?: string; category?: string } = {}): string {
+  const { image, cluster, category } = options;
+  if (image && !image.endsWith('.svg')) return image;
+  return CLUSTER_COVER[cluster || ''] || CLUSTER_COVER[category || ''] || '/assets/img/hero-graduation.jpg';
 }

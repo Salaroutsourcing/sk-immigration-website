@@ -1,6 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import AdSlot from '../components/AdSlot.astro';
 import ClusterNotice from '../components/ClusterNotice.astro';
 import ArticleToc from '../components/content/ArticleToc.astro';
 import ArticleSidebar from '../components/content/ArticleSidebar.astro';
@@ -10,6 +9,7 @@ import OfficialSources from '../components/content/OfficialSources.astro';
 import { HUB_META, landerPath, relatedLanders, type LanderEntry } from '../lib/landers';
 import { basePageGraph } from '../lib/seo';
 import {
+  coverImageFor,
   headingsFromHtml,
   officialSourcesFor,
   prepareArticleHtml,
@@ -39,9 +39,10 @@ const relatedItems = (await relatedLanders(entry, 4)).map((item) => ({
 }));
 const publishedLabel = publishDate.toLocaleDateString('en-GB', {
   day: 'numeric',
-  month: 'long',
+  month: 'short',
   year: 'numeric',
 });
+const cover = coverImageFor({ image, cluster });
 const crumbs =
   slug === 'index' || slug === 'hub'
     ? [
@@ -71,7 +72,7 @@ const faqSchema =
   title={title}
   description={description}
   canonical={path}
-  image={image}
+  image={cover}
   type="article"
   published={publishDate}
   page={cluster}
@@ -80,8 +81,8 @@ const faqSchema =
     ...(faqSchema ? [faqSchema] : []),
   ]}
 >
-  <article class="mx-auto max-w-6xl px-4 py-6 sm:px-6 md:py-10">
-    <nav aria-label="Breadcrumb" class="mb-4 text-xs text-slate-500 dark:text-slate-400">
+  <article class="mx-auto max-w-5xl px-4 py-6 sm:px-6 md:py-8">
+    <nav aria-label="Breadcrumb" class="mb-3 text-xs text-slate-500 dark:text-slate-400">
       <a href="/" class="hover:text-primary-600">Home</a>
       <span aria-hidden="true"> / </span>
       {slug !== 'index' && slug !== 'hub' && (
@@ -93,34 +94,48 @@ const faqSchema =
       <span class="font-medium text-slate-900 dark:text-white">{h1}</span>
     </nav>
 
-    <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_16.5rem] lg:gap-12">
+    <header class="mx-auto mb-5 max-w-3xl">
+      <p class="mb-2 text-sm text-slate-500 dark:text-slate-400">
+        <time datetime={publishDate.toISOString()}>{publishedLabel}</time>
+        <span aria-hidden="true"> · </span>
+        <span>SK Immigration</span>
+        {hub?.kicker && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <span>{hub.kicker}</span>
+          </>
+        )}
+        <span aria-hidden="true"> · </span>
+        <span>{readingMinutes} min read</span>
+      </p>
+      <h1 class="font-heading text-3xl font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl md:text-5xl dark:text-white">
+        {h1}
+      </h1>
+      <p class="mt-3 text-lg leading-snug text-slate-500 dark:text-slate-400">{description}</p>
+      <img
+        src={cover}
+        alt=""
+        class="mt-6 w-full rounded-md object-cover aspect-[16/9] max-h-[28rem]"
+        width="960"
+        height="540"
+      />
+    </header>
+
+    <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]">
       <div class="min-w-0">
-        <header class="mb-5 max-w-3xl">
-          <p class="mb-2 text-xs font-bold uppercase tracking-wider text-primary-600">{hub?.kicker}</p>
-          <h1 class="mb-3 font-heading text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-            {h1}
-          </h1>
-          <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
-            <time datetime={publishDate.toISOString()}>{publishedLabel}</time>
-            <span aria-hidden="true">·</span>
-            <span>{readingMinutes} min read</span>
-          </div>
-          <p class="text-[1.0625rem] leading-relaxed text-slate-600 dark:text-slate-400">{description}</p>
-        </header>
         <ClusterNotice cluster={cluster} slug={slug} />
         <ArticleToc items={toc} variant="panel" />
-        <AdSlot slotId="1122334455" format="horizontal" />
         <div
           class="prose prose-slate article-prose prose-headings:font-heading prose-a:text-primary-600 prose-table:text-sm dark:prose-invert"
           set:html={articleHtml}
         />
         <OfficialSources sources={officialSources} />
         {faqs.length > 0 && (
-          <section class="not-prose mt-8 border-t border-slate-200 pt-6 dark:border-slate-800">
-            <h2 class="mb-4 font-heading text-xl font-bold text-slate-900 dark:text-white">Frequently asked questions</h2>
-            <div class="space-y-2">
+          <section class="not-prose mt-7 border-t border-slate-200 pt-5 dark:border-slate-800">
+            <h2 class="mb-3 font-heading text-xl font-bold text-slate-900 dark:text-white">Frequently asked questions</h2>
+            <div class="space-y-1.5">
               {faqs.map((faq) => (
-                <details class="group rounded-lg border border-gray-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-900">
+                <details class="group rounded-lg border border-gray-200 bg-slate-50 px-4 py-2.5 dark:border-slate-800 dark:bg-slate-900">
                   <summary class="flex cursor-pointer list-none items-center justify-between font-heading font-bold text-slate-900 dark:text-white">
                     <span>{faq.question}</span>
                     <span class="ml-4 text-primary-600 group-open:rotate-180">▾</span>
@@ -138,9 +153,6 @@ const faqSchema =
         <ArticleSidebar services={services}>
           <ArticleToc items={toc} variant="aside" />
         </ArticleSidebar>
-        <div class="mt-4 hidden lg:block">
-          <AdSlot slotId="9876543210" format="rectangle" />
-        </div>
       </div>
     </div>
   </article>
