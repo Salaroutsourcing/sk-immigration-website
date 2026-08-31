@@ -1,32 +1,21 @@
 ---
-import { NEVER_PROMISE, WE_PROMISE } from '../../lib/home';
+import { WE_HANDLE, AUTHORITIES_DECIDE } from '../../lib/home';
 ---
 
-<section class="section-container not-prose" id="honesty">
+<section class="section-container not-prose" id="roles">
   <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
     <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-      Because your future deserves more than a sales pitch.
+      What we handle — and what authorities decide
     </h2>
     <p class="text-xl text-muted dark:text-slate-400">
-      Your future deserves honest guidance, not a sales pitch.
+      We'll be clear about our role. You shouldn't have to guess where our work ends.
     </p>
   </div>
   <div class="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
     <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-none md:p-8 dark:border-slate-800 dark:bg-slate-900">
-      <h3 class="mb-5 text-lg font-bold text-slate-900 dark:text-white">We will never promise:</h3>
+      <h3 class="mb-5 text-lg font-bold text-slate-900 dark:text-white">What we handle</h3>
       <ul class="space-y-3">
-        {NEVER_PROMISE.map((item) => (
-          <li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
-            <span class="mt-0.5 font-bold text-slate-400" aria-hidden="true">✕</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div class="rounded-lg border border-primary/20 bg-white p-6 shadow-none md:p-8 dark:border-primary/30 dark:bg-slate-900">
-      <h3 class="mb-5 text-lg font-bold text-slate-900 dark:text-white">What we do promise:</h3>
-      <ul class="space-y-3">
-        {WE_PROMISE.map((item) => (
+        {WE_HANDLE.map((item) => (
           <li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
             <span class="mt-0.5 text-primary" aria-hidden="true">✓</span>
             <span>{item}</span>
@@ -34,8 +23,19 @@ import { NEVER_PROMISE, WE_PROMISE } from '../../lib/home';
         ))}
       </ul>
     </div>
+    <div class="rounded-lg border border-gray-200 bg-slate-50 p-6 shadow-none md:p-8 dark:border-slate-800 dark:bg-slate-900">
+      <h3 class="mb-5 text-lg font-bold text-slate-900 dark:text-white">What authorities decide</h3>
+      <ul class="space-y-3">
+        {AUTHORITIES_DECIDE.map((item) => (
+          <li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
+            <span class="mt-0.5 text-muted" aria-hidden="true">●</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
   <p class="mt-8 text-center text-lg font-semibold text-slate-900 dark:text-white">
-    Your trust is more valuable than a sale.
+    We never confuse our role with the authority's role.
   </p>
 </section>

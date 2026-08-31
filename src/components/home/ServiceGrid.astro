@@ -23,6 +23,9 @@ const featured = HOME_SERVICES.find((s) => s.featured);
           <img src={service.image} alt="" class="h-12 w-12 rounded-md object-cover" width="48" height="48" loading="lazy" />
         </div>
         <h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">{service.title}</h3>
+        {'badge' in service && service.badge && (
+          <p class="mb-3 text-xs font-bold uppercase tracking-wide text-amber-800 dark:text-amber-200">{service.badge}</p>
+        )}
         <p class="mb-4 text-sm leading-relaxed text-muted dark:text-slate-400">{service.description}</p>
         {'notice' in service && service.notice && (
           <p class="mb-4 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-900 dark:border-amber-700/50 dark:bg-amber-900/20 dark:text-amber-200">
@@ -89,7 +92,10 @@ const featured = HOME_SERVICES.find((s) => s.featured);
               ))}
             </div>
           )}
-          <a href={featured.href} class="btn-primary px-5 py-2.5 text-sm">{featured.cta}</a>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a href={featured.href} class="btn-primary px-5 py-2.5 text-sm">{featured.cta}</a>
+            <a href="/contact/" class="btn px-5 py-2.5 text-sm">Start Business Assessment</a>
+          </div>
         </div>
       </div>
     </article>

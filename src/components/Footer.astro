@@ -1,13 +1,59 @@
 ---
-import { SITE, CONTACT, SOCIAL, FOOTER_LINKS } from '../lib/config';
+import { SITE, CONTACT, SOCIAL } from '../lib/config';
 
 const currentYear = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'Services',
+    links: [
+      { label: 'Study Visa & Admissions', href: '/study-visa/' },
+      { label: 'Ausbildung & Opportunity Card', href: '/work-permit/' },
+      { label: 'Visit & Tourist Visas', href: '/visit-visa/' },
+      { label: 'Document Attestation', href: '/document-services/' },
+      { label: 'Appointments & Interview Preparation', href: '/visa-appointment/' },
+      { label: 'Saudi Sponsor-Driven Processing', href: '/saudi-visa/' },
+      { label: 'Company Registration', href: '/business-registration/' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Guides', href: '/guides/' },
+      { label: 'FAQ', href: '/faq/' },
+      { label: 'Tools', href: '/eligibility/' },
+      { label: 'Country Information', href: '/study-visa/' },
+      { label: 'Assessment', href: '/contact/' },
+      { label: 'Official Links', href: '/official-links/' },
+    ],
+  },
+  {
+    title: 'Trust',
+    links: [
+      { label: 'About', href: '/about/' },
+      { label: 'Trust & Transparency', href: '/trust/' },
+      { label: 'How It Works', href: '/how-it-works/' },
+      { label: 'Terms', href: '/terms/' },
+      { label: 'Privacy', href: '/privacy/' },
+      { label: 'Disclaimer', href: '/disclaimer/' },
+    ],
+  },
+  {
+    title: 'Contact',
+    links: [
+      { label: 'WhatsApp', href: CONTACT.whatsappLink, external: true },
+      { label: 'Email', href: `mailto:${CONTACT.email}` },
+      { label: 'Start Assessment', href: '/contact/' },
+      { label: 'Contact page', href: '/contact/' },
+    ],
+  },
+];
 ---
 
 <footer class="not-prose relative border-t border-gray-200 dark:border-slate-800">
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8">
-      <div class="col-span-12 lg:col-span-5">
+      <div class="col-span-12 lg:col-span-4">
         <a class="inline-block text-xl font-bold text-slate-900 dark:text-white" href="/">
           SK Immigration
         </a>
@@ -16,20 +62,10 @@ const currentYear = new Date().getFullYear();
           Honest guidance. Clear processes. Completely online.
         </p>
         <p class="mt-4 text-sm text-muted leading-relaxed">
-          We help people prepare strong visa files, understand international pathways, and register companies
-          with honesty, clarity, and care.
+          You don't have to figure everything out alone. We won't promise the outcome. We'll help you prepare
+          properly for the journey.
         </p>
-        <div class="mt-4 space-y-1 text-sm text-muted">
-          <p>
-            <a href={`mailto:${CONTACT.email}`} class="hover:text-primary">{CONTACT.email}</a>
-          </p>
-          <p>
-            <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer" class="hover:text-primary">
-              WhatsApp {CONTACT.phoneFormatted}
-            </a>
-          </p>
-        </div>
-        <ul class="mt-6 mb-4 flex md:order-1 md:mb-0 rtl:space-x-reverse">
+        <ul class="mt-6 mb-4 flex">
           <li>
             <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-700" aria-label="Facebook">
               <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -53,44 +89,24 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="col-span-6 md:col-span-4 lg:col-span-2">
-        <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">Explore</div>
-        <ul class="text-sm">
-          {FOOTER_LINKS.explore.map((link) => (
-            <li class="mb-2">
-              <a class="text-muted transition duration-150 ease-in-out hover:text-gray-700 dark:hover:text-white" href={link.href}>
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div class="col-span-6 md:col-span-4 lg:col-span-2">
-        <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">Services</div>
-        <ul class="text-sm">
-          {FOOTER_LINKS.services.map((link) => (
-            <li class="mb-2">
-              <a class="text-muted transition duration-150 ease-in-out hover:text-gray-700 dark:hover:text-white" href={link.href}>
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div class="col-span-6 md:col-span-4 lg:col-span-3">
-        <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">Legal</div>
-        <ul class="text-sm">
-          {FOOTER_LINKS.legal.map((link) => (
-            <li class="mb-2">
-              <a class="text-muted transition duration-150 ease-in-out hover:text-gray-700 dark:hover:text-white" href={link.href}>
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {columns.map((col) => (
+        <div class="col-span-6 md:col-span-3 lg:col-span-2">
+          <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">{col.title}</div>
+          <ul class="text-sm">
+            {col.links.map((link) => (
+              <li class="mb-2">
+                <a
+                  class="text-muted transition duration-150 ease-in-out hover:text-gray-700 dark:hover:text-white"
+                  href={link.href}
+                  {...('external' in link && link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
 
     <p class="mt-10 max-w-4xl text-xs leading-relaxed text-muted">
@@ -104,7 +120,9 @@ const currentYear = new Date().getFullYear();
         &copy; {currentYear} · SK Immigration. All rights reserved.
       </div>
       <div>
-        <a class="text-muted hover:underline" href="/privacy/">Privacy Policy</a>
+        <a class="text-muted hover:underline" href="/trust/">Trust</a>
+        <span class="mx-2">·</span>
+        <a class="text-muted hover:underline" href="/privacy/">Privacy</a>
         <span class="mx-2">·</span>
         <a class="text-muted hover:underline" href="/terms/">Terms</a>
         <span class="mx-2">·</span>

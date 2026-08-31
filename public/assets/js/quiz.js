@@ -67,7 +67,7 @@
 
   function matchDestinations(a) {
     const list = [];
-    if (a.goal === 'ausbildung') list.push({ name: 'Germany Ausbildung', why: 'Paid vocational training with salary during study.' });
+    if (a.goal === 'ausbildung') list.push({ name: 'Germany Ausbildung', why: 'Vocational training pathway — a genuine training contract is required; we provide guidance, not a job guarantee.' });
     if (a.marks === 'high' || a.marks === 'mid') {
       if (a.region === 'uk' || a.region === 'any') list.push({ name: 'United Kingdom', why: 'Strong universities; budget and CAS readiness matter.' });
       if (a.region === 'settler' || a.region === 'any') list.push({ name: 'Canada', why: 'Study + post-grad work potential for strong profiles.' });

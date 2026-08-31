@@ -5,11 +5,17 @@ import TrustStrip from '../components/home/TrustStrip.astro';
 import Identification from '../components/home/Identification.astro';
 import EmotionalTrust from '../components/home/EmotionalTrust.astro';
 import ServiceGrid from '../components/home/ServiceGrid.astro';
-import Process from '../components/home/Process.astro';
 import CompanyFeature from '../components/home/CompanyFeature.astro';
+import Process from '../components/home/Process.astro';
+import AuthoritySplit from '../components/home/AuthoritySplit.astro';
+import HowWeWork from '../components/home/HowWeWork.astro';
 import Honesty from '../components/home/Honesty.astro';
+import FeesBlock from '../components/home/FeesBlock.astro';
+import BeforeYouPay from '../components/home/BeforeYouPay.astro';
 import Audiences from '../components/home/Audiences.astro';
 import GlobalReach from '../components/home/GlobalReach.astro';
+import StartingPoint from '../components/home/StartingPoint.astro';
+import HomeFaq from '../components/home/HomeFaq.astro';
 import FinalCta from '../components/home/FinalCta.astro';
 import { HOME_FAQS } from '../lib/home';
 
@@ -29,7 +35,7 @@ const faqSchema = {
 
 <BaseLayout
   title="SK Immigration | Digital Immigration & Business Services"
-  description="We help people prepare strong visa files, understand international pathways, and register companies with honesty, clarity, and care — completely online. Authorities make the final decisions."
+  description="Online immigration, education, visa preparation and international company registration guidance. Clear processes, transparent service scope and no false guarantees."
   canonical="/"
   jsonLd={faqSchema}
   schemaVariant="global"
@@ -40,10 +46,16 @@ const faqSchema = {
   <Identification />
   <EmotionalTrust />
   <ServiceGrid />
-  <Process />
   <CompanyFeature />
+  <Process />
+  <AuthoritySplit />
+  <HowWeWork />
   <Honesty />
+  <FeesBlock />
+  <BeforeYouPay />
   <Audiences />
   <GlobalReach />
+  <StartingPoint />
+  <HomeFaq />
   <FinalCta />
 </BaseLayout>

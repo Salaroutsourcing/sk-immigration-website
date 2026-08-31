@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { HUB_META, landerPath, landersIn } from '../lib/landers';
+import ClusterNotice from './ClusterNotice.astro';
 
 interface Props {
   cluster: string;
@@ -19,9 +20,12 @@ const path = `/${cluster}/`;
         <p class="text-base font-semibold uppercase tracking-wide text-primary">{meta.kicker}</p>
         <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">{meta.title}</h1>
         <p class="text-xl text-muted dark:text-slate-400">{meta.description}</p>
+        <div class="mx-auto mt-6 max-w-2xl text-left">
+          <ClusterNotice cluster={cluster} />
+        </div>
         <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="/contact/" class="btn-primary">Get started</a>
-          <a href="/guides/" class="btn">Learn more</a>
+          <a href="/contact/" class="btn-primary">Start My Assessment</a>
+          <a href="/guides/" class="btn">Explore Guides</a>
         </div>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
