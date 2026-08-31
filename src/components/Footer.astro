@@ -3,131 +3,259 @@ import { SITE, CONTACT, SOCIAL } from '../lib/config';
 
 const currentYear = new Date().getFullYear();
 
-const columns = [
-  {
-    title: 'Services',
-    links: [
-      { label: 'Study Visa & Admissions', href: '/study-visa/' },
-      { label: 'Germany Ausbildung & EU Opportunity Card', href: '/work-permit/' },
-      { label: 'Visit & Tourist Visas', href: '/visit-visa/' },
-      { label: 'Document Attestation', href: '/document-services/' },
-      { label: 'Appointments & Interview Preparation', href: '/visa-appointment/' },
-      { label: 'Saudi Sponsor-Driven Processing', href: '/saudi-visa/' },
-      { label: 'Company Registration', href: '/business-registration/' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { label: 'Guides', href: '/guides/' },
-      { label: 'FAQ', href: '/faq/' },
-      { label: 'Tools', href: '/eligibility/' },
-      { label: 'Country Information', href: '/study-visa/' },
-      { label: 'Assessment', href: '/contact/' },
-      { label: 'Official Links', href: '/official-links/' },
-    ],
-  },
-  {
-    title: 'Trust',
-    links: [
-      { label: 'About', href: '/about/' },
-      { label: 'Trust & Transparency', href: '/trust/' },
-      { label: 'How It Works', href: '/how-it-works/' },
-      { label: 'Terms', href: '/terms/' },
-      { label: 'Privacy', href: '/privacy/' },
-      { label: 'Disclaimer', href: '/disclaimer/' },
-    ],
-  },
-  {
-    title: 'Contact',
-    links: [
-      { label: 'WhatsApp', href: CONTACT.whatsappLink, external: true },
-      { label: 'Email', href: `mailto:${CONTACT.email}` },
-      { label: 'Start Assessment', href: '/contact/' },
-      { label: 'Contact page', href: '/contact/' },
-    ],
-  },
+const serviceLinks = [
+  { label: 'Study Visa & Admissions', href: '/study-visa/' },
+  { label: 'Germany Ausbildung & EU Opportunity Card', href: '/work-permit/' },
+  { label: 'Visit & Tourist Visas', href: '/visit-visa/' },
+  { label: 'Document Attestation', href: '/document-services/' },
+  { label: 'Appointments & Interview Preparation', href: '/visa-appointment/' },
+  { label: 'Saudi Sponsor-Driven Processing', href: '/saudi-visa/' },
+  { label: 'Company Registration', href: '/business-registration/' },
+];
+
+const companyLinks = [
+  { label: 'About', href: '/about/' },
+  { label: 'How It Works', href: '/how-it-works/' },
+  { label: 'Blogs', href: '/blog/' },
+  { label: 'FAQ', href: '/faq/' },
+  { label: 'Contact', href: '/contact/' },
+  { label: 'Trust & Transparency', href: '/trust/' },
+  { label: 'Privacy', href: '/privacy/' },
+  { label: 'Terms', href: '/terms/' },
 ];
 ---
 
-<footer class="not-prose relative border-t border-gray-200 dark:border-slate-800">
-  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
-    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8">
-      <div class="col-span-12 lg:col-span-4">
-        <a class="inline-block text-xl font-bold text-slate-900 dark:text-white" href="/">
-          SK Immigration
-        </a>
-        <p class="mt-1 text-sm font-medium text-primary">{SITE.tagline}</p>
-        <p class="mt-3 text-muted text-sm leading-relaxed">
-          Honest guidance. Clear processes. Completely online.
-        </p>
-        <p class="mt-4 text-sm text-muted leading-relaxed">
-          You don't have to figure everything out alone. We won't promise the outcome. We'll help you prepare
-          properly for the journey.
-        </p>
-        <ul class="mt-6 mb-4 flex">
-          <li>
-            <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-700" aria-label="Facebook">
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-          </li>
-          <li>
-            <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-700" aria-label="Instagram">
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-          </li>
-          <li>
-            <a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-700" aria-label="YouTube">
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-          </li>
-          <li>
-            <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-700" aria-label="LinkedIn">
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      {columns.map((col) => (
-        <div class="col-span-6 md:col-span-3 lg:col-span-2">
-          <div class="mb-2 font-medium text-slate-900 dark:text-gray-300">{col.title}</div>
-          <ul class="text-sm">
-            {col.links.map((link) => (
-              <li class="mb-2">
-                <a
-                  class="text-muted transition duration-150 ease-in-out hover:text-gray-700 dark:hover:text-white"
-                  href={link.href}
-                  {...('external' in link && link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+<footer class="sk-footer not-prose">
+  <div class="sk-footer__inner">
+    <div class="sk-footer__brand">
+      <a class="sk-footer__logo" href="/">
+        <img src="/assets/img/sk-logo.png" alt="" width="40" height="40" />
+        <span>SK Immigration Services</span>
+      </a>
+      <p class="sk-footer__tag">{SITE.tagline}</p>
+      <address>
+        {CONTACT.address.full}
+      </address>
+      <ul class="sk-footer__contact">
+        <li>
+          <a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer">WhatsApp {CONTACT.phoneFormatted}</a>
+        </li>
+        <li>
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+        </li>
+        <li>{CONTACT.hours}</li>
+      </ul>
+      <ul class="sk-footer__social">
+        <li>
+          <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <p class="mt-10 max-w-4xl text-xs leading-relaxed text-muted">
-      SK Immigration provides documentation, preparation and guidance services. Visa, immigration, university,
-      company-registration and regulatory decisions are made by the relevant authorities and organizations. No
-      outcome is guaranteed.
-    </p>
+    <div>
+      <h2>Services</h2>
+      <ul>
+        {serviceLinks.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
 
-    <div class="mt-8 border-t border-gray-200 py-6 text-sm text-muted md:flex md:items-center md:justify-between dark:border-slate-800">
-      <div class="mr-4">
-        &copy; {currentYear} · SK Immigration. All rights reserved.
-      </div>
-      <div>
-        <a class="text-muted hover:underline" href="/trust/">Trust</a>
-        <span class="mx-2">·</span>
-        <a class="text-muted hover:underline" href="/privacy/">Privacy</a>
-        <span class="mx-2">·</span>
-        <a class="text-muted hover:underline" href="/terms/">Terms</a>
-        <span class="mx-2">·</span>
-        <a class="text-muted hover:underline" href="/disclaimer/">Disclaimer</a>
-      </div>
+    <div>
+      <h2>Company</h2>
+      <ul>
+        {companyLinks.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
     </div>
   </div>
+
+  <p class="sk-footer__legal">
+    SK Immigration provides documentation, preparation and guidance services. Visa, immigration, university,
+    company-registration and regulatory decisions are made by the relevant authorities and organizations. No
+    outcome is guaranteed.
+  </p>
+
+  <div class="sk-footer__base">
+    <p>&copy; {currentYear} · SK Immigration Services. All rights reserved.</p>
+    <p>
+      <a href="/disclaimer/">Disclaimer</a>
+      <span>·</span>
+      <a href="/privacy/">Privacy</a>
+      <span>·</span>
+      <a href="/terms/">Terms</a>
+    </p>
+  </div>
 </footer>
+
+<style>
+  .sk-footer {
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.72);
+  }
+  :global(html.dark) .sk-footer {
+    background: rgba(7, 17, 31, 0.6);
+    border-top-color: rgba(148, 163, 184, 0.14);
+  }
+  .sk-footer__inner {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2.5rem 0 1.5rem;
+    display: grid;
+    gap: 2rem;
+  }
+  .sk-footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-weight: 750;
+    color: #0f172a;
+    text-decoration: none;
+  }
+  :global(html.dark) .sk-footer__logo {
+    color: #f8fafc;
+  }
+  .sk-footer__logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+  .sk-footer__tag {
+    margin: 0.55rem 0 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--sk-primary, #0161ef);
+  }
+  .sk-footer address {
+    font-style: normal;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #64748b;
+  }
+  .sk-footer__contact {
+    margin: 0.85rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.88rem;
+    color: #475569;
+  }
+  :global(html.dark) .sk-footer__contact,
+  :global(html.dark) .sk-footer address {
+    color: #94a3b8;
+  }
+  .sk-footer__contact a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .sk-footer__contact a:hover {
+    color: var(--sk-primary, #0161ef);
+  }
+  .sk-footer__social {
+    display: flex;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sk-footer__social a {
+    display: inline-flex;
+    padding: 0.45rem;
+    color: #64748b;
+    border-radius: 10px;
+  }
+  .sk-footer__social a:hover {
+    color: var(--sk-primary, #0161ef);
+    background: rgba(1, 97, 239, 0.08);
+  }
+  .sk-footer h2 {
+    margin: 0 0 0.7rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0f172a;
+  }
+  :global(html.dark) .sk-footer h2 {
+    color: #e2e8f0;
+  }
+  .sk-footer__inner > div ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sk-footer__inner > div li {
+    margin-bottom: 0.4rem;
+  }
+  .sk-footer__inner > div a {
+    font-size: 0.88rem;
+    color: #64748b;
+    text-decoration: none;
+  }
+  .sk-footer__inner > div a:hover {
+    color: var(--sk-primary, #0161ef);
+  }
+  :global(html.dark) .sk-footer__inner > div a {
+    color: #94a3b8;
+  }
+  .sk-footer__legal {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding-top: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: #64748b;
+  }
+  .sk-footer__base {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 1.1rem 0 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: #64748b;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    margin-top: 1.2rem;
+  }
+  :global(html.dark) .sk-footer__base {
+    border-top-color: rgba(148, 163, 184, 0.14);
+  }
+  .sk-footer__base a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .sk-footer__base a:hover {
+    text-decoration: underline;
+  }
+  .sk-footer__base span {
+    margin: 0 0.4rem;
+  }
+  @media (min-width: 768px) {
+    .sk-footer__inner {
+      grid-template-columns: 1.4fr 1fr 1fr;
+    }
+    .sk-footer__base {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+</style>

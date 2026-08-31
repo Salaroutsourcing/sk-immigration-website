@@ -1,0 +1,134 @@
+---
+import { ORBIT_NODES, SERVICE_ACCENTS, TRUST_PILLARS } from '../../data/services';
+import ServiceIcon from './ServiceIcon.astro';
+import NetworkGlobe from './NetworkGlobe.astro';
+const connectors = [
+  { d: 'M18 16 C 30 28, 40 38, 50 46', color: SERVICE_ACCENTS.blue.hex, x: 18, y: 16 },
+  { d: 'M82 16 C 70 28, 60 38, 50 46', color: SERVICE_ACCENTS.teal.hex, x: 82, y: 16 },
+  { d: 'M10 46 C 24 46, 38 46, 50 46', color: SERVICE_ACCENTS.indigo.hex, x: 10, y: 46 },
+  { d: 'M90 46 C 76 46, 62 46, 50 46', color: SERVICE_ACCENTS.teal.hex, x: 90, y: 46 },
+  { d: 'M50 86 C 50 72, 50 58, 50 46', color: SERVICE_ACCENTS.purple.hex, x: 50, y: 86 },
+];
+---
+
+<section class="svc-hero reveal" aria-labelledby="services-hero-heading">
+  <div class="svc-hero__glow" aria-hidden="true"></div>
+  <div class="svc-hero__inner">
+    <div class="svc-hero__copy">
+      <p class="svc-eyebrow">Our Services</p>
+      <h1 id="services-hero-heading" class="svc-h1">
+        Your Global Journey,
+        <span class="svc-h1-grad">Our Expert Guidance</span>
+      </h1>
+      <p class="svc-lead">
+        End-to-end immigration and visa support that is professional, clear, and personalized to your goal. We prepare
+        the file and explain the process — authorities make the final decisions.
+      </p>
+
+      <ul class="trust-grid">
+        {
+          TRUST_PILLARS.map((item) => (
+            <li class="trust-item">
+              <span class="trust-icon">
+                <ServiceIcon name={item.icon} class="h-[18px] w-[18px]" />
+              </span>
+              <span>
+                <strong>{item.title}</strong>
+                <em>{item.text}</em>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="orbital-stage">
+      <div class="orbital-core" aria-hidden="true">
+        <svg class="world-fade" viewBox="0 0 800 420">
+          <g fill="#2563eb">
+            <path d="M118 86c48-38 118-28 148 12 24 32 14 86-28 112-48 30-118 8-142-34-22-38-10-70 22-90z"></path>
+            <path d="M188 228c32-14 58 8 52 62-8 48-32 86-58 98-22 10-38-12-34-48 4-38 14-86 40-112z"></path>
+            <path d="M372 92c34-20 68-6 74 24 6 28-18 50-48 48-28-2-44-24-26-72z"></path>
+            <path d="M380 168c46-8 72 28 64 76-10 50-40 88-70 82-34-8-44-56-24-98 12-30 18-54 30-60z"></path>
+            <path d="M470 78c92-26 172 12 198 64 20 38-14 72-64 78-72 10-132-14-170-52-26-28-20-64 36-90z"></path>
+            <path d="M628 248c40-12 66 12 58 38-10 24-46 30-66 14-22-16-16-42 8-52z"></path>
+          </g>
+        </svg>
+
+        <svg class="orbit-rings" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="orbitStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0161ef"></stop>
+              <stop offset="100%" stop-color="#7c3aed"></stop>
+            </linearGradient>
+          </defs>
+          <g class="ring ring-outer">
+            <circle cx="50" cy="50" r="46.5" fill="none" stroke="url(#orbitStroke)" stroke-width="0.38" stroke-dasharray="1.15 1.7" stroke-linecap="round"></circle>
+          </g>
+          <g class="ring ring-mid">
+            <circle cx="50" cy="50" r="36.5" fill="none" stroke="#2563eb" stroke-opacity="0.38" stroke-width="0.28"></circle>
+          </g>
+          <g class="ring ring-inner">
+            <circle cx="50" cy="50" r="27.5" fill="none" stroke="#7c3aed" stroke-opacity="0.32" stroke-width="0.22"></circle>
+          </g>
+        </svg>
+
+        <svg class="orbit-connectors" viewBox="0 0 100 100">
+          {
+            connectors.map((line) => (
+              <g>
+                <path d={line.d} fill="none" stroke={line.color} stroke-opacity="0.45" stroke-width="0.32" stroke-dasharray="0.9 1.15"></path>
+                <circle cx={line.x} cy={line.y} r="0.7" fill={line.color}></circle>
+                <circle cx="50" cy="46" r="0.55" fill={line.color} fill-opacity="0.7"></circle>
+              </g>
+            ))
+          }
+        </svg>
+
+        <div class="globe-cluster">
+          <div class="globe-float">
+            <NetworkGlobe />
+          </div>
+          <p class="globe-tagline">
+            Your Global Mobility
+            <span>Partner</span>
+          </p>
+        </div>
+
+        <div class="plane-orbit">
+          <svg class="plane-icon" viewBox="0 0 24 24" fill="none">
+            <path
+              fill="#0161ef"
+              d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="orbit-nodes">
+        {
+          ORBIT_NODES.map((node) => {
+            const accent = SERVICE_ACCENTS[node.accent];
+            return (
+              <a
+                class={`orbit-node orbit-node--${node.position}`}
+                href={node.href}
+                style={`--node-accent:${accent.hex};--node-soft:${accent.soft}`}
+                aria-label={`${node.title}: ${node.sub}`}
+              >
+                <span class="orbit-node__icon">
+                  <ServiceIcon name={node.icon} class="h-4 w-4" />
+                </span>
+                <span class="orbit-node__copy">
+                  <strong>{node.title}</strong>
+                  <small>{node.sub}</small>
+                  <em>{node.em}</em>
+                </span>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>

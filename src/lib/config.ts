@@ -53,15 +53,13 @@ export const ANALYTICS = {
   clarityId: CORE.analytics.clarity,
 };
 
-/** Short header — service hubs live on the homepage as cards. */
+/** Desktop header: Home, Services, Blogs, About, FAQ. Contact lives in the mobile drawer + footer. */
 export const NAVIGATION = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services/' },
-  { label: 'Business Registration', href: '/business-registration/' },
-  { label: 'How It Works', href: '/how-it-works/' },
+  { label: 'Blogs', href: '/blog/' },
   { label: 'About', href: '/about/' },
   { label: 'FAQ', href: '/faq/' },
-  { label: 'Contact', href: '/contact/' },
 ];
 
 export const FOOTER_LINKS = {
