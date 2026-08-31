@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE, BUSINESS } from '../lib/config';
 import { ASSESSMENT_HREF, WHATSAPP_HREF, NEVER_PROMISE, WE_PROMISE } from '../lib/home';
+import AuthoritySplit from '../components/home/AuthoritySplit.astro';
+import BeforeYouPay from '../components/home/BeforeYouPay.astro';
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -77,7 +79,18 @@ const breadcrumbSchema = {
         </section>
 
         <section>
-          <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Fees</h2>
+          <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Our role</h2>
+          <p class="leading-relaxed text-muted dark:text-slate-400">
+            We prepare files, explain processes and help you understand what is typically required. We do not replace
+            embassies, immigration authorities, universities or company-registration bodies. Those organizations review
+            applications and make the decisions.
+          </p>
+        </section>
+
+        <AuthoritySplit compact />
+
+        <section>
+          <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Fee transparency</h2>
           <p class="mb-3 leading-relaxed text-muted dark:text-slate-400">
             Our service fee is the amount charged by SK Immigration for the agreed work. Government, embassy,
             university, visa-centre, medical, courier and registration-authority charges are separate and paid to
@@ -99,7 +112,7 @@ const breadcrumbSchema = {
         </section>
 
         <section>
-          <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Privacy</h2>
+          <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Privacy &amp; document handling</h2>
           <p class="leading-relaxed text-muted dark:text-slate-400">
             We treat your documents and personal information with care, and we use them to provide the service you
             asked for. Read our <a href="/privacy/" class="text-primary hover:underline">Privacy Policy</a>.
@@ -114,6 +127,8 @@ const breadcrumbSchema = {
           </p>
         </section>
 
+        <BeforeYouPay embedded />
+
         <section>
           <h2 class="font-heading mb-4 text-2xl font-bold text-slate-900 dark:text-white">What we do promise</h2>
           <ul class="mb-8 grid gap-2 sm:grid-cols-2">
@@ -127,7 +142,7 @@ const breadcrumbSchema = {
         </section>
 
         <div class="rounded-md bg-slate-50 px-6 py-10 text-center dark:bg-slate-900">
-          <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Ask us about your situation</h2>
+          <h2 class="font-heading mb-3 text-2xl font-bold text-slate-900 dark:text-white">Contact</h2>
           <p class="mb-6 text-muted dark:text-slate-400">No pressure. No false promises. Just a clear conversation.</p>
           <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>

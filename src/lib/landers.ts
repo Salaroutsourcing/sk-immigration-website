@@ -20,7 +20,7 @@ export const HUB_META: Record<
   },
   'work-permit': {
     kicker: 'Work & training guidance',
-    title: 'Germany Ausbildung & Work Pathways',
+    title: 'Germany Ausbildung & EU Opportunity Card',
     description:
       'Guidance for applicants exploring vocational training, the EU Opportunity Card and related documentation. We do not promise employment, placement or visa outcomes.',
   },
@@ -43,10 +43,10 @@ export const HUB_META: Record<
       'We assist with Saudi visa processing only when a legitimate sponsor in Saudi Arabia has already initiated the process. We do not offer, arrange or sell jobs. Authority fees are separate.',
   },
   local: {
-    kicker: 'Local offices',
+    kicker: 'Local information',
     title: 'Study Visa Consultants — Pakistan Cities',
     description:
-      'SK Immigration Services serves Rawalpindi, Islamabad, Lahore, and Karachi from our Satellite Town walk-in office.',
+      'City-specific study visa information for applicants in Rawalpindi, Islamabad, Lahore, and Karachi. Support is remote by default.',
   },
   answers: {
     kicker: 'Answers',
@@ -103,4 +103,17 @@ export async function landersIn(cluster: string): Promise<LanderEntry[]> {
 export async function landerByPath(cluster: string, slug: string): Promise<LanderEntry | undefined> {
   const items = await landersIn(cluster);
   return items.find((entry) => entry.data.slug === slug);
+}
+
+export async function relatedLanders(entry: LanderEntry, limit = 3): Promise<LanderEntry[]> {
+  const items = await landersIn(entry.data.cluster);
+  return items
+    .filter(
+      (item) =>
+        item.id !== entry.id &&
+        item.data.slug !== 'index' &&
+        item.data.slug !== 'hub' &&
+        item.data.slug !== entry.data.slug,
+    )
+    .slice(0, limit);
 }

@@ -1,0 +1,33 @@
+---
+import type { OfficialSource } from '../../lib/article';
+
+interface Props {
+  sources: OfficialSource[];
+}
+
+const { sources } = Astro.props;
+---
+
+{sources.length > 0 && (
+  <aside class="official-sources not-prose mt-8" aria-label="Official sources">
+    <h2 class="mb-2 font-heading text-base font-bold text-slate-900 dark:text-white">Official sources</h2>
+    <p class="mb-3 text-sm text-muted dark:text-slate-400">
+      Requirements can change. Verify current rules on the relevant official site before you apply.
+    </p>
+    <ul class="space-y-1.5 text-sm">
+      {sources.map((source) => (
+        <li>
+          <span class="mr-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">Official source</span>
+          <a
+            class="font-semibold text-primary hover:underline"
+            href={source.url}
+            target={source.url.startsWith('http') ? '_blank' : undefined}
+            rel={source.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            {source.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}

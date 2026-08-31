@@ -1,9 +1,17 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
-import { getRelatedStory, publishedBlogs } from '../../lib/content';
+import { getRelatedStory, publishedBlogs, publishedNews } from '../../lib/content';
 import { SITE, absoluteUrl } from '../../lib/site';
 import { basePageGraph, blogPostingSchema } from '../../lib/seo';
 import { render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import {
+  headingsFromMarkdown,
+  officialSourcesFor,
+  readingMinutesFromText,
+  relatedServicesFor,
+  topicLabel,
+} from '../../lib/article';
 
 export async function getStaticPaths() {
   const items = await publishedBlogs();
@@ -17,6 +25,40 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const path = `/blog/${entry.id}/`;
 const relatedStory = await getRelatedStory(entry.data.relatedStories[0]);
+const toc = headingsFromMarkdown(entry.body);
+const readingMinutes = entry.data.readingTime ?? readingMinutesFromText(entry.body);
+
+const news = await publishedNews();
+const blogs = await publishedBlogs();
+const guides = await getCollection('guides');
+const relatedItems = [
+  ...news
+    .filter((item) => entry.data.relatedNews.includes(item.id) || item.data.relatedBlog === entry.id)
+    .map((item) => ({
+      href: `/news/${item.id}/`,
+      title: item.data.title,
+      category: 'News',
+      description: item.data.description,
+    })),
+  ...guides
+    .filter((guide) =>
+      entry.data.tags.some((tag) => guide.data.tags.map((t) => t.toLowerCase()).includes(tag.toLowerCase())),
+    )
+    .map((guide) => ({
+      href: `/guides/${guide.id}/`,
+      title: guide.data.title,
+      category: guide.data.country,
+      description: guide.data.description,
+    })),
+  ...blogs
+    .filter((item) => item.id !== entry.id)
+    .map((item) => ({
+      href: `/blog/${item.id}/`,
+      title: item.data.title,
+      category: topicLabel(item.data.category),
+      description: item.data.description,
+    })),
+].slice(0, 4);
 ---
 
 <ArticleLayout
@@ -37,6 +79,11 @@ const relatedStory = await getRelatedStory(entry.data.relatedStories[0]);
   affiliates={entry.data.affiliates}
   relatedBlogHref={relatedStory ? `/stories/${relatedStory.id}/` : undefined}
   relatedBlogTitle={relatedStory ? 'Prefer a 15-second recap? Open the Web Story.' : undefined}
+  toc={toc}
+  readingMinutes={readingMinutes}
+  relatedItems={relatedItems}
+  relatedServices={relatedServicesFor('blog')}
+  officialSources={officialSourcesFor('blog')}
   jsonLd={[
     ...basePageGraph([
       { name: 'Home', path: '/' },

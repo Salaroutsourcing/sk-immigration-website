@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../lib/config';
 import { HOME_SERVICES, ASSESSMENT_HREF } from '../lib/home';
+import AuthoritySplit from '../components/home/AuthoritySplit.astro';
+import BeforeYouPay from '../components/home/BeforeYouPay.astro';
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -96,6 +98,13 @@ const featured = HOME_SERVICES.find((s) => s.featured);
           </div>
         </article>
       )}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 sm:px-6">
+    <AuthoritySplit compact />
+    <div class="mt-4">
+      <BeforeYouPay embedded />
     </div>
   </section>
 

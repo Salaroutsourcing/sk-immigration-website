@@ -75,7 +75,7 @@ export const FOOTER_LINKS = {
   ],
   services: [
     { label: 'Study Visa', href: '/study-visa/' },
-    { label: 'Work Permit & Ausbildung', href: '/work-permit/' },
+    { label: 'Germany Ausbildung & EU Opportunity Card', href: '/work-permit/' },
     { label: 'Visit & Tourist Visa', href: '/visit-visa/' },
     { label: 'Company Registration', href: '/business-registration/' },
     { label: 'Document Attestation', href: '/document-services/' },
@@ -117,7 +117,7 @@ export const SERVICE_HUBS = [
     alt: 'Saudi visa processing for sponsor-driven cases',
     description:
       'Document and processing support when a legitimate sponsor in Saudi Arabia has already initiated the visa process. We do not offer, arrange or sell jobs.',
-    tags: ['Fixed PKR 15k', 'Enjaz', 'Musaned', 'BEOE'],
+    tags: ['Sponsor-driven', 'Enjaz', 'Musaned', 'BEOE'],
     href: '/saudi-visa/saudi-visa-processing-pakistan/',
   },
   {

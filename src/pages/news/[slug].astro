@@ -4,6 +4,12 @@ import { publishedNews } from '../../lib/content';
 import { SITE, absoluteUrl } from '../../lib/site';
 import { basePageGraph, newsArticleSchema } from '../../lib/seo';
 import { render } from 'astro:content';
+import {
+  headingsFromMarkdown,
+  officialSourcesFor,
+  readingMinutesFromText,
+  relatedServicesFor,
+} from '../../lib/article';
 
 export async function getStaticPaths() {
   const items = await publishedNews();
@@ -17,6 +23,9 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const path = `/news/${entry.id}/`;
 const relatedBlogHref = entry.data.relatedBlog ? `/blog/${entry.data.relatedBlog}/` : undefined;
+const toc = headingsFromMarkdown(entry.body);
+const readingMinutes = readingMinutesFromText(entry.body);
+const newsSources = entry.data.sources.map((source) => ({ label: source.name, url: source.url }));
 ---
 
 <ArticleLayout
@@ -35,6 +44,10 @@ const relatedBlogHref = entry.data.relatedBlog ? `/blog/${entry.data.relatedBlog
   ]}
   relatedBlogHref={relatedBlogHref}
   relatedBlogTitle={relatedBlogHref ? 'Continue with the in-depth guide' : undefined}
+  toc={toc}
+  readingMinutes={readingMinutes}
+  relatedServices={relatedServicesFor('news')}
+  officialSources={newsSources.length ? newsSources : officialSourcesFor('news')}
   jsonLd={[
     ...basePageGraph([
       { name: 'Home', path: '/' },

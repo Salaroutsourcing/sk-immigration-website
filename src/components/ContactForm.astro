@@ -3,8 +3,9 @@ const inputClass =
   'w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary dark:border-slate-700 dark:bg-dark-950';
 ---
 
-<form id="sk-contact-form" class="space-y-4" data-lead-type="contact">
-  <p id="sk-contact-status" class="hidden rounded-xl px-4 py-3 text-sm" role="status"></p>
+<div>
+  <div id="sk-contact-status" class="hidden rounded-xl px-4 py-3 text-sm" role="status"></div>
+  <form id="sk-contact-form" class="space-y-4" data-lead-type="contact">
   <div class="hidden" aria-hidden="true">
     <label for="sk_hp">Company</label>
     <input id="sk_hp" name="sk_hp" type="text" tabindex="-1" autocomplete="off" />
@@ -58,12 +59,25 @@ const inputClass =
     </div>
   </div>
 
-  <div id="sk-company-extra" class="hidden">
-    <label for="business_goal" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
-      What are you trying to build?
-    </label>
-    <input class={inputClass} type="text" id="business_goal" name="business_goal" placeholder="e.g. UK limited company for a consulting practice" />
-    <p class="mt-2 text-xs text-muted">Company registration does not automatically provide a visa or residency.</p>
+  <div id="sk-company-extra" class="hidden grid gap-4">
+    <div>
+      <label for="business_goal" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        What are you trying to build?
+      </label>
+      <input class={inputClass} type="text" id="business_goal" name="business_goal" placeholder="e.g. UK limited company for a consulting practice" />
+    </div>
+    <div>
+      <label for="company_status" class="mb-1.5 block text-xs font-semibold uppercase text-slate-700 dark:text-slate-300">
+        Is this a new or existing business?
+      </label>
+      <select class={inputClass} id="company_status" name="company_status">
+        <option value="">— Select —</option>
+        <option value="new">New company</option>
+        <option value="existing">Existing business expanding</option>
+        <option value="unsure">Not sure yet</option>
+      </select>
+    </div>
+    <p class="text-xs text-muted">Company registration does not automatically provide a visa or residency.</p>
   </div>
 
   <div class="grid gap-4 sm:grid-cols-2">
@@ -145,6 +159,7 @@ const inputClass =
     Start My Assessment
   </button>
 </form>
+</div>
 
 <script>
   const form = document.getElementById('sk-contact-form') as HTMLFormElement | null;
@@ -167,10 +182,16 @@ const inputClass =
 
   function show(kind: 'ok' | 'err', text: string) {
     if (!status) return;
-    status.textContent = text;
+    status.innerHTML =
+      kind === 'ok'
+        ? '<p class="font-heading mb-1 text-base font-bold text-emerald-900 dark:text-emerald-100">Thank you — your assessment request has been received.</p><p>' +
+          text +
+          '</p>'
+        : text;
+    if (kind !== 'ok') status.textContent = text;
     status.className =
       kind === 'ok'
-        ? 'rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200'
+        ? 'rounded-xl bg-emerald-50 px-4 py-4 text-sm text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200'
         : 'rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800 dark:bg-red-900/30 dark:text-red-200';
   }
 
@@ -194,6 +215,7 @@ const inputClass =
         sponsor_initiated: String(data.get('sponsor_initiated') || '').trim(),
         business_goal: String(data.get('business_goal') || '').trim(),
         study_goal: String(data.get('study_goal') || '').trim(),
+        company_status: String(data.get('company_status') || '').trim(),
       },
     };
     if (submit) {
@@ -210,7 +232,11 @@ const inputClass =
       if (res.ok && body?.ok) {
         form.reset();
         syncExtras();
-        show('ok', 'Thank you. We will reply within 24 hours on WhatsApp or email.');
+        show(
+          'ok',
+          'We have received your information. Our team can review the details and explain the next step.',
+        );
+        form.classList.add('hidden');
       } else {
         show('err', 'Could not send the form. Please WhatsApp us instead.');
       }

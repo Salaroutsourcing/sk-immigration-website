@@ -5,6 +5,13 @@ import LanderLayout from '../../layouts/LanderLayout.astro';
 import { SITE } from '../../lib/site';
 import { basePageGraph } from '../../lib/seo';
 import type { CollectionEntry } from 'astro:content';
+import { landerPath } from '../../lib/landers';
+import {
+  headingsFromMarkdown,
+  officialSourcesFor,
+  readingMinutesFromText,
+  relatedServicesFor,
+} from '../../lib/article';
 
 export async function getStaticPaths() {
   const skipJsonGuides = new Set(['ausbildung-pakistan']);
@@ -38,7 +45,33 @@ const { kind, guide, entry } = Astro.props as Props;
 const rendered = kind === 'md' && guide ? await render(guide) : null;
 const Content = rendered?.Content;
 const path = guide ? `/guides/${guide.id}/` : '';
-const words = (guide?.body ?? '').split(/\s+/).length;
+const toc = guide ? headingsFromMarkdown(guide.body) : [];
+const readingMinutes = guide ? readingMinutesFromText(guide.body) : undefined;
+const relatedGuides = guide
+  ? [
+      ...(await getCollection('guides'))
+        .filter((item) => item.id !== guide.id)
+        .map((item) => ({
+          href: `/guides/${item.id}/`,
+          title: item.data.title,
+          category: item.data.country,
+          description: item.data.description,
+        })),
+      ...(await getCollection(
+        'landers',
+        (entry) =>
+          (entry.data.cluster === 'study-visa' || entry.data.cluster === 'work-permit') &&
+          entry.data.slug.toLowerCase().includes(guide.data.country.toLowerCase().split(' ')[0]),
+      ))
+        .slice(0, 3)
+        .map((item) => ({
+          href: landerPath(item),
+          title: item.data.h1,
+          category: item.data.cluster.replace(/-/g, ' '),
+          description: item.data.description,
+        })),
+    ].slice(0, 4)
+  : [];
 ---
 
 {kind === 'json' && entry && <LanderLayout entry={entry} />}
@@ -59,6 +92,11 @@ const words = (guide?.body ?? '').split(/\s+/).length;
       { name: guide.data.title, path },
     ]}
     faqs={guide.data.faqs}
+    toc={toc}
+    readingMinutes={readingMinutes}
+    relatedItems={relatedGuides}
+    relatedServices={relatedServicesFor('guides')}
+    officialSources={officialSourcesFor('guides')}
     jsonLd={[
       ...basePageGraph([
         { name: 'Home', path: '/' },
@@ -68,6 +106,5 @@ const words = (guide?.body ?? '').split(/\s+/).length;
     ]}
   >
     <Content />
-    <p class="text-sm text-slate-500">Estimated read: {Math.max(3, Math.ceil(words / 200))} minutes.</p>
   </ArticleLayout>
 )}

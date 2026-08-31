@@ -369,10 +369,11 @@ export const HOW_WE_WORK = [
 ] as const;
 
 export const BEFORE_YOU_PAY = [
-  { q: 'What service am I buying?', a: 'Clear service scope.' },
-  { q: 'What is included?', a: 'Specific deliverables.' },
-  { q: 'What does it cost?', a: 'Service fees separated from third-party costs.' },
-  { q: 'What can SK Immigration control?', a: 'Preparation and guidance.' },
-  { q: 'What can SK Immigration NOT control?', a: 'Government and authority decisions.' },
-  { q: 'What happens next?', a: 'Clear process.' },
+  { q: 'What service are you buying?', a: 'A clearly defined documentation and guidance service, confirmed in writing before you pay.' },
+  { q: 'What is included?', a: 'Specific deliverables for your case — such as file review, document guidance and application support.' },
+  { q: 'What does it cost?', a: 'The SK Immigration service fee for the agreed work.' },
+  { q: 'What other fees may apply?', a: 'Government, embassy, university, visa-centre and other third-party charges, paid to those providers.' },
+  { q: 'What can we control?', a: 'Preparation, documentation quality and clear communication.' },
+  { q: 'What can we not control?', a: 'Visa, immigration, university, appointment and regulatory decisions.' },
+  { q: 'What happens next?', a: 'Assessment, written scope, then the agreed work. Authorities decide the outcome.' },
 ] as const;
