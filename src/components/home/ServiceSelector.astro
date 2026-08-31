@@ -16,7 +16,7 @@ const icons: Record<string, string> = {
       <h2 class="sk-h2">What are you planning?</h2>
       <p class="sk-lead mt-4">Start with your goal. We’ll help you understand the next step.</p>
     </div>
-    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
       {PLANNING_CARDS.map((card, i) => (
         <a class:list={['sk-card sk-reveal', i === 1 && 'sk-reveal-delay-1', i === 2 && 'sk-reveal-delay-2']} href={card.href}>
           <span class="sk-card-n">{card.n}</span>
