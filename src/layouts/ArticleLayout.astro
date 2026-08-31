@@ -1,7 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import AdSlot from '../components/AdSlot.astro';
-import AdsterraSlot from '../components/ads/AdSlot.astro';
 import AffiliateCard from '../components/content/AffiliateCard.astro';
 import StoryToBlogCta from '../components/content/StoryToBlogCta.astro';
 import ArticleToc from '../components/content/ArticleToc.astro';
@@ -9,7 +7,7 @@ import ArticleSidebar from '../components/content/ArticleSidebar.astro';
 import ArticleCta from '../components/content/ArticleCta.astro';
 import ContinueReading from '../components/content/ContinueReading.astro';
 import OfficialSources from '../components/content/OfficialSources.astro';
-import { topicLabel, type OfficialSource, type RelatedLink, type TocItem } from '../lib/article';
+import { coverImageFor, topicLabel, type OfficialSource, type RelatedLink, type TocItem } from '../lib/article';
 
 interface Props {
   title: string;
@@ -58,13 +56,14 @@ const {
 const displayTitle = title.replace(/\s*\|\s*SK Immigration.*$/, '');
 const publishedLabel = published.toLocaleDateString('en-GB', {
   day: 'numeric',
-  month: 'long',
+  month: 'short',
   year: 'numeric',
 });
 const updatedLabel = updated
-  ? updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+  ? updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
   : null;
 const categoryLabel = topicLabel(category);
+const cover = coverImageFor({ image, cluster: page, category });
 ---
 
 <BaseLayout
@@ -72,14 +71,14 @@ const categoryLabel = topicLabel(category);
   description={description}
   canonical={canonical}
   type="article"
-  image={image}
+  image={cover}
   published={published}
   updated={updated}
   jsonLd={jsonLd}
   page={page}
 >
-  <article class="mx-auto max-w-6xl px-4 py-6 sm:px-6 md:py-10">
-    <nav aria-label="Breadcrumb" class="mb-4">
+  <article class="mx-auto max-w-5xl px-4 py-6 sm:px-6 md:py-8">
+    <nav aria-label="Breadcrumb" class="mb-3">
       <ol class="flex flex-wrap items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
         {crumbs.map((crumb, i) => (
           <>
@@ -96,43 +95,50 @@ const categoryLabel = topicLabel(category);
       </ol>
     </nav>
 
-    <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_16.5rem] lg:gap-12">
-      <div class="min-w-0">
-        <header class="mb-5 max-w-3xl">
-          {category && (
-            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-primary-600 dark:text-blue-400">
-              {categoryLabel}
-            </p>
-          )}
-          <h1 class="mb-3 font-heading text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-            {displayTitle}
-          </h1>
-          <div class="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
-            <time datetime={published.toISOString()}>Published {publishedLabel}</time>
-            {updatedLabel && updated && (
-              <>
-                <span aria-hidden="true">·</span>
-                <time datetime={updated.toISOString()}>Last updated {updatedLabel}</time>
-              </>
-            )}
-            {readingMinutes && (
-              <>
-                <span aria-hidden="true">·</span>
-                <span>{readingMinutes} min read</span>
-              </>
-            )}
-          </div>
-          <p class="text-[1.0625rem] leading-relaxed text-slate-600 dark:text-slate-400">{description}</p>
-        </header>
+    <header class="mx-auto mb-5 max-w-3xl">
+      <p class="mb-2 text-sm text-slate-500 dark:text-slate-400">
+        <time datetime={published.toISOString()}>{publishedLabel}</time>
+        <span aria-hidden="true"> · </span>
+        <span>SK Immigration</span>
+        {category && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <span>{categoryLabel}</span>
+          </>
+        )}
+        {readingMinutes && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <span>{readingMinutes} min read</span>
+          </>
+        )}
+        {updatedLabel && updated && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <span>Updated {updatedLabel}</span>
+          </>
+        )}
+      </p>
+      <h1 class="font-heading text-3xl font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl md:text-5xl dark:text-white">
+        {displayTitle}
+      </h1>
+      <p class="mt-3 text-lg leading-snug text-slate-500 dark:text-slate-400">{description}</p>
+      <img
+        src={cover}
+        alt=""
+        class="mt-6 w-full rounded-md object-cover aspect-[16/9] max-h-[28rem]"
+        width="960"
+        height="540"
+      />
+    </header>
 
+    <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]">
+      <div class="min-w-0">
         <ArticleToc items={toc} variant="panel" />
-        <AdSlot slotId="1122334455" format="horizontal" />
-        <div class="prose prose-slate article-prose prose-headings:font-heading prose-headings:font-bold prose-a:text-primary-600 prose-img:rounded-2xl dark:prose-invert">
+        <div class="prose prose-slate article-prose prose-headings:font-heading prose-headings:font-bold prose-a:text-primary-600 prose-img:rounded-md dark:prose-invert">
           <slot />
         </div>
         <OfficialSources sources={officialSources} />
-        <AdSlot slotId="9876543210" format="auto" />
-        <AdsterraSlot placement="in-article" />
 
         {relatedBlogHref && relatedBlogTitle && (
           <StoryToBlogCta title={relatedBlogTitle} href={relatedBlogHref} />
@@ -140,11 +146,11 @@ const categoryLabel = topicLabel(category);
         {affiliates?.map((item) => <AffiliateCard {...item} />)}
 
         {faqs && faqs.length > 0 && (
-          <section class="not-prose mt-8 border-t border-slate-200 pt-6 dark:border-slate-800">
-            <h2 class="mb-4 font-heading text-xl font-bold text-slate-900 dark:text-white">Frequently asked questions</h2>
-            <div class="space-y-2">
+          <section class="not-prose mt-7 border-t border-slate-200 pt-5 dark:border-slate-800">
+            <h2 class="mb-3 font-heading text-xl font-bold text-slate-900 dark:text-white">Frequently asked questions</h2>
+            <div class="space-y-1.5">
               {faqs.map((faq) => (
-                <details class="group rounded-lg border border-gray-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-900">
+                <details class="group rounded-lg border border-gray-200 bg-slate-50 px-4 py-2.5 dark:border-slate-800 dark:bg-slate-900">
                   <summary class="flex cursor-pointer list-none items-center justify-between font-heading text-base font-bold text-slate-900 dark:text-white">
                     <span>{faq.question}</span>
                     <span class="ml-4 text-primary-600 transition-transform group-open:rotate-180">▾</span>
@@ -160,7 +166,7 @@ const categoryLabel = topicLabel(category);
         <ContinueReading items={relatedItems} />
       </div>
 
-      <div class="mt-6 lg:mt-0">
+      <div class="lg:mt-0">
         <ArticleSidebar services={relatedServices}>
           <ArticleToc items={toc} variant="aside" />
         </ArticleSidebar>
