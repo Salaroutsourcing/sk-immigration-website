@@ -1,120 +1,360 @@
 ---
-import { SITE, NAVIGATION, CONTACT } from '../lib/config';
+import { CONTACT } from '../lib/config';
 import { ASSESSMENT_HREF } from '../lib/home';
+
+const path = Astro.url.pathname;
+const desktopNav = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Blogs', href: '/blog/' },
+  { label: 'About', href: '/about/' },
+  { label: 'FAQ', href: '/faq/' },
+];
+const mobileNav = [...desktopNav, { label: 'Contact', href: '/contact/' }];
+
+function isActive(href: string) {
+  if (href === '/') return path === '/' || path === '';
+  return path === href || path.startsWith(href);
+}
 ---
 
-<header
-  class="sticky top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out"
-  id="header"
->
-  <div class="absolute inset-0"></div>
-  <div class="relative text-default mx-auto w-full max-w-7xl px-3 py-3 md:flex md:justify-between md:px-6">
-    <div class="flex justify-between">
-      <a class="flex items-center" href="/">
-        <span class="flex items-center gap-2 whitespace-nowrap text-2xl font-bold text-gray-900 md:text-xl dark:text-white">
-          <img
-            src={SITE.logo}
-            alt=""
-            class="h-9 w-9 rounded-md object-cover"
-            width="36"
-            height="36"
-            loading="eager"
-          />
-          <span>SK Immigration</span>
-        </span>
-      </a>
-      <div class="flex items-center gap-1 md:hidden">
-        <a
-          href={CONTACT.whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-whatsapp px-3 py-2 text-xs font-semibold"
-        >
-          WhatsApp
-        </a>
-        <button
-          type="button"
-          class="theme-toggle inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-700"
-          aria-label="Toggle dark mode"
-        >
-          <svg class="sun-icon hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-          </svg>
-          <svg class="moon-icon h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-          </svg>
-        </button>
-        <button
-          type="button"
-          class="inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-700"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-          id="mobile-menu-btn"
-        >
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
+<header class="sk-header" id="header">
+  <div class="sk-header__bar">
+    <a class="sk-brand" href="/">
+      <img src="/assets/img/sk-logo.png" alt="" width="40" height="40" class="sk-brand__logo" />
+      <span class="sk-brand__text">
+        <strong>SK Immigration</strong>
+        <small>Services</small>
+      </span>
+    </a>
 
-    <nav
-      class="hidden w-full items-center overflow-y-auto overflow-x-hidden bg-white text-default md:mx-5 md:flex md:w-auto md:overflow-x-auto md:overflow-y-visible md:bg-transparent dark:bg-dark-950 md:dark:bg-transparent dark:text-slate-200"
-      aria-label="Main navigation"
-      id="navigation-menu"
-    >
-      <ul class="flex w-full flex-col text-xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:justify-end md:self-center md:text-[0.875rem]">
-        {NAVIGATION.map((item) => (
-          <li>
-            <a
-              class="flex items-center px-3 py-3 transition duration-150 ease-in-out hover:text-gray-900 lg:px-4 dark:hover:text-white"
-              href={item.href}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
+    <nav class="sk-nav" aria-label="Main navigation">
+      <ul>
+        {
+          desktopNav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={['sk-nav__link', isActive(item.href) && 'is-active']}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
-      <div class="flex flex-col gap-3 px-4 pb-4 md:hidden">
-        <a href={ASSESSMENT_HREF} class="btn-primary w-full px-5 py-2.5 text-sm">Start Assessment</a>
-        <a
-          href={CONTACT.whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-whatsapp w-full px-5 py-2.5 text-sm"
-        >
-          WhatsApp
-        </a>
-      </div>
     </nav>
 
-    <div class="hidden items-center md:mb-0 md:flex md:self-center">
-      <div class="flex w-full items-center justify-between md:w-auto">
-        <button
-          type="button"
-          class="theme-toggle inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:ring-gray-700"
-          aria-label="Toggle dark mode"
-        >
-          <svg class="sun-icon hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-          </svg>
-          <svg class="moon-icon h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-          </svg>
-        </button>
-        <div class="ml-3">
-          <a href={ASSESSMENT_HREF} class="btn-primary px-5 py-2.5 text-sm font-semibold shadow-none">Start Assessment</a>
-        </div>
-      </div>
+    <div class="sk-header__actions">
+      <button type="button" class="theme-toggle sk-icon-btn" aria-label="Toggle dark mode">
+        <svg class="sun-icon hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+            fill-rule="evenodd"
+            clip-rule="evenodd"></path>
+        </svg>
+        <svg class="moon-icon h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+      </button>
+      <a href={ASSESSMENT_HREF} class="sk-cta">Start Assessment →</a>
+      <button
+        type="button"
+        class="sk-icon-btn sk-burger"
+        id="mobile-menu-btn"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-drawer"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
   </div>
 </header>
 
+<div class="sk-drawer" id="mobile-drawer" hidden>
+  <button type="button" class="sk-drawer__backdrop" data-close-drawer tabindex="-1" aria-label="Close menu"></button>
+  <div class="sk-drawer__panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="sk-drawer__top">
+      <span class="sk-drawer__title">Menu</span>
+      <button type="button" class="sk-icon-btn" data-close-drawer aria-label="Close menu">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <nav aria-label="Mobile">
+      <ul>
+        {
+          mobileNav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={['sk-drawer__link', isActive(item.href) && 'is-active']}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <a href={ASSESSMENT_HREF} class="sk-cta sk-cta--block">Start Assessment →</a>
+    <a href={CONTACT.whatsappLink} class="sk-drawer__wa" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+</div>
+
+<style>
+  .sk-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  :global(html.dark) .sk-header {
+    background: rgba(7, 17, 31, 0.82);
+    border-bottom-color: rgba(148, 163, 184, 0.14);
+  }
+  .sk-header__bar {
+    height: 64px;
+    width: min(1180px, calc(100% - 1.5rem));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .sk-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+    text-decoration: none;
+    color: inherit;
+  }
+  .sk-brand__logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex: none;
+  }
+  .sk-brand__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .sk-brand__text strong {
+    font-size: 0.95rem;
+    font-weight: 750;
+    color: #0f172a;
+  }
+  :global(html.dark) .sk-brand__text strong {
+    color: #f8fafc;
+  }
+  .sk-brand__text small {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #64748b;
+  }
+  .sk-nav {
+    display: none;
+  }
+  .sk-nav ul {
+    display: flex;
+    gap: 0.15rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sk-nav__link {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 0.8rem;
+    font-size: 0.875rem;
+    font-weight: 550;
+    color: #334155;
+    text-decoration: none;
+    position: relative;
+  }
+  :global(html.dark) .sk-nav__link {
+    color: #cbd5e1;
+  }
+  .sk-nav__link:hover {
+    color: var(--sk-primary, #0161ef);
+  }
+  .sk-nav__link.is-active {
+    color: var(--sk-primary, #0161ef);
+    font-weight: 700;
+  }
+  .sk-nav__link.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0.8rem;
+    right: 0.8rem;
+    bottom: 4px;
+    height: 2px;
+    border-radius: 99px;
+    background: var(--sk-primary, #0161ef);
+  }
+  .sk-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .sk-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: #475569;
+    cursor: pointer;
+  }
+  .sk-icon-btn:hover {
+    background: rgba(15, 23, 42, 0.06);
+  }
+  :global(html.dark) .sk-icon-btn {
+    color: #cbd5e1;
+  }
+  :global(html.dark) .sk-icon-btn:hover {
+    background: rgba(148, 163, 184, 0.12);
+  }
+  .sk-cta {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 1.05rem;
+    border-radius: 999px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #0161ef, #2563eb);
+    box-shadow: 0 6px 14px rgba(1, 97, 239, 0.28);
+  }
+  .sk-cta:hover {
+    filter: brightness(1.06);
+  }
+  .sk-cta--block {
+    display: flex;
+    width: 100%;
+    height: 44px;
+    margin-top: 0.75rem;
+  }
+  .sk-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+  }
+  .sk-drawer[hidden] {
+    display: none;
+  }
+  .sk-drawer__backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(15, 23, 42, 0.45);
+    cursor: pointer;
+  }
+  .sk-drawer__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(22rem, 88vw);
+    padding: 1rem 1.1rem 1.5rem;
+    background: #fff;
+    box-shadow: -12px 0 32px rgba(15, 23, 42, 0.12);
+    overflow: auto;
+  }
+  :global(html.dark) .sk-drawer__panel {
+    background: #07111f;
+  }
+  .sk-drawer__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .sk-drawer__title {
+    font-weight: 750;
+  }
+  .sk-drawer__panel ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sk-drawer__link {
+    display: block;
+    padding: 0.8rem 0.2rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #0f172a;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  }
+  :global(html.dark) .sk-drawer__link {
+    color: #e2e8f0;
+    border-bottom-color: rgba(148, 163, 184, 0.12);
+  }
+  .sk-drawer__link.is-active {
+    color: var(--sk-primary, #0161ef);
+  }
+  .sk-drawer__wa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.65rem;
+    height: 44px;
+    border-radius: 999px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    background: #25d366;
+  }
+  @media (max-width: 419px) {
+    .sk-brand__text {
+      display: none;
+    }
+  }
+  @media (min-width: 900px) {
+    .sk-nav {
+      display: block;
+    }
+    .sk-cta {
+      display: inline-flex;
+    }
+    .sk-burger {
+      display: none;
+    }
+    .sk-header__bar {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+    }
+    .sk-header__actions {
+      justify-self: end;
+    }
+  }
+</style>
+
 <script>
-  const header = document.getElementById('header');
   const themeToggles = document.querySelectorAll('.theme-toggle');
   const menuBtn = document.getElementById('mobile-menu-btn');
-  const navMenu = document.getElementById('navigation-menu');
+  const drawer = document.getElementById('mobile-drawer');
 
   function updateThemeUI() {
     const isDark = document.documentElement.classList.contains('dark');
@@ -122,13 +362,7 @@ import { ASSESSMENT_HREF } from '../lib/home';
     document.querySelectorAll('.moon-icon').forEach((el) => el.classList.toggle('hidden', isDark));
   }
 
-  function onScroll() {
-    header?.classList.toggle('scroll', window.scrollY > 10);
-  }
-
   updateThemeUI();
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
 
   themeToggles.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -138,9 +372,24 @@ import { ASSESSMENT_HREF } from '../lib/home';
     });
   });
 
-  menuBtn?.addEventListener('click', () => {
-    const open = navMenu?.classList.toggle('hidden') === false;
-    header?.classList.toggle('expanded', open);
+  function setDrawer(open: boolean) {
+    if (!drawer || !menuBtn) return;
+    drawer.hidden = !open;
     menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  menuBtn?.addEventListener('click', () => {
+    const willOpen = Boolean(drawer?.hidden);
+    setDrawer(willOpen);
+  });
+
+  drawer?.querySelectorAll('[data-close-drawer]').forEach((el) => {
+    el.addEventListener('click', () => setDrawer(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setDrawer(false);
   });
 </script>

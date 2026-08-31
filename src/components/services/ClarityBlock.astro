@@ -1,0 +1,39 @@
+---
+import { WE_HANDLE, AUTHORITIES_DECIDE } from '../../lib/home';
+---
+
+<section class="clarity-block reveal" aria-labelledby="clarity-heading">
+  <div class="clarity-block__intro">
+    <h2 id="clarity-heading">What we handle — and what authorities decide</h2>
+    <p>We'll be clear about our role. You shouldn't have to guess where our work ends.</p>
+  </div>
+  <div class="clarity-grid">
+    <div class="clarity-col">
+      <h3>What we handle</h3>
+      <ul>
+        {
+          WE_HANDLE.map((item) => (
+            <li>
+              <span class="clarity-tick" aria-hidden="true">✓</span>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="clarity-col clarity-col--muted">
+      <h3>What authorities decide</h3>
+      <ul>
+        {
+          AUTHORITIES_DECIDE.map((item) => (
+            <li>
+              <span class="clarity-dot" aria-hidden="true">●</span>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <p class="clarity-foot">We never confuse our role with the authority's role.</p>
+</section>

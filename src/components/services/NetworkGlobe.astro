@@ -1,0 +1,237 @@
+---
+/**
+ * Pure SVG network globe — no image, no logo in the center.
+ */
+interface Dot {
+  x: number;
+  y: number;
+  r: number;
+}
+
+function cluster(cx: number, cy: number, n: number, spread: number, seed: number, squash = 0.72): Dot[] {
+  const dots: Dot[] = [];
+  let s = seed;
+  for (let i = 0; i < n; i++) {
+    s = (s * 16807) % 2147483647;
+    const a = ((s % 628) / 100);
+    s = (s * 16807) % 2147483647;
+    const d = ((s % 1000) / 1000) * spread;
+    dots.push({
+      x: cx + Math.cos(a) * d,
+      y: cy + Math.sin(a) * d * squash,
+      r: 0.85 + (i % 4) * 0.28,
+    });
+  }
+  return dots;
+}
+
+const continents: { dots: Dot[]; pulse?: boolean }[] = [
+  { dots: cluster(148, 158, 22, 28, 17) }, // North America
+  { dots: cluster(218, 148, 16, 16, 41) }, // Europe
+  { dots: cluster(214, 198, 20, 22, 73) }, // Africa
+  { dots: cluster(268, 162, 28, 32, 99) }, // Asia
+  { dots: cluster(164, 232, 14, 16, 23, 0.9) }, // South America
+  { dots: cluster(292, 236, 10, 12, 61) }, // Australia-ish
+];
+
+const meridians = [0, 28, 56, 84, 118];
+const parallels = [-78, -48, -22, 0, 22, 48, 78];
+const CX = 200;
+const CY = 200;
+const R = 118;
+
+const arcs = [
+  'M148 160 C 176 128, 228 122, 268 156',
+  'M148 168 C 190 150, 230 188, 268 176',
+  'M164 228 C 196 200, 236 188, 272 164',
+  'M218 148 C 236 168, 248 200, 292 232',
+  'M150 176 C 188 210, 226 224, 214 198',
+];
+
+const nodes = [
+  { x: 148, y: 160 },
+  { x: 218, y: 148 },
+  { x: 268, y: 156 },
+  { x: 164, y: 228 },
+  { x: 292, y: 236 },
+  { x: 214, y: 198 },
+  { x: 176, y: 150 },
+];
+---
+
+<div class="network-globe" aria-hidden="true">
+  <svg class="network-globe__svg" viewBox="0 0 400 400" role="presentation">
+    <defs>
+      <radialGradient id="ngFill" cx="38%" cy="32%" r="72%">
+        <stop offset="0%" stop-color="#93c5fd"></stop>
+        <stop offset="28%" stop-color="#60a5fa"></stop>
+        <stop offset="62%" stop-color="#2563eb"></stop>
+        <stop offset="100%" stop-color="#1e3a8a"></stop>
+      </radialGradient>
+      <radialGradient id="ngShine" cx="32%" cy="28%" r="46%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"></stop>
+        <stop offset="42%" stop-color="#ffffff" stop-opacity="0.12"></stop>
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+      </radialGradient>
+      <radialGradient id="ngAura" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"></stop>
+        <stop offset="55%" stop-color="#7c3aed" stop-opacity="0.12"></stop>
+        <stop offset="100%" stop-color="#0161ef" stop-opacity="0"></stop>
+      </radialGradient>
+      <clipPath id="ngClip">
+        <circle cx={CX} cy={CY} r={R}></circle>
+      </clipPath>
+      <filter id="ngGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="2.4" result="blur"></feGaussianBlur>
+        <feMerge>
+          <feMergeNode in="blur"></feMergeNode>
+          <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+      </filter>
+      <filter id="ngSoft" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1e3a8a" flood-opacity="0.28"></feDropShadow>
+      </filter>
+      <linearGradient id="ngArc" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#bfdbfe" stop-opacity="0.15"></stop>
+        <stop offset="50%" stop-color="#dbeafe" stop-opacity="0.95"></stop>
+        <stop offset="100%" stop-color="#93c5fd" stop-opacity="0.2"></stop>
+      </linearGradient>
+    </defs>
+
+    <circle class="globe-aura" cx={CX} cy={CY} r="168" fill="url(#ngAura)"></circle>
+
+    <g filter="url(#ngSoft)">
+      <circle cx={CX} cy={CY} r={R} fill="url(#ngFill)"></circle>
+    </g>
+
+    <g clip-path="url(#ngClip)">
+      {
+        meridians.map((rx) => (
+          <ellipse
+            cx={CX}
+            cy={CY}
+            rx={rx || 0.6}
+            ry={R}
+            fill="none"
+            stroke="#e0f2fe"
+            stroke-opacity="0.22"
+            stroke-width="0.7"
+          />
+        ))
+      }
+      {
+        parallels.map((off) => {
+          const y = CY + off;
+          const half = Math.sqrt(Math.max(R * R - off * off, 4));
+          return (
+            <ellipse
+              cx={CX}
+              cy={y}
+              rx={half}
+              ry={Math.max(7, 16 - Math.abs(off) * 0.08)}
+              fill="none"
+              stroke="#e0f2fe"
+              stroke-opacity="0.2"
+              stroke-width="0.65"
+            />
+          );
+        })
+      }
+
+      {
+        continents.map((land) => (
+          <g class="continent-dots">
+            {land.dots.map((d) => (
+              <circle cx={d.x} cy={d.y} r={d.r} fill="#eff6ff" fill-opacity="0.82"></circle>
+            ))}
+          </g>
+        ))
+      }
+
+      <g class="network-arcs" filter="url(#ngGlow)" fill="none" stroke="url(#ngArc)" stroke-width="1.35" stroke-linecap="round">
+        {arcs.map((d) => <path class="network-arc" d={d}></path>)}
+      </g>
+
+      {
+        nodes.map((n, i) => (
+          <g class={`pulse-node pulse-node--${i % 3}`}>
+            <circle cx={n.x} cy={n.y} r="3.6" fill="#bfdbfe" fill-opacity="0.35"></circle>
+            <circle cx={n.x} cy={n.y} r="1.7" fill="#f8fafc"></circle>
+          </g>
+        ))
+      }
+
+      <ellipse cx="158" cy="156" rx="54" ry="36" fill="url(#ngShine)"></ellipse>
+    </g>
+
+    <circle cx={CX} cy={CY} r={R} fill="none" stroke="#dbeafe" stroke-opacity="0.55" stroke-width="2.2"></circle>
+    <circle cx={CX} cy={CY} r={R + 3.5} fill="none" stroke="#93c5fd" stroke-opacity="0.22" stroke-width="5"></circle>
+  </svg>
+</div>
+
+<style>
+  .network-globe {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 18px 28px rgba(30, 58, 138, 0.22));
+  }
+  .network-globe__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .globe-aura {
+    transform-origin: 200px 200px;
+    animation: auraPulse 6.5s ease-in-out infinite;
+  }
+  .network-arc {
+    stroke-dasharray: 8 10;
+    animation: dashMove 18s linear infinite;
+  }
+  .pulse-node circle:first-child {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: nodePulse 2.8s ease-in-out infinite;
+  }
+  .pulse-node--1 circle:first-child {
+    animation-delay: 0.5s;
+  }
+  .pulse-node--2 circle:first-child {
+    animation-delay: 1.1s;
+  }
+  @keyframes auraPulse {
+    0%,
+    100% {
+      opacity: 0.72;
+      transform: scale(0.96);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+  @keyframes dashMove {
+    to {
+      stroke-dashoffset: -120;
+    }
+  }
+  @keyframes nodePulse {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.7);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .globe-aura,
+    .network-arc,
+    .pulse-node circle {
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,50 @@
+---
+import type { ServiceCardData } from '../../data/services';
+import { SERVICE_ACCENTS } from '../../data/services';
+import ServiceIcon from './ServiceIcon.astro';
+
+interface Props {
+  service: ServiceCardData;
+  index: number;
+}
+
+const { service, index } = Astro.props;
+const accent = SERVICE_ACCENTS[service.accent];
+const explore = service.cta.startsWith('Explore') ? service.cta : `Explore ${service.title}`;
+---
+
+<article
+  class="svc-card reveal"
+  id={service.id}
+  data-svc-card
+  style={`--accent:${accent.hex};--accent-soft:${accent.soft};--accent-border:${accent.border};--accent-glow:${accent.glow};--float-delay:${index * 0.45}s`}
+>
+  <div class="svc-card__blob" aria-hidden="true"></div>
+  <div class="svc-card__icon">
+    <ServiceIcon name={service.icon} class="h-5 w-5" />
+  </div>
+  <p class="svc-card__badge">{service.category}</p>
+  <h3 class="svc-card__title">{service.title}</h3>
+  <p class="svc-card__desc">{service.description}</p>
+  <ul class="svc-card__features">
+    {
+      service.features.map((item) => (
+        <li>
+          <span class="svc-check" aria-hidden="true">
+            <ServiceIcon name="check" class="h-3.5 w-3.5" />
+          </span>
+          <span>{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+  {
+    service.notice && (
+      <p class="svc-card__notice">{service.notice}</p>
+    )
+  }
+  <a class="svc-card__cta" href={service.href}>
+    <span>{explore}</span>
+    <span class="svc-card__arrow" aria-hidden="true">→</span>
+  </a>
+</article>
