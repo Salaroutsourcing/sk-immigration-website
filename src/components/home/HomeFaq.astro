@@ -1,18 +1,30 @@
 ---
 import { HOME_FAQS } from '../../lib/home';
-import FaqAccordion from '../ui/FaqAccordion.astro';
+
+const items = HOME_FAQS.slice(0, 8);
 ---
 
-<section class="sk-section" id="faq">
-  <div class="sk-wrap grid items-start gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-    <div class="sk-reveal">
-      <p class="sk-eyebrow">FAQ</p>
-      <h2 class="sk-h2">Clear answers.</h2>
-      <p class="sk-lead mt-4">If it isn’t listed here, start an assessment and ask.</p>
-      <a class="btn mt-8" href="/faq/">Read all FAQs</a>
-    </div>
-    <div class="sk-reveal">
-      <FaqAccordion faqs={HOME_FAQS} />
-    </div>
+<section class="section-container not-prose" id="faq">
+  <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+    <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+      Questions people ask before they write to us
+    </h2>
+    <p class="text-xl text-muted dark:text-slate-400">
+      Here's what you should know. We'll explain the rest in a conversation — without pressure.
+    </p>
   </div>
+  <div class="mx-auto max-w-4xl divide-y divide-slate-200 dark:divide-slate-800">
+    {items.map((faq) => (
+      <details class="group py-5">
+        <summary class="flex cursor-pointer list-none items-center justify-between text-lg font-medium text-slate-800 dark:text-slate-200">
+          <span>{faq.q}</span>
+          <span class="ml-4 text-primary transition group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <p class="mt-3 text-muted dark:text-slate-400">{faq.a}</p>
+      </details>
+    ))}
+  </div>
+  <p class="mt-8 text-center text-sm">
+    <a href="/faq/" class="font-semibold text-primary hover:underline">Read all FAQs →</a>
+  </p>
 </section>

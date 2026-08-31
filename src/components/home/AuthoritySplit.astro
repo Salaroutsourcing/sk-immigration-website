@@ -8,29 +8,40 @@ interface Props {
 const { compact = false } = Astro.props;
 ---
 
-<section class:list={['not-prose', compact ? 'sk-section pt-4' : 'sk-section']} id={compact ? undefined : 'roles'}>
-  <div class="sk-wrap">
-    <div class:list={['mx-auto max-w-2xl text-center', compact ? 'mb-8' : 'mb-10']}>
-      <h2 class="sk-h2">What we handle. What authorities decide.</h2>
-      <p class="sk-lead mx-auto mt-4">We prepare. We guide. Authorities decide.</p>
+<section class:list={['not-prose', compact ? 'py-8' : 'section-container']} id={compact ? undefined : 'roles'}>
+  <div class:list={['text-center', compact ? 'mb-6 max-w-2xl' : 'mb-8 md:mx-auto md:mb-12 max-w-3xl', compact ? '' : 'md:mx-auto']}>
+    <h2 class:list={['font-heading font-bold tracking-tight text-slate-900 dark:text-white', compact ? 'mb-2 text-2xl' : 'mb-4 text-3xl sm:text-4xl']}>
+      What we handle — and what authorities decide
+    </h2>
+    <p class:list={['text-muted dark:text-slate-400', compact ? 'text-base' : 'text-xl']}>
+      We'll be clear about our role. You shouldn't have to guess where our work ends.
+    </p>
+  </div>
+  <div class:list={['grid gap-6 md:grid-cols-2', compact ? '' : 'mx-auto max-w-5xl']}>
+    <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-none dark:border-slate-800 dark:bg-slate-900 md:p-8">
+      <h3 class="mb-5 text-lg font-bold text-slate-900 dark:text-white">What we handle</h3>
+      <ul class="space-y-3">
+        {WE_HANDLE.map((item) => (
+          <li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
+            <span class="mt-0.5 text-primary" aria-hidden="true">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
-    <div class="sk-compare">
-      <article>
-        <h3>We handle</h3>
-        <ul>
-          {WE_HANDLE.map((item) => (
-            <li><span class="sk-dot"></span>{item}</li>
-          ))}
-        </ul>
-      </article>
-      <article>
-        <h3>Authorities decide</h3>
-        <ul>
-          {AUTHORITIES_DECIDE.map((item) => (
-            <li><span class="sk-dot sk-dot--muted"></span>{item}</li>
-          ))}
-        </ul>
-      </article>
+    <div class="rounded-lg border border-gray-200 bg-slate-50 p-6 shadow-none dark:border-slate-800 dark:bg-slate-900 md:p-8">
+      <h3 class="mb-5 text-lg font-bold text-slate-900 dark:text-white">What authorities decide</h3>
+      <ul class="space-y-3">
+        {AUTHORITIES_DECIDE.map((item) => (
+          <li class="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
+            <span class="mt-0.5 text-muted" aria-hidden="true">●</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
+  <p class:list={['text-center font-semibold text-slate-900 dark:text-white', compact ? 'mt-6 text-base' : 'mt-8 text-lg']}>
+    We never confuse our role with the authority's role.
+  </p>
 </section>

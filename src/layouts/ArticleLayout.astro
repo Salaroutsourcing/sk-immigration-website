@@ -7,8 +7,6 @@ import ArticleSidebar from '../components/content/ArticleSidebar.astro';
 import ArticleCta from '../components/content/ArticleCta.astro';
 import ContinueReading from '../components/content/ContinueReading.astro';
 import OfficialSources from '../components/content/OfficialSources.astro';
-import CountryGuideNav from '../components/content/CountryGuideNav.astro';
-import FaqAccordion from '../components/ui/FaqAccordion.astro';
 import { coverImageFor, topicLabel, type OfficialSource, type RelatedLink, type TocItem } from '../lib/article';
 
 interface Props {
@@ -21,7 +19,6 @@ interface Props {
   jsonLd?: unknown[];
   page?: string;
   category?: string;
-  country?: string;
   crumbs: { name: string; path: string }[];
   faqs?: { question: string; answer: string }[];
   affiliates?: { title: string; url: string; blurb: string }[];
@@ -44,7 +41,6 @@ const {
   jsonLd,
   page,
   category,
-  country,
   crumbs,
   faqs,
   affiliates,
@@ -68,7 +64,6 @@ const updatedLabel = updated
   : null;
 const categoryLabel = topicLabel(category);
 const cover = coverImageFor({ image, cluster: page, category });
-const mappedFaqs = (faqs ?? []).map((faq) => ({ q: faq.question, a: faq.answer }));
 ---
 
 <BaseLayout
@@ -82,50 +77,96 @@ const mappedFaqs = (faqs ?? []).map((faq) => ({ q: faq.question, a: faq.answer }
   jsonLd={jsonLd}
   page={page}
 >
-  <article class="sk-article">
-    <header class="sk-article-head">
-      <nav class="sk-crumb" aria-label="Breadcrumb">
+  <article class="mx-auto max-w-5xl px-4 py-6 sm:px-6 md:py-8">
+    <nav aria-label="Breadcrumb" class="mb-3">
+      <ol class="flex flex-wrap items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
         {crumbs.map((crumb, i) => (
           <>
-            {i > 0 && <span aria-hidden="true">/</span>}
-            {i === crumbs.length - 1 ? (
-              <span class="text-navy">{crumb.name}</span>
-            ) : (
-              <a href={crumb.path}>{crumb.name}</a>
-            )}
+            {i > 0 && <li aria-hidden="true">/</li>}
+            <li>
+              {i === crumbs.length - 1 ? (
+                <span class="font-medium text-slate-900 dark:text-white">{crumb.name}</span>
+              ) : (
+                <a href={crumb.path} class="hover:text-primary-600">{crumb.name}</a>
+              )}
+            </li>
           </>
         ))}
-      </nav>
-      {category && <p class="sk-eyebrow">{categoryLabel}</p>}
-      <h1>{displayTitle}</h1>
-      <p class="sk-article-summary">{description}</p>
-      <p class="sk-article-meta">
+      </ol>
+    </nav>
+
+    <header class="mx-auto mb-5 max-w-3xl">
+      <p class="mb-2 text-sm text-slate-500 dark:text-slate-400">
         <time datetime={published.toISOString()}>{publishedLabel}</time>
-        {readingMinutes && <span>{readingMinutes} min read</span>}
-        {updatedLabel && updated && <span>Updated {updatedLabel}</span>}
+        <span aria-hidden="true"> · </span>
+        <span>SK Immigration</span>
+        {category && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <span>{categoryLabel}</span>
+          </>
+        )}
+        {readingMinutes && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <span>{readingMinutes} min read</span>
+          </>
+        )}
+        {updatedLabel && updated && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <span>Updated {updatedLabel}</span>
+          </>
+        )}
       </p>
+      <h1 class="font-heading text-3xl font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl md:text-5xl dark:text-white">
+        {displayTitle}
+      </h1>
+      <p class="mt-3 text-lg leading-snug text-slate-500 dark:text-slate-400">{description}</p>
+      <img
+        src={cover}
+        alt=""
+        class="mt-6 w-full rounded-md object-cover aspect-[16/9] max-h-[28rem]"
+        width="960"
+        height="540"
+      />
     </header>
-    <img class="sk-article-cover" src={cover} alt="" width="960" height="540" />
-    {country && <CountryGuideNav country={country} />}
-    <div class="sk-wrap grid items-start gap-10 lg:grid-cols-[minmax(0,760px)_16rem]">
+
+    <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]">
       <div class="min-w-0">
         <ArticleToc items={toc} variant="panel" />
-        <div class="prose prose-slate article-prose max-w-none prose-headings:font-heading prose-headings:font-bold prose-a:text-navy prose-img:rounded-md dark:prose-invert">
+        <div class="prose prose-slate article-prose prose-headings:font-heading prose-headings:font-bold prose-a:text-primary-600 prose-img:rounded-md dark:prose-invert">
           <slot />
         </div>
         <OfficialSources sources={officialSources} />
-        {relatedBlogHref && relatedBlogTitle && <StoryToBlogCta title={relatedBlogTitle} href={relatedBlogHref} />}
+
+        {relatedBlogHref && relatedBlogTitle && (
+          <StoryToBlogCta title={relatedBlogTitle} href={relatedBlogHref} />
+        )}
         {affiliates?.map((item) => <AffiliateCard {...item} />)}
-        {mappedFaqs.length > 0 && (
-          <section class="not-prose mt-10">
-            <h2 class="mb-4 text-2xl font-bold tracking-tight text-navy">Frequently asked questions</h2>
-            <FaqAccordion faqs={mappedFaqs} />
+
+        {faqs && faqs.length > 0 && (
+          <section class="not-prose mt-7 border-t border-slate-200 pt-5 dark:border-slate-800">
+            <h2 class="mb-3 font-heading text-xl font-bold text-slate-900 dark:text-white">Frequently asked questions</h2>
+            <div class="space-y-1.5">
+              {faqs.map((faq) => (
+                <details class="group rounded-lg border border-gray-200 bg-slate-50 px-4 py-2.5 dark:border-slate-800 dark:bg-slate-900">
+                  <summary class="flex cursor-pointer list-none items-center justify-between font-heading text-base font-bold text-slate-900 dark:text-white">
+                    <span>{faq.question}</span>
+                    <span class="ml-4 text-primary-600 transition-transform group-open:rotate-180">▾</span>
+                  </summary>
+                  <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
           </section>
         )}
+
         <ArticleCta />
         <ContinueReading items={relatedItems} />
       </div>
-      <div>
+
+      <div class="lg:mt-0">
         <ArticleSidebar services={relatedServices}>
           <ArticleToc items={toc} variant="aside" />
         </ArticleSidebar>
