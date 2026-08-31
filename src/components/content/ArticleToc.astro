@@ -11,13 +11,13 @@ const show = items.length >= 4;
 ---
 
 {show && variant === 'panel' && (
-  <nav class="not-prose mb-4 rounded-md border border-gray-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900 lg:hidden" aria-label="In this guide">
+  <nav class="not-prose mb-4 rounded-xl border border-line bg-white dark:border-slate-800 dark:bg-slate-900 lg:hidden" aria-label="In this guide">
     <details>
       <summary class="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-semibold text-slate-900 dark:text-white">
         <span>In this guide</span>
         <span aria-hidden="true" class="text-primary">▾</span>
       </summary>
-      <ol class="space-y-1.5 border-t border-gray-200 px-4 py-3 text-sm dark:border-slate-800">
+      <ol class="space-y-1.5 border-t border-line px-4 py-3 text-sm dark:border-slate-800">
         {items.map((item) => (
           <li class={item.level === 3 ? 'pl-3' : ''}>
             <a class="text-slate-600 hover:text-primary dark:text-slate-400" href={`#${item.id}`}>{item.text}</a>
@@ -29,7 +29,7 @@ const show = items.length >= 4;
 )}
 
 {show && variant === 'aside' && (
-  <nav class="not-prose hidden rounded-lg border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 lg:block" aria-label="In this guide">
+  <nav class="not-prose hidden rounded-xl border border-line bg-white p-5 dark:border-slate-800 dark:bg-slate-900 lg:block" aria-label="In this guide">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">In this guide</p>
     <ol class="space-y-1.5 text-sm">
       {items.map((item) => (

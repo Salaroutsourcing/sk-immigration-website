@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import FinalCta from '../components/home/FinalCta.astro';
 import '../styles/tools.css';
 
 interface Props {
@@ -14,6 +15,7 @@ const { title, description, canonical, jsonLd } = Astro.props;
 
 <BaseLayout title={title} description={description} canonical={canonical} jsonLd={jsonLd} page="tools">
   <slot />
+  <FinalCta />
   <Fragment slot="scripts">
     <slot name="scripts" />
   </Fragment>
