@@ -283,7 +283,7 @@ export const REGIONS = ['Gulf', 'South Asia', 'Africa', 'Europe', 'Worldwide'] a
 export const HOME_FAQS = [
   {
     q: 'Who is SK Immigration Services?',
-    a: 'SK Immigration Services (SMC-Private) Limited, CUIN 0304985, is a Rawalpindi consultancy that prepares study-visa, visit-visa, Ausbildung, work-permit and attestation files for Pakistani applicants. Support is remote by default. Embassies and universities decide outcomes — we do not sell visa guarantees.',
+    a: 'SK Immigration Services (SMC-Private) Limited, CUIN 0304985, is a digital immigration desk. Files are prepared online with a written scope. We have a head office in Rawalpindi, Pakistan, and appointment offices in Saudi Arabia, Dubai (UAE), Nepal and Bangladesh. Embassies decide outcomes — we do not sell visa guarantees.',
   },
   {
     q: 'Do you help with a Germany study visa from Pakistan?',
@@ -295,7 +295,11 @@ export const HOME_FAQS = [
   },
   {
     q: 'Are you a study visa consultant in Rawalpindi?',
-    a: 'Yes. The office is Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi. Most clients work with us online via WhatsApp. Walk-in is optional; file preparation does not require you to live in Rawalpindi.',
+    a: 'Yes. The head office is Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi. Most clients still work with us online. Walk-in is optional.',
+  },
+  {
+    q: 'Do you serve clients in Dubai, Saudi Arabia, Nepal and Bangladesh?',
+    a: 'Yes. The service is digital-first in every country: WhatsApp, written fees, embassy-sourced checklists. We also meet by appointment in Dubai, Saudi Arabia, Kathmandu and Dhaka. We do not sell jobs in Saudi Arabia or the UAE.',
   },
   {
     q: 'Do you guarantee visa approval or immigration outcomes?',

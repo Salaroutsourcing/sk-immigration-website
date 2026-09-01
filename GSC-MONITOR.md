@@ -17,6 +17,10 @@ Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.co
 - uk study visa pakistan
 - canada study visa pakistan
 - study visa consultant rawalpindi
+- immigration consultant dubai
+- immigration consultant saudi arabia
+- study visa consultant nepal
+- study visa consultant bangladesh
 - schengen appointment pakistan
 - saudi visa processing pakistan / e number
 - ausbildung pakistan
@@ -52,6 +56,10 @@ Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.co
 - `/work-permit/germany-work-permit-pakistan/`
 - `/saudi-visa/saudi-visa-processing-pakistan/`
 - `/local/rawalpindi-study-visa-consultant/`
+- `/local/dubai-immigration-consultant/`
+- `/local/saudi-arabia-immigration-consultant/`
+- `/local/nepal-study-visa-consultant/`
+- `/local/bangladesh-study-visa-consultant/`
 - `/llms.txt`
 
 ## Analytics & consent (AdSense readiness)

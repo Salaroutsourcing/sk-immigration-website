@@ -9,7 +9,7 @@ export const SITE = {
   legalName: CORE.legalName,
   tagline: CORE.tagline,
   description:
-    'SK Immigration Services prepares study visas, Germany Ausbildung, work permits, visit visas and attestation from Pakistan. Digital file preparation from Rawalpindi. Written fees. Embassies decide — no visa guarantees.',
+    'Digital immigration desk with offices in Pakistan, Saudi Arabia, the UAE, Nepal and Bangladesh. Study visas, Ausbildung, visit files, attestation and company documentation — online by default. Embassies decide. No visa guarantees.',
   url: CORE.url,
   ogImage: CORE.defaultOg,
   logo: CORE.logo,

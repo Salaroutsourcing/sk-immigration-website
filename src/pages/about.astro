@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE, CONTACT, BUSINESS } from '../lib/config';
+import { REGIONAL_MARKETS } from '../lib/regions';
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -13,8 +14,8 @@ const breadcrumbSchema = {
 ---
 
 <BaseLayout
-  title="About SK Immigration Services — Rawalpindi Pakistan"
-  description="SK Immigration Services (SMC-Private) Limited, CUIN 0304985 — immigration consultancy in Rawalpindi. Honest guidance, transparent fees, no visa guarantees."
+  title="About SK Immigration — Digital desk with offices in PK, UAE, KSA, Nepal, Bangladesh"
+  description="SK Immigration is a digital immigration desk (CUIN 0304985) with a Rawalpindi head office and appointment offices in Saudi Arabia, Dubai, Nepal and Bangladesh. No visa guarantees."
   canonical="/about/"
   jsonLd={breadcrumbSchema}
 >
@@ -23,7 +24,7 @@ const breadcrumbSchema = {
       <div class="mb-8 md:mx-auto md:mb-12 max-w-3xl text-center">
         <p class="text-base font-semibold uppercase tracking-wide text-primary">About</p>
         <h1 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-          File preparation from Rawalpindi
+          File preparation, delivered digitally
         </h1>
         <p class="text-xl text-muted dark:text-slate-400">
           Honest assessments, written fees, and embassy-sourced checklists. Embassies decide every visa.
@@ -35,11 +36,34 @@ const breadcrumbSchema = {
           <div>
             <h2 class="font-heading mb-4 text-2xl font-bold text-slate-900 dark:text-white">Our mission</h2>
             <p class="mb-4 leading-relaxed text-muted dark:text-slate-400">
-              SK Immigration Services (also searched as SK Consultant) prepares study, work, visit, and Saudi files from Satellite Town, Rawalpindi. We were founded so applicants get accurate assessments based on real embassy rules — not sales pitches.
+              SK Immigration Services (also searched as SK Consultant) is a digital immigration desk. We prepare study,
+              work, visit, Ausbildung and attestation files online — for clients in Pakistan, Saudi Arabia, the UAE,
+              Nepal and Bangladesh. The Rawalpindi office is headquarters; other cities are appointment desks for people
+              who want a meeting. We were founded so applicants get embassy-based assessments, not sales pitches.
             </p>
             <p class="leading-relaxed text-muted dark:text-slate-400">
               We compile thorough files for universities and missions. Clients deserve facts: no consultant can guarantee an approval.
             </p>
+          </div>
+
+          <div>
+            <h2 class="font-heading mb-4 text-2xl font-bold text-slate-900 dark:text-white">Offices — digital first</h2>
+            <p class="mb-4 leading-relaxed text-muted dark:text-slate-400">
+              The service is the same in every country. Only Rawalpindi publishes a full street address today; other desks are appointment-based so we never list a stale shopfront.
+            </p>
+            <ul class="space-y-3">
+              {REGIONAL_MARKETS.map((market) => (
+                <li>
+                  <a href={market.href} class="font-semibold text-primary hover:underline">
+                    {market.city}, {market.country}
+                  </a>
+                  <span class="text-sm text-muted dark:text-slate-400">
+                    {' '}
+                    — {market.kind === 'head-office' ? 'head office' : 'by appointment'}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>

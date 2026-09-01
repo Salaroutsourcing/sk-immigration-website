@@ -195,6 +195,11 @@ export function relatedServicesFor(cluster?: string): { href: string; title: str
       { href: '/work-permit/', title: 'Germany Ausbildung & EU Opportunity Card' },
       { href: '/business-registration/', title: 'Company Registration' },
     ],
+    local: [
+      { href: '/local/', title: 'All offices' },
+      { href: '/local/dubai-immigration-consultant/', title: 'Dubai' },
+      { href: '/local/nepal-study-visa-consultant/', title: 'Nepal' },
+    ],
     answers: [
       { href: '/guides/', title: 'Guides' },
       { href: '/study-visa/', title: 'Study Visa & Admissions' },
