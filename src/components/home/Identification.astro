@@ -1,40 +1,43 @@
 ---
-import { PATHWAYS } from '../../lib/home';
+import { HOME_GATEWAYS } from '../../lib/home';
 import { SERVICE_ACCENTS } from '../../data/services';
 import ServiceIcon from '../services/ServiceIcon.astro';
-
-const meta = [
-  { icon: 'graduation' as const, accent: 'blue' as const },
-  { icon: 'passport' as const, accent: 'purple' as const },
-  { icon: 'briefcase' as const, accent: 'teal' as const },
-  { icon: 'building' as const, accent: 'indigo' as const },
-];
 ---
 
-<section class="home-section reveal" id="pathways" aria-labelledby="pathways-heading">
-  <div class="home-section__head">
-    <h2 id="pathways-heading">What are you <span>planning?</span></h2>
-    <p>You don't need to know the perfect pathway before you contact us. Start with the goal that feels closest.</p>
+<section class="dest-gateways reveal" id="pathways" aria-labelledby="gateways-heading">
+  <div class="dest-gateways__head">
+    <h2 id="gateways-heading">Where should we <span>start?</span></h2>
+    <p>
+      Five doors into the work — not the full catalog. Open Services when you want every checklist and notice.
+    </p>
   </div>
-  <div class="path-grid">
+  <div class="dest-gate-grid">
     {
-      PATHWAYS.map((item, i) => {
-        const accent = SERVICE_ACCENTS[meta[i].accent];
+      HOME_GATEWAYS.map((item) => {
+        const accent = SERVICE_ACCENTS[item.accent];
         return (
           <a
-            class="path-card"
+            class="dest-gate"
             href={item.href}
             style={`--accent:${accent.hex};--accent-soft:${accent.soft};--accent-border:${accent.border}`}
           >
-            <span class="path-card__icon">
-              <ServiceIcon name={meta[i].icon} class="h-5 w-5" />
+            <span class="dest-gate__icon">
+              <ServiceIcon name={item.icon} class="h-5 w-5" />
             </span>
             <h3>{item.title}</h3>
             <p>{item.description}</p>
-            <span class="path-card__cta">{item.cta} →</span>
+            <span class="dest-gate__cta">
+              {item.cta}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
           </a>
         );
       })
     }
   </div>
+  <p class="dest-gateways__more">
+    <a href="/services/">See all services in detail →</a>
+  </p>
 </section>

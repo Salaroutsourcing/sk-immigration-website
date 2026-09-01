@@ -1,27 +1,67 @@
 ---
-import { TRUST_ITEMS } from '../../lib/home';
-import ServiceIcon from '../services/ServiceIcon.astro';
+import { TRUST_FACTS } from '../../lib/home';
 
-const icons = {
-  globe: 'globe',
-  document: 'document',
-  fees: 'document',
-  shield: 'shield',
-  people: 'people',
+const tones = {
+  green: 'dest-fact--green',
+  gold: 'dest-fact--gold',
+  blue: 'dest-fact--blue',
 } as const;
 ---
 
-<section class="home-trust reveal" aria-label="Trust signals">
-  <ul>
+<section class="dest-facts reveal" aria-labelledby="dest-facts-heading">
+  <p id="dest-facts-heading" class="dest-facts__kicker">Registered. Verifiable. No invented scores.</p>
+  <ul class="dest-facts__list">
     {
-      TRUST_ITEMS.map((item) => (
-        <li>
-          <span class="home-trust__icon">
-            <ServiceIcon name={icons[item.icon]} class="h-[18px] w-[18px]" />
+      TRUST_FACTS.map((item) => (
+        <li class:list={['dest-fact', tones[item.tone]]}>
+          <span class="dest-fact__icon" aria-hidden="true">
+            {item.tone === 'green' && (
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                />
+                <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+              </svg>
+            )}
+            {item.tone === 'gold' && (
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.5 14.6 8.6 21.2 9.4 16.4 13.9 17.7 20.5 12 17.3 6.3 20.5 7.6 13.9 2.8 9.4 9.4 8.6Z" />
+              </svg>
+            )}
+            {item.tone === 'blue' && (
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M7 11v8M7 11H4v8h3M7 11l4.2-6.2A2 2 0 0 1 13.9 6v3.2H19a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18 20H7"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            )}
           </span>
           <span>
-            <strong>{item.title}</strong>
-            <span>{item.text}</span>
+            <small>{item.kicker}</small>
+            {'maps' in item ? (
+              <strong>
+                <a href={item.maps} target="_blank" rel="noopener noreferrer">
+                  Google
+                </a>
+                <span aria-hidden="true"> · </span>
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  Facebook
+                </a>
+              </strong>
+            ) : (
+              <strong>
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  {item.title}
+                </a>
+              </strong>
+            )}
+            <em>{item.text}</em>
           </span>
         </li>
       ))

@@ -1,24 +1,19 @@
 ---
 import { ASSESSMENT_HREF, WHATSAPP_HREF } from '../../lib/home';
-import ServiceIcon from '../services/ServiceIcon.astro';
 ---
 
-<section class="consult-cta reveal" id="start" aria-labelledby="home-cta-heading">
-  <div class="consult-cta__inner">
-    <span class="consult-cta__icon" aria-hidden="true">
-      <ServiceIcon name="chat" class="h-6 w-6" />
-    </span>
-    <div class="consult-cta__copy">
-      <h2 id="home-cta-heading">Not sure what your next step should be?</h2>
+<section class="dest-convert reveal" id="start" aria-labelledby="home-cta-heading">
+  <div class="dest-convert__inner">
+    <div class="dest-convert__brand">
+      <img src="/assets/img/sk-logo.png" alt="" width="44" height="44" />
       <p>
-        That’s okay. Tell us what you’re planning, where you’re hoping to go, or what you’re trying to build. No
-        pressure. No false promises. Just a clear conversation about your options — and a written scope before any paid
-        work.
+        <strong id="home-cta-heading">Let’s start your journey</strong>
+        <span>Registered in Rawalpindi. Free first assessment — written scope before any paid work.</span>
       </p>
     </div>
-    <div class="company-band__ctas">
-      <a class="consult-cta__btn" href={ASSESSMENT_HREF}>Start Assessment →</a>
-      <a class="home-ghost" href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+    <div class="dest-convert__actions">
+      <a class="sk-btn sk-btn--primary" href={ASSESSMENT_HREF}>Start Assessment →</a>
+      <a class="sk-btn sk-btn--ghost" href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
     </div>
   </div>
 </section>

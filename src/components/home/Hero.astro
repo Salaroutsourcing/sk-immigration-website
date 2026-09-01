@@ -1,128 +1,77 @@
 ---
-import { ASSESSMENT_HREF, SERVICES_HREF } from '../../lib/home';
-import { SERVICE_ACCENTS } from '../../data/services';
-import NetworkGlobe from '../services/NetworkGlobe.astro';
-
-const journey = [
-  { pos: 'goal', n: '01', title: 'Tell us your goal', sub: 'Assessment or WhatsApp', accent: 'blue' as const },
-  { pos: 'assess', n: '02', title: 'We assess', sub: 'Profile and pathway', accent: 'teal' as const },
-  { pos: 'roadmap', n: '03', title: 'Your roadmap', sub: 'Scope before you pay', accent: 'indigo' as const },
-  { pos: 'prepare', n: '04', title: 'We prepare', sub: 'Files and guidance', accent: 'purple' as const },
-  { pos: 'informed', n: '05', title: 'Stay informed', sub: 'Authorities decide', accent: 'violet' as const },
-];
-
-const connectors = [
-  { d: 'M18 16 C 30 28, 40 38, 50 46', color: SERVICE_ACCENTS.blue.hex, x: 18, y: 16 },
-  { d: 'M82 16 C 70 28, 60 38, 50 46', color: SERVICE_ACCENTS.teal.hex, x: 82, y: 16 },
-  { d: 'M10 46 C 24 46, 38 46, 50 46', color: SERVICE_ACCENTS.indigo.hex, x: 10, y: 46 },
-  { d: 'M90 46 C 76 46, 62 46, 50 46', color: SERVICE_ACCENTS.purple.hex, x: 90, y: 46 },
-  { d: 'M50 86 C 50 72, 50 58, 50 46', color: SERVICE_ACCENTS.violet.hex, x: 50, y: 86 },
-];
+import DestinationStage from "./DestinationStage.astro";
 ---
 
-<section class="home-hero reveal" aria-labelledby="home-hero-heading">
-  <div class="home-hero__inner">
-    <div class="home-hero__copy">
-      <p class="svc-eyebrow">Digital immigration &amp; business services</p>
-      <h1 id="home-hero-heading" class="svc-h1">
-        Your international plans deserve
-        <span class="svc-h1-grad">honest guidance.</span>
+<section class="dest-hero" aria-labelledby="home-hero-heading">
+  <div class="dest-hero__inner">
+    <div class="dest-hero__copy">
+      <p class="dest-hero__eyebrow">
+        <span class="dest-hero__eyebrow-dot" aria-hidden="true"></span>
+        Registered immigration consultancy
+      </p>
+      <h1 id="home-hero-heading" class="dest-hero__title">
+        Your Journey.<br />
+        <span class="dest-hero__accent">Our Expertise.</span>
       </h1>
-      <p class="svc-lead">
-        Visa preparation, education pathways and company registration — handled digitally, clearly and carefully. We
-        prepare the file and explain the process. Authorities make the final decisions.
+      <p class="dest-hero__lead">
+        SK Immigration Services (SMC-Private) Limited is a Pakistan-registered consultancy. We
+        prepare applications, explain requirements, and keep every fee in writing — decisions
+        stay with the authorities.
       </p>
-      <ul class="home-pills">
-        <li>100% online</li>
-        <li>Written scope</li>
-        <li>No false guarantees</li>
+
+      <ul class="dest-hero__pills">
+        <li>
+          <span class="dest-hero__pill-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="1.7"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>
+            <strong>Trusted &amp; registered</strong>
+            <small>SECP CUIN 0304985</small>
+          </span>
+        </li>
+        <li>
+          <span class="dest-hero__pill-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </span>
+          <span>
+            <strong>Expert guidance</strong>
+            <small>Official checklists, not shortcuts</small>
+          </span>
+        </li>
+        <li>
+          <span class="dest-hero__pill-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>
+            <strong>Clear &amp; written</strong>
+            <small>Fees before you pay</small>
+          </span>
+        </li>
+        <li>
+          <span class="dest-hero__pill-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c2.5 3 3.8 6 3.8 9S14.5 18 12 21c-2.5-3-3.8-6-3.8-9S9.5 6 12 3Z" stroke="currentColor" stroke-width="1.5"/></svg>
+          </span>
+          <span>
+            <strong>Online from anywhere</strong>
+            <small>WhatsApp, email, video</small>
+          </span>
+        </li>
       </ul>
-      <div class="home-hero__ctas">
-        <a class="consult-cta__btn" href={ASSESSMENT_HREF}>Start Assessment →</a>
-        <a class="home-ghost" href={SERVICES_HREF}>Explore Services</a>
+
+      <div class="dest-hero__cta">
+        <a class="sk-btn sk-btn--primary dest-hero__cta-primary" href="/services/">
+          Explore Services
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="sk-btn sk-btn--ghost dest-hero__cta-ghost" href="/contact/">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Book a Consultation
+        </a>
       </div>
-      <p class="home-hero__note">
-        You stay informed at every step. We will never tell you something is guaranteed when it isn’t.
-      </p>
     </div>
 
-    <div class="orbital-stage journey-stage">
-      <div class="orbital-core" aria-hidden="true">
-        <svg class="world-fade" viewBox="0 0 800 420">
-          <g fill="#2563eb">
-            <path d="M118 86c48-38 118-28 148 12 24 32 14 86-28 112-48 30-118 8-142-34-22-38-10-70 22-90z"></path>
-            <path d="M188 228c32-14 58 8 52 62-8 48-32 86-58 98-22 10-38-12-34-48 4-38 14-86 40-112z"></path>
-            <path d="M372 92c34-20 68-6 74 24 6 28-18 50-48 48-28-2-44-24-26-72z"></path>
-            <path d="M380 168c46-8 72 28 64 76-10 50-40 88-70 82-34-8-44-56-24-98 12-30 18-54 30-60z"></path>
-            <path d="M470 78c92-26 172 12 198 64 20 38-14 72-64 78-72 10-132-14-170-52-26-28-20-64 36-90z"></path>
-            <path d="M628 248c40-12 66 12 58 38-10 24-46 30-66 14-22-16-16-42 8-52z"></path>
-          </g>
-        </svg>
-        <svg class="orbit-rings" viewBox="0 0 100 100">
-          <defs>
-            <linearGradient id="homeOrbitStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#0161ef"></stop>
-              <stop offset="100%" stop-color="#7c3aed"></stop>
-            </linearGradient>
-          </defs>
-          <g class="ring ring-outer">
-            <circle cx="50" cy="50" r="46.5" fill="none" stroke="url(#homeOrbitStroke)" stroke-width="0.38" stroke-dasharray="1.15 1.7" stroke-linecap="round"></circle>
-          </g>
-          <g class="ring ring-mid">
-            <circle cx="50" cy="50" r="36.5" fill="none" stroke="#2563eb" stroke-opacity="0.38" stroke-width="0.28"></circle>
-          </g>
-          <g class="ring ring-inner">
-            <circle cx="50" cy="50" r="27.5" fill="none" stroke="#7c3aed" stroke-opacity="0.32" stroke-width="0.22"></circle>
-          </g>
-        </svg>
-        <svg class="orbit-connectors" viewBox="0 0 100 100">
-          {
-            connectors.map((line) => (
-              <g>
-                <path d={line.d} fill="none" stroke={line.color} stroke-opacity="0.45" stroke-width="0.32" stroke-dasharray="0.9 1.15"></path>
-                <circle cx={line.x} cy={line.y} r="0.7" fill={line.color}></circle>
-              </g>
-            ))
-          }
-        </svg>
-        <div class="globe-cluster">
-          <div class="globe-float">
-            <NetworkGlobe />
-          </div>
-          <p class="globe-tagline">
-            Prepared with you
-            <span>Decided by authorities</span>
-          </p>
-        </div>
-        <div class="plane-orbit">
-          <svg class="plane-icon" viewBox="0 0 24 24" fill="none">
-            <path
-              fill="#0161ef"
-              d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16z"
-            ></path>
-          </svg>
-        </div>
-      </div>
-
-      <div class="orbit-nodes journey-nodes">
-        {
-          journey.map((node) => {
-            const accent = SERVICE_ACCENTS[node.accent];
-            return (
-              <article
-                class={`orbit-node orbit-node--${node.pos === 'goal' ? 'study' : node.pos === 'assess' ? 'work' : node.pos === 'roadmap' ? 'settle' : node.pos === 'prepare' ? 'saudi' : 'visit'} journey-node`}
-                style={`--node-accent:${accent.hex};--node-soft:${accent.soft}`}
-              >
-                <span class="journey-node__n">{node.n}</span>
-                <span class="orbit-node__copy">
-                  <strong>{node.title}</strong>
-                  <small>{node.sub}</small>
-                </span>
-              </article>
-            );
-          })
-        }
-      </div>
+    <div class="dest-hero__stage">
+      <DestinationStage />
     </div>
   </div>
 </section>

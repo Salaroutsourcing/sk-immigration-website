@@ -1,0 +1,76 @@
+---
+import { SITE, CONTACT, BUSINESS } from '../../lib/config';
+import { WHY_PILLARS } from '../../lib/home';
+import ServiceIcon from '../services/ServiceIcon.astro';
+---
+
+<section class="dest-who reveal" id="who-we-are" aria-labelledby="who-heading">
+  <div class="dest-who__intro">
+    <p class="dest-who__eyebrow">Why SK Immigration</p>
+    <h2 id="who-heading">A registered consultancy — not a visa mill.</h2>
+    <p class="dest-who__lead">
+      {SITE.legalName} prepares study, work, visit, and Saudi files from Satellite Town, Rawalpindi. We were founded
+      in 2020 so applicants get assessments based on real embassy rules — not sales pitches. Clients deserve facts: no
+      consultant can guarantee an approval.
+    </p>
+  </div>
+
+  <div class="dest-who__layout">
+    <div class="dest-who__story">
+      <p>
+        We compile thorough files for universities and missions. Scope is written first. Fees are confirmed before you
+        pay. Document lists follow embassy, VFS, and government pages. Work stays remote by default; the office is here
+        if you need it.
+      </p>
+      <p>
+        Saudi cases are sponsor-initiated only — we do not sell jobs. Company registration abroad does not grant a visa
+        or residency. Authorities decide every outcome.
+      </p>
+      <a class="dest-who__link" href="/about/">Read the full company story →</a>
+    </div>
+
+    <aside class="dest-who__card">
+      <h3>Company details</h3>
+      <dl>
+        <div>
+          <dt>Legal name</dt>
+          <dd>{SITE.legalName}</dd>
+        </div>
+        <div>
+          <dt>Registration</dt>
+          <dd>CUIN {BUSINESS.cuin}</dd>
+        </div>
+        <div>
+          <dt>Office</dt>
+          <dd>{CONTACT.address.full}</dd>
+        </div>
+        <div>
+          <dt>Hours</dt>
+          <dd>{CONTACT.hours}</dd>
+        </div>
+      </dl>
+      <a
+        class="dest-who__verify"
+        href={BUSINESS.secpVerifyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Verify company on SECP LEAP ↗
+      </a>
+    </aside>
+  </div>
+
+  <ul class="dest-who__pillars">
+    {
+      WHY_PILLARS.map((item) => (
+        <li>
+          <span class="dest-who__pillar-icon" aria-hidden="true">
+            <ServiceIcon name={item.icon} class="h-5 w-5" />
+          </span>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -2,7 +2,7 @@
  * Homepage and related conversion copy for SK Immigration.
  * Keep claims conservative: we prepare and guide; authorities decide.
  */
-import { CONTACT } from './config';
+import { BUSINESS, CONTACT, SOCIAL } from './config';
 
 export const ASSESSMENT_HREF = '/contact/';
 export const FINDER_HREF = '/eligibility/';
@@ -36,6 +36,101 @@ export const TRUST_ITEMS = [
     title: 'Human Support',
     text: 'Real guidance for important decisions.',
     icon: 'people',
+  },
+] as const;
+
+/** Compact home gateways — not the full Services catalog. */
+export const HOME_GATEWAYS = [
+  {
+    title: 'Study Visa & Admissions',
+    description: 'University shortlisting, SOP guidance, and study-visa file preparation.',
+    href: '/study-visa/',
+    cta: 'Learn more',
+    icon: 'graduation' as const,
+    accent: 'blue' as const,
+  },
+  {
+    title: 'Work & Training Pathways',
+    description: 'Ausbildung and opportunity-card guidance. We do not promise jobs or placement.',
+    href: '/work-permit/',
+    cta: 'Learn more',
+    icon: 'briefcase' as const,
+    accent: 'teal' as const,
+  },
+  {
+    title: 'Visit & Tourist Visas',
+    description: 'Structured preparation for legitimate temporary travel applications.',
+    href: '/visit-visa/',
+    cta: 'Learn more',
+    icon: 'plane' as const,
+    accent: 'purple' as const,
+  },
+  {
+    title: 'Settlement Guidance',
+    description: 'Honest advice on residency pathways. Authorities decide every status outcome.',
+    href: '/contact/',
+    cta: 'Talk to us',
+    icon: 'home' as const,
+    accent: 'orange' as const,
+  },
+  {
+    title: 'Business Setup & Registration',
+    description: 'Company formation support abroad. Registration is not a visa or residency.',
+    href: BUSINESS_HREF,
+    cta: 'Learn more',
+    icon: 'building' as const,
+    accent: 'indigo' as const,
+  },
+] as const;
+
+export const TRUST_FACTS = [
+  {
+    kicker: 'SECP registered',
+    title: `CUIN ${BUSINESS.cuin}`,
+    text: 'Verify the company on SECP LEAP',
+    href: BUSINESS.secpVerifyUrl,
+    external: true,
+    tone: 'green' as const,
+  },
+  {
+    kicker: 'Since 2020',
+    title: 'Rawalpindi office',
+    text: 'Satellite Town · Monday–Saturday',
+    href: BUSINESS.googleMapsUrl,
+    external: true,
+    tone: 'gold' as const,
+  },
+  {
+    kicker: 'Find us publicly',
+    title: 'Google & Facebook',
+    text: 'Real listings — we do not invent review scores',
+    href: SOCIAL.facebook,
+    maps: BUSINESS.googleMapsUrl,
+    external: true,
+    tone: 'blue' as const,
+  },
+] as const;
+
+export const WHY_PILLARS = [
+  {
+    title: 'Written fees',
+    text: 'Every service fee is confirmed in writing before you pay. No surprise add-ons.',
+    icon: 'document' as const,
+  },
+  {
+    title: 'Official checklists',
+    text: 'Document lists follow embassy, VFS, and government pages — not rumours.',
+    icon: 'check' as const,
+  },
+  {
+    title: 'Remote by default',
+    text: 'WhatsApp, email, and video from wherever you are. The Rawalpindi office is here if you need it.',
+    icon: 'globe' as const,
+  },
+  {
+    title: 'No visa promises',
+    text: 'We prepare files and give honest guidance. Authorities make the decision.',
+    icon: 'shield' as const,
   },
 ] as const;
 
