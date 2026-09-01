@@ -5,9 +5,9 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Announcement from '../components/Announcement.astro';
-import { SITE as CORE } from '../lib/site';
 import { SITE, ANALYTICS } from '../lib/config';
-import { organizationSchema, websiteSchema, digitalOrganizationSchema, digitalWebsiteSchema } from '../lib/seo';
+import { SITE as CORE } from '../lib/site';
+import { organizationSchema, websiteSchema, localBusinessSchema, digitalOrganizationSchema, digitalWebsiteSchema } from '../lib/seo';
 
 interface Props {
   title?: string;
@@ -53,15 +53,15 @@ const pageTitle = title
   ? title.includes('SK Immigration')
     ? title
     : `${title} | SK Immigration Services`
-  : 'SK Immigration | Digital Immigration & Business Services';
+  : CORE.seoTitle;
 
 const canonicalPath = canonicalUrl ?? canonical ?? Astro.url.pathname;
 const imagePath = ogImage ?? image ?? CORE.defaultOg;
 const extraJsonLd = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 const baseSchemas =
   schemaVariant === 'global'
-    ? [digitalOrganizationSchema(), digitalWebsiteSchema()]
-    : [organizationSchema(), websiteSchema()];
+    ? [digitalOrganizationSchema(), digitalWebsiteSchema(), organizationSchema(), localBusinessSchema()]
+    : [organizationSchema(), localBusinessSchema(), websiteSchema()];
 const schemas = [...baseSchemas, ...extraJsonLd];
 ---
 

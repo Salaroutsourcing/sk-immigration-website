@@ -86,8 +86,8 @@
       "https://www.youtube.com/@SKImmigrationtips",
       "https://www.tiktok.com/@skimmigrationservices/",
       "https://www.google.com/search?kgmid=/g/11zfnqjfgx",
-      SITE + "/about.html",
-      SITE + "/trust.html",
+      SITE + "/about/",
+      SITE + "/trust/",
       SITE + "/llms.txt"
     ],
     "knowsAbout": [

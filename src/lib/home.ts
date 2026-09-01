@@ -282,12 +282,28 @@ export const REGIONS = ['Gulf', 'South Asia', 'Africa', 'Europe', 'Worldwide'] a
 
 export const HOME_FAQS = [
   {
-    q: 'Do you guarantee visa approval or immigration outcomes?',
-    a: 'No. We help you understand your options, prepare documentation and navigate the process clearly. Government, embassy, university and regulatory authorities make the final decisions. We will never tell you something is guaranteed when it isn’t.',
+    q: 'Who is SK Immigration Services?',
+    a: 'SK Immigration Services (SMC-Private) Limited, CUIN 0304985, is a digital immigration desk. Files are prepared online with a written scope. We have a head office in Rawalpindi, Pakistan, and appointment offices in Saudi Arabia, Dubai (UAE), Nepal and Bangladesh. Embassies decide outcomes — we do not sell visa guarantees.',
   },
   {
-    q: 'How does a fully online service work?',
-    a: 'You start with a short assessment or a conversation. We review your situation, explain the likely pathway and scope, then support documentation and preparation remotely. You stay informed at every step of the agreed service.',
+    q: 'Do you help with a Germany study visa from Pakistan?',
+    a: 'Yes. We prepare Germany degree and Ausbildung files: APS sequencing, blocked-account guidance, documents, and appointment prep. German missions decide the visa. Start with the Germany study visa guide, then an assessment.',
+  },
+  {
+    q: 'Can I study abroad from Pakistan without IELTS?',
+    a: 'Sometimes. Several European pathways accept MOI letters, other English tests, or German language instead of IELTS. It depends on the university and visa category — not on a consultant promise. See our without-IELTS guide and we will map realistic options for your marks and budget.',
+  },
+  {
+    q: 'Are you a study visa consultant in Rawalpindi?',
+    a: 'Yes. The head office is Office No. 10, Alfazal Plaza 64C, Satellite Town, Rawalpindi. Most clients still work with us online. Walk-in is optional.',
+  },
+  {
+    q: 'Do you serve clients in Dubai, Saudi Arabia, Nepal and Bangladesh?',
+    a: 'Yes. The service is digital-first in every country: WhatsApp, written fees, embassy-sourced checklists. We also meet by appointment in Dubai, Saudi Arabia, Kathmandu and Dhaka. We do not sell jobs in Saudi Arabia or the UAE.',
+  },
+  {
+    q: 'Do you guarantee visa approval or immigration outcomes?',
+    a: 'No. We help you understand options, prepare documentation and navigate the process clearly. Government, embassy, university and regulatory authorities make the final decisions. We will never tell you something is guaranteed when it is not.',
   },
   {
     q: 'Do you arrange jobs in Saudi Arabia?',
@@ -299,43 +315,15 @@ export const HOME_FAQS = [
   },
   {
     q: 'Will I know the fees and scope before I pay?',
-    a: 'Yes. You receive a written service scope and clear pricing before payment. There are no surprise charges for work that was not agreed.',
+    a: 'Yes. You receive a written service scope and clear pricing before payment. Government, embassy, university and visa-centre charges are separate from the SK Immigration service fee.',
   },
   {
-    q: 'Do I need to know the perfect pathway before I contact you?',
-    a: 'No. You don’t need to have everything figured out. Tell us what you’re planning, where you’re hoping to go, or what you’re trying to build — we’ll help you understand your options and the steps involved.',
-  },
-  {
-    q: 'Do you guarantee visa approval?',
-    a: 'No. We prepare documentation and explain the process. Visa, immigration and related decisions are made by the relevant authorities.',
-  },
-  {
-    q: 'Are your services available online?',
-    a: 'Yes. SK Immigration operates through remote/digital communication for these services. You can start with an assessment or WhatsApp conversation from wherever you are.',
-  },
-  {
-    q: 'Can company registration give me residency?',
-    a: 'No. Company registration and immigration status are separate matters. Forming a company does not automatically provide residency, a visa, a work permit or the right to operate in a particular country.',
-  },
-  {
-    q: 'Do you prepare documents?',
-    a: 'We provide documentation guidance and preparation support according to the selected service. You remain responsible for supplying accurate, genuine information and originals when required.',
-  },
-  {
-    q: 'Do government fees come separately?',
-    a: 'Where applicable, yes. Government and third-party charges should be distinguished from SK Immigration’s service fee. We explain this before you pay.',
+    q: 'How does a fully online service work?',
+    a: 'You start with a short assessment or a WhatsApp conversation. We review your situation, explain the likely pathway and scope, then support documentation and preparation remotely. You stay informed at every step of the agreed service.',
   },
   {
     q: 'Can you guarantee a visa appointment?',
     a: 'No. Appointment availability is controlled by visa centres and authorities. We can guide the process and help you prepare, but we cannot guarantee a slot.',
-  },
-  {
-    q: 'Can you guarantee university admission?',
-    a: 'No. Universities and colleges make their own admission decisions. We help with shortlisting, documentation and application preparation.',
-  },
-  {
-    q: 'Can you help me choose the right service?',
-    a: 'Yes. Use the assessment or contact process to explain your situation. You don’t need to know the perfect pathway before you write to us.',
   },
 ] as const;
 

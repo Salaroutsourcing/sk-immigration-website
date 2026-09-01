@@ -7,8 +7,8 @@ export const HUB_META: Record<
   { title: string; description: string; kicker: string }
 > = {
   'study-visa': {
-    kicker: 'Study visa',
-    title: 'Study Visa Pakistan',
+    kicker: 'Study visa Pakistan',
+    title: 'Study Visa Pakistan — Germany, UK, Canada & Europe',
     description:
       'Country-by-country study visa guidance from Pakistan — Germany, UK, Canada, Italy, Hungary and more. Honest requirements, fees, and FAQs. Embassies decide visas.',
   },
@@ -43,10 +43,10 @@ export const HUB_META: Record<
       'We assist with Saudi visa processing only when a legitimate sponsor in Saudi Arabia has already initiated the process. We do not offer, arrange or sell jobs. Authority fees are separate.',
   },
   local: {
-    kicker: 'Local information',
-    title: 'Study Visa Consultants — Pakistan Cities',
+    kicker: 'Offices & cities',
+    title: 'SK Immigration offices — Pakistan, UAE, Saudi, Nepal, Bangladesh',
     description:
-      'City-specific study visa information for applicants in Rawalpindi, Islamabad, Lahore, and Karachi. Support is remote by default.',
+      'Digital immigration desk with a Rawalpindi head office and appointment offices in Dubai, Saudi Arabia, Kathmandu and Dhaka. Same written fees. Embassies decide.',
   },
   answers: {
     kicker: 'Answers',

@@ -7,7 +7,7 @@ import ArticleCta from '../components/content/ArticleCta.astro';
 import ContinueReading from '../components/content/ContinueReading.astro';
 import OfficialSources from '../components/content/OfficialSources.astro';
 import { HUB_META, landerPath, relatedLanders, type LanderEntry } from '../lib/landers';
-import { basePageGraph } from '../lib/seo';
+import { basePageGraph, landerArticleSchema } from '../lib/seo';
 import {
   coverImageFor,
   headingsFromHtml,
@@ -78,6 +78,13 @@ const faqSchema =
   page={cluster}
   jsonLd={[
     ...basePageGraph(crumbs),
+    landerArticleSchema({
+      headline: h1,
+      description,
+      url: path,
+      datePublished: publishDate,
+      image: cover,
+    }),
     ...(faqSchema ? [faqSchema] : []),
   ]}
 >

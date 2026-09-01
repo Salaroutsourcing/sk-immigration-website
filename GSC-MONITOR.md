@@ -17,6 +17,10 @@ Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.co
 - uk study visa pakistan
 - canada study visa pakistan
 - study visa consultant rawalpindi
+- immigration consultant dubai
+- immigration consultant saudi arabia
+- study visa consultant nepal
+- study visa consultant bangladesh
 - schengen appointment pakistan
 - saudi visa processing pakistan / e number
 - ausbildung pakistan
@@ -27,7 +31,8 @@ Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.co
 ## Pages to request indexing first
 
 - `/`
-- `/trust.html`
+- `/trust/`
+- `/about/`
 - `/editorial-policy.html`
 - `/cookies.html`
 - `/privacy`
@@ -51,6 +56,10 @@ Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.co
 - `/work-permit/germany-work-permit-pakistan/`
 - `/saudi-visa/saudi-visa-processing-pakistan/`
 - `/local/rawalpindi-study-visa-consultant/`
+- `/local/dubai-immigration-consultant/`
+- `/local/saudi-arabia-immigration-consultant/`
+- `/local/nepal-study-visa-consultant/`
+- `/local/bangladesh-study-visa-consultant/`
 - `/llms.txt`
 
 ## Analytics & consent (AdSense readiness)
@@ -80,7 +89,7 @@ Use this weekly after deploy. Official domain: **immigration.salaroutsourcing.co
 - [ ] Impressions rising on money queries?
 - [ ] Any `/study-visa/*` excluded / soft-404?
 - [ ] Core Web Vitals OK on mobile (hero image weight)?
-- [ ] New Google reviews this week? (link from `/trust.html`)
+- [ ] New Google reviews this week? (link from `/trust/` and `/about/`)
 - [ ] Cloudflare AI Crawl Control still allowing citation bots?
 - [ ] One internal link from a blog post → country money page → contact?
 - [ ] Sitemap resubmitted after large content batches?
@@ -93,4 +102,4 @@ Ask ChatGPT / Perplexity / Google AI Mode:
 2. “Germany study visa Pakistan consultant Satellite Town”
 3. “Is immigration.salaroutsourcing.com the same as SK Immigration?”
 
-Note whether `immigration.salaroutsourcing.com`, `/trust.html`, or `llms.txt` facts appear. If not, re-check crawler allows + GBP + reviews + deploy freshness (`wrangler deploy` — git push alone does not update Workers assets).
+Note whether `immigration.salaroutsourcing.com`, `/trust/`, `/about/`, or `llms.txt` facts appear. If not, re-check crawler allows + GBP + reviews + deploy freshness (`wrangler deploy` — git push alone does not update Workers assets).

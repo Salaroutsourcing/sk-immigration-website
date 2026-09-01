@@ -1,4 +1,5 @@
 import { SITE, absoluteUrl } from './site';
+import { REGIONAL_MARKETS } from './regions';
 
 type JsonLd = Record<string, unknown>;
 
@@ -15,6 +16,11 @@ const KNOWS_ABOUT = [
   'Saudi Arabia Work Visa Pakistan',
   'Schengen Study Visa Pakistan',
   'Immigration Consultant Rawalpindi',
+  'Immigration Consultant Dubai',
+  'Immigration Consultant Saudi Arabia',
+  'Study Visa Consultant Nepal',
+  'Study Visa Consultant Bangladesh',
+  'Digital immigration services',
   'Visa Appointment Pakistan',
   'Document Attestation MOFA Pakistan',
   'HEC Attestation',
@@ -65,7 +71,7 @@ export function organizationSchema(): JsonLd {
     alternateName: [...SITE.brandAliases],
     legalName: SITE.legalName,
     description:
-      "Pakistan's trusted immigration consultancy — study visas, work permits, visit visas, Germany Ausbildung, Saudi Arabia work visa, document attestation, and visa appointments. SECP registered CUIN 0304985. No visa guarantees — honest guidance only.",
+      'Digital immigration and business-services desk with offices in Pakistan, Saudi Arabia, the UAE, Nepal and Bangladesh. Study visas, work-permit guidance, visit visas, Ausbildung, attestation and company documentation. SECP CUIN 0304985. No visa guarantees — authorities decide.',
     slogan: SITE.tagline,
     url: `${SITE.url}/`,
     logo: logoObject(),
@@ -95,10 +101,18 @@ export function organizationSchema(): JsonLd {
         '@type': 'ContactPoint',
         telephone: SITE.phoneE164,
         contactType: 'customer service',
-        areaServed: 'PK',
+        areaServed: 'Worldwide',
         availableLanguage: ['English', 'Urdu'],
         url: SITE.whatsappLink,
       },
+      ...REGIONAL_MARKETS.map((market) => ({
+        '@type': 'ContactPoint',
+        telephone: SITE.phoneE164,
+        contactType: 'customer service',
+        areaServed: market.countryCode,
+        availableLanguage: ['English', 'Urdu'],
+        url: SITE.whatsappLink,
+      })),
     ],
     sameAs: [
       SITE.secpVerify,
@@ -108,12 +122,33 @@ export function organizationSchema(): JsonLd {
       absoluteUrl('/llms.txt'),
     ],
     areaServed: [
+      { '@type': 'Country', name: 'Pakistan' },
+      { '@type': 'Country', name: 'Saudi Arabia' },
+      { '@type': 'Country', name: 'United Arab Emirates' },
+      { '@type': 'Country', name: 'Nepal' },
+      { '@type': 'Country', name: 'Bangladesh' },
       { '@type': 'City', name: 'Rawalpindi' },
       { '@type': 'City', name: 'Islamabad' },
       { '@type': 'City', name: 'Lahore' },
       { '@type': 'City', name: 'Karachi' },
-      { '@type': 'Country', name: 'Pakistan' },
+      { '@type': 'City', name: 'Dubai' },
+      { '@type': 'City', name: 'Riyadh' },
+      { '@type': 'City', name: 'Kathmandu' },
+      { '@type': 'City', name: 'Dhaka' },
+      { '@type': 'Place', name: 'Worldwide' },
     ],
+    department: REGIONAL_MARKETS.map((market) => ({
+      '@type': market.kind === 'head-office' ? 'LocalBusiness' : 'Place',
+      '@id': `${SITE.url}/#office-${market.id}`,
+      name: `${SITE.brandFull} — ${market.city}`,
+      url: absoluteUrl(market.href),
+      address: {
+        '@type': 'PostalAddress',
+        ...(market.street ? { streetAddress: market.street } : {}),
+        addressLocality: market.city,
+        addressCountry: market.countryCode,
+      },
+    })),
     knowsAbout: KNOWS_ABOUT,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -165,7 +200,7 @@ export function localBusinessSchema(): JsonLd {
     name: SITE.brandFull,
     alternateName: 'SK Consultant',
     description:
-      'SECP-registered immigration consultancy in Rawalpindi. Study visas, work permits, Germany Ausbildung, Saudi work visa, document attestation.',
+      'SECP-registered digital immigration desk. Head office in Rawalpindi, Pakistan, with appointment offices in Saudi Arabia, the UAE, Nepal and Bangladesh.',
     url: `${SITE.url}/`,
     telephone: SITE.phoneE164,
     email: SITE.email,
@@ -179,11 +214,12 @@ export function localBusinessSchema(): JsonLd {
     hasMap: SITE.office.map,
     parentOrganization: { '@id': ORG_ID },
     areaServed: [
-      { '@type': 'City', name: 'Rawalpindi' },
-      { '@type': 'City', name: 'Islamabad' },
-      { '@type': 'City', name: 'Lahore' },
-      { '@type': 'City', name: 'Karachi' },
       { '@type': 'Country', name: 'Pakistan' },
+      { '@type': 'Country', name: 'Saudi Arabia' },
+      { '@type': 'Country', name: 'United Arab Emirates' },
+      { '@type': 'Country', name: 'Nepal' },
+      { '@type': 'Country', name: 'Bangladesh' },
+      { '@type': 'City', name: 'Rawalpindi' },
     ],
   };
 }
@@ -221,7 +257,7 @@ export function digitalOrganizationSchema(): JsonLd {
     alternateName: ['SK Immigration Services', 'SK Consultant'],
     legalName: SITE.legalName,
     description:
-      'Digital immigration and business services. We help people prepare strong visa files, understand international pathways, and register companies with honesty, clarity, and care — completely online. Authorities make the final decisions.',
+      'Digital immigration and business services. One online desk for study visas, visit files, Ausbildung guidance, attestation and company documentation — with appointment offices in Pakistan, Saudi Arabia, the UAE, Nepal and Bangladesh. Authorities make the final decisions.',
     slogan: SITE.tagline,
     url: `${SITE.url}/`,
     logo: logoObject(),
@@ -229,10 +265,13 @@ export function digitalOrganizationSchema(): JsonLd {
     email: SITE.email,
     telephone: SITE.phoneE164,
     areaServed: [
+      { '@type': 'Country', name: 'Pakistan' },
+      { '@type': 'Country', name: 'Saudi Arabia' },
+      { '@type': 'Country', name: 'United Arab Emirates' },
+      { '@type': 'Country', name: 'Nepal' },
+      { '@type': 'Country', name: 'Bangladesh' },
       { '@type': 'AdministrativeArea', name: 'Gulf' },
       { '@type': 'AdministrativeArea', name: 'South Asia' },
-      { '@type': 'AdministrativeArea', name: 'Africa' },
-      { '@type': 'AdministrativeArea', name: 'Europe' },
       { '@type': 'Place', name: 'Worldwide' },
     ],
     knowsAbout: [
@@ -420,6 +459,35 @@ export function webStoryArticleSchema(opts: {
     };
   }
   return article;
+}
+
+export function landerArticleSchema(opts: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: Date;
+  dateModified?: Date;
+  image?: string;
+}): JsonLd {
+  const canonical = absoluteUrl(opts.url);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: opts.headline,
+    description: opts.description,
+    url: canonical,
+    mainEntityOfPage: canonical,
+    datePublished: opts.datePublished.toISOString(),
+    dateModified: (opts.dateModified ?? opts.datePublished).toISOString(),
+    image: absoluteUrl(opts.image || SITE.defaultOg),
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    author: { '@id': ORG_ID },
+    publisher: { '@id': ORG_ID },
+    isPartOf: { '@id': WEBSITE_ID },
+    speakable: ARTICLE_SPEAKABLE,
+    about: { '@id': ORG_ID },
+  };
 }
 
 export function breadcrumbSchema(items: { name: string; path: string }[]): JsonLd {
