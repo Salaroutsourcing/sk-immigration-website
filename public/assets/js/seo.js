@@ -69,7 +69,7 @@
           'https://www.google.com/search?kgmid=/g/11zfnqjfgx',
           'https://www.google.com/maps/search/?api=1&query=SK+Immigration+Services+Alfazal+Plaza+Satellite+Town+Rawalpindi',
           'https://leap.secp.gov.pk/#/verify-company-info/0304985',
-          SITE + '/trust.html',
+          SITE + '/trust/',
           SITE + '/about.html',
           SITE + '/answers/sk-consultant',
           SITE + '/answers/who-is-sk-immigration',

@@ -4,6 +4,7 @@ import { HUB_META, landerPath, landersIn } from '../lib/landers';
 import ClusterNotice from './ClusterNotice.astro';
 import AuthoritySplit from './home/AuthoritySplit.astro';
 import BeforeYouPay from './home/BeforeYouPay.astro';
+import { collectionPageSchema } from '../lib/seo';
 
 interface Props {
   cluster: string;
@@ -11,11 +12,20 @@ interface Props {
 
 const { cluster } = Astro.props;
 const meta = HUB_META[cluster];
+if (!meta) {
+  throw new Error(`Unknown hub cluster: ${cluster}`);
+}
 const items = (await landersIn(cluster)).filter((entry) => entry.data.slug !== 'index' && entry.data.slug !== 'hub');
 const path = `/${cluster}/`;
+const hubSchema = collectionPageSchema({
+  name: meta.title,
+  description: meta.description,
+  url: path,
+  items: items.map((entry) => ({ name: entry.data.h1, url: landerPath(entry) })),
+});
 ---
 
-<BaseLayout title={meta.title} description={meta.description} canonical={path} page={cluster}>
+<BaseLayout title={meta.title} description={meta.description} canonical={path} page={cluster} jsonLd={hubSchema}>
   <section class="not-prose">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16">
       <div class="mb-10 md:mx-auto md:mb-12 max-w-3xl text-center">

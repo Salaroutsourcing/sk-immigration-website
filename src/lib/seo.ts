@@ -422,6 +422,35 @@ export function webStoryArticleSchema(opts: {
   return article;
 }
 
+export function landerArticleSchema(opts: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: Date;
+  dateModified?: Date;
+  image?: string;
+}): JsonLd {
+  const canonical = absoluteUrl(opts.url);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: opts.headline,
+    description: opts.description,
+    url: canonical,
+    mainEntityOfPage: canonical,
+    datePublished: opts.datePublished.toISOString(),
+    dateModified: (opts.dateModified ?? opts.datePublished).toISOString(),
+    image: absoluteUrl(opts.image || SITE.defaultOg),
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    author: { '@id': ORG_ID },
+    publisher: { '@id': ORG_ID },
+    isPartOf: { '@id': WEBSITE_ID },
+    speakable: ARTICLE_SPEAKABLE,
+    about: { '@id': ORG_ID },
+  };
+}
+
 export function breadcrumbSchema(items: { name: string; path: string }[]): JsonLd {
   return {
     '@context': 'https://schema.org',

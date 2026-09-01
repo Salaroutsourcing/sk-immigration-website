@@ -7,8 +7,8 @@ export const HUB_META: Record<
   { title: string; description: string; kicker: string }
 > = {
   'study-visa': {
-    kicker: 'Study visa',
-    title: 'Study Visa Pakistan',
+    kicker: 'Study visa Pakistan',
+    title: 'Study Visa Pakistan — Germany, UK, Canada & Europe',
     description:
       'Country-by-country study visa guidance from Pakistan — Germany, UK, Canada, Italy, Hungary and more. Honest requirements, fees, and FAQs. Embassies decide visas.',
   },

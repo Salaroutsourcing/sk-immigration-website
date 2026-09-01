@@ -20,6 +20,9 @@ export const SITE = {
     'SK Consultant Rawalpindi',
   ],
   tagline: 'Digital Immigration & Business Services',
+  seoTitle: 'Study Visa Consultant Pakistan | SK Immigration Services',
+  seoDescription:
+    'SK Immigration Services prepares study visas, Germany Ausbildung, work permits, visit visas and document attestation from Pakistan. Written fees from Rawalpindi. No visa guarantees — embassies decide.',
   url: 'https://immigration.salaroutsourcing.com',
   email: 'Services@salaroutsourcing.com',
   phone: '+92 304 5999859',

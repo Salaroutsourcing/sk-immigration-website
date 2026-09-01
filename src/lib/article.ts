@@ -132,8 +132,23 @@ export function wrapTables(html: string): string {
   });
 }
 
+/** Fix leftover .html tool links whose query strings picked up a trailing slash. */
+export function rewriteLegacyToolLinks(html: string): string {
+  return html
+    .replace(/\/checklist\.html\?([^"'<\s]+)/gi, (_full, query: string) => {
+      const clean = String(query).replace(/\/+$/, '');
+      return `/checklist/?${clean}`;
+    })
+    .replace(/\/eligibility\.html/gi, '/eligibility/')
+    .replace(/\/calculator\.html/gi, '/calculator/')
+    .replace(/\/compare\.html/gi, '/compare/')
+    .replace(/\/cv-builder\.html/gi, '/cv-builder/')
+    .replace(/\/trust\.html/gi, '/trust/')
+    .replace(/\/about\.html/gi, '/about/');
+}
+
 export function prepareArticleHtml(html: string): string {
-  return wrapTables(injectHeadingIds(html))
+  return wrapTables(injectHeadingIds(rewriteLegacyToolLinks(html)))
     .replace(/<p>(?:\s|&nbsp;)*<\/p>/gi, '')
     .replace(/(?:\s*<br\s*\/?>\s*){2,}/gi, '<br>');
 }

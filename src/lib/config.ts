@@ -9,7 +9,7 @@ export const SITE = {
   legalName: CORE.legalName,
   tagline: CORE.tagline,
   description:
-    'SK Immigration — digital immigration and business services. We help people prepare strong visa files, understand international pathways, and register companies with honesty, clarity, and care — completely online. Authorities make the final decisions.',
+    'SK Immigration Services prepares study visas, Germany Ausbildung, work permits, visit visas and attestation from Pakistan. Digital file preparation from Rawalpindi. Written fees. Embassies decide — no visa guarantees.',
   url: CORE.url,
   ogImage: CORE.defaultOg,
   logo: CORE.logo,
@@ -55,9 +55,9 @@ export const ANALYTICS = {
 
 /** Desktop header: Home, Services, Blogs, About, FAQ. Contact lives in the mobile drawer + footer. */
 export const NAVIGATION = [
-  { label: 'Home', href: '/' },
+  { label: 'Study Visa', href: '/study-visa/' },
   { label: 'Services', href: '/services/' },
-  { label: 'Blogs', href: '/blog/' },
+  { label: 'Guides', href: '/guides/' },
   { label: 'About', href: '/about/' },
   { label: 'FAQ', href: '/faq/' },
 ];

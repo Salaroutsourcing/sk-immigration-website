@@ -99,6 +99,28 @@ export default {
       return Response.redirect(new URL('/ai.txt', url).toString(), 301);
     }
 
+    const HTML_ALIASES = {
+      '/trust.html': '/trust/',
+      '/privacy.html': '/privacy/',
+      '/terms.html': '/terms/',
+      '/contact.html': '/contact/',
+      '/services.html': '/services/',
+      '/faq.html': '/faq/',
+      '/about.html': '/about/',
+      '/eligibility.html': '/eligibility/',
+      '/checklist.html': '/checklist/',
+      '/calculator.html': '/calculator/',
+      '/compare.html': '/compare/',
+      '/cv-builder.html': '/cv-builder/',
+    };
+    const aliasPath = url.pathname.replace(/\/+$/, '') || '/';
+    const htmlAlias = HTML_ALIASES[url.pathname] || HTML_ALIASES[aliasPath];
+    if (htmlAlias) {
+      const dest = new URL(htmlAlias, url);
+      dest.search = url.search;
+      return Response.redirect(dest.toString(), 301);
+    }
+
     // Retired Urdu tree (AdSense Phase 1). Keep this in the Worker — a /ur/*
     // splat in public/_redirects makes every later rule count as dynamic
     // (Cloudflare limit 100, error 100324).
@@ -384,7 +406,6 @@ function withSecurityHeaders(response, pathname = '') {
   const headers = new Headers(response.headers);
   const amp = isAmpStoryPath(pathname);
   for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
-    if (headers.has(key)) continue;
     /* Google Discover / AMP cache embed stories; skip SAMEORIGIN frame lock. */
     if (amp && (key === 'content-security-policy' || key === 'x-frame-options')) continue;
     headers.set(key, value);
@@ -421,6 +442,11 @@ function applyPublicCache(pathname, headers) {
   const path = String(pathname || '').split('?')[0];
   if (path.startsWith('/_astro/')) {
     headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+    return;
+  }
+  if (path === '/sw.js' || path === '/public/sw.js') {
+    headers.set('Cache-Control', 'no-store');
+    headers.set('Service-Worker-Allowed', '/');
     return;
   }
   if (path.startsWith('/assets/') || path.startsWith('/uploads/')) {
