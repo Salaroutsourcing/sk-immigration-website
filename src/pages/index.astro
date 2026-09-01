@@ -3,21 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import TrustStrip from '../components/home/TrustStrip.astro';
 import Identification from '../components/home/Identification.astro';
-import EmotionalTrust from '../components/home/EmotionalTrust.astro';
 import ServiceGrid from '../components/home/ServiceGrid.astro';
-import CompanyFeature from '../components/home/CompanyFeature.astro';
 import Process from '../components/home/Process.astro';
-import AuthoritySplit from '../components/home/AuthoritySplit.astro';
-import HowWeWork from '../components/home/HowWeWork.astro';
 import Honesty from '../components/home/Honesty.astro';
-import FeesBlock from '../components/home/FeesBlock.astro';
-import BeforeYouPay from '../components/home/BeforeYouPay.astro';
-import Audiences from '../components/home/Audiences.astro';
-import GlobalReach from '../components/home/GlobalReach.astro';
-import StartingPoint from '../components/home/StartingPoint.astro';
+import ClarityBlock from '../components/services/ClarityBlock.astro';
+import CompanyFeature from '../components/home/CompanyFeature.astro';
 import HomeFaq from '../components/home/HomeFaq.astro';
 import FinalCta from '../components/home/FinalCta.astro';
 import { HOME_FAQS } from '../lib/home';
+import '../styles/services.css';
+import '../styles/home.css';
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -40,22 +35,38 @@ const faqSchema = {
   jsonLd={faqSchema}
   schemaVariant="global"
   keywords="SK Immigration, digital immigration services, study visa preparation, visit visa, company registration, Germany Ausbildung, document attestation"
+  page="home"
 >
-  <Hero />
-  <TrustStrip />
-  <Identification />
-  <EmotionalTrust />
-  <ServiceGrid />
-  <CompanyFeature />
-  <Process />
-  <AuthoritySplit />
-  <HowWeWork />
-  <Honesty />
-  <FeesBlock />
-  <BeforeYouPay />
-  <Audiences />
-  <GlobalReach />
-  <StartingPoint />
-  <HomeFaq />
-  <FinalCta />
+  <div class="home-page">
+    <Hero />
+    <TrustStrip />
+    <Identification />
+    <ServiceGrid />
+    <Process />
+    <Honesty />
+    <ClarityBlock />
+    <CompanyFeature />
+    <HomeFaq />
+    <FinalCta />
+  </div>
 </BaseLayout>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    const items = document.querySelectorAll('.reveal');
+    items.forEach((el) => el.classList.add('is-pending'));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.remove('is-pending');
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+    );
+    items.forEach((el) => io.observe(el));
+  }
+</script>
