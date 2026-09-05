@@ -31,8 +31,11 @@ const NEW_BLOCK = `  <!-- Google Consent Mode defaults -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
   <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', '${GA_ID}', { anonymize_ip: true });
+
+    gtag('config', '${GA_ID}');
   </script>
 `;
 
@@ -90,8 +93,8 @@ $1</script>
 $1<!-- Google tag (gtag.js) -->`
     );
     html = html.replace(
-      /gtag\('config', 'G-D0559366D6'\);/,
-      "gtag('config', 'G-D0559366D6', { anonymize_ip: true });"
+      /gtag\('config', 'G-D0559366D6'(?:, \{ anonymize_ip: true \})?\);/,
+      "gtag('config', 'G-D0559366D6');"
     );
     upgradedGa += 1;
     changed = true;

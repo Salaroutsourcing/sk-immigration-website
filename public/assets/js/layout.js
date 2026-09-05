@@ -335,7 +335,7 @@
       return;
     }
     const s = document.createElement('script');
-    s.src = BASE + 'assets/js/consent.js?v=consent1';
+    s.src = BASE + 'assets/js/consent.js?v=consent5';
     s.onload = () => {
       document.getElementById('skFooterCookieBtn')?.addEventListener('click', () => window.SKConsent?.open());
     };

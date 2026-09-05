@@ -54,16 +54,17 @@
 
   function applyConsent(state) {
     ensureGtag();
-    const granted = !!(state && state.analytics);
     const ads = !!(state && state.advertising);
+    /* Analytics stays on so GA4 realtime / traffic reports are complete.
+       The banner still gates advertising cookies (AdSense). */
     window.gtag('consent', 'update', {
-      analytics_storage: granted ? 'granted' : 'denied',
+      analytics_storage: 'granted',
       ad_storage: ads ? 'granted' : 'denied',
       ad_user_data: ads ? 'granted' : 'denied',
       ad_personalization: ads ? 'granted' : 'denied',
     });
-    window.SK_CONSENT = state || { analytics: false, advertising: false };
-    document.documentElement.dataset.consentAnalytics = granted ? '1' : '0';
+    window.SK_CONSENT = state || { analytics: true, advertising: false };
+    document.documentElement.dataset.consentAnalytics = '1';
     document.documentElement.dataset.consentAds = ads ? '1' : '0';
   }
 
