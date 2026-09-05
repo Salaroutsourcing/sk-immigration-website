@@ -3,59 +3,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import TrustStrip from '../components/home/TrustStrip.astro';
 import Identification from '../components/home/Identification.astro';
-import EmotionalTrust from '../components/home/EmotionalTrust.astro';
-import ServiceGrid from '../components/home/ServiceGrid.astro';
-import CompanyFeature from '../components/home/CompanyFeature.astro';
-import Process from '../components/home/Process.astro';
-import AuthoritySplit from '../components/home/AuthoritySplit.astro';
-import HowWeWork from '../components/home/HowWeWork.astro';
-import Honesty from '../components/home/Honesty.astro';
-import FeesBlock from '../components/home/FeesBlock.astro';
-import BeforeYouPay from '../components/home/BeforeYouPay.astro';
-import Audiences from '../components/home/Audiences.astro';
-import GlobalReach from '../components/home/GlobalReach.astro';
-import StartingPoint from '../components/home/StartingPoint.astro';
-import HomeFaq from '../components/home/HomeFaq.astro';
+import WhoWeAre from '../components/home/WhoWeAre.astro';
 import FinalCta from '../components/home/FinalCta.astro';
-import { HOME_FAQS } from '../lib/home';
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: HOME_FAQS.map((faq) => ({
-    '@type': 'Question',
-    name: faq.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.a,
-    },
-  })),
-};
+import '../styles/home.css';
 ---
 
 <BaseLayout
   title="Digital Immigration Services | SK Immigration — Pakistan, UAE, Saudi, Nepal, Bangladesh"
   description="Digital immigration desk with offices in Pakistan, Saudi Arabia, Dubai, Nepal and Bangladesh. Study visas, Ausbildung, visit files and attestation. Written fees. Embassies decide — no visa guarantees."
   canonical="/"
-  jsonLd={faqSchema}
   schemaVariant="local"
   keywords="digital immigration services, study visa consultant Pakistan, immigration consultant Dubai, immigration consultant Saudi Arabia, study visa consultant Nepal, study visa consultant Bangladesh, Germany study visa, Ausbildung, SK Immigration Services"
+  page="home"
 >
-  <Hero />
-  <TrustStrip />
-  <Identification />
-  <EmotionalTrust />
-  <ServiceGrid />
-  <CompanyFeature />
-  <Process />
-  <AuthoritySplit />
-  <HowWeWork />
-  <Honesty />
-  <FeesBlock />
-  <BeforeYouPay />
-  <Audiences />
-  <GlobalReach />
-  <StartingPoint />
-  <HomeFaq />
-  <FinalCta />
+  <div class="home-page">
+    <Hero />
+    <TrustStrip />
+    <Identification />
+    <WhoWeAre />
+    <FinalCta />
+  </div>
 </BaseLayout>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    document.querySelectorAll('.dest-plane animateMotion').forEach((el) => el.remove());
+  } else {
+    const items = document.querySelectorAll('.reveal');
+    items.forEach((el) => el.classList.add('is-pending'));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.remove('is-pending');
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+    );
+    items.forEach((el) => io.observe(el));
+  }
+</script>

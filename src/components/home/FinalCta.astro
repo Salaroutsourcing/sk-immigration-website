@@ -2,25 +2,18 @@
 import { ASSESSMENT_HREF, WHATSAPP_HREF } from '../../lib/home';
 ---
 
-<section class="section-container not-prose" id="start">
-  <div class="mx-auto max-w-4xl rounded-md bg-slate-50 px-6 py-12 text-center dark:bg-slate-900 md:px-12 md:py-16">
-    <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-      Not sure what your next step should be?
-    </h2>
-    <p class="mx-auto mb-2 max-w-2xl text-xl font-medium text-slate-800 dark:text-slate-200">That's okay.</p>
-    <p class="mx-auto mb-4 max-w-2xl text-lg text-muted dark:text-slate-400">
-      You don't need to have everything figured out before you contact us.
-    </p>
-    <p class="mx-auto mb-8 max-w-2xl text-base text-muted dark:text-slate-400">
-      Tell us what you're planning, where you're hoping to go, or what you're trying to build. We'll help you
-      understand your options and the steps involved.
-    </p>
-    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <a href={ASSESSMENT_HREF} class="btn-primary">Start My Assessment</a>
-      <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Chat on WhatsApp</a>
+<section class="dest-convert" id="start" aria-labelledby="home-cta-heading">
+  <div class="dest-convert__inner">
+    <div class="dest-convert__brand">
+      <img src="/assets/img/sk-logo.png" alt="" width="44" height="44" />
+      <p>
+        <strong id="home-cta-heading">Let’s start your journey</strong>
+        <span>Registered in Rawalpindi. Free first assessment — written scope before any paid work.</span>
+      </p>
     </div>
-    <p class="mt-6 text-sm text-muted dark:text-slate-400">
-      No pressure. No false promises. Just a clear conversation about your options.
-    </p>
+    <div class="dest-convert__actions">
+      <a class="sk-btn sk-btn--primary" href={ASSESSMENT_HREF}>Start Assessment →</a>
+      <a class="sk-btn sk-btn--ghost" href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+    </div>
   </div>
 </section>

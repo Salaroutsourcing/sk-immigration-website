@@ -1,42 +1,27 @@
 ---
 import { BUSINESS_HREF } from '../../lib/home';
+import ServiceIcon from '../services/ServiceIcon.astro';
 ---
 
-<section class="not-prose" id="company-formation">
-  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:py-20">
-    <div class="overflow-hidden rounded-lg border border-gray-200 bg-slate-50 shadow-none dark:border-slate-800 dark:bg-slate-900">
-      <div class="grid items-center lg:grid-cols-12">
-        <div class="p-8 md:p-12 lg:col-span-7">
-          <p class="mb-3 text-base font-semibold uppercase tracking-wide text-primary">International Company Registration</p>
-          <h2 class="font-heading mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-            Your ambitions don't have to stop at borders.
-          </h2>
-          <p class="mb-4 max-w-2xl text-lg leading-relaxed text-muted dark:text-slate-400">
-            Starting a company in another country can feel complicated. Different jurisdictions, documents, registration
-            procedures and compliance requirements can quickly become overwhelming.
-          </p>
-          <p class="mb-6 max-w-2xl text-base leading-relaxed text-muted dark:text-slate-400">
-            We provide remote guidance and documentation support for entrepreneurs planning to establish or expand their
-            businesses internationally.
-          </p>
-          <p class="mb-8 text-sm font-semibold tracking-wide text-slate-800 dark:text-slate-200">
-            United States · United Kingdom · Canada · Australia · Selected European jurisdictions
-          </p>
-          <div class="flex flex-col gap-4 sm:flex-row">
-            <a href={BUSINESS_HREF} class="btn-primary">Explore Company Registration</a>
-            <a href="/contact/" class="btn">Start Business Assessment</a>
-          </div>
-        </div>
-        <div class="hidden items-center justify-center p-8 lg:col-span-5 lg:flex">
-          <img
-            src="/assets/hubs/company-registration.svg"
-            alt=""
-            class="h-56 w-56 rounded-lg object-cover"
-            width="224"
-            height="224"
-            loading="lazy"
-          />
-        </div>
+<section class="home-section reveal" id="company-formation" aria-labelledby="company-heading">
+  <div class="company-band">
+    <span class="company-band__icon" aria-hidden="true">
+      <ServiceIcon name="building" class="h-6 w-6" />
+    </span>
+    <div>
+      <p class="svc-eyebrow">International company registration</p>
+      <h2 id="company-heading">Your ambitions don't have to stop at borders.</h2>
+      <p>
+        We provide remote guidance and documentation support for entrepreneurs planning to establish or expand
+        internationally — United States, United Kingdom, Canada, Australia, and selected European jurisdictions.
+      </p>
+      <p class="company-band__notice">
+        Company registration does not automatically provide immigration status, residency, a visa, a work permit or the
+        right to operate in a particular country. Official authorities make those decisions.
+      </p>
+      <div class="company-band__ctas">
+        <a href={BUSINESS_HREF} class="consult-cta__btn">Explore Company Registration →</a>
+        <a href="/contact/" class="home-ghost">Start Business Assessment</a>
       </div>
     </div>
   </div>

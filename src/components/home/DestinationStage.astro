@@ -1,0 +1,193 @@
+---
+/**
+ * Cinematic hero visual — original CSS + SVG (no globe/passport photo).
+ * Hemisphere earth, skyline silhouettes, dashed flight path, ticket + passport.
+ */
+---
+
+<div class="dest-stage" aria-hidden="true">
+  <div class="dest-sky">
+    <span class="dest-star dest-star--a"></span>
+    <span class="dest-star dest-star--b"></span>
+    <span class="dest-star dest-star--c"></span>
+  </div>
+  <div class="dest-cloud dest-cloud--a"></div>
+  <div class="dest-cloud dest-cloud--b"></div>
+  <div class="dest-cloud dest-cloud--c"></div>
+  <div class="dest-cloud dest-cloud--d"></div>
+
+  <svg class="dest-earth" viewBox="0 0 640 360" role="presentation">
+    <defs>
+      <radialGradient id="hdOcean" cx="42%" cy="28%" r="78%">
+        <stop offset="0%" stop-color="#7dd3fc"></stop>
+        <stop offset="38%" stop-color="#38bdf8"></stop>
+        <stop offset="72%" stop-color="#0284c7"></stop>
+        <stop offset="100%" stop-color="#0c4a6e"></stop>
+      </radialGradient>
+      <radialGradient id="hdShine" cx="34%" cy="22%" r="42%">
+        <stop offset="0%" stop-color="#fff" stop-opacity="0.5"></stop>
+        <stop offset="55%" stop-color="#fff" stop-opacity="0.08"></stop>
+        <stop offset="100%" stop-color="#fff" stop-opacity="0"></stop>
+      </radialGradient>
+      <linearGradient id="hdAtm" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#bfdbfe" stop-opacity="0"></stop>
+        <stop offset="55%" stop-color="#38bdf8" stop-opacity="0.28"></stop>
+        <stop offset="100%" stop-color="#0161ef" stop-opacity="0.55"></stop>
+      </linearGradient>
+      <clipPath id="hdHemi">
+        <path d="M-20 168 C 80 92, 240 58, 400 92 C 520 118, 620 168, 660 210 L 660 380 L -20 380 Z"></path>
+      </clipPath>
+      <filter id="hdGlow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="8" result="b"></feGaussianBlur>
+        <feMerge>
+          <feMergeNode in="b"></feMergeNode>
+          <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <ellipse class="dest-aura" cx="330" cy="250" rx="300" ry="118" fill="url(#hdAtm)"></ellipse>
+    <g clip-path="url(#hdHemi)">
+      <circle cx="320" cy="268" r="236" fill="url(#hdOcean)"></circle>
+      <g fill="#0f766e" fill-opacity="0.45">
+        <path d="M118 214c42-28 92-18 118 14 18 24 8 62-22 82-40 24-96 6-116-28-16-28-6-52 20-68z"></path>
+        <path d="M168 292c22-10 40 8 36 42-6 32-24 58-42 66-16 8-28-10-24-34 4-26 12-60 30-74z"></path>
+        <path d="M292 198c28-14 54-2 58 22 4 20-14 36-38 34-22-2-34-18-20-56z"></path>
+        <path d="M304 248c36-6 56 22 50 56-8 36-32 64-54 58-26-6-34-42-18-74 8-22 14-38 22-40z"></path>
+        <path d="M372 188c70-18 128 12 148 48 16 28-10 52-48 56-54 8-100-12-130-40-20-20-14-48 30-64z"></path>
+        <path d="M488 286c28-8 46 10 40 28-8 16-32 20-46 8-16-12-10-30 6-36z"></path>
+      </g>
+      <g fill="#fff" fill-opacity="0.22">
+        <ellipse class="dest-vapour" cx="210" cy="200" rx="54" ry="16"></ellipse>
+        <ellipse class="dest-vapour dest-vapour--b" cx="390" cy="230" rx="70" ry="18"></ellipse>
+        <ellipse class="dest-vapour dest-vapour--c" cx="500" cy="270" rx="40" ry="12"></ellipse>
+      </g>
+      <ellipse cx="250" cy="210" rx="90" ry="50" fill="url(#hdShine)"></ellipse>
+    </g>
+    <path
+      d="M40 210 C 160 168, 300 152, 460 176 C 540 188, 600 210, 640 228"
+      fill="none"
+      stroke="#93c5fd"
+      stroke-opacity="0.7"
+      stroke-width="3"
+      filter="url(#hdGlow)"
+    ></path>
+  </svg>
+
+  <svg class="dest-city" viewBox="0 0 320 210" role="presentation">
+    <!-- Opera-house shells -->
+    <g fill="#94a3b8" fill-opacity="0.55">
+      <path d="M8 168c18-38 42-42 58-8 2 6-8 8-14 6-16-4-28 4-44 2z"></path>
+      <path d="M38 168c16-32 38-34 50-4 1 5-8 7-13 5-14-4-24 2-37 -1z"></path>
+      <path d="M68 170c12-24 30-26 40 0 1 4-6 6-10 4-10-3-18 1-30 -4z"></path>
+    </g>
+    <!-- Mid towers -->
+    <g fill="#64748b" fill-opacity="0.58">
+      <rect x="118" y="118" width="22" height="60" rx="2"></rect>
+      <rect x="144" y="98" width="16" height="80" rx="2"></rect>
+      <rect x="164" y="128" width="28" height="50" rx="2"></rect>
+    </g>
+    <!-- CN Tower-style needle -->
+    <g fill="#475569" fill-opacity="0.7">
+      <rect x="204" y="58" width="7" height="120" rx="1"></rect>
+      <rect x="198" y="88" width="19" height="10" rx="4"></rect>
+      <path d="M207.5 18 l4.5 40 h-9 z"></path>
+      <circle cx="207.5" cy="16" r="4.5"></circle>
+    </g>
+    <!-- Burj-style taper -->
+    <g fill="#334155" fill-opacity="0.62">
+      <path d="M236 28 L248 28 L254 178 L230 178 Z"></path>
+      <rect x="238" y="48" width="8" height="8" rx="1" fill="#94a3b8" fill-opacity="0.45"></rect>
+      <rect x="238" y="68" width="8" height="8" rx="1" fill="#94a3b8" fill-opacity="0.35"></rect>
+      <rect x="238" y="88" width="8" height="8" rx="1" fill="#94a3b8" fill-opacity="0.28"></rect>
+    </g>
+    <g fill="#64748b" fill-opacity="0.5">
+      <rect x="258" y="108" width="18" height="70" rx="2"></rect>
+      <rect x="280" y="88" width="14" height="90" rx="3"></rect>
+      <path d="M287 42 v46" stroke="#64748b" stroke-width="3" stroke-opacity="0.5"></path>
+      <circle cx="287" cy="40" r="5"></circle>
+    </g>
+    <!-- Dome / minaret nod -->
+    <g fill="#94a3b8" fill-opacity="0.48">
+      <path d="M92 148 a18 14 0 0 1 36 0 v30 h-36z"></path>
+      <rect x="108" y="118" width="4" height="30" rx="1"></rect>
+      <circle cx="110" cy="114" r="3"></circle>
+    </g>
+  </svg>
+
+  <svg class="dest-flight" viewBox="0 0 560 300" role="presentation">
+    <path
+      id="hdFlightPath"
+      d="M24 168 C 120 72, 250 48, 390 92"
+      fill="none"
+      stroke="#0161ef"
+      stroke-opacity="0.5"
+      stroke-width="1.7"
+      stroke-dasharray="5 7"
+    ></path>
+    <g class="dest-plane">
+      <path
+        fill="#0161ef"
+        stroke="#fff"
+        stroke-width="1.2"
+        d="M4 22 L42 10 L30 22 L38 42 L28 44 L20 28 L6 34 L10 26 Z"
+      ></path>
+      <animateMotion dur="11s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#hdFlightPath"></mpath>
+      </animateMotion>
+    </g>
+  </svg>
+
+  <div class="dest-docs">
+    <svg class="dest-ticket" viewBox="0 0 168 220" role="presentation">
+      <defs>
+        <linearGradient id="hdTicket" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#eff6ff"></stop>
+          <stop offset="100%" stop-color="#dbeafe"></stop>
+        </linearGradient>
+      </defs>
+      <rect x="8" y="10" width="152" height="200" rx="16" fill="url(#hdTicket)" stroke="#93c5fd"></rect>
+      <circle cx="8" cy="118" r="10" fill="#fff"></circle>
+      <circle cx="160" cy="118" r="10" fill="#fff"></circle>
+      <path d="M22 118 H146" stroke="#93c5fd" stroke-dasharray="4 5"></path>
+      <text x="84" y="42" text-anchor="middle" fill="#1e3a8a" font-size="11" font-weight="800" font-family="Inter, sans-serif" letter-spacing="1.6">BOARDING PASS</text>
+      <rect x="22" y="54" width="104" height="10" rx="4" fill="#93c5fd"></rect>
+      <rect x="22" y="72" width="72" height="8" rx="3" fill="#bfdbfe"></rect>
+      <text x="22" y="104" fill="#64748b" font-size="8" font-family="Inter, sans-serif">FILE PREP · NOT A TICKET</text>
+      <g fill="#334155">
+        {Array.from({ length: 14 }).map((_, i) => (
+          <rect x={22 + i * 9} y={138} width="5" height={10 + ((i * 7) % 18)} rx="1" opacity={0.28 + (i % 4) * 0.12}></rect>
+        ))}
+      </g>
+      <text x="84" y="188" text-anchor="middle" fill="#0161ef" font-size="9" font-weight="700" font-family="Inter, sans-serif">SK IMMIGRATION</text>
+    </svg>
+    <svg class="dest-passport" viewBox="0 0 180 230" role="presentation">
+      <defs>
+        <linearGradient id="hdPass" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#1e3a8a"></stop>
+          <stop offset="100%" stop-color="#172554"></stop>
+        </linearGradient>
+      </defs>
+      <rect x="8" y="8" width="164" height="214" rx="16" fill="#0f172a" opacity="0.18"></rect>
+      <rect x="10" y="8" width="160" height="214" rx="16" fill="url(#hdPass)"></rect>
+      <rect x="18" y="16" width="144" height="198" rx="12" fill="none" stroke="#fde68a" stroke-opacity="0.35"></rect>
+      <circle cx="90" cy="88" r="32" fill="none" stroke="#fde68a" stroke-width="2.4"></circle>
+      <ellipse cx="90" cy="88" rx="14" ry="32" fill="none" stroke="#fde68a" stroke-width="1.4"></ellipse>
+      <path d="M58 88h64M90 56c10 10 16 20 16 32s-6 22-16 32c-10-10-16-20-16-32s6-22 16-32z" fill="none" stroke="#fde68a" stroke-width="1.4"></path>
+      <text x="90" y="148" text-anchor="middle" fill="#fde68a" font-size="13" font-weight="700" font-family="Inter, sans-serif" letter-spacing="2">PASSPORT</text>
+      <text x="90" y="168" text-anchor="middle" fill="#93c5fd" font-size="8" font-family="Inter, sans-serif">TRAVEL DOCUMENT</text>
+    </svg>
+  </div>
+
+  <aside class="dest-chip">
+    <span class="dest-chip__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20">
+        <path stroke-linecap="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3.6 9h16.8M3.6 15h16.8M12 3c2.5 2.4 3.75 5.4 3.75 9S14.5 18.6 12 21C9.5 18.6 8.25 15.6 8.25 12S9.5 5.4 12 3z"></path>
+      </svg>
+    </span>
+    <span>
+      <strong>Written scope first</strong>
+      <em>Fees confirmed before you pay</em>
+    </span>
+  </aside>
+</div>
