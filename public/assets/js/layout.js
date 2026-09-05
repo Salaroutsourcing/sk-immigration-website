@@ -253,7 +253,7 @@
             <a href="${C().whatsappLink}" target="_blank" rel="noopener">WhatsApp Chat</a>
             <a href="${href('about.html')}">About</a>
             <a href="${href('client-journey.html')}">Client journey</a>
-            <a href="${href('trust.html')}">Trust &amp; verify</a>
+            <a href="${href('trust/')}">Trust &amp; verify</a>
             <a href="${href('editorial-policy.html')}">Editorial policy</a>
             <a href="${href('faq.html')}">FAQ</a>
             <a href="${href('contact.html')}">Book consult</a>
@@ -270,7 +270,7 @@
           </div>
         </div>
         <div class="container footer-bottom">
-          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('trust.html')}">Trust</a> · <a href="${href('privacy.html')}">Privacy</a> · <a href="${href('cookies.html')}">Cookies</a> · <a href="${href('terms.html')}">Terms</a></span>
+          <span>© ${year} ${brand}. All rights reserved. · <a href="${href('trust/')}">Trust</a> · <a href="${href('privacy/')}">Privacy</a> · <a href="${href('cookies.html')}">Cookies</a> · <a href="${href('terms/')}">Terms</a></span>
           <span class="parent-line">SK Immigration Services (SMC-Private) Limited · CUIN 0304985 · Rawalpindi, Pakistan · Official website: immigration.salaroutsourcing.com</span>
         </div>
       </footer>
@@ -335,7 +335,7 @@
       return;
     }
     const s = document.createElement('script');
-    s.src = BASE + 'assets/js/consent.js?v=consent1';
+    s.src = BASE + 'assets/js/consent.js?v=consent5';
     s.onload = () => {
       document.getElementById('skFooterCookieBtn')?.addEventListener('click', () => window.SKConsent?.open());
     };

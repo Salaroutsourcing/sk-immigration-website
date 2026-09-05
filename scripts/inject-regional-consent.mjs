@@ -39,12 +39,15 @@ const NEW_BLOCK = `  <!-- Google Consent Mode v2 — regional defaults for world
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0559366D6"></script>
   <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-D0559366D6', { anonymize_ip: true });
+
+    gtag('config', 'G-D0559366D6');
   </script>
 `;
 
-const OLD_CONSENT_BLOCK = /[ \t]*<!-- Google Consent Mode[^>]*>[\s\S]*?<\/script>\s*<!-- Google tag \(gtag\.js\) -->\s*<script async src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-D0559366D6"><\/script>\s*<script>\s*gtag\('js', new Date\(\)\);\s*gtag\('config', 'G-D0559366D6'[^<]*<\/script>\s*/;
+const OLD_CONSENT_BLOCK = /[ \t]*<!-- Google Consent Mode[^>]*>[\s\S]*?<\/script>\s*<!-- Google tag \(gtag\.js\) -->\s*<script async src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-D0559366D6"><\/script>\s*<script>\s*(?:window\.dataLayer = window\.dataLayer \|\| \[\];\s*function gtag\(\)\{dataLayer\.push\(arguments\);\}\s*)?gtag\('js', new Date\(\)\);\s*gtag\('config', 'G-D0559366D6'[^<]*<\/script>\s*/;
 
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {

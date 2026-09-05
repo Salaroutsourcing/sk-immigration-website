@@ -1,16 +1,15 @@
 ---
-import { CONTACT } from '../lib/config';
+import { CONTACT, NAVIGATION } from '../lib/config';
 import { ASSESSMENT_HREF } from '../lib/home';
 
 const path = Astro.url.pathname;
-const desktopNav = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services/' },
-  { label: 'Blogs', href: '/blog/' },
-  { label: 'About', href: '/about/' },
-  { label: 'FAQ', href: '/faq/' },
+const desktopNav = NAVIGATION;
+const mobileNav = [
+  ...NAVIGATION,
+  { label: 'Work & Ausbildung', href: '/work-permit/' },
+  { label: 'Visit Visa', href: '/visit-visa/' },
+  { label: 'Contact', href: '/contact/' },
 ];
-const mobileNav = [...desktopNav, { label: 'Contact', href: '/contact/' }];
 
 function isActive(href: string) {
   if (href === '/') return path === '/' || path === '';
@@ -21,7 +20,7 @@ function isActive(href: string) {
 <header class="sk-header" id="header">
   <div class="sk-header__bar">
     <a class="sk-brand" href="/">
-      <img src="/assets/img/sk-logo.png" alt="" width="40" height="40" class="sk-brand__logo" />
+      <img src="/assets/img/sk-logo.png" alt="SK Immigration Services" width="40" height="40" class="sk-brand__logo" />
       <span class="sk-brand__text">
         <strong>SK Immigration</strong>
         <small>Services</small>

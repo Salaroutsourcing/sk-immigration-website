@@ -71,10 +71,14 @@ const euRegions = [...EU_CONSENT_REGIONS];
     f.parentNode.insertBefore(j, f);
   })(window, document, 'script', 'dataLayer', 'GTM-NFWDQ5XB');
 </script>
+<!-- Google tag (gtag.js) -->
 <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-D0559366D6"></script>
 <script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-D0559366D6', { anonymize_ip: true });
+
+  gtag('config', 'G-D0559366D6');
 </script>
 <meta name="google-adsense-account" content={SITE.analytics.adsense} />
 <script
@@ -93,7 +97,7 @@ const euRegions = [...EU_CONSENT_REGIONS];
 <link rel="canonical" href={canonicalAbs} />
 {amphtml && <link rel="amphtml" href={absoluteUrl(amphtml)} />}
 <link rel="alternate" hreflang="en" href={canonicalAbs} />
-<link rel="alternate" hreflang="x-default" href={SITE.url + '/'} />
+<link rel="alternate" hreflang="x-default" href={canonicalAbs} />
 <meta name="author" content={SITE.brandFull} />
 <meta
   name="keywords"
@@ -122,6 +126,18 @@ const euRegions = [...EU_CONSENT_REGIONS];
 <link rel="sitemap" href="/sitemap-platform-index.xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script is:inline>
+  (function () {
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.getRegistrations().then(function (regs) {
+      if (!regs.length) return;
+      regs.forEach(function (reg) {
+        reg.unregister();
+      });
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    });
+  })();
+</script>
 <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"

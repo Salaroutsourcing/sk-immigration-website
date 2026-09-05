@@ -202,6 +202,26 @@ html.dark .dest-hero__pills small {
   gap: 0.7rem;
 }
 
+.dest-hero__locales {
+  margin: 0.85rem 0 0;
+  font-size: 0.84rem;
+  color: #64748b;
+}
+
+.dest-hero__locales a {
+  font-weight: 700;
+  color: var(--sk-primary);
+  text-decoration: none;
+}
+
+.dest-hero__locales a:hover {
+  text-decoration: underline;
+}
+
+html.dark .dest-hero__locales {
+  color: #94a3b8;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Destination stage (CSS + SVG, no photos)                                   */
 /* -------------------------------------------------------------------------- */

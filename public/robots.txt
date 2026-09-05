@@ -1,8 +1,5 @@
 # SK Immigration Services — robots.txt
 # Domain: https://immigration.salaroutsourcing.com
-#
-# Public site is served from this repository (GitHub Pages and/or Cloudflare).
-# If Cloudflare AI Crawl Control is enabled, allow citation bots (see CLOUDFLARE-AI.md).
 
 User-agent: *
 Allow: /
@@ -16,11 +13,10 @@ Disallow: /apps-script/
 Disallow: /scripts/
 Disallow: /.wrangler/
 Disallow: /.dev.vars
+Disallow: /sw.js
+Disallow: /public/sw.js
 
-# AI / GEO discovery files — always public
 Allow: /.well-known/
-
-# Public knowledge clusters for AI citation
 Allow: /study-visa/
 Allow: /work-permit/
 Allow: /visit-visa/
@@ -31,16 +27,19 @@ Allow: /hire-workers-from-pakistan/
 Allow: /answers/
 Allow: /official-links/
 Allow: /local/
-Allow: /ur/
 Allow: /guides/
 Allow: /news/
 Allow: /stories/
 Allow: /blog/
 Allow: /about/
+Allow: /trust/
 Allow: /services/
 Allow: /privacy/
 Allow: /terms/
 Allow: /contact/
+Allow: /faq/
+Allow: /how-it-works/
+Allow: /business-registration/
 Allow: /cookies.html
 Allow: /eligibility/
 Allow: /checklist/
@@ -53,7 +52,6 @@ Allow: /ai.txt
 Allow: /ads.txt
 Allow: /sitemap.xml
 
-# Explicitly welcome search and AI crawlers (citation / overviews)
 User-agent: Mediapartners-Google
 Allow: /
 
