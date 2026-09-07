@@ -1,0 +1,45 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import ToolHero from '../components/tools/ToolHero.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { toolWebAppSchema } from '../lib/tools';
+
+const jsonLd = toolWebAppSchema({
+  title: 'Application tracker',
+  href: '/tracker/',
+  description: 'Private browser tracker from profile to pre-departure for SK Immigration files.',
+});
+---
+
+<ToolLayout
+  title="Application tracker | Profile to pre-departure"
+  description="Create a private SK Live file in your browser. Tick counselling, documents, offer, funds, VFS, decision and travel. Share a status line on WhatsApp when you want a human desk."
+  canonical="/tracker/"
+  jsonLd={jsonLd}
+>
+  <ToolHero eyebrow="SK Live · tracker · stays in your browser" title="One file. Eight stages. You can see the next step.">
+    Study-abroad apps track university applications. SK Live tracks the <em>immigration</em> file: attestation, funds,
+    appointment and the decision you cannot buy.
+  </ToolHero>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-3xl">
+      <div id="trRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>Privacy</h2>
+        <p>
+          Stages save in localStorage on this device unless you send a lead to our desk. They are not a government case
+          number. After a visa, use the <a href="/pre-departure/">pre-departure briefing</a>.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/sk-live.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SKLive && window.SKLive.mountTracker('#trRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

@@ -1,0 +1,46 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import ToolHero from '../components/tools/ToolHero.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { toolWebAppSchema } from '../lib/tools';
+
+const jsonLd = toolWebAppSchema({
+  title: 'Course & pathway finder',
+  href: '/course-finder/',
+  description: 'Search representative study and Ausbildung pathways with visa-file context.',
+});
+---
+
+<ToolLayout
+  title="Course & pathway finder | Study + Ausbildung"
+  description="Search 40+ representative programmes by country, field, budget, IELTS and German. Shortlist and compare with work-rights and post-study notes — built for SK Immigration files, not brochure shopping."
+  canonical="/course-finder/"
+  jsonLd={jsonLd}
+>
+  <ToolHero eyebrow="SK Live · search · shortlist · compare" title="Find a pathway that can actually be filed">
+    Filter by destination, field and budget. Shortlist up to three for a side-by-side. These are representative pathways
+    SK prepares files for — not a live seat catalogue.
+  </ToolHero>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-5xl">
+      <div id="cfRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>How this finder is different</h2>
+        <p>
+          Course search elsewhere hides visa friction. Every card here shows typical year-1 cost, language, MOI possibility,
+          work rights and a post-study note — plus a link to the SK country guide. Pair it with
+          <a href="/fasttrack/">FastTrack</a> for a scored match, or <a href="/scholarships/">scholarships</a> for funding.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/sk-live.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SKLive && window.SKLive.mountCourseFinder('#cfRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

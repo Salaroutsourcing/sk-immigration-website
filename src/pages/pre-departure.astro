@@ -1,0 +1,45 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import ToolHero from '../components/tools/ToolHero.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { toolWebAppSchema } from '../lib/tools';
+
+const jsonLd = toolWebAppSchema({
+  title: 'Pre-departure briefing',
+  href: '/pre-departure/',
+  description: 'Country-specific first-week checklists after a visa is issued.',
+});
+---
+
+<ToolLayout
+  title="Pre-departure briefing | First week abroad"
+  description="Tick packing, banking, insurance, residence registration and arrival rules for Germany, UK, Hungary, Poland, Italy, Canada and Ireland. Planning aid — confirm official pages before you fly."
+  canonical="/pre-departure/"
+  jsonLd={jsonLd}
+>
+  <ToolHero eyebrow="SK Live · pre-departure · after the visa" title="The visa is not the finish line">
+    Anmeldung, permesso kits, IRP slots, GIC activation — the mistakes that happen in week one. Tick what you have. Confirm
+    the rest on official pages.
+  </ToolHero>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-3xl">
+      <div id="pdRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>Still waiting for a decision?</h2>
+        <p>
+          Stay on the <a href="/tracker/">application tracker</a> and the <a href="/checklist/">document checklist</a>.
+          SK cannot rush a mission.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/sk-live.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SKLive && window.SKLive.mountPreDeparture('#pdRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

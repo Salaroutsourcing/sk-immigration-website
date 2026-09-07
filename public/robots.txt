@@ -46,6 +46,15 @@ Allow: /checklist/
 Allow: /calculator/
 Allow: /compare/
 Allow: /cv-builder/
+Allow: /tools/
+Allow: /fasttrack/
+Allow: /course-finder/
+Allow: /scholarships/
+Allow: /english/
+Allow: /tracker/
+Allow: /sop-builder/
+Allow: /interview/
+Allow: /pre-departure/
 Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /ai.txt

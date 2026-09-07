@@ -1,0 +1,35 @@
+---
+import { SK_TOOLS } from '../../lib/tools';
+
+const featured = SK_TOOLS.filter((t) => t.featured);
+---
+
+<section class="dest-gateways dest-live reveal" id="sk-live" aria-labelledby="sklive-heading">
+  <div class="dest-gateways__head">
+    <h2 id="sklive-heading">SK Live — tools that go <span>further than a brochure</span></h2>
+    <p>
+      Course match, scholarships, visa-file scores, interview coach, SOP studio and a private tracker.
+      Built for study, Ausbildung and visit files — not education counselling alone. Embassies still decide.
+    </p>
+  </div>
+  <div class="dest-gate-grid dest-live-grid">
+    {
+      featured.map((tool) => (
+        <a class="dest-gate dest-live-tile" href={tool.href} style="--accent:#0161ef;--accent-soft:#eff6ff;--accent-border:#93c5fd">
+          <span class="dest-live-badge">{tool.badge}</span>
+          <h3>{tool.title}</h3>
+          <p>{tool.short}</p>
+          <span class="dest-gate__cta">
+            Open tool
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+        </a>
+      ))
+    }
+  </div>
+  <p class="dest-gateways__more">
+    <a href="/tools/">See every SK Live tool →</a>
+  </p>
+</section>

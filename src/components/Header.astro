@@ -6,13 +6,23 @@ const path = Astro.url.pathname;
 const desktopNav = NAVIGATION;
 const mobileNav = [
   ...NAVIGATION,
+  { label: 'FastTrack', href: '/fasttrack/' },
   { label: 'Work & Ausbildung', href: '/work-permit/' },
   { label: 'Visit Visa', href: '/visit-visa/' },
+  { label: 'FAQ', href: '/faq/' },
   { label: 'Contact', href: '/contact/' },
 ];
 
 function isActive(href: string) {
   if (href === '/') return path === '/' || path === '';
+  if (href === '/tools/') {
+    return (
+      path.startsWith('/tools/') ||
+      ['/fasttrack/', '/course-finder/', '/scholarships/', '/english/', '/tracker/', '/sop-builder/', '/interview/', '/pre-departure/', '/eligibility/', '/checklist/', '/calculator/', '/compare/', '/cv-builder/'].some(
+        (p) => path === p || path.startsWith(p),
+      )
+    );
+  }
   return path === href || path.startsWith(href);
 }
 ---

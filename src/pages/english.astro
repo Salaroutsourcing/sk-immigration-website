@@ -1,0 +1,47 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import ToolHero from '../components/tools/ToolHero.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { toolWebAppSchema } from '../lib/tools';
+
+const jsonLd = toolWebAppSchema({
+  title: 'English & German pathway advisor',
+  href: '/english/',
+  description: 'Map IELTS, MOI and Goethe requirements to study and Ausbildung destinations.',
+});
+---
+
+<ToolLayout
+  title="English & German pathway | IELTS, MOI or Goethe"
+  description="See whether you should sit IELTS, use an MOI letter, or raise German for Ausbildung. Official IELTS booking stays on IDP and British Council — SK is the immigration desk, not a test centre."
+  canonical="/english/"
+  jsonLd={jsonLd}
+>
+  <ToolHero eyebrow="SK Live · language · IELTS · MOI · Goethe" title="The score you need — and the one you can skip">
+    IELTS co-owners run the test. SK tells you whether that test even belongs on your file, when MOI is accepted, and when
+    German B1 is the real gate for Ausbildung.
+  </ToolHero>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-3xl">
+      <div id="enRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>Official test booking</h2>
+        <p>
+          Book IELTS only at <a href="https://ielts.idp.com/" target="_blank" rel="noopener noreferrer">IELTS by IDP</a> or
+          <a href="https://www.britishcouncil.pk/exam/ielts" target="_blank" rel="noopener noreferrer">British Council</a>.
+          SK Immigration does not sell exam seats. After you have a target, run <a href="/fasttrack/">FastTrack</a> or open
+          the <a href="/course-finder/">finder</a>.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/sk-live.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SKLive && window.SKLive.mountEnglish('#enRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

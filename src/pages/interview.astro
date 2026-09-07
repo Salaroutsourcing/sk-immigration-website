@@ -1,0 +1,45 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import ToolHero from '../components/tools/ToolHero.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { toolWebAppSchema } from '../lib/tools';
+
+const jsonLd = toolWebAppSchema({
+  title: 'Visa interview coach',
+  href: '/interview/',
+  description: 'Practice study, Ausbildung and visit interview questions with red-flag hints.',
+});
+---
+
+<ToolLayout
+  title="Visa interview coach | Study, Ausbildung & visit"
+  description="Practise common mission questions for Europe study visas, UK CAS credibility, Canada study permits, Germany Ausbildung and visit files. Score drafts against refusal patterns. Book a human mock with SK."
+  canonical="/interview/"
+  jsonLd={jsonLd}
+>
+  <ToolHero eyebrow="SK Live · interview coach · not leaked papers" title="Answer like a file — not like a script">
+    Pick a set. Type an answer. We flag slogans, missing numbers and agent-will-arrange stories. Officers can still ask
+    anything; this is rehearsal.
+  </ToolHero>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-3xl">
+      <div id="ivRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>After practice</h2>
+        <p>
+          Align the SOP with <a href="/sop-builder/">SOP studio</a>, then WhatsApp
+          <a href="https://wa.me/923045999859">+92 304 5999859</a> for a counsellor mock.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/sk-live.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SKLive && window.SKLive.mountInterview('#ivRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

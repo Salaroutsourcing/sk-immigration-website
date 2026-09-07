@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { SK_LIVE } from '../lib/tools';
 import '../styles/tools.css';
 
 interface Props {
@@ -13,6 +14,10 @@ const { title, description, canonical, jsonLd } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} jsonLd={jsonLd} page="tools">
+  <p class="not-prose border-b border-slate-200 bg-white px-4 py-2 text-center text-xs font-semibold text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
+    <a class="text-primary-600 hover:underline" href={SK_LIVE.href}>{SK_LIVE.name}</a>
+    · FastTrack · Course finder · Scholarships · Tracker · Interview · SOP
+  </p>
   <slot />
   <Fragment slot="scripts">
     <slot name="scripts" />

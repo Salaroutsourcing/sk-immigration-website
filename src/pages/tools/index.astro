@@ -1,0 +1,81 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import ToolHero from '../../components/tools/ToolHero.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { SK_LIVE, SK_TOOLS, FEATURED_TOOLS } from '../../lib/tools';
+import { SITE } from '../../lib/site';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'SK Live immigration tools',
+    itemListElement: SK_TOOLS.map((tool, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: tool.title,
+      url: `${SITE.url}${tool.href}`,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'SK Live',
+    url: `${SITE.url}/tools/`,
+    applicationCategory: 'BusinessApplication',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'PKR' },
+    description: SK_LIVE.tagline,
+  },
+];
+---
+
+<ToolLayout
+  title="SK Live | Course finder, FastTrack, scholarships & visa tools"
+  description="Free SK Immigration tools that go beyond a study-abroad brochure: instant pathway fit, course search with visa-file scores, scholarships, IELTS/German advisor, SOP studio, interview coach and application tracker."
+  canonical="/tools/"
+  jsonLd={jsonLd}
+>
+  <ToolHero eyebrow="SK Live · free · more complete than a study-only app" title="Every tool. One desk. Honest scores.">
+    Search and shortlist pathways, match your profile in under a minute, tick embassy checklists, rehearse interviews and track the file — for study, Ausbildung and visit cases from Pakistan, the UAE, Saudi Arabia, Nepal and Bangladesh.
+  </ToolHero>
+
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-6xl">
+      <p class="mb-6 text-center text-sm text-slate-500 dark:text-slate-400">
+        SK Live is a counselling toolkit. It does not issue university offers or visas. Embassies and institutions decide.
+      </p>
+      <div class="sklive-hub not-prose">
+        {
+          SK_TOOLS.map((tool) => (
+            <a class="sklive-tile" href={tool.href}>
+              <span class="sklive-badge">{tool.advanced ? `${tool.badge} · advanced` : tool.badge}</span>
+              <h2>{tool.title}</h2>
+              <p>{tool.description}</p>
+              <span class="sklive-go">Open →</span>
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="prose prose-slate mt-12 max-w-none dark:prose-invert">
+        <h2>Why SK Live instead of a generic study-abroad app</h2>
+        <p>
+          Education brands stop at courses and IELTS. SK Immigration files <strong>study, Ausbildung, visit, attestation and sponsor-driven Saudi paperwork</strong>.
+          FastTrack therefore scores visa-file reality — budget, German, MOI, gaps — not a fake “offer in seconds”.
+        </p>
+        <ul>
+          {FEATURED_TOOLS.map((t) => (
+            <li>
+              <a href={t.href}>{t.title}</a> — {t.short}
+            </li>
+          ))}
+        </ul>
+        <p>
+          Next: <a href="/fasttrack/">run FastTrack</a>, then <a href="/contact/">book a human review</a> or WhatsApp
+          <a href="https://wa.me/923045999859">+92 304 5999859</a>.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+</ToolLayout>

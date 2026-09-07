@@ -142,6 +142,7 @@
               <div class="hero-ctas" style="margin-bottom:1rem">
                 <a class="btn btn-gold" href="/checklist/?country=${checkHint}">Open my checklist</a>
                 <a class="btn btn-navy" href="/calculator/?country=${checkHint}">See costs</a>
+                <a class="btn btn-ghost" href="/fasttrack/">Go deeper with FastTrack</a>
                 <a class="btn btn-whatsapp" href="https://wa.me/923045999859?text=${encodeURIComponent('Hi SK Immigration, my quiz top match is ' + top)}" target="_blank" rel="noopener">WhatsApp results</a>
               </div>
               <form id="quizLeadForm" class="glass-strong" style="padding:1.25rem;border-radius:1rem;border:1px solid var(--glass-border)">
