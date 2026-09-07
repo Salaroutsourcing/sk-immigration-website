@@ -85,7 +85,10 @@
   }
 
   function ieltsNum(band) {
-    return { '65': 6.5, '55': 5.8, low: 4.8, none: 0 }[band] ?? Number(band) || 0;
+    const mapped = { '65': 6.5, '55': 5.8, low: 4.8, none: 0 }[band];
+    if (mapped != null) return mapped;
+    const n = Number(band);
+    return Number.isFinite(n) ? n : 0;
   }
 
   function budgetUsd(band) {
