@@ -1,0 +1,102 @@
+{
+  "updated": "2026-09-07",
+  "disclaimer": "Briefings are planning lists. Airlines, banks and missions change rules. Confirm tickets, insurance and registration deadlines on official pages.",
+  "destinations": [
+    {
+      "id": "de",
+      "name": "Germany",
+      "flag": "🇩🇪",
+      "items": [
+        { "title": "National visa sticker / entry window", "tip": "Enter in the validity on the sticker. City registration (Anmeldung) after arrival." },
+        { "title": "Blocked account / first funds", "tip": "Know how to unblock after Anmeldung. Carry some cash + a working card." },
+        { "title": "Health insurance certificate", "tip": "Public or travel-to-public handover as your uni/employer specified." },
+        { "title": "Housing proof for week one", "tip": "Hostel/Airbnb is fine for arrival; long-term contract comes after Anmeldung." },
+        { "title": "Degree originals + translations", "tip": "Some Ausländerbehörde / uni offices still want paper." },
+        { "title": "German SIM and bank appointment plan", "tip": "Book bank after address registration. Don’t expect same-day Girokonto." },
+        { "title": "University / Berufsschule enrolment letters", "tip": "Print digital letters. Know the orientation week address." }
+      ]
+    },
+    {
+      "id": "gb",
+      "name": "United Kingdom",
+      "flag": "🇬🇧",
+      "items": [
+        { "title": "eVisa / BRP successor status", "tip": "Create or check the UKVI account before you fly. Screenshot status." },
+        { "title": "CAS and tuberculosis certificate copies", "tip": "Airline and border may not ask — keep PDFs offline anyway." },
+        { "title": "Maintenance funds access", "tip": "You may need to show you can still pay. Don’t empty the account the day after visa." },
+        { "title": "NHS surcharge is already paid with the visa", "tip": "Register with a GP after you have an address." },
+        { "title": "Airport to campus plan", "tip": "National Express / train booked. Night arrivals need a hotel buffer." },
+        { "title": "Police registration if your visa says so", "tip": "Only if the vignette/conditions require it." }
+      ]
+    },
+    {
+      "id": "hu",
+      "name": "Hungary",
+      "flag": "🇭🇺",
+      "items": [
+        { "title": "Residence permit card appointment", "tip": "Visa sticker is not the whole stay. Book the immigration client gate as instructed." },
+        { "title": "Address / dorm letter", "tip": "Needed for the card. Keep the landlord’s ID copy if private rent." },
+        { "title": "Health insurance valid on day 1", "tip": "Travel policy until student insurance activates." },
+        { "title": "Tuition receipt", "tip": "Some border/immigration checks still ask." },
+        { "title": "EUR cash for first week", "tip": "Cards work in Budapest; smaller towns less so." }
+      ]
+    },
+    {
+      "id": "pl",
+      "name": "Poland",
+      "flag": "🇵🇱",
+      "items": [
+        { "title": "National visa vs karta pobytu path", "tip": "Know whether you convert in-country and the voivodeship office city." },
+        { "title": "PESEL / address registration", "tip": "Landlord cooperation matters. Unis often brief this in week one." },
+        { "title": "Insurance and student ID", "tip": "Legitymacja unlocks fares. Carry passport until then." },
+        { "title": "Winter clothing if arriving Oct–Feb", "tip": "Pakistan-to-Poland is a climate shock — pack a coat in hold luggage." }
+      ]
+    },
+    {
+      "id": "it",
+      "name": "Italy",
+      "flag": "🇮🇹",
+      "items": [
+        { "title": "Permesso di soggiorno kit within 8 days", "tip": "Post office kit after arrival — missing this is a common disaster." },
+        { "title": "Codice fiscale", "tip": "Needed for rent, phone, bank. Uni international office usually helps." },
+        { "title": "DSU / canteen card if awarded", "tip": "Bring income papers that match the regional demand." },
+        { "title": "Housing contract for the permesso", "tip": "Hotel bookings are a short bridge only." }
+      ]
+    },
+    {
+      "id": "ca",
+      "name": "Canada",
+      "flag": "🇨🇦",
+      "items": [
+        { "title": "Port of entry letter and study permit", "tip": "The sticker/letter is not always the final permit — answer border questions consistently." },
+        { "title": "GIC / first funds access", "tip": "Know which bank and how long activation takes." },
+        { "title": "DLI enrolment and orientation", "tip": "You must start the programme you were approved for." },
+        { "title": "SIN after arrival if you will work", "tip": "Only if your permit allows work. Rules change — verify IRCC." },
+        { "title": "Winter kit for most cities", "tip": "Buy a proper coat in Canada if luggage is tight — budget for it." }
+      ]
+    },
+    {
+      "id": "ie",
+      "name": "Ireland",
+      "flag": "🇮🇪",
+      "items": [
+        { "title": "IRP appointment / registration", "tip": "Book early — Dublin slots can lag. Stamp conditions on the IRP." },
+        { "title": "Private health insurance", "tip": "Often required for registration. Carry the policy PDF." },
+        { "title": "PPS number after you have an address", "tip": "Needed for work and some banking." },
+        { "title": "Tuition balance plan", "tip": "Some unis want a large first instalment before the IRP." }
+      ]
+    },
+    {
+      "id": "generic",
+      "name": "Any destination",
+      "flag": "✈️",
+      "items": [
+        { "title": "Passport valid well beyond arrival", "tip": "Missions often want 6–12 months. Carry a colour copy separately from the original." },
+        { "title": "Offer, visa, insurance, tickets — offline copies", "tip": "Phone battery dies. Print a thin folder." },
+        { "title": "Prescription medicines in original boxes", "tip": "Plus a doctor letter. Check the destination’s controlled-drug list." },
+        { "title": "Emergency contacts + SK WhatsApp", "tip": "+92 304 5999859 — we do not control borders, but we can talk you through documents." },
+        { "title": "No undeclared work plans", "tip": "Student and visit visas have hour and purpose limits. Border officers ask." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "updated": "2026-09-07",
+  "disclaimer": "Practice questions are based on common mission patterns. They are not leaked papers. Officers can ask anything. Honest, consistent answers beat memorised scripts.",
+  "sets": [
+    {
+      "id": "study-eu",
+      "label": "Europe student visa",
+      "visaType": "study",
+      "countries": ["Germany", "Hungary", "Poland", "Italy", "France", "Spain", "Romania"],
+      "questions": [
+        {
+          "q": "Why this country, and why this university — not a similar course at home?",
+          "tip": "Name two modules and a career link. ‘Europe is better’ is a refusal pattern.",
+          "redFlag": "Cannot name the city, tuition, or language of instruction."
+        },
+        {
+          "q": "Who is paying, and where is the money from?",
+          "tip": "Sponsor relationship + source of funds that matches bank paper. No mystery cash.",
+          "redFlag": "Sponsor you barely know, or funds that appeared last week."
+        },
+        {
+          "q": "What is your study gap, and what did you do in it?",
+          "tip": "Work, family, exams — documented. Fiction is worse than an honest gap.",
+          "redFlag": "Changing story between SOP and interview."
+        },
+        {
+          "q": "Where will you live, and what does the first year cost?",
+          "tip": "Know blocked-account / proof-of-funds figure and rent band.",
+          "redFlag": "No idea of living costs."
+        },
+        {
+          "q": "Will you return / what is the post-study plan?",
+          "tip": "A plausible career in Pakistan or a legal post-study route — not ‘I will settle no matter what’.",
+          "redFlag": "Openly treating the visa as immigration by other means."
+        },
+        {
+          "q": "What language will you study in, and what is your proof?",
+          "tip": "IELTS clause, MOI letter, or German certificate — match the offer.",
+          "redFlag": "MOI for a German-taught Ausbildung, or no English for an English MSc."
+        }
+      ]
+    },
+    {
+      "id": "study-uk",
+      "label": "UK Student visa / CAS",
+      "visaType": "study",
+      "countries": ["United Kingdom"],
+      "questions": [
+        {
+          "q": "Why this course after your last degree — how do the modules connect?",
+          "tip": "Credibility interviews hunt subject jumps. Map bachelor → master clearly.",
+          "redFlag": "Accounting bachelor to ‘international hospitality’ with no story."
+        },
+        {
+          "q": "How did you choose this university over cheaper options?",
+          "tip": "CAS sponsor, ranking honesty, and why not a similar EU public option.",
+          "redFlag": "Agent chose everything; you cannot explain."
+        },
+        {
+          "q": "Show you understand UK maintenance funds and 28-day rules.",
+          "tip": "Know the published living figure for your location and who holds the money.",
+          "redFlag": "Funds in someone else’s account with no explanation."
+        },
+        {
+          "q": "What work will you do in term time, and what is the hour cap?",
+          "tip": "20 hours is typical — you are a student first.",
+          "redFlag": "Planning to work full-time to pay tuition."
+        }
+      ]
+    },
+    {
+      "id": "study-ca",
+      "label": "Canada study permit",
+      "visaType": "study",
+      "countries": ["Canada"],
+      "questions": [
+        {
+          "q": "Why this DLI and is the programme PGWP-eligible?",
+          "tip": "Name the public college/university. Private career diplomas are a common refusal.",
+          "redFlag": "You paid a ‘guaranteed PGWP’ private campus."
+        },
+        {
+          "q": "How will you pay year 1 and year 2?",
+          "tip": "GIC / proof of funds that match current IRCC numbers.",
+          "redFlag": "One year of funds for a four-year degree with no plan."
+        },
+        {
+          "q": "What ties do you have to Pakistan?",
+          "tip": "Family, property, job offer to return to — specific, not slogans.",
+          "redFlag": "Entire family already planning to join on the same file."
+        }
+      ]
+    },
+    {
+      "id": "ausbildung",
+      "label": "Germany Ausbildung",
+      "visaType": "ausbildung",
+      "countries": ["Germany"],
+      "questions": [
+        {
+          "q": "Who is the Ausbildung employer, and how did you get the contract?",
+          "tip": "Name, city, trade, start date. SK does not invent employers.",
+          "redFlag": "Contract you cannot verify, or ‘agent will arrange after visa’."
+        },
+        {
+          "q": "What German level do you hold, and can you describe a workday in German?",
+          "tip": "B1 is commonly expected for nursing; other trades vary. Bring certificates.",
+          "redFlag": "No German for a German-language training contract."
+        },
+        {
+          "q": "What is the training salary and who pays rent in month one?",
+          "tip": "Know the gross wage band and first-month housing plan.",
+          "redFlag": "Expecting the embassy to ignore empty pockets."
+        },
+        {
+          "q": "Why this trade rather than a university degree?",
+          "tip": "Hands-on fit, not ‘university rejected me so Ausbildung’.",
+          "redFlag": "Calling Ausbildung a ‘easy visa’."
+        }
+      ]
+    },
+    {
+      "id": "visit",
+      "label": "Visit / tourist visa",
+      "visaType": "visit",
+      "countries": ["United Kingdom", "Schengen", "USA", "UAE"],
+      "questions": [
+        {
+          "q": "What is the purpose and exact itinerary?",
+          "tip": "Dates, cities, who you meet. Tourism vs business must match the form.",
+          "redFlag": "Vague ‘visit Europe for 90 days’ with no hotels."
+        },
+        {
+          "q": "Why will you return before the visa ends?",
+          "tip": "Job letter, family, property, studies — evidence, not a speech.",
+          "redFlag": "Unemployed with weak funds and a one-way story."
+        },
+        {
+          "q": "Who pays, and how much is the trip?",
+          "tip": "Bank statements that match the itinerary cost.",
+          "redFlag": "Sponsor abroad you cannot explain."
+        },
+        {
+          "q": "Have you been refused before? What changed?",
+          "tip": "Disclose refusals. Explain new evidence. Do not hide stamps.",
+          "redFlag": "Lying about a past refusal."
+        }
+      ]
+    }
+  ]
+}

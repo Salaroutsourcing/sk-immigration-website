@@ -30,6 +30,21 @@ const companyLinks = [
   { label: 'Privacy', href: '/privacy/' },
   { label: 'Terms', href: '/terms/' },
 ];
+
+const toolLinks = [
+  { label: 'SK Live hub', href: '/tools/' },
+  { label: 'FastTrack match', href: '/fasttrack/' },
+  { label: 'Course finder', href: '/course-finder/' },
+  { label: 'Scholarships', href: '/scholarships/' },
+  { label: 'English & German', href: '/english/' },
+  { label: 'Document checklist', href: '/checklist/' },
+  { label: 'Cost calculator', href: '/calculator/' },
+  { label: 'Country compare', href: '/compare/' },
+  { label: 'Application tracker', href: '/tracker/' },
+  { label: 'SOP studio', href: '/sop-builder/' },
+  { label: 'Interview coach', href: '/interview/' },
+  { label: 'CV builder', href: '/cv-builder/' },
+];
 ---
 
 <footer class="sk-footer not-prose">
@@ -89,6 +104,15 @@ const companyLinks = [
       <h2>Company</h2>
       <ul>
         {companyLinks.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2>SK Live tools</h2>
+      <ul>
+        {toolLinks.map((link) => (
           <li><a href={link.href}>{link.label}</a></li>
         ))}
       </ul>
@@ -257,7 +281,7 @@ const companyLinks = [
   }
   @media (min-width: 768px) {
     .sk-footer__inner {
-      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
     }
     .sk-footer__base {
       flex-direction: row;

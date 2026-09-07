@@ -263,7 +263,7 @@
           </table>
           <p class="text-muted" style="font-size:0.9rem;margin-top:1rem">${intel.disclaimer}</p>
           <div class="hero-ctas mt-2">
-            <a class="btn btn-gold" href="/eligibility/">Find my best fit (quiz)</a>
+            <a class="btn btn-gold" href="/fasttrack/">SK FastTrack match</a>
             <a class="btn btn-navy" href="/contact/">Free consult on both</a>
             <a class="btn btn-ghost" href="/checklist/?country=${ca.code}">Checklist ${ca.name}</a>
             <a class="btn btn-ghost" href="/checklist/?country=${cb.code}">Checklist ${cb.name}</a>

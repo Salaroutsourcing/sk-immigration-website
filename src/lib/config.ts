@@ -57,14 +57,15 @@ export const ANALYTICS = {
 export const NAVIGATION = [
   { label: 'Study Visa', href: '/study-visa/' },
   { label: 'Services', href: '/services/' },
+  { label: 'SK Live', href: '/tools/' },
   { label: 'Guides', href: '/guides/' },
   { label: 'About', href: '/about/' },
-  { label: 'FAQ', href: '/faq/' },
 ];
 
 export const FOOTER_LINKS = {
   explore: [
     { label: 'Services', href: '/services/' },
+    { label: 'SK Live tools', href: '/tools/' },
     { label: 'Business Registration', href: '/business-registration/' },
     { label: 'How It Works', href: '/how-it-works/' },
     { label: 'About', href: '/about/' },

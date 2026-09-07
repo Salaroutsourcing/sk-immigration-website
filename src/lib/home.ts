@@ -5,7 +5,8 @@
 import { BUSINESS, CONTACT, SOCIAL } from './config';
 
 export const ASSESSMENT_HREF = '/contact/';
-export const FINDER_HREF = '/eligibility/';
+export const FINDER_HREF = '/fasttrack/';
+export const TOOLS_HREF = '/tools/';
 export const WHATSAPP_HREF = CONTACT.whatsappLink;
 export const SERVICES_HREF = '/services/';
 export const BUSINESS_HREF = '/business-registration/';

@@ -1,0 +1,49 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import ToolHero from '../components/tools/ToolHero.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { toolWebAppSchema } from '../lib/tools';
+
+const jsonLd = toolWebAppSchema({
+  title: 'Scholarship finder',
+  href: '/scholarships/',
+  description: 'Government and university scholarships commonly used by Pakistani and regional applicants.',
+});
+---
+
+<ToolLayout
+  title="Scholarship finder | DAAD, Hungaricum, Chevening & more"
+  description="Find scholarships SK clients actually use: DAAD, Stipendium Hungaricum, Chevening, Erasmus Mundus, Türkiye Bursları, Italy DSU. Official links only — SK does not award funding."
+  canonical="/scholarships/"
+  jsonLd={jsonLd}
+>
+  <ToolHero eyebrow="SK Live · funding · official portals only" title="Scholarships that exist — not brochure discounts">
+    Filter by destination. Every card links to the government’s or university’s own portal. SK can help you understand fit
+    and documents. We cannot sell a quota or guarantee an award.
+  </ToolHero>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-5xl">
+      <div id="scRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>Read this before you pay anyone for a ‘guaranteed scholarship’</h2>
+        <p>
+          Full rides (Hungaricum, Chevening, Türkiye Bursları, Erasmus Mundus) are competitive and run on official sites.
+          Italy DSU is income-tested regional aid, not automatic with admission. Partial awards (Holland Scholarship,
+          Deutschlandstipendium) still leave tuition and living for you to prove.
+        </p>
+        <p>
+          Self-funded files use the <a href="/calculator/">cost calculator</a> and <a href="/checklist/">checklist</a>.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/sk-live.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SKLive && window.SKLive.mountScholarships('#scRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

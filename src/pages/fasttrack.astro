@@ -1,0 +1,50 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import ToolHero from '../components/tools/ToolHero.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { toolWebAppSchema } from '../lib/tools';
+
+const jsonLd = toolWebAppSchema({
+  title: 'SK FastTrack',
+  href: '/fasttrack/',
+  description: 'Instant pathway-fit counselling assessment for study and Ausbildung files.',
+});
+---
+
+<ToolLayout
+  title="SK FastTrack | Instant pathway fit (not a fake offer)"
+  description="Answer eight questions. Get a visa-file fit score across study and Ausbildung pathways. An in-principle SK counselling assessment — universities still issue offers, embassies still decide visas."
+  canonical="/fasttrack/"
+  jsonLd={jsonLd}
+>
+  <ToolHero eyebrow="SK FastTrack · ~60 seconds · more honest than instant ‘offers’" title="Your profile. A scored shortlist. No fake CAS.">
+    Education apps promise in-principle university offers in seconds. SK FastTrack does the harder job: whether the
+    <em>file</em> is likely to hang together — marks, language, budget, German, gap — before you pay anyone.
+  </ToolHero>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-3xl">
+      <div id="ftRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>What FastTrack is — and is not</h2>
+        <p>
+          FastTrack is SK Immigration’s in-principle <strong>counselling assessment</strong>. It is not a university offer,
+          CAS, blocked-account confirmation or visa. Partner “instant offer” products only exist when a school has actually
+          wired that API — we will not imitate one.
+        </p>
+        <p>
+          After your score: open the <a href="/course-finder/">course finder</a>, tick the
+          <a href="/checklist/">document checklist</a>, or WhatsApp <a href="https://wa.me/923045999859">+92 304 5999859</a>.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/sk-live.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SKLive && window.SKLive.mountFastTrack('#ftRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>

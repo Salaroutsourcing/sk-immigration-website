@@ -1,0 +1,45 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import ToolHero from '../components/tools/ToolHero.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { toolWebAppSchema } from '../lib/tools';
+
+const jsonLd = toolWebAppSchema({
+  title: 'SOP studio',
+  href: '/sop-builder/',
+  description: 'Structured statement of purpose draft for study visa files.',
+});
+---
+
+<ToolLayout
+  title="SOP studio | Statement of purpose draft"
+  description="Answer prompts and generate a structured SOP draft for study files. Copy, edit in your own words, and send to SK Immigration for a counsellor review. No AI fiction — your facts only."
+  canonical="/sop-builder/"
+  jsonLd={jsonLd}
+>
+  <ToolHero eyebrow="SK Live · SOP studio · your facts, structured" title="A draft that sounds like a file — not a sales letter">
+    Fill the prompts. We assemble a statement you can copy. Then rewrite clichés. SK will edit on request; we will not
+    invent a study purpose for a visa.
+  </ToolHero>
+  <section class="section-container tool-shell">
+    <div class="mx-auto max-w-3xl">
+      <div id="sopRoot"></div>
+      <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+        <h2>What officers actually read</h2>
+        <p>
+          Modules, funds, gaps and a career that matches the degree. Pair with the <a href="/cv-builder/">CV builder</a> and
+          <a href="/interview/">interview coach</a>.
+        </p>
+      </div>
+      <AdSlot slotId="1122334455" format="horizontal" />
+    </div>
+  </section>
+  <Fragment slot="scripts">
+    <script is:inline src="/assets/js/config.js"></script>
+    <script is:inline src="/assets/js/api.js"></script>
+    <script is:inline src="/assets/js/sk-live.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => window.SKLive && window.SKLive.mountSOP('#sopRoot'));
+    </script>
+  </Fragment>
+</ToolLayout>
