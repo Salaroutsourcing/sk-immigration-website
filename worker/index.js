@@ -1,3 +1,5 @@
+import { cleanConsultation, validateConsultation } from '../shared/consultation.js';
+
 /**
  * SK Immigration Services — Worker API
  *
@@ -24,6 +26,7 @@ const LOGIN_LOCK_MS = 15 * 60 * 1000;
 
 const LEAD_TYPES = new Set([
   'contact',
+  'consultation',
   'booking',
   'eligibility',
   'cv',
@@ -552,7 +555,12 @@ async function handleLead(request, env, ctx) {
   const type = String(body.type || 'lead').toLowerCase();
   if (!LEAD_TYPES.has(type)) return json({ ok: false, error: 'invalid_type' }, 400);
 
-  const data = sanitizeObject(body.data && typeof body.data === 'object' ? body.data : {});
+  let data = sanitizeObject(body.data && typeof body.data === 'object' ? body.data : {});
+  if (type === 'consultation') {
+    const fields = validateConsultation(data);
+    if (Object.keys(fields).length) return json({ ok: false, error: 'validation_failed', fields }, 400);
+    data = { ...cleanConsultation(data), consent_at: new Date().toISOString() };
+  }
   const name = pickField(data, ['name', 'fullName']);
   const email = pickField(data, ['email']);
   const phone = pickField(data, ['phone', 'whatsapp']);
@@ -570,7 +578,8 @@ async function handleLead(request, env, ctx) {
   const lead = {
     id: crypto.randomUUID(),
     createdAt: now,
-    type,
+    // Keep consultation requests in the existing CRM contact queue.
+    type: type === 'consultation' ? 'contact' : type,
     name,
     email,
     phone,

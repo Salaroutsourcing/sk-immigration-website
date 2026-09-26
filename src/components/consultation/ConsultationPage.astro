@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ConsultationForm from './ConsultationForm';
+import { CONTACT } from '../../lib/config';
+interface Props { canonical: string }
+const { canonical } = Astro.props;
+---
+<BaseLayout title="Start your consultation — SK Immigration" description="Tell us about your plans to study, work, travel, or start a business abroad. Complete your candidate profile and request personalised guidance from SK Immigration." canonical={canonical} schemaVariant="global">
+  <section class="consult-page">
+    <div class="consult-shell">
+      <aside class="consult-intro">
+        <p class="consult-eyebrow">LET’S PLAN YOUR NEXT CHAPTER</p>
+        <h1>Your ambition.<br />Our guidance.<br /><span>A clearer path.</span></h1>
+        <p>Big plans start with a conversation. Tell us a little about yourself, and we’ll help you understand your options and next steps.</p>
+        <div class="consult-badges"><span>◷ About 5 minutes</span><span>100% online</span><span>No payment required</span></div>
+        <div class="consult-next">
+          <h2>What happens next?</h2>
+          <ol>
+            <li><b>1</b><div><strong>Share your plans</strong>A few details help us understand your goals.</div></li>
+            <li><b>2</b><div><strong>We review your profile</strong>Our team looks at your situation and the support you need.</div></li>
+            <li><b>3</b><div><strong>Get a practical next step</strong>We contact you to discuss your options, documents, and service scope.</div></li>
+          </ol>
+        </div>
+        <div class="consult-help">Prefer to talk first?<br /><a href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer">Chat with our team on WhatsApp ↗</a><br /><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></div>
+      </aside>
+      <div>
+        <ConsultationForm client:load whatsappLink={CONTACT.whatsappLink} />
+        <noscript><p class="consult-note">Please enable JavaScript to complete this form, or <a href={CONTACT.whatsappLink}>contact our team on WhatsApp</a>.</p></noscript>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
